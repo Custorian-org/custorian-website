@@ -3,360 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custorian — The open standard for child digital safety</title>
-<meta name="description" content="Custorian is the open infrastructure for protecting children online. On-device AI detection, platform certification, and institutional intelligence — built in Europe, for Europe.">
-<meta property="og:title" content="Custorian — The open standard for child digital safety">
-<meta property="og:description" content="On-device AI detection, platform certification, and institutional intelligence. Open source. Built in Europe.">
-<meta property="og:url" content="https://www.custorian.org/">
-<meta property="og:type" content="website">
+<title>Custorian</title>
+<meta name="description" content="The open standard for child digital safety. On-device AI detection, platform certification, institutional intelligence.">
+<meta property="og:title" content="Custorian">
+<meta property="og:description" content="The open standard for child digital safety.">
+<meta property="og:url" content="https://custorian.org">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #09090b; --bg2: #0c0c10; --surface: rgba(255,255,255,.03);
-  --surface-h: rgba(255,255,255,.06); --border: rgba(255,255,255,.07);
-  --border-h: rgba(255,255,255,.14); --text: rgba(255,255,255,.92);
-  --text-2: rgba(255,255,255,.55); --text-3: rgba(255,255,255,.3);
-  --blue: #2563eb; --blue-g: #3b82f6; --violet: #7c3aed;
-  --emerald: #059669; --amber: #d97706; --rose: #e11d48;
-  --radius: 14px; --radius-sm: 8px; --pill: 100px;
-}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+:root{--bg:#050507;--text:#f4f4f5;--dim:rgba(244,244,245,.4);--mute:rgba(244,244,245,.15);--border:rgba(244,244,245,.06);--accent:#a78bfa}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.container{max-width:1080px;margin:0 auto;padding:0 24px}
+::selection{background:var(--accent);color:var(--bg)}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px}
-.nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.5px}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-2);transition:.2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{font-size:.8rem;font-weight:600;color:var(--bg);background:var(--text);padding:7px 18px;border-radius:var(--pill);transition:.2s}
-.nav-cta:hover{opacity:.9}
-@media(max-width:768px){.nav-links{display:none}}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:difference}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.5px}
+.nav-r{display:flex;gap:32px;align-items:center}
+.nav-r a{font-size:.8rem;font-weight:500;opacity:.5;transition:opacity .3s}
+.nav-r a:hover{opacity:1}
+@media(max-width:768px){header{padding:20px 24px}.nav-r{gap:20px}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;filter:blur(150px);opacity:.1;pointer-events:none;top:-300px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--violet))}
-.hero-content{position:relative;z-index:1;max-width:680px}
-.hero-eyebrow{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--blue-g);margin-bottom:20px}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,4rem);letter-spacing:-2px;line-height:1.08;margin-bottom:20px}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue-g),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.05rem;color:var(--text-2);max-width:520px;line-height:1.75;margin-bottom:36px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--pill);font-size:.88rem;font-weight:600;font-family:'Inter',sans-serif;border:none;cursor:pointer;transition:.2s}
-.btn-w{background:var(--text);color:var(--bg)}
-.btn-w:hover{box-shadow:0 6px 24px rgba(255,255,255,.12);transform:translateY(-1px)}
-.btn-g{background:var(--surface);color:var(--text);border:1px solid var(--border)}
-.btn-g:hover{border-color:var(--border-h)}
-
-/* METRICS */
-.metrics{padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.metric-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-1px;margin-bottom:4px}
-.metric-label{font-size:.78rem;color:var(--text-3);line-height:1.4}
-@media(max-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px;position:relative}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(167,139,250,.06) 0%,transparent 70%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 20s ease-in-out infinite}
+.orb-1{width:400px;height:400px;background:rgba(167,139,250,.08);top:20%;left:30%;animation-delay:0s}
+.orb-2{width:300px;height:300px;background:rgba(59,130,246,.06);top:40%;right:20%;animation-delay:-7s}
+.orb-3{width:200px;height:200px;background:rgba(236,72,153,.05);bottom:20%;left:50%;animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0)}25%{transform:translate(30px,-20px)}50%{transform:translate(-20px,30px)}75%{transform:translate(20px,20px)}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-eyebrow{font-size:.7rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:32px}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(3rem,8vw,6rem);letter-spacing:-3px;line-height:.95;margin-bottom:28px}
+.hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--dim);max-width:480px;margin:0 auto 48px;line-height:1.8;font-weight:300}
+.hero-cta{display:flex;gap:16px;justify-content:center}
+.cta-btn{padding:14px 32px;border-radius:100px;font-size:.85rem;font-weight:600;font-family:'Inter',sans-serif;border:none;cursor:pointer;transition:all .3s}
+.cta-primary{background:var(--text);color:var(--bg)}
+.cta-primary:hover{box-shadow:0 0 40px rgba(244,244,245,.15);transform:translateY(-2px)}
+.cta-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.cta-ghost:hover{border-color:var(--mute)}
+.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--mute);animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
 /* SECTIONS */
-section{padding:100px 0}
-.s-eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--blue-g);margin-bottom:12px}
-.s-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.7rem,3.5vw,2.4rem);letter-spacing:-1.5px;line-height:1.12;margin-bottom:14px}
-.s-sub{font-size:.98rem;color:var(--text-2);max-width:480px;line-height:1.7}
-.s-head{margin-bottom:48px}
-.s-center{text-align:center}.s-center .s-sub{margin:0 auto}
+section{padding:160px 40px;position:relative}
+.section-content{max-width:1000px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-/* WHAT */
-.what{background:var(--bg)}
-.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.what-card{background:var(--bg);padding:32px 28px}
-.what-card h3{font-size:.9rem;font-weight:700;margin-bottom:6px}
-.what-card p{font-size:.8rem;color:var(--text-2);line-height:1.6}
-.what-tag{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 8px;border-radius:var(--pill);margin-top:10px}
-.what-tag.free{background:rgba(5,150,105,.1);color:var(--emerald)}
-.what-tag.paid{background:rgba(37,99,235,.1);color:var(--blue-g)}
-.what-tag.std{background:rgba(124,58,237,.1);color:var(--violet)}
-@media(max-width:768px){.what-grid{grid-template-columns:1fr}}
+/* LABELS */
+.label{font-size:.65rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.section-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px;max-width:600px}
+.section-desc{font-size:.95rem;color:var(--dim);line-height:1.8;max-width:500px;font-weight:300}
 
-/* HOW */
-.how{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.how-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.how-diagram{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:12px}
-.how-node{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.82rem;font-weight:600}
-.how-node .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.how-arrow{text-align:center;color:var(--text-3);font-size:.9rem}
-.how-node.green{border-color:rgba(5,150,105,.3)}
-.how-node.blue{border-color:rgba(37,99,235,.3)}
-.how-node.violet{border-color:rgba(124,58,237,.3)}
-.how-points{display:flex;flex-direction:column;gap:20px}
-.how-point h4{font-size:.9rem;font-weight:700;margin-bottom:4px}
-.how-point p{font-size:.82rem;color:var(--text-2);line-height:1.6}
-@media(max-width:768px){.how-cols{grid-template-columns:1fr}}
+/* DIVIDER */
+.divider{height:1px;background:var(--border);max-width:1000px;margin:0 auto}
 
-/* FOR WHO */
-.forwho{background:var(--bg)}
-.fw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.fw-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;transition:.3s}
-.fw-card:hover{border-color:var(--border-h)}
-.fw-card h3{font-size:.95rem;font-weight:700;margin-bottom:6px}
-.fw-card p{font-size:.82rem;color:var(--text-2);line-height:1.6;margin-bottom:12px}
-.fw-price{font-size:.75rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:1px}
-@media(max-width:768px){.fw-grid{grid-template-columns:1fr}}
+/* GRID CARDS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px}
+.g-card{background:var(--bg);padding:40px 32px;transition:background .3s}
+.g-card:hover{background:rgba(167,139,250,.02)}
+.g-card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;margin-bottom:10px;letter-spacing:-.3px}
+.g-card p{font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300}
+.g-tag{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);margin-top:16px;padding:4px 10px;border:1px solid var(--border);border-radius:100px}
+@media(max-width:768px){.grid-3{grid-template-columns:1fr}section{padding:100px 24px}}
 
-/* OPEN SOURCE */
-.opensource{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:56px}
+.col-list{display:flex;flex-direction:column;gap:28px}
+.col-item h4{font-size:.88rem;font-weight:600;margin-bottom:4px;letter-spacing:-.2px}
+.col-item p{font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300}
+.col-visual{background:rgba(244,244,245,.02);border:1px solid var(--border);border-radius:12px;padding:40px;position:relative;overflow:hidden}
+.col-visual::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(167,139,250,.03),transparent);animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.node{position:relative;z-index:1;padding:12px 20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:.8rem;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.node .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.node-arrow{text-align:center;color:var(--mute);font-size:.75rem;margin-bottom:12px}
+@media(max-width:768px){.two-col{grid-template-columns:1fr;gap:40px}}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.p-card{background:rgba(244,244,245,.02);border:1px solid var(--border);border-radius:12px;padding:36px 32px;transition:border-color .3s}
+.p-card:hover{border-color:rgba(244,244,245,.12)}
+.p-card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px;letter-spacing:-.3px}
+.p-card p{font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300;margin-bottom:16px}
+.p-price{font-size:.72rem;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+@media(max-width:768px){.price-grid{grid-template-columns:1fr}}
 
 /* STATUS */
-.status{background:var(--bg);text-align:center}
-.status-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.2);border-radius:var(--pill);padding:6px 18px;font-size:.78rem;font-weight:600;color:var(--amber);margin-bottom:16px}
-.status-badge .pulse{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.status-section{text-align:center}
+.status-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(167,139,250,.2);border-radius:100px;padding:8px 20px;font-size:.72rem;font-weight:500;color:var(--accent);margin-bottom:24px}
+.status-badge .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(167,139,250,.3)}50%{opacity:.5;box-shadow:0 0 0 8px rgba(167,139,250,0)}}
 
 /* CONTACT */
-.contact{background:var(--bg2);border-top:1px solid var(--border)}
-.contact-form{display:flex;flex-direction:column;gap:12px;max-width:480px;margin:0 auto}
-.contact-form input,.contact-form select,.contact-form textarea{padding:12px 16px;border-radius:var(--radius-sm);font-size:.88rem;font-family:'Inter',sans-serif;outline:none;background:var(--bg);border:1.5px solid var(--border);color:var(--text);width:100%;transition:.2s}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-3)}
-.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--blue)}
-.contact-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.contact-form{max-width:440px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+.contact-form input,.contact-form select,.contact-form textarea{padding:14px 18px;border-radius:8px;font-size:.85rem;font-family:'Inter',sans-serif;background:rgba(244,244,245,.03);border:1px solid var(--border);color:var(--text);outline:none;transition:border .2s;width:100%}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--mute)}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--accent)}
+.contact-form select{appearance:none;cursor:pointer;color:var(--dim)}
 .contact-form select option{background:var(--bg);color:var(--text)}
-.contact-form textarea{resize:vertical;min-height:90px}
-.contact-form button{padding:12px 24px;border-radius:var(--pill);font-size:.9rem;font-weight:700;font-family:'Inter',sans-serif;border:none;cursor:pointer;background:var(--text);color:var(--bg);transition:.2s;width:100%}
-.contact-form button:hover{opacity:.9}
-.contact-success{display:none;text-align:center;padding:40px}
+.contact-form textarea{resize:vertical;min-height:80px}
+.contact-form button{padding:14px;border-radius:100px;font-size:.85rem;font-weight:600;font-family:'Inter',sans-serif;border:none;cursor:pointer;background:var(--text);color:var(--bg);transition:all .3s}
+.contact-form button:hover{box-shadow:0 0 30px rgba(244,244,245,.1);transform:translateY(-1px)}
+.contact-success{display:none;text-align:center;margin-top:48px}
 .contact-success.show{display:block}
-.contact-success h3{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.3rem;color:var(--emerald);margin-bottom:8px}
-.contact-success p{font-size:.88rem;color:var(--text-2)}
+.contact-success h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--accent);margin-bottom:8px}
+.contact-success p{font-size:.85rem;color:var(--dim)}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:36px 24px;text-align:center}
-.foot-brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;margin-bottom:10px}
+footer{padding:40px;text-align:center;border-top:1px solid var(--border)}
+.foot-brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.9rem;margin-bottom:12px;letter-spacing:-.3px}
 .foot-links{display:flex;gap:20px;justify-content:center;margin-bottom:12px}
-.foot-links a{font-size:.78rem;color:var(--text-3);transition:.2s}
+.foot-links a{font-size:.72rem;color:var(--mute);transition:color .2s}
 .foot-links a:hover{color:var(--text)}
-.foot-legal{font-size:.7rem;color:var(--text-3);line-height:1.6}
+.foot-legal{font-size:.65rem;color:var(--mute);line-height:1.6}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">Custorian</a>
-    <div class="nav-links">
-      <a href="#what">Platform</a>
-      <a href="#how">How it works</a>
-      <a href="#forwho">Pricing</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </div>
+<header>
+  <a href="#" class="logo">Custorian</a>
+  <div class="nav-r">
+    <a href="#platform">Platform</a>
+    <a href="#architecture">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
   </div>
-</nav>
+</header>
 
 <section class="hero">
-  <div class="hero-glow"></div>
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Open standard &middot; On-device AI &middot; Built in Europe</div>
-    <h1>The <em>infrastructure</em> for child digital safety</h1>
-    <p class="hero-sub">Custorian is the open-source detection engine, certification standard, and intelligence platform that protects children online. On-device. Privacy-first. Designed for EU regulation.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-w">Get early access</a>
-      <a href="https://github.com/tanyabecheva-cloud/guard-layer-app" target="_blank" class="btn btn-g">View source</a>
+    <div class="hero-eyebrow">The open standard for child digital safety</div>
+    <h1>Protecting the innocent</h1>
+    <p class="hero-sub">On-device AI that detects grooming, bullying, and digital threats. Open source. Built in Europe. The infrastructure that makes every children's platform safer.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="cta-btn cta-primary">Get early access</a>
+      <a href="https://github.com/tanyabecheva-cloud/guard-layer-app" target="_blank" class="cta-btn cta-ghost">Source code</a>
     </div>
   </div>
+  <div class="scroll-hint">Scroll to explore</div>
 </section>
 
-<div class="metrics">
-  <div class="container">
-    <div class="metrics-grid">
-      <div><div class="metric-num" style="color:var(--rose)">8 min</div><div class="metric-label">average time to groom a child on some platforms</div></div>
-      <div><div class="metric-num" style="color:var(--amber)">1 in 3</div><div class="metric-label">children experience cyberbullying</div></div>
-      <div><div class="metric-num" style="color:var(--violet)">0</div><div class="metric-label">EU-native, on-device child safety standards exist today</div></div>
-      <div><div class="metric-num" style="color:var(--emerald)">$4.1B</div><div class="metric-label">projected child safety market by 2034</div></div>
-    </div>
-  </div>
-</div>
+<div class="divider"></div>
 
-<section class="what" id="what">
-  <div class="container">
-    <div class="s-head s-center">
-      <div class="s-eyebrow">The platform</div>
-      <h2 class="s-title">Three layers. One standard.</h2>
-      <p class="s-sub">A free family app, a paid institutional intelligence layer, and a certification framework for platforms.</p>
-    </div>
-    <div class="what-grid">
-      <div class="what-card">
+<section id="platform">
+  <div class="section-content reveal">
+    <div class="label">Platform</div>
+    <h2 class="section-title">Three layers. One standard.</h2>
+    <p class="section-desc">A free detection engine, a paid intelligence layer, and a certification framework that becomes the European standard.</p>
+    <div class="grid-3">
+      <div class="g-card">
         <h3>Detection Engine</h3>
-        <p>On-device AI that detects grooming, bullying, self-harm, violence, and harmful content in real time. Runs locally — messages never leave the phone.</p>
-        <span class="what-tag free">Open source &middot; Free</span>
+        <p>On-device AI detecting grooming, bullying, self-harm, violence, and harmful content. Messages never leave the phone.</p>
+        <div class="g-tag">Open source</div>
       </div>
-      <div class="what-card">
+      <div class="g-card">
         <h3>Family App</h3>
-        <p>iOS and Android app for parents. Native keyboard extension monitors across all messaging apps. Smart alerts, crisis intervention, parent guides.</p>
-        <span class="what-tag free">Free forever</span>
+        <p>iOS and Android. Native keyboard extension monitors all messaging apps. Smart alerts, crisis intervention, parent guides.</p>
+        <div class="g-tag">Free forever</div>
       </div>
-      <div class="what-card">
+      <div class="g-card">
         <h3>Content Radar</h3>
-        <p>Search and rate games, shows, YouTube, and TikTok by age. Themes, warnings, and safer alternatives. 50+ pre-rated entries.</p>
-        <span class="what-tag free">Free</span>
+        <p>Rate games, shows, YouTube, TikTok by age. Themes, warnings, safer alternatives.</p>
+        <div class="g-tag">Free</div>
       </div>
-      <div class="what-card">
-        <h3>School Dashboard</h3>
-        <p>Anonymised aggregate threat intelligence across student populations. Trend analysis, compliance reports, intervention playbooks. No individual student data.</p>
-        <span class="what-tag paid">Paid &middot; B2B</span>
+      <div class="g-card">
+        <h3>Institutional Intelligence</h3>
+        <p>Anonymised aggregate dashboards for schools and municipalities. Trend analysis, compliance reports, resource allocation.</p>
+        <div class="g-tag">B2B SaaS</div>
       </div>
-      <div class="what-card">
-        <h3>Municipality Dashboard</h3>
-        <p>Cross-school analytics for kommuner and government. Resource allocation, SSP integration, policy evidence. Regional and national views.</p>
-        <span class="what-tag paid">Paid &middot; B2B</span>
-      </div>
-      <div class="what-card">
+      <div class="g-card">
         <h3>Platform API</h3>
-        <p>Detection-as-a-service for platforms, EdTech, and gaming companies. Integrate Custorian's engine into your product. Enterprise SLAs and support.</p>
-        <span class="what-tag paid">Paid &middot; API</span>
+        <p>Detection-as-a-service. Gaming platforms, EdTech, and social apps integrate our engine. Enterprise SLAs.</p>
+        <div class="g-tag">API licensing</div>
       </div>
-      <div class="what-card">
+      <div class="g-card">
         <h3>Custorian Certified</h3>
-        <p>Certification for platforms serving children in the EU. Demonstrates DSA and AI Act compliance. The standard that procurement requires.</p>
-        <span class="what-tag std">Standard</span>
-      </div>
-      <div class="what-card">
-        <h3>Federated AI</h3>
-        <p>Models improve across all devices without extracting data. Every user makes every other user safer. Network effects on the AI itself.</p>
-        <span class="what-tag std">R&D</span>
-      </div>
-      <div class="what-card">
-        <h3>Research Programme</h3>
-        <p>University partnerships, longitudinal studies, published accuracy benchmarks. Evidence that drives policy. Opt-in only, ethics-approved.</p>
-        <span class="what-tag std">Academic</span>
+        <p>Compliance certification for platforms serving children in the EU. DSA and AI Act conformity.</p>
+        <div class="g-tag">Standard</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="how" id="how">
-  <div class="container">
-    <div class="s-head">
-      <div class="s-eyebrow">Architecture</div>
-      <h2 class="s-title">On-device by default. Intelligence by consent.</h2>
-      <p class="s-sub">Message content never leaves the device. Anonymised metadata flows upstream only with parental opt-in.</p>
-    </div>
-    <div class="how-cols">
-      <div class="how-diagram">
-        <div class="how-node green"><span class="dot" style="background:var(--emerald)"></span> Child's device — AI runs here</div>
-        <div class="how-arrow">↓ on-device only</div>
-        <div class="how-node green"><span class="dot" style="background:var(--emerald)"></span> Detection engine scores risk (0-100)</div>
-        <div class="how-arrow">↓ on-device only</div>
-        <div class="how-node green"><span class="dot" style="background:var(--emerald)"></span> Parent sees alert + child gets intervention</div>
-        <div class="how-arrow">↓ opt-in only (anonymised metadata)</div>
-        <div class="how-node blue"><span class="dot" style="background:var(--blue-g)"></span> School dashboard (aggregate, no names)</div>
-        <div class="how-arrow">↓ aggregate only</div>
-        <div class="how-node violet"><span class="dot" style="background:var(--violet)"></span> Municipality / national intelligence</div>
+<div class="divider"></div>
+
+<section id="architecture">
+  <div class="section-content reveal">
+    <div class="label">Architecture</div>
+    <h2 class="section-title">On-device by default. Intelligence by consent.</h2>
+    <p class="section-desc">Message content never leaves the device. Anonymised metadata flows upstream only with explicit parental opt-in.</p>
+    <div class="two-col">
+      <div class="col-visual">
+        <div class="node"><span class="dot" style="background:#10b981"></span> Child's device — AI runs locally</div>
+        <div class="node-arrow">&darr;</div>
+        <div class="node"><span class="dot" style="background:#10b981"></span> Risk scored (0-100) on-device</div>
+        <div class="node-arrow">&darr;</div>
+        <div class="node"><span class="dot" style="background:#10b981"></span> Parent alert + child intervention</div>
+        <div class="node-arrow">&darr; opt-in only</div>
+        <div class="node"><span class="dot" style="background:var(--accent)"></span> School dashboard (anonymised)</div>
+        <div class="node-arrow">&darr; aggregate</div>
+        <div class="node"><span class="dot" style="background:var(--accent)"></span> Municipal / national intelligence</div>
       </div>
-      <div class="how-points">
-        <div class="how-point">
-          <h4>What flows up</h4>
-          <p>Alert category, severity level, timestamp, age bracket. That's it. No messages. No names. No device IDs. No way to trace an alert to a child.</p>
-        </div>
-        <div class="how-point">
+      <div class="col-list">
+        <div class="col-item">
           <h4>What stays on-device</h4>
-          <p>All message content. All photos. All alert details. The parent dashboard. Everything that could identify a child stays on the phone, encrypted locally.</p>
+          <p>All message content. All photos. All alert details. Everything that could identify a child. Encrypted locally.</p>
         </div>
-        <div class="how-point">
-          <h4>Who controls consent</h4>
-          <p>Parents opt in to school mode when the school deploys Custorian. One tap to opt out at any time. Without opt-in, the family app works fully — just no data flows to the school.</p>
+        <div class="col-item">
+          <h4>What flows up</h4>
+          <p>Category, severity, timestamp, age bracket. No messages. No names. No device IDs. Untraceable to any individual.</p>
         </div>
-        <div class="how-point">
+        <div class="col-item">
           <h4>3 validated languages</h4>
-          <p>English, Danish, and German — independently validated for detection accuracy. We publish precision, recall, and false positive rates quarterly. We don't claim languages we haven't proven.</p>
+          <p>English, Danish, German. Independently validated. We publish accuracy metrics quarterly. We don't claim what we haven't proven.</p>
+        </div>
+        <div class="col-item">
+          <h4>Federated learning</h4>
+          <p>Models improve across all devices without extracting data. Every user makes every other user safer.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="forwho" id="forwho">
-  <div class="container">
-    <div class="s-head s-center">
-      <div class="s-eyebrow">Who it's for</div>
-      <h2 class="s-title">Free for families. Paid for institutions. Infrastructure for platforms.</h2>
-    </div>
-    <div class="fw-grid">
-      <div class="fw-card">
+<div class="divider"></div>
+
+<section id="pricing">
+  <div class="section-content reveal">
+    <div class="label">Pricing</div>
+    <h2 class="section-title">Free for families. Infrastructure for institutions.</h2>
+    <div class="price-grid">
+      <div class="p-card">
         <h3>Families</h3>
-        <p>Download the app, protect your children. On-device detection, parent alerts, child interventions, crisis hotlines, content ratings. No subscription, no account, no data collection.</p>
-        <div class="fw-price">Free — forever</div>
+        <p>Full detection, parent alerts, child interventions, crisis resources, content ratings. No subscription. No account. No data collection.</p>
+        <div class="p-price">Free — forever</div>
       </div>
-      <div class="fw-card">
+      <div class="p-card">
         <h3>Schools</h3>
-        <p>Anonymised aggregate dashboard showing digital threat patterns across your students. Trend analysis, compliance reports, intervention playbooks. Works when 30%+ of families use Custorian.</p>
-        <div class="fw-price">€500–2,000 / year</div>
+        <p>Anonymised aggregate dashboard. Threat trends, compliance reports, intervention playbooks.</p>
+        <div class="p-price">&euro;500 – 2,000 / year</div>
       </div>
-      <div class="fw-card">
+      <div class="p-card">
         <h3>Municipalities &amp; Government</h3>
-        <p>Cross-school and regional intelligence. Resource allocation, SSP integration, policy evidence, national threat reporting. DSA compliance built in.</p>
-        <div class="fw-price">€5,000–200,000 / year</div>
+        <p>Cross-school intelligence. Resource allocation, policy evidence, DSA compliance reporting.</p>
+        <div class="p-price">&euro;5,000 – 200,000 / year</div>
       </div>
-      <div class="fw-card">
+      <div class="p-card">
         <h3>Platforms &amp; EdTech</h3>
-        <p>Integrate Custorian's detection engine via API. Get "Custorian Certified" for DSA/AI Act compliance. Enterprise support, SLAs, and custom model training.</p>
-        <div class="fw-price">API licensing — contact us</div>
+        <p>Detection-as-a-service API. Custorian Certified compliance badge. Custom model training.</p>
+        <div class="p-price">Contact us</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="opensource">
-  <div class="container">
-    <div class="s-head s-center">
-      <div class="s-eyebrow">Open source</div>
-      <h2 class="s-title">The code is free. The standard is free. The trust is earned.</h2>
-      <p class="s-sub">We're asking parents to install software that monitors their children. The code must be public. There is no other honest way to earn that trust.</p>
-    </div>
+<div class="divider"></div>
+
+<section class="status-section">
+  <div class="section-content reveal">
+    <div class="status-badge"><span class="pulse"></span> Building in the open</div>
+    <h2 class="section-title" style="margin:0 auto 16px;text-align:center;max-width:500px">We're shipping the foundation</h2>
+    <p class="section-desc" style="margin:0 auto;text-align:center;max-width:520px">The family app is in development. We're validating detection accuracy, establishing research partnerships, and looking for pilot schools, platform partners, and early-access families.</p>
   </div>
 </section>
 
-<section class="status">
-  <div class="container">
-    <div class="status-badge"><span class="pulse"></span> In development</div>
-    <h3 class="s-title" style="margin-bottom:12px">We're building in the open</h3>
-    <p class="s-sub" style="margin:0 auto;max-width:520px">Custorian is currently shipping the family app, validating detection accuracy, and establishing institutional partnerships. We're looking for early-access families, pilot schools, and technology partners.</p>
-  </div>
-</section>
+<div class="divider"></div>
 
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="s-head s-center">
-      <div class="s-eyebrow">Contact</div>
-      <h2 class="s-title">Get in touch</h2>
+<section id="contact">
+  <div class="section-content reveal">
+    <div style="text-align:center">
+      <div class="label">Contact</div>
+      <h2 class="section-title" style="margin:0 auto 8px;text-align:center">Get in touch</h2>
     </div>
     <div id="contact-wrap">
       <form class="contact-form" onsubmit="handleContact(event)">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian Inquiry">
         <input type="hidden" name="_gotcha" style="display:none">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Email address" required>
-        <select name="inquiry_type" required>
-          <option value="" disabled selected>What is this about?</option>
-          <option value="family">I'm a parent — early access</option>
-          <option value="school">School pilot</option>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="type" required>
+          <option value="" disabled selected>I am a...</option>
+          <option value="parent">Parent — early access</option>
+          <option value="school">School — pilot interest</option>
           <option value="municipality">Municipality / government</option>
           <option value="platform">Platform / API integration</option>
-          <option value="research">Research collaboration</option>
-          <option value="investor">Investment</option>
+          <option value="investor">Investor</option>
+          <option value="research">Researcher</option>
           <option value="developer">Developer / contributor</option>
-          <option value="media">Media / press</option>
-          <option value="other">Something else</option>
+          <option value="media">Media</option>
         </select>
-        <input type="text" name="organization" placeholder="Organisation (optional)">
-        <textarea name="message" placeholder="Your message" rows="4" required></textarea>
+        <textarea name="message" placeholder="Message" rows="3" required></textarea>
         <button type="submit">Send</button>
       </form>
     </div>
     <div class="contact-success" id="contact-success">
       <h3>Sent.</h3>
-      <p>We'll get back to you within 48 hours.</p>
+      <p>We'll be in touch within 48 hours.</p>
     </div>
   </div>
 </section>
@@ -365,21 +318,24 @@ footer{border-top:1px solid var(--border);padding:36px 24px;text-align:center}
   <div class="foot-brand">Custorian</div>
   <div class="foot-links">
     <a href="https://github.com/tanyabecheva-cloud/guard-layer-app" target="_blank">GitHub</a>
-    <a href="mailto:info@custorian.org">Email</a>
+    <a href="mailto:info@custorian.org">info@custorian.org</a>
   </div>
-  <div class="foot-legal">
-    &copy; 2026 Custorian. Non-profit association (forening) registered in Denmark.<br>
-    Open source under MIT licence. The infrastructure for child digital safety.
-  </div>
+  <div class="foot-legal">&copy; 2026 Custorian. Non-profit forening, Denmark. Open source, MIT licence.</div>
 </footer>
 
 <script>
-function handleContact(e) {
+function handleContact(e){
   e.preventDefault();
-  document.getElementById('contact-wrap').style.display = 'none';
+  document.getElementById('contact-wrap').style.display='none';
   document.getElementById('contact-success').classList.add('show');
-  fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) });
+  fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(e.target)});
 }
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
