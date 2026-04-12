@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — The Child Digital Safety Standard</title>
-<meta name="description" content="The open standard for child digital safety. On-device AI detection, platform certification, institutional intelligence. Like PCI DSS, but for protecting children.">
+<meta name="description" content="The open standard for child digital safety. Platform certification, institutional intelligence, regulatory compliance. Like PCI DSS, but for protecting children.">
 <meta property="og:title" content="Custorian — The PCI DSS for Protecting Children">
-<meta property="og:description" content="6 domains. 90 controls. One API. The compliance framework that makes every platform accountable for child safety. Non-profit. Open source. Built in Europe.">
+<meta property="og:description" content="6 domains. 90 controls. One API. The compliance framework that makes every platform accountable for child safety. Non-profit. Open standard. Built in Europe.">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:image" content="https://custorian.org/og-image.png">
 <meta property="og:type" content="website">
@@ -277,7 +277,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 <!-- CANVAS -->
 <canvas id="network-canvas"></canvas>
 
-<!-- NAV — #14 hamburger for mobile -->
+<!-- NAV -->
 <header id="nav">
   <a href="#" class="logo">Custorian<span>.</span></a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -286,27 +286,28 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <a href="#api">API</a>
     <a href="#adopt">For Platforms</a>
     <a href="#compliance">Compliance</a>
-    <a href="#pricing">Who it's for</a>
+    <a href="#pricing">Certification &amp; Pricing</a>
     <a href="#contact">Contact</a>
   </div>
 </header>
 
-<!-- HERO — #6 non-profit trust badge prominent -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-trust">Non-profit &middot; Open source &middot; No shareholders &middot; No conflicts of interest</div>
+    <div class="hero-trust">Non-profit &middot; Open standard &middot; No shareholders &middot; No conflicts of interest</div>
     <div class="hero-eyebrow">The open standard for child digital safety</div>
     <h1>The PCI DSS<br>for <span class="accent">protecting children</span></h1>
-    <p class="hero-sub">Built on IEEE P3462 — the Safety by Design standard for child safety in AI. On-device detection, platform certification, institutional intelligence. One framework to protect them all.</p>
+    <p class="hero-sub">6 domains. 90 controls. One API. The compliance framework that makes every platform accountable for child safety.</p>
     <div class="hero-cta">
       <a href="#standard" class="cta-btn cta-primary">Explore the standard</a>
       <a href="#adopt" class="cta-btn cta-ghost">For platforms</a>
+      <a href="#contact" class="cta-btn cta-ghost">For policy makers</a>
     </div>
   </div>
   <div class="scroll-line"></div>
 </section>
 
-<!-- #1 THE PROBLEM — before stats bar (Victor, Thiel) -->
+<!-- THE PROBLEM -->
 <div class="solid-wrap">
 
 <div class="problem-section reveal">
@@ -344,7 +345,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   </div>
 </div>
 
-<!-- THE 6 DOMAINS — #2 fixed 36.2M stat, #11 source links -->
+<!-- THE 6 DOMAINS -->
 <section id="standard">
   <div class="section-content">
     <div class="reveal">
@@ -356,7 +357,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="domain-card reveal">
         <div class="domain-code">CS-AC</div>
         <h3>Age Controls</h3>
-        <p>Age determination, age-appropriate defaults, and feature gating. Minors get the safest version of every platform by default.</p>
+        <p>Age determination, age-appropriate defaults, and feature gating. The standard requires minors get the safest version of every platform by default.</p>
         <div class="domain-stats">
           <div class="domain-stat"><div class="domain-stat-num">89%</div><div class="domain-stat-label">of children lie about age online</div></div>
           <div class="domain-stat"><div class="domain-stat-num">5</div><div class="domain-stat-label">Required controls</div></div>
@@ -383,7 +384,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
         <div class="domain-evidence"><p>ICSI 2023: 72% of apps in the Play Store children's category transmitted data to third-party trackers. <a href="https://www.usenix.org/conference/usenixsecurity19/presentation/reyes" target="_blank">Source</a></p></div>
       </div>
-      <!-- #23 CS-PR Child Agency featured prominently -->
       <div class="domain-card reveal">
         <div class="domain-code">CS-PR</div>
         <h3>Parental Rights & Child Agency</h3>
@@ -394,7 +394,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
         <div class="domain-evidence"><p>Pew Research 2024: Technology is the #1 reason parents say parenting is harder today. <a href="https://www.pewresearch.org/internet/2024/01/31/parenting-children-in-the-age-of-screens/" target="_blank">Source</a></p></div>
       </div>
-      <!-- #2 fixed stat: 36.2M not 32M -->
       <div class="domain-card reveal">
         <div class="domain-code">CS-MR</div>
         <h3>Monitoring, Detection & Response</h3>
@@ -403,8 +402,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
           <div class="domain-stat"><div class="domain-stat-num">36.2M</div><div class="domain-stat-label">CSAM reports to NCMEC in 2023</div></div>
           <div class="domain-stat"><div class="domain-stat-num">16</div><div class="domain-stat-label">Required controls</div></div>
         </div>
-        <!-- #29 accuracy caveat -->
-        <div class="domain-evidence"><p>NCMEC 2023: 36.2M CyberTipline reports. Detection validated in English; expanding to Danish and German. <a href="https://www.missingkids.org/theissues/csam" target="_blank">Source</a></p></div>
+        <div class="domain-evidence"><p>NCMEC 2023: 36.2M CyberTipline reports. The standard defines detection requirements with accuracy thresholds by category and language. <a href="https://www.missingkids.org/theissues/csam" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
         <div class="domain-code">CS-GO</div>
@@ -422,13 +420,13 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- API — #15 developer portal note, #16 demo mention -->
+<!-- API SPECIFICATION -->
 <section id="api">
   <div class="section-content">
     <div class="reveal">
       <div class="label">Custorian API Specification</div>
       <h2 class="section-title">One API. Every safety tool interoperates.</h2>
-      <p class="section-desc">OpenAPI 3.1 specification. Platforms implement it. Parental apps, auditors, and researchers consume it. Everyone speaks the same language.</p>
+      <p class="section-desc">OpenAPI 3.1 specification. Platforms implement it. Auditors and researchers consume it. Everyone speaks the same language.</p>
     </div>
     <div class="api-showcase reveal">
       <div class="api-tabs">
@@ -442,7 +440,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content active" id="tab-detect">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/detect</div>
-        <div class="api-desc">Submit content for real-time child safety threat analysis. Returns threat categories, confidence scores, behavioral signals, and recommended actions.</div>
+        <div class="api-desc">Content analysis endpoint that platforms implement. Returns threat categories, confidence scores, behavioral signals, and recommended actions per the standard.</div>
         <div class="api-controls"><span class="api-control">CS-MR.1.1 – CS-MR.1.5</span><span class="api-control">CS-CD.1.1 – CS-CD.1.8</span></div>
 <pre>{
   <span class="key">"threat_assessment"</span>: {
@@ -461,7 +459,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-alerts">
         <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/alerts</div>
-        <div class="api-desc">Retrieve safety alerts for parental review. Alerts delivered within 5 minutes of detection.</div>
+        <div class="api-desc">Standard endpoint for safety alert delivery. Platforms must surface alerts within 5 minutes of detection per CS-PR requirements.</div>
         <div class="api-controls"><span class="api-control">CS-PR.1.1 – CS-PR.1.2</span></div>
 <pre>{
   <span class="key">"alerts"</span>: [{
@@ -476,7 +474,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-controls">
         <div class="api-endpoint"><span class="api-method get">GET</span> <span class="api-method patch">PUT</span> /custorian/v1/controls</div>
-        <div class="api-desc">Parental safety controls. Screen time, contact management, content filtering. Age-graduated defaults.</div>
+        <div class="api-desc">Parental safety controls specification. Screen time, contact management, content filtering. Age-graduated defaults required by the standard.</div>
         <div class="api-controls"><span class="api-control">CS-PR.2.1 – CS-PR.2.5</span></div>
 <pre>{
   <span class="key">"controls"</span>: {
@@ -488,7 +486,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-age">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/age/verify</div>
-        <div class="api-desc">Age verification. Supports document, biometric estimate, third-party attestation, parental confirmation. Evidence never retained.</div>
+        <div class="api-desc">Age verification specification. Supports document, biometric estimate, third-party attestation, parental confirmation. Evidence never retained.</div>
         <div class="api-controls"><span class="api-control">CS-AC.1.1 – CS-AC.1.5</span></div>
 <pre>{
   <span class="key">"result"</span>: <span class="str">"verified"</span>,
@@ -499,7 +497,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-accuracy">
         <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/accuracy</div>
-        <div class="api-desc">Detection accuracy published quarterly by category and language. Precision &ge;85%, recall &ge;75% required.</div>
+        <div class="api-desc">Accuracy transparency endpoint. Platforms must publish detection accuracy quarterly by category and language. Precision &ge;85%, recall &ge;75% required.</div>
         <div class="api-controls"><span class="api-control">CS-MR.3.1 – CS-MR.3.5</span></div>
 <pre>{
   <span class="key">"period"</span>: <span class="str">"2026-Q2"</span>,
@@ -508,7 +506,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-report">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/report</div>
-        <div class="api-desc">Mandatory reporting for CSAM and imminent danger. Critical threats to law enforcement within 1 hour.</div>
+        <div class="api-desc">Mandatory reporting endpoint. The standard requires CSAM and imminent danger reports to law enforcement within 1 hour.</div>
         <div class="api-controls"><span class="api-control">CS-MR.2.1</span></div>
 <pre>{
   <span class="key">"report_type"</span>: <span class="str">"csam"</span>,
@@ -519,7 +517,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content" id="tab-audit">
         <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/audit</div>
-        <div class="api-desc">Compliance verification for Qualified Safety Assessors. Full audit trail.</div>
+        <div class="api-desc">Compliance verification endpoint for Qualified Safety Assessors. Full audit trail required for certification.</div>
         <div class="api-controls"><span class="api-control">CS-MR.2.4</span><span class="api-control">QSA access only</span></div>
 <pre>{
   <span class="key">"entries"</span>: [{
@@ -531,10 +529,10 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 }</pre>
       </div>
     </div>
-    <!-- #15 Developer portal note -->
+    <!-- Developer portal note -->
     <div class="api-dev-note reveal">
       <div>
-        <p><strong>For developers:</strong> Full OpenAPI 3.1 specification available. Interactive Swagger docs, SDKs, and integration guides are in progress. <a href="https://github.com/Custorian-org/custorian-app" target="_blank">View source on GitHub</a></p>
+        <p><strong>For developers:</strong> Full OpenAPI 3.1 specification available. Interactive Swagger docs, SDKs, and integration guides are in progress. A reference implementation is available for testing and validation purposes.</p>
       </div>
     </div>
   </div>
@@ -542,13 +540,12 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- #7 FOR PLATFORMS — adoption pathway (Clegg, Andreessen) -->
+<!-- FOR PLATFORMS — certification pathway -->
 <section id="adopt">
   <div class="section-content">
     <div class="reveal">
       <div class="label">For Platforms</div>
-      <h2 class="section-title">Adopt the standard. Gain presumption of conformity.</h2>
-      <!-- #8 Vestager's "presumption of conformity" language -->
+      <h2 class="section-title">Implement the standard. Achieve certification.</h2>
       <p class="section-desc">Platforms implementing Custorian gain a documented compliance pathway for DSA Article 28, DSA Article 35 risk assessments, and the EU AI Act. Comply once, satisfy many.</p>
     </div>
     <div class="adopt-grid reveal">
@@ -560,33 +557,31 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="adopt-step">
         <div class="adopt-num">02</div>
         <h4>Implement</h4>
-        <p>Integrate the Custorian API specification. Use our reference implementation or build your own. Detection engine SDKs available.</p>
+        <p>Implement the Custorian API specification using your own infrastructure. A reference implementation is available for validation and testing.</p>
       </div>
       <div class="adopt-step">
         <div class="adopt-num">03</div>
         <h4>Certify</h4>
-        <!-- #21 clarified: self-attestation at launch -->
         <p>Submit your self-attestation for Custorian Certified status. Level 1 and 2 platforms require Qualified Safety Assessor validation.</p>
       </div>
     </div>
 
-    <!-- #22 Network effects flywheel (Andreessen) -->
+    <!-- The Custorian Flywheel -->
     <div class="flywheel reveal">
       <h3>The Custorian Flywheel</h3>
       <div class="flywheel-steps">
-        <div class="flywheel-step">Families adopt the app</div>
+        <div class="flywheel-step">Platforms implement the standard</div>
         <span class="flywheel-arrow">&rarr;</span>
-        <div class="flywheel-step">Detection models improve</div>
+        <div class="flywheel-step">Detection quality becomes measurable</div>
         <span class="flywheel-arrow">&rarr;</span>
-        <div class="flywheel-step">Platforms integrate the API</div>
+        <div class="flywheel-step">Regulators reference the framework</div>
         <span class="flywheel-arrow">&rarr;</span>
         <div class="flywheel-step">Adoption costs drop</div>
         <span class="flywheel-arrow">&rarr;</span>
-        <div class="flywheel-step">More families are protected</div>
+        <div class="flywheel-step">More children are protected</div>
       </div>
     </div>
 
-    <!-- #19 Why not competitors (Thiel) -->
     <div class="legal-note reveal">
       <p><strong>Custorian is a standard, not a product.</strong> Existing child safety tools are valuable — Custorian gives them a shared compliance framework to build on. Standards don't replace products. They elevate them. Like PCI DSS elevated the entire payments ecosystem.</p>
     </div>
@@ -595,7 +590,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- COMPLIANCE — #13 narrowed municipality pricing -->
+<!-- COMPLIANCE -->
 <section id="compliance" class="compliance-section">
   <div class="section-content">
     <div class="reveal">
@@ -634,7 +629,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- REGULATORY MAP — #24 added AU Malabo + South Korea, #18 Odense mention -->
+<!-- REGULATORY MAP -->
 <section>
   <div class="section-content">
     <div class="reveal">
@@ -676,7 +671,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="reg-card">
         <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
         <h4>Jutland Declaration</h4>
-        <p>25 EU states committed to child digital safety. Signed in Odense, 2025 &mdash; where Custorian is being built.</p>
+        <p>25 EU states committed to child digital safety. Signed in Odense, 2025 &mdash; where Custorian is being developed.</p>
         <span class="reg-status reg-live">Signed 2025</span>
       </div>
       <div class="reg-card">
@@ -685,14 +680,12 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         <p>CAS includes standardised CSAM detection and reporting API.</p>
         <span class="reg-status reg-soon">In progress</span>
       </div>
-      <!-- #24 Atlas: AU Malabo Convention -->
       <div class="reg-card">
         <div class="reg-flag">&#x1F30D;</div>
         <h4>AU Malabo Convention</h4>
         <p>African Union cyber security &amp; data protection. Custorian maps EU + African regulatory coverage.</p>
         <span class="reg-status reg-soon">Mapping in progress</span>
       </div>
-      <!-- #24 Atlas: South Korea -->
       <div class="reg-card">
         <div class="reg-flag">&#x1F1F0;&#x1F1F7;</div>
         <h4>South Korea Youth Protection Act</h4>
@@ -700,7 +693,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         <span class="reg-status reg-soon">Mapping in progress</span>
       </div>
     </div>
-    <!-- #12 Vestager: downloadable PDF brief for policymakers -->
     <div class="download-links reveal">
       <a href="#contact">Download Policy Brief (PDF) &mdash; coming soon</a>
       <a href="#contact">Download SAQ Template &mdash; coming soon</a>
@@ -710,8 +702,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- #9 PARTNERSHIPS — Thorn + PhotoDNA (Kutcher) -->
-<!-- #10 ADVISORY COUNCIL (Kutcher) -->
+<!-- PARTNERSHIPS & ADVISORY -->
 <section>
   <div class="section-content">
     <div class="reveal">
@@ -751,7 +742,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
           <div class="advisory-card">
             <h4>Datatilsynet</h4>
             <p>Danish Data Protection Authority</p>
-            <!-- #30 Vestager: mention Datatilsynet -->
             <div class="advisory-status advisory-forming">In dialogue</div>
           </div>
           <div class="advisory-card">
@@ -767,33 +757,33 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- WHO IT'S FOR -->
+<!-- CERTIFICATION & PRICING -->
 <section id="pricing">
   <div class="section-content">
     <div class="reveal">
-      <div class="label">Who it's for</div>
-      <h2 class="section-title">Free for families. Open to institutions.</h2>
+      <div class="label">Certification &amp; Pricing</div>
+      <h2 class="section-title">Certification for platforms. Intelligence for institutions.</h2>
     </div>
     <div class="price-grid reveal">
       <div class="p-card">
-        <h3>Families</h3>
-        <p>Full detection engine, parent alerts, child interventions, crisis resources, content ratings. No subscription. No account required.</p>
-        <div class="p-price">Free — forever</div>
+        <h3>Platform Certification</h3>
+        <p>Annual Custorian Certified listing. Includes compliance assessment, certification mark licence, registry listing, and quarterly accuracy reporting framework.</p>
+        <div class="p-price">&euro;2,000 &ndash; &euro;25,000 / year by level</div>
       </div>
       <div class="p-card">
-        <h3>Schools</h3>
-        <p>Anonymised aggregate dashboard. Threat trend analysis, compliance reports, intervention playbooks.</p>
-        <div class="p-price">Contact us for pilot programmes</div>
+        <h3>Qualified Safety Assessor (QSA) Licensing</h3>
+        <p>Organisations certified to conduct Custorian compliance audits. Training, assessment methodology, and listed QSA status.</p>
+        <div class="p-price">&euro;5,000 / year</div>
       </div>
       <div class="p-card">
-        <h3>Municipalities &amp; Government</h3>
-        <p>Cross-school intelligence. Resource allocation, policy evidence, DSA compliance reporting.</p>
-        <div class="p-price">Contact us for partnerships</div>
+        <h3>Institutional Intelligence</h3>
+        <p>For schools and municipalities. Anonymised aggregate dashboards, threat trend analysis, compliance reports, and intervention playbooks.</p>
+        <div class="p-price">&euro;500 &ndash; &euro;25,000 / year</div>
       </div>
       <div class="p-card">
-        <h3>Platforms &amp; EdTech</h3>
-        <p>Detection-as-a-service API. Custorian Certified compliance badge. Enterprise SLAs and custom model training.</p>
-        <div class="p-price">Contact us for integration</div>
+        <h3>Registry Access</h3>
+        <p>Listed on the Custorian Certified public registry. Searchable by parents, regulators, and procurement teams. Included with all certification tiers.</p>
+        <div class="p-price">Included with certification</div>
       </div>
     </div>
   </div>
@@ -801,18 +791,68 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div class="divider"></div>
 
-<!-- STATUS — #17 founder human element (Skyler) -->
+<!-- STATUS -->
 <section class="status-section">
   <div class="section-content reveal">
-    <div class="status-badge"><span class="pulse"></span> Building in the open</div>
-    <h2 class="section-title" style="margin:0 auto 16px;text-align:center;max-width:600px">The standard is being drafted. The app is being built.</h2>
-    <p class="section-desc" style="margin:0 auto;text-align:center;max-width:560px">Custorian Controls Framework v0.1 is in open review. The reference implementation is in development. We're looking for pilot schools, platform partners, academic reviewers, and early-access families.</p>
+    <div class="status-badge"><span class="pulse"></span> Developing in the open</div>
+    <h2 class="section-title" style="margin:0 auto 16px;text-align:center;max-width:600px">The standard is being drafted. The framework is taking shape.</h2>
+    <p class="section-desc" style="margin:0 auto;text-align:center;max-width:560px">Custorian Controls Framework v0.1 is in open review. The standard is being developed through open consultation with child safety organisations, regulators, platform engineers, and academic researchers. We're looking for pilot schools, platform partners, policy advisors, and QSA candidates.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- CONTACT — #25 added "Other" option, #28 error handling -->
+<!-- SLANG SUBMISSION -->
+<section id="slang" style="background:var(--bg)">
+  <div class="section-content reveal">
+    <div style="text-align:center">
+      <div class="label">Community Intelligence</div>
+      <h2 class="section-title" style="margin:0 auto 8px;text-align:center">Report new slang</h2>
+      <p class="section-desc" style="margin:0 auto 40px;text-align:center;max-width:480px">Kids invent new coded language faster than any AI can learn it. If you've seen a term, phrase, or coded word we should know about — submit it. Every approved term protects more children.</p>
+    </div>
+    <div id="slang-wrap">
+      <form class="contact-form" id="slang-form">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Slang Submission">
+        <input type="hidden" name="_gotcha" style="display:none">
+        <input type="hidden" name="source" value="website">
+        <select name="language" required>
+          <option value="" disabled selected>Language</option>
+          <option value="en">English</option>
+          <option value="da">Danish</option>
+          <option value="de">German</option>
+          <option value="ar">Arabic</option>
+          <option value="other">Other</option>
+        </select>
+        <input type="text" name="slang_term" placeholder="Slang term or phrase" required>
+        <input type="text" name="meaning" placeholder="What does it actually mean?" required>
+        <input type="text" name="example" placeholder="Example sentence (optional)">
+        <select name="category" required>
+          <option value="" disabled selected>Category</option>
+          <option value="drugs">Drugs / Substances</option>
+          <option value="sexual">Sexual / Exploitation</option>
+          <option value="violence">Violence / Threats</option>
+          <option value="bullying">Bullying / Insults</option>
+          <option value="selfharm">Self-Harm / Mental Health</option>
+          <option value="grooming">Grooming / Predatory</option>
+          <option value="purchase">Dangerous Purchases</option>
+          <option value="radical">Radicalisation</option>
+          <option value="other">Other / Not Sure</option>
+        </select>
+        <button type="submit">Submit for review</button>
+      </form>
+    </div>
+    <div class="contact-success" id="slang-success" style="display:none">
+      <h3>Submitted.</h3>
+      <p>Our team will review this term. If approved, it will be pushed to every device automatically.</p>
+    </div>
+    <p style="font-size:.65rem;color:var(--mute);text-align:center;margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto">All submissions are reviewed by our team before being added. We never share who submitted a term.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-content reveal">
     <div style="text-align:center">
@@ -828,11 +868,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         <input type="email" name="email" placeholder="Email" required>
         <select name="type" required>
           <option value="" disabled selected>I am a...</option>
-          <option value="parent">Parent — early access</option>
+          <option value="platform">Platform — certification interest</option>
           <option value="school">School — pilot interest</option>
           <option value="municipality">Municipality / government</option>
-          <option value="platform">Platform / API integration</option>
           <option value="policymaker">Policy maker / regulator</option>
+          <option value="qsa">QSA candidate — audit organisation</option>
           <option value="investor">Investor</option>
           <option value="research">Researcher / academic reviewer</option>
           <option value="developer">Developer / contributor</option>
@@ -861,15 +901,14 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="foot-tagline">The open standard for child digital safety.<br>Non-profit forening, Odense, Denmark.</div>
     </div>
     <div class="foot-links">
-      <a href="https://github.com/Custorian-org/custorian-app" target="_blank">GitHub</a>
       <a href="mailto:info@custorian.org">info@custorian.org</a>
-      <a href="#api">API Docs</a>
+      <a href="#api">API Specification</a>
       <a href="#adopt">For Platforms</a>
+      <a href="#pricing">Certification</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <!-- #3 trademark note -->
-    <div class="foot-legal">&copy; 2026 Custorian. Open source, MIT licence. Custorian Controls Framework CC BY-SA 4.0.<br>"Custorian Certified" is a trademark of Foreningen Custorian — registration in progress.</div>
+    <div class="foot-legal">&copy; 2026 Custorian. Custorian Controls Framework licensed under CC BY-SA 4.0.<br>"Custorian Certified" is a trademark of Foreningen Custorian — registration in progress.</div>
   </div>
 </footer>
 
@@ -900,7 +939,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         nodes.push({ baseX: c * SPACING - SPACING, baseY: r * SPACING - SPACING, x: 0, y: 0, col: c, row: r });
   }
   function draw() {
-    // #26 skip when scrolled past hero
     if (window.pageYOffset > window.innerHeight * 1.5) { requestAnimationFrame(draw); return; }
     ctx.clearRect(0, 0, w, h);
     const t = Date.now() * 0.001;
@@ -956,14 +994,13 @@ document.querySelectorAll('.stat').forEach((el, i) => { el.style.transitionDelay
 
 // ─── NAV ─────────────────────────────────────
 window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 80); });
-// #14 Hamburger menu
 document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('nav-links').classList.toggle('open'); });
 document.querySelectorAll('.nav-r a').forEach(a => { a.addEventListener('click', () => { document.getElementById('nav-links').classList.remove('open'); }); });
 
 // ─── API TABS ────────────────────────────────
 document.querySelectorAll('.api-tab').forEach(tab => { tab.addEventListener('click', () => { document.querySelectorAll('.api-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.api-content').forEach(c => c.classList.remove('active')); tab.classList.add('active'); document.getElementById('tab-' + tab.dataset.tab).classList.add('active'); }); });
 
-// ─── CONTACT — #28 error handling ────────────
+// ─── CONTACT ─────────────────────────────────
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const wrap = document.getElementById('contact-wrap');
@@ -972,6 +1009,16 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) })
     .then(r => { if (r.ok) { wrap.style.display = 'none'; success.classList.add('show'); } else { error.classList.add('show'); } })
     .catch(() => { error.classList.add('show'); });
+});
+
+// ─���─ SLANG SUBMISSION ────────────────────────
+document.getElementById('slang-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const wrap = document.getElementById('slang-wrap');
+  const success = document.getElementById('slang-success');
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) })
+    .then(r => { if (r.ok) { wrap.style.display = 'none'; success.style.display = 'block'; success.classList.add('show'); } })
+    .catch(() => {});
 });
 
 // ─── SMOOTH SCROLL ───────────────────────────
