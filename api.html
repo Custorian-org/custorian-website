@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian API Reference — CAS v1.0</title>
+<meta name="description" content="Custorian API Specification (CAS) — the standard interface for child digital safety. OpenAPI 3.1 reference documentation.">
+<meta name="theme-color" content="#08080c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%237c3aed'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='20' font-family='sans-serif' font-weight='bold'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui.css">
+<style>
+  /* === BASE === */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #08080c;
+    --bg2: #0f0f15;
+    --bg3: #16161f;
+    --text: #e4e4ed;
+    --dim: #9ca3af;
+    --mute: #6b7280;
+    --border: #1e1e2e;
+    --accent: #a78bfa;
+    --accent2: #7c3aed;
+    --shield: #10b981;
+  }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* Gradient brand strip */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent), var(--shield), var(--accent));
+    z-index: 9999;
+  }
+
+  /* === HEADER === */
+  .api-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(8, 8, 12, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .header-right a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .header-right a:hover { color: var(--text); }
+  .api-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    color: var(--accent);
+    background: rgba(167, 139, 250, 0.06);
+  }
+  @media (max-width: 600px) {
+    .api-header { padding: 14px 20px; }
+  }
+
+  /* === SWAGGER CONTAINER === */
+  .swagger-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px 80px;
+  }
+
+  /* === DARK THEME OVERRIDES FOR SWAGGER UI === */
+
+  /* Top bar — hide default */
+  .swagger-ui .topbar { display: none; }
+
+  /* Info section */
+  .swagger-ui .info { margin: 20px 0 30px; }
+  .swagger-ui .info .title { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-weight: 800; }
+  .swagger-ui .info .title small { background: var(--accent2); color: #fff; }
+  .swagger-ui .info .title small pre { color: #fff; }
+  .swagger-ui .info .description, .swagger-ui .info .description p { color: var(--dim); }
+  .swagger-ui .info a { color: var(--accent); }
+  .swagger-ui .info .base-url { color: var(--mute); }
+  .swagger-ui .info li, .swagger-ui .info p, .swagger-ui .info table { color: var(--dim); }
+  .swagger-ui .info h1, .swagger-ui .info h2, .swagger-ui .info h3, .swagger-ui .info h4 { color: var(--text); }
+
+  /* Scheme container */
+  .swagger-ui .scheme-container {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+  .swagger-ui .scheme-container .schemes > label { color: var(--dim); }
+  .swagger-ui select { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+
+  /* Tag groups / operation blocks */
+  .swagger-ui .opblock-tag-section { border-bottom: 1px solid var(--border); }
+  .swagger-ui .opblock-tag {
+    color: var(--text) !important;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .swagger-ui .opblock-tag:hover { background: rgba(167, 139, 250, 0.04); }
+  .swagger-ui .opblock-tag small { color: var(--dim); }
+  .swagger-ui .opblock-tag svg { fill: var(--dim); }
+
+  /* Operation blocks */
+  .swagger-ui .opblock {
+    background: var(--bg2);
+    border-color: var(--border);
+    box-shadow: none;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+
+  /* GET */
+  .swagger-ui .opblock.opblock-get {
+    background: rgba(16, 185, 129, 0.04);
+    border-color: rgba(16, 185, 129, 0.25);
+  }
+  .swagger-ui .opblock.opblock-get .opblock-summary-method { background: #10b981; }
+  .swagger-ui .opblock.opblock-get .opblock-summary { border-color: rgba(16, 185, 129, 0.2); }
+
+  /* POST */
+  .swagger-ui .opblock.opblock-post {
+    background: rgba(167, 139, 250, 0.04);
+    border-color: rgba(167, 139, 250, 0.25);
+  }
+  .swagger-ui .opblock.opblock-post .opblock-summary-method { background: var(--accent2); }
+  .swagger-ui .opblock.opblock-post .opblock-summary { border-color: rgba(167, 139, 250, 0.2); }
+
+  /* PUT */
+  .swagger-ui .opblock.opblock-put {
+    background: rgba(245, 158, 11, 0.04);
+    border-color: rgba(245, 158, 11, 0.25);
+  }
+  .swagger-ui .opblock.opblock-put .opblock-summary-method { background: #f59e0b; }
+  .swagger-ui .opblock.opblock-put .opblock-summary { border-color: rgba(245, 158, 11, 0.2); }
+
+  /* PATCH */
+  .swagger-ui .opblock.opblock-patch {
+    background: rgba(59, 130, 246, 0.04);
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+  .swagger-ui .opblock.opblock-patch .opblock-summary-method { background: #3b82f6; }
+  .swagger-ui .opblock.opblock-patch .opblock-summary { border-color: rgba(59, 130, 246, 0.2); }
+
+  /* DELETE */
+  .swagger-ui .opblock.opblock-delete {
+    background: rgba(239, 68, 68, 0.04);
+    border-color: rgba(239, 68, 68, 0.25);
+  }
+  .swagger-ui .opblock.opblock-delete .opblock-summary-method { background: #ef4444; }
+
+  /* Operation summaries */
+  .swagger-ui .opblock .opblock-summary-path { color: var(--text) !important; }
+  .swagger-ui .opblock .opblock-summary-path__deprecated { color: var(--mute) !important; }
+  .swagger-ui .opblock .opblock-summary-description { color: var(--dim); }
+  .swagger-ui .opblock .opblock-summary-method {
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 60px;
+  }
+  .swagger-ui .opblock .opblock-summary { border-color: transparent; }
+
+  /* Operation body (expanded) */
+  .swagger-ui .opblock-body { background: var(--bg); }
+  .swagger-ui .opblock-body pre,
+  .swagger-ui .opblock-body pre.microlight {
+    background: var(--bg3) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .swagger-ui .opblock-description-wrapper,
+  .swagger-ui .opblock-external-docs-wrapper { color: var(--dim); }
+  .swagger-ui .opblock-description-wrapper p { color: var(--dim); }
+  .swagger-ui .opblock-section-header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    box-shadow: none;
+  }
+  .swagger-ui .opblock-section-header h4 { color: var(--text); }
+  .swagger-ui .opblock-section-header label { color: var(--dim); }
+
+  /* Parameters */
+  .swagger-ui .parameters-col_description p { color: var(--dim); }
+  .swagger-ui .parameter__name { color: var(--text); }
+  .swagger-ui .parameter__name.required::after { color: #ef4444; }
+  .swagger-ui .parameter__type { color: var(--accent); font-size: 0.75rem; }
+  .swagger-ui .parameter__in { color: var(--mute); }
+  .swagger-ui table thead tr { background: var(--bg2); }
+  .swagger-ui table thead tr td, .swagger-ui table thead tr th { color: var(--dim); border-color: var(--border); }
+  .swagger-ui table tbody tr td { color: var(--text); border-color: var(--border); }
+
+  /* Models / Schemas */
+  .swagger-ui section.models {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .swagger-ui section.models h4 { color: var(--text); border-color: var(--border); }
+  .swagger-ui section.models h4 span { color: var(--text) !important; }
+  .swagger-ui section.models h4 svg { fill: var(--dim); }
+  .swagger-ui section.models .model-container {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin: 4px 0;
+  }
+  .swagger-ui .model-box { background: var(--bg2); }
+  .swagger-ui .model { color: var(--text); }
+  .swagger-ui .model-title { color: var(--text); font-family: 'Space Grotesk', sans-serif; }
+  .swagger-ui .model .property { color: var(--dim); }
+  .swagger-ui .model .property.primitive { color: var(--accent); }
+  .swagger-ui .prop-type { color: var(--accent); }
+  .swagger-ui .prop-format { color: var(--mute); }
+
+  /* Responses */
+  .swagger-ui .responses-inner { background: var(--bg); }
+  .swagger-ui .responses-inner h4, .swagger-ui .responses-inner h5 { color: var(--text); }
+  .swagger-ui .response-col_status { color: var(--shield); }
+  .swagger-ui .response-col_description { color: var(--dim); }
+  .swagger-ui .response-col_description p { color: var(--dim); }
+  .swagger-ui .response-col_links { color: var(--mute); }
+
+  /* Tabs */
+  .swagger-ui .tab li { color: var(--dim); }
+  .swagger-ui .tab li.active { color: var(--text); }
+  .swagger-ui .tab li:first-of-type::after { background: var(--dim); }
+
+  /* Auth */
+  .swagger-ui .auth-wrapper { background: var(--bg); }
+  .swagger-ui .authorization__btn svg { fill: var(--accent); }
+  .swagger-ui .btn.authorize { color: var(--accent); border-color: var(--accent); background: transparent; }
+  .swagger-ui .btn.authorize svg { fill: var(--accent); }
+
+  /* Buttons */
+  .swagger-ui .btn { color: var(--text); border-color: var(--border); }
+  .swagger-ui .btn:hover { box-shadow: none; }
+  .swagger-ui .btn.execute { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+  .swagger-ui .btn.cancel { color: #ef4444; border-color: #ef4444; }
+
+  /* Inputs */
+  .swagger-ui input[type=text], .swagger-ui input[type=password],
+  .swagger-ui input[type=search], .swagger-ui input[type=email],
+  .swagger-ui input[type=file], .swagger-ui textarea {
+    background: var(--bg3);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .swagger-ui textarea { background: var(--bg3); color: var(--text); }
+
+  /* JSON schema highlights */
+  .swagger-ui .model .property,
+  .swagger-ui .model span { color: var(--dim); }
+  .swagger-ui .model-toggle::after { background: var(--dim); }
+
+  /* Links and misc */
+  .swagger-ui a { color: var(--accent); }
+  .swagger-ui a:hover { color: #c4b5fd; }
+  .swagger-ui .loading-container .loading::after { color: var(--dim); }
+  .swagger-ui .loading-container .loading::before { border-color: var(--accent) transparent transparent transparent; }
+
+  /* Filter / Search */
+  .swagger-ui .filter-container { background: var(--bg2); }
+  .swagger-ui .filter input[type=text] { background: var(--bg3); color: var(--text); border-color: var(--border); }
+
+  /* Markdown rendered inside descriptions */
+  .swagger-ui .renderedMarkdown p { color: var(--dim); }
+  .swagger-ui .renderedMarkdown code {
+    background: var(--bg3);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--mute); }
+
+  /* Server variable */
+  .swagger-ui .servers > label { color: var(--dim); }
+  .swagger-ui .servers-title { color: var(--text); }
+
+  /* Expand all / collapse all */
+  .swagger-ui .expand-methods svg,
+  .swagger-ui .expand-operation svg { fill: var(--dim); }
+
+  /* Copy to clipboard */
+  .swagger-ui .copy-to-clipboard { background: var(--bg3); }
+  .swagger-ui .copy-to-clipboard button { background: var(--bg3); }
+
+  /* Try it out button hidden area — note: we disable try-it-out via config */
+
+  /* Dialog / Modal */
+  .swagger-ui .dialog-ux .modal-ux {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .swagger-ui .dialog-ux .modal-ux-header h3 { color: var(--text); }
+  .swagger-ui .dialog-ux .modal-ux-content p { color: var(--dim); }
+  .swagger-ui .dialog-ux .modal-ux-header { border-color: var(--border); }
+
+  /* Enum / possible values */
+  .swagger-ui .model .property.primitive, .swagger-ui .model .property { color: var(--dim); }
+
+  /* highlight-code */
+  .swagger-ui .highlight-code { background: var(--bg3) !important; }
+  .swagger-ui .microlight { background: var(--bg3) !important; color: var(--text) !important; }
+
+  /* Example values */
+  .swagger-ui .example { background: var(--bg3); border: 1px solid var(--border); color: var(--text); }
+
+  /* Arrow / chevron icons */
+  .swagger-ui svg:not(:root) { fill: var(--dim); }
+  .swagger-ui .opblock .opblock-summary-method ~ svg { fill: var(--dim); }
+
+  /* Download links */
+  .swagger-ui .download-contents { background: var(--accent2); color: #fff; }
+
+  /* Version stamp */
+  .swagger-ui .info .title small.version-stamp { background: var(--accent2); }
+
+  /* Footer */
+  .api-footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--mute);
+    font-size: 0.75rem;
+  }
+  .api-footer a { color: var(--accent); text-decoration: none; }
+  .api-footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="api-header">
+  <a href="https://custorian.org" class="logo">custorian<span>.</span></a>
+  <div class="header-right">
+    <span class="api-badge">CAS v1.0-draft</span>
+    <a href="https://custorian.org">Home</a>
+    <a href="https://custorian.org/#standard">Standard</a>
+    <a href="https://github.com/custorian">GitHub</a>
+  </div>
+</header>
+
+<!-- Swagger UI target -->
+<div class="swagger-wrap">
+  <div id="swagger-ui"></div>
+</div>
+
+<!-- Footer -->
+<div class="api-footer">
+  Custorian Standards Council (Foreningen Custorian) &middot; Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &middot; <a href="https://custorian.org">custorian.org</a>
+</div>
+
+<script src="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"></script>
+<script src="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui-standalone-preset.js"></script>
+<script>
+// Inline the spec as a JS object to avoid CORS/serving issues on GitHub Pages
+const spec = {
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Custorian API Specification (CAS)",
+    "description": "The Custorian API Specification (CAS) defines a standard interface for child digital safety.\nPlatforms implement CAS to enable interoperability with parental safety tools,\nregulatory auditors, and research institutions.\n\nPart of the Custorian Standard \u2014 the PCI DSS of child digital safety.\nMaintained by the Custorian Standards Council (Foreningen Custorian).",
+    "version": "1.0.0-draft",
+    "contact": {
+      "name": "Custorian Standards Council",
+      "url": "https://custorian.org"
+    },
+    "license": {
+      "name": "CC BY-SA 4.0",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{platform}/custorian/v1",
+      "description": "Platform implementation",
+      "variables": {
+        "platform": {
+          "default": "api.example.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    { "OAuth2": ["custorian:read", "custorian:write", "custorian:admin"] },
+    { "ApiKey": [] }
+  ],
+  "tags": [
+    { "name": "Detection", "description": "Content analysis for child safety threats" },
+    { "name": "Alerts", "description": "Safety alert management for parents/guardians" },
+    { "name": "Controls", "description": "Parental control configuration" },
+    { "name": "Age", "description": "Age verification and assurance" },
+    { "name": "Accuracy", "description": "Detection accuracy metrics and audit data" },
+    { "name": "Reporting", "description": "Mandatory reporting (CSAM, imminent danger)" }
+  ],
+  "paths": {
+    "/detect": {
+      "post": {
+        "operationId": "analyzeContent",
+        "tags": ["Detection"],
+        "summary": "Submit content for child safety threat analysis",
+        "description": "Analyzes text, image, video, or audio content for threats to minors.\nReturns threat assessment with categories, confidence scores, and recommended actions.\n\nImplements: CS-MR.1.1, CS-MR.1.2, CS-MR.1.3, CS-CD.1.1 through CS-CD.1.6",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DetectionRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Threat assessment complete",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DetectionResponse" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/alerts": {
+      "get": {
+        "operationId": "getAlerts",
+        "tags": ["Alerts"],
+        "summary": "Retrieve safety alerts for a minor",
+        "description": "Returns safety alerts for parental review. Implements CS-PR.1.1, CS-PR.1.2.\nAlerts must be delivered within 5 minutes of detection (CS-PR.1.2).",
+        "parameters": [
+          { "name": "minor_id", "in": "query", "required": true, "schema": { "type": "string" }, "description": "Hashed minor identifier" },
+          { "name": "since", "in": "query", "schema": { "type": "string", "format": "date-time" }, "description": "Return alerts after this timestamp" },
+          { "name": "severity", "in": "query", "schema": { "$ref": "#/components/schemas/Severity" }, "description": "Filter by minimum severity" },
+          { "name": "status", "in": "query", "schema": { "$ref": "#/components/schemas/AlertStatus" }, "description": "Filter by alert status" },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 50, "maximum": 200 } },
+          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 0 } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Alert list",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AlertListResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts/{alert_id}": {
+      "patch": {
+        "operationId": "updateAlert",
+        "tags": ["Alerts"],
+        "summary": "Update alert status (parent action)",
+        "parameters": [
+          { "name": "alert_id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AlertUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Alert updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Alert" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controls": {
+      "get": {
+        "operationId": "getControls",
+        "tags": ["Controls"],
+        "summary": "Retrieve parental controls for a minor",
+        "description": "Implements CS-PR.2.1 through CS-PR.2.5",
+        "parameters": [
+          { "name": "minor_id", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current control settings",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ParentalControls" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateControls",
+        "tags": ["Controls"],
+        "summary": "Update parental controls for a minor",
+        "parameters": [
+          { "name": "minor_id", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ParentalControls" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Controls updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ParentalControls" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/age/verify": {
+      "post": {
+        "operationId": "verifyAge",
+        "tags": ["Age"],
+        "summary": "Verify user age",
+        "description": "Implements CS-AC.1.1 through CS-AC.1.5.\nEvidence must NOT be retained beyond the verification event (CS-AC.1.5).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AgeVerificationRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification result",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgeVerificationResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accuracy": {
+      "get": {
+        "operationId": "getAccuracy",
+        "tags": ["Accuracy"],
+        "summary": "Retrieve detection accuracy metrics",
+        "description": "Implements CS-MR.3.1 through CS-MR.3.4.\nMust be published quarterly (CS-MR.3.2).\nPrecision \u226585%, recall \u226575% required per category per language (CS-MR.3.1).",
+        "parameters": [
+          { "name": "period", "in": "query", "required": true, "schema": { "type": "string", "pattern": "^\\d{4}-Q[1-4]$", "example": "2026-Q2" } },
+          { "name": "category", "in": "query", "schema": { "$ref": "#/components/schemas/ThreatCategory" } },
+          { "name": "language", "in": "query", "schema": { "type": "string", "pattern": "^[a-z]{2}$" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accuracy metrics",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccuracyReport" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report": {
+      "post": {
+        "operationId": "submitReport",
+        "tags": ["Reporting"],
+        "summary": "Submit mandatory report (CSAM, imminent danger)",
+        "description": "Implements CS-MR.2.1.\nCritical threats MUST be escalated to law enforcement within 1 hour.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MandatoryReport" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Report submitted",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReportResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/audit": {
+      "get": {
+        "operationId": "getAuditLog",
+        "tags": ["Accuracy"],
+        "summary": "Retrieve audit trail for compliance verification",
+        "description": "Read-only endpoint for QSA auditors to verify platform compliance.\nImplements CS-MR.2.4 (all threat actions logged).",
+        "parameters": [
+          { "name": "start_date", "in": "query", "required": true, "schema": { "type": "string", "format": "date" } },
+          { "name": "end_date", "in": "query", "required": true, "schema": { "type": "string", "format": "date" } },
+          { "name": "category", "in": "query", "schema": { "$ref": "#/components/schemas/ThreatCategory" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audit log entries",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AuditLog" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "OAuth2": ["custorian:admin"] }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://{platform}/custorian/oauth/authorize",
+            "tokenUrl": "https://{platform}/custorian/oauth/token",
+            "scopes": {
+              "custorian:read": "Read alerts, controls, accuracy data",
+              "custorian:write": "Update alerts, controls",
+              "custorian:admin": "Audit access, reporting"
+            }
+          }
+        }
+      },
+      "ApiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Custorian-Key"
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "Rate limit exceeded",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        },
+        "headers": {
+          "Retry-After": {
+            "schema": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ThreatCategory": {
+        "type": "string",
+        "enum": ["grooming", "bullying", "self_harm", "csam", "exploitation", "violence", "radicalization"]
+      },
+      "Severity": {
+        "type": "string",
+        "enum": ["critical", "high", "medium", "low", "none"]
+      },
+      "AlertStatus": {
+        "type": "string",
+        "enum": ["new", "reviewed", "resolved", "escalated"]
+      },
+      "AgeBracket": {
+        "type": "string",
+        "enum": ["under-13", "13-15", "16-17", "adult"]
+      },
+      "ContentType": {
+        "type": "string",
+        "enum": ["text", "image", "video", "audio", "metadata"]
+      },
+      "DetectionRequest": {
+        "type": "object",
+        "required": ["content_type", "content", "context"],
+        "properties": {
+          "content_type": { "$ref": "#/components/schemas/ContentType" },
+          "content": { "type": "string", "description": "Base64 encoded (binary) or plaintext (text)" },
+          "context": {
+            "type": "object",
+            "required": ["recipient_age_bracket"],
+            "properties": {
+              "sender_age_verified": { "type": "boolean" },
+              "sender_age_bracket": { "$ref": "#/components/schemas/AgeBracket" },
+              "recipient_age_bracket": { "$ref": "#/components/schemas/AgeBracket" },
+              "relationship": { "type": "string", "enum": ["known", "unknown", "pending"] },
+              "platform_context": { "type": "string", "enum": ["dm", "public_post", "comment", "live_chat", "group"] },
+              "language": { "type": "string", "pattern": "^[a-z]{2}$" },
+              "conversation_history_hash": { "type": "string", "description": "Optional hash for behavioral analysis continuity" }
+            }
+          }
+        }
+      },
+      "DetectionResponse": {
+        "type": "object",
+        "properties": {
+          "request_id": { "type": "string", "format": "uuid" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "threat_assessment": {
+            "type": "object",
+            "properties": {
+              "overall_risk": { "$ref": "#/components/schemas/Severity" },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "$ref": "#/components/schemas/ThreatCategory" },
+                    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "severity": { "$ref": "#/components/schemas/Severity" },
+                    "triggered_patterns": { "type": "array", "items": { "type": "string" } },
+                    "explanation": { "type": "string" }
+                  }
+                }
+              },
+              "behavioral_signals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "pattern": { "type": "string" },
+                    "confidence": { "type": "number" },
+                    "evidence": { "type": "string" }
+                  }
+                }
+              },
+              "recommended_action": {
+                "type": "string",
+                "enum": ["block_immediately", "restrict_and_notify", "flag_for_review", "monitor", "none"]
+              },
+              "mandatory_report": { "type": "boolean", "description": "True if CSAM or imminent danger detected" }
+            }
+          },
+          "processing": {
+            "type": "object",
+            "properties": {
+              "on_device": { "type": "boolean" },
+              "model_version": { "type": "string" },
+              "language_detected": { "type": "string" },
+              "latency_ms": { "type": "integer" }
+            }
+          }
+        }
+      },
+      "Alert": {
+        "type": "object",
+        "properties": {
+          "alert_id": { "type": "string", "format": "uuid" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "minor_id": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/ThreatCategory" },
+          "severity": { "$ref": "#/components/schemas/Severity" },
+          "confidence": { "type": "number" },
+          "source_app": { "type": "string" },
+          "summary": { "type": "string" },
+          "contact_id": { "type": "string" },
+          "recommended_action": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/AlertStatus" },
+          "intervention_shown": { "type": "boolean" },
+          "intervention_type": { "type": "string" }
+        }
+      },
+      "AlertListResponse": {
+        "type": "object",
+        "properties": {
+          "alerts": { "type": "array", "items": { "$ref": "#/components/schemas/Alert" } },
+          "unreviewed_count": { "type": "integer" },
+          "period_summary": {
+            "type": "object",
+            "properties": {
+              "total_alerts": { "type": "integer" },
+              "critical": { "type": "integer" },
+              "high": { "type": "integer" },
+              "medium": { "type": "integer" },
+              "low": { "type": "integer" }
+            }
+          }
+        }
+      },
+      "AlertUpdate": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": { "$ref": "#/components/schemas/AlertStatus" },
+          "parent_action": { "type": "string", "enum": ["blocked_contact", "restricted_feature", "discussed_with_child", "no_action"] },
+          "notes": { "type": "string" }
+        }
+      },
+      "ParentalControls": {
+        "type": "object",
+        "properties": {
+          "minor_id": { "type": "string" },
+          "age_bracket": { "$ref": "#/components/schemas/AgeBracket" },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "screen_time": {
+                "type": "object",
+                "properties": {
+                  "daily_limit_minutes": { "type": "integer" },
+                  "bedtime_start": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" },
+                  "bedtime_end": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" },
+                  "break_reminder_interval_minutes": { "type": "integer" }
+                }
+              },
+              "contacts": {
+                "type": "object",
+                "properties": {
+                  "mode": { "type": "string", "enum": ["allowlist", "blocklist", "open"] },
+                  "unknown_contact_policy": { "type": "string", "enum": ["block", "notify_parent", "allow"] }
+                }
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "restricted_categories": { "type": "array", "items": { "type": "string" } },
+                  "safe_search": { "type": "boolean" },
+                  "explicit_content_filter": { "type": "boolean" }
+                }
+              },
+              "messaging": {
+                "type": "object",
+                "properties": {
+                  "dm_with_unknown": { "type": "boolean" },
+                  "image_sharing": { "type": "string", "enum": ["approved_contacts_only", "all", "none"] },
+                  "location_sharing": { "type": "boolean" }
+                }
+              },
+              "monitoring": {
+                "type": "object",
+                "properties": {
+                  "level": { "type": "string", "enum": ["full", "moderate", "light", "off"] },
+                  "child_notification": { "type": "boolean", "description": "Required true for age 13+ (CS-PR.3.1)" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AgeVerificationRequest": {
+        "type": "object",
+        "required": ["method", "purpose"],
+        "properties": {
+          "method": { "type": "string", "enum": ["document", "biometric_estimate", "third_party_attestation", "parental_confirmation"] },
+          "evidence": { "type": "string", "description": "Method-specific payload" },
+          "purpose": { "type": "string", "enum": ["account_creation", "feature_access", "parental_link"] }
+        }
+      },
+      "AgeVerificationResponse": {
+        "type": "object",
+        "properties": {
+          "verification_id": { "type": "string", "format": "uuid" },
+          "result": { "type": "string", "enum": ["verified", "unverified", "inconclusive"] },
+          "age_bracket": { "$ref": "#/components/schemas/AgeBracket" },
+          "confidence": { "type": "number" },
+          "method_used": { "type": "string" },
+          "evidence_retained": { "type": "boolean", "description": "Must be false (CS-AC.1.5)" },
+          "valid_until": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AccuracyReport": {
+        "type": "object",
+        "properties": {
+          "period": { "type": "string" },
+          "platform": { "type": "string" },
+          "custorian_level": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "detection_metrics": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "precision": { "type": "number" },
+                "recall": { "type": "number" },
+                "f1": { "type": "number" },
+                "false_positive_rate": { "type": "number" },
+                "languages": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "precision": { "type": "number" },
+                      "recall": { "type": "number" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "response_times": {
+            "type": "object",
+            "properties": {
+              "critical_median_minutes": { "type": "number" },
+              "high_median_minutes": { "type": "number" },
+              "medium_median_hours": { "type": "number" }
+            }
+          },
+          "volume": {
+            "type": "object",
+            "properties": {
+              "total_content_analyzed": { "type": "integer" },
+              "alerts_generated": { "type": "integer" },
+              "escalated_to_law_enforcement": { "type": "integer" },
+              "false_positives_reported": { "type": "integer" }
+            }
+          },
+          "last_independent_audit": { "type": "string", "format": "date" },
+          "auditor": { "type": "string" }
+        }
+      },
+      "MandatoryReport": {
+        "type": "object",
+        "required": ["report_type", "severity", "jurisdiction"],
+        "properties": {
+          "report_type": { "type": "string", "enum": ["csam", "imminent_danger", "exploitation", "mandatory_disclosure"] },
+          "severity": { "$ref": "#/components/schemas/Severity" },
+          "evidence_hash": { "type": "string" },
+          "evidence_preserved": { "type": "boolean" },
+          "jurisdiction": { "type": "string", "description": "ISO 3166-1 alpha-2" },
+          "reporting_destination": { "type": "string", "enum": ["ncmec", "iwf", "datatilsynet", "europol", "local_law_enforcement"] },
+          "platform_action_taken": { "type": "string" }
+        }
+      },
+      "ReportResponse": {
+        "type": "object",
+        "properties": {
+          "report_id": { "type": "string", "format": "uuid" },
+          "status": { "type": "string", "enum": ["submitted", "acknowledged", "under_review"] },
+          "reference_number": { "type": "string" },
+          "submission_timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AuditLog": {
+        "type": "object",
+        "properties": {
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "timestamp": { "type": "string", "format": "date-time" },
+                "action_type": { "type": "string" },
+                "category": { "$ref": "#/components/schemas/ThreatCategory" },
+                "severity": { "$ref": "#/components/schemas/Severity" },
+                "confidence": { "type": "number" },
+                "action_taken": { "type": "string" },
+                "response_time_minutes": { "type": "number" },
+                "outcome": { "type": "string" }
+              }
+            }
+          },
+          "total_entries": { "type": "integer" },
+          "period": {
+            "type": "object",
+            "properties": {
+              "start": { "type": "string", "format": "date" },
+              "end": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "details": { "type": "object" }
+        }
+      }
+    }
+  }
+};
+
+window.onload = function() {
+  SwaggerUIBundle({
+    spec: spec,
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "StandaloneLayout",
+    defaultModelsExpandDepth: 1,
+    defaultModelExpandDepth: 2,
+    docExpansion: "list",
+    filter: true,
+    supportedSubmitMethods: [],
+    validatorUrl: null
+  });
+
+  // Remove the standalone layout top bar (redundant with our custom header)
+  const checkTopbar = setInterval(() => {
+    const topbar = document.querySelector('.swagger-ui .topbar');
+    if (topbar) { topbar.remove(); clearInterval(checkTopbar); }
+  }, 100);
+
+  // Remove the standalone layout header bar too
+  const checkHeader = setInterval(() => {
+    const hdr = document.querySelector('.swagger-ui .scheme-container');
+    if (hdr) { clearInterval(checkHeader); }
+  }, 100);
+};
+</script>
+</body>
+</html>
