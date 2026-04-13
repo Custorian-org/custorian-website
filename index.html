@@ -810,51 +810,43 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div style="height:1px;background:var(--border);max-width:1100px;margin:0 auto"></div>
 
-<!-- SLANG SUBMISSION -->
-<section id="slang" style="background:var(--bg)">
+<!-- ADVISORY COUNCIL -->
+<section id="advisory-apply" style="background:var(--bg)">
   <div class="section-content reveal">
     <div style="text-align:center">
-      <div class="label">Community Intelligence</div>
-      <h2 class="section-title" style="margin:0 auto 8px;text-align:center">Report new slang</h2>
-      <p class="section-desc" style="margin:0 auto 40px;text-align:center;max-width:480px">Kids invent new coded language faster than any AI can learn it. If you've seen a term, phrase, or coded word we should know about — submit it. Every approved term protects more children.</p>
+      <div class="label">Advisory Council</div>
+      <h2 class="section-title" style="margin:0 auto 8px;text-align:center">Join the Advisory Council</h2>
+      <p class="section-desc" style="margin:0 auto 40px;text-align:center;max-width:520px">Custorian's Advisory Council brings together experts in child safety, cybersecurity, policy, education, and technology. If your expertise can help shape the standard that protects children, we want to hear from you.</p>
     </div>
-    <div id="slang-wrap">
-      <form class="contact-form" id="slang-form">
+    <div id="advisory-wrap">
+      <form class="contact-form" id="advisory-form">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-        <input type="hidden" name="subject" value="Custorian Slang Submission">
+        <input type="hidden" name="subject" value="Custorian Advisory Council Application">
         <input type="hidden" name="_gotcha" style="display:none">
-        <input type="hidden" name="source" value="website">
-        <select name="language" required>
-          <option value="" disabled selected>Language</option>
-          <option value="en">English</option>
-          <option value="da">Danish</option>
-          <option value="de">German</option>
-          <option value="ar">Arabic</option>
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="organization" placeholder="Organisation">
+        <input type="text" name="role" placeholder="Current role / title">
+        <select name="expertise" required>
+          <option value="" disabled selected>Area of expertise</option>
+          <option value="child-safety">Child safety / exploitation prevention</option>
+          <option value="cybersecurity">Cybersecurity / ethical hacking</option>
+          <option value="policy">Policy / regulation / standards</option>
+          <option value="education">Education / child development</option>
+          <option value="technology">Technology / AI / NLP</option>
+          <option value="law-enforcement">Law enforcement / investigations</option>
+          <option value="mental-health">Mental health / psychology</option>
+          <option value="data-protection">Data protection / privacy</option>
           <option value="other">Other</option>
         </select>
-        <input type="text" name="slang_term" placeholder="Slang term or phrase" required>
-        <input type="text" name="meaning" placeholder="What does it actually mean?" required>
-        <input type="text" name="example" placeholder="Example sentence (optional)">
-        <select name="category" required>
-          <option value="" disabled selected>Category</option>
-          <option value="drugs">Drugs / Substances</option>
-          <option value="sexual">Sexual / Exploitation</option>
-          <option value="violence">Violence / Threats</option>
-          <option value="bullying">Bullying / Insults</option>
-          <option value="selfharm">Self-Harm / Mental Health</option>
-          <option value="grooming">Grooming / Predatory</option>
-          <option value="purchase">Dangerous Purchases</option>
-          <option value="radical">Radicalisation</option>
-          <option value="other">Other / Not Sure</option>
-        </select>
-        <button type="submit">Submit for review</button>
+        <textarea name="contribution" placeholder="How would you contribute to the Advisory Council? (2-3 sentences)" rows="3" required></textarea>
+        <button type="submit">Apply</button>
       </form>
     </div>
-    <div class="contact-success" id="slang-success" style="display:none">
-      <h3>Submitted.</h3>
-      <p>Our team will review this term. If approved, it will be pushed to every device automatically.</p>
+    <div class="contact-success" id="advisory-success" style="display:none">
+      <h3>Application received.</h3>
+      <p>We review all applications and will respond within 2 weeks.</p>
     </div>
-    <p style="font-size:.65rem;color:var(--mute);text-align:center;margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto">All submissions are reviewed by our team before being added. We never share who submitted a term.</p>
   </div>
 </section>
 
@@ -1019,11 +1011,11 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     .catch(() => { error.classList.add('show'); });
 });
 
-// ─���─ SLANG SUBMISSION ────────────────────────
-document.getElementById('slang-form').addEventListener('submit', function(e) {
+// ─── ADVISORY COUNCIL APPLICATION ────────────
+document.getElementById('advisory-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const wrap = document.getElementById('slang-wrap');
-  const success = document.getElementById('slang-success');
+  const wrap = document.getElementById('advisory-wrap');
+  const success = document.getElementById('advisory-success');
   fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) })
     .then(r => { if (r.ok) { wrap.style.display = 'none'; success.style.display = 'block'; success.classList.add('show'); } })
     .catch(() => {});
