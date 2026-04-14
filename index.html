@@ -74,6 +74,22 @@ header.scrolled{padding:16px 48px;background:rgba(250,250,250,.9);backdrop-filte
 .scroll-line{position:absolute;bottom:40px;left:50%;width:1px;height:60px;background:linear-gradient(to bottom,var(--accent),transparent);opacity:.3;animation:scrollPulse 2s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.6;transform:scaleY(.6)}}
 
+/* EPRIVACY ALERT */
+.eprivacy-alert{position:relative;z-index:1;background:var(--text);color:#fff;padding:80px 48px;text-align:center}
+.eprivacy-inner{max-width:800px;margin:0 auto}
+.eprivacy-date{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.8rem);letter-spacing:-1.5px;margin-bottom:16px;color:var(--accent)}
+.eprivacy-headline{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1rem,2.2vw,1.4rem);line-height:1.6;margin-bottom:24px;letter-spacing:-.3px;color:rgba(255,255,255,.9)}
+.eprivacy-body{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:620px;margin:0 auto 32px}
+.eprivacy-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.eprivacy-body a:hover{color:#c4b5fd}
+.eprivacy-sources{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.eprivacy-sources a{display:inline-block;padding:6px 16px;border-radius:100px;border:1px solid rgba(167,139,250,.25);font-size:.68rem;font-weight:500;color:var(--accent);transition:all .3s}
+.eprivacy-sources a:hover{background:rgba(167,139,250,.1);border-color:var(--accent)}
+.eprivacy-resolve{margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08)}
+.eprivacy-resolve p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;max-width:600px;margin:0 auto}
+.eprivacy-resolve strong{color:#fff}
+@media(max-width:768px){.eprivacy-alert{padding:60px 24px}}
+
 /* PROBLEM SECTION */
 .problem-section{padding:120px 48px;position:relative;z-index:1;background:var(--bg);text-align:center}
 .problem-inner{max-width:800px;margin:0 auto}
@@ -296,6 +312,27 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   </div>
   <div class="scroll-line"></div>
 </section>
+
+<!-- EPRIVACY ALERT -->
+<div class="eprivacy-alert reveal">
+  <div class="eprivacy-inner">
+    <div class="eprivacy-date">April 3, 2026</div>
+    <div class="eprivacy-headline">The EU's legal basis for detecting child sexual abuse material expired.<br>No replacement is in force.</div>
+    <div class="eprivacy-body">
+      <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32021R1232" target="_blank">Regulation (EU) 2021/1232</a> allowed platforms to voluntarily scan private messages for CSAM. On March 11, Parliament <a href="https://www.europarl.europa.eu/news/en/press-room/20260306IPR37531/child-sexual-abuse-online-support-for-extending-rules-until-august-2027" target="_blank">voted 458&ndash;103 to extend until August 2027</a> &mdash; but with strict conditions: targeted, proportional, no breaking encryption. The Council could not accept those conditions. <a href="https://dig.watch/updates/eu-eprivacy-derogation-csam-detection-expires" target="_blank">Negotiations failed</a> and the derogation expired on April 3. The replacement legislation &mdash; the <a href="https://www.europarl.europa.eu/legislative-train/spotlight-JD22/file-combating-child-sexual-abuse-online" target="_blank">EU CSA Regulation</a> &mdash; remains in trilogue. 36.2 million CSAM reports were filed in 2023. The pipeline that generated them is now legally suspended in Europe.
+    </div>
+    <div class="eprivacy-sources">
+      <a href="https://www.europarl.europa.eu/news/en/press-room/20260306IPR37531/child-sexual-abuse-online-support-for-extending-rules-until-august-2027" target="_blank">European Parliament</a>
+      <a href="https://dig.watch/updates/eu-eprivacy-derogation-csam-detection-expires" target="_blank">Digital Watch</a>
+      <a href="https://www.edps.europa.eu/press-publications/press-news/press-releases/2026/extension-interim-rules-combat-child-sexual-abuse-online-must-address-shortcomings-and-prevent-indiscriminate-scanning_en" target="_blank">EDPS Opinion</a>
+      <a href="https://therecord.media/eu-parliament-rejects-csam-scanning-extension" target="_blank">The Record</a>
+      <a href="https://stateofsurveillance.org/news/eu-chat-control-voluntary-scanning-expires-april-3-2026/" target="_blank">State of Surveillance</a>
+    </div>
+    <div class="eprivacy-resolve">
+      <p><strong>Custorian's on-device architecture resolves this impasse.</strong> All analysis runs locally on the child's device. No messages are intercepted. No data leaves the phone. On-device detection does not constitute "interception" under the ePrivacy Directive &mdash; providing a legally viable pathway for child protection during the regulatory gap.</p>
+    </div>
+  </div>
+</div>
 
 <!-- THE PROBLEM -->
 <div class="solid-wrap">
