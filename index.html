@@ -764,19 +764,44 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:24px">Technology Partners</h3>
         <div class="advisory-grid" style="grid-template-columns:1fr 1fr">
           <div class="advisory-card">
-            <h4 id="partner-thorn">Thorn Safer</h4>
-            <p>CSAM hash matching API for image detection</p>
+            <h4>Microsoft PhotoDNA</h4>
+            <p>CSAM perceptual image hashing for known abuse material detection</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
+          </div>
+          <div class="advisory-card">
+            <h4>Thorn Safer</h4>
+            <p>CSAM hash matching API and child exploitation detection</p>
             <div class="advisory-status advisory-forming">Application in progress</div>
           </div>
           <div class="advisory-card">
-            <h4 id="partner-photodna">Microsoft PhotoDNA</h4>
-            <p>Perceptual image hashing for CSAM detection</p>
-            <div class="advisory-status advisory-forming">Application in progress</div>
+            <h4>Anthropic Claude</h4>
+            <p>AI-powered deep safety assessments for content, creators, and platforms</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
           </div>
           <div class="advisory-card">
-            <h4 id="partner-gemini">Google Gemini API</h4>
-            <p>AI-powered content safety assessment for Content Radar</p>
-            <div class="advisory-status" style="color:var(--shield)">Active</div>
+            <h4>Groq</h4>
+            <p>Ultra-fast AI inference for real-time Content Radar search</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
+          </div>
+          <div class="advisory-card">
+            <h4>Supabase</h4>
+            <p>Real-time database and authentication for family sync and institutional dashboards</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
+          </div>
+          <div class="advisory-card">
+            <h4>RAWG</h4>
+            <p>Game database with 500K+ titles, ESRB ratings, and content tags</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
+          </div>
+          <div class="advisory-card">
+            <h4>YouTube Data API</h4>
+            <p>Creator and channel safety analysis for YouTube content</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
+          </div>
+          <div class="advisory-card">
+            <h4>Expo / EAS</h4>
+            <p>Cross-platform app build and distribution infrastructure</p>
+            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
           </div>
         </div>
       </div>
@@ -998,11 +1023,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
             </div>
             <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Photo Protection</h3>
           </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Google Cloud Vision SafeSearch detects explicit, violent, and inappropriate images on-device. Explicit selfies are quarantined before they can be sent. Received explicit content is blocked automatically.</p>
+          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Two-layer protection: Microsoft PhotoDNA scans against known CSAM hash databases, then Google Cloud Vision SafeSearch detects explicit, violent, and inappropriate images. Explicit selfies are quarantined before they can be sent.</p>
           <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Microsoft PhotoDNA</span>
             <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Google Cloud Vision</span>
             <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Selfie Quarantine</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Privacy-First</span>
           </div>
         </div>
 
