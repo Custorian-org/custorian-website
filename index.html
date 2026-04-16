@@ -806,7 +806,10 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
       </div>
       <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:24px">Advisory Council <span style="font-size:.65rem;color:var(--warn);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-left:8px">Forming</span></h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin:0">Advisory Council <span style="font-size:.65rem;color:var(--warn);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-left:8px">Forming</span></h3>
+          <button onclick="document.getElementById('advisoryModal').style.display='flex'" style="font-size:.75rem;font-weight:600;color:#fff;background:var(--accent2);padding:8px 18px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Request to Join</button>
+        </div>
         <div class="advisory-grid" style="grid-template-columns:1fr 1fr">
           <div class="advisory-card">
             <h4 id="partner-ecpat">ECPAT</h4>
@@ -918,6 +921,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <!-- ADVISORY MODAL (popup) -->
 <div id="advisoryModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9998;align-items:center;justify-content:center;padding:24px">
+<a id="advisory-apply"></a>
   <div style="background:var(--bg2);border-radius:16px;padding:36px;max-width:440px;width:100%;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.15)">
     <button onclick="document.getElementById('advisoryModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--mute);padding:4px">×</button>
     <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:4px;color:var(--text)">Advisory Council</h3>
