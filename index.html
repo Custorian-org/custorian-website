@@ -482,6 +482,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         <button class="api-tab" data-tab="accuracy">/accuracy</button>
         <button class="api-tab" data-tab="report">/report</button>
         <button class="api-tab" data-tab="audit">/audit</button>
+        <button class="api-tab" data-tab="coach">/coach</button>
       </div>
       <div class="api-content active" id="tab-detect">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/detect</div>
@@ -603,6 +604,27 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <span class="key">"response_time_minutes"</span>: <span class="num">2.3</span>
   }],
   <span class="key">"total_entries"</span>: <span class="num">4521</span>
+}</pre>
+      </div>
+      <div class="api-content" id="tab-coach">
+        <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/coach</div>
+        <div class="api-desc">Safety Coach endpoint. Child submits a message they received. Returns risk assessment, kid-friendly explanation, actionable guidance, and copy-paste safe responses. Powered by Anthropic Claude with Groq fallback. Messages are analysed but never stored.</div>
+        <div class="api-controls"><span class="api-control">Claude AI</span><span class="api-control">Child-facing</span><span class="api-control">Zero retention</span></div>
+<pre>{
+  <span class="key">"risk"</span>: <span class="str">"danger"</span>,
+  <span class="key">"what_is_happening"</span>: <span class="str">"This person is trying to get you to keep a secret from your parents. That's called grooming."</span>,
+  <span class="key">"what_to_do"</span>: [
+    <span class="str">"Don't respond to this message"</span>,
+    <span class="str">"Screenshot the conversation"</span>,
+    <span class="str">"Block this person"</span>
+  ],
+  <span class="key">"suggested_responses"</span>: [
+    <span class="str">"I have to go now."</span>,
+    <span class="str">"I'm not comfortable with that."</span>,
+    <span class="str">"I'm going to tell my parent."</span>
+  ],
+  <span class="key">"should_tell_parent"</span>: <span class="bool">true</span>,
+  <span class="key">"encouragement"</span>: <span class="str">"You did the right thing by checking. You're not in trouble."</span>
 }</pre>
       </div>
     </div>
