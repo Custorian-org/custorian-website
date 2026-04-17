@@ -90,8 +90,12 @@ header.scrolled{padding:16px 48px;background:rgba(250,250,250,.9);backdrop-filte
 .eprivacy-resolve strong{color:#fff}
 @media(max-width:768px){.eprivacy-alert{padding:60px 24px}}
 
-/* PARENT FEATURE CARDS */
+/* PARENT FEATURE CARDS — horizontal carousel */
 .parent-features-grid > div:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.06);border-color:var(--accent)}
+.parent-features-grid::-webkit-scrollbar{height:4px}
+.parent-features-grid::-webkit-scrollbar-track{background:transparent}
+.parent-features-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.parent-features-grid::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
 /* PROBLEM SECTION */
 .problem-section{padding:80px 48px;position:relative;z-index:1;background:var(--bg);text-align:center}
@@ -1012,11 +1016,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         Custorian runs entirely on your child's device. No cloud. No tracking. Just intelligent, privacy-respecting safety that keeps you informed without invading their world.
       </p>
 
-      <!-- INFOGRAPHIC GRID -->
-      <div class="parent-features-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;text-align:left;margin-bottom:40px">
+      <!-- INFOGRAPHIC CAROUSEL -->
+      <div class="parent-features-grid" style="display:flex;overflow-x:auto;gap:20px;text-align:left;margin-bottom:40px;padding-bottom:16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch">
 
         <!-- Threat Detection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ef4444,#f97316);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 1v4M9 13v4M1 9h4M13 9h4M3.3 3.3l2.8 2.8M11.9 11.9l2.8 2.8M3.3 14.7l2.8-2.8M11.9 6.1l2.8-2.8"/></svg>
@@ -1033,7 +1037,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- What the Parent Sees -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="6" r="4"/><path d="M1 17c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -1049,7 +1053,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- What the Child Sees -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#10b981,#34d399);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 1l2.5 5 5.5.8-4 3.9.9 5.5L9 13.7 4.1 16.2l.9-5.5-4-3.9 5.5-.8z"/></svg>
@@ -1066,7 +1070,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- Photo Protection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#fbbf24);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="14" height="12" rx="2"/><circle cx="6.5" cy="7.5" r="1.5"/><path d="M16 13l-3.5-4.5L9 12l-2.5-2L2 15"/></svg>
@@ -1083,7 +1087,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- Content Radar -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#60a5fa);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M9 9l4-4M9 2v2M9 14v2M2 9h2M14 9h2"/></svg>
@@ -1100,7 +1104,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- Link Protection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ec4899,#f43f5e);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="8" width="12" height="9" rx="2"/><path d="M6 8V5a3 3 0 0 1 6 0v3"/></svg>
@@ -1116,7 +1120,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
         </div>
 
         <!-- Family System -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#a78bfa);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="5" r="3"/><circle cx="14" cy="5" r="2"/><path d="M0 16c0-3 2.7-6 6-6s6 3 6 6M11 16c0-2 1.3-4 3-4s3 2 3 4"/></svg>
