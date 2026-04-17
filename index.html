@@ -456,7 +456,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
     <!-- Detection Accuracy Transparency -->
     <div class="legal-note reveal" style="margin-top:64px">
-      <p><strong>Detection accuracy published quarterly.</strong> Current: 88% precision (English), 84% (Danish), 82% (German). False positive rate: ~8%. We are transparent about limitations.</p>
+      <p><strong>Detection accuracy will be published quarterly once independently validated.</strong> Custorian is transparent about limitations. Detection is powered by 13 integrated APIs including Microsoft PhotoDNA, Google Cloud Vision, Hive Moderation, Perspective API, Anthropic Claude, and Groq — with on-device pattern matching across 7 languages.</p>
     </div>
   </div>
 </section>
@@ -467,13 +467,15 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 <section id="api">
   <div class="section-content">
     <div class="reveal">
-      <div class="label">Custorian API Specification</div>
-      <h2 class="section-title">One API. Every safety tool interoperates.</h2>
-      <p class="section-desc">OpenAPI 3.1 specification. Platforms implement it. Auditors and researchers consume it. Everyone speaks the same language.</p>
+      <div class="label">Custorian API Specification (CAS)</div>
+      <h2 class="section-title">One API. 13 integrations. Every safety tool interoperates.</h2>
+      <p class="section-desc">OpenAPI 3.1 specification backed by Microsoft PhotoDNA, Hive Moderation, Perspective API, Google Cloud Vision, Web Risk, Anthropic Claude, and Groq. Platforms implement it. Institutions consume it. Auditors verify it.</p>
     </div>
     <div class="api-showcase reveal">
       <div class="api-tabs">
         <button class="api-tab active" data-tab="detect">/detect</button>
+        <button class="api-tab" data-tab="trends">/trends</button>
+        <button class="api-tab" data-tab="content">/content</button>
         <button class="api-tab" data-tab="alerts">/alerts</button>
         <button class="api-tab" data-tab="controls">/controls</button>
         <button class="api-tab" data-tab="age">/age/verify</button>
@@ -483,8 +485,8 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
       <div class="api-content active" id="tab-detect">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/detect</div>
-        <div class="api-desc">Content analysis endpoint that platforms implement. Returns threat categories, confidence scores, behavioral signals, and recommended actions per the standard.</div>
-        <div class="api-controls"><span class="api-control">CS-MR.1.1 – CS-MR.1.5</span><span class="api-control">CS-CD.1.1 – CS-CD.1.8</span></div>
+        <div class="api-desc">Multi-layer threat analysis. Text routed through Perspective API (toxicity) + on-device pattern matching (7 languages). Images through PhotoDNA (CSAM) + Cloud Vision (explicit) + Hive Moderation (drugs, weapons, gore). URLs through Google Web Risk. Returns threat categories, confidence, behavioral signals, and actions.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.1.1 – CS-MR.1.5</span><span class="api-control">CS-CD.1.1 – CS-CD.1.8</span><span class="api-control">13 APIs</span></div>
 <pre>{
   <span class="key">"threat_assessment"</span>: {
     <span class="key">"overall_risk"</span>: <span class="str">"high"</span>,
@@ -492,12 +494,44 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <span class="key">"category"</span>: <span class="str">"grooming"</span>,
       <span class="key">"confidence"</span>: <span class="num">0.92</span>,
       <span class="key">"triggered_patterns"</span>: [<span class="str">"secrecy_request"</span>, <span class="str">"age_probing"</span>],
-      <span class="key">"explanation"</span>: <span class="str">"Adult contact requesting child keep conversation secret"</span>
+      <span class="key">"engines"</span>: [<span class="str">"perspective_api"</span>, <span class="str">"on_device_pattern"</span>, <span class="str">"behavior_engine"</span>]
     }],
     <span class="key">"recommended_action"</span>: <span class="str">"restrict_and_notify"</span>,
     <span class="key">"mandatory_report"</span>: <span class="bool">false</span>
   },
   <span class="key">"processing"</span>: { <span class="key">"on_device"</span>: <span class="bool">true</span>, <span class="key">"latency_ms"</span>: <span class="num">45</span> }
+}</pre>
+      </div>
+      <div class="api-content" id="tab-trends">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/trends</div>
+        <div class="api-desc">Weekly trend insights for parents and institutions. Surfaces patterns instead of individual alerts. Research-backed guidance with conversation starters. Powered by Anthropic Claude for nuanced analysis. Only critical threats (score ≥90, CSAM, self-report) trigger immediate notifications.</div>
+        <div class="api-controls"><span class="api-control">CS-PR.1.3</span><span class="api-control">Claude AI</span><span class="api-control">Evidence-based</span></div>
+<pre>{
+  <span class="key">"insights"</span>: [{
+    <span class="key">"type"</span>: <span class="str">"concern"</span>,
+    <span class="key">"title"</span>: <span class="str">"Bullying patterns increasing on Discord"</span>,
+    <span class="key">"severity"</span>: <span class="str">"watch"</span>,
+    <span class="key">"guidance"</span>: <span class="str">"Research shows bystander empowerment reduces bullying by 76%..."</span>,
+    <span class="key">"conversation_starter"</span>: <span class="str">"How are things going with your group chats?"</span>,
+    <span class="key">"sources"</span>: [<span class="str">"Nature Human Behaviour 2024"</span>, <span class="str">"The Lancet 2023"</span>]
+  }],
+  <span class="key">"period"</span>: <span class="str">"7d"</span>,
+  <span class="key">"overall_status"</span>: <span class="str">"watch"</span>
+}</pre>
+      </div>
+      <div class="api-content" id="tab-content">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/content/assess</div>
+        <div class="api-desc">AI-powered content safety assessment. Searches 500K+ games (RAWG), YouTube creators, 45+ platform assessments, and generates ratings for any content via Claude and Groq. Returns age rating, risk themes, parent notes, and safer alternatives.</div>
+        <div class="api-controls"><span class="api-control">Content Radar</span><span class="api-control">Claude + Groq</span><span class="api-control">RAWG + YouTube API</span></div>
+<pre>{
+  <span class="key">"results"</span>: [{
+    <span class="key">"name"</span>: <span class="str">"Roblox"</span>,
+    <span class="key">"age_rating"</span>: <span class="num">7</span>,
+    <span class="key">"risk"</span>: <span class="str">"caution"</span>,
+    <span class="key">"themes"</span>: [<span class="str">"predator-risk"</span>, <span class="str">"consumerism"</span>, <span class="str">"creativity"</span>],
+    <span class="key">"parent_note"</span>: <span class="str">"67M daily users, over half under 13. Chat is the main risk."</span>,
+    <span class="key">"alternatives"</span>: [<span class="str">"Minecraft"</span>, <span class="str">"Toca Life World"</span>]
+  }]
 }</pre>
       </div>
       <div class="api-content" id="tab-alerts">
