@@ -783,68 +783,62 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <h2 class="section-title">One standard. Every regulation covered.</h2>
       <p class="section-desc">Every Custorian control maps to existing law. Comply once, satisfy many.</p>
     </div>
-    <div class="reg-grid reveal">
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
-        <h4>EU Digital Services Act</h4>
-        <p>Articles 28 &amp; 35 — protection of minors + systemic risk assessments. CCF is the methodology.</p>
-        <span class="reg-status reg-live">In force</span>
+    <!-- Rotating regulation card -->
+    <div class="reveal" style="margin-top:48px">
+      <div id="regCard" style="background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px;max-width:700px;margin:0 auto;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .4s ease">
+        <div id="regFlag" style="font-size:48px;margin-bottom:16px"></div>
+        <h4 id="regTitle" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:10px;letter-spacing:-.3px"></h4>
+        <p id="regDesc" style="font-size:.88rem;color:var(--dim);line-height:1.7;max-width:500px;margin-bottom:16px"></p>
+        <span id="regStatus" style="display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:100px"></span>
       </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
-        <h4>EU AI Act</h4>
-        <p>High-risk AI systems affecting minors. CCF provides the compliance pathway.</p>
-        <span class="reg-status reg-live">In force</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EC;&#x1F1E7;</div>
-        <h4>Age Appropriate Design Code</h4>
-        <p>All 15 AADC standards cross-mapped to Custorian controls.</p>
-        <span class="reg-status reg-live">In force</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1E9;&#x1F1F0;</div>
-        <h4>Denmark Under-15 Law</h4>
-        <p>Social media restrictions for under-15s. Custorian Certified = compliance shortcut.</p>
-        <span class="reg-status reg-soon">2027</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1FA;&#x1F1F8;</div>
-        <h4>COPPA 2.0 / KOSA</h4>
-        <p>Kids Online Safety Act. CCF covers all proposed requirements.</p>
-        <span class="reg-status reg-soon">In progress</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
-        <h4>Jutland Declaration</h4>
-        <p>25 EU states committed to child digital safety. Signed in Odense, 2025 &mdash; where Custorian is being developed.</p>
-        <span class="reg-status reg-live">Signed 2025</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
-        <h4>Child Sexual Abuse Regulation</h4>
-        <p>CAS includes standardised CSAM detection and reporting API.</p>
-        <span class="reg-status reg-soon">In progress</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F30D;</div>
-        <h4>AU Malabo Convention</h4>
-        <p>African Union cyber security &amp; data protection. Custorian maps EU + African regulatory coverage.</p>
-        <span class="reg-status reg-soon">Mapping in progress</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1F0;&#x1F1F7;</div>
-        <h4>South Korea Youth Protection Act</h4>
-        <p>The world's most aggressive online child safety laws. Real-name verification, game curfews.</p>
-        <span class="reg-status reg-soon">Mapping in progress</span>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">&#x1F1EA;&#x1F1FA;</div>
-        <h4>EU Digital Identity Wallet (eIDAS 2.0)</h4>
-        <p>Age verification without revealing identity. Custorian is designed for day-one integration when the EU wallet launches — proving a child is under 13, under 16, or over 18 without exposing who they are.</p>
-        <span class="reg-status reg-soon">Pilots 2026–2027</span>
+      <div style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:20px">
+        <button onclick="regPrev()" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--dim);font-size:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--dim)'">&larr;</button>
+        <span id="regCounter" style="font-size:.72rem;color:var(--mute);font-weight:500;min-width:50px;text-align:center"></span>
+        <button onclick="regNext()" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--dim);font-size:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--dim)'">&rarr;</button>
       </div>
     </div>
+
+    <script>
+    const regs = [
+      { flag: '🇪🇺', title: 'EU Digital Services Act', desc: 'Articles 28 & 35 — protection of minors + systemic risk assessments. CCF is the methodology.', status: 'In force', live: true },
+      { flag: '🇪🇺', title: 'EU AI Act', desc: 'High-risk AI systems affecting minors. CCF provides the compliance pathway.', status: 'In force', live: true },
+      { flag: '🇬🇧', title: 'Age Appropriate Design Code', desc: 'All 15 AADC standards cross-mapped to Custorian controls.', status: 'In force', live: true },
+      { flag: '🇩🇰', title: 'Denmark Under-15 Law', desc: 'Social media restrictions for under-15s. Custorian Certified = compliance shortcut.', status: '2027', live: false },
+      { flag: '🇺🇸', title: 'COPPA 2.0 / KOSA', desc: 'Kids Online Safety Act. CCF covers all proposed requirements.', status: 'In progress', live: false },
+      { flag: '🇪🇺', title: 'Jutland Declaration', desc: '25 EU states committed to child digital safety. Signed in Odense, 2025 — where Custorian is being developed.', status: 'Signed 2025', live: true },
+      { flag: '🇪🇺', title: 'Child Sexual Abuse Regulation', desc: 'CAS includes standardised CSAM detection and reporting API.', status: 'In progress', live: false },
+      { flag: '🌍', title: 'AU Malabo Convention', desc: 'African Union cyber security & data protection. Custorian maps EU + African regulatory coverage.', status: 'Mapping in progress', live: false },
+      { flag: '🇰🇷', title: 'South Korea Youth Protection Act', desc: "The world's most aggressive online child safety laws. Real-name verification, game curfews.", status: 'Mapping in progress', live: false },
+      { flag: '🇪🇺', title: 'EU Digital Identity Wallet (eIDAS 2.0)', desc: 'Age verification without revealing identity. Day-one integration when the EU wallet launches.', status: 'Pilots 2026–2027', live: false },
+    ];
+    let regIdx = 0;
+    let regTimer;
+
+    function showReg(i) {
+      const r = regs[i];
+      const card = document.getElementById('regCard');
+      card.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('regFlag').textContent = r.flag;
+        document.getElementById('regTitle').textContent = r.title;
+        document.getElementById('regDesc').textContent = r.desc;
+        const s = document.getElementById('regStatus');
+        s.textContent = r.status;
+        s.style.background = r.live ? 'rgba(16,185,129,.1)' : 'rgba(245,158,11,.1)';
+        s.style.color = r.live ? '#10b981' : '#f59e0b';
+        s.style.border = '1px solid ' + (r.live ? 'rgba(16,185,129,.2)' : 'rgba(245,158,11,.2)');
+        document.getElementById('regCounter').textContent = (i + 1) + ' / ' + regs.length;
+        card.style.opacity = '1';
+      }, 300);
+    }
+
+    function regNext() { regIdx = (regIdx + 1) % regs.length; showReg(regIdx); resetRegTimer(); }
+    function regPrev() { regIdx = (regIdx - 1 + regs.length) % regs.length; showReg(regIdx); resetRegTimer(); }
+    function resetRegTimer() { clearInterval(regTimer); regTimer = setInterval(regNext, 5000); }
+
+    showReg(0);
+    regTimer = setInterval(regNext, 5000);
+    </script>
     <!-- Policy Brief + SAQ Template removed — being updated for Zenodo/SSRN publication -->
   </div>
 </section>
