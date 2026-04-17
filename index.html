@@ -756,105 +756,30 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <h2 class="section-title">Built with the organisations that matter.</h2>
       <p class="section-desc">Custorian integrates with industry-standard child safety infrastructure and is guided by independent experts.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px" class="reveal">
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:24px">Technology Partners</h3>
-        <div class="advisory-grid" style="grid-template-columns:1fr 1fr">
-          <div class="advisory-card">
-            <h4>Microsoft PhotoDNA</h4>
-            <p>CSAM perceptual image hashing for known abuse material detection</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Thorn Safer</h4>
-            <p>CSAM hash matching API and child exploitation detection</p>
-            <div class="advisory-status advisory-forming">Application in progress</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Anthropic Claude</h4>
-            <p>AI-powered deep safety assessments for content, creators, and platforms</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Groq</h4>
-            <p>Ultra-fast AI inference for real-time Content Radar search</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Supabase</h4>
-            <p>Real-time database and authentication for family sync and institutional dashboards</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>RAWG</h4>
-            <p>Game database with 500K+ titles, ESRB ratings, and content tags</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>YouTube Data API</h4>
-            <p>Creator and channel safety analysis for YouTube content</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Expo / EAS</h4>
-            <p>Cross-platform app build and distribution infrastructure</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Google Cloud Vision</h4>
-            <p>SafeSearch API for explicit, violent, and inappropriate image detection</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Hive Moderation</h4>
-            <p>AI image classification — drugs, weapons, gore, self-harm, hate symbols</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Google Perspective API</h4>
-            <p>Jigsaw toxicity detection for bullying, threats, and harassment in text</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Google Web Risk</h4>
-            <p>Unsafe URL detection — phishing, malware, and harmful content</p>
-            <div class="advisory-status" style="color:var(--shield)">Integrated</div>
-          </div>
-          <div class="advisory-card">
-            <h4>Common Sense Media</h4>
-            <p>Expert-reviewed age ratings for movies, shows, games, and apps</p>
-            <div class="advisory-status advisory-forming">Application in progress</div>
-          </div>
-        </div>
+    <!-- TECHNOLOGY — clean logo strip -->
+    <div style="margin-top:64px" class="reveal">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:12px;text-align:center;color:var(--dim)">Powered by</h3>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px 40px;padding:32px 0">
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Microsoft PhotoDNA</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Google Cloud Vision</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Hive Moderation</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Perspective API</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Google Web Risk</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Anthropic Claude</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Groq</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">Supabase</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">RAWG</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.7">YouTube Data API</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.5;font-style:italic">Common Sense Media (in progress)</span>
+        <span style="font-size:.85rem;font-weight:600;color:var(--text);opacity:.5;font-style:italic">Thorn Safer (in progress)</span>
       </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin:0">Advisory Council <span style="font-size:.65rem;color:var(--warn);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-left:8px">Forming</span></h3>
-          <button onclick="document.getElementById('advisoryModal').style.display='flex'" style="font-size:.75rem;font-weight:600;color:#fff;background:var(--accent2);padding:8px 18px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Request to Join</button>
-        </div>
-        <div class="advisory-grid" style="grid-template-columns:1fr 1fr">
-          <div class="advisory-card">
-            <h4 id="partner-ecpat">ECPAT</h4>
-            <p>Global network against child exploitation</p>
-            <div class="advisory-status advisory-forming">In dialogue</div>
-          </div>
-          <div class="advisory-card">
-            <h4 id="partner-iwf">IWF</h4>
-            <p>Internet Watch Foundation, UK</p>
-            <div class="advisory-status advisory-forming">In dialogue</div>
-          </div>
-          <div class="advisory-card">
-            <h4 id="partner-datatilsynet">Datatilsynet</h4>
-            <p>Danish Data Protection Authority</p>
-            <div class="advisory-status advisory-forming">In dialogue</div>
-          </div>
-          <div class="advisory-card">
-            <h4 id="partner-digst">Digitaliseringsstyrelsen</h4>
-            <p>Danish Digital Agency / National DSA Coordinator</p>
-            <div class="advisory-status advisory-forming">In dialogue</div>
-          </div>
-        </div>
-      </div>
+    </div>
+
+    <!-- ADVISORY COUNCIL — minimal, confident -->
+    <div style="margin-top:48px;text-align:center" class="reveal">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px;color:var(--dim)">Advisory Council</h3>
+      <p style="font-size:.82rem;color:var(--mute);max-width:480px;margin:0 auto 24px;line-height:1.6">Custorian is guided by independent experts in child safety, cybersecurity, EU policy, and child development. The Advisory Council is forming.</p>
+      <button onclick="document.getElementById('advisoryModal').style.display='flex'" style="font-size:.78rem;font-weight:600;color:#fff;background:var(--accent2);padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Request to Join the Advisory Council</button>
     </div>
   </div>
 </section>
@@ -872,22 +797,22 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="p-card">
         <h3>Platforms</h3>
         <p>Certify against the Custorian Controls Framework. Demonstrate DSA and AI Act compliance. Listed on the certified registry.</p>
-        <div class="p-price">Contact us</div>
+        <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us →</a>
       </div>
       <div class="p-card">
         <h3>Audit Organisations</h3>
         <p>Become a licensed Custorian Qualified Safety Assessor (QSA). Conduct compliance audits for platforms.</p>
-        <div class="p-price">Contact us</div>
+        <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us →</a>
       </div>
       <div class="p-card">
         <h3>Schools &amp; Municipalities</h3>
-        <p>Anonymised aggregate dashboards, threat trend analysis, compliance reports, and intervention playbooks.</p>
-        <div class="p-price">Contact us for pilot programmes</div>
+        <p>Anonymised institutional dashboards with threat trends, platform activity analysis, and evidence-based intervention guidance. Powered by 13 integrated detection and intelligence APIs.</p>
+        <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us for pilot programmes →</a>
       </div>
       <div class="p-card">
         <h3>Families</h3>
-        <p>Free reference app. On-device detection, parent alerts, child interventions, content ratings. No subscription. No data collected.</p>
-        <div class="p-price">Free — always</div>
+        <p>Free reference app with Content Radar (AI-powered safety ratings for 45+ platforms, 500K+ games, shows, and creators), weekly trend insights for parents, research-backed conversation guides, child empowerment interventions, and a global crisis helpline network covering 20+ countries. On-device. No data collected.</p>
+        <div style="font-size:.72rem;font-weight:700;color:var(--shield);letter-spacing:1px;text-transform:uppercase">Free — always</div>
       </div>
     </div>
   </div>
