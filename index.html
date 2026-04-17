@@ -91,7 +91,9 @@ header.scrolled{padding:16px 48px;background:rgba(250,250,250,.9);backdrop-filte
 @media(max-width:768px){.eprivacy-alert{padding:60px 24px}}
 
 /* PARENT FEATURE CARDS — horizontal carousel */
-.parent-features-grid > div:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.06);border-color:var(--accent)}
+.parent-features-grid{padding-top:8px !important}
+.parent-features-grid > div{transition:all .3s ease}
+.parent-features-grid > div:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(167,139,250,.15);border-color:var(--accent);background:rgba(167,139,250,.03) !important}
 .parent-features-grid::-webkit-scrollbar{height:4px}
 .parent-features-grid::-webkit-scrollbar-track{background:transparent}
 .parent-features-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
