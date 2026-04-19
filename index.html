@@ -6,7 +6,7 @@
 <title>Custorian — The Child Digital Safety Standard</title>
 <meta name="description" content="The open standard for child digital safety. Platform certification, institutional intelligence, regulatory compliance. Like PCI DSS, but for protecting children.">
 <meta property="og:title" content="Custorian — The PCI DSS for Protecting Children">
-<meta property="og:description" content="6 domains. 90 controls. One API. The compliance framework that makes every platform accountable for child safety. Non-profit. Open standard. Built in Europe.">
+<meta property="og:description" content="6 domains. 116 controls. One API. The compliance framework that makes every platform accountable for child safety. Non-profit. Open standard. Built in Europe.">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +57,7 @@ header.scrolled{padding:16px 48px;background:rgba(250,250,250,.9);backdrop-filte
 }
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px;position:relative;z-index:1;background:transparent}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px 0;position:relative;z-index:1;background:transparent}
 .hero-content{position:relative;z-index:2;max-width:900px}
 .hero-trust{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(124,58,237,.15);border-radius:100px;padding:6px 16px;font-size:.68rem;font-weight:500;color:var(--accent);margin-bottom:24px;animation:heroIn .8s cubic-bezier(.16,1,.3,1) .2s both}
 .hero-eyebrow{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:32px;animation:heroIn .8s cubic-bezier(.16,1,.3,1) .3s both}
@@ -300,11 +300,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-r" id="nav-links">
     <a href="#standard">Standard</a>
-    <a href="api.html">API Docs</a>
+    <a href="#api">API</a>
     <a href="#adopt">For Platforms</a>
     <a href="https://custorian-intelligence.vercel.app" target="_blank">Intelligence</a>
     <a href="#contact">Contact</a>
-    <a href="#parents" style="background:var(--accent2);color:#fff;padding:8px 20px;border-radius:100px;font-weight:700;transition:all .2s">For Parents</a>
+    <a href="Custorian_White_Paper_April2026.pdf" target="_blank" style="background:var(--accent2);color:#fff;padding:8px 20px;border-radius:100px;font-weight:700;transition:all .2s">White Paper</a>
   </div>
 </header>
 
@@ -314,11 +314,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <div class="hero-trust">Non-profit &middot; Open standard &middot; No shareholders &middot; No conflicts of interest</div>
     <div class="hero-eyebrow">The open standard for child digital safety</div>
     <h1>The PCI DSS<br>for <span class="accent">protecting children</span></h1>
-    <p class="hero-sub">6 domains. 90 controls. One API. The compliance framework that makes every platform accountable for child safety.</p>
+    <p class="hero-sub">6 domains. 116 controls. One API. The open compliance standard that makes every platform accountable for child safety.</p>
     <div class="hero-cta">
       <a href="#standard" class="cta-btn cta-primary">Explore the standard</a>
       <a href="#adopt" class="cta-btn cta-ghost">For platforms</a>
-      <a href="#contact" class="cta-btn cta-ghost">For policy makers</a>
+      <a href="Custorian_White_Paper_April2026.pdf" target="_blank" class="cta-btn cta-ghost">White Paper (PDF)</a>
     </div>
   </div>
   <div class="scroll-line"></div>
@@ -340,7 +340,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <a href="https://stateofsurveillance.org/news/eu-chat-control-voluntary-scanning-expires-april-3-2026/" target="_blank">State of Surveillance</a>
     </div>
     <div class="eprivacy-resolve">
-      <p><strong>Custorian's on-device architecture resolves this impasse.</strong> All analysis runs locally on the child's device. No messages are intercepted. No data leaves the phone. On-device detection does not constitute "interception" under the ePrivacy Directive &mdash; providing a legally viable pathway for child protection during the regulatory gap.</p>
+      <p><strong>The Custorian Standard requires on-device processing for independent privacy reasons.</strong> The CCF mandates that all analysis runs locally on the child's device. No messages are intercepted. No data leaves the phone. This architecture is distinct from the server-side scanning contemplated by the expired derogation. <em>Whether on-device detection falls outside ePrivacy scope is a question for legislators, courts, and data protection authorities &mdash; not for the standard to assert. Custorian is seeking formal legal assessment.</em></p>
     </div>
   </div>
 </div>
@@ -353,7 +353,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <blockquote>There is no shared standard for child digital safety.<br>No common framework for detection, reporting, or compliance.<br><em><a href="https://www.missingkids.org/content/ncmec/en/press-release/2024/ncmec-releases-2023-csam-statistics.html" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">36.2 million</a></em> CSAM reports last year &mdash; and the industry needs a consistent way to measure and improve.</blockquote>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0 40px;text-align:center">
       <div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);letter-spacing:-1px">1 in 3</div><div style="font-size:.7rem;color:var(--dim);line-height:1.5;margin-top:4px">children aged 8-11 on social media despite age limits<br><a href="https://www.ofcom.org.uk/research-and-data/online-research/children-and-parents-media-use-and-attitudes" target="_blank" style="color:var(--mute);font-size:.6rem">Ofcom 2024</a></div></div>
-      <div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);letter-spacing:-1px">45 min</div><div style="font-size:.7rem;color:var(--dim);line-height:1.5;margin-top:4px">average time from first contact to exploitation request<br><a href="https://www.iwf.org.uk/annual-report-2023/" target="_blank" style="color:var(--mute);font-size:.6rem">IWF 2023</a></div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);letter-spacing:-1px">45 min</div><div style="font-size:.7rem;color:var(--dim);line-height:1.5;margin-top:4px">from first contact to exploitation request on some platforms<br><a href="https://www.weprotect.org/global-threat-assessment-23/" target="_blank" style="color:var(--mute);font-size:.6rem">WeProtect 2023</a></div></div>
       <div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);letter-spacing:-1px">FBI Alert</div><div style="font-size:.7rem;color:var(--dim);line-height:1.5;margin-top:4px">Financial sextortion targeting minors surged in 2023 — directly linked to child suicides<br><a href="https://www.ic3.gov/Media/Y2023/PSA230605" target="_blank" style="color:var(--mute);font-size:.6rem">FBI IC3 2023</a></div></div>
       <div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);letter-spacing:-1px">0</div><div style="font-size:.7rem;color:var(--dim);line-height:1.5;margin-top:4px">shared standards exist for child safety compliance across platforms</div></div>
     </div>
@@ -369,7 +369,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="stat-label">Domains</div>
     </div>
     <div class="stat">
-      <div class="stat-num"><span class="counter" data-target="90">0</span>+</div>
+      <div class="stat-num"><span class="counter" data-target="116">0</span></div>
       <div class="stat-label">Controls</div>
     </div>
     <div class="stat">
@@ -383,10 +383,13 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   </div>
 </div>
 
-<!-- FOR PARENTS CTA (above technical sections) -->
+<!-- WHITE PAPER CTA -->
 <div style="text-align:center;padding:48px 24px;background:var(--bg2);border-bottom:1px solid var(--border)">
-  <p style="font-size:.9rem;color:var(--dim);margin-bottom:16px;max-width:460px;margin-left:auto;margin-right:auto">Free. On-device. Open source. Real protection for your child's digital world.</p>
-  <a href="#parents" style="display:inline-block;padding:14px 36px;border-radius:100px;background:var(--accent2);color:#fff;font-size:.85rem;font-weight:700;text-decoration:none;font-family:'Inter',sans-serif">For Parents &darr;</a>
+  <p style="font-size:.9rem;color:var(--dim);margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto">The Custorian Standard is published as a pre-print. Read the white paper or download the Self-Assessment Questionnaire.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="Custorian_White_Paper_April2026.pdf" target="_blank" style="display:inline-block;padding:14px 36px;border-radius:100px;background:var(--accent2);color:#fff;font-size:.85rem;font-weight:700;text-decoration:none;font-family:'Inter',sans-serif">White Paper (PDF)</a>
+    <a href="custorian-saq-template.pdf" target="_blank" style="display:inline-block;padding:14px 36px;border-radius:100px;background:transparent;color:var(--text);font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;border:1px solid var(--border)">Self-Assessment Questionnaire (PDF)</a>
+  </div>
 </div>
 
 <!-- THE 6 DOMAINS -->
@@ -462,7 +465,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
     <!-- Detection Accuracy Transparency -->
     <div class="legal-note reveal" style="margin-top:64px">
-      <p><strong>Detection accuracy will be published quarterly once independently validated.</strong> Custorian is transparent about limitations. Detection is powered by 13 integrated APIs including Microsoft PhotoDNA, Google Cloud Vision, Hive Moderation, Perspective API, Anthropic Claude, and Groq — with on-device pattern matching across 7 languages.</p>
+      <p><strong>CS-MR.1.3 requires platforms to publish detection accuracy quarterly</strong> — precision, recall, and false positive rates per language and threat category. The CCF mandates on-device processing (CS-DM.1.1) and supports hash-matching integration for CSAM detection. Independent validation of the standard's accuracy requirements is planned for Q4 2026.</p>
     </div>
   </div>
 </section>
@@ -474,212 +477,106 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   <div class="section-content">
     <div class="reveal">
       <div class="label">Custorian API Specification (CAS)</div>
-      <h2 class="section-title">10 endpoints. 13 integrations. Every safety tool interoperates.</h2>
-      <p class="section-desc">OpenAPI 3.1 specification backed by Microsoft PhotoDNA, Hive Moderation, Perspective API, Google Cloud Vision, Web Risk, Anthropic Claude, and Groq. Platforms implement it. Institutions consume it. Auditors verify it.</p>
+      <h2 class="section-title">The technical interface for platform compliance.</h2>
+      <p class="section-desc">OpenAPI 3.1 specification defining what platforms must expose for CCF certification. Platforms implement it. Institutions consume it. Auditors verify it. The CAS does not define consumer application endpoints &mdash; those are implementation decisions.</p>
     </div>
     <div class="api-showcase reveal">
       <div class="api-tabs">
         <button class="api-tab active" data-tab="detect">/detect</button>
-        <button class="api-tab" data-tab="trends">/trends</button>
-        <button class="api-tab" data-tab="content">/content</button>
-        <button class="api-tab" data-tab="alerts">/alerts</button>
-        <button class="api-tab" data-tab="controls">/controls</button>
         <button class="api-tab" data-tab="age">/age/verify</button>
         <button class="api-tab" data-tab="accuracy">/accuracy</button>
         <button class="api-tab" data-tab="report">/report</button>
         <button class="api-tab" data-tab="audit">/audit</button>
-        <button class="api-tab" data-tab="coach">/coach</button>
+        <button class="api-tab" data-tab="intelligence">/intelligence</button>
       </div>
       <div class="api-content active" id="tab-detect">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/detect</div>
-        <div class="api-desc">Multi-layer threat analysis. Text routed through Perspective API (toxicity) + on-device pattern matching (7 languages). Images through PhotoDNA (CSAM) + Cloud Vision (explicit) + Hive Moderation (drugs, weapons, gore). URLs through Google Web Risk. Returns threat categories, confidence, behavioral signals, and actions.</div>
-        <div class="api-controls"><span class="api-control">CS-MR.1.1 – CS-MR.1.5</span><span class="api-control">CS-CD.1.1 – CS-CD.1.8</span><span class="api-control">13 APIs</span></div>
+        <div class="api-desc">Real-time threat detection. Platforms must implement on-device analysis across 7 threat categories. Returns threat categories, confidence scores, behavioural signals, and recommended actions. Implementation may use any detection technology that meets published accuracy thresholds.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.1.1</span><span class="api-control">CS-DM.1.1 (on-device)</span></div>
 <pre>{
   <span class="key">"threat_assessment"</span>: {
     <span class="key">"overall_risk"</span>: <span class="str">"high"</span>,
     <span class="key">"categories"</span>: [{
       <span class="key">"category"</span>: <span class="str">"grooming"</span>,
       <span class="key">"confidence"</span>: <span class="num">0.92</span>,
-      <span class="key">"triggered_patterns"</span>: [<span class="str">"secrecy_request"</span>, <span class="str">"age_probing"</span>],
-      <span class="key">"engines"</span>: [<span class="str">"perspective_api"</span>, <span class="str">"on_device_pattern"</span>, <span class="str">"behavior_engine"</span>]
+      <span class="key">"triggered_patterns"</span>: [<span class="str">"secrecy_request"</span>, <span class="str">"age_probing"</span>]
     }],
     <span class="key">"recommended_action"</span>: <span class="str">"restrict_and_notify"</span>,
     <span class="key">"mandatory_report"</span>: <span class="bool">false</span>
   },
-  <span class="key">"processing"</span>: { <span class="key">"on_device"</span>: <span class="bool">true</span>, <span class="key">"latency_ms"</span>: <span class="num">45</span> }
-}</pre>
-      </div>
-      <div class="api-content" id="tab-trends">
-        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/trends</div>
-        <div class="api-desc">Weekly trend insights for parents and institutions. Surfaces patterns instead of individual alerts. Research-backed guidance with conversation starters. Powered by Anthropic Claude for nuanced analysis. Only critical threats (score ≥90, CSAM, self-report) trigger immediate notifications.</div>
-        <div class="api-controls"><span class="api-control">CS-PR.1.3</span><span class="api-control">Claude AI</span><span class="api-control">Evidence-based</span></div>
-<pre>{
-  <span class="key">"insights"</span>: [{
-    <span class="key">"type"</span>: <span class="str">"concern"</span>,
-    <span class="key">"title"</span>: <span class="str">"Bullying patterns increasing on Discord"</span>,
-    <span class="key">"severity"</span>: <span class="str">"watch"</span>,
-    <span class="key">"guidance"</span>: <span class="str">"Research shows bystander empowerment reduces bullying by 76%..."</span>,
-    <span class="key">"conversation_starter"</span>: <span class="str">"How are things going with your group chats?"</span>,
-    <span class="key">"sources"</span>: [<span class="str">"Nature Human Behaviour 2024"</span>, <span class="str">"The Lancet 2023"</span>]
-  }],
-  <span class="key">"period"</span>: <span class="str">"7d"</span>,
-  <span class="key">"overall_status"</span>: <span class="str">"watch"</span>
-}</pre>
-      </div>
-      <div class="api-content" id="tab-content">
-        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/content/assess</div>
-        <div class="api-desc">AI-powered content safety assessment. Searches 500K+ games (RAWG), YouTube creators, 45+ platform assessments, and generates ratings for any content via Claude and Groq. Returns age rating, risk themes, parent notes, and safer alternatives.</div>
-        <div class="api-controls"><span class="api-control">Content Radar</span><span class="api-control">Claude + Groq</span><span class="api-control">RAWG + YouTube API</span></div>
-<pre>{
-  <span class="key">"results"</span>: [{
-    <span class="key">"name"</span>: <span class="str">"Roblox"</span>,
-    <span class="key">"age_rating"</span>: <span class="num">7</span>,
-    <span class="key">"risk"</span>: <span class="str">"caution"</span>,
-    <span class="key">"themes"</span>: [<span class="str">"predator-risk"</span>, <span class="str">"consumerism"</span>, <span class="str">"creativity"</span>],
-    <span class="key">"parent_note"</span>: <span class="str">"67M daily users, over half under 13. Chat is the main risk."</span>,
-    <span class="key">"alternatives"</span>: [<span class="str">"Minecraft"</span>, <span class="str">"Toca Life World"</span>]
-  }]
-}</pre>
-      </div>
-      <div class="api-content" id="tab-alerts">
-        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/alerts</div>
-        <div class="api-desc">Standard endpoint for safety alert delivery. Platforms must surface alerts within 5 minutes of detection per CS-PR requirements.</div>
-        <div class="api-controls"><span class="api-control">CS-PR.1.1 – CS-PR.1.2</span></div>
-<pre>{
-  <span class="key">"alerts"</span>: [{
-    <span class="key">"category"</span>: <span class="str">"grooming"</span>,
-    <span class="key">"severity"</span>: <span class="str">"high"</span>,
-    <span class="key">"confidence"</span>: <span class="num">0.89</span>,
-    <span class="key">"summary"</span>: <span class="str">"Unknown adult contact exhibiting grooming patterns"</span>,
-    <span class="key">"status"</span>: <span class="str">"new"</span>
-  }],
-  <span class="key">"unreviewed_count"</span>: <span class="num">3</span>
-}</pre>
-      </div>
-      <div class="api-content" id="tab-controls">
-        <div class="api-endpoint"><span class="api-method get">GET</span> <span class="api-method patch">PUT</span> /custorian/v1/controls</div>
-        <div class="api-desc">Parental safety controls specification. Screen time, contact management, content filtering. Age-graduated defaults required by the standard.</div>
-        <div class="api-controls"><span class="api-control">CS-PR.2.1 – CS-PR.2.5</span></div>
-<pre>{
-  <span class="key">"controls"</span>: {
-    <span class="key">"screen_time"</span>: { <span class="key">"daily_limit_minutes"</span>: <span class="num">120</span> },
-    <span class="key">"contacts"</span>: { <span class="key">"unknown_contact_policy"</span>: <span class="str">"block"</span> },
-    <span class="key">"monitoring"</span>: { <span class="key">"level"</span>: <span class="str">"moderate"</span>, <span class="key">"child_notification"</span>: <span class="bool">true</span> }
-  }
+  <span class="key">"processing"</span>: { <span class="key">"on_device"</span>: <span class="bool">true</span> }
 }</pre>
       </div>
       <div class="api-content" id="tab-age">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/age/verify</div>
-        <div class="api-desc">Age verification specification. Supports document, biometric estimate, third-party attestation, parental confirmation. Evidence never retained.</div>
-        <div class="api-controls"><span class="api-control">CS-AC.1.1 – CS-AC.1.5</span></div>
+        <div class="api-desc">Multi-signal age verification. Supports parent attestation, device family accounts, school deployment, and EU Digital Identity Wallet (eIDAS 2.0). Evidence never retained. Defaults to maximum protection when verification is inconclusive (CS-AC.2.1).</div>
+        <div class="api-controls"><span class="api-control">CS-AC.1</span><span class="api-control">CS-AC.2</span></div>
 <pre>{
   <span class="key">"result"</span>: <span class="str">"verified"</span>,
   <span class="key">"age_bracket"</span>: <span class="str">"13-15"</span>,
-  <span class="key">"confidence"</span>: <span class="num">0.95</span>,
+  <span class="key">"confidence"</span>: <span class="str">"high"</span>,
+  <span class="key">"signals_used"</span>: [<span class="str">"parent_attestation"</span>, <span class="str">"device_family_account"</span>],
   <span class="key">"evidence_retained"</span>: <span class="bool">false</span>
 }</pre>
       </div>
       <div class="api-content" id="tab-accuracy">
         <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/accuracy</div>
-        <div class="api-desc">Accuracy transparency endpoint. Platforms must publish detection accuracy quarterly by category and language. Precision &ge;85%, recall &ge;75% required.</div>
-        <div class="api-controls"><span class="api-control">CS-MR.3.1 – CS-MR.3.5</span></div>
+        <div class="api-desc">Accuracy transparency. Platforms must publish detection precision, recall, and false positive rates quarterly &mdash; per threat category and per language. This is what regulators and auditors check.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.1.3</span><span class="api-control">Quarterly publication</span></div>
 <pre>{
-  <span class="key">"period"</span>: <span class="str">"2026-Q2"</span>,
-  <span class="key">"grooming"</span>: { <span class="key">"precision"</span>: <span class="num">0.88</span>, <span class="key">"recall"</span>: <span class="num">0.79</span> }
+  <span class="key">"period"</span>: <span class="str">"2026-Q3"</span>,
+  <span class="key">"categories"</span>: {
+    <span class="key">"grooming"</span>: { <span class="key">"precision"</span>: <span class="num">0.88</span>, <span class="key">"recall"</span>: <span class="num">0.79</span>, <span class="key">"false_positive_rate"</span>: <span class="num">0.03</span> },
+    <span class="key">"self_harm"</span>: { <span class="key">"precision"</span>: <span class="num">0.91</span>, <span class="key">"recall"</span>: <span class="num">0.82</span>, <span class="key">"false_positive_rate"</span>: <span class="num">0.02</span> }
+  },
+  <span class="key">"languages"</span>: [<span class="str">"en"</span>, <span class="str">"da"</span>, <span class="str">"de"</span>, <span class="str">"ar"</span>]
 }</pre>
       </div>
       <div class="api-content" id="tab-report">
         <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/report</div>
-        <div class="api-desc">Mandatory reporting endpoint. The standard requires CSAM and imminent danger reports to law enforcement within 1 hour.</div>
-        <div class="api-controls"><span class="api-control">CS-MR.2.1</span></div>
+        <div class="api-desc">Mandatory reporting. CSAM and imminent danger must be reported to law enforcement within 1 hour (CS-MR.2.1). Routes to appropriate national authority based on child's jurisdiction. NCMEC CyberTipline as international clearing house.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.2.1</span><span class="api-control">CS-MR.2.2</span></div>
 <pre>{
-  <span class="key">"report_type"</span>: <span class="str">"csam"</span>,
+  <span class="key">"report_type"</span>: <span class="str">"csam_hash_match"</span>,
   <span class="key">"severity"</span>: <span class="str">"critical"</span>,
-  <span class="key">"jurisdiction"</span>: <span class="str">"DK"</span>,
-  <span class="key">"reporting_destination"</span>: <span class="str">"ncmec"</span>
+  <span class="key">"child_jurisdiction"</span>: <span class="str">"DK"</span>,
+  <span class="key">"routing"</span>: <span class="str">"ncmec_cybertipline"</span>,
+  <span class="key">"sla_hours"</span>: <span class="num">1</span>
 }</pre>
       </div>
       <div class="api-content" id="tab-audit">
         <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/audit</div>
-        <div class="api-desc">Compliance verification endpoint for Qualified Safety Assessors. Full audit trail required for certification.</div>
-        <div class="api-controls"><span class="api-control">CS-MR.2.4</span><span class="api-control">QSA access only</span></div>
+        <div class="api-desc">Compliance audit trail for Qualified Safety Assessors. Full detection event history, response times, accuracy metrics, and reporting records. QSA access only. Required for Level 1 and Level 2 certification.</div>
+        <div class="api-controls"><span class="api-control">CS-GO.1</span><span class="api-control">QSA access only</span></div>
 <pre>{
-  <span class="key">"entries"</span>: [{
-    <span class="key">"category"</span>: <span class="str">"grooming"</span>,
-    <span class="key">"action_taken"</span>: <span class="str">"parent_notified_contact_restricted"</span>,
-    <span class="key">"response_time_minutes"</span>: <span class="num">2.3</span>
-  }],
-  <span class="key">"total_entries"</span>: <span class="num">4521</span>
+  <span class="key">"certification_level"</span>: <span class="num">1</span>,
+  <span class="key">"period"</span>: <span class="str">"2026-Q3"</span>,
+  <span class="key">"detection_events"</span>: <span class="num">14203</span>,
+  <span class="key">"avg_response_time_minutes"</span>: <span class="num">2.3</span>,
+  <span class="key">"mandatory_reports_filed"</span>: <span class="num">7</span>,
+  <span class="key">"sla_compliance"</span>: <span class="num">1.0</span>
 }</pre>
       </div>
-      <div class="api-content" id="tab-coach">
-        <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/coach</div>
-        <div class="api-desc">Safety Coach endpoint. Child submits a message they received. Returns risk assessment, kid-friendly explanation, actionable guidance, and copy-paste safe responses. Powered by Anthropic Claude with Groq fallback. Messages are analysed but never stored.</div>
-        <div class="api-controls"><span class="api-control">Claude AI</span><span class="api-control">Child-facing</span><span class="api-control">Zero retention</span></div>
+      <div class="api-content" id="tab-intelligence">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/intelligence/aggregate</div>
+        <div class="api-desc">Institutional intelligence. Anonymised aggregate threat data for school, municipal, and national dashboards. No individual identifiers. k-anonymity (k&ge;5). Small-cell suppression.</div>
+        <div class="api-controls"><span class="api-control">CS-DM.2.1</span><span class="api-control">CS-DM.3.1</span></div>
 <pre>{
-  <span class="key">"risk"</span>: <span class="str">"danger"</span>,
-  <span class="key">"what_is_happening"</span>: <span class="str">"This person is trying to get you to keep a secret from your parents. That's called grooming."</span>,
-  <span class="key">"what_to_do"</span>: [
-    <span class="str">"Don't respond to this message"</span>,
-    <span class="str">"Screenshot the conversation"</span>,
-    <span class="str">"Block this person"</span>
-  ],
-  <span class="key">"suggested_responses"</span>: [
-    <span class="str">"I have to go now."</span>,
-    <span class="str">"I'm not comfortable with that."</span>,
-    <span class="str">"I'm going to tell my parent."</span>
-  ],
-  <span class="key">"should_tell_parent"</span>: <span class="bool">true</span>,
-  <span class="key">"encouragement"</span>: <span class="str">"You did the right thing by checking. You're not in trouble."</span>
+  <span class="key">"institution"</span>: <span class="str">"school"</span>,
+  <span class="key">"period"</span>: <span class="str">"2026-03"</span>,
+  <span class="key">"families_opted_in"</span>: <span class="num">287</span>,
+  <span class="key">"threats"</span>: {
+    <span class="key">"bullying"</span>: { <span class="key">"count"</span>: <span class="num">23</span>, <span class="key">"trend"</span>: <span class="str">"down"</span> },
+    <span class="key">"self_harm"</span>: { <span class="key">"count"</span>: <span class="num">4</span>, <span class="key">"trend"</span>: <span class="str">"stable"</span> }
+  }
 }</pre>
       </div>
     </div>
     <!-- Developer portal note -->
     <div class="api-dev-note reveal">
       <div>
-        <p><strong>For developers:</strong> Full OpenAPI 3.1 specification available. <a href="api.html">Browse the interactive API docs</a> — all endpoints, schemas, and parameters. SDKs and integration guides are in progress.</p>
+        <p><strong>For platform developers:</strong> The CAS defines what platforms must expose for CCF certification &mdash; not what consumer applications look like. Full OpenAPI 3.1 specification will be published alongside the first QSA programme.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<div style="height:1px;background:var(--border);max-width:1100px;margin:0 auto"></div>
-
-<!-- SAFETY COACH -->
-<section>
-  <div class="section-content">
-    <div class="reveal">
-      <div class="label">Safety Coach</div>
-      <h2 class="section-title">Not surveillance. Coaching.</h2>
-      <p class="section-desc">When something feels off online, children need guidance — not just detection. Custorian's Safety Coach is an AI-powered assistant that helps children understand what's happening and what to do about it.</p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px" class="reveal">
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px">
-        <div style="font-size:28px;margin-bottom:12px">🟣</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px">How it works</h3>
-        <p style="font-size:.82rem;color:var(--dim);line-height:1.7">Child receives a message that feels wrong → opens Custorian or taps Share → Custorian → Safety Coach analyses the message using Claude AI → returns a risk assessment, kid-friendly explanation, what to do, and copy-paste safe responses.</p>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-          <p style="font-size:.72rem;color:var(--mute);line-height:1.6"><strong style="color:var(--dim)">Privacy:</strong> Messages are analysed by AI and never stored. Parents are notified that the child used the Safety Coach — but never see the message content.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px">
-        <div style="font-size:28px;margin-bottom:12px">💬</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px">What the child sees</h3>
-        <div style="background:rgba(167,139,250,.05);border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid rgba(167,139,250,.1)">
-          <p style="font-size:.75rem;color:var(--accent);font-weight:600;margin-bottom:6px">🚨 This is not okay</p>
-          <p style="font-size:.72rem;color:var(--dim);line-height:1.5;margin-bottom:8px">This person is trying to get you to keep a secret from your parents. That's called grooming and it's never your fault.</p>
-          <p style="font-size:.68rem;color:var(--mute);margin-bottom:4px">You can say:</p>
-          <p style="font-size:.72rem;color:var(--accent);font-style:italic">"I have to go now."</p>
-          <p style="font-size:.72rem;color:var(--accent);font-style:italic">"I'm not comfortable with that."</p>
-        </div>
-        <p style="font-size:.7rem;color:var(--mute);line-height:1.5">Copy-paste responses. Block guidance. Option to tell a parent — without the message being shared.</p>
-      </div>
-    </div>
-
-    <div class="legal-note reveal" style="margin-top:24px">
-      <p><strong>Research basis:</strong> Bystander intervention training shows 76% of trained youth intervene when they witness harassment (<a href="https://righttobe.org/training/bystander-intervention-training/" target="_blank" style="color:var(--accent)">Right To Be, 2024</a>). The Kidpower Everyday Safety-Skills Program demonstrates that children trained in safety response skills are significantly more likely to seek help and set boundaries (<a href="https://www.sciencedirect.com/science/article/pii/S0190740914002187" target="_blank" style="color:var(--accent)">ScienceDirect</a>). Custorian's Safety Coach applies these principles digitally — coaching children to recognise threats and respond safely in real time.</p>
     </div>
   </div>
 </section>
@@ -692,7 +589,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <div class="reveal">
       <div class="label">For Platforms</div>
       <h2 class="section-title">Implement the standard. Achieve certification.</h2>
-      <p class="section-desc">Platforms implementing Custorian gain a documented compliance pathway for DSA Article 28, DSA Article 35 risk assessments, and the EU AI Act. Comply once, satisfy many.</p>
+      <p class="section-desc">Platforms implementing Custorian gain a documented compliance pathway for DSA Articles 28, 34, 35, and 37 (minor protection, risk assessment, mitigation, and independent audit), and the EU AI Act. Comply once, satisfy many.</p>
     </div>
     <div class="adopt-grid reveal">
       <div class="adopt-step">
@@ -800,12 +697,12 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
     <script>
     const regs = [
-      { flag: '🇪🇺', title: 'EU Digital Services Act', desc: 'Articles 28 & 35 — protection of minors + systemic risk assessments. CCF is the methodology.', status: 'In force', live: true },
+      { flag: '🇪🇺', title: 'EU Digital Services Act', desc: 'Articles 28, 34, 35, 37 — minor protection, risk assessment, mitigation, independent audit. CCF is the methodology.', status: 'In force', live: true },
       { flag: '🇪🇺', title: 'EU AI Act', desc: 'High-risk AI systems affecting minors. CCF provides the compliance pathway.', status: 'In force', live: true },
       { flag: '🇬🇧', title: 'Age Appropriate Design Code', desc: 'All 15 AADC standards cross-mapped to Custorian controls.', status: 'In force', live: true },
-      { flag: '🇩🇰', title: 'Denmark Under-15 Law', desc: 'Social media restrictions for under-15s. Custorian Certified = compliance shortcut.', status: '2027', live: false },
+      { flag: '🇩🇰', title: 'Denmark Under-15 Law', desc: 'Social media restrictions for under-15s. Political agreement Nov 2025; legislation expected 2026.', status: 'In force', live: true },
       { flag: '🇺🇸', title: 'COPPA 2.0 / KOSA', desc: 'Kids Online Safety Act. CCF covers all proposed requirements.', status: 'In progress', live: false },
-      { flag: '🇪🇺', title: 'Jutland Declaration', desc: '25 EU states committed to child digital safety. Signed in Odense, 2025 — where Custorian is being developed.', status: 'Signed 2025', live: true },
+      { flag: '🇪🇺', title: 'Jutland Declaration', desc: '25 EU states committed to child digital safety. Signed in Horsens, Denmark, October 2025.', status: 'Signed 2025', live: true },
       { flag: '🇪🇺', title: 'Child Sexual Abuse Regulation', desc: 'CAS includes standardised CSAM detection and reporting API.', status: 'In progress', live: false },
       { flag: '🌍', title: 'AU Malabo Convention', desc: 'African Union cyber security & data protection. Custorian maps EU + African regulatory coverage.', status: 'Mapping in progress', live: false },
       { flag: '🇰🇷', title: 'South Korea Youth Protection Act', desc: "The world's most aggressive online child safety laws. Real-name verification, game curfews.", status: 'Mapping in progress', live: false },
@@ -845,72 +742,50 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 
 <div style="height:1px;background:var(--border);max-width:1100px;margin:0 auto"></div>
 
-<!-- PARTNERSHIPS & ADVISORY -->
+<!-- ADVISORY COUNCIL -->
 <section>
   <div class="section-content">
     <div class="reveal">
-      <div class="label">Partnerships & Advisory</div>
-      <h2 class="section-title">Built with the organisations that matter.</h2>
-      <p class="section-desc">Custorian integrates with industry-standard child safety infrastructure and is guided by independent experts.</p>
-    </div>
-    <!-- TECHNOLOGY PARTNERS -->
-    <div style="margin-top:64px" class="reveal">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:24px">Technology Partners</h3>
-      <div class="advisory-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
-        <div class="advisory-card"><h4>Microsoft PhotoDNA</h4><p>CSAM image hash detection</p></div>
-        <div class="advisory-card"><h4>Google Cloud Vision</h4><p>Explicit image detection</p></div>
-        <div class="advisory-card"><h4>Hive Moderation</h4><p>Visual content classification</p></div>
-        <div class="advisory-card"><h4>Perspective API</h4><p>Text toxicity scoring</p></div>
-        <div class="advisory-card"><h4>Google Web Risk</h4><p>Unsafe URL detection</p></div>
-        <div class="advisory-card"><h4>Anthropic Claude</h4><p>Deep safety assessments</p></div>
-        <div class="advisory-card"><h4>Groq</h4><p>Real-time AI inference</p></div>
-        <div class="advisory-card"><h4>Supabase</h4><p>Database and family sync</p></div>
-        <div class="advisory-card"><h4>RAWG</h4><p>Game database (500K+ titles)</p></div>
-        <div class="advisory-card"><h4>YouTube Data API</h4><p>Creator safety analysis</p></div>
-        <div class="advisory-card" style="opacity:.5"><h4>Common Sense Media</h4><p>Expert content ratings</p></div>
-        <div class="advisory-card" style="opacity:.5"><h4>Thorn Safer</h4><p>CSAM hash matching</p></div>
-      </div>
+      <div class="label">Governance</div>
+      <h2 class="section-title">Guided by independent experts.</h2>
+      <p class="section-desc">The Custorian Standard is governed by a non-profit and guided by an Advisory Council of independent experts in child safety, digital rights, EU policy, and child development. The Advisory Council reviews detection categories, intervention content, and standard updates.</p>
     </div>
 
-    <!-- ADVISORY COUNCIL — minimal, confident -->
     <div style="margin-top:48px;text-align:center" class="reveal">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px;color:var(--dim)">Advisory Council</h3>
-      <p style="font-size:.82rem;color:var(--mute);max-width:480px;margin:0 auto 24px;line-height:1.6">Custorian is guided by independent experts in child safety, cybersecurity, EU policy, and child development. The Advisory Council is forming.</p>
-      <button onclick="document.getElementById('advisoryModal').style.display='flex'" style="font-size:.78rem;font-weight:600;color:#fff;background:var(--accent2);padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Request to Join the Advisory Council</button>
+      <p style="font-size:.82rem;color:var(--mute);max-width:520px;margin:0 auto 24px;line-height:1.6">The Advisory Council is forming. We are seeking expertise in child exploitation prevention, digital rights and privacy, EU regulatory policy, child psychology, survivor advocacy, and platform trust &amp; safety.</p>
+      <button onclick="document.getElementById('advisoryModal').style.display='flex'" style="font-size:.78rem;font-weight:600;color:#fff;background:var(--accent2);padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Express Interest in the Advisory Council</button>
     </div>
   </div>
 </section>
 
 <div style="height:1px;background:var(--border);max-width:1100px;margin:0 auto"></div>
 
-<!-- CERTIFICATION & PRICING -->
+<!-- WHO IT'S FOR -->
 <section id="pricing">
   <div class="section-content">
     <div class="reveal">
-      <div class="label">Who it's for</div>
-      <h2 class="section-title">For platforms, institutions, and families.</h2>
+      <div class="label">Who the standard serves</div>
+      <h2 class="section-title">For platforms, auditors, and institutions.</h2>
     </div>
-    <div class="price-grid reveal">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:16px;overflow:hidden;margin-top:56px" class="reveal">
       <div class="p-card">
         <h3>Platforms</h3>
-        <p>Certify against the Custorian Controls Framework. Demonstrate DSA and AI Act compliance. Listed on the certified registry.</p>
+        <p>Certify against the CCF. Demonstrate DSA Art. 28 and AI Act compliance. Listed on the public certified registry. Presumption of conformity for regulators.</p>
         <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us →</a>
       </div>
       <div class="p-card">
-        <h3>Audit Organisations</h3>
-        <p>Become a licensed Custorian Qualified Safety Assessor (QSA). Conduct compliance audits for platforms.</p>
+        <h3>Qualified Safety Assessors</h3>
+        <p>Become a licensed Custorian QSA. Conduct independent compliance audits for Level 1 and Level 2 platforms. QSA programme launching 2027.</p>
         <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us →</a>
       </div>
       <div class="p-card">
         <h3>Schools &amp; Municipalities</h3>
-        <p>Anonymised institutional dashboards with threat trends, platform activity analysis, and evidence-based intervention guidance. Powered by 13 integrated detection and intelligence APIs.</p>
+        <p>Anonymised institutional intelligence dashboards. Aggregate threat trends by category. SSP integration for Danish municipalities. Evidence-based resource allocation.</p>
         <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us for pilot programmes →</a>
       </div>
-      <div class="p-card">
-        <h3>Families</h3>
-        <p>One account, multiple devices. Parent signs up → logs in on each child's device → done. Safety Coach (AI-powered guidance when something feels off), Content Radar (45+ platforms, 500K+ games), weekly trend insights, research-backed conversation starters, crisis helplines (20+ countries), and Share Extension (share from any app → instant safety analysis). On-device. No data collected.</p>
-        <div style="font-size:.72rem;font-weight:700;color:var(--shield);letter-spacing:1px;text-transform:uppercase">Free — always</div>
-      </div>
+    </div>
+    <div class="legal-note reveal" style="margin-top:24px">
+      <p><strong>The standard is open.</strong> The CCF (CC BY-SA 4.0) and CAS (MIT) are freely available. Anyone can implement the controls, build compliant systems, or fork the specification. The "Custorian Certified" designation will be reserved for platforms that pass QSA audit or validated self-assessment. Trademark registration is in progress.</p>
     </div>
   </div>
 </section>
@@ -1002,238 +877,6 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   </div>
 </div>
 
-<!-- FOR PARENTS -->
-<section id="parents" style="background:var(--bg2);border-top:1px solid var(--border)">
-  <div class="section-content reveal">
-    <div style="text-align:center;max-width:900px;margin:0 auto">
-      <div class="label">For Parents</div>
-      <h2 class="section-title" style="margin:0 auto 16px;text-align:center">Real protection. No surveillance. No data leaves the device.</h2>
-      <p style="font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:48px;max-width:560px;margin-left:auto;margin-right:auto">
-        Custorian runs entirely on your child's device. No cloud. No tracking. Just intelligent, privacy-respecting safety that keeps you informed without invading their world.
-      </p>
-
-      <!-- INFOGRAPHIC CAROUSEL — full width -->
-    </div>
-    <div class="parent-features-grid" style="display:flex;overflow-x:auto;gap:16px;text-align:left;margin-bottom:40px;padding:0 24px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch">
-
-        <!-- Threat Detection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ef4444,#f97316);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 1v4M9 13v4M1 9h4M13 9h4M3.3 3.3l2.8 2.8M11.9 11.9l2.8 2.8M3.3 14.7l2.8-2.8M11.9 6.1l2.8-2.8"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Threat Detection</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">13 integrated APIs: on-device pattern matching + Perspective API (toxicity) + PhotoDNA (CSAM) + Cloud Vision + Hive Moderation (images) + Web Risk (URLs). Detects grooming, bullying, self-harm, violence, sextortion across 7 languages.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(239,68,68,.08);color:#ef4444;font-size:.65rem;font-weight:600">13 APIs</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(239,68,68,.08);color:#ef4444;font-size:.65rem;font-weight:600">7 Languages</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(239,68,68,.08);color:#ef4444;font-size:.65rem;font-weight:600">On-Device</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(239,68,68,.08);color:#ef4444;font-size:.65rem;font-weight:600">Real-Time</span>
-          </div>
-        </div>
-
-        <!-- What the Parent Sees -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="6" r="4"/><path d="M1 17c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Weekly Trend Insights</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Parents see patterns, not every alert. "Bullying increased on Discord this week" — with research-backed guidance and conversation starters. No message content. Only critical threats (CSAM, self-report) trigger immediate notification.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(124,58,237,.08);color:var(--accent2);font-size:.65rem;font-weight:600">Trends Not Alerts</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(124,58,237,.08);color:var(--accent2);font-size:.65rem;font-weight:600">Research-Backed</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(124,58,237,.08);color:var(--accent2);font-size:.65rem;font-weight:600">Conversation Guides</span>
-          </div>
-        </div>
-
-        <!-- What the Child Sees -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#10b981,#34d399);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 1l2.5 5 5.5.8-4 3.9.9 5.5L9 13.7 4.1 16.2l.9-5.5-4-3.9 5.5-.8z"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Empowerment, Not Surveillance</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Safety Coach: child pastes a message → Claude AI explains what's happening and suggests safe responses. "I need help" button connects to crisis lines (20+ countries). Share Extension: share from any app → instant safety analysis. "Nobody will get in trouble because of you."</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,.08);color:#10b981;font-size:.65rem;font-weight:600">Safety Coach</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,.08);color:#10b981;font-size:.65rem;font-weight:600">Share Extension</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,.08);color:#10b981;font-size:.65rem;font-weight:600">Claude AI</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,.08);color:#10b981;font-size:.65rem;font-weight:600">20+ Crisis Lines</span>
-          </div>
-        </div>
-
-        <!-- Photo Protection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#fbbf24);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="14" height="12" rx="2"/><circle cx="6.5" cy="7.5" r="1.5"/><path d="M16 13l-3.5-4.5L9 12l-2.5-2L2 15"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Photo Protection</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Three-layer image protection: Microsoft PhotoDNA matches against known CSAM databases, Google Cloud Vision detects explicit content, and Hive Moderation classifies drugs, weapons, self-harm, and hate imagery. Explicit selfies are quarantined before they can be sent.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Microsoft PhotoDNA</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Google Cloud Vision</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Hive Moderation</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(245,158,11,.08);color:#f59e0b;font-size:.65rem;font-weight:600">Selfie Quarantine</span>
-          </div>
-        </div>
-
-        <!-- Content Radar -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#60a5fa);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M9 9l4-4M9 2v2M9 14v2M2 9h2M14 9h2"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Content Radar</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Search anything your child uses. 100+ curated entries, 45+ platform assessments, 500K+ games via RAWG, YouTube creator checks. Claude AI for deep assessments, Groq for instant search. Ages 5–18 with birthday auto-detection.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(59,130,246,.08);color:#3b82f6;font-size:.65rem;font-weight:600">Claude + Groq AI</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(59,130,246,.08);color:#3b82f6;font-size:.65rem;font-weight:600">RAWG + YouTube</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(59,130,246,.08);color:#3b82f6;font-size:.65rem;font-weight:600">100+ Curated</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(59,130,246,.08);color:#3b82f6;font-size:.65rem;font-weight:600">45+ Platforms</span>
-          </div>
-        </div>
-
-        <!-- Link Protection -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ec4899,#f43f5e);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="8" width="12" height="9" rx="2"/><path d="M6 8V5a3 3 0 0 1 6 0v3"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Link Protection</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">Google Web Risk checks every URL your child clicks against known phishing, malware, and social engineering databases. Dangerous links are flagged before your child can open them.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(236,72,153,.08);color:#ec4899;font-size:.65rem;font-weight:600">Google Web Risk</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(236,72,153,.08);color:#ec4899;font-size:.65rem;font-weight:600">Anti-Phishing</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(236,72,153,.08);color:#ec4899;font-size:.65rem;font-weight:600">Malware Protection</span>
-          </div>
-        </div>
-
-        <!-- Family System -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .3s;min-width:300px;max-width:300px;flex-shrink:0;scroll-snap-align:start">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#a78bfa);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="5" r="3"/><circle cx="14" cy="5" r="2"/><path d="M0 16c0-3 2.7-6 6-6s6 3 6 6M11 16c0-2 1.3-4 3-4s3 2 3 4"/></svg>
-            </div>
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.3px">Family System</h3>
-          </div>
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:12px">One account, multiple devices. Parent signs up → logs in on each child's device → selects role → done. Multi-child profiles with per-child age settings (5–18). PIN-protected settings. All synced via Supabase.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(139,92,246,.08);color:#8b5cf6;font-size:.65rem;font-weight:600">One Account</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(139,92,246,.08);color:#8b5cf6;font-size:.65rem;font-weight:600">Multi-Child</span>
-            <span style="padding:4px 10px;border-radius:100px;background:rgba(139,92,246,.08);color:#8b5cf6;font-size:.65rem;font-weight:600">PIN-Protected</span>
-          </div>
-        </div>
-
-    </div>
-    <div class="section-content">
-
-      <!-- WHY THIS APPROACH — PSYCHOLOGY BACKING -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:36px 32px;max-width:800px;margin:0 auto 40px;text-align:left">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 1v2M9 15v2M1 9h2M15 9h2"/><circle cx="9" cy="9" r="5"/><path d="M9 7v4M7 9h4"/></svg>
-          </div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.3px">Why This Model Works — The Research</h3>
-        </div>
-        <p style="font-size:.82rem;color:var(--dim);line-height:1.8;margin-bottom:20px">Custorian's design isn't guesswork. Every decision — from showing parents patterns instead of messages, to giving children a help button instead of hiding the app — is grounded in decades of child psychology research.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px">
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">Authoritative Parenting</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">Children with parents who monitor <em>with warmth and explanation</em> show better outcomes than those with restrictive or permissive parents. Custorian alerts inform — they don't spy.</p>
-            <a href="https://doi.org/10.1037/0012-1649.27.1.44" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">Baumrind, 1991 — Developmental Psychology</a>
-          </div>
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">Active Mediation > Restriction</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">Restrictive monitoring increases secrecy and reduces disclosure. Active mediation — talking about risks, building understanding — reduces online harm more effectively.</p>
-            <a href="https://doi.org/10.1111/j.1460-2466.2008.00410.x" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">Livingstone &amp; Helsper, 2008 — Journal of Communication</a>
-          </div>
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">Self-Determination Theory</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">Children need autonomy, competence, and relatedness. Surveillance undermines all three. Custorian preserves autonomy (no message reading), builds competence (safety tips), and strengthens relatedness (conversation guides).</p>
-            <a href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">Deci &amp; Ryan, 2000 — American Psychologist</a>
-          </div>
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">Disclosure Over Detection</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">40% of children never tell anyone about online abuse. The #1 predictor of whether a child discloses is whether they believe they won't get in trouble. Custorian's child messaging explicitly says: "Nobody will get in trouble."</p>
-            <a href="https://www.lse.ac.uk/media-and-communications/research/research-projects/eu-kids-online" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">EU Kids Online, 2020 — LSE</a>
-          </div>
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">Teens Respond to Education, Not Restriction</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">Adolescents who receive digital literacy education engage in fewer risky behaviors online than those who are simply restricted. Custorian's "Did you know?" facts and slang decoder are educational by design.</p>
-            <a href="https://doi.org/10.1145/1978942.1979453" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">Yardi &amp; Bruckman, 2011 — ACM CHI</a>
-          </div>
-
-          <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
-            <div style="font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:6px">APA Guidelines on Digital Media</div>
-            <p style="font-size:.7rem;color:var(--dim);line-height:1.7;margin-bottom:8px">The American Psychological Association recommends monitoring that is "developmentally appropriate, transparent, and preserves children's growing autonomy." Custorian's age-based profiles (5–18) follow this exactly.</p>
-            <a href="https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use" target="_blank" rel="noopener" style="font-size:.62rem;color:var(--accent2);text-decoration:underline;text-underline-offset:2px">APA, 2023 — Health Advisory on Social Media Use</a>
-          </div>
-
-        </div>
-
-        <p style="font-size:.72rem;color:var(--mute);line-height:1.7;text-align:center;max-width:600px;margin:0 auto">Custorian is designed around a simple principle: <strong style="color:var(--text)">children who feel protected — not watched — are more likely to ask for help when they need it.</strong></p>
-      </div>
-
-      <!-- APP DOWNLOAD / COMING SOON -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:40px 32px;max-width:560px;margin:0 auto">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.5px;margin-bottom:8px;color:var(--text)">Get the App</h3>
-        <p style="font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:28px">Free. Open source. No ads. No data collection. Currently in development — join the waitlist to get early access.</p>
-
-        <!-- App Store Buttons -->
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
-          <!-- iOS -->
-          <a href="#parents-notify" style="display:inline-flex;align-items:center;gap:10px;background:var(--text);color:#fff;padding:12px 24px;border-radius:12px;text-decoration:none;transition:all .3s;opacity:.85;cursor:pointer" onmouseover="this.style.opacity='1';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='.85';this.style.transform='translateY(0)'">
-            <svg width="20" height="24" viewBox="0 0 20 24" fill="white"><path d="M16.7 12.5c0-2.3 1.3-3.6 2.3-4.3-1.3-1.9-3.3-2.1-4-2.1-1.7-.2-3.3 1-4.2 1s-2.2-1-3.6-1c-1.8 0-3.6 1.1-4.5 2.7-1.9 3.3-.5 8.3 1.4 11 .9 1.3 2 2.8 3.5 2.8 1.4-.1 1.9-.9 3.6-.9 1.7 0 2.1.9 3.6.8 1.5 0 2.4-1.3 3.3-2.7 1-1.5 1.5-3 1.5-3-.1 0-2.9-1.1-2.9-4.3zM14 4.3c.8-1 1.3-2.3 1.2-3.6-1.1.1-2.5.8-3.3 1.7-.7.8-1.4 2.2-1.2 3.4 1.3.1 2.5-.6 3.3-1.5z"/></svg>
-            <div style="text-align:left;line-height:1.2">
-              <div style="font-size:.55rem;font-weight:400;opacity:.8">Coming soon on</div>
-              <div style="font-size:.9rem;font-weight:700">App Store</div>
-            </div>
-          </a>
-          <!-- Android -->
-          <a href="#parents-notify" style="display:inline-flex;align-items:center;gap:10px;background:var(--text);color:#fff;padding:12px 24px;border-radius:12px;text-decoration:none;transition:all .3s;opacity:.85;cursor:pointer" onmouseover="this.style.opacity='1';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='.85';this.style.transform='translateY(0)'">
-            <svg width="20" height="22" viewBox="0 0 20 22" fill="white"><path d="M1.2 6.6C.4 7.3 0 8.4 0 9.7v6.1c0 1.3.4 2.3 1.2 3l7.4-6.1L1.2 6.6zM10 13.8l-1-0.8-7.4 6.1c.4.4 1 .6 1.6.6.4 0 .8-.1 1.2-.3l8.5-4.8-2.9-0.8zM19.5 10.5l-3.3-1.9L13 11l3.2 2.6 3.3-1.9c.6-.3.9-.8.9-1.3-.1-.3-.4-.6-.9-.9zM3.4 5.3c-.4-.2-.8-.3-1.2-.3-.6 0-1.2.2-1.6.6L8 11.7l3.2-2.6-7.8-3.8z"/></svg>
-            <div style="text-align:left;line-height:1.2">
-              <div style="font-size:.55rem;font-weight:400;opacity:.8">Coming soon on</div>
-              <div style="font-size:.9rem;font-weight:700">Google Play</div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Notify Me Form -->
-        <div id="parents-notify">
-          <form class="contact-form" id="parents-notify-form" style="max-width:400px;margin:0 auto" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-            <input type="hidden" name="subject" value="Custorian App Waitlist">
-            <input type="hidden" name="_gotcha" style="display:none">
-            <input type="email" name="email" placeholder="Your email" required style="text-align:center">
-            <button type="submit" style="background:var(--accent2)">Notify Me When It Launches</button>
-          </form>
-        </div>
-        <div id="parents-notify-success" style="display:none;padding:16px 0">
-          <p style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:var(--accent2)">You're on the list.</p>
-          <p style="font-size:.78rem;color:var(--dim);margin-top:4px">We'll email you the download link as soon as the app is ready.</p>
-        </div>
-
-        <p style="font-size:.62rem;color:var(--mute);margin-top:16px;line-height:1.6">Email used only to notify you at launch. Never shared. Never sold. Custorian is a non-profit.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 </div><!-- end .solid-wrap -->
 
