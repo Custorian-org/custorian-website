@@ -6,7 +6,7 @@
 <title>Custorian — The Child Digital Safety Standard</title>
 <meta name="description" content="The open standard for child digital safety. Platform certification, institutional intelligence, regulatory compliance. Like PCI DSS, but for protecting children.">
 <meta property="og:title" content="Custorian — The PCI DSS for Protecting Children">
-<meta property="og:description" content="The open compliance standard for child digital safety. Auditable controls. Regulatory alignment. Platform certification. Non-profit. Built in Europe.">
+<meta property="og:description" content="6 domains. 137 controls. One API. The compliance framework that makes every platform accountable for child safety. Non-profit. Open standard. Built in Europe.">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -301,8 +301,9 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-r" id="nav-links">
     <a href="#standard">Standard</a>
+    <a href="#api">API</a>
     <a href="#adopt">For Platforms</a>
-    <a href="https://custorian.io/intelligence">Intelligence</a>
+    <a href="https://custorian-intelligence.vercel.app" target="_blank">Intelligence</a>
     <a href="#contact">Contact</a>
     <a href="https://zenodo.org/records/19675375" target="_blank" style="background:var(--accent2);color:#fff;padding:8px 20px;border-radius:100px;font-weight:700;transition:all .2s">White Paper</a>
   </div>
@@ -314,7 +315,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <div class="hero-trust">Non-profit &middot; Open standard &middot; No shareholders &middot; No conflicts of interest</div>
     <div class="hero-eyebrow">The open standard for child digital safety</div>
     <h1>The PCI DSS<br>for <span class="accent">protecting children</span></h1>
-    <p class="hero-sub">Comprehensive auditable controls. Mapped to EU and international regulation. The open compliance standard that makes every platform accountable for child safety.</p>
+    <p class="hero-sub">6 domains. 137 controls. One API. The open compliance standard that makes every platform accountable for child safety.</p>
     <div class="hero-cta">
       <a href="#standard" class="cta-btn cta-primary">Explore the standard</a>
       <a href="#adopt" class="cta-btn cta-ghost">For platforms</a>
@@ -340,7 +341,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <a href="https://stateofsurveillance.org/news/eu-chat-control-voluntary-scanning-expires-april-3-2026/" target="_blank">State of Surveillance</a>
     </div>
     <div class="eprivacy-resolve">
-      <p><strong>The Custorian Standard recommends privacy-preserving architectures for child safety.</strong> The framework prioritises approaches where analysis runs locally, minimising the collection and transmission of children's communications data. This architecture is distinct from the server-side scanning contemplated by the expired derogation. <em>Whether specific implementations fall outside ePrivacy scope is a question for legislators, courts, and data protection authorities. Custorian is seeking formal legal assessment.</em></p>
+      <p><strong>The Custorian Standard requires on-device processing for independent privacy reasons.</strong> The CCF mandates that all analysis runs locally on the child's device. No messages are intercepted. No data leaves the phone. This architecture is distinct from the server-side scanning contemplated by the expired derogation. <em>Whether on-device detection falls outside ePrivacy scope is a question for legislators, courts, and data protection authorities, not for the standard to assert. Custorian is seeking formal legal assessment.</em></p>
     </div>
   </div>
 </div>
@@ -365,68 +366,210 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat">
+      <div class="stat-num"><span class="counter" data-target="6">0</span></div>
+      <div class="stat-label">Domains</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span class="counter" data-target="137">0</span></div>
+      <div class="stat-label">Controls</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span class="counter" data-target="6">0</span></div>
+      <div class="stat-label">API Endpoints</div>
+    </div>
+    <div class="stat">
       <div class="stat-num"><span class="counter" data-target="10">0</span></div>
       <div class="stat-label">Regulatory Frameworks Mapped</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span class="counter" data-target="7">0</span></div>
-      <div class="stat-label">Threat Categories</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span class="counter" data-target="25">0</span></div>
-      <div class="stat-label">EU Member States (Jutland Declaration)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="font-size:1.6rem">CEN/CENELEC</div>
-      <div class="stat-label">Standardisation Pathway Active</div>
     </div>
   </div>
 </div>
 
 
-<!-- THE STANDARD -->
+<!-- THE 6 DOMAINS -->
 <section id="standard">
   <div class="section-content">
     <div class="reveal">
       <div class="label">Custorian Controls Framework</div>
-      <h2 class="section-title">A comprehensive framework for child digital safety.</h2>
-      <p class="section-desc">The Custorian Controls Framework provides comprehensive, auditable controls across the full spectrum of child safety requirements. The standard is in formal development through a European standardisation process.</p>
+      <h2 class="section-title">6 domains. Every threat vector covered.</h2>
+      <p class="section-desc">Each domain is backed by published research and real-world incident data. These aren't theoretical; they're the gaps children fall through today.</p>
     </div>
     <div class="domains-grid">
       <div class="domain-card reveal">
-        <h3>Age Assurance</h3>
-        <p>Privacy-preserving age verification using multiple independent signals. Fail-safe defaults that protect children when verification is uncertain. Aligned with EU Digital Identity Wallet (eIDAS 2.0).</p>
+        <div class="domain-code">CS-AC</div>
+        <h3>Age Controls</h3>
+        <p>Multi-signal age verification without invasive checks. Parent attestation, device family accounts (Apple/Google), school deployment brackets, and EU Digital Identity Wallet integration when available. No face scans. No ID uploads. Privacy-preserving by design.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">89%</div><div class="domain-stat-label">of children lie about age online</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">18</div><div class="domain-stat-label">Controls</div></div>
+        </div>
         <div class="domain-evidence"><p>Ofcom 2024: 1 in 3 children aged 8-11 have a social media profile despite minimum age of 13. <a href="https://www.ofcom.org.uk/research-and-data/online-research/children-and-parents-media-use-and-attitudes" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
-        <h3>Content &amp; Design Safety</h3>
-        <p>Harmful content detection, dark pattern prohibition, intervention design standards, and elevated moderation where minors are present.</p>
+        <div class="domain-code">CS-CD</div>
+        <h3>Content & Design Safety</h3>
+        <p>Harmful content detection, dark pattern prohibition, and elevated moderation standards where minors are present.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">45%</div><div class="domain-stat-label">of teens see harmful content weekly</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">29</div><div class="domain-stat-label">Controls</div></div>
+        </div>
         <div class="domain-evidence"><p>EU Kids Online 2024: 45% of 12-16 year olds encountered harmful content in the past month. <a href="https://www.lse.ac.uk/media-and-communications/research/research-projects/eu-kids-online" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
-        <h3>Data Privacy</h3>
-        <p>Data minimisation, privacy-preserving processing, children's rights impact assessments, and prohibition on using children's data for advertising or profiling.</p>
+        <div class="domain-code">CS-DM</div>
+        <h3>Data & Privacy for Minors</h3>
+        <p>Data minimization, on-device processing by default, DPIA requirements, and absolute prohibition on minor data for advertising.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">72%</div><div class="domain-stat-label">of children's apps share data with 3rd parties</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">13</div><div class="domain-stat-label">Controls</div></div>
+        </div>
         <div class="domain-evidence"><p>ICSI 2023: 72% of apps in the Play Store children's category transmitted data to third-party trackers. <a href="https://www.usenix.org/conference/usenixsecurity19/presentation/reyes" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
-        <h3>Parental Oversight &amp; Child Agency</h3>
-        <p>Balancing parental protection with children's evolving right to privacy. Safety alerts without content surveillance. Age-graduated autonomy aligned with UNCRC Article 5.</p>
+        <div class="domain-code">CS-PR</div>
+        <h3>Parental Rights & Child Agency</h3>
+        <p>Weekly trend insights instead of real-time surveillance. Research-backed conversation guides. Children aged 13+ are notified when monitoring is active. Only critical threats trigger immediate alerts.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">67%</div><div class="domain-stat-label">of parents feel they lack tools</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">24</div><div class="domain-stat-label">Controls</div></div>
+        </div>
         <div class="domain-evidence"><p>Pew Research 2024: Technology is the #1 reason parents say parenting is harder today. <a href="https://www.pewresearch.org/internet/2024/01/31/parenting-children-in-the-age-of-screens/" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
-        <h3>Threat Detection &amp; Response</h3>
-        <p>Real-time detection across seven threat categories, incident response requirements, accuracy transparency, and mandatory reporting for CSAM and imminent danger.</p>
-        <div class="domain-evidence"><p>NCMEC 2023: 36.2M reports of suspected child sexual exploitation. <a href="https://www.missingkids.org/theissues/csam" target="_blank">Source</a></p></div>
+        <div class="domain-code">CS-MR</div>
+        <h3>Monitoring, Detection & Response</h3>
+        <p>Real-time threat detection, incident response SLAs, accuracy transparency, and mandatory reporting for CSAM and imminent danger.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">36.2M</div><div class="domain-stat-label">reports to NCMEC in 2023</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">39</div><div class="domain-stat-label">Controls</div></div>
+        </div>
+        <div class="domain-evidence"><p>NCMEC 2023: 36.2M reports of suspected child sexual exploitation. The standard defines detection requirements with accuracy thresholds by category and language. <a href="https://www.missingkids.org/theissues/csam" target="_blank">Source</a></p></div>
       </div>
       <div class="domain-card reveal">
-        <h3>Governance &amp; Accountability</h3>
-        <p>Child Safety Officer requirements, staff training, vendor management, regulatory compliance mapping, children's participation in safety design, and digital literacy.</p>
-        <div class="domain-evidence"><p>No shared audit framework for child safety exists today. PCI DSS created this for payments. Custorian creates it for children.</p></div>
+        <div class="domain-code">CS-GO</div>
+        <h3>Governance & Policy</h3>
+        <p>Child Safety Officers at executive level, mandatory training, third-party vendor management, and regulatory compliance mapping.</p>
+        <div class="domain-stats">
+          <div class="domain-stat"><div class="domain-stat-num">0</div><div class="domain-stat-label">shared child safety audit standards exist</div></div>
+          <div class="domain-stat"><div class="domain-stat-num">14</div><div class="domain-stat-label">Controls</div></div>
+        </div>
+        <div class="domain-evidence"><p>The industry lacks a shared audit framework for child safety. PCI DSS created this for payments. Custorian creates it for children.</p></div>
       </div>
     </div>
 
+    <!-- Detection Accuracy Transparency -->
     <div class="legal-note reveal" style="margin-top:64px">
-      <p><strong>The standard is in formal development with a European national standards body</strong> through a CEN/CENELEC pathway. It has been cross-mapped against major EU and international regulatory frameworks. The white paper and regulatory cross-map are available on request.</p>
+      <p><strong>CS-MR.1.3 requires platforms to publish detection accuracy quarterly</strong>: precision, recall, and false positive rates per language and threat category. The CCF mandates on-device processing (CS-DM.1.1) and supports hash-matching integration for CSAM detection. Independent validation of the standard's accuracy requirements is planned for Q4 2026.</p>
+    </div>
+  </div>
+</section>
+
+<div style="height:1px;background:var(--border);max-width:1100px;margin:0 auto"></div>
+
+<!-- API SPECIFICATION -->
+<section id="api">
+  <div class="section-content">
+    <div class="reveal">
+      <div class="label">Custorian API Specification (CAS)</div>
+      <h2 class="section-title">The technical interface for platform compliance.</h2>
+      <p class="section-desc">OpenAPI 3.1 specification defining what platforms must expose for CCF certification. Platforms implement it. Institutions consume it. Auditors verify it. The CAS does not define consumer application endpoints; those are implementation decisions.</p>
+    </div>
+    <div class="api-showcase reveal">
+      <div class="api-tabs">
+        <button class="api-tab active" data-tab="detect">/detect</button>
+        <button class="api-tab" data-tab="age">/age/verify</button>
+        <button class="api-tab" data-tab="accuracy">/accuracy</button>
+        <button class="api-tab" data-tab="report">/report</button>
+        <button class="api-tab" data-tab="audit">/audit</button>
+        <button class="api-tab" data-tab="intelligence">/intelligence</button>
+      </div>
+      <div class="api-content active" id="tab-detect">
+        <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/detect</div>
+        <div class="api-desc">Real-time threat detection. Platforms must implement on-device analysis across 7 threat categories. Returns threat categories, confidence scores, behavioural signals, and recommended actions. Implementation may use any detection technology that meets published accuracy thresholds.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.1.1</span><span class="api-control">CS-DM.1.1 (on-device)</span></div>
+<pre>{
+  <span class="key">"threat_assessment"</span>: {
+    <span class="key">"overall_risk"</span>: <span class="str">"high"</span>,
+    <span class="key">"categories"</span>: [{
+      <span class="key">"category"</span>: <span class="str">"grooming"</span>,
+      <span class="key">"confidence"</span>: <span class="num">0.92</span>,
+      <span class="key">"triggered_patterns"</span>: [<span class="str">"secrecy_request"</span>, <span class="str">"age_probing"</span>]
+    }],
+    <span class="key">"recommended_action"</span>: <span class="str">"restrict_and_notify"</span>,
+    <span class="key">"mandatory_report"</span>: <span class="bool">false</span>
+  },
+  <span class="key">"processing"</span>: { <span class="key">"on_device"</span>: <span class="bool">true</span> }
+}</pre>
+      </div>
+      <div class="api-content" id="tab-age">
+        <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/age/verify</div>
+        <div class="api-desc">Multi-signal age verification. Supports parent attestation, device family accounts, school deployment, and EU Digital Identity Wallet (eIDAS 2.0). Evidence never retained. Defaults to maximum protection when verification is inconclusive (CS-AC.2.1).</div>
+        <div class="api-controls"><span class="api-control">CS-AC.1</span><span class="api-control">CS-AC.2</span></div>
+<pre>{
+  <span class="key">"result"</span>: <span class="str">"verified"</span>,
+  <span class="key">"age_bracket"</span>: <span class="str">"13-15"</span>,
+  <span class="key">"confidence"</span>: <span class="str">"high"</span>,
+  <span class="key">"signals_used"</span>: [<span class="str">"parent_attestation"</span>, <span class="str">"device_family_account"</span>],
+  <span class="key">"evidence_retained"</span>: <span class="bool">false</span>
+}</pre>
+      </div>
+      <div class="api-content" id="tab-accuracy">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/accuracy</div>
+        <div class="api-desc">Accuracy transparency. Platforms must publish detection precision, recall, and false positive rates quarterly, per threat category and per language. This is what regulators and auditors check.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.1.3</span><span class="api-control">Quarterly publication</span></div>
+<pre>{
+  <span class="key">"period"</span>: <span class="str">"2026-Q3"</span>,
+  <span class="key">"categories"</span>: {
+    <span class="key">"grooming"</span>: { <span class="key">"precision"</span>: <span class="num">0.88</span>, <span class="key">"recall"</span>: <span class="num">0.79</span>, <span class="key">"false_positive_rate"</span>: <span class="num">0.03</span> },
+    <span class="key">"self_harm"</span>: { <span class="key">"precision"</span>: <span class="num">0.91</span>, <span class="key">"recall"</span>: <span class="num">0.82</span>, <span class="key">"false_positive_rate"</span>: <span class="num">0.02</span> }
+  },
+  <span class="key">"languages"</span>: [<span class="str">"en"</span>, <span class="str">"da"</span>, <span class="str">"de"</span>]
+}</pre>
+      </div>
+      <div class="api-content" id="tab-report">
+        <div class="api-endpoint"><span class="api-method post">POST</span> /custorian/v1/report</div>
+        <div class="api-desc">Mandatory reporting. CSAM and imminent danger must be reported to law enforcement within 1 hour (CS-MR.2.1). Routes to appropriate national authority based on child's jurisdiction. NCMEC CyberTipline as international clearing house.</div>
+        <div class="api-controls"><span class="api-control">CS-MR.2.1</span><span class="api-control">CS-MR.2.2</span></div>
+<pre>{
+  <span class="key">"report_type"</span>: <span class="str">"csam_hash_match"</span>,
+  <span class="key">"severity"</span>: <span class="str">"critical"</span>,
+  <span class="key">"child_jurisdiction"</span>: <span class="str">"DK"</span>,
+  <span class="key">"routing"</span>: <span class="str">"ncmec_cybertipline"</span>,
+  <span class="key">"sla_hours"</span>: <span class="num">1</span>
+}</pre>
+      </div>
+      <div class="api-content" id="tab-audit">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/audit</div>
+        <div class="api-desc">Compliance audit trail for Qualified Safety Assessors. Full detection event history, response times, accuracy metrics, and reporting records. QSA access only. Required for Level 1 and Level 2 certification.</div>
+        <div class="api-controls"><span class="api-control">CS-GO.1</span><span class="api-control">QSA access only</span></div>
+<pre>{
+  <span class="key">"certification_level"</span>: <span class="num">1</span>,
+  <span class="key">"period"</span>: <span class="str">"2026-Q3"</span>,
+  <span class="key">"detection_events"</span>: <span class="num">14203</span>,
+  <span class="key">"avg_response_time_minutes"</span>: <span class="num">2.3</span>,
+  <span class="key">"mandatory_reports_filed"</span>: <span class="num">7</span>,
+  <span class="key">"sla_compliance"</span>: <span class="num">1.0</span>
+}</pre>
+      </div>
+      <div class="api-content" id="tab-intelligence">
+        <div class="api-endpoint"><span class="api-method get">GET</span> /custorian/v1/intelligence/aggregate</div>
+        <div class="api-desc">Institutional intelligence. Anonymised aggregate threat data for school, municipal, and national dashboards. No individual identifiers. k-anonymity (k&ge;5). Small-cell suppression.</div>
+        <div class="api-controls"><span class="api-control">CS-DM.2.1</span><span class="api-control">CS-DM.3.1</span></div>
+<pre>{
+  <span class="key">"institution"</span>: <span class="str">"school"</span>,
+  <span class="key">"period"</span>: <span class="str">"2026-03"</span>,
+  <span class="key">"families_opted_in"</span>: <span class="num">287</span>,
+  <span class="key">"threats"</span>: {
+    <span class="key">"bullying"</span>: { <span class="key">"count"</span>: <span class="num">23</span>, <span class="key">"trend"</span>: <span class="str">"down"</span> },
+    <span class="key">"self_harm"</span>: { <span class="key">"count"</span>: <span class="num">4</span>, <span class="key">"trend"</span>: <span class="str">"stable"</span> }
+  }
+}</pre>
+      </div>
+    </div>
+    <!-- Developer portal note -->
+    <div class="api-dev-note reveal">
+      <div>
+        <p><strong>For platform developers:</strong> The CAS defines what platforms must expose for CCF certification, not what consumer applications look like. Full OpenAPI 3.1 specification will be published alongside the first QSA programme.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -450,7 +593,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       <div class="adopt-step">
         <div class="adopt-num">02</div>
         <h4>Implement</h4>
-        <p>Close the gaps identified in the assessment. Custorian provides clear requirements and implementation guidance.</p>
+        <p>Implement the Custorian API specification using your own infrastructure. A reference implementation is available for validation and testing.</p>
       </div>
       <div class="adopt-step">
         <div class="adopt-num">03</div>
@@ -549,11 +692,11 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     const regs = [
       { flag: '🇪🇺', title: 'EU Digital Services Act', desc: 'Articles 28, 34, 35, 37: minor protection, risk assessment, mitigation, independent audit. CCF is the methodology.', status: 'In force', live: true },
       { flag: '🇪🇺', title: 'EU AI Act', desc: 'High-risk AI systems affecting minors. CCF provides the compliance pathway.', status: 'In force', live: true },
-      { flag: '🇬🇧', title: 'Age Appropriate Design Code', desc: 'All 15 AADC standards addressed by the Custorian framework.', status: 'In force', live: true },
+      { flag: '🇬🇧', title: 'Age Appropriate Design Code', desc: 'All 15 AADC standards cross-mapped to Custorian controls.', status: 'In force', live: true },
       { flag: '🇩🇰', title: 'Denmark Under-15 Law', desc: 'Social media restrictions for under-15s. Political agreement Nov 2025; legislation expected 2027.', status: 'Agreed 2025', live: false },
       { flag: '🇺🇸', title: 'COPPA 2.0 / KOSA', desc: 'Kids Online Safety Act. CCF covers all proposed requirements.', status: 'In progress', live: false },
       { flag: '🇪🇺', title: 'Jutland Declaration', desc: '25 EU states committed to child digital safety. Signed in Horsens, Denmark, October 2025.', status: 'Signed 2025', live: true },
-      { flag: '🇪🇺', title: 'Child Sexual Abuse Regulation', desc: 'The standard includes CSAM detection and mandatory reporting requirements aligned with the proposed regulation.', status: 'In progress', live: false },
+      { flag: '🇪🇺', title: 'Child Sexual Abuse Regulation', desc: 'CAS includes standardised CSAM detection and reporting API.', status: 'In progress', live: false },
       { flag: '🌍', title: 'AU Malabo Convention', desc: 'African Union cyber security & data protection. Custorian maps EU + African regulatory coverage.', status: 'Mapping in progress', live: false },
       { flag: '🇰🇷', title: 'South Korea Youth Protection Act', desc: "The world's most aggressive online child safety laws. Real-name verification, game curfews.", status: 'Mapping in progress', live: false },
       { flag: '🇪🇺', title: 'EU Digital Identity Wallet (eIDAS 2.0)', desc: 'Age verification without revealing identity. Day-one integration when the EU wallet launches.', status: 'Pilots 2026–2027', live: false },
@@ -621,7 +764,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:16px;overflow:hidden;margin-top:56px" class="reveal">
       <div class="p-card">
         <h3>Platforms</h3>
-        <p>Certify against the standard. Demonstrate DSA and AI Act compliance. Listed on the public certified registry. Presumption of conformity for regulators.</p>
+        <p>Certify against the CCF. Demonstrate DSA Art. 28 and AI Act compliance. Listed on the public certified registry. Presumption of conformity for regulators.</p>
         <a href="#contact" style="font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;text-decoration:none">Contact us →</a>
       </div>
       <div class="p-card">
@@ -636,7 +779,7 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
       </div>
     </div>
     <div class="legal-note reveal" style="margin-top:24px">
-      <p><strong>The standard is open.</strong> The Custorian Controls Framework is licensed under CC BY-SA 4.0. Anyone can implement the controls or build compliant systems. The "Custorian Certified" designation will be reserved for platforms that pass independent assessment. Trademark registration is in progress.</p>
+      <p><strong>The standard is open.</strong> The CCF (CC BY-SA 4.0) and CAS (MIT) are freely available. Anyone can implement the controls, build compliant systems, or fork the specification. The "Custorian Certified" designation will be reserved for platforms that pass QSA audit or validated self-assessment. Trademark registration is in progress.</p>
     </div>
   </div>
 </section>
@@ -647,8 +790,8 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
 <section class="status-section">
   <div class="section-content reveal">
     <div class="status-badge"><span class="pulse"></span> Developing in the open</div>
-    <h2 class="section-title" style="margin:0 auto 16px;text-align:center;max-width:600px">Built with the institutions that define child safety in Europe.</h2>
-    <p class="section-desc" style="margin:0 auto;text-align:center;max-width:560px">Custorian is being developed in partnership with leading European standards bodies, child rights organisations, academic researchers, law enforcement agencies, and young people. The standard is shaped by the people closest to the problem — not by the platforms being regulated. We're looking for institutional partners, pilot participants, and advisory council members.</p>
+    <h2 class="section-title" style="margin:0 auto 16px;text-align:center;max-width:600px">The standard is being drafted. The framework is taking shape.</h2>
+    <p class="section-desc" style="margin:0 auto;text-align:center;max-width:560px">Custorian Controls Framework v0.1 is in open review. The standard is being developed through open consultation with child safety organisations, regulators, platform engineers, and academic researchers. We're looking for pilot schools, platform partners, policy advisors, and QSA candidates.</p>
   </div>
 </section>
 
@@ -740,12 +883,12 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);position:relati
     </div>
     <div class="foot-links">
       <a href="mailto:info@custorian.org">info@custorian.org</a>
-      <a href="#standard">Standard</a>
+      <a href="#api">API</a>
       <a href="#adopt">For Platforms</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <div class="foot-legal">&copy; 2026 Foreningen Custorian (CVR 46399455), Odense, Denmark. Standard licensed under CC BY-SA 4.0.<br>"Custorian Certified" is a trademark of Foreningen Custorian, registration in progress.</div>
+    <div class="foot-legal">&copy; 2026 Custorian. Custorian Controls Framework licensed under CC BY-SA 4.0.<br>"Custorian Certified" is a trademark of Foreningen Custorian, registration in progress.</div>
   </div>
 </footer>
 
