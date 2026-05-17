@@ -3,228 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>custorian — The Open Standard for Child Digital Safety</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Custorian — A standard for children's digital safety. Owned by no one.</title>
+<meta name="description" content="Custorian is the European standard for child digital safety. 137 auditable controls. Mapped to ten regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
+<meta property="og:title" content="Custorian — A standard for children's digital safety.">
+<meta property="og:description" content="137 auditable controls. Mapped to ten frameworks. Against eight harms. Owned by no one.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#0E0E10;--ink2:#1a1a1f;
-  --paper:#F6F4EF;--paper2:#ECE8DE;
-  --dim:#525252;--mute:#8a8a8a;--subtle:#0E0E100a;
-  --violet:#9B7CFF;--violet2:#8466ff;--violet-soft:#D9CEFF;--deep:#5B41C2;
-}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);margin:0}
-body::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--violet2));z-index:9999}
-a{color:inherit;text-decoration:none}
-::selection{background:var(--violet);color:#fff}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
 
-/* NAV */
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:flex-end;transition:all .4s}
-header.scrolled{padding:14px 48px;background:rgba(246,244,239,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--subtle)}
-header.scrolled a{color:var(--dim)}
-header.scrolled a:hover{color:var(--ink)}
-.nav-r{display:flex;gap:28px;align-items:center}
-.nav-r a{font-size:13px;font-weight:500;color:rgba(246,244,239,.55);transition:color .2s}
-.nav-r a:hover{color:#fff}
-.nav-cta{background:var(--violet2);color:#fff !important;padding:8px 22px;font-weight:600;transition:background .2s}
-.nav-cta:hover{background:#7358e6}
-@media(max-width:768px){header{padding:14px 20px}.nav-r{gap:14px}.nav-r a{font-size:12px}}
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 6vw;
+    scroll-snap-align: start;
+    border-bottom: 1px solid #0a0a0a;
+    position: relative;
+  }
 
-/* HERO */
-.hero{min-height:100vh;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 100px}
-.hero-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet);margin-bottom:32px;animation:fadeUp .8s .2s both}
-.hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-0.03em;line-height:1.1;margin-bottom:28px;max-width:800px;animation:fadeUp .8s .4s both}
-.hero h1 .vi{color:var(--violet)}
-.hero-sub{font-size:17px;color:#9a9aa3;max-width:540px;margin:0 auto 52px;line-height:1.8;font-weight:400;animation:fadeUp .8s .6s both}
-.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .8s both}
-.btn-p{display:inline-block;padding:16px 40px;background:var(--violet2);color:#fff;font-size:14px;font-weight:600;transition:background .2s}
-.btn-p:hover{background:#7358e6}
-.btn-s{display:inline-block;padding:16px 40px;border:1px solid rgba(155,124,255,.25);color:var(--violet);font-size:14px;font-weight:500;transition:all .2s}
-.btn-s:hover{border-color:var(--violet);background:rgba(155,124,255,.05)}
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    z-index: 10;
+    mix-blend-mode: difference;
+    color: #fff;
+  }
 
-/* SECTIONS */
-.sec{padding:120px 32px}
-.sec-inner{max-width:680px;margin:0 auto}
-.sec-label{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep);margin-bottom:20px}
-.sec h2{font-family:'Inter',sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.25}
-.sec p{font-size:16px;color:var(--dim);line-height:1.9}
-.sec p+p{margin-top:16px}
-.sec a.inline{color:var(--violet2);text-decoration:underline;text-underline-offset:3px}
-.sec a.inline:hover{color:var(--violet)}
+  /* HERO */
+  .hero h1 {
+    font-size: clamp(44px, 9.5vw, 170px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 16ch;
+  }
+  .hero .sub {
+    position: absolute;
+    bottom: 48px;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
 
-/* MOAT — visually distinct */
-.moat{padding:100px 32px;background:var(--ink);color:var(--paper)}
-.moat-inner{max-width:680px;margin:0 auto}
-.moat h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2}
-.moat p{font-size:16px;color:#9a9aa3;line-height:1.9}
-.moat p+p{margin-top:16px}
+  /* SCOREBOARD */
+  .scoreboard { text-align: center; }
+  .scoreboard-kicker {
+    font-size: clamp(13px, 1.4vw, 22px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    max-width: 1100px;
+    margin: 0 auto 72px;
+    opacity: 0.78;
+    text-align: center;
+  }
+  .scoreboard-kicker strong {
+    font-weight: 900;
+  }
+  .scoreboard .big {
+    font-size: clamp(220px, 38vw, 600px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+  }
+  .scoreboard .label {
+    margin-top: 24px;
+    font-size: 13px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
 
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
-.stat{background:#fff;padding:32px 24px;text-align:center}
-.stat-n{font-family:'Inter',sans-serif;font-weight:800;font-size:36px;color:var(--violet2);margin-bottom:6px;letter-spacing:-0.02em}
-.stat-l{font-size:13px;color:var(--mute);letter-spacing:0.02em}
-@media(max-width:768px){.stats{grid-template-columns:1fr}}
+  /* SPLIT NUMBERS */
+  .split-section { padding: 0; }
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .split > div {
+    background: #000;
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .split .num {
+    font-size: clamp(120px, 18vw, 280px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+  }
+  .split .lbl {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
 
-/* FOUNDER */
-.founder{padding:100px 32px;background:#fff}
-.founder-inner{max-width:680px;margin:0 auto}
+  /* FRAMEWORKS */
+  .frameworks { text-align: center; }
+  .frameworks h2 {
+    font-size: clamp(44px, 8vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    opacity: 1;
+    line-height: 0.95;
+    margin-bottom: 72px;
+    color: #fff;
+  }
+  .frameworks ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .frameworks li {
+    font-size: clamp(28px, 5vw, 76px);
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
 
-/* MODEL */
-.model{padding:100px 32px;background:var(--paper)}
-.model-inner{max-width:680px;margin:0 auto}
+  /* THREATS — THE SEVEN */
+  .threats { text-align: center; }
+  .threats h2 {
+    font-size: clamp(44px, 8vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 72px;
+    color: #fff;
+  }
+  .threats ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto;
+  }
+  .threats li {
+    font-size: clamp(28px, 5vw, 76px);
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: #fff;
+  }
+  .threats-footnote {
+    font-size: clamp(13px, 1.5vw, 20px);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 64px auto 0;
+    opacity: 0.85;
+    color: #fff;
+  }
 
-/* STATE */
-.state{padding:100px 32px;background:var(--paper2)}
-.state-inner{max-width:680px;margin:0 auto}
-.state .closing{font-family:'Inter',sans-serif;font-weight:800;font-size:20px;color:var(--ink);margin-top:24px;letter-spacing:-0.01em}
+  /* FOUNDER — FULL BLEED, MASKED, NAME ACROSS */
+  .founder {
+    padding: 0;
+    position: relative;
+    justify-content: flex-end;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .portrait {
+    position: absolute;
+    inset: 8vh 28% 18vh 28%;
+    z-index: 1;
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    display: block;
+    filter: grayscale(1) contrast(1.18) brightness(0.92);
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-mask-image: radial-gradient(ellipse 58% 95% at 50% 34%, #000 8%, rgba(0,0,0,0.4) 38%, transparent 72%);
+    mask-image: radial-gradient(ellipse 58% 95% at 50% 34%, #000 8%, rgba(0,0,0,0.4) 38%, transparent 72%);
+  }
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, #000 0%, rgba(0,0,0,0.7) 8%, transparent 26%, transparent 50%, rgba(0,0,0,0.55) 80%, #000 100%);
+  }
+  .founder-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 6vw 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .founder-name {
+    font-size: clamp(48px, 11vw, 200px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: #fff;
+  }
+  .founder-credential {
+    font-size: clamp(14px, 1.5vw, 22px);
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.4;
+    opacity: 0.95;
+    color: #fff;
+    margin-top: 4px;
+  }
+  .founder-line {
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    max-width: 56ch;
+    line-height: 1.8;
+    color: #fff;
+  }
 
-/* FOOTER */
-footer{padding:80px 32px 40px;border-top:1px solid var(--subtle)}
-.f-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.f-col h4{font-family:'Inter',sans-serif;font-weight:700;font-size:13px;margin-bottom:12px;color:var(--ink)}
-.f-col p{font-size:13px;color:var(--dim);line-height:1.7;margin-bottom:8px}
-.f-col a{color:var(--violet2);text-decoration:underline;text-underline-offset:3px;font-size:13px}
-.f-col a:hover{color:var(--violet)}
-.f-col .mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);letter-spacing:0.04em}
-.f-legal{font-size:11px;color:var(--mute);line-height:1.8;text-align:center;padding-top:32px;border-top:1px solid var(--subtle);max-width:900px;margin:0 auto}
-@media(max-width:768px){.f-grid{grid-template-columns:1fr;gap:32px}}
+  /* CREED */
+  .creed h2 {
+    font-size: clamp(40px, 7vw, 130px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 18ch;
+  }
+
+  /* FOOTER */
+  footer {
+    min-height: auto;
+    padding: 64px 32px 48px;
+    text-align: center;
+    scroll-snap-align: end;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  footer a { color: inherit; text-decoration: none; opacity: 0.85; }
+  footer a:hover { opacity: 1; }
+
+  @media (max-width: 720px) {
+    .split { grid-template-columns: 1fr; }
+    .nav { padding: 16px; font-size: 10px; letter-spacing: 0.25em; }
+    .frameworks ul { gap: 20px 32px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<header id="nav">
-  <div class="nav-r">
-    <a href="#standard">Standard</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#founder">Founder</a>
-    <span style="width:1px;height:20px;background:rgba(246,244,239,.2);margin:0 4px"></span>
-    <a href="https://zenodo.org/records/19675375" target="_blank" class="nav-cta">Read the Standard</a>
-  </div>
-</header>
+<div class="nav">
+  <span>CUSTORIAN</span>
+  <span>EST · 2026 · ODENSE</span>
+</div>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-over">The open standard for child digital safety.</div>
-  <h1>137 controls. Built in Europe.<br><span class="vi">Cannot be bought.</span></h1>
-  <p class="hero-sub">Custorian is the European compliance standard for child digital safety. Published as an open framework. Owned by a non-profit. Free for anyone to implement.</p>
-  <div class="hero-cta">
-    <a href="https://zenodo.org/records/19675375" target="_blank" class="btn-p">Read the Standard</a>
+  <h1>This standard cannot be bought.</h1>
+  <div class="sub">Scroll</div>
+</section>
+
+<section class="scoreboard">
+  <div class="scoreboard-kicker">
+    Custorian is to children's digital safety what <strong>TÜV</strong> is to industrial safety.
+  </div>
+  <div class="big">137</div>
+  <div class="label">Auditable Controls</div>
+</section>
+
+<section class="split-section">
+  <div class="split">
+    <div>
+      <div class="num">6</div>
+      <div class="lbl">Domains</div>
+    </div>
+    <div>
+      <div class="num">10</div>
+      <div class="lbl">Frameworks Mapped</div>
+    </div>
   </div>
 </section>
 
-<!-- WHY NOW -->
-<div class="sec reveal">
-  <div class="sec-inner">
-    <div class="sec-label">Why this exists</div>
-    <h2>Why now.</h2>
-    <p>On <a href="https://dig.watch/updates/eu-eprivacy-derogation-csam-detection-expires" target="_blank" class="inline">3 April 2026</a>, the EU lost its legal basis for voluntary child-safety detection on private communications. The temporary derogation to the ePrivacy Directive expired. The <a href="https://www.europarl.europa.eu/legislative-train/spotlight-JD22/file-combating-child-sexual-abuse-online" target="_blank" class="inline">proposed Child Sexual Abuse Regulation</a> remains in trilogue with no agreed text. Platforms operating in the EU face the broadest compliance vacuum in the modern history of EU technology regulation, alongside obligations under the DSA, AI Act, and member-state implementations.</p>
-    <p>The next regulation will not arrive in a vacuum. It will arrive into a market that has had eighteen months without a clear standard. Custorian is the standard built for that arrival.</p>
-  </div>
-</div>
+<section class="frameworks">
+  <h2>With the ten.</h2>
+  <ul>
+    <li>DSA</li>
+    <li>AI&nbsp;ACT</li>
+    <li>AADC</li>
+    <li>OSA</li>
+    <li>COPPA</li>
+    <li>GDPR</li>
+    <li>UNCRC</li>
+  </ul>
+</section>
 
-<!-- THE STANDARD -->
-<div class="sec reveal" id="standard" style="background:#fff">
-  <div class="sec-inner">
-    <div class="sec-label">The standard</div>
-    <h2>The standard.</h2>
-    <p>The Custorian Controls Framework is the first open European compliance standard for child digital safety. 137 auditable controls across 6 domains. Cross-mapped to 10 regulatory frameworks including the DSA, AI Act, AADC, OSA, COPPA, GDPR, and the UNCRC.</p>
-    <p>The framework is <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">published on Zenodo</a> under Creative Commons. It is freely usable by anyone &mdash; platforms, regulators, auditors, academics, civil society, vendors. Adoption requires no licence, no fee, and no agreement with the Foundation.</p>
-    <div class="stats">
-      <div class="stat"><div class="stat-n" data-target="137">0</div><div class="stat-l">controls</div></div>
-      <div class="stat"><div class="stat-n" data-target="6">0</div><div class="stat-l">domains</div></div>
-      <div class="stat"><div class="stat-n" data-target="10">0</div><div class="stat-l">regulatory frameworks mapped</div></div>
-    </div>
-  </div>
-</div>
+<section class="threats">
+  <h2>Against the eight.</h2>
+  <ul>
+    <li>Child sexual abuse material.</li>
+    <li>Grooming.</li>
+    <li>Bullying.</li>
+    <li>Self-harm promotion.</li>
+    <li>Violent content.</li>
+    <li>Sextortion.</li>
+    <li>Exploitative commercial practices.</li>
+    <li>Manipulative design patterns.</li>
+  </ul>
+</section>
 
-<!-- MOAT -->
-<div class="moat reveal">
-  <div class="moat-inner">
-    <h2>This standard cannot be bought.</h2>
-    <p>The Custorian Controls Framework is owned by Foreningen Custorian, a Danish non-profit association (CVR 46399455). It cannot be acquired, controlled, or licensed exclusively by any platform it covers. The Foundation cannot be sold. The standard cannot be taken private. The certification programme cannot be captured by a single vendor.</p>
-    <p>This is structural, not aspirational. The framework is published on Zenodo under Creative Commons Attribution-ShareAlike 4.0. This licence cannot be revoked. The Foundation's statutes and the governance separation between the Foundation and any commercial implementer are designed so the standard remains independent permanently.</p>
+<section class="founder">
+  <div class="portrait"><img src="tanya-founder.jpg" alt="Tanya Becheva"></div>
+  <div class="founder-content">
+    <div class="founder-name">Tanya Becheva</div>
+    <div class="founder-credential">Mother of two. Over a decade in tech.</div>
+    <div class="founder-line">Built solo. Free to use. Cannot be sold.</div>
   </div>
-</div>
+</section>
 
-<!-- HOW IT WORKS -->
-<div class="sec reveal" id="how-it-works">
-  <div class="sec-inner">
-    <div class="sec-label">How it works</div>
-    <h2>How the standard works.</h2>
-    <p>The Custorian Standard consists of three components: the Controls Framework defining what platforms serving children must do, the API Specification defining how compliant systems implement detection and reporting, and the Certification Programme through which platforms are independently validated.</p>
-    <p>Compliance is assessed through Qualified Safety Assessor audits for the largest platforms, Self-Assessment Questionnaires for smaller platforms, and accuracy metrics that platforms publish per language and per detection category. The Framework is modelled on PCI-DSS for payment security and EPEAT for sustainable electronics &mdash; voluntary technical standards that became de facto requirements through procurement reference and regulatory adoption.</p>
-    <p>The Foundation's independent certification programme will begin in 2026 with pilot participants. The methodology is documented in full in the <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">white paper</a>, available on Zenodo.</p>
-  </div>
-</div>
+<section class="creed">
+  <h2>For the children.</h2>
+</section>
 
-<!-- FOUNDER -->
-<div class="founder reveal" id="founder">
-  <div class="founder-inner">
-    <div class="sec-label">Who built this</div>
-    <h2>The founder.</h2>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9">Tanya Becheva is the founder of Foreningen Custorian and the principal author of the Custorian Controls Framework. She is a contributor to the IEEE P3462 working group on child and youth online safety and a member of the IEEE P2089.4 age-appropriate design working group. She holds CISSP candidate status and works in data protection and privacy at a global technology company. She is based in Odense, Denmark, and is a parent of two.</p>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">The Foundation is forming its Advisory Council to broaden governance beyond the founder. Council seats are reserved for academic researchers, civil-society organisations, hotline operators, independent child-safety experts, young people with lived experience, and an independent chair. The Council is expected to be operational in 2026.</p>
-  </div>
-</div>
-
-<!-- MODEL -->
-<div class="model reveal">
-  <div class="model-inner">
-    <div class="sec-label">The model</div>
-    <h2>The Foundation and the implementation market.</h2>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9">Foreningen Custorian develops the Controls Framework, conducts independent assessment, accredits qualified assessors, and operates the public registry. The Foundation is the standards body. It does not sell tools or services to the platforms it assesses.</p>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">Implementation of the framework is open. Platforms can build their own compliance using the published standard. Independent vendors can build certified implementations and sell them to platforms. Accredited assessors can conduct assessments commercially. The Foundation maintains structural independence from any single implementer.</p>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">The Foundation is structurally separated from the implementation market. This separation is the source of the standard's credibility, and it is enforced by governance, by law, and by funding rules.</p>
-  </div>
-</div>
-
-<!-- CURRENT STATE -->
-<div class="state reveal">
-  <div class="state-inner">
-    <div class="sec-label">Current state</div>
-    <h2>Where things are now.</h2>
-    <p style="font-size:16px;color:var(--dim);line-height:1.9">The Controls Framework v0.1 is published. The white paper is available on <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">Zenodo</a> with a DOI. The methodology is documented in technical detail. The Foundation is incorporated in Denmark. The Advisory Council is forming. The independent assessment programme will begin in 2026 with pilot participants.</p>
-    <div class="closing">This is the standard. Adoption begins now.</div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="f-grid">
-    <div class="f-col">
-      <h4>Foreningen Custorian</h4>
-      <p>A Danish non-profit association developing the open European compliance standard for child digital safety.</p>
-      <p class="mono">CVR 46399455<br>Odense, Denmark</p>
-      <a href="mailto:info@custorian.org">info@custorian.org</a>
-    </div>
-    <div class="f-col">
-      <h4>The Standard</h4>
-      <p><a href="https://zenodo.org/records/19675375" target="_blank">Read the white paper (Zenodo)</a></p>
-      <p><a href="https://zenodo.org/records/19675375" target="_blank">Controls Framework (CC BY-SA 4.0)</a></p>
-      <p class="mono">DOI: 10.5281/zenodo.19675375</p>
-    </div>
-    <div class="f-col">
-      <h4>Governance</h4>
-      <p>Advisory Council forming (2026)</p>
-      <p><a href="mailto:governance@custorian.org">Apply: governance@custorian.org</a></p>
-      <p class="mono">&lsquo;Custorian Certified&rsquo; trademark<br>registration in progress</p>
-    </div>
-  </div>
-  <p class="f-legal">&copy; 2026 Foreningen Custorian. Framework published under Creative Commons Attribution-ShareAlike 4.0. The licence is irrevocable.</p>
+  <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="mailto:governance@custorian.org">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
-<script>
-document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('visible')},{threshold:.06}).observe(el));
-document.querySelectorAll('.stat-n[data-target]').forEach(el=>{new IntersectionObserver(e=>{if(e[0].isIntersecting&&!el.dataset.done){el.dataset.done='1';const target=parseInt(el.dataset.target),dur=1600,start=Date.now();(function tick(){const p=Math.min((Date.now()-start)/dur,1);el.textContent=Math.round(target*(1-Math.pow(1-p,4)));if(p<1)requestAnimationFrame(tick)})()}},{threshold:.5}).observe(el)});
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>window.innerHeight*.7)});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
-</script>
 </body>
 </html>
