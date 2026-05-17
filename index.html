@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* CANVAS */
-#network-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#network-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
 
 /* NAV */
 header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
@@ -45,7 +45,7 @@ header.scrolled{padding:12px 48px;background:rgba(14,14,16,.85);backdrop-filter:
 @media(max-width:768px){header{padding:14px 20px}.nav-r{gap:14px}.nav-r a{font-size:12px}}
 
 /* HERO — dark section */
-.hero{min-height:100vh;background:rgba(14,14,16,.92);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden;z-index:1}
+.hero{min-height:100vh;background:rgba(14,14,16,.85);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden;z-index:2}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--paper),transparent);pointer-events:none}
 .hero-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet);margin-bottom:24px;animation:fadeUp .8s .3s both}
 .hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-0.03em;line-height:1.15;margin-bottom:24px;max-width:680px;animation:fadeUp .8s .5s both}
@@ -279,8 +279,8 @@ footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
       if (dist < MOUSE_RADIUS && dist > 0) { const f = (1 - dist / MOUSE_RADIUS); const push = f * f * MOUSE_PUSH; offX += (dx / dist) * push; offY += (dy / dist) * push; }
       n.x = n.baseX + offX; n.y = n.baseY + offY;
     }
-    for (let r = 0; r < rows; r++) { ctx.beginPath(); for (let c = 0; c < cols; c++) { const n = nodes[r * cols + c]; c === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.06)'; ctx.lineWidth = 0.5; ctx.stroke(); }
-    for (let c = 0; c < cols; c++) { ctx.beginPath(); for (let r = 0; r < rows; r++) { const n = nodes[r * cols + c]; r === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.04)'; ctx.lineWidth = 0.5; ctx.stroke(); }
+    for (let r = 0; r < rows; r++) { ctx.beginPath(); for (let c = 0; c < cols; c++) { const n = nodes[r * cols + c]; c === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.12)'; ctx.lineWidth = 0.5; ctx.stroke(); }
+    for (let c = 0; c < cols; c++) { ctx.beginPath(); for (let r = 0; r < rows; r++) { const n = nodes[r * cols + c]; r === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.08)'; ctx.lineWidth = 0.5; ctx.stroke(); }
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i]; const dx = n.x - mouseX, dy = n.y - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -289,7 +289,7 @@ footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
       const cr = ug ? GR : PR, cg = ug ? GG : PG, cb = ug ? GB : PB;
       if (mb > 0.15) { ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2 + 6, 0, Math.PI * 2); ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(mb * 0.06)+')'; ctx.fill(); }
       ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(0.2 + mb)+')'; ctx.fill();
+      ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(0.45 + mb)+')'; ctx.fill();
     }
     requestAnimationFrame(draw);
   }
