@@ -137,9 +137,9 @@ footer{padding:80px 32px 40px;border-top:1px solid var(--subtle)}
     <p>The Custorian Controls Framework is the first open European compliance standard for child digital safety. 137 auditable controls across 6 domains. Cross-mapped to 10 regulatory frameworks including the DSA, AI Act, AADC, OSA, COPPA, GDPR, and the UNCRC.</p>
     <p>The framework is <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">published on Zenodo</a> under Creative Commons. It is freely usable by anyone &mdash; platforms, regulators, auditors, academics, civil society, vendors. Adoption requires no licence, no fee, and no agreement with the Foundation.</p>
     <div class="stats">
-      <div class="stat"><div class="stat-n">137</div><div class="stat-l">controls</div></div>
-      <div class="stat"><div class="stat-n">6</div><div class="stat-l">domains</div></div>
-      <div class="stat"><div class="stat-n">10</div><div class="stat-l">regulatory frameworks mapped</div></div>
+      <div class="stat"><div class="stat-n" data-target="137">0</div><div class="stat-l">controls</div></div>
+      <div class="stat"><div class="stat-n" data-target="6">0</div><div class="stat-l">domains</div></div>
+      <div class="stat"><div class="stat-n" data-target="10">0</div><div class="stat-l">regulatory frameworks mapped</div></div>
     </div>
   </div>
 </div>
@@ -222,6 +222,7 @@ footer{padding:80px 32px 40px;border-top:1px solid var(--subtle)}
 
 <script>
 document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('visible')},{threshold:.06}).observe(el));
+document.querySelectorAll('.stat-n[data-target]').forEach(el=>{new IntersectionObserver(e=>{if(e[0].isIntersecting&&!el.dataset.done){el.dataset.done='1';const target=parseInt(el.dataset.target),dur=1600,start=Date.now();(function tick(){const p=Math.min((Date.now()-start)/dur,1);el.textContent=Math.round(target*(1-Math.pow(1-p,4)));if(p<1)requestAnimationFrame(tick)})()}},{threshold:.5}).observe(el)});
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>window.innerHeight*.7)});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 </script>
