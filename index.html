@@ -35,7 +35,7 @@ a{color:inherit;text-decoration:none}
 #network-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
 /* NAV */
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:flex-end;transition:all .4s}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
 header.scrolled{padding:12px 48px;background:rgba(14,14,16,.85);backdrop-filter:blur(20px)}
 .nav-r{display:flex;gap:24px;align-items:center}
 .nav-r a{font-size:13px;font-weight:500;color:rgba(246,244,239,.6);transition:color .2s}
@@ -136,6 +136,9 @@ footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
 
 <!-- NAV -->
 <header id="nav">
+  <a href="#">
+    <svg viewBox="0 0 100 100" width="28" height="28" style="display:block"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/></svg>
+  </a>
   <div class="nav-r">
     <a href="#standard">Standard</a>
     <a href="#certification">Certification</a>
