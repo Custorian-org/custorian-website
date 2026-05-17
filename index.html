@@ -31,17 +31,15 @@ a{color:inherit;text-decoration:none}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* CANVAS */
+#network-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
 /* NAV */
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
-header.scrolled{padding:12px 48px;background:rgba(246,244,239,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--subtle)}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-text{display:flex;flex-direction:column;gap:1px}
-.logo-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--deep)}
-.logo-name{font-family:'Inter',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.03em}
-.logo-name .vi{color:var(--violet)}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:flex-end;transition:all .4s}
+header.scrolled{padding:12px 48px;background:rgba(14,14,16,.85);backdrop-filter:blur(20px)}
 .nav-r{display:flex;gap:24px;align-items:center}
-.nav-r a{font-size:13px;font-weight:500;color:var(--dim);transition:color .2s}
-.nav-r a:hover{color:var(--ink)}
+.nav-r a{font-size:13px;font-weight:500;color:rgba(246,244,239,.6);transition:color .2s}
+.nav-r a:hover{color:#fff}
 .nav-cta{background:var(--violet2);color:#fff !important;padding:8px 20px;font-weight:600;transition:background .2s}
 .nav-cta:hover{background:#7358e6}
 @media(max-width:768px){header{padding:14px 20px}.nav-r{gap:14px}.nav-r a{font-size:12px}}
@@ -133,12 +131,11 @@ footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
 </head>
 <body>
 
+<!-- CANVAS -->
+<canvas id="network-canvas"></canvas>
+
 <!-- NAV -->
 <header id="nav">
-  <a href="#" class="logo">
-    <svg viewBox="0 0 100 100" width="32" height="32" style="display:block"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/></svg>
-    <span class="logo-text"><span class="logo-over">Foreningen</span><span class="logo-name">custor<span class="vi">i</span>an</span></span>
-  </a>
   <div class="nav-r">
     <a href="#standard">Standard</a>
     <a href="#certification">Certification</a>
@@ -243,10 +240,70 @@ footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
 </footer>
 
 <script>
-new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.06,rootMargin:'0px 0px -30px 0px'}).observe(document.querySelectorAll?null:null);
+// ─── INTERACTIVE DOT GRID ──────────
+(function() {
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, cols, rows, nodes;
+  let mouseX = -9999, mouseY = -9999;
+  const SPACING = 40, DOT_R = 1.8, WAVE_AMP = 14, WAVE_SPEED = 0.8, MOUSE_RADIUS = 180, MOUSE_PUSH = 25;
+  const PR = 155, PG = 124, PB = 255;
+  const GR = 16, GG = 185, GB = 129;
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / SPACING) + 2; rows = Math.ceil(h / SPACING) + 2;
+    nodes = [];
+    for (let r = 0; r < rows; r++)
+      for (let c = 0; c < cols; c++)
+        nodes.push({ baseX: c * SPACING - SPACING, baseY: r * SPACING - SPACING, x: 0, y: 0, col: c, row: r });
+  }
+  function draw() {
+    if (window.pageYOffset > window.innerHeight * 1.5) { requestAnimationFrame(draw); return; }
+    ctx.clearRect(0, 0, w, h);
+    const t = Date.now() * 0.001;
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const wave1 = Math.sin(n.baseX * 0.015 + t * WAVE_SPEED) * WAVE_AMP;
+      const wave2 = Math.sin(n.baseY * 0.012 + t * WAVE_SPEED * 0.7) * WAVE_AMP * 0.6;
+      const wave3 = Math.cos((n.baseX + n.baseY) * 0.008 + t * WAVE_SPEED * 0.5) * WAVE_AMP * 0.4;
+      let offX = 0, offY = wave1 + wave2 + wave3;
+      const dx = n.baseX - mouseX, dy = n.baseY - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MOUSE_RADIUS && dist > 0) { const f = (1 - dist / MOUSE_RADIUS); const push = f * f * MOUSE_PUSH; offX += (dx / dist) * push; offY += (dy / dist) * push; }
+      n.x = n.baseX + offX; n.y = n.baseY + offY;
+    }
+    for (let r = 0; r < rows; r++) { ctx.beginPath(); for (let c = 0; c < cols; c++) { const n = nodes[r * cols + c]; c === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.06)'; ctx.lineWidth = 0.5; ctx.stroke(); }
+    for (let c = 0; c < cols; c++) { ctx.beginPath(); for (let r = 0; r < rows; r++) { const n = nodes[r * cols + c]; r === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.04)'; ctx.lineWidth = 0.5; ctx.stroke(); }
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i]; const dx = n.x - mouseX, dy = n.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const mb = dist < MOUSE_RADIUS ? (1 - dist / MOUSE_RADIUS) * 0.6 : 0;
+      const ug = (n.col + n.row) % 7 === 0;
+      const cr = ug ? GR : PR, cg = ug ? GG : PG, cb = ug ? GB : PB;
+      if (mb > 0.15) { ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2 + 6, 0, Math.PI * 2); ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(mb * 0.06)+')'; ctx.fill(); }
+      ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(0.2 + mb)+')'; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  window.addEventListener('resize', resize); resize(); draw();
+})();
+
+// ─── REVEALS ──────────
 document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('visible')},{threshold:.06}).observe(el));
+
+// ─── NAV SCROLL ──────────
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80)});
+
+// ─── FORM ──────────
 document.getElementById('cform').addEventListener('submit',function(e){e.preventDefault();fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)}).then(r=>{if(r.ok){this.style.display='none';document.getElementById('cok').classList.add('show')}})});
+
+// ─── SMOOTH SCROLL ──────────
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 </script>
 </body>
