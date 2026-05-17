@@ -3,312 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custorian — The Open Standard for Child Digital Safety</title>
-<meta name="description" content="137 auditable controls across 6 domains. The open compliance standard for child digital safety. Developed by a Danish non-profit.">
-<meta property="og:title" content="Custorian — The Open Standard for Child Digital Safety">
-<meta property="og:description" content="137 auditable controls across 6 domains. Mapped to EU and international regulation. Developed by a Danish non-profit.">
-<meta property="og:url" content="https://custorian.org">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6F4EF">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%238466ff'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='20' font-family='sans-serif' font-weight='bold'>C</text></svg>">
+<title>custorian — The Open Standard for Child Digital Safety</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --paper:#F6F4EF;--ink:#0E0E10;--ink2:#1a1a1f;
+  --ink:#0E0E10;--ink2:#1a1a1f;
+  --paper:#F6F4EF;--paper2:#ECE8DE;
   --dim:#525252;--mute:#8a8a8a;--subtle:#0E0E100a;
   --violet:#9B7CFF;--violet2:#8466ff;--violet-soft:#D9CEFF;--deep:#5B41C2;
-  --paper2:#ECE8DE;--paper3:#E2DDD0;
-  --grade-a:#2E8B57;--grade-b:#6B9E3A;--grade-c:#C99A2E;--grade-d:#D17A2E;--grade-f:#B4332B;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;margin:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);margin:0}
 body::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--violet2));z-index:9999}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--violet);color:#fff}
-@keyframes clusterPulse{0%,100%{opacity:1}50%{opacity:.65}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* CANVAS */
-#network-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;pointer-events:none}
-
 /* NAV */
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
-header.scrolled{padding:12px 48px;background:rgba(14,14,16,.85);backdrop-filter:blur(20px)}
-.nav-r{display:flex;gap:24px;align-items:center}
-.nav-r a{font-size:13px;font-weight:500;color:rgba(246,244,239,.6);transition:color .2s}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:flex-end;transition:all .4s}
+header.scrolled{padding:14px 48px;background:rgba(246,244,239,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--subtle)}
+header.scrolled a{color:var(--dim)}
+header.scrolled a:hover{color:var(--ink)}
+.nav-r{display:flex;gap:28px;align-items:center}
+.nav-r a{font-size:13px;font-weight:500;color:rgba(246,244,239,.55);transition:color .2s}
 .nav-r a:hover{color:#fff}
-.nav-cta{background:var(--violet2);color:#fff !important;padding:8px 20px;font-weight:600;transition:background .2s}
+.nav-cta{background:var(--violet2);color:#fff !important;padding:8px 22px;font-weight:600;transition:background .2s}
 .nav-cta:hover{background:#7358e6}
 @media(max-width:768px){header{padding:14px 20px}.nav-r{gap:14px}.nav-r a{font-size:12px}}
 
-/* HERO — dark section */
-.hero{min-height:100vh;background:rgba(14,14,16,.85);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden;z-index:2}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--paper),transparent);pointer-events:none}
-.hero-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet);margin-bottom:24px;animation:fadeUp .8s .3s both}
-.hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-0.03em;line-height:1.15;margin-bottom:24px;max-width:680px;animation:fadeUp .8s .5s both}
+/* HERO */
+.hero{min-height:100vh;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 100px}
+.hero-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet);margin-bottom:32px;animation:fadeUp .8s .2s both}
+.hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-0.03em;line-height:1.1;margin-bottom:28px;max-width:800px;animation:fadeUp .8s .4s both}
 .hero h1 .vi{color:var(--violet)}
-.hero-sub{font-size:16px;color:#a0a0a8;max-width:520px;margin:0 auto 48px;line-height:1.8;font-weight:400;animation:fadeUp .8s .7s both}
-.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .9s both}
-.btn-p{display:inline-block;padding:14px 36px;background:var(--violet2);color:#fff;font-size:14px;font-weight:600;transition:background .2s}
+.hero-sub{font-size:17px;color:#9a9aa3;max-width:540px;margin:0 auto 52px;line-height:1.8;font-weight:400;animation:fadeUp .8s .6s both}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .8s both}
+.btn-p{display:inline-block;padding:16px 40px;background:var(--violet2);color:#fff;font-size:14px;font-weight:600;transition:background .2s}
 .btn-p:hover{background:#7358e6}
-.btn-g{display:inline-block;padding:14px 36px;border:1px solid rgba(155,124,255,.3);color:var(--violet);font-size:14px;font-weight:500;transition:all .2s}
-.btn-g:hover{border-color:var(--violet);background:rgba(155,124,255,.06)}
+.btn-s{display:inline-block;padding:16px 40px;border:1px solid rgba(155,124,255,.25);color:var(--violet);font-size:14px;font-weight:500;transition:all .2s}
+.btn-s:hover{border-color:var(--violet);background:rgba(155,124,255,.05)}
 
-/* PROBLEM — paper with accent border top */
-.problem{padding:100px 32px;background:rgba(246,244,239,.88);position:relative;z-index:2}
-.problem-inner{max-width:900px;margin:0 auto}
-.label{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep);margin-bottom:20px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:40px}
-.stat{background:#fff;padding:28px 24px;text-align:center}
-.stat-n{font-family:'Inter',sans-serif;font-weight:800;font-size:32px;color:var(--violet2);margin-bottom:6px;letter-spacing:-0.02em}
-.stat-l{font-size:12px;color:var(--mute);line-height:1.5}
-.body-text{font-size:15px;color:var(--dim);line-height:1.9;max-width:680px}
-.body-text a{color:var(--violet2);text-decoration:underline;text-underline-offset:3px}
-@media(max-width:768px){.stats{grid-template-columns:repeat(2,1fr)}}
+/* SECTIONS */
+.sec{padding:120px 32px}
+.sec-inner{max-width:680px;margin:0 auto}
+.sec-label{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep);margin-bottom:20px}
+.sec h2{font-family:'Inter',sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.25}
+.sec p{font-size:16px;color:var(--dim);line-height:1.9}
+.sec p+p{margin-top:16px}
+.sec a.inline{color:var(--violet2);text-decoration:underline;text-underline-offset:3px}
+.sec a.inline:hover{color:var(--violet)}
 
-/* STANDARD — white section */
-.standard{padding:100px 32px;background:rgba(255,255,255,.9);position:relative;z-index:2}
-.standard-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.standard-text h2{font-family:'Inter',sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.02em;margin-bottom:16px;line-height:1.2}
-.standard-text p{font-size:15px;color:var(--dim);line-height:1.9}
-.standard-text .link{display:inline-block;margin-top:20px;font-size:14px;font-weight:500;color:var(--violet2)}
-.standard-text .link:hover{text-decoration:underline;text-underline-offset:3px}
-.domains{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.domain{background:var(--paper);padding:20px;border-left:2px solid transparent}
-.domain:hover{border-left-color:var(--violet)}
-.domain h4{font-size:13px;font-weight:700;margin-bottom:4px}
-.domain p{font-size:11px;color:var(--mute);line-height:1.5}
-@media(max-width:768px){.standard-inner{grid-template-columns:1fr;gap:40px}.domains{grid-template-columns:1fr}}
+/* MOAT — visually distinct */
+.moat{padding:100px 32px;background:var(--ink);color:var(--paper)}
+.moat-inner{max-width:680px;margin:0 auto}
+.moat h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2}
+.moat p{font-size:16px;color:#9a9aa3;line-height:1.9}
+.moat p+p{margin-top:16px}
 
-/* CERTIFICATION — dark section */
-.cert{padding:100px 32px;background:rgba(14,14,16,.88);color:var(--paper);position:relative;z-index:2}
-.cert-inner{max-width:900px;margin:0 auto}
-.cert h2{font-family:'Inter',sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.02em;margin-bottom:16px;line-height:1.2}
-.cert>p,.cert-inner>p{font-size:15px;color:#a0a0a8;line-height:1.9;max-width:600px;margin-bottom:40px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.step{background:var(--ink2);padding:32px 24px}
-.step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--violet);letter-spacing:0.12em;margin-bottom:12px}
-.step h4{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--paper)}
-.step p{font-size:13px;color:#8a8a94;line-height:1.7}
-.cert-note{margin-top:40px;padding:24px;border:1px solid rgba(155,124,255,.15);font-size:13px;color:#8a8a94;line-height:1.7}
-@media(max-width:768px){.steps{grid-template-columns:1fr}}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+.stat{background:#fff;padding:32px 24px;text-align:center}
+.stat-n{font-family:'Inter',sans-serif;font-weight:800;font-size:36px;color:var(--violet2);margin-bottom:6px;letter-spacing:-0.02em}
+.stat-l{font-size:13px;color:var(--mute);letter-spacing:0.02em}
+@media(max-width:768px){.stats{grid-template-columns:1fr}}
 
-/* STATUS — paper with violet accent */
-.status{padding:80px 32px;background:rgba(246,244,239,.88);text-align:center;position:relative;z-index:2}
-.status-inner{max-width:600px;margin:0 auto}
-.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet2);border:1px solid rgba(132,102,255,.2);padding:6px 18px;margin-bottom:24px}
-.status h2{font-family:'Inter',sans-serif;font-weight:800;font-size:22px;margin-bottom:16px}
-.status p{font-size:14px;color:var(--dim);line-height:1.8}
+/* FOUNDER */
+.founder{padding:100px 32px;background:#fff}
+.founder-inner{max-width:680px;margin:0 auto}
 
-/* CONTACT — white */
-.contact{padding:100px 32px;background:rgba(255,255,255,.9);position:relative;z-index:2}
-.contact-inner{max-width:480px;margin:0 auto;text-align:center}
-.contact h2{font-family:'Inter',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px}
-.contact>p,.contact-inner>p{font-size:14px;color:var(--dim);line-height:1.7;margin-bottom:32px}
-.mailto{display:inline-block;padding:12px 28px;border:1px solid var(--subtle);font-size:14px;color:var(--dim);transition:all .2s;margin-bottom:40px}
-.mailto:hover{border-color:var(--violet2);color:var(--violet2)}
-.form{display:flex;flex-direction:column;gap:12px}
-.form input,.form textarea{padding:14px 18px;font-size:14px;font-family:'Inter',sans-serif;background:var(--paper);border:1px solid var(--subtle);color:var(--ink);outline:none;transition:border .2s}
-.form input::placeholder,.form textarea::placeholder{color:var(--mute)}
-.form input:focus,.form textarea:focus{border-color:var(--violet)}
-.form textarea{resize:vertical;min-height:80px}
-.form button{padding:14px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;border:none;cursor:pointer;background:var(--ink);color:var(--paper);transition:background .2s}
-.form button:hover{background:#333}
-.form-ok{display:none;margin-top:24px}
-.form-ok.show{display:block}
-.form-ok h3{font-weight:700;font-size:16px;color:var(--violet2);margin-bottom:4px}
-.form-ok p{font-size:13px;color:var(--dim)}
+/* MODEL */
+.model{padding:100px 32px;background:var(--paper)}
+.model-inner{max-width:680px;margin:0 auto}
+
+/* STATE */
+.state{padding:100px 32px;background:var(--paper2)}
+.state-inner{max-width:680px;margin:0 auto}
+.state .closing{font-family:'Inter',sans-serif;font-weight:800;font-size:20px;color:var(--ink);margin-top:24px;letter-spacing:-0.01em}
 
 /* FOOTER */
-footer{padding:48px 32px;text-align:center;border-top:1px solid var(--subtle)}
-.f-name{font-family:'Inter',sans-serif;font-weight:800;font-size:16px;letter-spacing:-0.03em;margin-bottom:12px}
-.f-name .vi{color:var(--violet)}
-.f-legal{font-size:11px;color:var(--mute);line-height:1.8}
+footer{padding:80px 32px 40px;border-top:1px solid var(--subtle)}
+.f-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.f-col h4{font-family:'Inter',sans-serif;font-weight:700;font-size:13px;margin-bottom:12px;color:var(--ink)}
+.f-col p{font-size:13px;color:var(--dim);line-height:1.7;margin-bottom:8px}
+.f-col a{color:var(--violet2);text-decoration:underline;text-underline-offset:3px;font-size:13px}
+.f-col a:hover{color:var(--violet)}
+.f-col .mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);letter-spacing:0.04em}
+.f-legal{font-size:11px;color:var(--mute);line-height:1.8;text-align:center;padding-top:32px;border-top:1px solid var(--subtle);max-width:900px;margin:0 auto}
+@media(max-width:768px){.f-grid{grid-template-columns:1fr;gap:32px}}
 </style>
 </head>
 <body>
 
-<!-- CANVAS -->
-<canvas id="network-canvas"></canvas>
-
 <!-- NAV -->
 <header id="nav">
-  <a href="#">
-    <svg viewBox="0 0 100 100" width="28" height="28" style="display:block"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/></svg>
-  </a>
   <div class="nav-r">
     <a href="#standard">Standard</a>
-    <a href="#certification">Certification</a>
-    <a href="#contact">Contact</a>
-    <a href="https://zenodo.org/records/19675375" target="_blank" class="nav-cta">White Paper</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#founder">Founder</a>
+    <span style="width:1px;height:20px;background:rgba(246,244,239,.2);margin:0 4px"></span>
+    <a href="https://zenodo.org/records/19675375" target="_blank" class="nav-cta">Read the Standard</a>
   </div>
 </header>
 
-<!-- HERO — dark -->
+<!-- HERO -->
 <section class="hero">
-  <svg viewBox="0 0 100 100" width="80" height="80" style="display:block;margin:0 auto 32px;animation:fadeUp .8s .1s both"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="7" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="25" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="25" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="25" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="43" y="43" width="10" height="10" rx="1.5" fill="#9B7CFF" opacity="1" style="animation:clusterPulse 3s ease-in-out infinite"/><rect x="61" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="43" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="7" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="79" y="61" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="7" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="25" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="43" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="0.18"/><rect x="61" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/><rect x="79" y="79" width="10" height="10" rx="1.5" fill="#F6F4EF" opacity="1"/></svg>
-  <div class="hero-over">Foreningen Custorian</div>
-  <h1>The open standard for<br>child <span class="vi">digital safety.</span></h1>
-  <p class="hero-sub">137 auditable controls. 6 domains. Mapped to EU and international regulation. Developed by a Danish non-profit. Published on Zenodo.</p>
+  <div class="hero-over">The open standard for child digital safety.</div>
+  <h1>137 controls. Built in Europe.<br><span class="vi">Cannot be bought.</span></h1>
+  <p class="hero-sub">Custorian is the European compliance standard for child digital safety. Published as an open framework. Owned by a non-profit. Free for anyone to implement.</p>
   <div class="hero-cta">
-    <a href="https://zenodo.org/records/19675375" target="_blank" class="btn-p">Read the White Paper</a>
-    <a href="#contact" class="btn-g">Get in Touch</a>
+    <a href="https://zenodo.org/records/19675375" target="_blank" class="btn-p">Read the Standard</a>
   </div>
 </section>
 
-<!-- PROBLEM — paper bg, white stat cards -->
-<section class="problem reveal">
-  <div class="problem-inner">
-    <div class="label">The Problem</div>
+<!-- WHY NOW -->
+<div class="sec reveal">
+  <div class="sec-inner">
+    <div class="sec-label">Why this exists</div>
+    <h2>Why now.</h2>
+    <p>On <a href="https://dig.watch/updates/eu-eprivacy-derogation-csam-detection-expires" target="_blank" class="inline">3 April 2026</a>, the EU lost its legal basis for voluntary child-safety detection on private communications. The temporary derogation to the ePrivacy Directive expired. The <a href="https://www.europarl.europa.eu/legislative-train/spotlight-JD22/file-combating-child-sexual-abuse-online" target="_blank" class="inline">proposed Child Sexual Abuse Regulation</a> remains in trilogue with no agreed text. Platforms operating in the EU face the broadest compliance vacuum in the modern history of EU technology regulation, alongside obligations under the DSA, AI Act, and member-state implementations.</p>
+    <p>The next regulation will not arrive in a vacuum. It will arrive into a market that has had eighteen months without a clear standard. Custorian is the standard built for that arrival.</p>
+  </div>
+</div>
+
+<!-- THE STANDARD -->
+<div class="sec reveal" id="standard" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">The standard</div>
+    <h2>The standard.</h2>
+    <p>The Custorian Controls Framework is the first open European compliance standard for child digital safety. 137 auditable controls across 6 domains. Cross-mapped to 10 regulatory frameworks including the DSA, AI Act, AADC, OSA, COPPA, GDPR, and the UNCRC.</p>
+    <p>The framework is <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">published on Zenodo</a> under Creative Commons. It is freely usable by anyone &mdash; platforms, regulators, auditors, academics, civil society, vendors. Adoption requires no licence, no fee, and no agreement with the Foundation.</p>
     <div class="stats">
-      <div class="stat"><div class="stat-n">36.2M</div><div class="stat-l">CSAM reports filed with<br>NCMEC in 2023</div></div>
-      <div class="stat"><div class="stat-n">45 min</div><div class="stat-l">Average grooming time<br>in social gaming</div></div>
-      <div class="stat"><div class="stat-n">1 in 3</div><div class="stat-l">Children 8&ndash;11 on social<br>media despite age limits</div></div>
-      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Auditable compliance<br>standards exist</div></div>
-    </div>
-    <p class="body-text">The EU <a href="https://dig.watch/updates/eu-eprivacy-derogation-csam-detection-expires" target="_blank">ePrivacy derogation expired April 3, 2026</a>. The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32022R2065" target="_blank">DSA</a>, AI Act, AADC, and Online Safety Act all mandate child protection. None of them specify how. There is no shared, auditable standard for child digital safety. Custorian is building it.</p>
-  </div>
-</section>
-
-<!-- STANDARD — white bg, 2-column -->
-<section class="standard reveal" id="standard">
-  <div class="standard-inner">
-    <div class="standard-text">
-      <div class="label">The Standard</div>
-      <h2>Comprehensive.<br>Auditable. Open.</h2>
-      <p>The Custorian Controls Framework defines 137 auditable controls across six assessment domains. It is cross-mapped to the DSA, GDPR, AI Act, UK Age Appropriate Design Code, Online Safety Act, COPPA, and UNCRC. Published under CC BY-SA 4.0.</p>
-      <a href="https://zenodo.org/records/19675375" target="_blank" class="link">Read the white paper on Zenodo &rarr;</a>
-    </div>
-    <div class="domains">
-      <div class="domain"><h4>Age Assurance</h4><p>Verification, fail-safe defaults, eIDAS integration</p></div>
-      <div class="domain"><h4>Content &amp; Design</h4><p>Detection, dark patterns, intervention design</p></div>
-      <div class="domain"><h4>Data Privacy</h4><p>Minimisation, CRIA, advertising prohibition</p></div>
-      <div class="domain"><h4>Parental Oversight</h4><p>Alerts without surveillance, graduated autonomy</p></div>
-      <div class="domain"><h4>Detection &amp; Response</h4><p>7 threat categories, incident response, reporting</p></div>
-      <div class="domain"><h4>Governance</h4><p>CSO, training, vendor management, child participation</p></div>
+      <div class="stat"><div class="stat-n">137</div><div class="stat-l">controls</div></div>
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">domains</div></div>
+      <div class="stat"><div class="stat-n">10</div><div class="stat-l">regulatory frameworks mapped</div></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- CERTIFICATION — dark bg -->
-<section class="cert reveal" id="certification">
-  <div class="cert-inner">
-    <div class="label" style="color:var(--violet)">Certification</div>
-    <h2>Custorian Certified.</h2>
-    <p>Platforms that serve children can certify against the Controls Framework. Certification is voluntary, independent, and public. Like PCI DSS for payments. Like EPEAT for electronics.</p>
-    <div class="steps">
-      <div class="step"><div class="step-num">01</div><h4>Apply</h4><p>The platform requests assessment against the Controls Framework.</p></div>
-      <div class="step"><div class="step-num">02</div><h4>Assess</h4><p>Independent assessment using automated analysis, structured testing, and expert review.</p></div>
-      <div class="step"><div class="step-num">03</div><h4>Certify</h4><p>Platforms that meet the standard are listed on the public Registry as Custorian Certified.</p></div>
-    </div>
-    <div class="cert-note">Certification is valid for 12 months with annual renewal. The Registry is public &mdash; parents, regulators, and procurement officers can verify which platforms are certified.</div>
+<!-- MOAT -->
+<div class="moat reveal">
+  <div class="moat-inner">
+    <h2>This standard cannot be bought.</h2>
+    <p>The Custorian Controls Framework is owned by Foreningen Custorian, a Danish non-profit association (CVR 46399455). It cannot be acquired, controlled, or licensed exclusively by any platform it covers. The Foundation cannot be sold. The standard cannot be taken private. The certification programme cannot be captured by a single vendor.</p>
+    <p>This is structural, not aspirational. The framework is published on Zenodo under Creative Commons Attribution-ShareAlike 4.0. This licence cannot be revoked. The Foundation's statutes and the governance separation between the Foundation and any commercial implementer are designed so the standard remains independent permanently.</p>
   </div>
-</section>
+</div>
 
-<!-- STATUS — paper bg, centered -->
-<section class="status reveal">
-  <div class="status-inner">
-    <div class="status-badge">Pre-launch</div>
-    <h2>Where we are.</h2>
-    <p>The Controls Framework v0.1 is published. The white paper is on Zenodo. The certification programme is in development. No platform has been certified yet. Pilot certification begins in 2026. The Advisory Council is forming.</p>
+<!-- HOW IT WORKS -->
+<div class="sec reveal" id="how-it-works">
+  <div class="sec-inner">
+    <div class="sec-label">How it works</div>
+    <h2>How the standard works.</h2>
+    <p>The Custorian Standard consists of three components: the Controls Framework defining what platforms serving children must do, the API Specification defining how compliant systems implement detection and reporting, and the Certification Programme through which platforms are independently validated.</p>
+    <p>Compliance is assessed through Qualified Safety Assessor audits for the largest platforms, Self-Assessment Questionnaires for smaller platforms, and accuracy metrics that platforms publish per language and per detection category. The Framework is modelled on PCI-DSS for payment security and EPEAT for sustainable electronics &mdash; voluntary technical standards that became de facto requirements through procurement reference and regulatory adoption.</p>
+    <p>The Foundation's independent certification programme will begin in 2026 with pilot participants. The methodology is documented in full in the <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">white paper</a>, available on Zenodo.</p>
   </div>
-</section>
+</div>
 
-<!-- CONTACT — white bg -->
-<section class="contact reveal" id="contact">
-  <div class="contact-inner">
-    <div class="label">Contact</div>
-    <h2>Get in touch.</h2>
-    <p>For partnerships, pilot participation, advisory council interest, or press.</p>
-    <a href="mailto:info@custorian.org" class="mailto">info@custorian.org</a>
-    <form class="form" id="cform">
-      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-      <input type="hidden" name="subject" value="Custorian Website Contact">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Message" rows="4" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div class="form-ok" id="cok"><h3>Sent.</h3><p>We will be in touch.</p></div>
+<!-- FOUNDER -->
+<div class="founder reveal" id="founder">
+  <div class="founder-inner">
+    <div class="sec-label">Who built this</div>
+    <h2>The founder.</h2>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9">Tanya Becheva is the founder of Foreningen Custorian and the principal author of the Custorian Controls Framework. She is a contributor to the IEEE P3462 working group on child and youth online safety and a member of the IEEE P2089.4 age-appropriate design working group. She holds CISSP candidate status and works in data protection and privacy at a global technology company. She is based in Odense, Denmark, and is a parent of two.</p>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">The Foundation is forming its Advisory Council to broaden governance beyond the founder. Council seats are reserved for academic researchers, civil-society organisations, hotline operators, independent child-safety experts, young people with lived experience, and an independent chair. The Council is expected to be operational in 2026.</p>
   </div>
-</section>
+</div>
+
+<!-- MODEL -->
+<div class="model reveal">
+  <div class="model-inner">
+    <div class="sec-label">The model</div>
+    <h2>The Foundation and the implementation market.</h2>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9">Foreningen Custorian develops the Controls Framework, conducts independent assessment, accredits qualified assessors, and operates the public registry. The Foundation is the standards body. It does not sell tools or services to the platforms it assesses.</p>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">Implementation of the framework is open. Platforms can build their own compliance using the published standard. Independent vendors can build certified implementations and sell them to platforms. Accredited assessors can conduct assessments commercially. The Foundation maintains structural independence from any single implementer.</p>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9;margin-top:16px">The Foundation is structurally separated from the implementation market. This separation is the source of the standard's credibility, and it is enforced by governance, by law, and by funding rules.</p>
+  </div>
+</div>
+
+<!-- CURRENT STATE -->
+<div class="state reveal">
+  <div class="state-inner">
+    <div class="sec-label">Current state</div>
+    <h2>Where things are now.</h2>
+    <p style="font-size:16px;color:var(--dim);line-height:1.9">The Controls Framework v0.1 is published. The white paper is available on <a href="https://zenodo.org/records/19675375" target="_blank" class="inline">Zenodo</a> with a DOI. The methodology is documented in technical detail. The Foundation is incorporated in Denmark. The Advisory Council is forming. The independent assessment programme will begin in 2026 with pilot participants.</p>
+    <div class="closing">This is the standard. Adoption begins now.</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-name">cust<span class="vi">orian</span></div>
-  <p class="f-legal">Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>Standard licensed CC BY-SA 4.0 &middot; &lsquo;Custorian Certified&rsquo; trademark registration in progress</p>
+  <div class="f-grid">
+    <div class="f-col">
+      <h4>Foreningen Custorian</h4>
+      <p>A Danish non-profit association developing the open European compliance standard for child digital safety.</p>
+      <p class="mono">CVR 46399455<br>Odense, Denmark</p>
+      <a href="mailto:info@custorian.org">info@custorian.org</a>
+    </div>
+    <div class="f-col">
+      <h4>The Standard</h4>
+      <p><a href="https://zenodo.org/records/19675375" target="_blank">Read the white paper (Zenodo)</a></p>
+      <p><a href="https://zenodo.org/records/19675375" target="_blank">Controls Framework (CC BY-SA 4.0)</a></p>
+      <p class="mono">DOI: 10.5281/zenodo.19675375</p>
+    </div>
+    <div class="f-col">
+      <h4>Governance</h4>
+      <p>Advisory Council forming (2026)</p>
+      <p><a href="mailto:governance@custorian.org">Apply: governance@custorian.org</a></p>
+      <p class="mono">&lsquo;Custorian Certified&rsquo; trademark<br>registration in progress</p>
+    </div>
+  </div>
+  <p class="f-legal">&copy; 2026 Foreningen Custorian. Framework published under Creative Commons Attribution-ShareAlike 4.0. The licence is irrevocable.</p>
 </footer>
 
 <script>
-// ─── INTERACTIVE DOT GRID ──────────
-(function() {
-  const canvas = document.getElementById('network-canvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, cols, rows, nodes;
-  let mouseX = -9999, mouseY = -9999;
-  const SPACING = 40, DOT_R = 1.8, WAVE_AMP = 14, WAVE_SPEED = 0.8, MOUSE_RADIUS = 180, MOUSE_PUSH = 25;
-  const PR = 155, PG = 124, PB = 255;
-  const GR = 16, GG = 185, GB = 129;
-  function resize() {
-    const dpr = Math.min(window.devicePixelRatio, 2);
-    w = window.innerWidth; h = window.innerHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cols = Math.ceil(w / SPACING) + 2; rows = Math.ceil(h / SPACING) + 2;
-    nodes = [];
-    for (let r = 0; r < rows; r++)
-      for (let c = 0; c < cols; c++)
-        nodes.push({ baseX: c * SPACING - SPACING, baseY: r * SPACING - SPACING, x: 0, y: 0, col: c, row: r });
-  }
-  function draw() {
-    // removed scroll cutoff — dots render across entire page
-    ctx.clearRect(0, 0, w, h);
-    const t = Date.now() * 0.001;
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-      const wave1 = Math.sin(n.baseX * 0.015 + t * WAVE_SPEED) * WAVE_AMP;
-      const wave2 = Math.sin(n.baseY * 0.012 + t * WAVE_SPEED * 0.7) * WAVE_AMP * 0.6;
-      const wave3 = Math.cos((n.baseX + n.baseY) * 0.008 + t * WAVE_SPEED * 0.5) * WAVE_AMP * 0.4;
-      let offX = 0, offY = wave1 + wave2 + wave3;
-      const dx = n.baseX - mouseX, dy = n.baseY - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_RADIUS && dist > 0) { const f = (1 - dist / MOUSE_RADIUS); const push = f * f * MOUSE_PUSH; offX += (dx / dist) * push; offY += (dy / dist) * push; }
-      n.x = n.baseX + offX; n.y = n.baseY + offY;
-    }
-    for (let r = 0; r < rows; r++) { ctx.beginPath(); for (let c = 0; c < cols; c++) { const n = nodes[r * cols + c]; c === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.12)'; ctx.lineWidth = 0.5; ctx.stroke(); }
-    for (let c = 0; c < cols; c++) { ctx.beginPath(); for (let r = 0; r < rows; r++) { const n = nodes[r * cols + c]; r === 0 ? ctx.moveTo(n.x, n.y) : ctx.lineTo(n.x, n.y); } ctx.strokeStyle = 'rgba('+PR+','+PG+','+PB+',0.08)'; ctx.lineWidth = 0.5; ctx.stroke(); }
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i]; const dx = n.x - mouseX, dy = n.y - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const mb = dist < MOUSE_RADIUS ? (1 - dist / MOUSE_RADIUS) * 0.6 : 0;
-      const ug = (n.col + n.row) % 7 === 0;
-      const cr = ug ? GR : PR, cg = ug ? GG : PG, cb = ug ? GB : PB;
-      if (mb > 0.15) { ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2 + 6, 0, Math.PI * 2); ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(mb * 0.06)+')'; ctx.fill(); }
-      ctx.beginPath(); ctx.arc(n.x, n.y, DOT_R + mb * 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba('+cr+','+cg+','+cb+','+(0.45 + mb)+')'; ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-  window.addEventListener('resize', resize); resize(); draw();
-})();
-
-// ─── REVEALS ──────────
 document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('visible')},{threshold:.06}).observe(el));
-
-// ─── NAV SCROLL ──────────
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80)});
-
-// ─── FORM ──────────
-document.getElementById('cform').addEventListener('submit',function(e){e.preventDefault();fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)}).then(r=>{if(r.ok){this.style.display='none';document.getElementById('cok').classList.add('show')}})});
-
-// ─── SMOOTH SCROLL ──────────
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>window.innerHeight*.7)});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 </script>
 </body>
