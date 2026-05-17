@@ -45,7 +45,7 @@ header.scrolled{padding:12px 48px;background:rgba(14,14,16,.85);backdrop-filter:
 @media(max-width:768px){header{padding:14px 20px}.nav-r{gap:14px}.nav-r a{font-size:12px}}
 
 /* HERO — dark section */
-.hero{min-height:100vh;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden}
+.hero{min-height:100vh;background:rgba(14,14,16,.92);color:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden;z-index:1}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--paper),transparent);pointer-events:none}
 .hero-over{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet);margin-bottom:24px;animation:fadeUp .8s .3s both}
 .hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-0.03em;line-height:1.15;margin-bottom:24px;max-width:680px;animation:fadeUp .8s .5s both}
