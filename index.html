@@ -127,7 +127,7 @@
     width: 100%;
     min-height: 100vh;
   }
-  .split > div {
+  .split > * {
     background: #000;
     padding: 80px 48px;
     display: flex;
@@ -174,6 +174,19 @@
     font-weight: 900;
     letter-spacing: -0.025em;
     line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    text-decoration: underline;
+    text-decoration-color: #8B5CF6;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.08em;
+    text-decoration-skip-ink: none;
+  }
+  .frameworks li:hover { opacity: 0.7; }
+  .frameworks li:focus-visible {
+    outline: 1px solid #8B5CF6;
+    outline-offset: 8px;
   }
 
   /* THREATS — THE SEVEN */
@@ -196,11 +209,15 @@
     margin: 0 auto;
   }
   .threats li {
-    font-size: clamp(28px, 5vw, 76px);
-    font-weight: 900;
-    letter-spacing: -0.025em;
-    line-height: 1;
+    font-size: clamp(18px, 3vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
     color: #fff;
+    text-decoration: line-through;
+    text-decoration-color: #8B5CF6;
+    text-decoration-thickness: 1.5px;
+    text-decoration-skip-ink: none;
   }
   .threats-footnote {
     font-size: clamp(13px, 1.5vw, 20px);
@@ -253,6 +270,15 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+  .founder-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    color: #fff;
+    margin-bottom: -8px;
   }
   .founder-name {
     font-size: clamp(48px, 11vw, 200px);
@@ -317,8 +343,8 @@
     .frameworks ul { gap: 20px 32px; }
   }
 
-  /* GOVERNANCE MODAL */
-  .gov-modal {
+  /* MODALS */
+  .modal {
     position: fixed;
     inset: 0;
     z-index: 1000;
@@ -332,11 +358,11 @@
     opacity: 0;
     transition: opacity 0.25s ease;
   }
-  .gov-modal.open {
+  .modal.open {
     display: flex;
     opacity: 1;
   }
-  .gov-card {
+  .modal-card {
     background: #000;
     border: 1px solid #1f1f1f;
     max-width: 680px;
@@ -346,7 +372,7 @@
     padding: 56px 48px;
     position: relative;
   }
-  .gov-close {
+  .modal-close {
     position: absolute;
     top: 14px;
     right: 18px;
@@ -362,8 +388,8 @@
     padding: 8px 12px;
     font-family: inherit;
   }
-  .gov-close:hover { opacity: 1; }
-  .gov-title {
+  .modal-close:hover { opacity: 1; }
+  .modal-title {
     font-size: clamp(36px, 5vw, 64px);
     font-weight: 900;
     letter-spacing: -0.03em;
@@ -372,9 +398,9 @@
     color: #fff;
     margin-bottom: 44px;
   }
-  .gov-section { margin-bottom: 28px; }
-  .gov-section:last-child { margin-bottom: 0; }
-  .gov-label {
+  .modal-section { margin-bottom: 28px; }
+  .modal-section:last-child { margin-bottom: 0; }
+  .modal-label {
     font-size: 10px;
     letter-spacing: 0.45em;
     text-transform: uppercase;
@@ -382,21 +408,63 @@
     margin-bottom: 10px;
     display: block;
   }
-  .gov-text {
+  .modal-text {
     font-size: clamp(14px, 1.4vw, 17px);
     font-weight: 500;
     line-height: 1.55;
     color: #fff;
   }
-  .gov-text a {
+  .modal-text a {
     color: #fff;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
+  .modal-controls {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #fff;
+  }
+  .modal-controls > div {
+    margin-bottom: 5px;
+  }
+  .modal-controls strong {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  /* CLICKABLE STAT TRIGGERS */
+  .stat-trigger {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    text-align: inherit;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+  .stat-trigger:hover { opacity: 0.7; }
+  .stat-trigger:focus-visible {
+    outline: 1px solid #8B5CF6;
+    outline-offset: 8px;
+  }
+  .split .stat-trigger {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 48px;
+    text-align: center;
+  }
+
   @media (max-width: 600px) {
-    .gov-card { padding: 48px 28px; }
-    .gov-title { margin-bottom: 32px; }
+    .modal-card { padding: 48px 28px; }
+    .modal-title { margin-bottom: 32px; }
   }
 </style>
 </head>
@@ -453,38 +521,38 @@
   <div class="scoreboard-kicker">
     Custorian is to children's digital safety what <strong>TÜV</strong> is to industrial safety.
   </div>
-  <div class="big">137</div>
+  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="137 auditable controls, click for details">137</button>
   <div class="label">Auditable Controls</div>
 </section>
 
 <section class="split-section">
   <div class="split">
-    <div>
+    <button class="stat-trigger" type="button" onclick="openModal('domainsModal')" aria-label="6 domains, click for details">
       <div class="num">6</div>
       <div class="lbl">Domains</div>
-    </div>
-    <div>
-      <div class="num">10</div>
+    </button>
+    <a class="stat-trigger" href="#frameworks" aria-label="7 frameworks, click to view the list">
+      <div class="num">7</div>
       <div class="lbl">Frameworks Mapped</div>
-    </div>
+    </a>
   </div>
 </section>
 
-<section class="frameworks">
-  <h2>With the ten.</h2>
+<section class="frameworks" id="frameworks">
+  <h2>We ally with 7.</h2>
   <ul>
-    <li>DSA</li>
-    <li>AI&nbsp;ACT</li>
-    <li>AADC</li>
-    <li>OSA</li>
-    <li>COPPA</li>
-    <li>GDPR</li>
-    <li>UNCRC</li>
+    <li role="button" tabindex="0" onclick="openFramework('dsa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('dsa');}">DSA</li>
+    <li role="button" tabindex="0" onclick="openFramework('aiact')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aiact');}">AI&nbsp;ACT</li>
+    <li role="button" tabindex="0" onclick="openFramework('gdpr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('gdpr');}">GDPR</li>
+    <li role="button" tabindex="0" onclick="openFramework('aadc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aadc');}">AADC</li>
+    <li role="button" tabindex="0" onclick="openFramework('osa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('osa');}">OSA</li>
+    <li role="button" tabindex="0" onclick="openFramework('coppa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('coppa');}">COPPA</li>
+    <li role="button" tabindex="0" onclick="openFramework('dkl63')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('dkl63');}">DK&nbsp;L63</li>
   </ul>
 </section>
 
 <section class="threats">
-  <h2>Against the eight.</h2>
+  <h2>We fight 8.</h2>
   <ul>
     <li>Child sexual abuse material.</li>
     <li>Grooming.</li>
@@ -504,6 +572,7 @@
 <section class="founder">
   <div class="portrait"><img src="tanya-founder.jpg" alt="Tanya Becheva"></div>
   <div class="founder-content">
+    <div class="founder-eyebrow">Founder</div>
     <div class="founder-name">Tanya Becheva</div>
     <div class="founder-credential">Mother of two. Over a decade in tech.</div>
   </div>
@@ -511,57 +580,365 @@
 
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openGov(event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
-<div class="gov-modal" id="govModal" role="dialog" aria-labelledby="govTitle" aria-modal="true">
-  <div class="gov-card">
-    <button class="gov-close" onclick="closeGov()" aria-label="Close">&times;</button>
-    <h2 class="gov-title" id="govTitle">Governance.</h2>
+<div class="modal" id="governanceModal" role="dialog" aria-labelledby="governanceTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="governanceTitle">Governance.</h2>
 
-    <div class="gov-section">
-      <div class="gov-label">Owned by</div>
-      <div class="gov-text">Foreningen Custorian. Danish non-profit. CVR 46399455.<br>Licensed CC BY-SA 4.0 &mdash; public even if the organisation dissolves.</div>
+    <div class="modal-section">
+      <div class="modal-label">Owned by</div>
+      <div class="modal-text">Foreningen Custorian. Danish non-profit. CVR 46399455.<br>Licensed CC BY-SA 4.0 &mdash; public even if the organisation dissolves.</div>
     </div>
 
-    <div class="gov-section">
-      <div class="gov-label">Decided by</div>
-      <div class="gov-text">Advisory Board of 7&ndash;9. Child rights, law, technology, academia, law enforcement.<br>One youth representative (16&ndash;21) with full voting rights.</div>
+    <div class="modal-section">
+      <div class="modal-label">Decided by</div>
+      <div class="modal-text">Advisory Board of 7&ndash;9. Child rights, law, technology, academia, law enforcement.<br>One youth representative (16&ndash;21) with full voting rights.</div>
     </div>
 
-    <div class="gov-section">
-      <div class="gov-label">Changed by</div>
-      <div class="gov-text">Annual cycle: feedback &rarr; drafts &rarr; 30-day public comment &rarr; publish.<br>Emergency: 48-hour review for critical threats.</div>
+    <div class="modal-section">
+      <div class="modal-label">Changed by</div>
+      <div class="modal-text">Annual cycle: feedback &rarr; drafts &rarr; 30-day public comment &rarr; publish.<br>Emergency: 48-hour review for critical threats.</div>
     </div>
 
-    <div class="gov-section">
-      <div class="gov-label">Protected by</div>
-      <div class="gov-text">Commercial arm has zero vote on the standard.<br>Platforms under assessment recuse from working groups.<br>No pay-to-play. All decisions published with rationale.</div>
+    <div class="modal-section">
+      <div class="modal-label">Protected by</div>
+      <div class="modal-text">Any commercial arm SHALL have zero vote on the standard.<br>Platforms under assessment recuse from working groups.<br>No pay-to-play. All decisions published with rationale.</div>
     </div>
 
-    <div class="gov-section">
-      <div class="gov-label">Reach by</div>
-      <div class="gov-text"><a href="mailto:info@custorian.org">info@custorian.org</a></div>
+    <div class="modal-section">
+      <div class="modal-label">Reach by</div>
+      <div class="modal-text"><a href="mailto:info@custorian.org">info@custorian.org</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="controlsModal" role="dialog" aria-labelledby="controlsTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="controlsTitle">137 controls.</h2>
+
+    <div class="modal-section">
+      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 128 are required for conformity. 9 are addressable. Full register: Annex A. <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read on Zenodo</a>.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-AC &middot; Age Controls (23)</div>
+      <div class="modal-controls">
+        <div><strong>CS-AC.1.1</strong> &mdash; Platform SHALL implement age verification for all users</div>
+        <div><strong>CS-AC.1.2</strong> &mdash; Age verification SHALL use at least two independent signals</div>
+        <div><strong>CS-AC.1.3</strong> &mdash; Self-declared age SHALL NOT be sole verification method</div>
+        <div><strong>CS-AC.1.4</strong> &mdash; Platform SHOULD support eIDAS digital age credentials when available</div>
+        <div><strong>CS-AC.1.5</strong> &mdash; Age verification SHALL NOT collect more data than necessary</div>
+        <div><strong>CS-AC.2.1</strong> &mdash; When age cannot be verified, system SHALL default to 13&ndash;15 bracket</div>
+        <div><strong>CS-AC.2.2</strong> &mdash; If primary verification fails, system SHALL fall back to secondary signals</div>
+        <div><strong>CS-AC.2.3</strong> &mdash; All age verification events SHALL be logged for audit</div>
+        <div><strong>CS-AC.3.1</strong> &mdash; Settings SHALL be maximally restrictive by default for child accounts</div>
+        <div><strong>CS-AC.3.2</strong> &mdash; Default settings SHALL differ by age bracket (8-10, 11-12, 13-15, 16-17)</div>
+        <div><strong>CS-AC.3.3</strong> &mdash; Location sharing SHALL be off by default for all minors</div>
+        <div><strong>CS-AC.4.1</strong> &mdash; Age-restricted features SHALL be actually gated, not just labelled</div>
+        <div><strong>CS-AC.4.2</strong> &mdash; Direct messaging from strangers SHALL be disabled by default for under-16</div>
+        <div><strong>CS-AC.4.3</strong> &mdash; Public profile visibility SHALL be off by default for under-16</div>
+        <div><strong>CS-AC.4.4</strong> &mdash; In-app purchases SHALL require parental approval for under-16</div>
+        <div><strong>CS-AC.4.5</strong> &mdash; Live streaming SHALL be disabled by default for under-16</div>
+        <div><strong>CS-AC.5.1</strong> &mdash; Platform SHOULD periodically re-verify age for accounts approaching thresholds</div>
+        <div><strong>CS-AC.5.2</strong> &mdash; Users SHALL NOT be able to change their age without re-verification</div>
+        <div><strong>CS-AC.6.1</strong> &mdash; Age verification methods SHALL be documented and publicly available</div>
+        <div><strong>CS-AC.6.2</strong> &mdash; Accuracy rates of age verification SHOULD be published</div>
+        <div><strong>CS-AC.6.3</strong> &mdash; Age verification SHALL NOT discriminate based on disability, ethnicity, or socioeconomic status</div>
+        <div><strong>CS-AC.7.1</strong> &mdash; Verifiable parental consent SHALL be obtained before processing data of children under consent age</div>
+        <div><strong>CS-AC.7.2</strong> &mdash; Parental consent mechanism SHALL be robust against child impersonation</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-CD &middot; Content and Design Safety (32)</div>
+      <div class="modal-controls">
+        <div><strong>CS-CD.1.1</strong> &mdash; Platform SHALL detect and action CSAM using hash-matching technology</div>
+        <div><strong>CS-CD.1.2</strong> &mdash; Platform SHALL detect grooming patterns in communications</div>
+        <div><strong>CS-CD.1.3</strong> &mdash; Platform SHALL detect bullying and harassment patterns</div>
+        <div><strong>CS-CD.1.4</strong> &mdash; Platform SHALL detect self-harm and suicidal content</div>
+        <div><strong>CS-CD.1.5</strong> &mdash; Platform SHALL detect violent threat content</div>
+        <div><strong>CS-CD.1.6</strong> &mdash; Platform SHALL detect financial sextortion patterns</div>
+        <div><strong>CS-CD.1.7</strong> &mdash; Platform SHOULD detect AI-generated CSAM</div>
+        <div><strong>CS-CD.1.8</strong> &mdash; Detection SHALL be effective across all supported languages</div>
+        <div><strong>CS-CD.2.1</strong> &mdash; Platform SHALL NOT use infinite scroll for child accounts</div>
+        <div><strong>CS-CD.2.2</strong> &mdash; Platform SHALL NOT use notification pressure tactics (FOMO, streaks, urgency)</div>
+        <div><strong>CS-CD.2.3</strong> &mdash; Loot boxes and randomised rewards SHALL be clearly labelled with odds</div>
+        <div><strong>CS-CD.2.4</strong> &mdash; Platform SHALL NOT use deceptive design to trick children into sharing data</div>
+        <div><strong>CS-CD.2.5</strong> &mdash; Disabling safety features SHALL require more effort than enabling them</div>
+        <div><strong>CS-CD.2.6</strong> &mdash; Autoplay SHALL be off by default for child accounts</div>
+        <div><strong>CS-CD.3.1</strong> &mdash; AI may classify content but SHALL NOT generate child-facing intervention text</div>
+        <div><strong>CS-CD.3.2</strong> &mdash; Intervention language SHALL be age-appropriate for child's verified age bracket</div>
+        <div><strong>CS-CD.3.3</strong> &mdash; Interventions SHALL be culturally reviewed for each supported language/region</div>
+        <div><strong>CS-CD.3.4</strong> &mdash; No dialogue loop &mdash; system SHALL NOT sustain conversation with children</div>
+        <div><strong>CS-CD.3.5</strong> &mdash; Intervention content SHALL be version-controlled and publicly auditable</div>
+        <div><strong>CS-CD.4.1</strong> &mdash; Child-facing interventions SHALL be compatible with screen readers</div>
+        <div><strong>CS-CD.4.2</strong> &mdash; Intervention text SHALL meet WCAG 2.1 AA contrast and readability</div>
+        <div><strong>CS-CD.4.3</strong> &mdash; Crisis helpline actions SHALL be accessible to children using assistive input</div>
+        <div><strong>CS-CD.5.1</strong> &mdash; User reports SHALL be acknowledged within 24 hours</div>
+        <div><strong>CS-CD.5.2</strong> &mdash; Illegal content SHALL be actioned within 24 hours of reporting</div>
+        <div><strong>CS-CD.5.3</strong> &mdash; Content moderation policies SHALL be published and child-comprehensible</div>
+        <div><strong>CS-CD.5.4</strong> &mdash; Appeals process SHALL be available and accessible to children</div>
+        <div><strong>CS-CD.5.5</strong> &mdash; Age classification appeal mechanism SHALL be available to users</div>
+        <div><strong>CS-CD.6.1</strong> &mdash; Recommendation algorithm SHALL NOT amplify harmful content to child accounts</div>
+        <div><strong>CS-CD.6.2</strong> &mdash; Children SHALL be able to opt out of personalised recommendations</div>
+        <div><strong>CS-CD.6.3</strong> &mdash; Non-personalised content feed SHOULD be available as default option</div>
+        <div><strong>CS-CD.7.1</strong> &mdash; Targeted advertising SHALL NOT be served to children under 18</div>
+        <div><strong>CS-CD.7.2</strong> &mdash; Ads served to children SHALL be clearly labelled as advertising</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-DM &middot; Data and Privacy for Minors (18)</div>
+      <div class="modal-controls">
+        <div><strong>CS-DM.1.1</strong> &mdash; Threat detection SHALL process data on-device by default</div>
+        <div><strong>CS-DM.1.2</strong> &mdash; Platform SHALL only collect data necessary for core functionality</div>
+        <div><strong>CS-DM.1.3</strong> &mdash; Data collection scope SHALL be documented and transparent</div>
+        <div><strong>CS-DM.2.1</strong> &mdash; All embedded SDKs SHALL be documented with data practices</div>
+        <div><strong>CS-DM.2.2</strong> &mdash; Analytics/tracking SDKs SHALL NOT profile children</div>
+        <div><strong>CS-DM.2.3</strong> &mdash; Third-party DPAs SHALL cover children's data</div>
+        <div><strong>CS-DM.3.1</strong> &mdash; Consent SHALL be informed, granular, and age-appropriate</div>
+        <div><strong>CS-DM.3.2</strong> &mdash; Consent withdrawal SHALL be as easy as giving consent</div>
+        <div><strong>CS-DM.3.3</strong> &mdash; Pre-ticked consent boxes SHALL NOT be used</div>
+        <div><strong>CS-DM.4.1</strong> &mdash; DPIA SHALL be completed for child data processing</div>
+        <div><strong>CS-DM.4.1a</strong> &mdash; CRIA SHALL be conducted for any digital service likely to be accessed by children</div>
+        <div><strong>CS-DM.4.2</strong> &mdash; Children's data SHALL have defined retention periods and automatic deletion</div>
+        <div><strong>CS-DM.4.3</strong> &mdash; Children (or parents) SHALL be able to export their data</div>
+        <div><strong>CS-DM.4.4</strong> &mdash; Children (or parents) SHALL be able to delete their data and account</div>
+        <div><strong>CS-DM.5.1</strong> &mdash; Children's data SHALL be stored in compliance with data residency requirements</div>
+        <div><strong>CS-DM.5.2</strong> &mdash; Children's data SHALL be encrypted in transit and at rest</div>
+        <div><strong>CS-DM.6.1</strong> &mdash; Automated profiling of children SHALL NOT be used beyond core safety</div>
+        <div><strong>CS-DM.6.2</strong> &mdash; Precise geolocation SHALL NOT be collected from children unless essential and consented</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-PR &middot; Parental Rights and Controls (17)</div>
+      <div class="modal-controls">
+        <div><strong>CS-PR.1.1</strong> &mdash; Platform SHALL provide a parental control dashboard</div>
+        <div><strong>CS-PR.1.2</strong> &mdash; Dashboard SHALL show safety alerts, not message content</div>
+        <div><strong>CS-PR.1.3</strong> &mdash; Dashboard SHALL be accessible on parent's device</div>
+        <div><strong>CS-PR.2.1</strong> &mdash; Parents SHALL NEVER see message content &mdash; alerts contain category, severity, timestamp only</div>
+        <div><strong>CS-PR.2.2</strong> &mdash; Parents SHALL NOT be able to enable keylogging</div>
+        <div><strong>CS-PR.2.3</strong> &mdash; Alert metadata SHALL NOT allow reconstruction of message content</div>
+        <div><strong>CS-PR.3.1</strong> &mdash; Children aged 13+ SHALL be notified that monitoring is active &mdash; non-configurable</div>
+        <div><strong>CS-PR.3.2</strong> &mdash; Notification SHALL explain what is monitored and why in age-appropriate language</div>
+        <div><strong>CS-PR.4.1</strong> &mdash; Detection sensitivity SHALL decrease and child agency increase with age</div>
+        <div><strong>CS-PR.4.2</strong> &mdash; 16+ teens SHALL be able to modify their own privacy settings</div>
+        <div><strong>CS-PR.4.3</strong> &mdash; Parental override SHALL decrease with child's age</div>
+        <div><strong>CS-PR.5.1</strong> &mdash; Child self-reporting mechanism SHALL route to counsellor or helpline, bypassing parent</div>
+        <div><strong>CS-PR.5.2</strong> &mdash; Crisis helpline SHALL be accessible with one tap from any safety alert</div>
+        <div><strong>CS-PR.6.1</strong> &mdash; Monitoring SHALL automatically cease when child turns 18</div>
+        <div><strong>CS-PR.6.2</strong> &mdash; Parent access SHALL be revoked at 18 &mdash; not parent-initiated</div>
+        <div><strong>CS-PR.6.3</strong> &mdash; On-device data SHALL be deleted within 24 hours of age-out</div>
+        <div><strong>CS-PR.6.4</strong> &mdash; Young adult SHALL have data access rights before erasure</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-MR &middot; Monitoring, Detection and Response (30)</div>
+      <div class="modal-controls">
+        <div><strong>CS-MR.1.1</strong> &mdash; Platform SHALL implement real-time threat detection across 7 categories</div>
+        <div><strong>CS-MR.1.2</strong> &mdash; Detection SHALL cover: grooming, bullying, self-harm, violence, content wellness, sextortion, dangerous purchases</div>
+        <div><strong>CS-MR.1.3</strong> &mdash; Detection accuracy metrics SHALL be published per language, updated quarterly</div>
+        <div><strong>CS-MR.1.4</strong> &mdash; Detection SHALL NOT degrade performance by more than 10%</div>
+        <div><strong>CS-MR.2.1</strong> &mdash; CSAM SHALL be reported to competent designated authority within 1 hour of confirmed detection</div>
+        <div><strong>CS-MR.2.2</strong> &mdash; CSAM evidence SHALL be preserved per legal requirements</div>
+        <div><strong>CS-MR.2.3</strong> &mdash; Reporting channel to NCMEC/national authority SHALL be configured and tested</div>
+        <div><strong>CS-MR.2.4</strong> &mdash; Metadata preservation for CSAM and illegal content involving children</div>
+        <div><strong>CS-MR.2.5</strong> &mdash; Cryptographic integrity measures for preserved evidence</div>
+        <div><strong>CS-MR.3.1</strong> &mdash; Detection SHALL be consistent across all devices</div>
+        <div><strong>CS-MR.3.2</strong> &mdash; Institutional consent applies per child, not per device</div>
+        <div><strong>CS-MR.3.3</strong> &mdash; Detection history synced via encrypted on-device sync</div>
+        <div><strong>CS-MR.4.1</strong> &mdash; Incident response plan SHALL exist for child safety events</div>
+        <div><strong>CS-MR.4.2</strong> &mdash; Critical child safety incidents SHALL be triaged within 1 hour</div>
+        <div><strong>CS-MR.4.3</strong> &mdash; Incident response SHALL include notification to affected child and parent, except where it would compromise law enforcement investigation</div>
+        <div><strong>CS-MR.5.1</strong> &mdash; Evidence of child safety incidents SHALL be preserved per applicable law</div>
+        <div><strong>CS-MR.5.2</strong> &mdash; Evidence chain of custody SHALL be documented</div>
+        <div><strong>CS-MR.6.1</strong> &mdash; Platform SHOULD participate in industry threat intelligence sharing</div>
+        <div><strong>CS-MR.6.2</strong> &mdash; Detection patterns SHALL be updated at least monthly</div>
+        <div><strong>CS-MR.7.1</strong> &mdash; Platform SHALL publish transparency reports on child safety at least annually</div>
+        <div><strong>CS-MR.7.2</strong> &mdash; Reports SHALL include: detection volumes, categories, response times, appeals, removals</div>
+        <div><strong>CS-MR.8.1</strong> &mdash; Platform SHALL conduct systemic risk assessment for minors at least annually</div>
+        <div><strong>CS-MR.8.2</strong> &mdash; Risk assessment SHALL cover algorithmic amplification</div>
+        <div><strong>CS-MR.8.3</strong> &mdash; Risk mitigation measures SHALL be documented and reviewed annually</div>
+        <div><strong>CS-MR.9.1</strong> &mdash; Platform SHALL have responsible disclosure policy for child safety vulnerabilities</div>
+        <div><strong>CS-MR.9.2</strong> &mdash; Disclosed vulnerabilities SHALL be triaged within 48 hours</div>
+        <div><strong>CS-MR.10.1</strong> &mdash; Detection pattern updates SHALL be reviewed before deployment</div>
+        <div><strong>CS-MR.10.2</strong> &mdash; Pattern updates SHALL NOT introduce bias or suppress legitimate expression</div>
+        <div><strong>CS-MR.10.3</strong> &mdash; Rollback capability SHALL exist for false positive spikes</div>
+        <div><strong>CS-MR.11.1</strong> &mdash; Detection SHOULD account for atypical communication patterns</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-GO &middot; Governance and Policy (17)</div>
+      <div class="modal-controls">
+        <div><strong>CS-GO.1.1</strong> &mdash; Platform SHALL designate a named Child Safety Officer (CSO)</div>
+        <div><strong>CS-GO.1.2</strong> &mdash; CSO SHALL report directly to executive leadership</div>
+        <div><strong>CS-GO.2.1</strong> &mdash; All staff with child data access SHALL complete annual child safety training</div>
+        <div><strong>CS-GO.2.2</strong> &mdash; Content moderators SHALL receive specialised trauma-informed training</div>
+        <div><strong>CS-GO.2.3</strong> &mdash; Moderator wellbeing programme SHALL be in place</div>
+        <div><strong>CS-GO.3.1</strong> &mdash; Third-party vendors processing child data SHALL be audited</div>
+        <div><strong>CS-GO.3.2</strong> &mdash; Vendor contracts SHALL include child data protection clauses</div>
+        <div><strong>CS-GO.4.1</strong> &mdash; Platform SHALL maintain documented regulatory compliance mapping</div>
+        <div><strong>CS-GO.4.2</strong> &mdash; Compliance mapping SHALL be updated within 90 days of new requirements</div>
+        <div><strong>CS-GO.5.1</strong> &mdash; Platform SHALL comply with child safety laws in every jurisdiction served</div>
+        <div><strong>CS-GO.5.2</strong> &mdash; Age of consent thresholds SHALL be configurable per jurisdiction</div>
+        <div><strong>CS-GO.6.1</strong> &mdash; Child safety governance SHOULD include external advisory input</div>
+        <div><strong>CS-GO.6.2</strong> &mdash; Child safety policies SHALL be reviewed at least annually</div>
+        <div><strong>CS-GO.7.1</strong> &mdash; Children's voices SHALL be included in safety design and review</div>
+        <div><strong>CS-GO.7.2</strong> &mdash; Feedback mechanisms SHALL be available and accessible to child users</div>
+        <div><strong>CS-GO.8.1</strong> &mdash; Organisation SHALL provide age-appropriate digital literacy resources to child users</div>
+        <div><strong>CS-GO.8.2</strong> &mdash; Safety features SHOULD build children's resilience and digital skills</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="domainsModal" role="dialog" aria-labelledby="domainsTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="domainsTitle">6 domains.</h2>
+
+    <div class="modal-section">
+      <div class="modal-text">The standard organises 137 controls into six functional domains. Each domain addresses a distinct dimension of child digital safety.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-AC &middot; Age controls</div>
+      <div class="modal-text">Age verification, age estimation, age-appropriate access. 23 controls.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-CD &middot; Content and design safety</div>
+      <div class="modal-text">Algorithmic safeguards, dark patterns, recommender systems, content moderation. 32 controls.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-DM &middot; Data and privacy for minors</div>
+      <div class="modal-text">Children's data minimisation, retention, encryption, profiling restrictions. 18 controls.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-PR &middot; Parental rights and controls</div>
+      <div class="modal-text">Parental dashboards, monitoring boundaries, age-graduated child autonomy. 17 controls.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-MR &middot; Monitoring, detection and response</div>
+      <div class="modal-text">Threat detection across seven categories, CSAM reporting, incident response. 30 controls.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">CS-GO &middot; Governance and policy</div>
+      <div class="modal-text">Child Safety Officer, staff training, vendor management, regulatory mapping. 17 controls.</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="frameworkModal" role="dialog" aria-labelledby="frameworkTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-label" id="frameworkLabel" style="margin-bottom: 12px;"></div>
+    <h2 class="modal-title" id="frameworkTitle"></h2>
+    <div class="modal-section">
+      <div class="modal-text" id="frameworkSummary"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">Official source</div>
+      <div class="modal-text"><a id="frameworkLink" href="" target="_blank" rel="noopener"></a></div>
     </div>
   </div>
 </div>
 
 <script>
-function openGov(e) {
+function openModal(id, e) {
   if (e) e.preventDefault();
-  document.getElementById('govModal').classList.add('open');
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeGov() {
-  document.getElementById('govModal').classList.remove('open');
+function closeModal() {
+  document.querySelectorAll('.modal.open').forEach(function(m) { m.classList.remove('open'); });
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeGov();
+  if (e.key === 'Escape') closeModal();
 });
-document.getElementById('govModal').addEventListener('click', function(e) {
-  if (e.target === this) closeGov();
+document.querySelectorAll('.modal').forEach(function(m) {
+  m.addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
 });
+
+var frameworks = {
+  dsa: {
+    label: 'EU · Regulation 2022/2065',
+    title: 'Digital Services Act',
+    summary: 'Sets obligations for online platforms on illegal content, transparency, and protection of minors. Article 28 requires platforms accessible to minors to ensure a high level of privacy, safety, and security. Articles 34–36 impose systemic risk assessment and mitigation duties on Very Large Online Platforms.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065',
+    urlLabel: 'eur-lex.europa.eu — Regulation 2022/2065'
+  },
+  aiact: {
+    label: 'EU · Regulation 2024/1689',
+    title: 'AI Act',
+    summary: 'First comprehensive law on artificial intelligence. Classifies AI systems intended to interact with children as high-risk in certain categories. Imposes transparency, human oversight, accuracy, and non-discrimination requirements on covered systems.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689',
+    urlLabel: 'eur-lex.europa.eu — Regulation 2024/1689'
+  },
+  gdpr: {
+    label: 'EU · Regulation 2016/679',
+    title: 'General Data Protection Regulation',
+    summary: 'Foundational European framework for personal data protection. Article 8 sets conditions for a child’s consent in information society services. Recital 38 establishes specific protection for children’s personal data, requiring particular care with their consent and rights.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679',
+    urlLabel: 'eur-lex.europa.eu — Regulation 2016/679'
+  },
+  aadc: {
+    label: 'UK · ICO Statutory Code, 2021',
+    title: 'Age Appropriate Design Code',
+    summary: 'The first regulatory code worldwide specifically for child users of digital services. Fifteen standards online services must follow to protect children’s data and wellbeing, including default high-privacy settings and prohibition of design that nudges children to lower their protections.',
+    url: 'https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/',
+    urlLabel: 'ico.org.uk — Age Appropriate Design Code'
+  },
+  osa: {
+    label: 'UK · 2023',
+    title: 'Online Safety Act',
+    summary: 'Imposes duties on platforms hosting user-generated content to protect users from illegal content, with enhanced obligations for protecting children. Includes specific duties on age assurance and the removal of content harmful to minors.',
+    url: 'https://www.legislation.gov.uk/ukpga/2023/50',
+    urlLabel: 'legislation.gov.uk — Online Safety Act 2023'
+  },
+  coppa: {
+    label: 'US · 15 U.S.C. §§ 6501–6506',
+    title: 'Children’s Online Privacy Protection Act',
+    summary: 'First children’s online privacy law worldwide (1998). Requires verifiable parental consent before operators of websites or online services collect personal information from children under 13.',
+    url: 'https://www.law.cornell.edu/uscode/text/15/chapter-91',
+    urlLabel: 'law.cornell.edu — COPPA (Chapter 91)'
+  },
+  dkl63: {
+    label: 'DK · Act L 63, 2025',
+    title: 'Social Media Age Restriction Act',
+    summary: 'Amendment to the Danish Social Media Act. Establishes 15 as the minimum age for independent social media account creation in Denmark. Aligned with the Danish digital consent age set in the Data Protection Act.',
+    url: 'https://www.ft.dk/samling/20241/lovforslag/l63/index.htm',
+    urlLabel: 'ft.dk — Bill L 63'
+  }
+};
+
+function openFramework(key) {
+  var f = frameworks[key];
+  if (!f) return;
+  document.getElementById('frameworkLabel').textContent = f.label;
+  document.getElementById('frameworkTitle').textContent = f.title;
+  document.getElementById('frameworkSummary').textContent = f.summary;
+  var link = document.getElementById('frameworkLink');
+  link.href = f.url;
+  link.textContent = f.urlLabel;
+  openModal('frameworkModal');
+}
 </script>
 
 </body>
