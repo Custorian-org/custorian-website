@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — A standard for children's digital safety. Owned by no one.</title>
-<meta name="description" content="Custorian is the European standard for child digital safety. 137 auditable controls. Mapped to ten regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
+<meta name="description" content="Custorian is the European standard for child digital safety. 139 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
 <meta property="og:title" content="Custorian — A standard for children's digital safety.">
-<meta property="og:description" content="137 auditable controls. Mapped to ten frameworks. Against eight harms. Owned by no one.">
+<meta property="og:description" content="139 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
 <meta property="og:image" content="https://custorian.org/og-image.png">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
@@ -521,7 +521,7 @@
   <div class="scoreboard-kicker">
     Custorian is to children's digital safety what <strong>TÜV</strong> is to industrial safety.
   </div>
-  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="137 auditable controls, click for details">137</button>
+  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="139 auditable controls, click for details">139</button>
   <div class="label">Auditable Controls</div>
 </section>
 
@@ -618,20 +618,21 @@
 <div class="modal" id="controlsModal" role="dialog" aria-labelledby="controlsTitle" aria-modal="true">
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
-    <h2 class="modal-title" id="controlsTitle">137 controls.</h2>
+    <h2 class="modal-title" id="controlsTitle">139 controls.</h2>
 
     <div class="modal-section">
-      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 128 are required for conformity. 9 are addressable. Full register: Annex A. <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read on Zenodo</a>.</div>
+      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 130 are required for conformity. 9 are addressable. Full register: Annex A. <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read on Zenodo</a>.</div>
     </div>
 
     <div class="modal-section">
-      <div class="modal-label">CS-AC &middot; Age Controls (23)</div>
+      <div class="modal-label">CS-AC &middot; Age Controls (24)</div>
       <div class="modal-controls">
         <div><strong>CS-AC.1.1</strong> &mdash; Platform SHALL implement age verification for all users</div>
         <div><strong>CS-AC.1.2</strong> &mdash; Age verification SHALL use at least two independent signals</div>
         <div><strong>CS-AC.1.3</strong> &mdash; Self-declared age SHALL NOT be sole verification method</div>
         <div><strong>CS-AC.1.4</strong> &mdash; Platform SHOULD support eIDAS digital age credentials when available</div>
         <div><strong>CS-AC.1.5</strong> &mdash; Age verification SHALL NOT collect more data than necessary</div>
+        <div><strong>CS-AC.1.6</strong> &mdash; Age assurance methods SHALL meet minimum accuracy thresholds (eIDAS FAR &le; 0.1%; facial age estimation MAE &le; 2.0 yrs; 13/18 boundary error &le; 5%)</div>
         <div><strong>CS-AC.2.1</strong> &mdash; When age cannot be verified, system SHALL default to 13&ndash;15 bracket</div>
         <div><strong>CS-AC.2.2</strong> &mdash; If primary verification fails, system SHALL fall back to secondary signals</div>
         <div><strong>CS-AC.2.3</strong> &mdash; All age verification events SHALL be logged for audit</div>
@@ -716,11 +717,12 @@
     </div>
 
     <div class="modal-section">
-      <div class="modal-label">CS-PR &middot; Parental Rights and Controls (17)</div>
+      <div class="modal-label">CS-PR &middot; Parental Rights and Controls (18)</div>
       <div class="modal-controls">
         <div><strong>CS-PR.1.1</strong> &mdash; Platform SHALL provide a parental control dashboard</div>
         <div><strong>CS-PR.1.2</strong> &mdash; Dashboard SHALL show safety alerts, not message content</div>
         <div><strong>CS-PR.1.3</strong> &mdash; Dashboard SHALL be accessible on parent's device</div>
+        <div><strong>CS-PR.1.4</strong> &mdash; Platform SHALL accommodate child accounts under more than one parent/guardian (up to four, mutual-consent changes, non-digital channel for parents without smartphone)</div>
         <div><strong>CS-PR.2.1</strong> &mdash; Parents SHALL NEVER see message content &mdash; alerts contain category, severity, timestamp only</div>
         <div><strong>CS-PR.2.2</strong> &mdash; Parents SHALL NOT be able to enable keylogging</div>
         <div><strong>CS-PR.2.3</strong> &mdash; Alert metadata SHALL NOT allow reconstruction of message content</div>
@@ -805,12 +807,12 @@
     <h2 class="modal-title" id="domainsTitle">6 domains.</h2>
 
     <div class="modal-section">
-      <div class="modal-text">The standard organises 137 controls into six functional domains. Each domain addresses a distinct dimension of child digital safety.</div>
+      <div class="modal-text">The standard organises 139 controls into six functional domains. Each domain addresses a distinct dimension of child digital safety.</div>
     </div>
 
     <div class="modal-section">
       <div class="modal-label">CS-AC &middot; Age controls</div>
-      <div class="modal-text">Age verification, age estimation, age-appropriate access. 23 controls.</div>
+      <div class="modal-text">Age verification, age estimation, age-appropriate access, accuracy thresholds. 24 controls.</div>
     </div>
 
     <div class="modal-section">
@@ -825,7 +827,7 @@
 
     <div class="modal-section">
       <div class="modal-label">CS-PR &middot; Parental rights and controls</div>
-      <div class="modal-text">Parental dashboards, monitoring boundaries, age-graduated child autonomy. 17 controls.</div>
+      <div class="modal-text">Parental dashboards, monitoring boundaries, age-graduated child autonomy, multi-guardian support. 18 controls.</div>
     </div>
 
     <div class="modal-section">
