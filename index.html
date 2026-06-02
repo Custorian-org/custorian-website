@@ -343,6 +343,155 @@
     .frameworks ul { gap: 20px 32px; }
   }
 
+  /* PILOT / FIRST MOVERS */
+  .pilot { text-align: center; }
+  .pilot-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 28px;
+  }
+  .pilot h2 {
+    font-size: clamp(40px, 7.5vw, 130px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    max-width: 14ch;
+    margin: 0 auto 36px;
+  }
+  .pilot p {
+    font-size: clamp(15px, 1.6vw, 21px);
+    font-weight: 500;
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 0 auto 48px;
+    opacity: 0.82;
+  }
+  .pilot-cta {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #8B5CF6;
+    border: none;
+    padding: 22px 44px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .pilot-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+  .pilot-cta:focus-visible { outline: 2px solid #8B5CF6; outline-offset: 6px; }
+  .pilot-note {
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* FORM (inside modal) */
+  .form-intro {
+    font-size: 14.5px;
+    line-height: 1.55;
+    opacity: 0.8;
+    margin-bottom: 32px;
+  }
+  .field { margin-bottom: 22px; text-align: left; }
+  .field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 9px;
+  }
+  .field label .req { color: #8B5CF6; }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #262626;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 14px 16px;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  .field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238B5CF6' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: #8B5CF6;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: #555; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+  .form-submit {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #8B5CF6;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s ease;
+  }
+  .form-submit:hover { opacity: 0.88; }
+  .form-submit:disabled { opacity: 0.45; cursor: default; }
+  .form-status {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    min-height: 20px;
+  }
+  .form-status.ok { color: #8B5CF6; }
+  .form-status.err { color: #ff6b6b; }
+  .form-success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success .tick {
+    font-size: 52px;
+    color: #8B5CF6;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .form-success h3 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .form-success p { font-size: 15px; line-height: 1.6; opacity: 0.8; }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
   /* MODALS */
   .modal {
     position: fixed;
@@ -565,6 +714,14 @@
   </ul>
 </section>
 
+<section class="pilot" id="pilot">
+  <div class="pilot-kicker">The Pilot &middot; Founding Cohort</div>
+  <h2>Be certified first.</h2>
+  <p>We are selecting a small founding cohort of platforms to be assessed against the Custorian standard before anyone else. First movers shape the certification scheme, gain a head start on DSA, AADC and the EU's incoming rules &mdash; and earn the right to say they were verified safe for children before it was required.</p>
+  <button class="pilot-cta" type="button" onclick="openModal('pilotModal')">Apply to the pilot</button>
+  <div class="pilot-note">No cost to founding members &middot; Limited places</div>
+</section>
+
 <section class="creed">
   <h2>For the children.</h2>
 </section>
@@ -580,7 +737,7 @@
 
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
 <div class="modal" id="governanceModal" role="dialog" aria-labelledby="governanceTitle" aria-modal="true">
@@ -867,6 +1024,94 @@
   </div>
 </div>
 
+<div class="modal" id="pilotModal" role="dialog" aria-labelledby="pilotTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+
+    <div id="pilotFormWrap">
+      <h2 class="modal-title" id="pilotTitle">Join the pilot.</h2>
+      <p class="form-intro">Tell us about your platform. We review every application personally and reply within five working days. Founding-cohort assessment is free &mdash; we are choosing partners, not customers.</p>
+
+      <form id="pilotForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Pilot — New Platform Application">
+        <input type="hidden" name="from_name" value="Custorian Pilot Form">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="pf-platform">Platform / company name <span class="req">*</span></label>
+          <input type="text" id="pf-platform" name="Platform" required placeholder="e.g. Acme Social">
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-name">Your name <span class="req">*</span></label>
+            <input type="text" id="pf-name" name="Contact name" required placeholder="Full name">
+          </div>
+          <div class="field">
+            <label for="pf-role">Your role</label>
+            <input type="text" id="pf-role" name="Role" placeholder="e.g. Head of Trust &amp; Safety">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-email">Work email <span class="req">*</span></label>
+            <input type="email" id="pf-email" name="Email" required placeholder="you@platform.com">
+          </div>
+          <div class="field">
+            <label for="pf-url">Platform URL</label>
+            <input type="url" id="pf-url" name="URL" placeholder="https://">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-type">Platform type <span class="req">*</span></label>
+            <select id="pf-type" name="Platform type" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Social network</option>
+              <option>Messaging / chat</option>
+              <option>Gaming</option>
+              <option>Video / streaming</option>
+              <option>EdTech / learning</option>
+              <option>Marketplace / commerce</option>
+              <option>Creator / community</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-users">Approx. users under 18</label>
+            <select id="pf-users" name="Under-18 users">
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Under 10k</option>
+              <option>10k &ndash; 100k</option>
+              <option>100k &ndash; 1M</option>
+              <option>1M &ndash; 10M</option>
+              <option>Over 10M</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pf-msg">Why do you want to be a first mover? <span class="req">*</span></label>
+          <textarea id="pf-msg" name="Message" required placeholder="What child-safety measures do you have today, and what are you hoping to get from certification?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="pilotSubmit">Submit application</button>
+        <div class="form-status" id="pilotStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div id="pilotSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Application received.</h3>
+      <p>Thank you. We review every application personally and will be in touch within five working days at the email you provided.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 function openModal(id, e) {
   if (e) e.preventDefault();
@@ -951,6 +1196,47 @@ function openFramework(key) {
   link.textContent = f.urlLabel;
   openModal('frameworkModal');
 }
+
+// Pilot application — AJAX submit to Web3Forms, inline success
+(function () {
+  var form = document.getElementById('pilotForm');
+  if (!form) return;
+  var btn = document.getElementById('pilotSubmit');
+  var status = document.getElementById('pilotStatus');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json.success) {
+          document.getElementById('pilotFormWrap').style.display = 'none';
+          document.getElementById('pilotSuccess').style.display = 'block';
+        } else {
+          status.className = 'form-status err';
+          status.textContent = json.message || 'Something went wrong. Email info@custorian.org and we will sort it.';
+          btn.disabled = false;
+          btn.textContent = 'Submit application';
+        }
+      })
+      .catch(function () {
+        status.className = 'form-status err';
+        status.textContent = 'Network error. Please email info@custorian.org directly.';
+        btn.disabled = false;
+        btn.textContent = 'Submit application';
+      });
+  });
+})();
 </script>
 
 </body>
