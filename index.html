@@ -488,6 +488,61 @@
     margin-bottom: 16px;
   }
   .form-success p { font-size: 15px; line-height: 1.6; opacity: 0.8; }
+  .form-success .next {
+    text-align: left;
+    max-width: 380px;
+    margin: 28px auto 0;
+    border-top: 1px solid #1f1f1f;
+    padding-top: 24px;
+  }
+  .form-success .next .next-label {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .form-success .next ol {
+    list-style: none;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .form-success .next li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 34px;
+    font-size: 14px;
+    line-height: 1.45;
+    opacity: 0.85;
+  }
+  .form-success .next li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #8B5CF6;
+    color: #8B5CF6;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-success .meanwhile {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .form-success .meanwhile a {
+    color: #8B5CF6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
   @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; gap: 0; }
   }
@@ -1106,8 +1161,17 @@
 
     <div id="pilotSuccess" class="form-success" style="display:none;">
       <div class="tick">&#10003;</div>
-      <h3>Application received.</h3>
-      <p>Thank you. We review every application personally and will be in touch within five working days at the email you provided.</p>
+      <h3>You're on the list.</h3>
+      <p>Your application is in. Every one is read personally by the Custorian team &mdash; not a queue, not a bot.</p>
+      <div class="next">
+        <div class="next-label">What happens next</div>
+        <ol>
+          <li>We review your platform against the standard's scope.</li>
+          <li>You'll hear from us at the email you gave us within <strong>five working days</strong>.</li>
+          <li>If it's a fit, we book a call to scope your founding-cohort assessment.</li>
+        </ol>
+      </div>
+      <div class="meanwhile">Meanwhile &mdash; <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">read the standard</a> you'll be measured against.</div>
     </div>
   </div>
 </div>
