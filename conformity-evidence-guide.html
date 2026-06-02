@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian — Conformity Evidence Guide</title>
+<meta name="description" content="How a platform proves conformity with the Custorian standard: the evidence to produce for each of the 139 controls, across six domains.">
+<style>
+  :root {
+    --purple: #8B5CF6;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e4e0da;
+    --paper: #ffffff;
+    --wash: #faf8f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .doc { max-width: 920px; margin: 0 auto; padding: 56px 48px 80px; }
+
+  /* PRINT/SCREEN ACTION BAR */
+  .actionbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--ink); color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .actionbar button {
+    font-family: inherit; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: var(--purple); color: #fff; border: none; padding: 10px 22px; cursor: pointer; font-weight: 700;
+  }
+  .actionbar button:hover { opacity: 0.9; }
+
+  /* COVER */
+  .cover { border-bottom: 2px solid var(--ink); padding-bottom: 40px; margin-bottom: 44px; }
+  .wordmark {
+    font-size: 13px; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 800;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 48px;
+  }
+  .wordmark .glyph {
+    display: inline-grid; grid-template-columns: repeat(2, 7px); grid-gap: 2px;
+  }
+  .wordmark .glyph i { width: 7px; height: 7px; background: var(--purple); display: block; }
+  .cover h1 {
+    font-size: clamp(34px, 6vw, 60px); font-weight: 900; letter-spacing: -0.03em;
+    line-height: 0.98; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .cover .lede { font-size: 18px; line-height: 1.5; max-width: 60ch; color: var(--ink); }
+  .cover .meta {
+    margin-top: 28px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .cover .meta span { margin-right: 18px; }
+
+  h2 {
+    font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 800;
+    color: var(--purple); margin: 48px 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 22px; font-weight: 900; letter-spacing: -0.02em; margin: 40px 0 6px;
+  }
+  h3 .code { color: var(--purple); }
+  .domain-sub { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+  p { margin-bottom: 14px; max-width: 70ch; }
+  .callout {
+    background: var(--wash); border-left: 3px solid var(--purple); padding: 18px 22px; margin: 18px 0; font-size: 14px;
+  }
+  .callout strong { font-weight: 800; }
+
+  ul.clean { list-style: none; margin: 14px 0; }
+  ul.clean li { padding-left: 22px; position: relative; margin-bottom: 8px; max-width: 70ch; }
+  ul.clean li::before { content: ''; position: absolute; left: 4px; top: 8px; width: 7px; height: 7px; background: var(--purple); }
+
+  /* LEGEND */
+  .legend { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 28px; margin: 16px 0 8px; }
+  .legend div { font-size: 13px; }
+  .tag {
+    display: inline-block; min-width: 30px; text-align: center; font-size: 10px; font-weight: 800;
+    letter-spacing: 0.08em; padding: 2px 7px; border-radius: 3px; margin-right: 8px; color: #fff; background: var(--ink);
+  }
+  .tag.P { background: #5b8c5a; } .tag.C { background: #3b6ea5; } .tag.T { background: #b5651d; }
+  .tag.L { background: #7a4fa3; } .tag.A { background: #a53b5b; } .tag.D { background: #2b2b2b; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 8px; font-size: 12.5px; }
+  thead th {
+    text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    border-bottom: 1.5px solid var(--ink); padding: 8px 10px 8px 0; font-weight: 700;
+  }
+  tbody td { border-bottom: 1px solid var(--line); padding: 9px 10px 9px 0; vertical-align: top; }
+  td.cid { white-space: nowrap; font-weight: 700; color: var(--ink); font-size: 12px; }
+  td.req { color: var(--ink); }
+  td.ev { color: var(--ink); }
+  .req .shall { color: var(--purple); font-weight: 700; }
+  .req .should { color: var(--muted); font-weight: 700; }
+  tr.addr td { background: var(--wash); }
+
+  footer {
+    margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
+    font-size: 11px; letter-spacing: 0.06em; color: var(--muted);
+  }
+  footer a { color: var(--purple); text-decoration: none; }
+
+  @media print {
+    .actionbar { display: none; }
+    .doc { max-width: none; padding: 0 8mm; }
+    body { font-size: 10.5pt; }
+    h2 { margin-top: 26px; }
+    h3 { margin-top: 22px; page-break-after: avoid; }
+    table { font-size: 9pt; page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+    thead { display: table-header-group; }
+    .domain { page-break-before: always; }
+    .cover { page-break-after: avoid; }
+  }
+  @media (max-width: 640px) {
+    .doc { padding: 32px 20px; }
+    .legend { grid-template-columns: 1fr; }
+    table, thead, tbody, th, td, tr { display: block; }
+    thead { display: none; }
+    tbody td { border: none; padding: 2px 0; }
+    tbody tr { border-bottom: 1px solid var(--line); padding: 12px 0; }
+    td.cid::before { content: 'Control — '; color: var(--muted); }
+    td.ev::before { content: 'Evidence: '; font-weight: 700; }
+  }
+</style>
+</head>
+<body>
+
+<div class="actionbar">
+  <span>Custorian · Conformity Evidence Guide</span>
+  <button onclick="window.print()">Download / Print PDF</button>
+</div>
+
+<div class="doc">
+
+  <div class="cover">
+    <div class="wordmark">
+      <span class="glyph"><i></i><i></i><i></i><i></i></span>
+      Custorian
+    </div>
+    <h1>How to prove it.</h1>
+    <p class="lede">A platform does not declare itself safe for children. It produces evidence. This guide sets out, control by control, the evidence a digital service generates to demonstrate conformity with the Custorian standard — 139 auditable controls across six domains.</p>
+    <div class="meta">
+      <span>Foreningen Custorian</span>
+      <span>CVR 46399455</span>
+      <span>Companion to the Custorian Standard, Draft EN v0.2</span>
+    </div>
+  </div>
+
+  <h2>How conformity works</h2>
+  <p>Custorian is a conformity standard, not a self-assessment badge. Conformity is determined against documented, measurable controls and evidenced by artefacts an independent assessor can inspect, test, and reproduce.</p>
+  <ul class="clean">
+    <li><strong>139 controls, six domains.</strong> Each control is a single auditable requirement. <strong>130 are required</strong> for conformity; <strong>9 are addressable</strong> — applicable where relevant, with a documented justification if not implemented.</li>
+    <li><strong>SHALL vs SHOULD.</strong> A <span style="color:var(--purple);font-weight:700">SHALL</span> control is mandatory. A <span style="color:var(--muted);font-weight:700">SHOULD</span> control is recommended; non-implementation must be justified and recorded.</li>
+    <li><strong>Certified by independent bodies.</strong> The foreningen owns the scheme and licenses the &ldquo;Custorian Certified&rdquo; mark; certification itself is issued by independent accredited Certification Bodies under EC 765/2008. The foreningen does not certify platforms directly, and no vendor is privileged.</li>
+    <li><strong>Evidence travels.</strong> Most artefacts below already exist for platforms meeting DSA, GDPR, the UK AADC, the Online Safety Act or COPPA. Custorian maps them to one coherent child-safety frame, so you produce them once.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>What an assessor expects.</strong> For every applicable control: a named owner, a current artefact (dated, version-controlled), and — where the control is testable — a reproducible result. &ldquo;We do this&rdquo; is not evidence. &ldquo;Here is the configuration, the test, the log, and who signed it off&rdquo; is.
+  </div>
+
+  <h2>Six kinds of evidence</h2>
+  <p>Every control is satisfied by one or more of these artefact types. The tables that follow tag each control with the primary type(s) expected.</p>
+  <div class="legend">
+    <div><span class="tag P">P</span> <strong>Policy / procedure</strong> — a documented, dated, owned written control.</div>
+    <div><span class="tag C">C</span> <strong>Configuration / system export</strong> — the actual settings, schema, or architecture in effect.</div>
+    <div><span class="tag T">T</span> <strong>Test / metrics report</strong> — a reproducible measurement, ideally independently produced.</div>
+    <div><span class="tag L">L</span> <strong>Logs / records</strong> — operational evidence the control runs in production.</div>
+    <div><span class="tag A">A</span> <strong>Attestation / contract</strong> — a third-party assurance, DPA, or signed clause.</div>
+    <div><span class="tag D">D</span> <strong>Demonstration</strong> — a screenshot, recorded walkthrough, or published page (URL).</div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:14px">Rows shaded grey are <strong>addressable</strong> controls (SHOULD): produce the evidence if applicable, or a recorded justification for non-applicability.</p>
+
+  <!-- ===================== CS-AC ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-AC</span> · Age Controls</h3>
+  <div class="domain-sub">24 controls — age verification, age estimation, age-appropriate defaults, accuracy thresholds.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-AC.1.1</td><td class="req"><span class="shall">SHALL</span> implement age verification for all users.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Age-assurance system configuration + recorded verification walkthrough.</td></tr>
+      <tr><td class="cid">CS-AC.1.2</td><td class="req"><span class="shall">SHALL</span> use at least two independent signals.</td><td class="ev"><span class="tag C">C</span> Documented signal sources + assurance architecture diagram.</td></tr>
+      <tr><td class="cid">CS-AC.1.3</td><td class="req">Self-declared age <span class="shall">SHALL NOT</span> be the sole method.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Config showing self-declaration cannot stand alone + negative test.</td></tr>
+      <tr class="addr"><td class="cid">CS-AC.1.4</td><td class="req"><span class="should">SHOULD</span> support eIDAS digital age credentials when available.</td><td class="ev"><span class="tag C">C</span> eIDAS integration config, or documented roadmap/justification.</td></tr>
+      <tr><td class="cid">CS-AC.1.5</td><td class="req"><span class="shall">SHALL NOT</span> collect more data than necessary for verification.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Data-minimisation note + field-level data map for AV.</td></tr>
+      <tr><td class="cid">CS-AC.1.6</td><td class="req"><span class="shall">SHALL</span> meet minimum accuracy thresholds (FAR ≤ 0.1%; facial MAE ≤ 2.0 yr; 13/18 boundary error ≤ 5%).</td><td class="ev"><span class="tag T">T</span> Independent accuracy test report against the stated thresholds.</td></tr>
+      <tr><td class="cid">CS-AC.2.1</td><td class="req">When age cannot be verified, <span class="shall">SHALL</span> default to the 13–15 bracket.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Fallback config + test of the unverifiable case.</td></tr>
+      <tr><td class="cid">CS-AC.2.2</td><td class="req">If primary verification fails, <span class="shall">SHALL</span> fall back to secondary signals.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Fallback logic doc + primary-failure test.</td></tr>
+      <tr><td class="cid">CS-AC.2.3</td><td class="req">All age verification events <span class="shall">SHALL</span> be logged for audit.</td><td class="ev"><span class="tag L">L</span> Sample age-verification audit log (redacted).</td></tr>
+      <tr><td class="cid">CS-AC.3.1</td><td class="req">Settings <span class="shall">SHALL</span> be maximally restrictive by default for child accounts.</td><td class="ev"><span class="tag C">C</span> Default-settings export for a child account.</td></tr>
+      <tr><td class="cid">CS-AC.3.2</td><td class="req">Defaults <span class="shall">SHALL</span> differ by age bracket (8–10, 11–12, 13–15, 16–17).</td><td class="ev"><span class="tag C">C</span> Settings matrix per age band.</td></tr>
+      <tr><td class="cid">CS-AC.3.3</td><td class="req">Location sharing <span class="shall">SHALL</span> be off by default for all minors.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Default config + minor-account screenshot.</td></tr>
+      <tr><td class="cid">CS-AC.4.1</td><td class="req">Age-restricted features <span class="shall">SHALL</span> be actually gated, not just labelled.</td><td class="ev"><span class="tag T">T</span> Gating test results demonstrating enforcement.</td></tr>
+      <tr><td class="cid">CS-AC.4.2</td><td class="req">DMs from strangers <span class="shall">SHALL</span> be disabled by default for under-16.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Default messaging config + walkthrough.</td></tr>
+      <tr><td class="cid">CS-AC.4.3</td><td class="req">Public profile visibility <span class="shall">SHALL</span> be off by default for under-16.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Default visibility config + screenshot.</td></tr>
+      <tr><td class="cid">CS-AC.4.4</td><td class="req">In-app purchases <span class="shall">SHALL</span> require parental approval for under-16.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Purchase-flow config + approval walkthrough.</td></tr>
+      <tr><td class="cid">CS-AC.4.5</td><td class="req">Live streaming <span class="shall">SHALL</span> be disabled by default for under-16.</td><td class="ev"><span class="tag C">C</span> Streaming gate configuration.</td></tr>
+      <tr class="addr"><td class="cid">CS-AC.5.1</td><td class="req"><span class="should">SHOULD</span> periodically re-verify age near thresholds.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Re-verification policy + sample re-verify events.</td></tr>
+      <tr><td class="cid">CS-AC.5.2</td><td class="req">Users <span class="shall">SHALL NOT</span> change age without re-verification.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Config + attempt-to-change test.</td></tr>
+      <tr><td class="cid">CS-AC.6.1</td><td class="req">AV methods <span class="shall">SHALL</span> be documented and publicly available.</td><td class="ev"><span class="tag D">D</span> Public-facing age-assurance methods page (URL).</td></tr>
+      <tr class="addr"><td class="cid">CS-AC.6.2</td><td class="req"><span class="should">SHOULD</span> publish accuracy rates of age verification.</td><td class="ev"><span class="tag D">D</span> Published accuracy figures.</td></tr>
+      <tr><td class="cid">CS-AC.6.3</td><td class="req">AV <span class="shall">SHALL NOT</span> discriminate by disability, ethnicity, or socioeconomic status.</td><td class="ev"><span class="tag T">T</span> Bias/fairness test across demographic groups.</td></tr>
+      <tr><td class="cid">CS-AC.7.1</td><td class="req">Verifiable parental consent <span class="shall">SHALL</span> be obtained below consent age.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> VPC mechanism config + consent walkthrough.</td></tr>
+      <tr><td class="cid">CS-AC.7.2</td><td class="req">Consent mechanism <span class="shall">SHALL</span> be robust against child impersonation.</td><td class="ev"><span class="tag T">T</span> Anti-impersonation test results.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ===================== CS-CD ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-CD</span> · Content &amp; Design Safety</h3>
+  <div class="domain-sub">32 controls — detection, dark patterns, recommender systems, moderation, advertising.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-CD.1.1</td><td class="req"><span class="shall">SHALL</span> detect and action CSAM via hash-matching.</td><td class="ev"><span class="tag A">A</span><span class="tag C">C</span> Hash-matching provider contract (e.g. PhotoDNA/NCMEC) + config.</td></tr>
+      <tr><td class="cid">CS-CD.1.2</td><td class="req"><span class="shall">SHALL</span> detect grooming patterns in communications.</td><td class="ev"><span class="tag T">T</span> Grooming-detection model card + accuracy metrics.</td></tr>
+      <tr><td class="cid">CS-CD.1.3</td><td class="req"><span class="shall">SHALL</span> detect bullying and harassment.</td><td class="ev"><span class="tag T">T</span> Detection model card + metrics.</td></tr>
+      <tr><td class="cid">CS-CD.1.4</td><td class="req"><span class="shall">SHALL</span> detect self-harm and suicidal content.</td><td class="ev"><span class="tag T">T</span><span class="tag C">C</span> Detection model card + crisis-routing config.</td></tr>
+      <tr><td class="cid">CS-CD.1.5</td><td class="req"><span class="shall">SHALL</span> detect violent threat content.</td><td class="ev"><span class="tag T">T</span> Detection coverage + metrics.</td></tr>
+      <tr><td class="cid">CS-CD.1.6</td><td class="req"><span class="shall">SHALL</span> detect financial sextortion patterns.</td><td class="ev"><span class="tag T">T</span> Sextortion-pattern detection report.</td></tr>
+      <tr class="addr"><td class="cid">CS-CD.1.7</td><td class="req"><span class="should">SHOULD</span> detect AI-generated CSAM.</td><td class="ev"><span class="tag T">T</span> AI-CSAM detection capability note.</td></tr>
+      <tr><td class="cid">CS-CD.1.8</td><td class="req">Detection <span class="shall">SHALL</span> be effective across all supported languages.</td><td class="ev"><span class="tag T">T</span> Per-language accuracy table.</td></tr>
+      <tr><td class="cid">CS-CD.2.1</td><td class="req"><span class="shall">SHALL NOT</span> use infinite scroll for child accounts.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Config + child-account screenshot.</td></tr>
+      <tr><td class="cid">CS-CD.2.2</td><td class="req"><span class="shall">SHALL NOT</span> use notification pressure (FOMO, streaks, urgency).</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Notification config + design review.</td></tr>
+      <tr><td class="cid">CS-CD.2.3</td><td class="req">Loot boxes / randomised rewards <span class="shall">SHALL</span> show odds.</td><td class="ev"><span class="tag D">D</span> Odds-disclosure screenshot.</td></tr>
+      <tr><td class="cid">CS-CD.2.4</td><td class="req"><span class="shall">SHALL NOT</span> use deceptive design to extract data.</td><td class="ev"><span class="tag D">D</span> Dark-pattern design review report.</td></tr>
+      <tr><td class="cid">CS-CD.2.5</td><td class="req">Disabling safety features <span class="shall">SHALL</span> require more effort than enabling.</td><td class="ev"><span class="tag D">D</span> UX walkthrough showing friction asymmetry.</td></tr>
+      <tr><td class="cid">CS-CD.2.6</td><td class="req">Autoplay <span class="shall">SHALL</span> be off by default for child accounts.</td><td class="ev"><span class="tag C">C</span> Default configuration.</td></tr>
+      <tr><td class="cid">CS-CD.3.1</td><td class="req">AI may classify but <span class="shall">SHALL NOT</span> generate child-facing intervention text.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Architecture statement + config proving no generative child-facing text.</td></tr>
+      <tr><td class="cid">CS-CD.3.2</td><td class="req">Intervention language <span class="shall">SHALL</span> be age-appropriate.</td><td class="ev"><span class="tag D">D</span> Intervention copy library per age bracket.</td></tr>
+      <tr><td class="cid">CS-CD.3.3</td><td class="req">Interventions <span class="shall">SHALL</span> be culturally reviewed per language/region.</td><td class="ev"><span class="tag P">P</span> Localisation / cultural review records.</td></tr>
+      <tr><td class="cid">CS-CD.3.4</td><td class="req">No dialogue loop — <span class="shall">SHALL NOT</span> sustain conversation with children.</td><td class="ev"><span class="tag P">P</span><span class="tag T">T</span> Design statement + no-sustained-conversation test.</td></tr>
+      <tr><td class="cid">CS-CD.3.5</td><td class="req">Intervention content <span class="shall">SHALL</span> be version-controlled and publicly auditable.</td><td class="ev"><span class="tag D">D</span> Public version-controlled repository / changelog.</td></tr>
+      <tr><td class="cid">CS-CD.4.1</td><td class="req">Child-facing interventions <span class="shall">SHALL</span> be screen-reader compatible.</td><td class="ev"><span class="tag T">T</span> Screen-reader accessibility test.</td></tr>
+      <tr><td class="cid">CS-CD.4.2</td><td class="req">Intervention text <span class="shall">SHALL</span> meet WCAG 2.1 AA.</td><td class="ev"><span class="tag T">T</span> WCAG 2.1 AA audit report.</td></tr>
+      <tr><td class="cid">CS-CD.4.3</td><td class="req">Crisis helpline actions <span class="shall">SHALL</span> be accessible via assistive input.</td><td class="ev"><span class="tag T">T</span> Assistive-input accessibility test.</td></tr>
+      <tr><td class="cid">CS-CD.5.1</td><td class="req">User reports <span class="shall">SHALL</span> be acknowledged within 24h.</td><td class="ev"><span class="tag L">L</span> Acknowledgement-time logs / SLA report.</td></tr>
+      <tr><td class="cid">CS-CD.5.2</td><td class="req">Illegal content <span class="shall">SHALL</span> be actioned within 24h.</td><td class="ev"><span class="tag L">L</span> Action-time logs / transparency metric.</td></tr>
+      <tr><td class="cid">CS-CD.5.3</td><td class="req">Moderation policy <span class="shall">SHALL</span> be published and child-comprehensible.</td><td class="ev"><span class="tag D">D</span> Published policy (URL) + readability check.</td></tr>
+      <tr><td class="cid">CS-CD.5.4</td><td class="req">Appeals process <span class="shall">SHALL</span> be accessible to children.</td><td class="ev"><span class="tag D">D</span> Appeals flow walkthrough.</td></tr>
+      <tr><td class="cid">CS-CD.5.5</td><td class="req">Age classification appeal <span class="shall">SHALL</span> be available.</td><td class="ev"><span class="tag D">D</span> Appeal mechanism walkthrough.</td></tr>
+      <tr><td class="cid">CS-CD.6.1</td><td class="req">Recommender <span class="shall">SHALL NOT</span> amplify harmful content to children.</td><td class="ev"><span class="tag T">T</span> Recommender risk assessment + amplification test.</td></tr>
+      <tr><td class="cid">CS-CD.6.2</td><td class="req">Children <span class="shall">SHALL</span> be able to opt out of personalised recommendations.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Config + opt-out screenshot.</td></tr>
+      <tr class="addr"><td class="cid">CS-CD.6.3</td><td class="req"><span class="should">SHOULD</span> offer a non-personalised feed as default.</td><td class="ev"><span class="tag C">C</span> Feed configuration.</td></tr>
+      <tr><td class="cid">CS-CD.7.1</td><td class="req">Targeted advertising <span class="shall">SHALL NOT</span> be served to under-18s.</td><td class="ev"><span class="tag C">C</span> Ad-targeting config proving exclusion of minors.</td></tr>
+      <tr><td class="cid">CS-CD.7.2</td><td class="req">Ads to children <span class="shall">SHALL</span> be clearly labelled.</td><td class="ev"><span class="tag D">D</span> Ad-label screenshot.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ===================== CS-DM ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-DM</span> · Data &amp; Privacy for Minors</h3>
+  <div class="domain-sub">18 controls — data minimisation, SDKs, consent, DPIA/CRIA, retention, encryption.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-DM.1.1</td><td class="req">Threat detection <span class="shall">SHALL</span> process on-device by default.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Architecture doc + config showing on-device processing.</td></tr>
+      <tr><td class="cid">CS-DM.1.2</td><td class="req"><span class="shall">SHALL</span> collect only data necessary for core functionality.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Data-minimisation policy + data inventory.</td></tr>
+      <tr><td class="cid">CS-DM.1.3</td><td class="req">Data collection scope <span class="shall">SHALL</span> be documented and transparent.</td><td class="ev"><span class="tag D">D</span> Published data-collection notice.</td></tr>
+      <tr><td class="cid">CS-DM.2.1</td><td class="req">All embedded SDKs <span class="shall">SHALL</span> be documented with data practices.</td><td class="ev"><span class="tag D">D</span> SDK inventory + data-practice table.</td></tr>
+      <tr><td class="cid">CS-DM.2.2</td><td class="req">Analytics/tracking SDKs <span class="shall">SHALL NOT</span> profile children.</td><td class="ev"><span class="tag C">C</span><span class="tag A">A</span> SDK config + DPA clauses.</td></tr>
+      <tr><td class="cid">CS-DM.2.3</td><td class="req">Third-party DPAs <span class="shall">SHALL</span> cover children's data.</td><td class="ev"><span class="tag A">A</span> Signed DPAs referencing children's data.</td></tr>
+      <tr><td class="cid">CS-DM.3.1</td><td class="req">Consent <span class="shall">SHALL</span> be informed, granular, age-appropriate.</td><td class="ev"><span class="tag D">D</span> Consent flow screenshots.</td></tr>
+      <tr><td class="cid">CS-DM.3.2</td><td class="req">Withdrawal <span class="shall">SHALL</span> be as easy as giving consent.</td><td class="ev"><span class="tag D">D</span> Withdrawal flow walkthrough.</td></tr>
+      <tr><td class="cid">CS-DM.3.3</td><td class="req">Pre-ticked consent boxes <span class="shall">SHALL NOT</span> be used.</td><td class="ev"><span class="tag D">D</span> Consent UI screenshot.</td></tr>
+      <tr><td class="cid">CS-DM.4.1</td><td class="req">DPIA <span class="shall">SHALL</span> be completed for child data processing.</td><td class="ev"><span class="tag D">D</span> Completed DPIA document.</td></tr>
+      <tr><td class="cid">CS-DM.4.1a</td><td class="req">CRIA <span class="shall">SHALL</span> be conducted for services likely accessed by children.</td><td class="ev"><span class="tag D">D</span> Completed Child Rights Impact Assessment.</td></tr>
+      <tr><td class="cid">CS-DM.4.2</td><td class="req">Children's data <span class="shall">SHALL</span> have retention periods + automatic deletion.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Retention schedule + deletion-job logs.</td></tr>
+      <tr><td class="cid">CS-DM.4.3</td><td class="req">Children/parents <span class="shall">SHALL</span> be able to export their data.</td><td class="ev"><span class="tag D">D</span> Export feature walkthrough.</td></tr>
+      <tr><td class="cid">CS-DM.4.4</td><td class="req">Children/parents <span class="shall">SHALL</span> be able to delete data and account.</td><td class="ev"><span class="tag D">D</span><span class="tag L">L</span> Deletion flow walkthrough + confirmation log.</td></tr>
+      <tr><td class="cid">CS-DM.5.1</td><td class="req">Data <span class="shall">SHALL</span> meet data-residency requirements.</td><td class="ev"><span class="tag C">C</span> Hosting/region config + data-flow map.</td></tr>
+      <tr><td class="cid">CS-DM.5.2</td><td class="req">Data <span class="shall">SHALL</span> be encrypted in transit and at rest.</td><td class="ev"><span class="tag A">A</span><span class="tag C">C</span> Encryption attestation (TLS config, KMS/key management).</td></tr>
+      <tr><td class="cid">CS-DM.6.1</td><td class="req">Automated profiling <span class="shall">SHALL NOT</span> exceed core safety.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Profiling policy + config.</td></tr>
+      <tr><td class="cid">CS-DM.6.2</td><td class="req">Precise geolocation <span class="shall">SHALL NOT</span> be collected unless essential and consented.</td><td class="ev"><span class="tag C">C</span><span class="tag P">P</span> Geolocation config + justification.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ===================== CS-PR ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-PR</span> · Parental Rights &amp; Controls</h3>
+  <div class="domain-sub">18 controls — dashboards, monitoring boundaries, age-graduated autonomy, age-out.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-PR.1.1</td><td class="req"><span class="shall">SHALL</span> provide a parental control dashboard.</td><td class="ev"><span class="tag D">D</span> Dashboard walkthrough.</td></tr>
+      <tr><td class="cid">CS-PR.1.2</td><td class="req">Dashboard <span class="shall">SHALL</span> show safety alerts, not message content.</td><td class="ev"><span class="tag D">D</span> Dashboard screenshot proving no message content.</td></tr>
+      <tr><td class="cid">CS-PR.1.3</td><td class="req">Dashboard <span class="shall">SHALL</span> be accessible on the parent's device.</td><td class="ev"><span class="tag D">D</span> Cross-device walkthrough.</td></tr>
+      <tr><td class="cid">CS-PR.1.4</td><td class="req"><span class="shall">SHALL</span> support multiple guardians (up to four; mutual-consent changes; non-digital channel).</td><td class="ev"><span class="tag C">C</span><span class="tag P">P</span> Config + multi-guardian procedure.</td></tr>
+      <tr><td class="cid">CS-PR.2.1</td><td class="req">Parents <span class="shall">SHALL NEVER</span> see content — category, severity, timestamp only.</td><td class="ev"><span class="tag C">C</span> Alert data schema.</td></tr>
+      <tr><td class="cid">CS-PR.2.2</td><td class="req">Parents <span class="shall">SHALL NOT</span> be able to enable keylogging.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Statement + config proving no keylogging capability.</td></tr>
+      <tr><td class="cid">CS-PR.2.3</td><td class="req">Alert metadata <span class="shall">SHALL NOT</span> allow content reconstruction.</td><td class="ev"><span class="tag C">C</span> Alert schema + privacy review.</td></tr>
+      <tr><td class="cid">CS-PR.3.1</td><td class="req">13+ <span class="shall">SHALL</span> be notified monitoring is active (non-configurable).</td><td class="ev"><span class="tag D">D</span> Monitoring-notification screenshot.</td></tr>
+      <tr><td class="cid">CS-PR.3.2</td><td class="req">Notification <span class="shall">SHALL</span> explain what/why in age-appropriate language.</td><td class="ev"><span class="tag D">D</span> Notification copy.</td></tr>
+      <tr><td class="cid">CS-PR.4.1</td><td class="req">Sensitivity <span class="shall">SHALL</span> decrease and agency increase with age.</td><td class="ev"><span class="tag C">C</span> Age-graduation config matrix.</td></tr>
+      <tr><td class="cid">CS-PR.4.2</td><td class="req">16+ <span class="shall">SHALL</span> be able to modify their own privacy settings.</td><td class="ev"><span class="tag C">C</span><span class="tag D">D</span> Config + walkthrough.</td></tr>
+      <tr><td class="cid">CS-PR.4.3</td><td class="req">Parental override <span class="shall">SHALL</span> decrease with the child's age.</td><td class="ev"><span class="tag C">C</span> Override matrix by age.</td></tr>
+      <tr><td class="cid">CS-PR.5.1</td><td class="req">Child self-reporting <span class="shall">SHALL</span> route to counsellor/helpline, bypassing parent.</td><td class="ev"><span class="tag D">D</span> Self-report flow walkthrough.</td></tr>
+      <tr><td class="cid">CS-PR.5.2</td><td class="req">Crisis helpline <span class="shall">SHALL</span> be one tap from any safety alert.</td><td class="ev"><span class="tag D">D</span> Helpline-access screenshot.</td></tr>
+      <tr><td class="cid">CS-PR.6.1</td><td class="req">Monitoring <span class="shall">SHALL</span> cease automatically at 18.</td><td class="ev"><span class="tag C">C</span><span class="tag L">L</span> Config + age-out event log.</td></tr>
+      <tr><td class="cid">CS-PR.6.2</td><td class="req">Parent access <span class="shall">SHALL</span> be revoked at 18 (not parent-initiated).</td><td class="ev"><span class="tag L">L</span> Revocation log.</td></tr>
+      <tr><td class="cid">CS-PR.6.3</td><td class="req">On-device data <span class="shall">SHALL</span> be deleted within 24h of age-out.</td><td class="ev"><span class="tag L">L</span> Deletion log.</td></tr>
+      <tr><td class="cid">CS-PR.6.4</td><td class="req">Young adult <span class="shall">SHALL</span> have data access rights before erasure.</td><td class="ev"><span class="tag D">D</span> Pre-erasure export walkthrough.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ===================== CS-MR ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-MR</span> · Monitoring, Detection &amp; Response</h3>
+  <div class="domain-sub">30 controls — real-time detection, CSAM reporting, incident response, transparency.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-MR.1.1</td><td class="req"><span class="shall">SHALL</span> implement real-time detection across 7 categories.</td><td class="ev"><span class="tag T">T</span> Detection coverage matrix.</td></tr>
+      <tr><td class="cid">CS-MR.1.2</td><td class="req">Detection <span class="shall">SHALL</span> cover grooming, bullying, self-harm, violence, content wellness, sextortion, dangerous purchases.</td><td class="ev"><span class="tag T">T</span> Per-category capability evidence.</td></tr>
+      <tr><td class="cid">CS-MR.1.3</td><td class="req">Accuracy metrics <span class="shall">SHALL</span> be published per language, quarterly.</td><td class="ev"><span class="tag T">T</span> Quarterly per-language accuracy report.</td></tr>
+      <tr><td class="cid">CS-MR.1.4</td><td class="req">Detection <span class="shall">SHALL NOT</span> degrade performance &gt; 10%.</td><td class="ev"><span class="tag T">T</span> Performance benchmark.</td></tr>
+      <tr><td class="cid">CS-MR.2.1</td><td class="req">CSAM <span class="shall">SHALL</span> be reported to the designated authority within 1h of confirmed detection.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Reporting SLA + report-time records.</td></tr>
+      <tr><td class="cid">CS-MR.2.2</td><td class="req">CSAM evidence <span class="shall">SHALL</span> be preserved per legal requirements.</td><td class="ev"><span class="tag P">P</span> Evidence-preservation procedure.</td></tr>
+      <tr><td class="cid">CS-MR.2.3</td><td class="req">NCMEC/national reporting channel <span class="shall">SHALL</span> be configured and tested.</td><td class="ev"><span class="tag A">A</span><span class="tag T">T</span> Channel registration + test record.</td></tr>
+      <tr><td class="cid">CS-MR.2.4</td><td class="req"><span class="shall">SHALL</span> preserve metadata for CSAM/illegal content involving children.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Procedure + sample.</td></tr>
+      <tr><td class="cid">CS-MR.2.5</td><td class="req"><span class="shall">SHALL</span> apply cryptographic integrity to preserved evidence.</td><td class="ev"><span class="tag C">C</span> Hashing/integrity configuration.</td></tr>
+      <tr><td class="cid">CS-MR.3.1</td><td class="req">Detection <span class="shall">SHALL</span> be consistent across devices.</td><td class="ev"><span class="tag T">T</span> Cross-device consistency test.</td></tr>
+      <tr><td class="cid">CS-MR.3.2</td><td class="req">Institutional consent <span class="shall">SHALL</span> apply per child, not per device.</td><td class="ev"><span class="tag C">C</span> Consent-model config.</td></tr>
+      <tr><td class="cid">CS-MR.3.3</td><td class="req">Detection history <span class="shall">SHALL</span> sync via encrypted on-device sync.</td><td class="ev"><span class="tag C">C</span> Sync architecture doc.</td></tr>
+      <tr><td class="cid">CS-MR.4.1</td><td class="req"><span class="shall">SHALL</span> have an incident response plan for child safety events.</td><td class="ev"><span class="tag D">D</span> IR plan document.</td></tr>
+      <tr><td class="cid">CS-MR.4.2</td><td class="req">Critical incidents <span class="shall">SHALL</span> be triaged within 1h.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Triage SLA + sample.</td></tr>
+      <tr><td class="cid">CS-MR.4.3</td><td class="req">IR <span class="shall">SHALL</span> notify affected child and parent (except where it compromises LE).</td><td class="ev"><span class="tag P">P</span> Notification procedure.</td></tr>
+      <tr><td class="cid">CS-MR.5.1</td><td class="req">Incident evidence <span class="shall">SHALL</span> be preserved per applicable law.</td><td class="ev"><span class="tag P">P</span> Preservation policy.</td></tr>
+      <tr><td class="cid">CS-MR.5.2</td><td class="req">Chain of custody <span class="shall">SHALL</span> be documented.</td><td class="ev"><span class="tag D">D</span> Chain-of-custody template + sample.</td></tr>
+      <tr class="addr"><td class="cid">CS-MR.6.1</td><td class="req"><span class="should">SHOULD</span> participate in industry threat-intelligence sharing.</td><td class="ev"><span class="tag A">A</span> Membership / participation evidence.</td></tr>
+      <tr><td class="cid">CS-MR.6.2</td><td class="req">Detection patterns <span class="shall">SHALL</span> be updated at least monthly.</td><td class="ev"><span class="tag L">L</span> Update changelog.</td></tr>
+      <tr><td class="cid">CS-MR.7.1</td><td class="req"><span class="shall">SHALL</span> publish child-safety transparency reports at least annually.</td><td class="ev"><span class="tag D">D</span> Published transparency report.</td></tr>
+      <tr><td class="cid">CS-MR.7.2</td><td class="req">Reports <span class="shall">SHALL</span> include volumes, categories, response times, appeals, removals.</td><td class="ev"><span class="tag D">D</span> Report contents check.</td></tr>
+      <tr><td class="cid">CS-MR.8.1</td><td class="req"><span class="shall">SHALL</span> conduct a systemic risk assessment for minors annually.</td><td class="ev"><span class="tag D">D</span> Risk assessment document.</td></tr>
+      <tr><td class="cid">CS-MR.8.2</td><td class="req">Risk assessment <span class="shall">SHALL</span> cover algorithmic amplification.</td><td class="ev"><span class="tag D">D</span> RA section on amplification.</td></tr>
+      <tr><td class="cid">CS-MR.8.3</td><td class="req">Mitigations <span class="shall">SHALL</span> be documented and reviewed annually.</td><td class="ev"><span class="tag D">D</span> Mitigation register.</td></tr>
+      <tr><td class="cid">CS-MR.9.1</td><td class="req"><span class="shall">SHALL</span> have a responsible disclosure policy for child-safety vulnerabilities.</td><td class="ev"><span class="tag D">D</span> Published vulnerability-disclosure policy.</td></tr>
+      <tr><td class="cid">CS-MR.9.2</td><td class="req">Disclosed vulnerabilities <span class="shall">SHALL</span> be triaged within 48h.</td><td class="ev"><span class="tag L">L</span> Triage timestamps.</td></tr>
+      <tr><td class="cid">CS-MR.10.1</td><td class="req">Pattern updates <span class="shall">SHALL</span> be reviewed before deployment.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Change-review procedure + approvals.</td></tr>
+      <tr><td class="cid">CS-MR.10.2</td><td class="req">Updates <span class="shall">SHALL NOT</span> introduce bias or suppress legitimate expression.</td><td class="ev"><span class="tag T">T</span> Bias test on pattern updates.</td></tr>
+      <tr><td class="cid">CS-MR.10.3</td><td class="req">Rollback capability <span class="shall">SHALL</span> exist for false-positive spikes.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Rollback mechanism doc + test.</td></tr>
+      <tr class="addr"><td class="cid">CS-MR.11.1</td><td class="req"><span class="should">SHOULD</span> account for atypical communication patterns.</td><td class="ev"><span class="tag P">P</span> Note on neurodiverse / atypical-communication handling.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ===================== CS-GO ===================== -->
+  <div class="domain">
+  <h3><span class="code">CS-GO</span> · Governance &amp; Policy</h3>
+  <div class="domain-sub">17 controls — Child Safety Officer, training, vendors, regulatory mapping, child participation.</div>
+  <table>
+    <thead><tr><th style="width:14%">Control</th><th style="width:43%">Requirement</th><th style="width:43%">Evidence to produce</th></tr></thead>
+    <tbody>
+      <tr><td class="cid">CS-GO.1.1</td><td class="req"><span class="shall">SHALL</span> designate a named Child Safety Officer.</td><td class="ev"><span class="tag D">D</span> CSO appointment record.</td></tr>
+      <tr><td class="cid">CS-GO.1.2</td><td class="req">CSO <span class="shall">SHALL</span> report directly to executive leadership.</td><td class="ev"><span class="tag D">D</span> Org chart / reporting line.</td></tr>
+      <tr><td class="cid">CS-GO.2.1</td><td class="req">All staff with child-data access <span class="shall">SHALL</span> complete annual child-safety training.</td><td class="ev"><span class="tag L">L</span> Training completion records.</td></tr>
+      <tr><td class="cid">CS-GO.2.2</td><td class="req">Moderators <span class="shall">SHALL</span> receive trauma-informed training.</td><td class="ev"><span class="tag L">L</span> Specialised training records.</td></tr>
+      <tr><td class="cid">CS-GO.2.3</td><td class="req">A moderator wellbeing programme <span class="shall">SHALL</span> be in place.</td><td class="ev"><span class="tag P">P</span> Wellbeing programme document.</td></tr>
+      <tr><td class="cid">CS-GO.3.1</td><td class="req">Vendors processing child data <span class="shall">SHALL</span> be audited.</td><td class="ev"><span class="tag D">D</span> Vendor audit reports.</td></tr>
+      <tr><td class="cid">CS-GO.3.2</td><td class="req">Vendor contracts <span class="shall">SHALL</span> include child-data protection clauses.</td><td class="ev"><span class="tag A">A</span> Contract clauses.</td></tr>
+      <tr><td class="cid">CS-GO.4.1</td><td class="req"><span class="shall">SHALL</span> maintain documented regulatory compliance mapping.</td><td class="ev"><span class="tag D">D</span> Compliance mapping document.</td></tr>
+      <tr><td class="cid">CS-GO.4.2</td><td class="req">Mapping <span class="shall">SHALL</span> be updated within 90 days of new requirements.</td><td class="ev"><span class="tag L">L</span> Mapping changelog.</td></tr>
+      <tr><td class="cid">CS-GO.5.1</td><td class="req"><span class="shall">SHALL</span> comply with child-safety laws in every jurisdiction served.</td><td class="ev"><span class="tag D">D</span> Jurisdiction compliance register.</td></tr>
+      <tr><td class="cid">CS-GO.5.2</td><td class="req">Consent thresholds <span class="shall">SHALL</span> be configurable per jurisdiction.</td><td class="ev"><span class="tag C">C</span> Per-jurisdiction configuration.</td></tr>
+      <tr class="addr"><td class="cid">CS-GO.6.1</td><td class="req"><span class="should">SHOULD</span> include external advisory input in governance.</td><td class="ev"><span class="tag D">D</span> Advisory records.</td></tr>
+      <tr><td class="cid">CS-GO.6.2</td><td class="req">Child-safety policies <span class="shall">SHALL</span> be reviewed at least annually.</td><td class="ev"><span class="tag L">L</span> Review log.</td></tr>
+      <tr><td class="cid">CS-GO.7.1</td><td class="req">Children's voices <span class="shall">SHALL</span> be included in safety design and review.</td><td class="ev"><span class="tag D">D</span> Child-participation records.</td></tr>
+      <tr><td class="cid">CS-GO.7.2</td><td class="req">Feedback mechanisms <span class="shall">SHALL</span> be accessible to child users.</td><td class="ev"><span class="tag D">D</span> Feedback channel walkthrough.</td></tr>
+      <tr><td class="cid">CS-GO.8.1</td><td class="req"><span class="shall">SHALL</span> provide age-appropriate digital-literacy resources.</td><td class="ev"><span class="tag D">D</span> Published resources.</td></tr>
+      <tr class="addr"><td class="cid">CS-GO.8.2</td><td class="req"><span class="should">SHOULD</span> build children's resilience and digital skills.</td><td class="ev"><span class="tag D">D</span> Feature / resource evidence.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>From evidence to certification</h2>
+  <ul class="clean">
+    <li><strong>1 · Assemble the pack.</strong> Gather the artefacts above for every applicable control. Most platforms already hold the majority through existing DSA/GDPR/AADC work.</li>
+    <li><strong>2 · Pre-screen.</strong> Custorian runs an automated first-look assessment of your live service to identify obvious gaps before formal review.</li>
+    <li><strong>3 · Conformity assessment.</strong> An independent accredited Certification Body reviews the evidence pack and tests the live service against the controls.</li>
+    <li><strong>4 · Certified.</strong> On conformity, the &ldquo;Custorian Certified&rdquo; mark is issued under licence, with annual surveillance and re-assessment.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Founding cohort.</strong> Pilot platforms are assessed first and help shape the certification scheme. Apply at <a href="https://custorian.org" style="color:var(--purple)">custorian.org</a>.
+  </div>
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>
+    Companion document to the Custorian Standard (Draft EN v0.2). The standard is the authoritative source; where this guide and the standard differ, the standard governs.
+    Read the standard: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a> &middot; <a href="https://custorian.org">custorian.org</a>
+  </footer>
+
+</div>
+</body>
+</html>
