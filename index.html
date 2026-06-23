@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — A standard for children's digital safety. Owned by no one.</title>
-<meta name="description" content="Custorian is the European standard for child digital safety. 139 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
+<meta name="description" content="Custorian is the European standard for child digital safety. 146 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
 <meta property="og:title" content="Custorian — A standard for children's digital safety.">
-<meta property="og:description" content="139 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
+<meta property="og:description" content="146 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
 <meta property="og:image" content="https://custorian.org/og-image.png">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
@@ -725,7 +725,7 @@
   <div class="scoreboard-kicker">
     Custorian is to children's digital safety what <strong>TÜV</strong> is to industrial safety.
   </div>
-  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="139 auditable controls, click for details">139</button>
+  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="146 auditable controls, click for details">146</button>
   <div class="label">Auditable Controls</div>
 </section>
 
@@ -847,7 +847,7 @@
     </div>
 
     <div class="modal-section">
-      <div class="modal-label">CS-AC &middot; Age Controls (24)</div>
+      <div class="modal-label">CS-AC &middot; Age Controls (31)</div>
       <div class="modal-controls">
         <div><strong>CS-AC.1.1</strong> &mdash; Platform SHALL implement age verification for all users</div>
         <div><strong>CS-AC.1.2</strong> &mdash; Age verification SHALL use at least two independent signals</div>
@@ -873,6 +873,13 @@
         <div><strong>CS-AC.6.3</strong> &mdash; Age verification SHALL NOT discriminate based on disability, ethnicity, or socioeconomic status</div>
         <div><strong>CS-AC.7.1</strong> &mdash; Verifiable parental consent SHALL be obtained before processing data of children under consent age</div>
         <div><strong>CS-AC.7.2</strong> &mdash; Parental consent mechanism SHALL be robust against child impersonation</div>
+        <div><strong>CS-AC.8.1</strong> &mdash; Facial age estimation accuracy SHALL be established by independent evaluation (e.g. NIST FATE), documented for the 13&ndash;17 band</div>
+        <div><strong>CS-AC.8.2</strong> &mdash; A defined MAE ceiling (baseline &le; 2.0 yrs) and boundary FPR SHALL be met for 13&ndash;17, set by the Standards Council</div>
+        <div><strong>CS-AC.8.3</strong> &mdash; Presentation-attack detection SHALL be evaluated to ISO/IEC 30107-3 at a named level; a photo or replay SHALL fail</div>
+        <div><strong>CS-AC.8.4</strong> &mdash; The pipeline SHALL detect injection attacks and verification-by-proxy; the verified face SHALL be bound to the account's actual user</div>
+        <div><strong>CS-AC.8.5</strong> &mdash; Any fallback path SHALL be held to an equivalent anti-fraud standard</div>
+        <div><strong>CS-AC.8.6</strong> &mdash; The assigned age band SHALL govern all contact surfaces, evidenced by a contact-surface inventory</div>
+        <div><strong>CS-AC.8.7</strong> &mdash; Accuracy figures, certifications and re-test dates SHALL be disclosed to auditors and re-validated annually</div>
       </div>
     </div>
 
@@ -1034,7 +1041,7 @@
 
     <div class="modal-section">
       <div class="modal-label">CS-AC &middot; Age controls</div>
-      <div class="modal-text">Age verification, age estimation, age-appropriate access, accuracy thresholds. 24 controls.</div>
+      <div class="modal-text">Age verification, age estimation, age-appropriate access, accuracy thresholds, facial age-estimation assurance. 31 controls.</div>
     </div>
 
     <div class="modal-section">
