@@ -792,8 +792,27 @@
 
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">Read the Standard</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('feedbackModal', event)">Give feedback</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
+
+<div class="modal" id="feedbackModal" role="dialog" aria-labelledby="feedbackTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h3 id="feedbackTitle">Comments &amp; feedback</h3>
+    <div class="modal-text">The standard is developed in public. Tell us what works, what doesn&rsquo;t, and what&rsquo;s missing &mdash; on the controls, the registry, or anything else.</div>
+    <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST" style="margin-top:14px">
+      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+      <input type="hidden" name="subject" value="Custorian — Website feedback">
+      <input type="hidden" name="from_name" value="Custorian Feedback Form">
+      <input type="hidden" name="redirect" value="https://custorian.org/">
+      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+      <div class="field"><label for="fb-name">Name</label><input type="text" id="fb-name" name="Name" required placeholder="Your name"></div>
+      <div class="field"><label for="fb-email">Email</label><input type="email" id="fb-email" name="Email" required placeholder="you@example.com"></div>
+      <div class="field"><label for="fb-msg">Comments</label><textarea id="fb-msg" name="Comments" required rows="5" placeholder="Your feedback…"></textarea></div>
+      <button type="submit" class="pilot-cta" style="margin-top:6px">Send feedback</button>
+    </form>
+  </div>
+</div>
 
 <div class="modal" id="governanceModal" role="dialog" aria-labelledby="governanceTitle" aria-modal="true">
   <div class="modal-card">
