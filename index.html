@@ -1328,5 +1328,60 @@ function openFramework(key) {
 })();
 </script>
 
+<!-- Mirror pilot + feedback submissions into Supabase (in addition to the
+     Web3Forms email). Anon key is public by design; RLS allows INSERT only. -->
+<script>
+(function () {
+  var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+  function insert(table, row) {
+    try {
+      fetch(SB_URL + '/rest/v1/' + table, {
+        method: 'POST',
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(row),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  function val(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    return el && el.value ? el.value : null;
+  }
+  var pilot = document.getElementById('pilotForm');
+  if (pilot) {
+    pilot.addEventListener('submit', function () {
+      insert('pilot_applications', {
+        platform: val(pilot, 'Platform'),
+        contact_name: val(pilot, 'Contact name'),
+        role: val(pilot, 'Role'),
+        email: val(pilot, 'Email'),
+        url: val(pilot, 'URL'),
+        platform_type: val(pilot, 'Platform type'),
+        under18_users: val(pilot, 'Under-18 users'),
+        message: val(pilot, 'Message'),
+        source: 'org_website'
+      });
+    }, true);
+  }
+  var fb = document.getElementById('feedbackForm');
+  if (fb) {
+    fb.addEventListener('submit', function () {
+      insert('feedback', {
+        name: val(fb, 'Name'),
+        email: val(fb, 'Email'),
+        comments: val(fb, 'Comments'),
+        source: 'org_website'
+      });
+    }, true);
+  }
+})();
+</script>
+
 </body>
 </html>
