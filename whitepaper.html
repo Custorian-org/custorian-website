@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian White Paper — read &amp; comment</title>
+<meta name="description" content="The Custorian White Paper, open for review. Read it section by section and comment on any part — a public consultation on an open child digital-safety standard.">
+<meta property="og:title" content="Custorian White Paper — read &amp; comment">
+<meta property="og:description" content="Read the Custorian standard's white paper and comment on any section. A public consultation, in the open.">
+<style>
+  :root{
+    --purple:#8B5CF6; --ink:#1a1a1a; --muted:#6b6b6b;
+    --line:#e4e0da; --paper:#ffffff; --wash:#faf8f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6; font-size:16px;
+  }
+  a{color:var(--purple);}
+  .doc{max-width:820px; margin:0 auto; padding:56px 48px 96px;}
+
+  .actionbar{
+    position:sticky; top:0; z-index:50; background:var(--ink); color:#fff;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 24px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+  }
+  .actionbar a.home{color:#fff; text-decoration:none;}
+  .actionbar button{
+    font-family:inherit; font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    background:var(--purple); color:#fff; border:none; padding:10px 22px; cursor:pointer; font-weight:700;
+  }
+  .actionbar button:hover{opacity:.9;}
+
+  .cover{border-bottom:2px solid var(--ink); padding-bottom:40px; margin-bottom:8px;}
+  .wordmark{
+    font-size:13px; letter-spacing:0.5em; text-transform:uppercase; font-weight:800;
+    display:flex; align-items:center; gap:12px; margin-bottom:44px;
+  }
+  .wordmark .glyph{display:inline-grid; grid-template-columns:repeat(2,7px); grid-gap:2px;}
+  .wordmark .glyph i{width:7px; height:7px; background:var(--purple); display:block;}
+  .cover h1{
+    font-size:clamp(32px,5.5vw,54px); font-weight:900; letter-spacing:-0.03em;
+    line-height:1.0; text-transform:uppercase; margin-bottom:20px;
+  }
+  .cover .lede{font-size:18px; line-height:1.5; max-width:60ch; color:var(--ink);}
+  .cover .meta{margin-top:26px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);}
+  .cover .meta span{margin-right:16px;}
+
+  .consult{
+    background:var(--wash); border-left:3px solid var(--purple);
+    padding:18px 22px; margin:28px 0 8px; font-size:15px;
+  }
+  .consult strong{font-weight:800;}
+
+  .toc{margin:36px 0 8px; padding:24px 26px; border:1px solid var(--line); background:#fff;}
+  .toc h2{font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); font-weight:800; margin-bottom:14px; border:0;}
+  .toc ol{list-style:none; counter-reset:toc; columns:2; column-gap:36px;}
+  .toc li{margin-bottom:7px; break-inside:avoid; font-size:14px;}
+  .toc a{text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+
+  h2{
+    font-size:27px; font-weight:900; letter-spacing:-0.02em; line-height:1.15;
+    margin:52px 0 4px; padding-top:22px; border-top:2px solid var(--ink); scroll-margin-top:64px;
+  }
+  h3{font-size:19px; font-weight:800; letter-spacing:-0.01em; margin:30px 0 6px; scroll-margin-top:64px;}
+  h4{font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin:22px 0 4px;}
+  p{margin-bottom:14px; max-width:72ch;}
+  ul,ol{margin:12px 0 16px 22px;}
+  li{margin-bottom:6px; max-width:70ch;}
+  blockquote{background:var(--wash); border-left:3px solid var(--purple); padding:14px 20px; margin:16px 0; font-size:15px;}
+  code{background:var(--wash); padding:1px 5px; border-radius:3px; font-size:13.5px;}
+  pre{background:var(--wash); padding:16px 18px; overflow-x:auto; margin:16px 0; font-size:13px; border:1px solid var(--line);}
+  pre code{background:none; padding:0;}
+  hr{border:0; border-top:1px solid var(--line); margin:28px 0;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+  thead th{text-align:left; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); border-bottom:1.5px solid var(--ink); padding:8px 10px 8px 0; font-weight:700;}
+  tbody td{border-bottom:1px solid var(--line); padding:9px 10px 9px 0; vertical-align:top;}
+
+  /* SECTION COMMENT TOOLS */
+  .section-tools{margin:14px 0 6px;}
+  .cmt-toggle{
+    font-family:inherit; font-size:12px; letter-spacing:0.04em; font-weight:700;
+    background:none; color:var(--purple); border:1px solid var(--line);
+    padding:7px 14px; border-radius:20px; cursor:pointer;
+  }
+  .cmt-toggle:hover{border-color:var(--purple); background:var(--wash);}
+  .cmt-form{border:1px solid var(--line); border-left:3px solid var(--purple); background:#fff; padding:18px 20px; margin-top:10px; max-width:60ch;}
+  .cmt-label{font-size:13px; color:var(--muted); margin-bottom:10px;}
+  .cmt-form textarea, .cmt-form input[type=email]{
+    width:100%; font-family:inherit; font-size:14px; padding:10px 12px;
+    border:1px solid var(--line); border-radius:4px; margin-bottom:10px; resize:vertical;
+  }
+  .cmt-form textarea:focus, .cmt-form input:focus{outline:none; border-color:var(--purple);}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0;}
+  .cmt-actions{display:flex; gap:10px; align-items:center;}
+  .cmt-form button[type=submit]{
+    font-family:inherit; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    background:var(--purple); color:#fff; border:none; padding:9px 18px; border-radius:4px; cursor:pointer;
+  }
+  .cmt-cancel{font-family:inherit; font-size:13px; background:none; border:none; color:var(--muted); cursor:pointer;}
+  .cmt-status{font-size:13px; color:var(--muted); margin:8px 0 0;}
+  .cmt-thanks{font-size:14px; color:var(--ink);}
+
+  footer{margin-top:64px; padding-top:22px; border-top:2px solid var(--ink); font-size:11px; letter-spacing:0.06em; color:var(--muted);}
+  footer a{color:var(--purple); text-decoration:none;}
+
+  @media print{
+    .actionbar, .section-tools, .toc{display:none;}
+    .doc{max-width:none; padding:0 8mm;}
+    body{font-size:10.5pt;}
+    h2{page-break-after:avoid;}
+  }
+  @media (max-width:640px){
+    .doc{padding:32px 20px;}
+    .toc ol{columns:1;}
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    tbody td{border:none; padding:2px 0;}
+    tbody tr{border-bottom:1px solid var(--line); padding:12px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="actionbar">
+  <a class="home" href="https://custorian.org">‹ Back to custorian.org</a>
+  <span>White Paper · open for comment</span>
+  <button onclick="window.print()">Download / Print PDF</button>
+</div>
+
+<div class="doc">
+
+  <div class="cover">
+    <div class="wordmark"><span class="glyph"><i></i><i></i><i></i><i></i></span> Custorian</div>
+    <h1>A Compliance Standard for Child Digital Safety</h1>
+    <p class="lede">An open framework for platform certification, institutional intelligence, and regulatory conformity.</p>
+    <div class="meta">
+      <span>Foreningen Custorian</span><span>CVR 46399455</span><span>Version 6.1 — Pre-Publication Draft, June 2026</span>
+    </div>
+  </div>
+
+  <div class="consult">
+    <strong>This is a living consultation draft.</strong> Custorian is an open standard, developed in the open. Read any section below and use the &ldquo;Comment on this section&rdquo; button to tell us what is wrong, missing, or unclear. Comments reach the foreningen directly; an email address is required so we can follow up or clarify.
+    <br><br>
+    <strong>Please note:</strong> we have already received a substantial volume of feedback, which is currently under review and being considered for the next revision. As a result, <strong>this version (Version 6.1 — Pre-Publication Draft, June 2026) may not reflect our most current thinking</strong>, and some sections may be revised or superseded in the forthcoming edition.
+    <br><br>
+    The formal standard — <strong>Custorian Draft EN v0.2</strong> — is published on Zenodo: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a>.
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#executive-summary">Executive Summary</a></li>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#what-custorian-is-and-what-it-is-not">2. What Custorian Is (and What It Is Not)</a></li>
+      <li><a href="#comparison-with-existing-frameworks">3. Comparison with Existing Frameworks</a></li>
+      <li><a href="#framework-architecture">4. Framework Architecture</a></li>
+      <li><a href="#threat-model">5. Threat Model</a></li>
+      <li><a href="#on-device-detection-requirement">6. On-Device Detection Requirement</a></li>
+      <li><a href="#childrens-rights-framework">7. Children’s Rights Framework</a></li>
+      <li><a href="#governance-model">8. Governance Model</a></li>
+      <li><a href="#data-privacy-and-institutional-intelligence-requirements">9. Data Privacy and Institutional Intelligence Requirements</a></li>
+      <li><a href="#regulatory-and-standards-landscape">10. Regulatory and Standards Landscape</a></li>
+      <li><a href="#compliance-model">11. Compliance Model</a></li>
+      <li><a href="#api-specification-cas">12. API Specification (CAS)</a></li>
+      <li><a href="#theory-of-adoption">13. Theory of Adoption</a></li>
+      <li><a href="#regulatory-cross-mapping">14. Regulatory Cross-Mapping</a></li>
+      <li><a href="#implementation-roadmap">15. Implementation Roadmap</a></li>
+      <li><a href="#limitations-and-risks-to-the-standard">16. Limitations and Risks to the Standard</a></li>
+      <li><a href="#conclusion-and-invitation">17. Conclusion and Invitation</a></li>
+      <li><a href="#appendix-a-validation-study-template">Appendix A: Validation Study Template</a></li>
+      <li><a href="#appendix-b-anticipated-criticisms-and-responses">Appendix B: Anticipated Criticisms and Responses</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#acknowledgments-ip-and-conflicts-of-interest">Acknowledgments, IP, and Conflicts of Interest</a></li>
+      <li><a href="#about-the-author">About the Author</a></li>
+    </ol>
+  </nav>
+
+<h2 id="executive-summary">Executive Summary</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="Executive Summary" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>Executive Summary</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>On 3 April 2026, the temporary derogation to the EU ePrivacy Directive expired. The legal basis that allowed technology platforms to voluntarily detect child sexual abuse material in the European Union is no longer in force. The proposed CSA Regulation remains in trilogue. In the meantime, more than 80 million minors across the European Union, approximately 18 percent of a 451.8 million population<sup>1,2</sup>, are served by digital platforms with no lawful detection infrastructure for the most serious category of online child harm.</p>
+<p>This gap exposes a deeper structural problem. Over the past decade, the European Union has produced a remarkable volume of child safety regulation — the Digital Services Act, the AI Act, the proposed CSA Regulation, and national measures such as Denmark’s under-15 social media law — alongside influential non-EU instruments including the UK Age Appropriate Design Code, the UK Online Safety Act 2023, and the US Children’s Online Privacy Protection Act, which apply to many of the same platforms that serve European children. Each of these frameworks mandates child protection outcomes. None provides a shared technical standard for achieving those outcomes, auditing them, or certifying compliance across jurisdictions.</p>
+<p>The result is a regulatory environment in which companies face overlapping and sometimes inconsistent requirements, regulators enforce within their own jurisdictions without a shared technical vocabulary, and parents, schools, and public-sector procurement officers lack a common signal for evaluating whether a digital product is safe for children.</p>
+<p>The Custorian Standard is proposed as the missing technical layer. It consists of three components: a Controls Framework defining 146 auditable requirements across six domains; an open API Specification defining how compliant systems implement detection, reporting, and interoperability; and a tiered Certification Programme enabling independent validation. The standard is modelled on PCI-DSS for payment security and EPEAT for sustainable electronics, voluntary technical standards that became de facto mandatory through government procurement and regulatory reference.</p>
+<p>The Controls Framework mandates on-device detection architectures, addressing the central tension between child protection and privacy preservation that contributed to the abandonment of earlier on-device detection proposals and continues to stall the CSA Regulation. Custorian is a monitoring framework with a privacy-preserving architecture: detection occurs locally on the child’s device; message content is never transmitted to external servers; parents receive only threat category, severity level, and timestamp, not message content; only anonymised metadata is shared with institutional tiers, and only with explicit parental consent. The Framework includes specific safeguards for the scenario where a parent is the source of harm, age-graduated autonomy, and an automatic age-out lifecycle at 18.</p>
+<p>This paper is a pre-publication draft intended to invite scrutiny. Independent accuracy validation has not yet been conducted; a structured validation study, for which a design template is provided in Appendix A, is required before the Framework can be formally adopted. The architectural relationship between on-device processing and the ePrivacy Directive is analysed in Section 6.1 and offered for legal and regulatory evaluation, not as a legal claim. The governance structure, advisory council composition, and conflict-of-interest procedures are described in Section 8 and open for comment.</p>
+<p>The Custorian Standard is open source. The Controls Framework is licensed under CC BY-SA 4.0; the API Specification under MIT. Anyone may implement the standard without permission or payment. The “Custorian Certified” designation will be reserved for platforms passing independent audit.</p>
+<p><strong>This standard cannot be bought. It is owned by a Danish non-profit, licensed for anyone to implement, and structurally protected against capture by any commercial entity adjacent to it.</strong> Custorian is a Danish non-profit association (Foreningen Custorian, CVR 46399455) with no shareholders and no commercial products. This paper is addressed to policymakers, regulators, standards bodies, researchers, child rights organisations, and platform trust and safety teams. Feedback is welcomed at info@custorian.org.</p>
+<h2 id="introduction">1. Introduction</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="1. Introduction" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>1. Introduction</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="why-this-paper-exists">1.1 Why This Paper Exists</h3>
+<p>Child digital safety is one of the most legislated and least harmonised domains in digital policy. Jurisdictions have produced a decade of sophisticated regulation. What they have not produced is interoperable technical infrastructure: the equivalent, for child safety, of what PCI-DSS became for payment security or what EPEAT became for sustainable electronics procurement. This paper describes a candidate for that infrastructure and invites scrutiny of it.</p>
+<h3 id="what-custorian-is">1.2 What Custorian Is</h3>
+<p>Custorian is an open compliance standard for child digital safety, comprising a Controls Framework, an API Specification, and a Certification Programme. It is designed to be referenced by regulation rather than to replace it, adopted through public procurement rather than mandated by law in the first instance, and governed by a multi-stakeholder council rather than by any single company, government, or advocacy organisation.</p>
+<h3 id="the-immediate-policy-context-the-eprivacy-gap">1.3 The Immediate Policy Context: The ePrivacy Gap</h3>
+<p>On 3 April 2026, the temporary derogation to the EU ePrivacy Directive (Regulation (EU) 2021/1232, as extended) ceased to apply<sup>3</sup>. The derogation was the legal basis under Articles 5(1), 5(3) and 6(1) of Directive 2002/58/EC that allowed providers of number-independent interpersonal communications services to voluntarily detect and report child sexual abuse material (CSAM). The expiry followed a contested sequence under the ordinary legislative procedure: on 11 March 2026, at first reading, the European Parliament adopted its position by 458–103 in favour of a temporary extension until 3 August 2027<sup>33</sup>, with conditions narrowing scope to previously identified and hashed CSAM and excluding end-to-end encrypted communications; on 26 March 2026, following inter-institutional negotiations in which the Council declined to align with Parliament’s text, the plenary rejected the resulting compromise and the file lapsed within the trilogue window. As of this writing, providers of in-scope communications services operating in the EU have no statutory basis to undertake voluntary CSAM detection. The proposed Regulation laying down rules to prevent and combat child sexual abuse (COM(2022) 209 final) remains in inter-institutional negotiation, with the next political trilogue expected in May 2026<sup>4</sup>.</p>
+<p>This creates an unprecedented gap: NCMEC received 36.2 million reports of suspected child sexual exploitation in 2023 containing more than 105 million CSAM files<sup>5</sup>. With the legal basis for detection expired and no replacement in force, that detection capacity is suspended in the EU.</p>
+<p>The Controls Framework requires on-device processing for independent privacy reasons. The regulatory implications of this architectural choice, including its relationship to the ePrivacy Directive, are analysed in Section 6.1.</p>
+<h3 id="the-broader-problem">1.4 The Broader Problem</h3>
+<p>Beyond the immediate ePrivacy crisis, the scale of child digital harm is well-documented. NCMEC received 36.2 million reports of suspected child sexual exploitation in 2023, containing more than 105 million CSAM files; the 2024 figure declined to 20.5 million reports (29.2 million separate incidents when platform bundling is accounted for), a decline attributed in substantial part to Meta’s default rollout of end-to-end encryption on Messenger and new bundling methodology rather than to a decline in underlying abuse<sup>32</sup>. Research cited in the WeProtect Global Alliance’s 2023 Global Threat Assessment found that 45 minutes is the average time for a child to be locked into a high-risk grooming conversation in social gaming environments, with escalation observed in as little as 19 seconds<sup>6</sup>. UNICEF polling across 30 countries found that more than one in three young people report being a victim of online bullying<sup>7</sup>. CDC data shows significant increases in emergency department visits for self-harm among adolescents, with visits among girls aged 10–14 increasing approximately fivefold since 2009<sup>8</sup>. The FBI issued an alert in 2023 on the surge in financial sextortion targeting minors<sup>9</sup>.</p>
+<p>Despite these statistics, the digital industry lacks a shared compliance framework for child safety. Existing approaches are fragmented:</p>
+<ul>
+<li>Most current consumer monitoring tools are proprietary and cloud-dependent, with content analysis performed on external servers. Coverage across languages is uneven, with detection capabilities concentrated in English. Independent comparative assessments of parental control software consistently document this concentration<sup>10,11</sup>.</li>
+<li>Platform-specific measures vary widely in scope and effectiveness. External audit mechanisms are emerging, Ofcom under the UK Online Safety Act, EU Digital Services Coordinators under the DSA, but enforcement is nascent and has not yet produced systematic cross-platform comparability<sup>12</sup>.</li>
+<li>Regulatory frameworks — the DSA and AI Act in the EU, and the UK AADC as an analogous instrument in a neighbouring jurisdiction — mandate child protection outcomes but delegate technical implementation to standards bodies. Relevant standards exist (IEEE 2089-2021 for age-appropriate digital services) and harmonised standards are in development under the AI Act via CEN/CENELEC, but no comprehensive compliance framework analogous to PCI-DSS exists for child digital safety<sup>13</sup>.</li>
+</ul>
+<p>This gap, between regulatory intent and technical implementation, is what the Custorian Standard addresses.</p>
+<h4 id="the-language-coverage-gap">1.4.1 The Language Coverage Gap</h4>
+<p>A structural dimension of the implementation gap deserves direct attention: the overwhelming concentration of child safety detection capacity in English. Industry analysis indicates that just 10 languages account for approximately 82 percent of all internet content<sup>14</sup>, yet detection systems, content classifiers, and trust-and-safety investments are further concentrated within that already-narrow set. Independent research by civil society organisations and academic policy institutes has consistently documented resource allocation across the major platforms heavily skewed toward English-language enforcement, with non-English safety investments lagging well behind the proportion of non-English users being served<sup>14,15</sup>. This is an industry-wide pattern, not a single-company phenomenon.</p>
+<p>Within the European Union, the operational consequence is that child safety protections intended to apply uniformly across Member States are, in practice, significantly weaker in languages outside English, French, German, Spanish, and Italian. Bulgarian, Romanian, Greek, Croatian, Maltese, Estonian, Latvian, Lithuanian, Slovak, Slovenian, Czech, Hungarian, Polish, Danish, Swedish, Finnish, Dutch, and Portuguese each represent national-language communities whose minors receive demonstrably lower-quality automated detection. The gap is not hypothetical: detection accuracy, speed, and contextual nuance degrade substantially when systems trained predominantly on English corpora are applied, often via machine translation or under-resourced multilingual models, to other EU languages<sup>14,15</sup>. A child in Sofia or Riga navigating an online platform has, in effect, less safety infrastructure than a child in London or Berlin, despite identical regulatory protections on paper.</p>
+<p>The scale beyond the EU is substantially greater. Across the Global South, languages including Swahili, Burmese, Tamil, Tagalog, Amharic, Yoruba, Hausa, Bengali, Urdu, Vietnamese, Thai, and Indonesian, collectively spoken by well over a billion people, including hundreds of millions of minors, receive moderation infrastructure that has been repeatedly documented as ineffective, built on low-quality or machine-translated training data<sup>15</sup>. In multiple cases, platform detection systems for these languages rely on mistranslated corpora scraped from low-quality sources, producing classifiers that neither recognise grooming patterns nor detect self-harm indicators reliably in the target language. Civil society research has described this as a “poor get poorer” cycle: the languages with fewest protections produce the least training data, which in turn produces the weakest detection, which produces the least enforcement signal, which justifies further under-investment<sup>14</sup>.</p>
+<p>This disparity has a direct bearing on the design of any cross-jurisdictional child safety standard. A framework that certifies platforms based on English-language detection performance alone would entrench the existing gap and give regulatory cover to systems that demonstrably fail non-English-speaking minors. The Controls Framework addresses this through CS-MR.1.3: which requires published detection accuracy metrics: precision, recall, and false positive and false negative rates, to be reported per language, with reporting frequency tiered by platform level (see Section 11.2). A platform cannot be Custorian Certified by demonstrating strong English-language performance alone; it must demonstrate documented accuracy in each language in which it serves minors, and accuracy gaps become visible rather than hidden. This requirement is explicitly designed to make the language-equity problem measurable, comparable, and remediable rather than invisible.</p>
+<h3 id="industry-analogues">1.5 Industry Analogues</h3>
+<p>PCI-DSS (Payment Card Industry Data Security Standard) was created in 2004 to address inconsistent payment security. It defines specific controls, validation procedures, and compliance levels. Organisations that process payment cards must certify annually. The standard is maintained by the PCI Security Standards Council, funded by the industry it regulates<sup>16</sup>.</p>
+<p>EPEAT (Electronic Product Environmental Assessment Tool) was seeded by US EPA funding and subsequently mandated by the US federal government for IT procurement. Manufacturers pay annual registry fees. The standard is maintained by the Global Electronics Council as a non-profit<sup>17</sup>.</p>
+<p>Custorian proposes the same model for child digital safety: an open standard, maintained by a non-profit, with government endorsement driving industry adoption through procurement-led reference. Section 13 (Theory of Adoption) describes this mechanism in detail.</p>
+<h3 id="relationship-to-ieee-p3462-and-other-standards">1.6 Relationship to IEEE P3462 and Other Standards</h3>
+<p>Custorian is built on IEEE P3462, the forthcoming Recommended Practice for Using Safety by Design in Generative Models to Prioritize Child Safety<sup>18</sup>. The author is a contributing member of the P3462 Working Group. Custorian extends P3462 in three ways:</p>
+<ul>
+<li><strong>Scope expansion.</strong> P3462 focuses on generative AI. Custorian covers all digital platforms that interact with children.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Enforceability.</strong> P3462 provides recommended practices. Custorian provides auditable controls with testing procedures and certification outcomes.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Detection implementation.</strong> P3462 recommends detection of CSAM and harmful content. Custorian provides an open API specification (CAS) defining how platforms implement detection, reporting, and interoperability.</li>
+</ul>
+<p>Custorian does not compete with IEEE 2089, IEEE P3462, or harmonised standards developed under CEN/CENELEC. It operationalises their requirements into an audit-ready framework and a concrete API.</p>
+<h2 id="what-custorian-is-and-what-it-is-not">2. What Custorian Is (and What It Is Not)</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="2. What Custorian Is (and What It Is Not)" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>2. What Custorian Is (and What It Is Not)</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>Five clarifications, because the framework’s purpose is frequently misread:</p>
+<ul>
+<li><strong>Custorian is a monitoring framework with a privacy-preserving architecture, not a surveillance tool.</strong> This distinction is architectural, not rhetorical. Detection occurs on-device. Message content never leaves the child’s device. Parents receive category and severity alerts, not message content. Institutional tiers receive only anonymised aggregate metadata. The system monitors children’s communications and classifies them against threat categories; this paper is explicit about that function. What makes the architecture privacy-preserving is that no human or institution ever accesses the content of the communications: only the detection output (category, severity, timestamp) is transmitted beyond the device. Readers should evaluate whether this architectural boundary is sufficient for their privacy requirements; the paper does not claim it eliminates all monitoring concerns, only that it eliminates content exposure.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian is not an age-gating mandate.</strong> The Controls Framework does not require any platform to exclude minors. It requires that platforms serving minors meet specified safety controls and make their compliance auditable.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian is not a replacement for regulation.</strong> The Framework is designed to give regulators a shared technical vocabulary for enforcement. It presumes the regulatory authority of EU instruments (DSA, AI Act, GDPR, ePrivacy Directive, eIDAS, Directive 2011/93/EU) and of national laws, and maps its controls to them. Non-EU instruments (notably the UK AADC, the UK Online Safety Act 2023, and US COPPA) are referenced as informative benchmarks where they operationally align with EU obligations, not as normative sources of EU compliance.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian is not a competitor to any existing platform’s internal trust and safety work.</strong> It is an interoperability and certification layer that allows such work to be demonstrated consistently across jurisdictions and compared credibly across platforms.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian is not a law enforcement pipeline.</strong> Mandatory reporting obligations for CSAM route to existing national authorities and NCMEC via INHOPE. Custorian does not collect, store, transmit, or provide law enforcement with message content.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian does not apply to services that exclude minors.</strong> The Framework applies to digital products and services likely to be accessed by persons under 18. Services that are exclusively designed for and accessed by adults, and that implement effective age assurance to prevent access by children (within the meaning of the draft European Standard, Clause 1), are out of scope. This is the same scope boundary adopted by Annex C of the draft EN and is consistent with the approach taken by the UK Age Appropriate Design Code and by Ofcom guidance under the Online Safety Act 2023.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Implementation is proportionate.</strong> The draft European Standard (Clause 1.1) requires that the implementation of controls be proportionate to the nature, scale and complexity of the service, the risk profile of its minor user base, and the resources available to the operator. The size and scope tiering in Section 11.1 of this paper operationalises that principle. Custorian is not intended to impose VLOP-equivalent obligations on small operators serving small cohorts of minors; it is intended to make obligations comparable across operators of comparable scale and risk.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>The Framework recognises VLOP/VLOSE designation under the DSA.</strong> Where a platform has been designated a very large online platform or very large online search engine under Article 33 of the Digital Services Act, the additional systemic-risk obligations under DSA Articles 34–36 apply and the Framework’s Leadership scope tier is the default certification target (Section 11.1).</li>
+</ul>
+<h2 id="comparison-with-existing-frameworks">3. Comparison with Existing Frameworks</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="3. Comparison with Existing Frameworks" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>3. Comparison with Existing Frameworks</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The most common question raised about Custorian is why existing frameworks are insufficient. The following comparison is organised around the attributes that determine whether a framework can function as interoperable certification infrastructure for child digital safety. No single existing framework combines all five.</p>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Framework</th>
+<th style="text-align: left;">Scope</th>
+<th style="text-align: left;">Auditable Controls</th>
+<th style="text-align: left;">Cross-Jurisdiction</th>
+<th style="text-align: left;">Consumer-Facing Mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PCI-DSS</td>
+<td style="text-align: left;">Payment card security</td>
+<td style="text-align: left;">Yes (detailed)</td>
+<td style="text-align: left;">Yes (global)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">EPEAT</td>
+<td style="text-align: left;">Electronics sustainability</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes (with national tailoring)</td>
+<td style="text-align: left;">Yes (registry)</td>
+</tr>
+<tr>
+<td style="text-align: left;">IEEE 2089-2021</td>
+<td style="text-align: left;">Age-appropriate digital services</td>
+<td style="text-align: left;">No (principles only)</td>
+<td style="text-align: left;">Yes (standard reference)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">IEEE P3462 (draft)</td>
+<td style="text-align: left;">GenAI child safety by design</td>
+<td style="text-align: left;">No (recommended practices)</td>
+<td style="text-align: left;">Yes (standard reference)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">UK AADC</td>
+<td style="text-align: left;">Online services used by UK minors</td>
+<td style="text-align: left;">Partial (15 standards)</td>
+<td style="text-align: left;">No (UK only)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">COPPA Safe Harbors (US)</td>
+<td style="text-align: left;">Online services for under-13s in US</td>
+<td style="text-align: left;">Yes (limited scope)</td>
+<td style="text-align: left;">No (US only)</td>
+<td style="text-align: left;">Yes (seal)</td>
+</tr>
+<tr>
+<td style="text-align: left;">kidSAFE</td>
+<td style="text-align: left;">Online services for minors</td>
+<td style="text-align: left;">Yes (limited scope)</td>
+<td style="text-align: left;">Partial</td>
+<td style="text-align: left;">Yes (seal)</td>
+</tr>
+<tr>
+<td style="text-align: left;">EU DSA (Art. 28)</td>
+<td style="text-align: left;">Online platforms serving minors</td>
+<td style="text-align: left;">No (outcomes, not controls)</td>
+<td style="text-align: left;">Yes (EU-wide)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">EU AI Act (children as vulnerable group)</td>
+<td style="text-align: left;">AI systems affecting minors</td>
+<td style="text-align: left;">No (outcomes, not controls)</td>
+<td style="text-align: left;">Yes (EU-wide)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Custorian (proposed)</strong></td>
+<td style="text-align: left;"><strong>All digital platforms serving minors</strong></td>
+<td style="text-align: left;"><strong>Yes (139 controls, 6 domains)</strong></td>
+<td style="text-align: left;"><strong>Yes (designed for)</strong></td>
+<td style="text-align: left;"><strong>Yes (certification mark planned)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The gap is specific: no existing framework provides auditable controls, cross-jurisdictional applicability, and a consumer-facing certification mark at the scope required for modern digital platforms serving minors. Each of the existing frameworks solves part of the problem. Custorian is proposed to solve the specific combination.</p>
+<h2 id="framework-architecture">4. Framework Architecture</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="4. Framework Architecture" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>4. Framework Architecture</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="overview">4.1 Overview</h3>
+<p>The Custorian Standard comprises three components:</p>
+<ul>
+<li><strong>Custorian Controls Framework (CCF)</strong>: what platforms must do (analogous to PCI-DSS requirements).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian API Specification (CAS)</strong>: how platforms implement detection, reporting, and interoperability (analogous to PA-DSS / PCI 3DS SDK).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Custorian Certification Programme</strong>: how compliance is validated and certified (analogous to the PCI QSA programme).</li>
+</ul>
+<h3 id="control-domains">4.2 Control Domains</h3>
+<p>The Controls Framework is organised into six control domains:</p>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 18%" />
+<col style="width: 29%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Domain</th>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Controls</th>
+<th style="text-align: left;">Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Age Controls</td>
+<td style="text-align: left;">CS-AC</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">Age determination, age-appropriate defaults, feature gating, verification failure modes, accuracy thresholds for age assurance methods</td>
+</tr>
+<tr>
+<td style="text-align: left;">Content &amp; Design Safety</td>
+<td style="text-align: left;">CS-CD</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">Harmful content detection, dark pattern prohibition, moderation standards, intervention content safety, accessibility</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data &amp; Privacy for Minors</td>
+<td style="text-align: left;">CS-DM</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">Data minimisation, on-device processing, DPIA and CRIA, advertising prohibition</td>
+</tr>
+<tr>
+<td style="text-align: left;">Parental Rights &amp; Controls</td>
+<td style="text-align: left;">CS-PR</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">Parent dashboards, safety boundaries, child notification, teen autonomy, multi-guardian and shared-custody support</td>
+</tr>
+<tr>
+<td style="text-align: left;">Monitoring, Detection &amp; Response</td>
+<td style="text-align: left;">CS-MR</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">Real-time detection, accuracy transparency, incident response SLAs, mandatory reporting, evidence preservation, multi-device consistency, model update security</td>
+</tr>
+<tr>
+<td style="text-align: left;">Governance &amp; Policy</td>
+<td style="text-align: left;">CS-GO</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">Child Safety Officers, training, vendor management, regulatory mapping, responsible disclosure, jurisdictional compliance, conflict-of-interest and recusal</td>
+</tr>
+</tbody>
+</table>
+<p>Total: 146 defined controls in the current draft (CCF v0.2, June 2026) across 6 domains, with each control classified as Required (137) or Addressable (9). Controls have been reorganised since v5.1 to reflect the formal Annex A structure of the draft European Standard (EN XXXXX:2026), with several CS-PR and CS-MR controls reallocated to CS-DM and CS-CD where the underlying obligation more naturally belongs. Two detection categories, “content wellness” and “dangerous purchases”, are classified as Addressable pending review by the Category Ethics Review function (see Section 7.5). Control count and classification are subject to revision through advisory council review and pilot validation.</p>
+<h3 id="control-numbering">4.3 Control Numbering</h3>
+<p>Controls follow the format CS-[DOMAIN].[REQUIREMENT].[CONTROL]. For example, CS-MR.1.3 is the Custorian Standard, Monitoring/Detection/Response domain, Requirement 1 (real-time threat detection), Control 3 (detection accuracy reporting). Testing procedures are appended as suffixes: CS-MR.1.3.a: CS-MR.1.3.b.</p>
+<h2 id="threat-model">5. Threat Model</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="5. Threat Model" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>5. Threat Model</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="adversary-types">5.1 Adversary Types</h3>
+<p>The Framework addresses six adversary categories: opportunistic predators (low sophistication, using public social media DMs and unverified gaming chat); organised exploitation networks (high sophistication, coordinated grooming across platforms and rapid migration to encrypted channels); financial sextortion operators (medium-high, fake profiles and rapid escalation to payment demands); peer aggressors (low-medium, school-linked messaging apps and group chats); AI-assisted groomers (medium-high and increasing, using LLM-generated messages for scaled grooming); and radicalisation recruiters (medium-high, operating across gaming platforms and private messaging groups).</p>
+<h3 id="attack-surface">5.2 Attack Surface</h3>
+<p>The Framework defines a detection perimeter based on text-based communication accessible to on-device processing.</p>
+<p>Inside the detection perimeter: text input and display across messaging apps, in-app messaging on social media, gaming, and communication platforms, SMS and standard messaging protocols.</p>
+<p>Outside the detection perimeter (acknowledged blind spots): end-to-end encrypted platforms that block on-device access, voice and video communication, image-only communication without text, dark web services, and communication on devices not running a compliant application. These blind spots define the boundary of what any on-device standard can achieve. They also define why platform cooperation matters: platforms that enable compliant detection within their environments provide measurably better child protection than those that do not.</p>
+<h3 id="trust-boundaries">5.3 Trust Boundaries</h3>
+<p>The Framework identifies four trust boundaries that must be managed:</p>
+<ul>
+<li><strong>Parent–child</strong> (risk: an abusive parent uses monitoring data to control or punish a child, see Section 7.2).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Device integrity</strong> (risk: a rooted or jailbroken device bypasses detection).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Pattern library and model update pipeline</strong> (risk: a compromised update server disables detection, injects false patterns, or deploys classifiers that suppress detection of specific threat actors or flag legitimate content). The Framework requires cryptographic signing of all model updates (CS-MR.6.1), multi-party approval for production model deployments requiring sign-off from at least two authorised maintainers (CS-MR.6.2), automated rollback capability to the previous known-good model version within 1 hour of anomaly detection (CS-MR.6.3), and a public transparency log of all model update hashes and deployment timestamps (CS-MR.6.4). These controls are modelled on software supply chain security practices (SLSA framework) and treat the detection model pipeline as critical infrastructure.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Institutional data</strong> (risk: misuse of aggregate data for profiling, discrimination, or punitive action).</li>
+</ul>
+<p>Controls addressing each boundary are specified in the Controls Framework.</p>
+<h3 id="adversarial-robustness">5.4 Adversarial Robustness</h3>
+<p>The Framework’s detection categories span two fundamentally different technical approaches with different adversarial profiles. This section addresses attacks against the detection system itself.</p>
+<p><strong>Known adversarial attack vectors.</strong> Text-based NLP classifiers are vulnerable to adversarial manipulation: character substitution (replacing letters with visually similar Unicode characters), semantic rephrasing (conveying the same intent in language that evades pattern matching), code-switching (mixing languages within a conversation to exploit monolingual classifiers), and prompt-style evasion (if the classifier uses an LLM, crafting inputs that cause it to misclassify). These techniques are well-documented in adversarial ML research and are accessible to any actor with moderate technical sophistication, which includes organised exploitation networks.</p>
+<p><strong>Framework requirements for adversarial resilience.</strong> The Framework does not prescribe specific adversarial defences (these evolve faster than any standard can track), but requires: published adversarial testing as part of the accuracy metrics required by CS-MR.1.3: including adversarial test sets alongside standard test corpora (CS-MR.1.3.c); a documented adversarial response process for updating classifiers when new evasion techniques are identified, with a target response time of 30 days from confirmed evasion to updated model deployment (CS-MR.7.1); and red-team testing of detection systems at least annually for Level 1 platforms and at each major model update for all platforms, with results published in the accuracy report (CS-MR.7.2).</p>
+<p><strong>Honest limitation.</strong> No text classifier is adversarially robust against a sufficiently motivated and sophisticated attacker. A state-level actor or a well-resourced organised network that studies the detection system’s behaviour can craft evasion strategies. The Framework’s adversarial controls raise the cost and reduce the scalability of evasion, they do not eliminate it. This is a property shared with every detection system in every domain, including financial fraud detection and network intrusion detection. The Framework is explicit about this limitation so that deployments are not misrepresented as impervious.</p>
+<h3 id="threat-detection-capability-gap">5.5 Threat-Detection Capability Gap</h3>
+<p>The adversary model described in Section 5.1 reflects 2026-era threat sophistication. Threat capabilities, particularly AI-assisted grooming, will evolve substantially faster than any standards revision cycle. As generative AI systems become more capable, the gap between AI-generated threats and pattern-based detection will widen. The Framework addresses this through three mechanisms: the revision process in Section 8.5 permits continuous control updates; CS-MR.7.1 requires documented response processes for emerging evasion techniques; and the mandatory annual red-team testing (CS-MR.7.2) is designed to surface capability gaps before they are exploited at scale. These mechanisms mitigate but do not solve the fundamental asymmetry between offence and defence in AI-enabled threats. This asymmetry is a standing risk to the Standard’s long-term effectiveness and should inform the Advisory Council’s prioritisation of detection research partnerships.</p>
+<h2 id="on-device-detection-requirement">6. On-Device Detection Requirement</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="6. On-Device Detection Requirement" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>6. On-Device Detection Requirement</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="why-the-framework-mandates-on-device-processing">6.1 Why the Framework Mandates On-Device Processing</h3>
+<p>A fundamental tension exists in child safety technology: effective detection requires analysis of private communications, but cloud-based analysis violates the privacy principles that protect children under GDPR and the UNCRC<sup>19</sup>.</p>
+<p>The Framework resolves this by requiring that all threat detection runs locally on the child’s device (CS-MR.1.1). Message content never leaves the phone. This architecture eliminates cloud-based data breaches, third-party data access, bulk surveillance infrastructure, and cross-border data transfer complications.</p>
+<p>This is both a technical requirement and a regulatory strategy. Earlier on-device CSAM detection proposals have been withdrawn following criticism that centred on proprietary governance, limited transparency, and the absence of user consent mechanisms<sup>20</sup>. The Framework addresses each of these considerations through open-source transparency, non-profit governance, mandatory parental consent, and independently audited compliance. The lesson to draw from that history is not that on-device detection is infeasible, but that on-device detection without an institutional trust architecture is untenable.</p>
+<p><strong>ePrivacy analysis.</strong> Because all analysis occurs locally on the child’s device, and only cryptographic hash matches (not message content) are reported, the processing is architecturally distinct from the server-side scanning contemplated by the expired ePrivacy derogation. On-device processing initiated by the device owner (parent or guardian) with informed consent, where no data is transmitted to external servers, may fall outside the scope of Articles 5(1) and 15(1) of the ePrivacy Directive (2002/58/EC)<sup>3</sup>. This is an architectural observation, not a legal claim. Whether on-device detection constitutes “interception” under ePrivacy has not been tested in court or formally assessed by a data protection authority. Custorian does not assert that the Framework resolves the ePrivacy gap, that determination belongs to legislators, courts, and data protection authorities. Custorian is seeking a formal legal opinion from a qualified EU data protection practitioner and intends to engage with the EDPB and/or the Danish Datatilsynet for informal guidance.</p>
+<h3 id="what-the-framework-requires-of-detection-implementations">6.2 What the Framework Requires of Detection Implementations</h3>
+<p>The Framework defines what a compliant detection system must achieve, not how. Key requirements include:</p>
+<ul>
+<li><strong>CS-MR.1.1</strong>: real-time threat detection across 7 defined categories (grooming, bullying, self-harm, violence, content wellness, sextortion, dangerous purchases). Of these, 5 categories (grooming, bullying, self-harm, violence, sextortion) are Required; 2 categories (content wellness, dangerous purchases) are Addressable pending Category Ethics Review (see Section 7.5).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-MR.1.3</strong>: published detection accuracy metrics (precision, recall, false positive and false negative rates) per language, with reporting frequency tiered by platform level (see Section 11.2).</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-MR.2.1</strong>: mandatory reporting to law enforcement for CSAM detection, subject to the confidence threshold and human review requirements specified in Section 6.5.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-DM.1.1</strong>: on-device processing by default; no message content transmitted to external servers.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-PR.3.1</strong>: mandatory notification to children aged 13+ that monitoring is active.</li>
+</ul>
+<h4 id="detection-maturity-matrix">6.2.1 Detection Maturity Matrix</h4>
+<p>The seven detection categories rely on fundamentally different technical approaches with different maturity levels. The Framework is explicit about this distinction to prevent overstating the capabilities of compliant systems.</p>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 23%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Detection Category</th>
+<th>Technical Approach</th>
+<th style="text-align: left;">Maturity Level</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CSAM (hash matching)</td>
+<td>Perceptual hashing against known databases (PhotoDNA, CSAI Match)</td>
+<td style="text-align: left;"><strong>Established</strong></td>
+<td style="text-align: left;">Proven at scale. High precision, low false positive rate. Industry standard since 2009.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sextortion</td>
+<td>Pattern matching + NLP classification</td>
+<td style="text-align: left;"><strong>Emerging</strong></td>
+<td style="text-align: left;">Financial coercion patterns are relatively structured and detectable. Limited multilingual validation.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Grooming</td>
+<td>NLP classification, behavioural sequence analysis</td>
+<td style="text-align: left;"><strong>Emerging</strong></td>
+<td style="text-align: left;">Active research area. English-language models show promise; multilingual performance substantially lower. Adversarial evasion is a documented concern.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Self-harm</td>
+<td>NLP classification, keyword + context analysis</td>
+<td style="text-align: left;"><strong>Emerging</strong></td>
+<td style="text-align: left;">Sensitive to cultural context and expression patterns. High false positive risk in certain demographics. Requires careful threshold calibration.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bullying</td>
+<td>NLP classification</td>
+<td style="text-align: left;"><strong>Research-stage</strong></td>
+<td style="text-align: left;">Distinguishing bullying from normal peer conflict is an unsolved classification problem. Context-dependent. High false positive rates in published studies.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Violence</td>
+<td>NLP classification + image analysis (future)</td>
+<td style="text-align: left;"><strong>Research-stage</strong></td>
+<td style="text-align: left;">Text-only detection captures threats and glorification. Distinguishing fictional/gaming references from genuine threats remains unreliable.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Content wellness</td>
+<td>NLP classification</td>
+<td style="text-align: left;"><strong>Research-stage</strong></td>
+<td style="text-align: left;">Broadest category. Boundary with legitimate expression is contested. Addressable, not Required, for this reason.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dangerous purchases</td>
+<td>Keyword + pattern matching</td>
+<td style="text-align: left;"><strong>Research-stage</strong></td>
+<td style="text-align: left;">Parental monitoring function rather than safety function. Addressable, not Required.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implication for certification.</strong> Platforms certifying against the Framework are required to publish accuracy metrics per category (CS-MR.1.3). The maturity column above establishes baseline expectations: reviewers and regulators should expect high accuracy for CSAM hash matching and should not expect equivalent performance for research-stage categories. The validation study template in Appendix A requires per-category reporting for this reason.</p>
+<h4 id="age-verification-failure-modes-cs-ac.2">6.2.2 Age Verification Failure Modes (CS-AC.2)</h4>
+<p>Age verification is the primary bypass mechanism for child safety controls. The Framework defines requirements for what happens when verification fails or is inconclusive:</p>
+<ul>
+<li><strong>CS-AC.2.1</strong>: default to maximum protection. When age cannot be verified, the system defaults to the youngest applicable age bracket (8–10) and applies maximum protection. Under-protection due to failed verification is a more serious failure mode than over-protection.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-AC.2.2</strong>: multi-signal degradation. If the primary age verification signal fails (for example, eIDAS wallet unavailable), the system falls back to secondary signals (parent attestation, device family account) rather than disabling age-gated features.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-AC.2.3</strong>: verification logging. All events (successful, failed, inconclusive) are logged for audit purposes. No personal data is retained; only the verification method, outcome, and timestamp.</li>
+</ul>
+<h4 id="multi-device-consistency-cs-mr.3">6.2.3 Multi-Device Consistency (CS-MR.3)</h4>
+<p>Children increasingly use multiple devices (personal phone, family tablet, school-issued device). The Framework requires consistent detection across all devices on which a child profile is active (CS-MR.3.1), per-child rather than per-device institutional opt-in consent (CS-MR.3.2), and synchronisation of detection history via encrypted on-device sync mechanisms such as iCloud Keychain or Google Backup rather than via Custorian servers (CS-MR.3.3).</p>
+<h3 id="intervention-content-safety-cs-cd.3">6.3 Intervention Content Safety (CS-CD.3)</h3>
+<p>When a compliant system delivers interventions to a child, nudges, warnings, guidance, or safety information, the content itself becomes a safety surface. A child who receives an intervention may treat it as a trusted adviser, confide in it, or act on its guidance. The Framework therefore defines requirements for what intervention content may and may not contain:</p>
+<ul>
+<li><strong>CS-CD.3.1</strong>: AI classification / human intervention split. AI may be used to classify content (threat category, severity, patterns). AI must not generate the text that children read. Child-facing intervention content must be pre-authored by qualified child safety professionals and selected by the classification engine based on category, severity, and age bracket. Interventions must not provide counselling, therapy, diagnosis, or medical advice; they must direct children to qualified human support. Interventions must not describe threat mechanics in detail. Interventions for self-harm or suicidal ideation must follow established safe-messaging guidelines and must always surface a crisis helpline with one-tap access.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-CD.3.2</strong>: age-appropriate language. Tone, vocabulary, and consequence framing must be calibrated to the child’s verified age bracket. Interventions for children under 13 must not include fear-based messaging, graphic descriptions, or criminal justice framing.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-CD.3.3</strong>: cultural and contextual review. Intervention content must be reviewed for cultural appropriateness in each supported language and region. Generic translations of English-language interventions are not compliant. Content must not make assumptions about family structure, religious context, or gender identity.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-CD.3.4</strong>: no dialogue loop. The child must not be able to enter into a back-and-forth dialogue with the intervention system. A single structured safety response is permitted per rolling 15-minute window: a child may submit content and receive one structured safety assessment, after which no further system responses are generated until the window expires. This prevents the child from treating the system as a counsellor, confidant, or therapist, roles that require qualified human professionals. AI-generated free-text responses to children are prohibited.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-CD.3.5</strong>: intervention content governance. All intervention content must be version-controlled and published in the open-source repository. Changes require review by at least one qualified child psychologist or child safety professional, documented in the public changelog.</li>
+</ul>
+<p>Rationale. The intervention is the moment of highest trust between the system and the child. If the system delivers harmful, inappropriate, or culturally insensitive guidance at the moment a child is most vulnerable, the damage compounds the original threat rather than mitigating it. These controls ensure that the intervention layer is as rigorously governed as the detection layer.</p>
+<h3 id="practical-feasibility">6.4 Practical Feasibility</h3>
+<p>On-device processing is sometimes assumed to impose higher device costs than cloud-based alternatives. The opposite is generally true for network data: because message content is analysed locally and never transmitted to external servers, a compliant system consumes network data only for the initial download of the classifier (typically 50–200 MB, comparable to a standard application), periodic model updates, and small metadata payloads when a threat is detected. Cloud-based monitoring tools, by contrast, transmit message content continuously for server-side analysis and produce substantially higher sustained data usage.</p>
+<p>Battery and processing costs are real and device-dependent. Contemporary smartphones with dedicated neural processing hardware (Apple Neural Engine, Google Tensor, Qualcomm Hexagon, Samsung Exynos NPU) run text classification at lower power cost than CPU-only devices. The Framework does not mandate a minimum device specification and does not make claims about specific battery impact; this varies substantially by device, classifier architecture, and message volume. Platforms certifying against the Framework must publish performance metrics (latency, battery impact, supported device range) alongside the accuracy metrics required by CS-MR.1.3: so that parents and institutions can make informed deployment decisions based on measured data rather than estimates.</p>
+<p>The Framework also acknowledges technical constraints that limit universal coverage: end-to-end encrypted communications that block on-device access, voice and video modalities, image-only content, and platforms that do not cooperate with system-level integration all sit outside the detection perimeter defined in Section 5.2. These are real limitations, not design failures; the Framework is explicit about them so that deployments are not misrepresented to parents or regulators as more comprehensive than they are.</p>
+<h3 id="csam-reporting-safeguards-cs-mr.2">6.5 CSAM Reporting Safeguards (CS-MR.2)</h3>
+<p>Mandatory reporting of CSAM to law enforcement is a legal obligation in most jurisdictions and a moral imperative. It is also an action with severe consequences when triggered incorrectly: a false CSAM report can result in device seizure, family investigation, temporary separation of children from parents, and lasting reputational damage, even when the investigation concludes with no finding. The Framework therefore imposes safeguards on the reporting pathway:</p>
+<ul>
+<li><strong>CS-MR.2.1</strong>: confidence threshold. Automated CSAM hash matching must meet a minimum confidence threshold of 99.5% match probability (consistent with PhotoDNA and CSAI Match operational standards) before triggering the mandatory reporting pathway. Detections below this threshold are logged for human review but do not trigger automated reporting.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-MR.2.2</strong>: human review for non-hash detections. For CSAM indicators detected through NLP classification rather than hash matching (e.g., text describing the creation or distribution of CSAM), a qualified human reviewer must confirm the classification before a law enforcement report is generated. The 1-hour reporting clock begins when the human reviewer confirms, not when the classifier flags. Platforms must maintain a pool of trained reviewers sufficient to meet the 1-hour SLA.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-MR.2.3</strong>: false report impact mitigation. The CAS /report endpoint must include a confidence score and detection method (hash match vs. classifier) in the report payload, so that receiving authorities can triage appropriately. Platforms must publish their false positive rate for CSAM reporting in the quarterly accuracy report.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-MR.2.4</strong>: routing. Reports are routed to the appropriate national authority based on the child’s jurisdiction, with NCMEC CyberTipline as the international clearing house via the INHOPE network.</li>
+</ul>
+<p>These safeguards balance the urgency of CSAM reporting against the real harm caused by false reports. The 99.5% threshold for hash matching reflects current industry practice; the human review requirement for classifier-based detection reflects the lower maturity of NLP-based CSAM detection (see Section 6.2.1).</p>
+<p>NOTE on interoperability: the Framework does not require platforms to abandon existing inter-platform coordination mechanisms. The Tech Coalition’s Lantern programme (where participating platforms share signals on accounts conducting child exploitation across services) provides cross-platform threat intelligence and remains complementary to the Framework’s on-device detection requirements. Platforms participating in Lantern or equivalent programmes (subject to the safeguards in CS-MR.6) satisfy the addressable control CS-MR.6.1 on cross-platform threat intelligence sharing. The Framework’s contribution is to bring detection inside compliant applications under auditable controls; coordination across platforms remains the proper domain of inter-platform programmes.</p>
+<h3 id="child-contestation-mechanism-cs-pr.6">6.6 Child Contestation Mechanism (CS-PR.6)</h3>
+<p>Any system that classifies children’s communications and generates alerts based on those classifications must provide a mechanism for contesting incorrect classifications. This is both a rights requirement (GDPR Art. 22, AI Act Art. 86)<sup>29,30</sup> and a practical necessity for maintaining trust:</p>
+<ul>
+<li><strong>CS-PR.6.1</strong>: children aged 13+ may flag any alert as incorrectly classified via a one-tap “This is wrong” action on the notification they receive under CS-PR.3.1. The flag is recorded and included in the platform’s accuracy reporting under CS-MR.1.3.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-PR.6.2</strong>: flagged alerts are reviewed by a qualified human reviewer within 5 business days. If the classification is confirmed as incorrect, the alert is retracted from the parent dashboard and the institutional tier, and the detection event is reclassified in the accuracy log.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>CS-PR.6.3</strong>: aggregate contestation data (rate of contestation, rate of upheld vs. retracted alerts, by category and age bracket) must be published in the quarterly accuracy report. A sustained high contestation rate for a specific category is a signal that the classifier requires retraining or the category definition requires revision.</li>
+</ul>
+<h3 id="minor-opt-out-and-data-subject-rights-cs-pr.7">6.7 Minor Opt-Out and Data Subject Rights (CS-PR.7)</h3>
+<p>Under GDPR Art. 22 and the EU AI Act Art. 86<sup>29,30</sup>, individuals, including competent minors, have rights in relation to automated processing and to decisions significantly affecting them. The Framework treats these as substantive rights, not procedural formalities. The contestation mechanism in Section 6.6 addresses incorrect individual classifications; this section addresses the prior question of whether monitoring itself is consented to.</p>
+<p><strong>CS-PR.7.1</strong>: competent-minor objection pathway. Children aged 16 and above may submit a documented objection to institutional-tier data sharing through a plain-language in-product flow. The objection is processed within 5 business days and, if upheld, institutional-tier transmission for that child ceases immediately. Family-tier parental alerts are governed by national age-of-consent law and parental authority, and are not in scope for this control; the Framework does not override the parental relationship where national law grants it primacy.</p>
+<p><strong>CS-PR.7.2</strong>: graduated agency for 13–15. Children aged 13–15 may submit an objection that triggers review by a qualified human reviewer who consults, where appropriate, with the child, the parent, and (if institutional mode is active) a designated institutional safeguarding lead. The reviewer balances the child’s evolving capacity (UNCRC Art. 5, Art. 12) against the child’s best interests (Art. 3) and documents the reasoning. Objections in this age band are not automatically upheld but must be substantively considered, not procedurally dismissed.</p>
+<p><strong>CS-PR.7.3</strong>: non-retaliation and visibility. A child who submits an objection under CS-PR.7.1 or CS-PR.7.2 must not face adverse consequences within the product (degraded features, loss of access, account sanctions) as a result of exercising that right. Aggregate data on objection volume, outcome, and age bracket is published in the quarterly transparency report, so that a pattern of objections being routinely dismissed becomes visible.</p>
+<p><strong>CS-PR.7.4</strong>: CSAM mandatory reporting is not subject to minor objection. The pathway in Section 6.5 (CS-MR.2) for mandatory reporting of CSAM to law enforcement is governed by legal obligation, not by data subject rights, and cannot be disapplied by a minor objection. This exception is specified explicitly so that the opt-out pathway cannot be read as a mechanism to evade mandatory reporting.</p>
+<p>Rationale. A monitoring framework grounded in children’s rights cannot treat competent minors as the object of protection without also treating them as the subject of rights. The evolving-capacities principle (UNCRC Art. 5)<sup>19</sup> requires that a 16-year-old be treated differently from an 8-year-old, and that the difference be substantive rather than cosmetic. These controls also bring the Framework into defensible alignment with GDPR and AI Act obligations that platforms will face regardless of certification.</p>
+<h3 id="survivor-centred-response-controls-cs-mr.8">6.8 Survivor-Centred Response Controls (CS-MR.8)</h3>
+<p>CSAM detection and mandatory reporting are only part of the response to child sexual abuse online. Survivors, including those whose abuse imagery continues to circulate years after the original offence, require specific safeguards that a detection-focused framework too easily omits. The controls below operate alongside the detection and reporting pathways in Sections 6.2 and 6.5.</p>
+<p><strong>CS-MR.8.1</strong>: survivor-initiated removal pathway. Certified platforms must provide a dedicated, accessible removal request pathway for individuals whose CSAM has been or is being circulated, or for their authorised representatives (parents, guardians, legal counsel, or designated victim-support organisations). The pathway must be discoverable without creating an account, must accept requests in all languages in which the platform operates, and must acknowledge receipt within 24 hours.</p>
+<p><strong>CS-MR.8.2</strong>: hash-persistence and re-victimisation prevention. Once content is confirmed as CSAM and added to a recognised hash database (PhotoDNA, CSAI Match, or INHOPE clearinghouse hashes), certified platforms must maintain the hash-match classification persistently. Subsequent re-uploads of the same content must be blocked at point of upload where technically feasible, without requiring the survivor to submit a new report. Platforms must publish their block-at-upload coverage rate quarterly under CS-MR.1.3.</p>
+<p><strong>CS-MR.8.3</strong>: trauma-informed communication. All platform communications with survivors or their representatives, acknowledgement, status updates, and final disposition, must follow established trauma-informed practice: plain language, no graphic description of the content being discussed, no request that the survivor re-describe or re-identify the imagery, and signposting to qualified victim-support services in the survivor’s jurisdiction.</p>
+<p><strong>CS-MR.8.4</strong>: appeal and review. Survivors whose removal requests are refused in whole or part must be provided with a clear explanation in plain language, the specific ground for refusal, and a route to independent appeal, escalating to the platform’s Digital Services Coordinator notice-and-action mechanism under DSA Art. 16, the UK Online Safety Act complaints procedures where applicable, or the equivalent national regime.</p>
+<p><strong>CS-MR.8.5</strong>: survivor representation in governance. The Standards Council composition in Section 8.2 reserves two seats for survivor and lived-experience representation. Those seats are filled in consultation with established survivor-led organisations and the seats may not be filled by individuals whose only lived-experience claim is academic, professional, or secondary.</p>
+<p>Rationale. A standard that treats survivors only as the source of CSAM reports, and not as rights-holders with a continuing relationship to the content and to the platforms that host it, fails a population for whom the consequences of the original abuse are ongoing. The controls above are the minimum; fuller survivor-centred practice will be developed through the Standards Council’s survivor seats and in consultation with survivor-led organisations in the v1.0 validation period.</p>
+<h2 id="childrens-rights-framework">7. Children’s Rights Framework</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="7. Children’s Rights Framework" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>7. Children’s Rights Framework</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="uncrc-alignment">7.1 UNCRC Alignment</h3>
+<p>The Framework engages directly with the tension between protection rights and participation and privacy rights under the UN Convention on the Rights of the Child. Protection from harm (Art. 19) is operationalised through on-device detection of threats. Privacy (Art. 16) is protected by the architectural rule that no message content leaves the device and no institutional tier receives message content, though the paper acknowledges that detection output (category, severity, timestamp) does leave the device and constitutes monitoring data (see Section 2). The right to be heard (Art. 12) is operationalised through mandatory child notification for children aged 13 and above (CS-PR.3.1), the contestation mechanism (CS-PR.6), and age-appropriate interventions that empower the child to act. Best interests (Art. 3) are reflected in the design decision that neither parent nor institution receives raw message content. Evolving capacities (Art. 5) are reflected in age-graduated thresholds: maximum protection at 8–10, minimal intervention at 17+.</p>
+<p>This framework draws on UNCRC General Comment No. 25 (2021)<sup>19</sup> and UNICEF’s Policy Guidance on AI for Children<sup>21</sup>.</p>
+<h3 id="parental-abuse-and-misuse-safeguards">7.2 Parental Abuse and Misuse Safeguards</h3>
+<p>The Framework addresses the scenario in which the parent is the source of harm. This is not an edge case; it is a scenario that any child monitoring system must treat as a primary design constraint. An abusive parent who receives a threat alert will not calmly await institutional intervention; they may confront the child, search their device, restrict their communication, or escalate the situation. The safeguards below are designed with this reality in mind:</p>
+<p><strong>Architectural safeguards (always active):</strong> - Parents never see message content, only category, severity, and timestamp (CS-PR.2.1). - Only pattern-level threat categories are reported, not keywords, phrases, or contact identifiers (CS-PR.2.3). A parent cannot determine who the child was communicating with from the alert data alone. However, the paper acknowledges that in situations where a child has limited active conversations, a category + timestamp alert may be sufficient for an abusive parent to identify the context. This residual risk cannot be fully eliminated by any monitoring system that alerts parents. - Mandatory child notification for ages 13+ is non-configurable and cannot be disabled by the parent (CS-PR.3.1). - Detection sensitivity decreases and child agency increases with age (CS-PR.4.1).</p>
+<p><strong>Escalation safeguards (risk-responsive):</strong> - <strong>CS-PR.8.1</strong>: delayed parent notification for abuse-indicative categories. When the detection system identifies a threat category where the parent may be the source of harm (specifically: self-harm where family conflict indicators are present, and grooming where the contact pattern matches a household member), the parent notification is delayed by 24 hours and the alert is routed first to the institutional tier (school counsellor or national helpline) if institutional mode is active. If institutional mode is not active, the alert is delivered to the parent with standard timing but the child receives the notification first with a direct link to the national child helpline. - <strong>CS-PR.8.2</strong>: child self-reporting mechanism. A child of any age may use a one-tap emergency action within any intervention screen to route a report directly to a school counsellor or national helpline, bypassing the parent entirely (CS-PR.5.1). This mechanism is surfaced in every intervention, not only in abuse-related categories. - <strong>CS-PR.8.3</strong>: institutional override. Where a school or institution has activated institutional mode for a child, a qualified designated safeguarding lead may request suppression of parent notifications for a specific child for up to 30 days, renewable, when there is a documented safeguarding concern. This requires a formal record and is auditable.</p>
+<p>These safeguards reduce but do not eliminate misuse risk. No monitoring system that includes parental alerting can fully prevent a determined abusive parent from misusing alert data. The Advisory Council will include survivor and lived-experience voices to inform ongoing design, and a formal child impact assessment, conducted by qualified child psychologists, is planned as part of the validation process described in Appendix A.</p>
+<h3 id="age-out-lifecycle">7.3 Age-Out Lifecycle</h3>
+<p>When a monitored child reaches 18, the Framework requires automatic cessation of monitoring, parent access revocation, on-device data deletion within 24 hours, and young adult data access rights (GDPR Art. 15) before automatic erasure (Art. 17). Institutional aggregate data is unaffected (anonymised, non-traceable). The age-out is automatic, not parent-initiated.</p>
+<p><strong>Early cessation.</strong> The Framework acknowledges that circumstances may warrant cessation of monitoring before age 18, including emancipated minors, children in care where the monitoring parent’s rights have been legally restricted, and children whose safety is endangered by continued parental alerting. The Advisory Council will define an early cessation process for exceptional circumstances as part of the Governance Charter (v1.0). Until formal criteria are established, the institutional override mechanism in CS-PR.8.3 provides an interim path.</p>
+<h3 id="accessibility-requirements-cs-cd.4">7.4 Accessibility Requirements (CS-CD.4)</h3>
+<p>Children with disabilities must receive equivalent protection. The Framework requires compatibility with platform screen readers (CS-CD.4.1), conformance with WCAG 2.1 AA contrast and readability (CS-CD.4.2), accessibility of crisis helpline actions for children using assistive input devices (CS-CD.4.3), and inclusion of accessibility compliance assessment in the planned validation study, with recruitment of families of children with disabilities where possible (CS-CD.4.4).</p>
+<h3 id="detection-category-ethics">7.5 Detection Category Ethics</h3>
+<p>The Framework’s seven detection categories were defined based on published threat taxonomies (NCMEC<sup>5</sup>, EU Kids Online<sup>12</sup>, Thorn<sup>22</sup>) and IEEE P3462’s recommended scope<sup>18</sup>. Two categories warrant ethical scrutiny: “content wellness” (including radicalisation indicators), where the boundary with legitimate political expression is contested, and “dangerous purchases” (including vape/drug references), which is a parental monitoring function rather than a child safety function in the UNCRC sense.</p>
+<p>Both categories are classified as Addressable (not Required) in the current Framework draft. They will be elevated to Required only after the Category Ethics Review function, with mandatory digital rights representation, has been constituted and has formally reviewed the category definitions, boundary conditions, and potential for scope creep. The Advisory Council will include a Category Ethics Review function with digital rights representation to challenge scope creep on an ongoing basis.</p>
+<h2 id="governance-model">8. Governance Model</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="8. Governance Model" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>8. Governance Model</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>A voluntary technical standard is only as credible as the governance structure that maintains it. This section describes how the Custorian Standard will be governed, how members of its decision-making bodies will be selected, how conflicts of interest will be managed, and how the standard will evolve over time. The governance model is presented as a proposal and is open for comment; several details will be finalised following advisory council formation and pilot validation.</p>
+<h3 id="stewarding-entity">8.1 Stewarding Entity</h3>
+<p>The Custorian Standard is maintained by Foreningen Custorian, a Danish non-profit association (CVR 46399455) registered in Odense, Denmark. The association has no shareholders, issues no dividends, and operates no commercial products. Revenue sources are restricted to: public and philanthropic grants; certification-scheme fees paid by audited platforms (analogous to PCI-DSS programme fees); and registry fees paid by platforms listed on the certification registry (analogous to EPEAT). No funding arrangement grants the funder decision-making authority over the content of the standard.</p>
+<h3 id="three-body-governance-structure">8.2 Three-Body Governance Structure</h3>
+<p>Governance is distributed across three bodies, each with a defined mandate and constituency:</p>
+<ul>
+<li><strong>The Standards Council</strong> holds decision-making authority over the content of the Controls Framework and the API Specification. It approves new versions, major revisions, and changes to required controls. Membership is multi-stakeholder: three seats for regulators or standards bodies, three seats for industry, three seats for child rights organisations and civil society, three seats for independent technical experts, and two seats for survivor and lived-experience representation. The Chair is elected by the Council from non-industry seats. No single constituency holds a majority. Quorum requires at least 9 of 14 seated members, including at least one representative from each constituency. Deadlock (failure to reach required majority after two rounds of deliberation) triggers a 90-day public consultation followed by a binding vote at the next scheduled meeting, with the Chair casting the deciding vote if the tie persists.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>The Advisory Council</strong> provides subject-matter review and operates on a wider membership (30–50 participants). Its functions include the Category Ethics Review (see Section 7.5), the Intervention Content Review (see Section 6.3), and structured public consultation on proposed changes. The Advisory Council advises but does not vote on Standards Council decisions.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>The Audit and Certification Board</strong> administers the certification programme, accredits Approved Assessment Body (AAB), and handles compliance disputes. The Board is independent of the Standards Council to prevent a single body from both writing and enforcing the standard.</li>
+</ul>
+<h3 id="member-selection">8.3 Member Selection</h3>
+<p>Initial members of the Standards Council will be appointed by the Foreningen Custorian board following open call and public review of nominations. Subsequent members are elected by the sitting Council, with candidate nominations open to the public and published in advance of votes. Members serve three-year terms, renewable once. Term limits are designed to prevent entrenchment and permit the Council’s composition to evolve with the field.</p>
+<p>Specific criteria for each seat are published in the Governance Charter (to be ratified with Framework v1.0). Industry seats are limited to two representatives from any single company and must include representation from platforms of varying sizes to ensure the Framework remains implementable for small and medium platforms alongside larger ones.</p>
+<h3 id="conflict-of-interest-management">8.4 Conflict of Interest Management</h3>
+<p>All Standards Council and Advisory Council members disclose financial, employment, and advisory relationships annually. Disclosures are published on the Custorian website. Members with a material conflict of interest on a specific matter recuse themselves from deliberation and voting on that matter. The definition of material conflict, and the recusal procedure, are specified in the Governance Charter.</p>
+<p>Custorian itself does not accept board seats on platforms it certifies, paid consulting engagements with platforms seeking certification, or industry sponsorship with content-steering rights. These restrictions are structural, not policy preferences.</p>
+<h3 id="standard-revision-process">8.5 Standard Revision Process</h3>
+<p>Revisions to the Controls Framework follow a published process: (1) proposal from any stakeholder via public submission; (2) Advisory Council review and public consultation (minimum 60 days); (3) Standards Council deliberation and vote (two-thirds majority required for new Required controls; simple majority for Addressable controls and clarifications); (4) publication with effective date, sunset period for previous version, and backward-compatibility documentation (see Section 11.4).</p>
+<h3 id="transparency-commitments">8.6 Transparency Commitments</h3>
+<p>All Standards Council and Audit Board meeting minutes are published within 30 days. All votes are recorded. All public consultations receive a published response summarising the comments received and the disposition of each. The certification registry is public and searchable. Compliance failures, once confirmed and beyond the remediation window, are published on the registry (see Section 11.5 on responsible disclosure).</p>
+<p><strong>Open-source scope clarification.</strong> The Controls Framework (CC BY-SA 4.0) and API Specification (MIT) are fully open source. Trained detection models are not. This is an intentional design choice: publishing classifier architectures and training methodologies enables independent reproduction and audit, but publishing trained model weights and detection pattern libraries would provide adversaries with a roadmap for evasion. This mirrors established practice in other compliance domains, PCI-DSS publishes the standard, not the fraud detection algorithms that implement it. Platforms certifying against the Framework must make their detection systems available for inspection by Qualified Safety Assessors under NDA, but are not required to publish trained models publicly.</p>
+<h3 id="dispute-resolution">8.7 Dispute Resolution</h3>
+<p>Disputes over certification decisions are heard by the Audit and Certification Board in the first instance, with a right of appeal to an Independent Review Panel composed of members who were not involved in the original decision. Systemic disputes over the content of the Standard are resolved through the revision process in Section 8.5.</p>
+<h3 id="youth-panel">8.8 Youth Panel</h3>
+<p>UNCRC Art. 12 and General Comment No. 25<sup>19</sup> require that children’s views be heard on matters affecting them. A standard that regulates the digital environments children inhabit cannot be governed credibly without structured child participation. The Youth Panel is the mechanism through which that participation enters governance.</p>
+<p><strong>Role and relationship to the Councils.</strong> The Youth Panel is a permanent participatory body that sits alongside the Standards Council and Advisory Council. It is consultative and deliberative; it does not hold a voting seat. Its outputs enter governance through two channels: a designated adult facilitator holds a non-voting seat on the Standards Council and a voting seat on the Advisory Council, carrying the Panel’s positions into each body’s deliberations; and the Panel produces documented outputs on matters referred to it, to which the Standards Council must formally respond in writing. Children themselves do not hold governance seats, do not sign governance documents, and are not named in public records of governance decisions. This separation is both a safeguarding measure and a legal one.</p>
+<p><strong>Composition.</strong> Between fifteen and twenty-five children across three age brackets (8–10, 11–13, 14–17), recruited through established child rights organisations that operate their own safeguarding frameworks. Recruitment explicitly seeks children from communities whose languages and experiences are under-represented in digital safety research, including children speaking languages other than English, French, German, Spanish, and Italian; children with disabilities; children in care; and children from refugee and migrant backgrounds. Membership rotates on a two-year cycle, with staggered terms so that institutional knowledge persists across cohorts.</p>
+<p><strong>Scope of consultation.</strong> The Panel is consulted on matters children can meaningfully speak to from their own experience: the felt experience of being monitored, the design and language of child-facing interventions (CS-CD.3), age thresholds for autonomy-related controls, what notification of monitoring should feel like (CS-PR.3.1), and the usability of the contestation and objection mechanisms (CS-PR.6 and CS-PR.7). The Panel is not consulted on matters that would require exposure to material the Panel should not see: detection classifier calibration, CSAM reporting edge cases, threat taxonomies, or case material.</p>
+<p><strong>Safeguarding.</strong> All sessions are led by qualified youth participation practitioners with appropriate vetting (DBS enhanced check in the United Kingdom, Børneattest in Denmark, equivalent in other jurisdictions). Sessions follow trauma-informed, age-appropriate protocols. No child-participant is named publicly; outputs are attributed to the Panel, not to individuals. Parental consent is required for participation; child assent is additionally required and is renewed annually. A designated safeguarding lead, external to the Custorian governance structure, has standing to halt any session or line of enquiry that raises safeguarding concern, and reports annually to the Advisory Council’s survivor-advocate members.</p>
+<p><strong>Funding and independence.</strong> The Youth Panel is funded through a ring-fenced line in the Custorian budget, with funding commitments made for the full two-year cycle at the point of Panel constitution. Industry sponsorship of the Youth Panel specifically is not accepted; the Panel must be visibly independent of the platforms whose compliance is being discussed. Where industry actors wish to support children’s digital rights participation more generally, they may do so through established children’s rights organisations rather than through the Custorian governance structure.</p>
+<p><strong>Output publication.</strong> Panel outputs are published on the Custorian website in age-appropriate formats (plain language, visual where helpful) alongside the formal governance minutes. The Standards Council’s written response to each Panel output is published within 60 days, naming which positions were adopted, which were not, and the reasoning in each case. A pattern of Panel positions being routinely dismissed without substantive engagement is itself a governance failure, visible in the published record.</p>
+<p><strong>Pre-Panel youth consultation for v5.</strong> The Youth Panel will be constituted alongside the Advisory and Standards Councils. In the interim, a pre-Panel youth consultation is commissioned as a prerequisite for Framework v1.0 adoption: a structured deliberation exercise with a minimum of thirty children across the three age brackets, conducted through a partner children’s rights organisation with an established participation practice, producing a written output that informs revisions to this paper. The exercise is scoped in the implementation roadmap in Section 15 as a Month 0–12 milestone.</p>
+<p>Rationale. A children’s rights framework cannot be written credibly about children without some process for hearing from them. The Youth Panel structure is designed to meet the Art. 12 requirement substantively rather than tokenistically: children are consulted on matters they can meaningfully speak to, through a body that has standing relationships with the decision-making Councils, with outputs that must be formally responded to. The deliberate exclusion of children from formal voting seats is not a participation failure but a safeguarding design choice, consistent with established child rights participation practice in other standards bodies.</p>
+<h3 id="structural-separation-from-commercial-activity">8.9 Structural Separation from Commercial Activity</h3>
+<p>The Custorian Standard is owned and governed by Foreningen Custorian, a Danish non-profit association (CVR 46399455). Any commercial activity adjacent to the standard — including implementation services, tooling, certification scheme administration fees, or related products — shall be conducted by a separate legal entity and shall be structurally separated from the governance of the standard itself. The following safeguards apply regardless of whether such a commercial entity currently exists:</p>
+<ol type="a">
+<li><p>Any commercial entity adjacent to the certification scheme owner shall hold no voting rights on the content of the Controls Framework or the API Specification.</p></li>
+<li><p>No employee or representative of any such commercial entity shall hold a voting seat on the Standards Council, the Advisory Council, or the Audit and Certification Board.</p></li>
+<li><p>Conflict-of-interest declarations under Section 8.4 apply to any individual holding roles in both the non-profit and any commercial entity, and require recusal from deliberations or votes that materially affect the commercial entity or its customers.</p></li>
+<li><p>The CC BY-SA 4.0 licence on the Controls Framework and the MIT licence on the API Specification are irrevocable; should any commercial entity attempt to assert proprietary control over the standard, the open licences permit independent forking by any interested party, with continuity of the standard’s substantive content preserved.</p></li>
+<li><p>Annual financial reports of Foreningen Custorian and of any related commercial entity shall be published, with reconciliation of any inter-entity transactions disclosed in the Custorian annual report.</p></li>
+</ol>
+<p>NOTE: This subsection is written in prospective terms because, as of publication, no commercial subsidiary of Foreningen Custorian exists. The structural safeguards are nevertheless specified now so that they bind any future commercial activity from the outset, rather than being added retroactively after the fact.</p>
+<h3 id="theory-of-capture-resistance">8.10 Theory of Capture Resistance</h3>
+<p>A standard that becomes consequential will become a target for capture. The Custorian Standard is designed to resist capture through five layered structural protections rather than relying on the good faith of any single actor:</p>
+<p><strong>1. Multi-stakeholder governance with structural quotas.</strong> The Standards Council allocates seats across five constituencies (regulators/standards bodies, industry, child rights and civil society, independent technical experts, survivor and lived-experience representation), with no single constituency holding a majority and quorum requiring at least one representative from each. A single coordinated bloc, including the platform industry, cannot pass an amendment alone. The Advisory Council and Audit and Certification Board are similarly constituted to prevent single-constituency dominance.</p>
+<p><strong>2. Mandatory conflict-of-interest declaration and recusal.</strong> Section 8.4 requires every voting member to submit a written declaration of interests annually, published in redacted form in the annual report. Members shall recuse themselves from any deliberation or vote materially affecting an organisation in which they hold a declared interest. Decisions made with undisclosed conflicts may be re-considered without the conflicted member’s participation.</p>
+<p><strong>3. Open licensing as a fork option.</strong> The Controls Framework is licensed CC BY-SA 4.0; the API Specification under MIT licence. Both are irrevocable. If Foreningen Custorian is captured, mismanaged, or dissolved, the substantive content of the standard remains in the public domain and may be continued under a successor body, by another non-profit, or by an EU institution. The certification mark and “Custorian Certified” designation are protected by trademark; in the event of capture, the mark may become disused while the substantive standard continues under a new name.</p>
+<p><strong>4. Public registry, transparency reporting, and responsible disclosure.</strong> All certifications are listed in a public registry with their level, validity period, and applicable Framework version. The advisory board publishes an annual report including amendment proposals, decisions, dissents, and COI declarations. A responsible disclosure channel (security@custorian.org) allows external parties to report non-compliance by certified platforms, with public remediation timelines. Capture is visible because governance is visible.</p>
+<p><strong>5. Structural separation from commercial activity</strong> (Section 8.9). Commercial actors adjacent to the standard have no vote on its content and no seat in its governance bodies, regardless of any financial or operational relationship to the certification scheme.</p>
+<p>These five protections are layered, not alternative: defeating capture requires defeating all five simultaneously. The advisory board reviews the effectiveness of these safeguards as part of the annual review cycle (Annex D) and may propose strengthening them where empirical evidence of capture attempts emerges.</p>
+<h2 id="data-privacy-and-institutional-intelligence-requirements">9. Data Privacy and Institutional Intelligence Requirements</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="9. Data Privacy and Institutional Intelligence Requirements" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>9. Data Privacy and Institutional Intelligence Requirements</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="privacy-architecture-requirements">9.1 Privacy Architecture Requirements</h3>
+<p>The Framework mandates a three-tier privacy architecture: a family tier in which all detection processing occurs on-device and parents receive only category, severity, and timestamp (CS-DM.1.1); an institutional tier in which, only with explicit parental opt-in, anonymised metadata is shared with institutional dashboards (CS-DM.2.1); and an aggregation tier in which data aggregates upward through institutional layers, becoming more aggregated and less granular at each level, with no tier accessing individual-level data from the tier below (CS-DM.3.1).</p>
+<h3 id="de-identification-requirements">9.2 De-identification Requirements</h3>
+<p>The Framework requires de-identification following the HIPAA Safe Harbor method adapted for child safety data: no direct identifiers (names, device IDs, IP addresses, contact information); quasi-identifier suppression (age limited to 4-year brackets, timestamps limited to 4 periods); small-cell suppression (cells with fewer than 5 observations are hidden); k-anonymity (k ≥ 5); and differential privacy (planned for v2.0) for national-level aggregates.</p>
+<p><strong>Re-identification risk.</strong> In small institutional settings (a school with 200 students, a municipal programme with limited enrolment), k ≥ 5 combined with 4-year age brackets and time-period bucketing may not provide sufficient protection against re-identification when combined with external data sources (school attendance records, teacher observations, known social dynamics). The Framework requires that all institutional deployments conduct a re-identification risk assessment as part of the Data Protection Impact Assessment required by CS-DM.5.1: with documented analysis of the specific re-identification vectors present in the deployment context. The validation study template in Appendix A includes a re-identification risk assessment as a required component.</p>
+<h3 id="consent-and-withdrawal-requirements">9.3 Consent and Withdrawal Requirements</h3>
+<p>Informed consent is required before any institutional data sharing, with plain-language explanation of what is shared, with whom, and how to withdraw (CS-PR.1.1). Consent is granular (per institution) and revocable (one-tap withdrawal) (CS-PR.1.2). Upon withdrawal, metadata transmission stops immediately; historical anonymised data is not retroactively deleted because it is genuinely anonymised and non-traceable, and GDPR Art. 17 is satisfied by the act of withdrawal as no personal data is held at institutional tiers (CS-PR.1.3). Anonymised aggregate data is retained for 5 years at school level and 10 years at municipal or national level (CS-DM.4.1).</p>
+<h3 id="cross-border-reporting-requirements">9.4 Cross-Border Reporting Requirements</h3>
+<p>Mandatory reporting to law enforcement for CSAM detection is governed by the safeguards specified in Section 6.5 (CS-MR.2). Reports are routed to the appropriate national authority based on the child’s jurisdiction, with NCMEC CyberTipline as the international clearing house via the INHOPE network.</p>
+<h3 id="jurisdictional-conflict-resolution-cs-go.6">9.5 Jurisdictional Conflict Resolution (CS-GO.6)</h3>
+<p>Platforms operating across multiple jurisdictions face materially conflicting requirements for child digital safety, divergent definitions of “child” (under 13 in US COPPA, under 15 in Denmark, under 16 in GDPR default and Australia, under 18 in UK AADC), incompatible data retention obligations, and jurisdiction-specific mandatory reporting channels. The Framework establishes that: the applicable jurisdiction is determined by the child’s location of residence or habitual use, not the platform’s country of incorporation (CS-GO.6.1); where two or more jurisdictional requirements conflict, the platform must apply the more protective standard (CS-GO.6.2); platforms maintain a jurisdiction-specific configuration layer, auditable and updated within 90 days of relevant legislative change (CS-GO.6.3); mandatory reporting is routed to the competent national authority of the child’s jurisdiction, with parallel reporting to international clearing houses (CS-GO.6.4); and platforms publish an annually updated Jurisdictional Compliance Map documenting which national or supranational standard governs each control (CS-GO.6.5).</p>
+<p><strong>Worked example for CS-GO.6.2.</strong> A platform serving minors in both Denmark (where the under-15 social media law applies) and Germany (where the GDPR default age of digital consent is 16) faces conflicting age thresholds. Under CS-GO.6.2: the platform applies the more protective standard in each jurisdiction: it treats users under 15 as minors in Denmark (applying Danish law) and users under 16 as minors in Germany (applying GDPR default). For a Danish user who is 15, the platform applies Danish adult rules; for a German user who is 15, the platform applies GDPR minor protections. “More protective” means the standard that extends protections to a larger population or imposes stricter requirements, in age threshold cases, the higher age. Where the comparison is not reducible to a single dimension (e.g., one jurisdiction requires data deletion within 30 days, another requires data retention for 90 days for audit purposes), the platform must document the conflict and the resolution in its Jurisdictional Compliance Map, subject to AAB review.</p>
+<h3 id="tiered-incident-response-slas-cs-mr.4">9.6 Tiered Incident Response SLAs (CS-MR.4)</h3>
+<p>Different threat categories require different response timelines. Critical threats (CSAM hash match, imminent physical danger) trigger the reporting pathway in Section 6.5 and immediate parent push notification. Urgent threats (self-harm severity &gt;80/100, sextortion, grooming severity &gt;80/100) trigger elevated parent notification within 4 hours and, if institutional mode is active, school counsellor flagging within 4 hours on the next business day. Standard threats (bullying, violence, grooming severity &lt;80, content wellness) trigger parent notification within 24 hours and institutional dashboard update in the next sync cycle. Informational threats (dangerous purchases, low-severity content wellness) trigger digest-style parent notification within 48 hours with no institutional escalation. Institutions deploying compliant systems define their own internal response procedures downstream of these SLAs.</p>
+<h3 id="evidence-preservation-cs-mr.5">9.7 Evidence Preservation (CS-MR.5)</h3>
+<p>When a CSAM hash match triggers a mandatory law enforcement report: the detection event (timestamp, hash match identifier, device locale, CAS report ID) is preserved in a tamper-evident log on-device for at least 12 months or until law enforcement confirms investigation closure (CS-MR.5.1); the log uses cryptographic chaining so any modification is detectable (CS-MR.5.2); no message content is preserved; only detection metadata and hash match identifier, sufficient for law enforcement correlation with the NCMEC CyberTipline report (CS-MR.5.3); and the evidence log is accessible only to the device owner and, upon lawful request, to law enforcement (CS-MR.5.4).</p>
+<h3 id="ethical-framework">9.8 Ethical Framework</h3>
+<p>The institutional data architecture draws on Nissenbaum (2010)<sup>23</sup> on contextual integrity, Solove (2006)<sup>24</sup> on data minimisation, and Beauchamp &amp; Childress (2019)<sup>25</sup> on informed consent. The Framework transmits only four data points per alert, the minimum viable data for institutional intelligence.</p>
+<h2 id="regulatory-and-standards-landscape">10. Regulatory and Standards Landscape</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="10. Regulatory and Standards Landscape" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>10. Regulatory and Standards Landscape</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The Custorian Standard operates within a rapidly evolving regulatory environment. A complete cross-mapping is provided in Section 14 and in the Regulatory Cross-Mapping Companion Document.</p>
+<h3 id="key-regulations">10.1 Key Regulations</h3>
+<p>The EU Digital Services Act (in force 2024) is directly mapped by the Framework: Articles 28 (minor protection), 34 (systemic risk assessment for VLOPs), 35 (risk mitigation), and 37 (independent audit) align with CS-AC, CS-CD, CS-PR, and CS-GO domains. The CAS provides technical implementation.</p>
+<p>The EU AI Act (in force 2025–2026, phased) protects children as a vulnerable group throughout; Art. 5 prohibits exploitation of children’s vulnerabilities; Annex III classifies education AI as high-risk. CS-MR covers accuracy, transparency, and oversight; on-device processing satisfies Art. 10 data governance requirements.</p>
+<p>The UK Age Appropriate Design Code (ICO Children’s Code, in force 2021) is the most operationally detailed instrument on child-appropriate design in any jurisdiction as of 2026. The United Kingdom is not a Member State of the European Union; the AADC is therefore not an EU instrument and is not a normative source of obligation under the Framework. It is referenced because (a) most EU-targeted services also serve UK children, (b) the European Data Protection Board and several Member State data protection authorities have cited the AADC as guidance on what age-appropriate design looks like in practice, and (c) implementing AADC controls measurably advances a service toward DSA Article 28 compliance. All 15 standards of the AADC map to controls in the Framework.</p>
+<p>The UK Online Safety Act (2023, phased implementation 2024–2026)<sup>31</sup> is the most comprehensive in-force online child safety legislation in Europe. As with the AADC, the OSA is a United Kingdom instrument and not an EU instrument; the Framework references it as an informative benchmark on the same footing as the AADC, not as a source of EU compliance obligation. Ofcom’s codes of practice under the Act, particularly the Protection of Children Codes and the Illegal Content Codes, establish duties on user-to-user services including age assurance, safe-by-design obligations, and proactive detection requirements. The Framework maps to the Act’s child safety duties through CS-AC (age assurance, OSA s.11–12), CS-CD (content moderation, OSA s.10), CS-MR (illegal content detection, OSA s.9), and CS-GO (risk assessment and transparency, OSA s.8). Full cross-mapping is provided in the Regulatory Cross-Mapping Companion Document.</p>
+<p>Denmark’s under-15 social media law (political agreement November 2025, legislation expected 2026) is directly supported by CS-AC.1.</p>
+<p>The EU ePrivacy Derogation (expired 3 April 2026): the on-device architecture’s relationship to ePrivacy is analysed in Section 6.1.</p>
+<h3 id="key-pending-legislation">10.2 Key Pending Legislation</h3>
+<p>The EU CSA Regulation remains in trilogue (next meeting May 2026): on-device architecture may resolve the “chat control” impasse; hash-matching supports proposed obligations. The EU Digital Identity Wallet (eIDAS 2.0, phased) is designed for day-one integration via CS-AC.1.4. Where invoked, the Jutland Declaration (reported as signed in Horsens, Denmark in October 2025) is cited as one indicator of emerging political alignment on child digital safety across Member States; readers should consult the primary text for its exact status and signatory list<sup>26</sup>.</p>
+<h3 id="normative-standards">10.3 Normative Standards</h3>
+<p>IEEE P3462 is the primary normative basis; the author is a contributing Working Group member. Additional relevant standards: IEEE 2089-2021, IEEE 7000-2021, IEEE 7002-2022, IEEE 7003-2024, ISO/IEC 27701, NIST AI RMF. CEN/CENELEC submission is in progress through Dansk Standard (see Section 10.4).</p>
+<h3 id="contemporary-developments-q1q2-2026">10.4 Contemporary Developments (Q1–Q2 2026)</h3>
+<p>Since v5.1 of this paper was issued in April 2026, several developments have materially shaped the regulatory landscape addressed by the Custorian Standard. They are summarised here and are reflected in the Framework updates that produced v6.0.</p>
+<p><strong>a) EU Digital Identity Wallet (eIDAS 2.0).</strong> Regulation (EU) 2024/1183 amending Regulation (EU) 910/2014 requires every Member State to offer at least one European Digital Identity Wallet to its citizens by Q4 2026 [34]. EUDI Wallet provides selective-disclosure age attestations — a user can prove an age claim without revealing date of birth or identity — that materially advance the privacy-preserving age assurance approach in CS-AC. The Framework’s CS-AC.1.4 was updated in v6.0 to reference eIDAS 2.0 specifically and to recognise EUDI Wallet attestations as satisfying the multi-signal requirement of CS-AC.1.2. In Denmark, the EUDI Wallet rollout is being built on the existing MitID national eID infrastructure; the Framework provides an implementation pathway tailored to this context.</p>
+<p><strong>b) Ofcom guidance on highly effective age assurance.</strong> The UK regulator has issued methodological guidance under the Online Safety Act 2023 setting out acceptable age assurance methods and the evidentiary standard for “highly effective” assurance [35]. The Framework’s CS-AC controls are designed to be consistent with this guidance where applicable. The numerical benchmarks introduced in CS-AC.1.6 — a mean absolute error of no more than 2.0 years for facial age estimation across the 13–19 age range, and a false-pass rate at the 13/18 boundary of no more than 5 percent — are proposed by the Framework as operational thresholds that <em>implement</em> the qualitative “highly effective” bar; they are not asserted to be Ofcom-prescribed values. Where Ofcom’s published thresholds differ, the lower (more protective) of the two SHALL apply. These thresholds will be reviewed against Ofcom’s evolving guidance at each annual revision of the Framework.</p>
+<p><strong>c) Australia Online Safety Amendment (Social Media Minimum Age) Act 2024.</strong> Australia’s federal legislation establishing 16 as the minimum age for independent social media account creation [36] is the first nation-state implementation of a hard age threshold for social media access. Although outside the European regulatory perimeter, it constitutes a significant precedent and informs the design choices reflected in CS-AC and CS-PR. Implementation experience from Australia is being monitored for transferable lessons on enforcement mechanisms, circumvention patterns, and parental support infrastructure.</p>
+<p><strong>d) OECD Recommendation on Children in the Digital Environment</strong> (OECD/LEGAL/0389). A multilateral soft-law instrument with which the Framework is aligned [37]; relevant for jurisdictions outside the EU and UK developing national child digital safety policies.</p>
+<p><strong>e) Council of Europe Convention 108+</strong> for the Protection of Individuals with Regard to the Processing of Personal Data. Provides the international data protection baseline against which the data minimisation requirements of CS-DM are calibrated [38].</p>
+<p><strong>f) Dansk Standard engagement.</strong> The Custorian Controls Framework has been developed into a draft European Standard — EN XXXXX:2026 (Working Draft 1.0, May 2026) — proposed to Dansk Standard for submission as a CEN Workshop Agreement or New Work Item Proposal [39]. The draft is scheduled for review at Dansk Standard’s August 2026 child digital safety committee meeting. This represents a substantial maturation of the Framework from a white paper to a formal European Standard candidate.</p>
+<h3 id="summary-of-changes-since-v5.1">10.5 Summary of Changes since v5.1</h3>
+<p>v6.0 reflects the following material changes from the v5.1 paper issued April 2026:</p>
+<ol type="i">
+<li><p>Controls count increased from 137 to 139 (130 Required, 9 Addressable). Domain breakdown reorganised: CS-AC 18→24, CS-CD 29→32, CS-DM 13→18, CS-PR 24→18, CS-MR 39→30, CS-GO 14→17. The reallocation reflects the formal Annex A structure of the draft European Standard.</p></li>
+<li><p>Two new controls were added: CS-AC.1.6 specifying numerical accuracy thresholds for age assurance methods, and CS-PR.1.4 addressing multi-guardian and shared-custody scenarios with provision for parents without smartphone access.</p></li>
+<li><p>Regulatory landscape expanded to incorporate eIDAS 2.0, Ofcom guidance, the Australia 2024 Act, the OECD Recommendation, and CoE Convention 108+ (Section 10.4).</p></li>
+<li><p>Governance provisions strengthened to require conflict-of-interest declaration and recusal procedures for advisory board members, and to make the prohibition on any commercial-arm voting on the standard explicit (see Section 8).</p></li>
+<li><p>Transitional provisions added to address the certification mark and the launch of Approved Assessment Bodies during the first 24 months following publication.</p></li>
+<li><p>Renaming of certifying body category from “Approved Assessment Body” to “Approved Assessment Body” (AAB), aligning terminology with conformity assessment practice in ISO/IEC 17065 and 17021-1.</p></li>
+</ol>
+<h3 id="summary-of-changes-since-v6.0">10.6 Summary of Changes since v6.0</h3>
+<p>v6.1 reflects the following changes since v6.0 (June 2026):</p>
+<ol type="i">
+<li><p>Controls count increased from 139 to 146 with the addition of a new age-assurance control group, <strong>CS-AC.8 (Facial age estimation assurance)</strong>. The domain breakdown updates to CS-AC 24→31; all other domains are unchanged (CS-CD 32, CS-DM 18, CS-PR 18, CS-MR 30, CS-GO 17). Required controls increase from 130 to 137; Addressable remain 9.</p></li>
+<li><p>CS-AC.8.1–8.7 convert the use of facial age estimation into independently verifiable obligations: accuracy established by independent evaluation (e.g. NIST FATE) for the 13–17 band rather than vendor self-report (CS-AC.8.1–8.2); presentation-attack detection evaluated to ISO/IEC 30107-3 at a named assurance level (CS-AC.8.3); detection of injection attacks and of <strong>verification-by-proxy</strong> — a third party presenting their own live face to clear the check for a younger user — with the verified face bound to the account’s actual user (CS-AC.8.4); fallback paths held to an equivalent anti-fraud standard (CS-AC.8.5); the assigned age band governing all contact surfaces, evidenced by a contact-surface inventory (CS-AC.8.6); and disclosure plus at-least-annual re-validation (CS-AC.8.7).</p></li>
+<li><p>The MAE ≤ 2.0 years baseline for the 13–17 band is recorded as a Standards-Council-owned, annually reviewed policy threshold, not a regulator-prescribed value. The absence of a mature accredited benchmark for injection-attack and proxy detection (equivalent to ISO/IEC 30107-3 for PAD) is noted as a Framework watch item.</p></li>
+</ol>
+<h2 id="compliance-model">11. Compliance Model</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="11. Compliance Model" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>11. Compliance Model</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<h3 id="certification-architecture">11.1 Certification Architecture</h3>
+<p>The compliance model uses two orthogonal axes: a <strong>platform-size axis</strong> that determines the assessment instrument and audit cadence, and a <strong>control-scope axis</strong> (Essential, Comprehensive, Leadership) that determines the breadth of controls a platform implements. Every certified platform sits at a coordinate of (size tier, scope tier). The size axis is primary for determining how a platform is assessed; the scope axis is primary for determining what a platform is assessed against. The draft European Standard formalises both axes in Annex C.</p>
+<p><strong>Size tiers (assessment instrument and cadence):</strong></p>
+<ul>
+<li><strong>Size Tier 1</strong> (more than 1M minor users): Approved Assessment Body (AAB) audit annually, with quarterly accuracy reports.</li>
+<li><strong>Size Tier 2</strong> (100K–1M minor users): AAB audit every two years and Self-Assessment Questionnaire (SAQ) in alternate years, with semi-annual accuracy reports.</li>
+<li><strong>Size Tier 3</strong> (10K–100K minor users): SAQ annually, with annual accuracy reports; AAB audit on a five-year cycle.</li>
+<li><strong>Size Tier 4</strong> (fewer than 10K minor users): simplified self-assessment annually, with annual accuracy reports; platforms serving minors in fewer than 3 languages may report aggregate accuracy metrics rather than per-language metrics, provided they disclose which languages are aggregated.</li>
+</ul>
+<p><strong>Scope tiers (controls implemented):</strong></p>
+<ul>
+<li><strong>Essential.</strong> All Required controls in CS-AC and CS-DM, plus the minimum Required subset of CS-CD, CS-PR, CS-MR and CS-GO defined in Annex C of the draft European Standard. Entry-level conformity.</li>
+<li><strong>Comprehensive.</strong> All Required controls across all six domains. Default certification target for platforms in scope of the DSA, AI Act and equivalent regimes.</li>
+<li><strong>Leadership.</strong> All Required controls plus all Addressable controls. Intended for designated VLOPs/VLOSEs and platforms electing to demonstrate state-of-the-art conformity.</li>
+</ul>
+<p><strong>Mapping size to scope (minimum expectation).</strong> Size Tier 1 platforms SHALL reach Comprehensive within 12 months of first certification and Leadership within 24 months. Size Tier 2 platforms SHALL reach Comprehensive within 18 months. Size Tier 3 and 4 platforms MAY remain at Essential, with Comprehensive recommended where resources permit. The intent is that scope expectations rise with the population of minors exposed to a service, while assessment burden remains proportionate to operator scale (Section 1.1 of the draft European Standard).</p>
+<h3 id="validation-instruments">11.2 Validation Instruments</h3>
+<p>The Self-Assessment Questionnaire (SAQ) allows platforms to self-report compliance per control. The Report on Compliance (ROC) is a AAB-validated comprehensive assessment. The Accuracy Report publishes detection precision, recall, and false positive rates per language and per detection category, at the frequency specified for each platform level in Section 11.1. Level 4 platforms may use shared community benchmarks (published by Custorian or third-party testing organisations) for detection categories where their user base is insufficient for statistically meaningful per-platform metrics, provided they disclose the use of community benchmarks and validate against their own data where sample size permits.</p>
+<h3 id="certification-outcomes">11.3 Certification Outcomes</h3>
+<p>Custorian Certified platforms are listed on a public registry and may use the certification mark under licence. Custorian Non-Compliant platforms have identified gaps documented and must submit a remediation plan.</p>
+<h3 id="standard-versioning-and-transition">11.4 Standard Versioning and Transition</h3>
+<p>When the Framework is updated, platforms certified under the previous version have 12 months from publication of the new version to re-certify, during which existing certifications remain valid. New versions document all changes (additions, modifications, deprecations) so platforms can assess the delta rather than re-certifying from scratch. Controls that fundamentally change compliance requirements trigger mandatory re-assessment; Addressable controls becoming Required receive 18 months rather than 12. The public certification registry displays the Framework version a platform was certified against and whether that version is current, in sunset, or expired.</p>
+<p><strong>AI model versioning is governed separately from Standard versioning.</strong> Where a certified platform uses AI/ML models for detection (per CS-MR.1 and CS-CD.1), each detection model has its own version, validation evidence, and deprecation timeline. A model that is found post-deployment to exhibit unacceptable bias (per CS-AC.6.3, CS-CD.1.8) or that fails the accuracy thresholds in CS-AC.1.6 SHALL be deprecated according to the platform’s documented model lifecycle. Model deprecation does not require a new Standard version; conversely, a new Standard version does not automatically invalidate existing model certifications unless the new version raises the accuracy thresholds. The advisory board reviews model bias incident reports annually as part of the Standard revision cycle (Annex D) and may propose tightening of relevant controls in response.</p>
+<p><strong>Supply chain documentation for AI components is required.</strong> Where a platform incorporates AI/ML models, training data, or detection pipelines supplied by third parties (whether commercial vendors or open-source projects), the platform SHALL maintain a Software Bill of Materials (SBOM) covering those components, in alignment with CS-GO.3.x (third-party vendor management). The SBOM enables supply chain risk assessment, post-deployment incident response, and accountable disclosure when a supplied component is found to introduce bias, vulnerability, or model drift affecting children’s safety outcomes. This requirement is consistent with the supply chain transparency expectations emerging under the AI Act (Article 10 data governance, Article 13 transparency) and the EU Cyber Resilience Act.</p>
+<p>NOTE on reference implementations: standards adoption accelerates when accompanied by a working reference implementation that prospective adopters can inspect and learn from. Foreningen Custorian commits to publishing, within 12 months of standard publication, an open-source reference implementation of representative controls — specifically: an on-device detection pipeline (CS-MR.1, CS-DM.1.1), a parental dashboard satisfying the minimum content specification of CS-PR.1.1, an EUDI Wallet age assurance integration pattern (CS-AC.1.4), and a transparency reporting tool aligned to CS-MR.7. The reference implementation is for instructional and assessment purposes; it does not constitute the only conformant implementation and does not preclude proprietary alternatives.</p>
+<h3 id="responsible-disclosure-for-compliance-failures">11.5 Responsible Disclosure for Compliance Failures</h3>
+<p>If a researcher, journalist, civil society organisation, or member of the public discovers that a certified platform is not compliant: Custorian maintains a public responsible disclosure policy and secure reporting channel (security@custorian.org) (CS-GO.5.1); reports are triaged within 5 business days, with confirmed failures triggering a 30-day remediation window before public disclosure (CS-GO.5.2); failure to remediate within 30 days results in publication on the registry and potential suspension or revocation of certification (CS-GO.5.3); good-faith reporters are protected, consistent with EU Whistleblower Directive (2019/1937) principles (CS-GO.5.4).</p>
+<h3 id="liability-positioning">11.6 Liability Positioning</h3>
+<p>The Framework is designed to create regulatory incentive alignment, not legal immunity. Certified platforms may submit certification as one source of evidence in DSA Article 28 conformity demonstrations, AI Act conformity assessments, and AADC compliance reviews, in a manner analogous to how PCI-DSS compliance is treated as evidence of reasonable security measures in payment card breach litigation. The Framework does not itself constitute a harmonised standard within the meaning of Regulation (EU) 1025/2012, and adoption as such is the explicit purpose of the CEN engagement described in Section 10.4. Until adoption as a harmonised standard, the legal weight of certification is persuasive rather than determinative, and the assessment of conformity remains the responsibility of the relevant competent authority. The Framework does not create new legal obligations; as it gains government endorsement and regulatory reference, non-certified platforms may face increased regulatory scrutiny where the Framework is used as a benchmark. Custorian Certified status does not indemnify platforms against liability for child safety incidents. Certification demonstrates process conformity, not outcome guarantee. Parents and institutions should not treat certification as a guarantee that no harm can occur; it indicates that the platform has implemented and been audited against a defined set of safety controls.</p>
+<h2 id="api-specification-cas">12. API Specification (CAS)</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="12. API Specification (CAS)" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>12. API Specification (CAS)</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The Custorian API Specification defines the technical interface that platforms implement for compliance, published as an OpenAPI 3.1 document. It covers two categories.</p>
+<h3 id="platform-compliance-endpoints">12.1 Platform Compliance Endpoints</h3>
+<p>POST /custorian/v1/detect, real-time threat analysis (CS-MR.1.1). POST /custorian/v1/age/verify, multi-signal age verification (CS-AC.1: CS-AC.2). GET /custorian/v1/accuracy, published detection accuracy metrics (CS-MR.1.3). POST /custorian/v1/report, mandatory CSAM/danger reporting to law enforcement, subject to safeguards in Section 6.5 (CS-MR.2). GET /custorian/v1/audit, AAB compliance audit trail (CS-GO.1).</p>
+<h3 id="institutional-intelligence-endpoints">12.2 Institutional Intelligence Endpoints</h3>
+<p>GET /custorian/v1/intelligence/aggregate, anonymised threat data for institutional dashboards (CS-DM.2.1). GET /custorian/v1/intelligence/benchmark, cross-institutional comparison metrics (CS-DM.3.1).</p>
+<p>The CAS does not define consumer application endpoints (parent dashboards, alert UIs, parental controls). These are implementation decisions for developers building compliant applications, not requirements of the standard. The full OpenAPI 3.1 specification will be published alongside the first AAB programme.</p>
+<h2 id="theory-of-adoption">13. Theory of Adoption</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="13. Theory of Adoption" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>13. Theory of Adoption</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>A voluntary standard without a theory of how it becomes binding is a pamphlet. This section describes how the Custorian Standard is intended to achieve meaningful adoption and, over time, de facto enforcement. The primary mechanism is public procurement, supported by regulatory reference and platform-level gatekeeping.</p>
+<h3 id="why-procurement-is-the-primary-lever">13.1 Why Procurement Is the Primary Lever</h3>
+<p>EPEAT succeeded not because consumers demanded sustainable electronics but because US federal procurement required them. Executive Order 13423 and Federal Acquisition Regulation (FAR) Subpart 23.704 require federal agencies to meet at least 95 percent of their electronic product requirements with EPEAT-registered products where an EPEAT category exists<sup>27</sup>. This regulatory mandate transformed EPEAT from a voluntary ecolabel into a de facto requirement across the US federal IT market. The leverage came from government demand, not market pull. PCI-DSS followed a different path (contractual mandate from payment networks), but the procurement model is the more relevant analogue for child safety because there is no single gatekeeper with PCI-equivalent leverage in the digital platform market.</p>
+<p>For Custorian, the procurement lever is specific and immediate: governments and public bodies already purchase large volumes of digital services that are used by minors, edtech platforms, school communication systems, municipal family services, youth mental health apps, library digital resources, children’s public broadcasting applications. In each case, the procuring authority has the legal capacity to require that bidders meet defined safety standards. Custorian provides the standard.</p>
+<h3 id="the-three-path-adoption-strategy">13.2 The Three-Path Adoption Strategy</h3>
+<p>Adoption is pursued in parallel across three paths, each of which reinforces the others:</p>
+<ul>
+<li><strong>Path A: Public procurement reference.</strong> Targeted engagement with Danish municipalities, Nordic Council bodies, EU Green Public Procurement (GPP) frameworks, and the European Commission’s DG CNECT and DG EAC. The objective: Custorian certification referenced in procurement specifications for digital services used by or affecting minors. This path is plausible to begin within 12–24 months at municipal and national level.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Path B: Regulatory reference.</strong> Engagement with the European Commission, national Digital Services Coordinators, and data protection authorities to position Custorian as a reference standard for DSA Art. 28 compliance, AI Act conformity assessments, and AADC-equivalent national regimes. This path operates on a longer timeline (24–48 months) but yields deeper integration: certification as rebuttable evidence of reasonable measures.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Path C: Platform gatekeeper adoption.</strong> Engagement with app store operators, ad networks, and payment processors to require Custorian certification for products targeting minors. This path is least within Custorian’s control but has the highest leverage if successful, parallel to how PCI-DSS was mandated by payment networks rather than governments.</li>
+</ul>
+<h3 id="staged-adoption-sequence">13.3 Staged Adoption Sequence</h3>
+<p>Adoption is designed to build sequentially: families adopt compliant applications, which generates usage data; schools subscribe to aggregate dashboards, which generates institutional demand; municipalities deploy, which establishes public-sector credibility; government endorsement follows, which triggers procurement reference; platforms certify to access procurement and regulatory advantages. Each stage creates the data and credibility that makes the next tier viable. This mirrors the EPEAT trajectory.</p>
+<h3 id="why-this-adoption-theory-could-fail">13.4 Why This Adoption Theory Could Fail</h3>
+<p>The honest risks: procurement authorities may lack technical capacity to evaluate child safety specifications and default to incumbent platforms regardless of certification; regulatory reference requires Commission-level willingness that may not materialise; platform gatekeepers have incentives to resist external certification; and competing frameworks may emerge from industry consortia or well-resourced governments. Section 16 addresses these risks in more detail.</p>
+<h3 id="stakeholder-incentives">13.5 Stakeholder Incentives</h3>
+<p>Parents receive free child protection and real-time alerts with conversation guidance. Schools receive duty-of-care fulfilment and aggregate threat intelligence unavailable elsewhere. Municipalities receive evidence-based resource allocation and population-level data integrated with existing child welfare (SSP) coordination. Platforms receive a DSA and AI Act compliance pathway with regulatory presumption of conformity.</p>
+<h3 id="comparison-with-existing-approaches">13.6 Comparison with Existing Approaches</h3>
+<p>Annual surveys such as EU Kids Online<sup>12</sup> have a 2–3 year delay and are sample-based; the Framework enables real-time, population-level measurement. Helpline data captures only children who self-report; a peer-reviewed meta-analysis of 45 samples (n=31,225) found that more than a third of children do not disclose child sexual abuse even when formally interviewed in forensic settings<sup>28</sup>, and retrospective studies find that significant proportions never disclose in childhood at all. On-device detection identifies threats in unreported communications. Platform self-reporting lacks independent verification; AAB-validated certification with published metrics provides it. Cloud-based monitoring applications raise GDPR Art. 5(1)(c) data minimisation concerns that on-device processing, with no content transmission, avoids.</p>
+<h2 id="regulatory-cross-mapping">14. Regulatory Cross-Mapping</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="14. Regulatory Cross-Mapping" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>14. Regulatory Cross-Mapping</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>Summary mapping (complete mapping in the Regulatory Cross-Mapping Companion Document):</p>
+<ul>
+<li>EU Digital Services Act, Articles 28, 34, 35, 37 → CS-AC, CS-CD, CS-GO</li>
+</ul>
+<!-- -->
+<ul>
+<li>EU AI Act, children as vulnerable group; education AI high-risk → CS-MR, CS-DM, CS-GO</li>
+</ul>
+<!-- -->
+<ul>
+<li>UK Age Appropriate Design Code, all 15 standards → all 6 domains</li>
+</ul>
+<!-- -->
+<ul>
+<li>Denmark Under-15 Law, social media age restrictions → CS-AC</li>
+</ul>
+<!-- -->
+<ul>
+<li>US COPPA 2.0 / KOSA, proposed requirements → CS-AC, CS-DM, CS-PR</li>
+</ul>
+<!-- -->
+<ul>
+<li>IEEE P3462, development, deployment, maintenance → CS-CD, CS-MR, CS-GO</li>
+</ul>
+<!-- -->
+<ul>
+<li>EU CSA Regulation, CSAM detection and reporting → CS-MR</li>
+</ul>
+<!-- -->
+<ul>
+<li>eIDAS 2.0, age verification → CS-AC</li>
+</ul>
+<h2 id="implementation-roadmap">15. Implementation Roadmap</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="15. Implementation Roadmap" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>15. Implementation Roadmap</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p><strong>Draft &amp; Validate (Months 0–12):</strong> Controls Framework v1.0, CAS API specification, initial user base via compliant applications, first structured validation studies per the template in Appendix A, formal legal opinion on ePrivacy, child impact assessment by qualified child psychologists.</p>
+<p><strong>Formalise (Months 0–12, dated milestones, May 2026 anchor):</strong></p>
+<ul>
+<li>Q3 2026 (Jul–Sep): Dansk Standard committee review of draft EN XXXXX:2026 (scheduled 31 August 2026); first Approved Assessment Body (AAB) candidates identified; civil society advisory partners formally committed (5Rights Foundation, ECPAT International, Eurochild engagement initiated).</li>
+<li>Q4 2026 (Oct–Dec): First pilot certifications at Level 1 (Essential Protection) issued under the transitional provisions of Annex C.6; certification mark design specification published under open licence; EUDI Wallet integration reference pattern published as a position paper.</li>
+<li>Q1 2027 (Jan–Mar): Public certification registry launched; formal legal opinion on ePrivacy published; first AAB accreditation in at least one Member State.</li>
+<li>Q2 2027 (Apr–Jun): First annual State of Safety report published; advisory board annual report with COI declarations published; first child impact assessment completed and published.</li>
+</ul>
+<p><strong>Formalise (Months 12–24):</strong> IEEE liaison work concluded; CEN Workshop Agreement or New Work Item Proposal pathway resolved with Dansk Standard secretariat; first Member State regulator references the standard in published guidance; standard revision cycle initiated per the annual cadence in Annex D.</p>
+<p><strong>Adopt (Months 24–36):</strong> 10 or more Member States with at least one AAB accredited; registry operational across jurisdictions; first 10 platform certifications issued by independent AABs.</p>
+<p><strong>Mandate (Months 36–48):</strong> EU-wide guidance references Custorian; referenced as a reasonable-measures benchmark in published regulatory opinions (subject to the qualification in Section 11.6 that the standard is not itself a harmonised standard under Regulation (EU) 1025/2012).</p>
+<h2 id="limitations-and-risks-to-the-standard">16. Limitations and Risks to the Standard</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="16. Limitations and Risks to the Standard" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>16. Limitations and Risks to the Standard</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>This section addresses what could go wrong, for the framework itself, and for the broader project of building shared child safety infrastructure. A standard that does not discuss its own failure modes should not be trusted.</p>
+<h3 id="limitations-of-the-framework-as-drafted">16.1 Limitations of the Framework as Drafted</h3>
+<ul>
+<li><strong>No guarantee of detection.</strong> The Framework and compliant systems do not and cannot detect all threats. Detection accuracy varies substantially by category (see Section 6.2.1) and will be published following independent validation (see Appendix A for the recommended validation design). Institutions should not treat compliant systems as substitutes for human supervision.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>No liability transfer.</strong> Deployment does not transfer duty-of-care obligations to Custorian. Institutions retain their legal obligations under national and EU law.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Certification scope.</strong> “Custorian Certified” indicates conformity with the Framework’s controls at the time of assessment, not the impossibility of incidents. Analogous to PCI-DSS compliance. Parents and institutions must understand that certification indicates that defined safety processes are in place, not that harm cannot occur.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Not a law enforcement tool.</strong> The Framework does not identify perpetrators or collect evidence to criminal standards. Mandatory reporting pathways (NCMEC CyberTipline) are triggered for CSAM subject to the safeguards in Section 6.5; investigation is conducted by law enforcement.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Acknowledged blind spots.</strong> End-to-end encrypted platforms that block on-device access, voice and video communication, and image-only communication without text are outside the detection perimeter. Platform cooperation is necessary to extend coverage to these surfaces.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Detection maturity varies by category.</strong> CSAM hash matching is an established technique with proven accuracy. NLP-based detection of grooming, bullying, self-harm, and other categories is at emerging or research-stage maturity (see Section 6.2.1). The Framework’s credibility depends on being honest about this distinction; certification should not be interpreted as equivalent accuracy across all categories.</li>
+</ul>
+<h3 id="risks-to-the-standards-success">16.2 Risks to the Standard’s Success</h3>
+<p>Four risks warrant explicit acknowledgement:</p>
+<ul>
+<li><strong>Governance capture.</strong> A voluntary standard can be diluted if its Standards Council is dominated by the industry it governs, or if certification auditors compete on leniency. The governance structure in Section 8 is designed to mitigate this: multi-stakeholder composition with no industry majority, term limits, published disclosures, independent Audit Board, and published compliance failures. These mitigations must be maintained; complacency is the enemy.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Jurisdictional fragmentation.</strong> If individual jurisdictions develop competing national standards instead of referencing a common framework, the cross-jurisdictional value collapses and companies face the multi-regime compliance problem the Framework was designed to solve. Early engagement with national regulators and the European Commission is intended to prevent this; it cannot guarantee it.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Technical drift.</strong> Detection techniques, platform architectures, and threat vectors evolve faster than any standards body. Controls defined in 2026 may be irrelevant or actively harmful by 2029. The revision process in Section 8.5 is designed to permit continuous evolution; the effectiveness of that process depends on the Council’s willingness to retire controls that no longer serve their purpose.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>AI capability asymmetry.</strong> The threat model in Section 5.1 reflects 2026-era adversary sophistication. As AI systems become substantially more capable, the gap between AI-generated threats (e.g., LLM-powered grooming at scale) and pattern-based detection will widen. A detection framework built on current NLP capabilities may become structurally inadequate against next-generation AI-assisted threats within 3–5 years. The adversarial testing requirements in Section 5.4 and the revision process in Section 8.5 provide mechanisms for adaptation, but they cannot guarantee that the Framework keeps pace. This asymmetry is the single largest long-term technical risk to the Standard and should be a standing priority for the Advisory Council’s research partnerships.</li>
+</ul>
+<p><strong>Mission creep and scope expansion.</strong> A standard defining detection categories for child safety creates infrastructure that can be repurposed for objectives outside that mandate. Once an on-device detection and reporting pipeline is deployed at scale, governments, platforms, or successor bodies may seek to extend the category list to cover political speech, religious expression, sexual orientation, immigration status, or other targets that a child safety standard was never designed to address. This risk is not hypothetical; comparable content-scanning infrastructure has been the subject of precisely such expansion proposals in multiple jurisdictions. The Framework establishes four specific governance limits against scope expansion: <strong>(i) Category locking.</strong> The seven detection categories in Section 6.2.1 are the Framework’s authoritative scope. Addition of any new category requires a two-thirds Standards Council vote, a mandatory sixty-day public consultation, and a published Category Ethics Review (Section 7.5) documenting the human rights impact. National implementations that extend categories beyond this list forfeit Custorian Certified status. <strong>(ii) Purpose limitation.</strong> The API Specification (CAS) may not be extended to detection targets outside the category list, and compliant implementations may not expose detection outputs for purposes other than those specified in Sections 6 and 9. Use of Custorian-specified infrastructure to detect political dissent, religious minority status, sexual orientation, gender identity, immigration status, union activity, or journalistic source protection is a certification-terminating violation. <strong>(iii) Non-circumvention by national order.</strong> Where a national government mandates category expansion by law or executive order, certified platforms operating in that jurisdiction must publicly disclose the mandate, cease use of the Custorian Certified mark in that jurisdiction for the affected system, and Custorian will publish a jurisdictional notice documenting the mandate and its divergence from the Framework. The standard cannot prevent a sovereign state from mandating expansion; it can and does refuse to lend its certification to the expanded system. <strong>(iv) Digital rights representation at the decision point.</strong> The Standards Council composition in Section 8.2 reserves at least one of the three civil society seats for a representative from an established digital rights organisation (for example, European Digital Rights, Access Now, or equivalent). This seat is a structural check on scope expansion: any proposal to add categories must survive deliberation with a voice that is institutionally oriented toward flagging mission creep.</p>
+<h3 id="open-questions">16.3 Open Questions</h3>
+<p>The Framework as drafted leaves a defined set of questions open for the governance process rather than attempting to pre-resolve them. These questions are listed here as the founding work programme for the Standards Council and Advisory Council: items that the Councils are expected to address in their first two years of operation, with reader feedback and Advisory Council deliberation informing the resolution of each.<strong>Governance and certification.</strong> The minimum AAB qualifications, training, and accreditation requirements, including specific safeguards against audit-shopping. Whether Level 4 self-certification is retained, tightened, or replaced. The specific criteria for Advisory Council composition beyond the structural quotas in Section 8.2. Whether named executive accountability (analogous to PCI-DSS’s accountable-executive requirement) should be added as a CS-GO control.</p>
+<p><strong>Detection and thresholds.</strong> Whether the Framework should incorporate specific minimum accuracy thresholds per category, or leave this to each platform’s published metrics and market discipline. The operational definition and frequency of mandatory adversarial red-team testing (CS-MR.7.2) beyond the annual minimum, including who is qualified to conduct it and how results are validated. The treatment of classifier training-data provenance and openness, given the tension between transparency and adversarial evasion resistance.</p>
+<p><strong>Age and scope.</strong> Whether the Framework should extend protections to children below age 8, or maintain the current 8-and-above scope with explicit acknowledgement of under-8 children as outside scope. The practical reliability of age verification signals (eIDAS, parent attestation, device family accounts) and whether CS-AC should specify minimum empirical-validation standards for any signal the Framework recognises.</p>
+<p><strong>Jurisdictional routing.</strong> Development of a jurisdictional routing matrix for mandatory CSAM reporting (CS-MR.2.4 and CS-GO.6.4), specifying for each EU Member State and major non-EU jurisdiction which national authority receives the report, the legal basis, and the expected response timeline. This is an operational prerequisite to meaningful Certified status for platforms operating cross-border.</p>
+<p><strong>Platform-dependency disclosure.</strong> The Framework’s on-device requirement presupposes platform-level cooperation with device operating system capabilities. The extent to which certification is meaningfully available to platforms without access to OS-level integration (Apple Neural Engine, Google Tensor, equivalent) is an open question that the Standards Council should address with reference to empirical platform feasibility studies, not assumption.</p>
+<p>Reader feedback on these questions is specifically invited and will be shared with the Standards Council and Advisory Council at their constitution. Treating these as the Council’s founding agenda, rather than as author’s work to be completed before publication, is itself a design choice: a standards body whose first decisions are already made by a single author is not a standards body.</p>
+<h3 id="engagement-with-civil-society-critique-of-detection-schemes">16.4 Engagement with Civil Society Critique of Detection Schemes</h3>
+<p>A standard that includes any form of automated detection in children’s communications will be scrutinised — correctly — by digital rights organisations including European Digital Rights (EDRi), noyb (None of Your Business), Bits of Freedom, and others. The historical critique applied to proposals such as the original Chat Control proposal and to client-side scanning generally rests on three concerns:</p>
+<ol type="a">
+<li><p>That detection introduces an architectural backdoor that weakens end-to-end encryption and creates surveillance infrastructure that can be repurposed beyond its original scope;</p></li>
+<li><p>That false-positive rates in automated detection produce harmful interventions against innocent users, with disproportionate effect on marginalised groups;</p></li>
+<li><p>That parental access to detection outputs can be weaponised against children in abusive households, including LGBTQ+ youth in unsupportive families.</p></li>
+</ol>
+<p>The Framework’s architectural choices respond directly to each:</p>
+<p>On (a), the on-device processing requirement (CS-DM.1.1) means message content is never transmitted to external servers, and the mandatory architectural rule that detection occur only locally on the child’s device, with no decryption pathway introduced, preserves the integrity of end-to-end encryption end-to-end. The detection output (category, severity, timestamp) that does leave the device is not message content and does not require any decryption infrastructure to produce. The architecture is verifiable: independent security review of compliant implementations is required at AAB audit. The Framework recognises that no on-device detection scheme can be deployed in environments where the device itself is compromised or where compliant applications are not running, and does not claim coverage of those environments (Section 5.2 attack surface).</p>
+<p>On (b), the new CS-AC.1.6 specifies numerical accuracy thresholds for age assurance, the CS-MR.1.3 control requires published accuracy metrics per language and per detection category, and the CS-PR.6 contestation mechanism gives children the right to flag and reverse incorrect classifications. The Framework’s commitment to per-language accuracy reporting is specifically designed to make accuracy gaps visible and remediable rather than hidden behind aggregate metrics.</p>
+<p>On (c), the Framework’s parent-as-source-of-harm safeguards (CS-PR.8.1, 8.2, 8.3 and related controls) explicitly anticipate the abusive household scenario and provide delayed parental notification for abuse-indicative categories, a child self-reporting bypass that routes to qualified counsellors or helplines, and institutional override where a school or institution has activated institutional mode for a child. The mandatory child notification for ages 13+ (CS-PR.3.1) is non-configurable and cannot be disabled by the parent; the child always knows that monitoring is active.</p>
+<p>These responses do not resolve the critique; they engage with it. Detection schemes for children’s communications involve genuine trade-offs that no architectural choice fully eliminates. The Framework’s position is that a transparent, auditable, on-device standard with structural safeguards against the worst failure modes is materially better than the status quo — in which detection happens through opaque cloud-side classifiers with no published accuracy and no contestation mechanism, or in which detection does not happen at all and platforms serving children operate without safety infrastructure. Foreningen Custorian commits to engaging directly with EDRi, noyb, Bits of Freedom, and other civil society organisations as part of the advisory council formation, and to publishing their formal responses alongside the Framework’s revisions.</p>
+<h2 id="conclusion-and-invitation">17. Conclusion and Invitation</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="17. Conclusion and Invitation" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>17. Conclusion and Invitation</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The expiration of the EU ePrivacy derogation has created an unprecedented gap in child protection. The regulatory landscape is accelerating but provides no shared technical standard. Child digital safety is where payment security was before PCI-DSS: growing pressure, no common framework.</p>
+<p>The Custorian Standard comprises three components: the Controls Framework defining 146 auditable controls; the API Specification providing an open technical interface; and the Certification Programme enabling independent validation. The on-device detection requirement addresses the tension between child protection and privacy, a tension that contributed to the withdrawal of earlier on-device detection proposals and continues to stall the CSA Regulation. Whether on-device processing resolves the ePrivacy legal question is for data protection authorities to determine, not for the standard to assert.</p>
+<p>This paper has been transparent about what remains unvalidated. Independent accuracy testing has not been conducted. The ePrivacy architectural observation requires formal legal assessment. The parental abuse safeguards reduce but do not eliminate misuse risk. Governance structures are proposed and open for comment. Detection maturity varies substantially across the seven categories, and the paper is explicit about which categories are established, which are emerging, and which are at research stage.</p>
+<p>Next milestones: structured validation against the template in Appendix A, conducted by one or more independent academic or research partners; publication of accuracy metrics per language and threat category; formal legal opinion on ePrivacy from a qualified EU data protection practitioner; child impact assessment by qualified child psychologists; formation of the Advisory Council and Standards Council; IEEE and CEN engagement; and government endorsement outreach. The sequence of these milestones depends on advisory council formation, partner availability, and funding.</p>
+<p>The Standard is open source (Controls Framework under CC BY-SA 4.0; API Specification under MIT). Custorian invites collaboration from policymakers, researchers, child rights organisations, platform trust and safety teams, and privacy advocates. This paper is an invitation: to scrutinise the Framework, to challenge its assumptions, to join the governance process, and, if the argument holds, to help build the infrastructure that the field has been missing.</p>
+<p>For advisory council participation, pilot partnership, or technical review: info@custorian.org.</p>
+<h2 id="appendix-a-validation-study-template">Appendix A: Validation Study Template</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="Appendix A: Validation Study Template" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>Appendix A: Validation Study Template</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The Framework requires independent empirical validation before formal adoption. This appendix provides a methodological template that any validation study should meet. It is offered as a reference design; specific implementations should be adapted to the research partner’s institutional review processes, the target population, and available resources. Custorian welcomes validation studies conducted by any qualified academic or research institution.</p>
+<h3 id="recommended-validation-design">Recommended Validation Design</h3>
+<p><strong>Design.</strong> A waitlist-controlled trial is recommended, with intervention sites deploying a compliant detection system at study start and matched control sites receiving it after the comparison period. Sites should be matched on size, socioeconomic profile, and existing digital safety programmes. This design avoids permanently denying any participating site the intervention and allows direct between-group comparison during the comparison window.</p>
+<p><strong>Participants.</strong> A sample size sufficient for adequate statistical power (see Statistical plan below), drawn from families with children in the 8–16 age range. Recruitment should include accessibility considerations, with deliberate effort to include families of children with disabilities (per CS-CD.4.4).</p>
+<p><strong>Duration.</strong> A 6-month between-group comparison period followed by a 6-month open deployment period is recommended as the minimum. Longer studies will produce more robust retention and effect-persistence data.</p>
+<p><strong>Ethics.</strong> Studies should be submitted to an accredited Institutional Review Board. Parental consent is required for all participants; child assent is required for ages 12 and above (or the age-of-assent threshold in the relevant jurisdiction). No participating site should be permanently denied the intervention. The study protocol should specifically address how safeguarding obligations are met if threat detections occur during the study period.</p>
+<p><strong>Primary outcomes.</strong> Detection accuracy in real-world conditions (compared to synthetic test corpus), reported per detection category (see Section 6.2.1) and per language; false positive rate as experienced by parents; intervention timeliness; parent behavioural response; between-group comparison of validated wellbeing instruments (e.g., SDQ) and institution-reported incident differences at end of comparison period.</p>
+<p><strong>Secondary outcomes.</strong> Student wellbeing change (SDQ pre/post); institution-reported digital safety incidents (pre/post, both groups); adoption rate and retention; Hawthorne effect estimation.</p>
+<p><strong>Re-identification risk assessment.</strong> The study must include a formal re-identification risk analysis of the institutional data tier, evaluating whether the de-identification measures in Section 9.2 are sufficient given the specific deployment context (institutional size, population demographics, availability of auxiliary data). If the assessment identifies re-identification risk exceeding acceptable thresholds, the study must document recommended additional safeguards.</p>
+<p><strong>Child impact assessment.</strong> The study should include a qualitative assessment, conducted by qualified child psychologists, of the impact of monitoring awareness on children’s communication behaviour, self-censorship, help-seeking behaviour, and trust in the adults in their lives. This assessment should inform the Advisory Council’s ongoing review of the Framework’s child rights implications.</p>
+<p><strong>Statistical plan.</strong> Independent-samples t-tests for between-group comparisons; paired t-tests for within-group. Cohen’s d effect sizes reported. For a minimum detectable effect of d=0.2 at alpha=0.05 and power=0.80, a sample of approximately 900 participants per group is recommended. Intention-to-treat analysis with Bonferroni correction for multiple comparisons.</p>
+<p><strong>Reporting.</strong> Results should be submitted to a peer-reviewed journal. Detection accuracy metrics should be reported per language and per threat category, consistent with CS-MR.1.3. Raw data should be made available to other researchers under appropriate data-sharing agreements where participant privacy permits.</p>
+<h3 id="collaboration">Collaboration</h3>
+<p>Custorian invites expressions of interest from academic institutions, research centres, and civil society organisations willing to conduct validation studies against this template. The Framework’s credibility depends on independent empirical evidence, and no single institution should be the sole source of validation. Co-authorship of future versions of this paper is expressly welcomed from academic and institutional partners who contribute validation data or substantive review. Contact: info@custorian.org.</p>
+<h2 id="appendix-b-anticipated-criticisms-and-responses">Appendix B: Anticipated Criticisms and Responses</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="Appendix B: Anticipated Criticisms and Responses" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>Appendix B: Anticipated Criticisms and Responses</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>This paper has been subjected to structured adversarial review. This appendix addresses the most significant criticisms raised and explains how the Framework responds to each. Transparency about known criticisms is preferable to allowing them to surface as if unacknowledged.</p>
+<p><strong>“A single author with no child safety credentials is proposing a global standard.”</strong> The author’s background is in technical programme management within the technology sector and IEEE standards contribution, not in frontline child protection. This is acknowledged openly. The Framework is designed as interdisciplinary infrastructure; it operationalises requirements from child psychology, law, and technology into an audit-ready format. The governance model (Section 8) is specifically structured so that domain experts, child psychologists, survivor advocates, law enforcement professionals, digital rights scholars, hold decision-making authority through the Standards Council and Advisory Council. The author’s role is to propose the architecture; the Council’s role is to validate, challenge, and govern it. Co-authorship is invited from domain experts for future versions.</p>
+<p><strong>“The governance structure doesn’t exist yet.”</strong> Correct. The Standards Council, Advisory Council, and Audit Board are described in future tense because they do not yet exist. This is a sequencing reality, not a credibility gap: the paper must be published before the advisory council can be formed, because the paper is what prospective council members are evaluating. Every standards body follows this sequence, the standard is drafted, then the governance body is constituted to review, revise, and maintain it. PCI-DSS was drafted by the card networks before the PCI Security Standards Council was formed.</p>
+<p><strong>“No pilot data exists.”</strong> Correct. This is a pre-publication draft, not a validated standard. The validation study template in Appendix A exists precisely because the Framework requires empirical evidence before formal adoption. The paper’s purpose is to invite the scrutiny and partnerships that make validation possible.</p>
+<p><strong>“This creates a false sense of safety.”</strong> This criticism is taken seriously. Section 16.1 and Section 11.6 are explicit that certification demonstrates process conformity, not outcome guarantee. The Framework has been revised (v4) to strengthen this language and to include the detection maturity matrix (Section 6.2.1), which makes clear that detection capability varies substantially across categories. A certification mark always carries the risk of over-interpretation; the mitigation is transparency, not the absence of certification.</p>
+<p><strong>“A formal legal opinion on ePrivacy should precede publication.”</strong> The ePrivacy analysis in Section 6.1 is offered as an architectural observation, not a legal claim. A formal legal opinion is listed as a Month 0–12 milestone in the roadmap (Section 15). Publication of the paper and procurement of a legal opinion are parallel workstreams, not sequential. The paper does not advise any platform to rely on the ePrivacy observation without independent legal counsel.</p>
+<p><strong>“A child impact assessment should precede publication.”</strong> A child impact assessment, conducted by qualified child psychologists, is now included as a required component of the validation study (Appendix A) and as a Month 0–12 roadmap milestone (Section 15). The paper’s purpose is to define the framework that the assessment will evaluate; the assessment cannot precede the framework definition.</p>
+<h2 id="references">References</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="References" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>References</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>[1] Eurostat, “EU’s population projected to drop by 11.7% by 2100,” 16 April 2026 (EU population 451.8 million on 1 January 2025). https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260416-1</p>
+<p>[2] Eurostat, “Discover Eurostat’s data on children,” 2024 (young people up to 18 = 18.0% of EU population). https://ec.europa.eu/eurostat/web/products-eurostat-news/w/wdn-20240722-1</p>
+<p>[3] European Parliament, “Child sexual abuse online: voluntary detection measures will not be extended,” press release 20260325IPR39207, 26 March 2026. https://www.europarl.europa.eu/news/en/press-room/20260325IPR39207/child-sexual-abuse-online-voluntary-detection-measures-will-not-be-extended</p>
+<p>[4] EDPS, “Extension of Interim Rules to Combat Child Sexual Abuse Online Must Address Shortcomings,” 2026.</p>
+<p>[5] NCMEC, “2023 Reports of Apparent Child Sexual Abuse Material (CSAM),” 2024. https://www.missingkids.org</p>
+<p>[6] WeProtect Global Alliance, “Global Threat Assessment 2023,” 2023.</p>
+<p>[7] UNICEF, “More Than a Third of Young People in 30 Countries Report Being a Victim of Online Bullying,” 2019.</p>
+<p>[8] CDC MMWR, “Emergency Department Visits for Suspected Suicide Attempts Among Persons Aged 12–25,” 2021; Institute for Family Studies analysis of CDC WISQARS data, 2009–2022.</p>
+<p>[9] FBI, “FBI Warns of Increase in Sextortion Schemes Targeting Minors,” IC3, 2023.</p>
+<p>[10] Thorn / All Tech is Human, “Safety by Design for Generative AI: Preventing Child Sexual Abuse,” 2024.</p>
+<p>[11] Center for Democracy &amp; Technology, “Investigating Content Moderation Systems in the Global South,” 2024. https://cdt.org/insights/investigating-content-moderation-systems-in-the-global-south/</p>
+<p>[12] EU Kids Online, “EU Kids Online 2024 Survey Findings,” LSE, 2024.</p>
+<p>[13] European Commission, “Digital Services Act, Protection of Minors,” OJ EU, 2022.</p>
+<p>[14] S. Mathew, “How Measurement Can Fix Content Moderation’s Language Equity Gap,” Tech Policy Press, February 2026. https://www.techpolicy.press/how-measurement-can-fix-content-moderations-language-equity-gap/</p>
+<p>[15] Center for Democracy &amp; Technology, "Investigating Content Moderation Systems in the Global South," 2024. https://cdt.org/insights/investigating-content-moderation-systems-in-the-global-south/</p>
+<p>[16] PCI Security Standards Council, “PCI DSS v4.0,” 2022. https://www.pcisecuritystandards.org</p>
+<p>[17] Global Electronics Council, “EPEAT Programme Overview,” 2024. https://www.epeat.net</p>
+<p>[18] IEEE SA, “P3462, Draft Recommended Practice for Using Safety by Design in Generative Models to Prioritize Child Safety,” Draft 5, Dec 2025.</p>
+<p>[19] UN Committee on the Rights of the Child, “General Comment No. 25 on Children’s Rights in Relation to the Digital Environment,” 2021.</p>
+<p>[20] J. Mayer, “Content Moderation on End-to-End Encrypted Systems,” Princeton CITP, 2021.</p>
+<p>[21] UNICEF, “Policy Guidance on AI for Children,” 2021.</p>
+<p>[22] Thorn / All Tech is Human, "Safety by Design for Generative AI: Preventing Child Sexual Abuse," 2024.</p>
+<p>[23] H. Nissenbaum, “Privacy in Context,” Stanford University Press, 2010.</p>
+<p>[24] D. Solove, “A Taxonomy of Privacy,” U. Penn. Law Review, vol. 154, no. 3, 2006.</p>
+<p>[25] T. Beauchamp and J. Childress, “Principles of Biomedical Ethics,” 8th ed., Oxford, 2019.</p>
+<p>[26] Euronews, “EU Countries Sign Danish Plan to Boost Child Protection Online (Jutland Declaration),” Oct 2025.</p>
+<p>[27] Executive Order 13423, “Strengthening Federal Environmental, Energy, and Transportation Management,” January 2007; Federal Acquisition Regulation (FAR) Subpart 23.704. https://www.federalregister.gov/documents/2007/12/26/E7-24937/</p>
+<p>[28] C. Azzopardi, R. Eirich, C. L. Rash, S. MacDonald, and S. Madigan, “A meta-analysis of the prevalence of child sexual abuse disclosure in forensic settings,” Child Abuse &amp; Neglect, vol. 93, pp. 291–304, 2019. doi:10.1016/j.chiabu.2018.11.020</p>
+<p>[29] Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 (General Data Protection Regulation), OJ L 119, 4 May 2016. Art. 22 on automated individual decision-making. https://eur-lex.europa.eu/eli/reg/2016/679/oj</p>
+<p>[30] Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 (Artificial Intelligence Act), OJ L, 12 July 2024. Art. 86 on right to explanation of individual decision-making. https://eur-lex.europa.eu/eli/reg/2024/1689/oj</p>
+<p>[31] United Kingdom, Online Safety Act 2023 (c.50), with Ofcom codes of practice under ss.9 (illegal content), 10 (content moderation), 11–12 (children’s access assessment and safety duties). https://www.legislation.gov.uk/ukpga/2023/50</p>
+<p>[32] NCMEC, “CyberTipline 2024 Report,” National Center for Missing &amp; Exploited Children, 2025. https://www.missingkids.org/gethelpnow/cybertipline/cybertiplinedata</p>
+<p>[33] European Parliament, “Child sexual abuse online: support for extending rules until August 2027,” press release 20260306IPR37531, 11 March 2026. https://www.europarl.europa.eu/news/en/press-room/20260306IPR37531/child-sexual-abuse-online-support-for-extending-rules-until-august-2027</p>
+<p>[34] Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (eIDAS 2.0). OJ L, 30 April 2024. https://eur-lex.europa.eu/eli/reg/2024/1183/oj</p>
+<p>[35] Office of Communications (Ofcom), Guidance on highly effective age assurance for protecting children online under the Online Safety Act 2023, latest edition. https://www.ofcom.org.uk/</p>
+<p>[36] Australia, Online Safety Amendment (Social Media Minimum Age) Act 2024 (Cth), Act No. 137 of 2024. https://www.legislation.gov.au/</p>
+<p>[37] OECD, Recommendation of the Council on Children in the Digital Environment, OECD/LEGAL/0389, adopted 21 May 2021. https://legalinstruments.oecd.org/en/instruments/oecd-legal-0389</p>
+<p>[38] Council of Europe, Convention 108+ for the Protection of Individuals with Regard to the Processing of Personal Data (modernised), CETS No. 223. https://www.coe.int/en/web/data-protection/convention108-and-protocol</p>
+<p>[39] Foreningen Custorian, Draft European Standard EN XXXXX:2026 — Digital Services — Child Safety Requirements — Framework for the Protection of Minors in Digital Environments, Working Draft 1.0, May 2026 (in submission to Dansk Standard).</p>
+<h2 id="acknowledgments-ip-and-conflicts-of-interest">Acknowledgments, IP, and Conflicts of Interest</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="Acknowledgments, IP, and Conflicts of Interest" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>Acknowledgments, IP, and Conflicts of Interest</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>The author is a contributing member of the IEEE P3462 Working Group. This work is conducted under the auspices of Foreningen Custorian (CVR 46399455), a Danish non-profit association.</p>
+<p>The Controls Framework is licensed CC BY-SA 4.0; the API Specification under MIT licence. Anyone may implement the controls or build CAS-compatible systems without permission or payment. The “Custorian Certified” designation will be reserved for platforms passing AAB audit or validated SAQ. Trademark registration is in progress.</p>
+<p>Conflicts of interest: Custorian is a non-profit with no shareholders. The author’s primary professional employment is with a large technology platform, which falls within the scope of any platform-facing standard, including this one. This paper is the author’s independent work conducted through Foreningen Custorian and does not represent the views, positions, or interests of the author’s employer. The author commits to recusing from any Standards Council, Advisory Council, or Audit and Certification Board deliberation or vote that materially affects her employer or its products, in accordance with the conflict-of-interest procedures in Section 8.4 and the structural separation requirements in Section 8.9.</p>
+<h2 id="about-the-author">About the Author</h2>
+<div class="section-tools" data-nocomment-print>
+  <button type="button" class="cmt-toggle" onclick="toggleComment(this)">💬 Comment on this section</button>
+  <form class="cmt-form" data-section="About the Author" onsubmit="return submitComment(this)" hidden>
+    <p class="cmt-label">Comment on <strong>About the Author</strong></p>
+    <textarea name="message" rows="4" placeholder="Your thoughts on this section…" required></textarea>
+    <input type="email" name="email" placeholder="Email (required)" required>
+    <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cmt-actions">
+      <button type="submit">Send comment</button>
+      <button type="button" class="cmt-cancel" onclick="toggleComment(this)">Cancel</button>
+    </div>
+    <p class="cmt-status" role="status"></p>
+  </form>
+</div>
+
+<p>T.V. Becheva is the founder of Foreningen Custorian and a contributing member of IEEE standards on child safety and AI ethics. Her background spans technical programme management at scale within the global technology sector, with a focus on platform safety, cross-functional delivery, and regulatory compliance. She is a parent of two children, which informed the development of Custorian as a standard built from lived experience, not theory. Custorian is domiciled in Odense, Denmark. The Jutland Declaration on child digital safety was signed by 25 EU member states in Horsens, Denmark in October 2025.</p>
+
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>
+    Version 6.1 — Pre-Publication Draft, June 2026. This white paper is open for review and comment; the Custorian Standard (Draft EN v0.2) is the authoritative source, and where the two differ, the standard governs.<br>
+    Read the standard: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a> &middot; <a href="https://custorian.org">custorian.org</a>
+  </footer>
+
+</div>
+
+<script>
+  var W3_KEY = "cfeb795c-19e4-42ee-9ab3-66290e1c5e34";
+  var SB_URL = "https://trvbspdqonajtsiivxwl.supabase.co";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8";
+
+  function toggleComment(el){
+    var tools = el.closest('.section-tools');
+    var form = tools.querySelector('.cmt-form');
+    var toggle = tools.querySelector('.cmt-toggle');
+    var show = form.hasAttribute('hidden');
+    if(show){ form.removeAttribute('hidden'); toggle.style.display='none'; form.querySelector('textarea').focus(); }
+    else{ form.setAttribute('hidden',''); toggle.style.display=''; }
+  }
+
+  function sbInsert(row){
+    try{
+      fetch(SB_URL + '/rest/v1/feedback', {
+        method:'POST',
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+        body:JSON.stringify(row), keepalive:true
+      }).catch(function(){});
+    }catch(e){}
+  }
+
+  function submitComment(form){
+    if(form.botcheck && form.botcheck.value){ return false; } // honeypot
+    var section = form.getAttribute('data-section');
+    var message = form.message.value.trim();
+    var email = form.email.value.trim();
+    var status = form.querySelector('.cmt-status');
+    if(!message || !email){ return false; }
+    status.textContent = 'Sending…';
+    var payload = {
+      access_key: W3_KEY,
+      subject: 'White paper comment — ' + section,
+      from_name: 'Custorian White Paper',
+      section: section,
+      email: email,
+      message: message
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && d.success){
+        sbInsert({name:null, email:(email||null), comments:'[§ '+section+'] '+message, source:'whitepaper'});
+        var safe = section.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+        form.innerHTML = '<p class="cmt-thanks">Thank you — your comment on <strong>'+safe+'</strong> has been received.</p>';
+      } else {
+        status.textContent = 'Something went wrong. Please email info@custorian.org.';
+      }
+    })
+    .catch(function(){ status.textContent = 'Network error. Please email info@custorian.org.'; });
+    return false;
+  }
+</script>
+
+<!-- Cookieless page-view analytics -->
+<script src="track.js"></script>
+</body>
+</html>
