@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — Conformity Evidence Guide</title>
-<meta name="description" content="How a platform proves conformity with the Custorian standard: the evidence to produce for each of the 146 controls, across six domains.">
+<meta name="description" content="How a platform proves conformity with the Custorian standard: the evidence to produce for each of the 149 controls, across six domains.">
 <style>
   :root {
     --purple: #8B5CF6;
@@ -147,7 +147,7 @@
       Custorian
     </div>
     <h1>How to prove it.</h1>
-    <p class="lede">A platform does not declare itself safe for children. It produces evidence. This guide sets out, control by control, the evidence a digital service generates to demonstrate conformity with the Custorian standard — 146 auditable controls across six domains.</p>
+    <p class="lede">A platform does not declare itself safe for children. It produces evidence. This guide sets out, control by control, the evidence a digital service generates to demonstrate conformity with the Custorian standard — 149 auditable controls across six domains.</p>
     <div class="meta">
       <span>Foreningen Custorian</span>
       <span>CVR 46399455</span>
@@ -158,7 +158,7 @@
   <h2>How conformity works</h2>
   <p>Custorian is a conformity standard, not a self-assessment badge. Conformity is determined against documented, measurable controls and evidenced by artefacts an independent assessor can inspect, test, and reproduce.</p>
   <ul class="clean">
-    <li><strong>146 controls, six domains.</strong> Each control is a single auditable requirement. <strong>137 are required</strong> for conformity; <strong>9 are addressable</strong> — applicable where relevant, with a documented justification if not implemented.</li>
+    <li><strong>149 controls, six domains.</strong> Each control is a single auditable requirement. <strong>140 are required</strong> for conformity; <strong>9 are addressable</strong> — applicable where relevant, with a documented justification if not implemented.</li>
     <li><strong>SHALL vs SHOULD.</strong> A <span style="color:var(--purple);font-weight:700">SHALL</span> control is mandatory. A <span style="color:var(--muted);font-weight:700">SHOULD</span> control is recommended; non-implementation must be justified and recorded.</li>
     <li><strong>Certified by independent bodies.</strong> The foreningen owns the scheme and licenses the &ldquo;Custorian Certified&rdquo; mark; certification itself is issued by independent accredited Certification Bodies under EC 765/2008. The foreningen does not certify platforms directly, and no vendor is privileged.</li>
     <li><strong>Evidence travels.</strong> Most artefacts below already exist for platforms meeting DSA, GDPR, the UK AADC, the Online Safety Act or COPPA. Custorian maps them to one coherent child-safety frame, so you produce them once.</li>
@@ -241,6 +241,7 @@
       <tr><td class="cid">CS-CD.3.3</td><td class="req">Interventions <span class="shall">SHALL</span> be culturally reviewed per language/region.</td><td class="ev"><span class="tag P">P</span> Localisation / cultural review records.</td></tr>
       <tr><td class="cid">CS-CD.3.4</td><td class="req">No dialogue loop — <span class="shall">SHALL NOT</span> sustain conversation with children.</td><td class="ev"><span class="tag P">P</span><span class="tag T">T</span> Design statement + no-sustained-conversation test.</td></tr>
       <tr><td class="cid">CS-CD.3.5</td><td class="req">Intervention content <span class="shall">SHALL</span> be version-controlled and publicly auditable.</td><td class="ev"><span class="tag D">D</span> Public version-controlled repository / changelog.</td></tr>
+      <tr><td class="cid">CS-CD.3.6</td><td class="req">Safety interventions <span class="shall">SHALL</span> be evidence-based, and their effectiveness in preventing or reducing harm <span class="shall">SHALL</span> be measured and validated.</td><td class="ev"><span class="tag P">P</span><span class="tag T">T</span> Evidence base for the intervention + privacy-preserving outcome-metrics report.</td></tr>
       <tr><td class="cid">CS-CD.4.1</td><td class="req">Child-facing interventions <span class="shall">SHALL</span> be screen-reader compatible.</td><td class="ev"><span class="tag T">T</span> Screen-reader accessibility test.</td></tr>
       <tr><td class="cid">CS-CD.4.2</td><td class="req">Intervention text <span class="shall">SHALL</span> meet WCAG 2.1 AA.</td><td class="ev"><span class="tag T">T</span> WCAG 2.1 AA audit report.</td></tr>
       <tr><td class="cid">CS-CD.4.3</td><td class="req">Crisis helpline actions <span class="shall">SHALL</span> be accessible via assistive input.</td><td class="ev"><span class="tag T">T</span> Assistive-input accessibility test.</td></tr>
@@ -352,6 +353,8 @@
       <tr><td class="cid">CS-MR.10.1</td><td class="req">Pattern updates <span class="shall">SHALL</span> be reviewed before deployment.</td><td class="ev"><span class="tag P">P</span><span class="tag L">L</span> Change-review procedure + approvals.</td></tr>
       <tr><td class="cid">CS-MR.10.2</td><td class="req">Updates <span class="shall">SHALL NOT</span> introduce bias or suppress legitimate expression.</td><td class="ev"><span class="tag T">T</span> Bias test on pattern updates.</td></tr>
       <tr><td class="cid">CS-MR.10.3</td><td class="req">Rollback capability <span class="shall">SHALL</span> exist for false-positive spikes.</td><td class="ev"><span class="tag C">C</span><span class="tag T">T</span> Rollback mechanism doc + test.</td></tr>
+      <tr><td class="cid">CS-MR.10.4</td><td class="req">Harm classifiers <span class="shall">SHALL</span> be purpose-limited to detection and <span class="shall">SHALL NOT</span> be used for surveillance, profiling, or advertising.</td><td class="ev"><span class="tag P">P</span><span class="tag C">C</span> Purpose specification per classifier + system export showing outputs are not repurposed.</td></tr>
+      <tr><td class="cid">CS-MR.10.5</td><td class="req">Detection datasets and models <span class="shall">SHALL</span> be documented, benchmarked, and independently verifiable as effective.</td><td class="ev"><span class="tag D">D</span><span class="tag T">T</span> Dataset provenance/composition documentation + benchmark performance report.</td></tr>
       <tr class="addr"><td class="cid">CS-MR.11.1</td><td class="req"><span class="should">SHOULD</span> account for atypical communication patterns.</td><td class="ev"><span class="tag P">P</span> Note on neurodiverse / atypical-communication handling.</td></tr>
     </tbody>
   </table>
