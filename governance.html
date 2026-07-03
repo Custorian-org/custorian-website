@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian — Governance &amp; Transparency</title>
+<meta name="description" content="Custorian is a Danish non-profit that owns a standard it cannot sell. This is the public record: our articles of association, governing structure, firewalls, decisions and accounts.">
+<meta property="og:title" content="Custorian — Governance &amp; Transparency">
+<meta property="og:description" content="A standard owned by no one. The public record of Foreningen Custorian — articles, structure, firewalls, decisions, accounts.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org/governance.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<style>
+  :root {
+    --purple: #8B5CF6;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e4e0da;
+    --paper: #ffffff;
+    --wash: #faf8f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .doc { max-width: 920px; margin: 0 auto; padding: 56px 48px 80px; }
+
+  /* ACTION BAR */
+  .actionbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--ink); color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .actionbar a.home {
+    color: #fff; text-decoration: none; opacity: 0.75; font-size: 12px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .actionbar a.home:hover { opacity: 1; }
+
+  /* COVER */
+  .cover { border-bottom: 2px solid var(--ink); padding-bottom: 40px; margin-bottom: 44px; }
+  .wordmark {
+    font-size: 13px; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 800;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 48px;
+  }
+  .wordmark .glyph {
+    display: inline-grid; grid-template-columns: repeat(2, 7px); grid-gap: 2px;
+  }
+  .wordmark .glyph i { width: 7px; height: 7px; background: var(--purple); display: block; }
+  .cover h1 {
+    font-size: clamp(34px, 6vw, 60px); font-weight: 900; letter-spacing: -0.03em;
+    line-height: 0.98; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .cover .lede { font-size: 18px; line-height: 1.5; max-width: 62ch; color: var(--ink); }
+  .cover .meta {
+    margin-top: 28px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .cover .meta span { margin-right: 18px; }
+
+  h2 {
+    font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 800;
+    color: var(--purple); margin: 48px 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  h3 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; margin: 36px 0 6px; }
+  p { margin-bottom: 14px; max-width: 70ch; }
+  a.inline { color: var(--purple); text-decoration: none; font-weight: 600; }
+  a.inline:hover { text-decoration: underline; }
+
+  .callout {
+    background: var(--wash); border-left: 3px solid var(--purple); padding: 18px 22px; margin: 18px 0; font-size: 14px;
+    max-width: 72ch;
+  }
+  .callout strong { font-weight: 800; }
+
+  /* IDENTITY GRID */
+  .identity { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin: 18px 0 6px; }
+  .identity div { background: var(--paper); padding: 16px 18px; }
+  .identity .k { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .identity .v { font-size: 15px; font-weight: 700; color: var(--ink); }
+
+  /* DOCUMENT LIST */
+  ul.docs { list-style: none; margin: 12px 0 8px; }
+  ul.docs li {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 16px 2px; border-bottom: 1px solid var(--line); max-width: 76ch;
+  }
+  ul.docs li .body { flex: 1; }
+  ul.docs li .t { font-weight: 800; font-size: 16px; }
+  ul.docs li .t a { color: var(--ink); text-decoration: none; }
+  ul.docs li .t a:hover { color: var(--purple); }
+  ul.docs li .d { font-size: 13.5px; color: var(--muted); margin-top: 3px; max-width: 62ch; }
+  .pill {
+    flex: none; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px; color: #fff; white-space: nowrap;
+  }
+  .pill.live { background: #5b8c5a; }
+  .pill.prep { background: #b5651d; }
+  .pill.ext  { background: var(--purple); }
+
+  /* PRESS LIST */
+  ul.press { list-style: none; margin: 12px 0; }
+  ul.press li { padding: 12px 0; border-bottom: 1px solid var(--line); max-width: 72ch; }
+  ul.press li .date { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  ul.press li .head { font-weight: 700; font-size: 15.5px; margin-top: 3px; }
+  ul.press li .head a { color: var(--ink); text-decoration: none; }
+  ul.press li .head a:hover { color: var(--purple); }
+
+  footer {
+    margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
+    font-size: 11px; letter-spacing: 0.06em; color: var(--muted);
+  }
+  footer a { color: var(--purple); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .doc { padding: 40px 22px 64px; }
+    .identity { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="actionbar">
+  <span>Custorian · Governance &amp; Transparency</span>
+  <a class="home" href="/index.html">&larr; custorian.org</a>
+</div>
+
+<div class="doc">
+
+  <div class="cover">
+    <div class="wordmark">
+      <span class="glyph"><i></i><i></i><i></i><i></i></span>
+      Custorian
+    </div>
+    <h1>Owned in the open.</h1>
+    <p class="lede">Custorian owns a standard it is structurally unable to sell. A promise like that is only worth the paper it is audited on — so this is the paper. Our legal identity, our articles, the firewalls that keep the standard independent, the decisions we take, and the accounts behind them. Published, and kept current.</p>
+    <div class="meta">
+      <span>Foreningen Custorian</span>
+      <span>CVR 46399455</span>
+      <span>Odense, Denmark</span>
+    </div>
+  </div>
+
+  <h2>Legal identity</h2>
+  <p>Custorian is a Danish frivillig forening — a non-profit membership association. It has no shareholders and distributes no profit. The standard it maintains is licensed <strong>CC BY-SA 4.0</strong> and remains public even if the association dissolves.</p>
+  <div class="identity">
+    <div><div class="k">Legal name</div><div class="v">Foreningen Custorian</div></div>
+    <div><div class="k">Legal form</div><div class="v">Frivillig forening (non-profit)</div></div>
+    <div><div class="k">CVR number</div><div class="v">46399455</div></div>
+    <div><div class="k">Registered seat</div><div class="v">Odense, Denmark</div></div>
+    <div><div class="k">Founded</div><div class="v">2026</div></div>
+    <div><div class="k">Standard licence</div><div class="v">CC BY-SA 4.0</div></div>
+  </div>
+
+  <h2>Governing documents</h2>
+  <p>The authoritative documents that constitute Custorian and set the rules it operates under.</p>
+  <ul class="docs">
+    <li>
+      <div class="body">
+        <div class="t"><a href="#">Articles of Association (Vedtægter)</a></div>
+        <div class="d">The constitution of the association: purpose, membership, general assembly, board, amendment and dissolution. English and Danish.</div>
+      </div>
+      <span class="pill prep">In preparation</span>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t"><a href="#">Governance &amp; Independence Framework</a></div>
+        <div class="d">The ten firewalls separating the association from any commercial entity, and the rules for the certification scheme.</div>
+      </div>
+      <span class="pill prep">In preparation</span>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t"><a href="https://zenodo.org/records/19675375">The Custorian Standard (Draft EN v0.2)</a></div>
+        <div class="d">149 auditable controls across six domains. The authoritative technical text, permanently archived on Zenodo under CC BY-SA 4.0.</div>
+      </div>
+      <span class="pill ext">Published</span>
+    </li>
+  </ul>
+
+  <h2>How Custorian is governed</h2>
+  <h3>The board</h3>
+  <p>Foreningen Custorian is governed by a Board of Directors of nine seats. At most one seat may be held by any commercial entity; the remainder are drawn from academic researchers, civil-society organisations, hotline operators, independent child-safety experts, and an independent chair.</p>
+  <h3>The association does not certify platforms</h3>
+  <p>Certification is issued by independent, accredited Certification Bodies operating under a published scheme. The association maintains the scheme and licenses the &ldquo;Custorian Certified&rdquo; trademark to qualifying bodies. It does not audit or certify platforms itself. This separation is deliberate: the body that writes the rules is not the body that grades the exam.</p>
+  <h3>The ten firewalls</h3>
+  <p>A standard is only independent if it cannot be captured. Ten firewalls separate the association from any commercial interest, including: a board-composition cap of at most one commercial seat of nine; identical certification terms for all applicants; a 30% cap on any single funder; executive-overlap limited to 24 months; a biennial independent governance review; a whistleblower channel to an external ombudsperson; and a revocable trademark licence. Every board decision is published with its rationale. There is no pay-to-play.</p>
+  <div class="callout">
+    <strong>Why this page exists.</strong> Custorian asks platforms to prove their claims about children rather than assert them. We hold ourselves to the same test. Governance you cannot inspect is a marketing claim; governance you can inspect is a commitment.
+  </div>
+
+  <h2>Decisions &amp; minutes</h2>
+  <p>The board publishes a summary of every material decision, with the reasoning behind it. We publish approved decisions and their rationale rather than verbatim minutes — this keeps individuals, third parties and unfinished deliberations out of the public record while keeping the association&rsquo;s choices fully accountable.</p>
+  <ul class="docs">
+    <li>
+      <div class="body">
+        <div class="t">Decisions log</div>
+        <div class="d">Published after each general assembly and board meeting. The first entries will appear here once the inaugural board is seated.</div>
+      </div>
+      <span class="pill prep">In preparation</span>
+    </li>
+  </ul>
+
+  <h2>Finances</h2>
+  <p>As a Danish non-profit, Custorian keeps and publishes annual accounts. Funding is capped so that no single source can exceed 30% of income. Accounts will be posted here for each financial year.</p>
+  <ul class="docs">
+    <li>
+      <div class="body">
+        <div class="t">Annual accounts (Årsregnskab) — 2026</div>
+        <div class="d">First financial year. Published after approval at the general assembly.</div>
+      </div>
+      <span class="pill prep">In preparation</span>
+    </li>
+  </ul>
+
+  <h2>Publications &amp; press</h2>
+  <p>Standards, guidance and public statements issued by Custorian.</p>
+  <ul class="press">
+    <li>
+      <div class="date">2026</div>
+      <div class="head"><a href="whitepaper.html">The Custorian White Paper</a></div>
+    </li>
+    <li>
+      <div class="date">2026</div>
+      <div class="head"><a href="conformity-evidence-guide.html">Conformity Evidence Guide</a></div>
+    </li>
+    <li>
+      <div class="date">2026</div>
+      <div class="head"><a href="https://zenodo.org/records/19675375">The Custorian Standard, Draft EN v0.2 — Zenodo</a></div>
+    </li>
+  </ul>
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>
+    Governance enquiries: <a href="mailto:info@custorian.org">info@custorian.org</a> &middot;
+    The standard: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a> &middot;
+    <a href="https://custorian.org">custorian.org</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
