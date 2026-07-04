@@ -722,7 +722,7 @@
 </section>
 
 <div style="text-align:center; margin:6px 0 34px;">
-  <a href="framework.html" style="display:inline-block; color:#8B5CF6; border:1px solid rgba(139,92,246,.5); border-radius:999px; padding:10px 22px; font-size:14px; text-decoration:none;">Explore the framework — 149 controls, methodology &amp; scoring&nbsp;→</a>
+  <a href="#" onclick="openModal('controlsModal', event)" style="display:inline-block; color:#8B5CF6; border:1px solid rgba(139,92,246,.5); border-radius:999px; padding:10px 22px; font-size:14px; text-decoration:none;">Explore the framework — 149 controls, methodology &amp; scoring&nbsp;→</a>
 </div>
 
 <section class="scoreboard">
@@ -796,7 +796,7 @@
 
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="whitepaper.html">Read the White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="#" onclick="openModal('controlsModal', event)">Framework</a> &nbsp;&middot;&nbsp; <a href="whitepaper.html">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
 
@@ -848,7 +848,10 @@
     <h2 class="modal-title" id="controlsTitle">149 controls.</h2>
 
     <div class="modal-section">
-      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 140 are required for conformity. 9 are addressable. See the <a href="framework.html">full framework — controls, purpose, methodology &amp; scoring</a>, or read the white paper <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">on Zenodo</a>.</div>
+      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 140 are required for conformity. 9 are addressable. Read the white paper <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">on Zenodo</a>.</div>
+      <div style="margin-top:14px;">
+        <a href="mailto:info@custorian.org?subject=Comment%20on%20a%20control" style="color:#8B5CF6; text-decoration:none; font-size:14px;">Comment on a control →</a>
+      </div>
     </div>
 
     <div class="modal-section">
@@ -1034,6 +1037,30 @@
         <div><strong>CS-GO.8.1</strong> &mdash; Organisation SHALL provide age-appropriate digital literacy resources to child users</div>
         <div><strong>CS-GO.8.2</strong> &mdash; Safety features SHOULD build children's resilience and digital skills</div>
       </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">Methodology &middot; how conformity is assessed</div>
+      <div class="modal-text">Every control is assessed against defined evidence &mdash; not self-declaration &mdash; and scored <strong>pass</strong>, <strong>partial</strong>, or <strong>fail</strong>, using one or more of:</div>
+      <div class="modal-controls">
+        <div><strong>Automated checks</strong> &mdash; technical verification of observable behaviour.</div>
+        <div><strong>Agent / scenario testing</strong> &mdash; structured journeys exercising a control as a child or bad actor would.</div>
+        <div><strong>Documentation review</strong> &mdash; inspection of policies, records, and evidence.</div>
+        <div><strong>Expert panel</strong> &mdash; qualified assessor judgement where human evaluation is required.</div>
+        <div><strong>Attestation</strong> &mdash; signed operator declaration, only alongside other evidence.</div>
+      </div>
+      <div class="modal-text" style="margin-top:10px; opacity:.7; font-size:13px;">Gameable test inputs are held in a versioned internal appendix shared only with accredited assessors; the criteria &mdash; what &ldquo;pass&rdquo; means &mdash; are public.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label">Scoring &amp; certification</div>
+      <div class="modal-text">Controls are weighted (most 1.0; a few addressing the most severe harms carry 1.5 or 2.0). Certification is granted by an accredited body against a scope tier:</div>
+      <div class="modal-controls">
+        <div><strong>Essential</strong> &mdash; the ~40 most critical controls; entry-level assurance for smaller services.</div>
+        <div><strong>Comprehensive</strong> &mdash; all 140 required controls plus at least 5 addressable; the expected level for mainstream services.</div>
+        <div><strong>Leadership</strong> &mdash; all 149 controls; full conformance.</div>
+      </div>
+      <div class="modal-text" style="margin-top:10px; opacity:.7; font-size:13px;">This is the scoring model; certified verdicts for named services are published only on the gated Watchtower registry, with a dated evidence snapshot and a right of reply.</div>
     </div>
   </div>
 </div>
