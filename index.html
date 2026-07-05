@@ -777,6 +777,17 @@
   <div class="pilot-note">50% founding-member discount &middot; greater discounts for non-profits &middot; Limited places</div>
 </section>
 
+<section class="pilot" id="get-involved">
+  <div class="pilot-kicker">Get Involved</div>
+  <h2>Help build the standard.</h2>
+  <p>Custorian is developed in the open. Lend your expertise to the Advisory Board, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:10px;">
+    <button class="pilot-cta" type="button" onclick="openModal('advisoryModal')">Express interest in the Advisory Board</button>
+    <button class="pilot-cta" type="button" onclick="openModal('membershipModal')">Become a member</button>
+  </div>
+  <div class="pilot-note">The Advisory Board advises; the elected Board governs. Membership is the route to standing for the Board.</div>
+</section>
+
 <section class="creed">
   <h2>For the children.</h2>
 </section>
@@ -790,9 +801,82 @@
   </div>
 </section>
 
+<div class="modal" id="advisoryModal" role="dialog" aria-labelledby="advisoryTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="advisoryFormWrap">
+      <h2 class="modal-title" id="advisoryTitle">Express interest in the Advisory Board.</h2>
+      <p class="form-intro">The Advisory Board is 7&ndash;9 experts across child rights, law &amp; regulation, technology &amp; security, academic research, and law enforcement, plus a youth representative (16&ndash;21). It advises on the standard and ethical oversight &mdash; it does not govern. Members are invited by the foreningen; tell us where you would contribute.</p>
+      <form id="advisoryForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Advisory Board — Expression of Interest">
+        <input type="hidden" name="from_name" value="Custorian Advisory EOI">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <div class="field"><label for="av-name">Your name <span class="req">*</span></label><input type="text" id="av-name" name="Name" required placeholder="Full name"></div>
+          <div class="field"><label for="av-email">Email <span class="req">*</span></label><input type="email" id="av-email" name="Email" required placeholder="you@example.org"></div>
+        </div>
+        <div class="field"><label for="av-org">Organisation / affiliation</label><input type="text" id="av-org" name="Organisation" placeholder="Where you work or what you represent"></div>
+        <div class="form-row">
+          <div class="field"><label for="av-exp">Area of expertise <span class="req">*</span></label>
+            <select id="av-exp" name="Expertise" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Child rights</option><option>Law &amp; regulation</option><option>Technology &amp; security</option><option>Academic research</option><option>Law enforcement</option><option>Youth representative (16&ndash;21)</option><option>Other</option>
+            </select></div>
+          <div class="field"><label for="av-url">LinkedIn / bio URL</label><input type="url" id="av-url" name="Profile" placeholder="https://"></div>
+        </div>
+        <div class="field"><label for="av-msg">Where would you contribute? <span class="req">*</span></label><textarea id="av-msg" name="Message" required placeholder="Your background and what you would bring to the standard."></textarea></div>
+        <button type="submit" class="form-submit">Express interest</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="advisoryFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>Your interest in the Advisory Board has been received. The foreningen reviews expressions of interest as it constitutes the board &mdash; we will be in touch if there is a fit.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="membershipModal" role="dialog" aria-labelledby="membershipTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="membershipFormWrap">
+      <h2 class="modal-title" id="membershipTitle">Become a member.</h2>
+      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). Members support an open, independent child-safety standard, may attend the general assembly, and can stand for election to the Board. Membership is admitted by the Board. Tell us a little about you and we will follow up with details, including membership terms.</p>
+      <form id="membershipForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Membership — Enquiry">
+        <input type="hidden" name="from_name" value="Custorian Membership">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <div class="field"><label for="mb-name">Your name <span class="req">*</span></label><input type="text" id="mb-name" name="Name" required placeholder="Full name"></div>
+          <div class="field"><label for="mb-email">Email <span class="req">*</span></label><input type="email" id="mb-email" name="Email" required placeholder="you@example.org"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="mb-type">Membership type <span class="req">*</span></label>
+            <select id="mb-type" name="Member type" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Individual</option><option>Organisation / civil society</option><option>Academic / researcher</option><option>Student / youth</option><option>Other</option>
+            </select></div>
+          <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
+        </div>
+        <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional — what draws you to Custorian, or how you would like to contribute."></textarea></div>
+        <button type="submit" class="form-submit">Apply for membership</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="membershipFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Welcome aboard &mdash; almost.</h3>
+      <p>Your membership enquiry has been received. We will follow up by email with membership terms and next steps, and formal admission is confirmed by the Board.</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="#" onclick="openModal('controlsModal', event)">Framework</a> &nbsp;&middot;&nbsp; <a href="standard.html">Draft Standard</a> &nbsp;&middot;&nbsp; <a href="whitepaper.html">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="Custorian_Statutes_Vedtaegter.pdf" target="_blank" rel="noopener">Statutes</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="#" onclick="openModal('controlsModal', event)">Framework</a> &nbsp;&middot;&nbsp; <a href="standard.html">Draft Standard</a> &nbsp;&middot;&nbsp; <a href="whitepaper.html">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#get-involved">Get Involved</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('governanceModal', event)">Governance</a> &nbsp;&middot;&nbsp; <a href="Custorian_Statutes_Vedtaegter.pdf" target="_blank" rel="noopener">Statutes</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
 
@@ -814,7 +898,7 @@
 
     <div class="modal-section">
       <div class="modal-label">Advised by</div>
-      <div class="modal-text">Advisory Board of 8&ndash;10 multidisciplinary experts &mdash; child rights, law, technology, academia, law enforcement, and a survivor &amp; lived-experience perspective &mdash; including one youth representative (16&ndash;21). Advises on standard content and ethical oversight. Does not govern.</div>
+      <div class="modal-text">Advisory Board of 7&ndash;9 experts across five domains &mdash; child rights, law &amp; regulation, technology &amp; security, academic research, and law enforcement &mdash; plus a youth representative (16&ndash;21) with lived digital experience. Advises on standard content and ethical oversight. Does not govern.</div>
     </div>
 
     <div class="modal-section">
@@ -1343,6 +1427,33 @@ function openFramework(key) {
         btn.disabled = false;
         btn.textContent = 'Submit application';
       });
+  });
+})();
+</script>
+
+<!-- Advisory EOI + Membership — AJAX submit to Web3Forms, inline success -->
+<script>
+(function () {
+  ['advisoryForm','membershipForm'].forEach(function (fid) {
+    var form = document.getElementById(fid);
+    if (!form) return;
+    var wrap = document.getElementById(fid + 'Wrap');
+    var success = document.getElementById(fid + 'Success');
+    var btn = form.querySelector('.form-submit');
+    var status = form.querySelector('.form-status');
+    var label = btn ? btn.textContent : 'Send';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'form-status'; status.textContent = '';
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.success) { wrap.style.display = 'none'; success.style.display = 'block'; }
+          else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
+        })
+        .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
+    });
   });
 })();
 </script>
