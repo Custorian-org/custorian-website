@@ -136,10 +136,10 @@
 
   <div class="cover">
     <div class="wordmark"><img src="custorian-logomark.svg" alt="Custorian" style="width:22px;height:22px;vertical-align:middle;"> Custorian</div>
-    <h1>A Compliance Standard for Child Digital Safety</h1>
+    <h1>White Paper — A Compliance Standard for Child Digital Safety</h1>
     <p class="lede">An open framework for platform certification, institutional intelligence, and regulatory conformity.</p>
     <div class="meta">
-      <span>Foreningen Custorian</span><span>CVR 46399455</span><span>Version 6.1 — Pre-Publication Draft, June 2026</span>
+      <span>Foreningen Custorian</span><span>CVR 46399455</span><span>Version 6.1 — Pre-Publication Draft, June 2026</span><span id="zenodo-views" style="display:none"></span>
     </div>
   </div>
 
@@ -148,7 +148,7 @@
     <br><br>
     <strong>Please note:</strong> we have already received a substantial volume of feedback, which is currently under review and being considered for the next revision. As a result, <strong>this version (Version 6.1 — Pre-Publication Draft, June 2026) may not reflect our most current thinking</strong>, and some sections may be revised or superseded in the forthcoming edition.
     <br><br>
-    <strong>Current version:</strong> the standard has since advanced to <strong>Draft EN v0.5 — 155 controls (147 required, 8 addressable)</strong>. This white paper (v6.1) describes the earlier CCF v0.2 (146 controls), so where control counts differ, the <a href="index.html">live framework</a> is current. The formal standard is published on Zenodo: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a>.
+    <strong>Current version:</strong> the standard has since advanced to <strong>Draft EN v0.5 — 155 controls (147 required, 8 addressable)</strong>. This white paper (v6.1) describes the earlier CCF v0.2 (146 controls), so where control counts differ, the <a href="index.html">live framework (draft)</a> is current. The formal European standard is in draft and open for comment: <a href="standard.html">read the draft standard</a>.
   </div>
 
   <nav class="toc" aria-label="Contents">
@@ -1374,7 +1374,7 @@
   <footer>
     Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>
     Version 6.1 — Pre-Publication Draft, June 2026. This white paper is open for review and comment; the Custorian Standard (Draft EN v0.2) is the authoritative source, and where the two differ, the standard governs.<br>
-    Read the standard: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a> &middot; <a href="https://custorian.org">custorian.org</a>
+    Read the draft standard: <a href="standard.html">custorian.org/standard</a> &middot; archived on <a href="https://zenodo.org/records/19675375">Zenodo</a> &middot; <a href="https://custorian.org">custorian.org</a>
   </footer>
 
 </div>
@@ -1437,6 +1437,24 @@
     .catch(function(){ status.textContent = 'Network error. Please email info@custorian.org.'; });
     return false;
   }
+</script>
+
+<!-- Live view count from Zenodo (record 19675375) -->
+<script>
+(function () {
+  var el = document.getElementById('zenodo-views');
+  if (!el) return;
+  fetch('https://zenodo.org/api/records/19675375')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var v = d && d.stats && d.stats.views;
+      if (typeof v === 'number' && v > 0) {
+        el.textContent = v.toLocaleString('en') + ' views on Zenodo';
+        el.style.display = '';
+      }
+    })
+    .catch(function () {});
+})();
 </script>
 
 <!-- Cookieless page-view analytics -->
