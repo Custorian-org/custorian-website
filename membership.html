@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian White Paper — read &amp; comment</title>
+<meta name="description" content="The Custorian White Paper, open for review. Read it section by section and comment on any part — a public consultation on an open child digital-safety standard.">
+<meta property="og:title" content="Custorian White Paper — read &amp; comment">
+<meta property="og:description" content="Read the Custorian standard's white paper and comment on any section. A public consultation, in the open.">
+<style>
+  :root{
+    --purple:#8B5CF6; --ink:#1a1a1a; --muted:#6b6b6b;
+    --line:#e4e0da; --paper:#ffffff; --wash:#faf8f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6; font-size:16px;
+  }
+  a{color:var(--purple);}
+  .doc{max-width:820px; margin:0 auto; padding:56px 48px 96px;}
+
+  .actionbar{
+    position:sticky; top:0; z-index:50; background:var(--ink); color:#fff;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 24px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+  }
+  .actionbar a.home{color:#fff; text-decoration:none;}
+  .actionbar button{
+    font-family:inherit; font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    background:var(--purple); color:#fff; border:none; padding:10px 22px; cursor:pointer; font-weight:700;
+  }
+  .actionbar button:hover{opacity:.9;}
+
+  .cover{border-bottom:2px solid var(--ink); padding-bottom:40px; margin-bottom:8px;}
+  .wordmark{
+    font-size:13px; letter-spacing:0.5em; text-transform:uppercase; font-weight:800;
+    display:flex; align-items:center; gap:12px; margin-bottom:44px;
+  }
+  .wordmark .glyph{display:inline-grid; grid-template-columns:repeat(2,7px); grid-gap:2px;}
+  .wordmark .glyph i{width:7px; height:7px; background:var(--purple); display:block;}
+  .cover h1{
+    font-size:clamp(32px,5.5vw,54px); font-weight:900; letter-spacing:-0.03em;
+    line-height:1.0; text-transform:uppercase; margin-bottom:20px;
+  }
+  .cover .lede{font-size:18px; line-height:1.5; max-width:60ch; color:var(--ink);}
+  .cover .meta{margin-top:26px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);}
+  .cover .meta span{margin-right:16px;}
+
+  .consult{
+    background:var(--wash); border-left:3px solid var(--purple);
+    padding:18px 22px; margin:28px 0 8px; font-size:15px;
+  }
+  .consult strong{font-weight:800;}
+
+  .toc{margin:36px 0 8px; padding:24px 26px; border:1px solid var(--line); background:#fff;}
+  .toc h2{font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); font-weight:800; margin-bottom:14px; border:0;}
+  .toc ol{list-style:none; counter-reset:toc; columns:2; column-gap:36px;}
+  .toc li{margin-bottom:7px; break-inside:avoid; font-size:14px;}
+  .toc a{text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+
+  h2{
+    font-size:27px; font-weight:900; letter-spacing:-0.02em; line-height:1.15;
+    margin:52px 0 4px; padding-top:22px; border-top:2px solid var(--ink); scroll-margin-top:64px;
+  }
+  h3{font-size:19px; font-weight:800; letter-spacing:-0.01em; margin:30px 0 6px; scroll-margin-top:64px;}
+  h4{font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin:22px 0 4px;}
+  p{margin-bottom:14px; max-width:72ch;}
+  ul,ol{margin:12px 0 16px 22px;}
+  li{margin-bottom:6px; max-width:70ch;}
+  blockquote{background:var(--wash); border-left:3px solid var(--purple); padding:14px 20px; margin:16px 0; font-size:15px;}
+  code{background:var(--wash); padding:1px 5px; border-radius:3px; font-size:13.5px;}
+  pre{background:var(--wash); padding:16px 18px; overflow-x:auto; margin:16px 0; font-size:13px; border:1px solid var(--line);}
+  pre code{background:none; padding:0;}
+  hr{border:0; border-top:1px solid var(--line); margin:28px 0;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+  thead th{text-align:left; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); border-bottom:1.5px solid var(--ink); padding:8px 10px 8px 0; font-weight:700;}
+  tbody td{border-bottom:1px solid var(--line); padding:9px 10px 9px 0; vertical-align:top;}
+
+  /* SECTION COMMENT TOOLS */
+  .section-tools{margin:14px 0 6px;}
+  .cmt-toggle{
+    font-family:inherit; font-size:12px; letter-spacing:0.04em; font-weight:700;
+    background:none; color:var(--purple); border:1px solid var(--line);
+    padding:7px 14px; border-radius:20px; cursor:pointer;
+  }
+  .cmt-toggle:hover{border-color:var(--purple); background:var(--wash);}
+  .cmt-form{border:1px solid var(--line); border-left:3px solid var(--purple); background:#fff; padding:18px 20px; margin-top:10px; max-width:60ch;}
+  .cmt-label{font-size:13px; color:var(--muted); margin-bottom:10px;}
+  .cmt-form textarea, .cmt-form input[type=email]{
+    width:100%; font-family:inherit; font-size:14px; padding:10px 12px;
+    border:1px solid var(--line); border-radius:4px; margin-bottom:10px; resize:vertical;
+  }
+  .cmt-form textarea:focus, .cmt-form input:focus{outline:none; border-color:var(--purple);}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0;}
+  .cmt-actions{display:flex; gap:10px; align-items:center;}
+  .cmt-form button[type=submit]{
+    font-family:inherit; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    background:var(--purple); color:#fff; border:none; padding:9px 18px; border-radius:4px; cursor:pointer;
+  }
+  .cmt-cancel{font-family:inherit; font-size:13px; background:none; border:none; color:var(--muted); cursor:pointer;}
+  .cmt-status{font-size:13px; color:var(--muted); margin:8px 0 0;}
+  .cmt-thanks{font-size:14px; color:var(--ink);}
+
+  footer{margin-top:64px; padding-top:22px; border-top:2px solid var(--ink); font-size:11px; letter-spacing:0.06em; color:var(--muted);}
+  footer a{color:var(--purple); text-decoration:none;}
+
+  @media print{
+    .actionbar, .section-tools, .toc{display:none;}
+    .doc{max-width:none; padding:0 8mm;}
+    body{font-size:10.5pt;}
+    h2{page-break-after:avoid;}
+  }
+  @media (max-width:640px){
+    .doc{padding:32px 20px;}
+    .toc ol{columns:1;}
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    tbody td{border:none; padding:2px 0;}
+    tbody tr{border-bottom:1px solid var(--line); padding:12px 0;}
+  }
+</style>
+</head>
+<body>
+<div class="actionbar">
+  <a class="home" href="https://custorian.org">‹ Back to custorian.org</a>
+  <span>Membership</span>
+  <a href="CustorianMembershipHandbook.pdf" style="color:#fff;text-decoration:none;font-weight:700;">Download handbook (PDF)</a>
+</div>
+<div class="doc">
+  <div class="cover">
+    <div class="wordmark"><span class="glyph"><i></i><i></i><i></i><i></i></span> Custorian</div>
+    <h1>Membership Handbook</h1>
+    <p class="lede">Foreningen Custorian is a Danish non-profit association. Members are its foundation — the general assembly is the association's highest authority. Membership is for individuals and civil-society organisations; it cannot be bought.</p>
+    <div class="meta"><span>Foreningen Custorian</span><span>CVR 46399455</span><span>Handbook v0.1 — fees pending ratification</span></div>
+  </div>
+  <div class="consult">
+    <strong>Want to join?</strong> Membership is open to individuals and non-profit / civil-society organisations who support an open, independent child-safety standard. Fees are nominal; every member has one vote. <a href="index.html#get-involved">Become a member →</a>
+  </div>
+  
+<p><strong>Foreningen Custorian</strong> · Danish non-profit association
+· CVR 46399455 · Odense <em>Draft v0.1 — 2026-07-05. Fees and categories
+to be ratified by the general assembly. Reflects statutes (vedtægter)
+§§3–5.</em></p>
+<hr />
+<h2 id="welcome">1. Welcome</h2>
+<p>Foreningen Custorian is a Danish non-profit association that owns and
+stewards an open standard for children’s digital safety — the Custorian
+Controls Framework (155 controls across six domains). The standard is
+free for anyone to implement, published under CC BY-SA 4.0, and
+structurally protected against capture by any commercial interest.</p>
+<p>Members are the association’s foundation. Under Danish foreningsret,
+members — not funders, not companies, not the board alone — are the
+ultimate authority: the general assembly (generalforsamling) is the
+association’s highest body (§4.1).</p>
+<h2 id="what-membership-is-and-what-it-is-not">2. What membership is —
+and what it is not</h2>
+<p><strong>Membership means</strong> you support an open, independent
+child-safety standard, you may attend and vote at the general assembly,
+and you may stand for election to the Board.</p>
+<p><strong>Membership does not mean — and can never be — any of the
+following:</strong> - It does <strong>not</strong> confer the “Custorian
+Certified” mark, endorsement, or any indication that a member’s product
+is safe for children. Certification is earned only through independent,
+accredited certification bodies — never through membership. - It does
+<strong>not</strong> give any influence over certification decisions,
+platform grades, or the technical content of the standard beyond the
+equal, democratic vote every member holds. - It <strong>cannot be
+bought.</strong> Every member has exactly <strong>one vote</strong>
+(§4.5), regardless of fee paid or size. Fees are nominal and exist to
+support the mission, not to purchase standing.</p>
+<p><strong>This standard cannot be bought — and neither can a seat at
+its table.</strong></p>
+<h2 id="who-can-be-a-member">3. Who can be a member</h2>
+<p>Membership is open to <strong>individuals and civil-society /
+non-profit organisations</strong> who support the association’s purpose.
+Specifically:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Category</th>
+<th>Who</th>
+<th>Annual fee (proposed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Individual</strong></td>
+<td>Any person supporting the mission</td>
+<td><strong>200 DKK</strong></td>
+</tr>
+<tr>
+<td><strong>Student / youth</strong></td>
+<td>Enrolled students; people under 26</td>
+<td><strong>50 DKK</strong> (GA may set to 0)</td>
+</tr>
+<tr>
+<td><strong>Civil society / NGO</strong></td>
+<td>Non-profit organisations in child rights, safety, digital
+wellbeing</td>
+<td><strong>500 DKK</strong></td>
+</tr>
+<tr>
+<td><strong>Honorary</strong></td>
+<td>Conferred by the Board (e.g. advisory board members, notable
+contributors)</td>
+<td><strong>Free</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commercial platforms and companies are not eligible for
+membership.</strong> This is deliberate: a platform that could be
+assessed against the standard must not also sit inside the body that
+owns it. Companies engage with Custorian <strong>only</strong> through
+the pilot and certification (assessed by independent accredited bodies),
+or as <strong>donors</strong> — and a donation is not membership and
+confers no rights or influence.</p>
+<p><em>Fees are set by the general assembly (Danish norm). The figures
+above are the Board’s proposal pending ratification. Fees are annual
+(calendar year).</em></p>
+<h2 id="member-rights-and-responsibilities">4. Member rights and
+responsibilities</h2>
+<p><strong>Rights (statutes §§3–5):</strong> - Attend the annual general
+assembly, held once per year by 30 June (§4.2) - <strong>One
+vote</strong> on all decisions, taken by simple majority (§4.5) -
+Propose items for the general assembly agenda (§4.4) - Stand for
+election to the Board of Directors (bestyrelse), 1–5 members, two-year
+terms (§5.1) - Request an extraordinary general assembly (with at least
+one-third of members) (§4.7) - Receive member updates and take part in
+public consultations on the standard</p>
+<p><strong>Responsibilities:</strong> - Act in accordance with the
+association’s purpose and interests (a member acting against them may be
+excluded — §3.3) - Pay the annual fee (kontingent) where applicable -
+Disclose any conflict of interest — in particular, any employment by or
+representation of a platform that is, or may become, subject to
+assessment. Such a disclosure does not affect any assessment;
+non-disclosure is a breach of good standing.</p>
+<h2 id="how-to-join">5. How to join</h2>
+<ol type="1">
+<li>Submit a membership enquiry (custorian.org → <strong>Become a
+member</strong>, or email info@custorian.org).</li>
+<li>The <strong>Board admits members by decision</strong> (§3.1) — a
+light check that the applicant supports the purpose and is eligible
+(individual or civil-society, not a commercial platform).</li>
+<li>On admission, pay the annual fee. Membership runs for the calendar
+year.</li>
+</ol>
+<h2 id="resignation-and-exclusion">6. Resignation and exclusion</h2>
+<ul>
+<li><strong>Resignation:</strong> membership is voluntary; a member may
+resign at any time by written notice to the Board (§3.2). Fees already
+paid are not refunded.</li>
+<li><strong>Exclusion:</strong> the Board may exclude a member who acts
+against the association’s purpose or interests; the excluded member may
+appeal to the general assembly (§3.3).</li>
+</ul>
+<h2 id="governance-in-brief">7. Governance in brief</h2>
+<ul>
+<li><strong>General assembly</strong> — highest authority; elects the
+Board; approves accounts and fees (§4).</li>
+<li><strong>Board of Directors</strong> — 1–5 members, elected for
+two-year terms; elects a chair (who also serves as treasurer unless
+decided otherwise) (§5). Board service is voluntary (unpaid or token
+honoraria only).</li>
+<li><strong>Advisory Board</strong> — 7–9 experts across child rights,
+law &amp; regulation, technology &amp; security, academic research, and
+law enforcement, plus a youth representative (16–21). It
+<strong>advises</strong>; it does not govern.</li>
+<li><strong>Certification</strong> — issued by independent accredited
+certification bodies, never by the association.</li>
+</ul>
+<h2 id="fees-and-payment">8. Fees and payment</h2>
+<ul>
+<li>Fees are annual and set by the general assembly.</li>
+<li>Payment by bank transfer or MobilePay (details on invoice / on the
+account once opened).</li>
+<li><strong>Note on donations and tax:</strong> membership fees fund the
+association’s operations. Voluntary <strong>donations</strong> are
+separate and warmly welcomed; only donations (not membership fees) may
+in future count toward a §8A tax-deduction scheme, should the
+association pursue one. See the fundraising brief.</li>
+</ul>
+<h2 id="member-data-and-privacy">9. Member data and privacy</h2>
+<p>The association holds only the member data necessary to administer
+membership (name, contact, category, fee status), processed under GDPR,
+never sold or shared, and deleted on resignation subject to
+bookkeeping-law retention. Conflict-of-interest disclosures relating to
+Board/Advisory roles may be published per the governance firewalls.</p>
+<h2 id="contact">10. Contact</h2>
+<p>Foreningen Custorian · info@custorian.org · custorian.org · CVR
+46399455</p>
+<hr />
+<p><em>This handbook is informative and summarises the statutes
+(vedtægter), which prevail in case of any conflict. Fees and categories
+take effect on ratification by the general assembly.</em></p>
+
+</div>
+<footer>
+  Foreningen Custorian · CVR 46399455 · The standard is open (CC BY-SA 4.0). Certification is issued by independent accredited bodies, never by Custorian. · <a href="https://custorian.org">custorian.org</a>
+</footer>
+<script src="track.js"></script>
+</body>
+</html>
