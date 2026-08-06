@@ -149,6 +149,18 @@
     text-transform: uppercase;
     opacity: 0.55;
   }
+  .figures-note {
+    width: 100%;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    max-width: 60ch;
+    margin: 32px auto 0;
+    padding: 0 24px;
+    opacity: 0.42;
+  }
 
   /* FRAMEWORKS */
   .frameworks { text-align: center; }
@@ -636,6 +648,14 @@
     font-weight: 700;
     letter-spacing: 0.01em;
   }
+  .modal-disclaimer {
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    opacity: 0.5;
+    border-left: 2px solid #8B5CF6;
+    padding-left: 12px;
+  }
 
   /* CLICKABLE STAT TRIGGERS */
   .stat-trigger {
@@ -670,6 +690,102 @@
     .modal-card { padding: 48px 28px; }
     .modal-title { margin-bottom: 32px; }
   }
+
+  /* ================= CLOSING CTA BAND =================
+     Self-contained card added to #pilot only — a violet card with an
+     ambient animated canvas (extends the nav logo's pulse-sweep into a
+     full pixel field). Typography here is intentionally its own moment,
+     scoped to .cta-band so the rest of the site's type is untouched. */
+  .cta-band {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(56px, 9vw, 108px) 6vw;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 22px;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    background: linear-gradient(135deg, #211840 0%, #150f28 55%, #0b0716 100%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 50px 120px -40px rgba(139,92,246,0.28);
+  }
+  .cta-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  .cta-band > *:not(.cta-canvas) { position: relative; z-index: 2; }
+  .cta-band .cta-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 28px;
+    color: #fff;
+  }
+  .cta-band h2 {
+    font-size: clamp(30px, 4.6vw, 54px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 15ch;
+    margin: 0 auto 20px;
+    color: #fff;
+    text-transform: none;
+  }
+  .cta-band p {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 500;
+    line-height: 1.6;
+    max-width: 54ch;
+    margin: 0 auto 40px;
+    opacity: 0.78;
+    color: #fff;
+  }
+  .cta-band .cta-note {
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    color: #fff;
+  }
+  .cta-band .pilot-cta.two-part {
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    background: #fff;
+    color: #150f28;
+    padding: 8px 8px 8px 28px;
+  }
+  .cta-band .pilot-cta.two-part .chip {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #150f28;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    margin-left: 16px;
+    transition: transform 0.2s ease;
+  }
+  .cta-band .pilot-cta.two-part:hover { transform: translateY(-2px); }
+  .cta-band .pilot-cta.two-part:hover .chip { transform: translateX(3px); }
+  .cta-band .pilot-cta.two-part:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
 </style>
 </head>
 <body>
@@ -740,6 +856,7 @@
       <div class="lbl">Frameworks Mapped</div>
     </a>
   </div>
+  <div class="figures-note">Control counts, domain groupings, and framework mappings are a working draft &mdash; expect them to evolve quickly as peer and expert review comes in.</div>
 </section>
 
 <section class="frameworks" id="frameworks">
@@ -770,11 +887,17 @@
 </section>
 
 <section class="pilot" id="pilot">
-  <div class="pilot-kicker">The Pilot &middot; Founding Cohort</div>
-  <h2>Be certified first.</h2>
-  <p>We are selecting a small founding cohort of platforms to be assessed against the Custorian standard before anyone else. First movers shape the certification scheme, gain a head start on the DSA, the EU AI Act and the bloc's incoming child-safety rules &mdash; and earn the right to say they were verified safe for children before it was required.</p>
-  <button class="pilot-cta" type="button" onclick="openModal('pilotModal')">Apply to the pilot</button>
-  <div class="pilot-note">50% founding-member discount &middot; greater discounts for non-profits &middot; Limited places</div>
+  <div class="cta-band">
+    <canvas class="cta-canvas" aria-hidden="true"></canvas>
+    <div class="cta-kicker">The Pilot &middot; Founding Cohort</div>
+    <h2>Be certified first.</h2>
+    <p>We are selecting a small founding cohort of platforms to be assessed against the Custorian standard before anyone else. First movers shape the certification scheme, gain a head start on the DSA, the EU AI Act and the bloc's incoming child-safety rules &mdash; and earn the right to say they were verified safe for children before it was required.</p>
+    <button class="pilot-cta two-part" type="button" onclick="openModal('pilotModal')">
+      <span>Apply to the pilot</span>
+      <span class="chip" aria-hidden="true">→</span>
+    </button>
+    <div class="cta-note">50% founding-member discount &middot; greater discounts for non-profits &middot; Limited places</div>
+  </div>
 </section>
 
 <section class="pilot" id="get-involved">
@@ -786,19 +909,6 @@
     <button class="pilot-cta" type="button" onclick="openModal('membershipModal')">Become a member</button>
   </div>
   <div class="pilot-note">The Advisory Board advises; the elected Board governs. Membership is the route to standing for the Board.</div>
-</section>
-
-<section class="creed">
-  <h2>For the children.</h2>
-</section>
-
-<section class="founder">
-  <div class="portrait"><img src="tanya-founder.jpg" alt="Tanya Becheva"></div>
-  <div class="founder-content">
-    <div class="founder-eyebrow">Founder</div>
-    <div class="founder-name">Tanya Becheva</div>
-    <div class="founder-credential">Mother of two. Over a decade in tech.</div>
-  </div>
 </section>
 
 <div class="modal" id="advisoryModal" role="dialog" aria-labelledby="advisoryTitle" aria-modal="true">
@@ -938,6 +1048,7 @@
       <div style="margin-top:14px;">
         <a href="mailto:info@custorian.org?subject=Comment%20on%20a%20control" style="color:#8B5CF6; text-decoration:none; font-size:14px;">Comment on a control →</a>
       </div>
+      <div class="modal-disclaimer" style="margin-top:18px;">This is a working draft. Individual controls, their counts, and the tier breakdown below are evolving quickly as peer and expert review comes in.</div>
     </div>
 
     <div class="modal-section">
@@ -1164,6 +1275,7 @@
 
     <div class="modal-section">
       <div class="modal-text">The standard organises 155 controls into six functional domains. Each domain addresses a distinct dimension of child digital safety.</div>
+      <div class="modal-disclaimer" style="margin-top:14px;">This is a working draft. Domain groupings and the control counts below are evolving quickly as peer and expert review comes in.</div>
     </div>
 
     <div class="modal-section">
@@ -1508,6 +1620,60 @@ function openFramework(key) {
 </script>
 
 <!-- Cookieless page-view analytics -->
+<!-- Ambient pixel-grid animation for the closing CTA band — extends the
+     nav logo's pulse-sweep motif into a full field, a violet wave that
+     drifts across a grid of squares. Pauses on prefers-reduced-motion. -->
+<script>
+(function () {
+  var canvases = document.querySelectorAll('.cta-canvas');
+  if (!canvases.length || !window.requestAnimationFrame) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  canvases.forEach(function (canvas) {
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var cell = 28;
+    var cols = 0, rows = 0, t0 = null;
+
+    function size() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = Math.max(1, rect.width * dpr);
+      canvas.height = Math.max(1, rect.height * dpr);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(rect.width / cell) + 1;
+      rows = Math.ceil(rect.height / cell) + 1;
+    }
+    size();
+    window.addEventListener('resize', size);
+
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var t = (ts - t0) / 1000;
+      var w = canvas.width / dpr, h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+      var waveX = (Math.sin(t * 0.22) * 0.5 + 0.5) * w;
+      for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+          var x = c * cell, y = r * cell;
+          var dist = Math.abs(x - waveX);
+          var pulse = Math.max(0, 1 - dist / 300);
+          var flicker = (Math.sin(t * 1.1 + r * 0.6 + c * 0.35) * 0.5 + 0.5) * 0.10;
+          var alpha = Math.min(0.5, pulse * 0.45 + flicker);
+          if (alpha < 0.02) continue;
+          ctx.fillStyle = pulse > 0.45 ? 'rgba(139,92,246,' + alpha + ')' : 'rgba(255,255,255,' + (alpha * 0.5) + ')';
+          ctx.fillRect(x, y, cell - 7, cell - 7);
+        }
+      }
+      if (!reduceMotion) requestAnimationFrame(frame);
+    }
+
+    if (reduceMotion) { frame(0); } else { requestAnimationFrame(frame); }
+  });
+})();
+</script>
 <script src="track.js"></script>
 </body>
 </html>
