@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custorian Watchtower Registry — Platform Safety Grades</title>
-<meta name="description" content="Independent child safety grades for digital platforms serving children in the EU. Assessed by Custorian Watchtower.">
+<meta name="robots" content="noindex, nofollow">
+<title>Custorian Registry</title>
+<meta name="description" content="Custorian Registry — currently being rebuilt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -25,50 +26,14 @@ header{position:sticky;top:0;z-index:100;padding:16px 48px;background:rgba(250,2
 .logo span{color:var(--accent)}
 .nav-r{display:flex;gap:28px;align-items:center}
 .nav-r a{font-size:.78rem;font-weight:500;color:var(--dim);transition:color .3s}
-.nav-r a:hover,.nav-r a.active{color:var(--text)}
+.nav-r a:hover{color:var(--text)}
 @media(max-width:768px){header{padding:16px 24px}.nav-r{gap:16px}.nav-r a{font-size:.72rem}}
 
-.main{max-width:1100px;margin:0 auto;padding:80px 24px 60px}
+.main{max-width:700px;margin:0 auto;padding:120px 24px 100px;text-align:center}
 .label{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--accent2);margin-bottom:16px}
-.hero-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px}
-.hero-sub{font-size:.92rem;color:var(--dim);max-width:600px;line-height:1.8;margin-bottom:40px}
-
-.search-box{position:relative;max-width:600px;margin-bottom:16px}
-.search-box input{width:100%;padding:14px 20px 14px 44px;border:1px solid var(--border);background:var(--bg2);font-size:.88rem;font-family:'Inter',sans-serif;color:var(--mute);outline:none;cursor:not-allowed;opacity:.6}
-.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mute)}
-
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-.filter-btn{padding:6px 16px;border:1px solid var(--border);background:var(--bg2);font-size:.72rem;font-weight:600;color:var(--dim);cursor:not-allowed;font-family:'Inter',sans-serif;opacity:.5}
-.filter-btn.active{border-color:var(--accent2);color:var(--accent2);background:rgba(124,58,237,.04);opacity:.6}
-
-.coming-soon{border:1px solid var(--border);background:var(--bg2);padding:60px 40px;text-align:center;margin-bottom:40px}
-.coming-soon .stat{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:2.4rem;color:var(--accent2);margin-bottom:8px}
-.coming-soon h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:12px;letter-spacing:-.3px}
-.coming-soon p{font-size:.88rem;color:var(--dim);line-height:1.8;max-width:560px;margin:0 auto}
-
-.grade-bar{display:flex;gap:2px;margin:32px auto;max-width:400px}
-.grade-bar div{flex:1;padding:12px;text-align:center;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
-
-.notify-form{margin-top:32px;display:flex;gap:8px;justify-content:center;max-width:440px;margin-left:auto;margin-right:auto}
-.notify-form input[type="email"]{flex:1;padding:12px 16px;border:1px solid var(--border);font-size:.82rem;font-family:'Inter',sans-serif;outline:none}
-.notify-form input[type="email"]:focus{border-color:var(--accent2)}
-.notify-form button{padding:12px 24px;background:var(--accent2);color:#fff;border:none;font-size:.78rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:background .2s}
-.notify-form button:hover{background:#6d28d9}
-
-.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px}
-.cta-box{border:1px solid var(--border);padding:32px;background:var(--bg2)}
-.cta-box h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px}
-.cta-box p{font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:16px}
-.cta-box a{display:inline-block;padding:10px 24px;font-size:.78rem;font-weight:700;font-family:'Inter',sans-serif;transition:all .2s}
-.cta-primary{background:var(--accent2);color:#fff}
-.cta-primary:hover{background:#6d28d9}
-.cta-ghost{color:var(--accent2);border:1px solid var(--accent2)}
-.cta-ghost:hover{background:rgba(124,58,237,.04)}
-@media(max-width:768px){.cta-grid{grid-template-columns:1fr}}
-
-.disclosure{border:1px solid var(--border);background:#fafaff;padding:24px;margin-top:40px}
-.disclosure h4{font-size:.82rem;font-weight:700;margin-bottom:8px}
-.disclosure p{font-size:.78rem;color:var(--dim);line-height:1.7}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-1px;line-height:1.2;margin-bottom:16px}
+.hero-sub{font-size:.92rem;color:var(--dim);line-height:1.8;margin-bottom:32px}
+.cta{display:inline-block;padding:12px 28px;background:var(--accent2);color:#fff;font-size:.82rem;font-weight:700}
 
 footer{border-top:1px solid var(--border);margin-top:80px;padding:32px 48px}
 .foot-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
@@ -86,81 +51,15 @@ footer{border-top:1px solid var(--border);margin-top:80px;padding:32px 48px}
     <a href="/#standard">Standard</a>
     <a href="/#testing">Watchtower</a>
     <a href="/#methodology">Methodology</a>
-    <a href="/registry.html" class="active">Registry</a>
     <a href="/#contact">Contact</a>
-    <a href="https://zenodo.org/records/19675375" target="_blank" style="background:var(--accent2);color:#fff;padding:6px 16px;font-weight:700">White Paper</a>
   </div>
 </header>
 
 <div class="main">
-
-  <div class="label">Custorian Watchtower Registry</div>
-  <h1 class="hero-title">How safe is the platform<br>your child uses?</h1>
-  <p class="hero-sub">Independent safety grades for digital platforms serving children in the EU. Assessed by Custorian Watchtower using adversarial testing. No platform consent required.</p>
-
-  <div class="search-box">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="text" placeholder="Search platforms..." disabled>
-  </div>
-
-  <div class="filters">
-    <button class="filter-btn active">All</button>
-    <button class="filter-btn">Grade A</button>
-    <button class="filter-btn">Grade B</button>
-    <button class="filter-btn">Grade C</button>
-    <button class="filter-btn">Grade D</button>
-    <button class="filter-btn">Grade F</button>
-    <span style="width:1px;height:24px;background:var(--border);margin:0 4px"></span>
-    <button class="filter-btn">Social</button>
-    <button class="filter-btn">Gaming</button>
-    <button class="filter-btn">EdTech</button>
-    <button class="filter-btn">Streaming</button>
-    <button class="filter-btn">Messaging</button>
-  </div>
-
-  <div class="coming-soon">
-    <div class="stat">272+</div>
-    <h3>Platforms discovered. Assessments in progress.</h3>
-    <p>Watchtower has completed its first discovery cycle. Platforms identified as high-risk are being assessed. Each will be notified and given 30 days to review findings before grades are published.</p>
-    <p style="margin-top:12px;font-weight:600;color:var(--text)">The first public grades will appear here in Q3 2026.</p>
-
-    <div class="grade-bar">
-      <div style="background:#22c55e">A</div>
-      <div style="background:#84cc16">B</div>
-      <div style="background:#eab308">C</div>
-      <div style="background:#f97316">D</div>
-      <div style="background:#ef4444">F</div>
-    </div>
-
-    <form class="notify-form" id="notify-form">
-      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-      <input type="hidden" name="subject" value="Custorian Registry — Notify Me">
-      <input type="email" name="email" placeholder="Enter your email to be notified" required>
-      <button type="submit">Notify me</button>
-    </form>
-    <div id="notify-success" style="display:none;margin-top:24px">
-      <p style="color:var(--accent2);font-weight:600;font-size:.88rem">We'll notify you when the first grades are published.</p>
-    </div>
-  </div>
-
-  <div class="cta-grid">
-    <div class="cta-box">
-      <h4>Are you a platform?</h4>
-      <p>Request your platform's full assessment report before grades go public. Includes detailed findings, evidence, and regulatory gap analysis mapped to DSA, AADC, GDPR, AI Act, and more.</p>
-      <a href="mailto:reports@custorian.org?subject=Full%20Report%20Request&body=I%20would%20like%20to%20request%20my%20platform%27s%20full%20Watchtower%20assessment%20report." class="cta-primary">Request Your Report</a>
-    </div>
-    <div class="cta-box">
-      <h4>Want to improve your grade?</h4>
-      <p>Our commercial partner provides detailed compliance audits with your cooperation, remediation roadmaps, ongoing monitoring, and referrals to implementation partners who can help you build better safety controls.</p>
-      <a href="https://custorian.io/verify/request" target="_blank" class="cta-ghost">Request Audit &amp; Remediation</a>
-    </div>
-  </div>
-
-  <div class="disclosure">
-    <h4>Responsible Disclosure</h4>
-    <p>Every platform on this registry will have been notified at least 30 days before their grade is published. Platforms may submit corrections to factual errors during the disclosure period. Grades are never permanent &mdash; platforms that improve can request re-assessment at any time. The same process, same timeline, same methodology applies to every platform without exception.</p>
-  </div>
-
+  <div class="label">Registry</div>
+  <h1 class="hero-title">This page is being rebuilt</h1>
+  <p class="hero-sub">The public registry will list platforms that have completed independent third-party certification against the Custorian Standard. It's not live yet. For questions about Watchtower, certification, or a specific platform, get in touch.</p>
+  <a href="mailto:hello@custorian.org" class="cta">Contact us</a>
 </div>
 
 <footer>
@@ -169,17 +68,6 @@ footer{border-top:1px solid var(--border);margin-top:80px;padding:32px 48px}
     <div class="foot-links">&copy; 2026 Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark &middot; custorian.org</div>
   </div>
 </footer>
-
-<script>
-document.getElementById('notify-form')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) })
-    .then(() => {
-      this.style.display = 'none';
-      document.getElementById('notify-success').style.display = 'block';
-    });
-});
-</script>
 
 <!-- Cookieless page-view analytics -->
 <script src="track.js"></script>
