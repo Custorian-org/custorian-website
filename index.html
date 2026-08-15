@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — A standard for children's digital safety. Owned by no one.</title>
-<meta name="description" content="Custorian is the European standard for child digital safety. 155 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
+<meta name="description" content="Custorian is the European standard for child digital safety. 157 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
 <meta property="og:title" content="Custorian — A standard for children's digital safety.">
-<meta property="og:description" content="155 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
+<meta property="og:description" content="157 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
 <meta property="og:image" content="https://custorian.org/og-image.png">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
@@ -839,18 +839,18 @@
 
 <section class="scoreboard">
   <div class="scoreboard-kicker">
-    Custorian is to children's digital safety what <strong>TÜV</strong> is to industrial safety.
+    Custorian is to child safety what <strong>PCI DSS</strong> is to payment security.
   </div>
-  <button class="big stat-trigger" type="button" onclick="openModal('controlsModal')" aria-label="155 auditable controls, click for details">155</button>
+  <div class="big" aria-label="157 auditable controls">157</div>
   <div class="label">Auditable Controls</div>
 </section>
 
 <section class="split-section">
   <div class="split">
-    <button class="stat-trigger" type="button" onclick="openModal('domainsModal')" aria-label="6 domains, click for details">
-      <div class="num">6</div>
+    <div aria-label="10 domains">
+      <div class="num">10</div>
       <div class="lbl">Domains</div>
-    </button>
+    </div>
     <a class="stat-trigger" href="#frameworks" aria-label="7 frameworks, click to view the list">
       <div class="num">7</div>
       <div class="lbl">Frameworks Mapped</div>
@@ -1034,278 +1034,6 @@
     <div class="modal-section">
       <div class="modal-label">Reach by</div>
       <div class="modal-text"><a href="mailto:info@custorian.org">info@custorian.org</a></div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="controlsModal" role="dialog" aria-labelledby="controlsTitle" aria-modal="true">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
-    <h2 class="modal-title" id="controlsTitle">155 controls.</h2>
-
-    <div class="modal-section">
-      <div class="modal-text">Each control is an auditable, measurable requirement that a digital service must implement to protect children. 147 are required for conformity. 8 are addressable. Read the white paper <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">on Zenodo</a>.</div>
-      <div style="margin-top:14px;">
-        <a href="mailto:info@custorian.org?subject=Comment%20on%20a%20control" style="color:#8B5CF6; text-decoration:none; font-size:14px;">Comment on a control →</a>
-      </div>
-      <div class="modal-disclaimer" style="margin-top:18px;">This is a working draft. Individual controls, their counts, and the tier breakdown below are evolving quickly as peer and expert review comes in.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-AC &middot; Age Controls (31)</div>
-      <div class="modal-controls">
-        <div><strong>CS-AC.1.1</strong> &mdash; Platform SHALL implement age assurance proportionate to the risks the service presents to children</div>
-        <div><strong>CS-AC.1.2</strong> &mdash; Age verification SHALL use at least two independent signals</div>
-        <div><strong>CS-AC.1.3</strong> &mdash; Self-declared age SHALL NOT be sole verification method</div>
-        <div><strong>CS-AC.1.4</strong> &mdash; Platform SHOULD support eIDAS digital age credentials when available</div>
-        <div><strong>CS-AC.1.5</strong> &mdash; Age verification SHALL NOT collect more data than necessary</div>
-        <div><strong>CS-AC.1.6</strong> &mdash; Age assurance methods SHALL meet minimum accuracy thresholds (eIDAS FAR &le; 0.1%; facial age estimation MAE &le; 2.0 yrs; 13/18 boundary error &le; 5%)</div>
-        <div><strong>CS-AC.2.1</strong> &mdash; When age cannot be verified, system SHALL default to 13&ndash;15 bracket</div>
-        <div><strong>CS-AC.2.2</strong> &mdash; If primary verification fails, system SHALL fall back to secondary signals</div>
-        <div><strong>CS-AC.2.3</strong> &mdash; All age verification events SHALL be logged for audit</div>
-        <div><strong>CS-AC.3.1</strong> &mdash; Settings SHALL be maximally restrictive by default for child accounts</div>
-        <div><strong>CS-AC.3.2</strong> &mdash; Default settings SHALL differ by age bracket (8-10, 11-12, 13-15, 16-17)</div>
-        <div><strong>CS-AC.3.3</strong> &mdash; Location sharing SHALL be off by default for all minors</div>
-        <div><strong>CS-AC.4.1</strong> &mdash; Age-restricted features SHALL be actually gated, not just labelled</div>
-        <div><strong>CS-AC.4.2</strong> &mdash; Direct messaging from strangers SHALL be disabled by default for under-16</div>
-        <div><strong>CS-AC.4.3</strong> &mdash; Public profile visibility SHALL be off by default for under-16</div>
-        <div><strong>CS-AC.4.4</strong> &mdash; In-app purchases SHALL require parental approval for under-16</div>
-        <div><strong>CS-AC.4.5</strong> &mdash; Live streaming SHALL be disabled by default for under-16</div>
-        <div><strong>CS-AC.5.1</strong> &mdash; Platform SHOULD periodically re-verify age for accounts approaching thresholds</div>
-        <div><strong>CS-AC.5.2</strong> &mdash; Users SHALL NOT be able to change their age without re-verification</div>
-        <div><strong>CS-AC.6.1</strong> &mdash; Age verification methods SHALL be documented and publicly available</div>
-        <div><strong>CS-AC.6.2</strong> &mdash; Accuracy rates of age verification SHOULD be published</div>
-        <div><strong>CS-AC.6.3</strong> &mdash; Age verification SHALL NOT discriminate based on disability, ethnicity, or socioeconomic status</div>
-        <div><strong>CS-AC.7.1</strong> &mdash; Verifiable parental consent SHALL be obtained before processing data of children under consent age</div>
-        <div><strong>CS-AC.7.2</strong> &mdash; Parental consent mechanism SHALL be robust against child impersonation</div>
-        <div><strong>CS-AC.8.1</strong> &mdash; Facial age estimation accuracy SHALL be established by independent evaluation (e.g. NIST FATE), documented for the 13&ndash;17 band</div>
-        <div><strong>CS-AC.8.2</strong> &mdash; A defined MAE ceiling (baseline &le; 2.0 yrs) and boundary FPR SHALL be met for 13&ndash;17, set by the Standards Council</div>
-        <div><strong>CS-AC.8.3</strong> &mdash; Presentation-attack detection SHALL be evaluated to ISO/IEC 30107-3 at a named level; a photo or replay SHALL fail</div>
-        <div><strong>CS-AC.8.4</strong> &mdash; The pipeline SHALL detect injection attacks and verification-by-proxy; the verified face SHALL be bound to the account's actual user</div>
-        <div><strong>CS-AC.8.5</strong> &mdash; Any fallback path SHALL be held to an equivalent anti-fraud standard</div>
-        <div><strong>CS-AC.8.6</strong> &mdash; The assigned age band SHALL govern all contact surfaces, evidenced by a contact-surface inventory</div>
-        <div><strong>CS-AC.8.7</strong> &mdash; Accuracy figures, certifications and re-test dates SHALL be disclosed to auditors and re-validated annually</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-CD &middot; Content and Design Safety (37)</div>
-      <div class="modal-controls">
-        <div><strong>CS-CD.1.1</strong> &mdash; Platform SHALL detect and action known CSAM using robust, industry-recognised methods</div>
-        <div><strong>CS-CD.1.2</strong> &mdash; Platform SHALL detect grooming patterns in communications</div>
-        <div><strong>CS-CD.1.3</strong> &mdash; Platform SHALL detect bullying and harassment patterns</div>
-        <div><strong>CS-CD.1.4</strong> &mdash; Platform SHALL detect self-harm and suicidal content</div>
-        <div><strong>CS-CD.1.5</strong> &mdash; Platform SHALL detect violent threat content</div>
-        <div><strong>CS-CD.1.6</strong> &mdash; Platform SHALL detect sextortion patterns (financial and image-based coercion)</div>
-        <div><strong>CS-CD.1.7</strong> &mdash; Platform SHALL detect and action AI-generated / synthetic CSAM by appropriate means</div>
-        <div><strong>CS-CD.1.8</strong> &mdash; Detection SHALL be effective across all supported languages</div>
-        <div><strong>CS-CD.1.9</strong> &mdash; Platform SHALL detect and flag attempts to move a child to another platform</div>
-        <div><strong>CS-CD.1.10</strong> &mdash; Platform SHALL apply real-time abuse detection to live/real-time video involving children</div>
-        <div><strong>CS-CD.2.1</strong> &mdash; Platform SHALL NOT use infinite scroll for child accounts</div>
-        <div><strong>CS-CD.2.2</strong> &mdash; Platform SHALL NOT use notification pressure tactics (FOMO, streaks, urgency)</div>
-        <div><strong>CS-CD.2.3</strong> &mdash; Loot boxes and randomised rewards SHALL be clearly labelled with odds</div>
-        <div><strong>CS-CD.2.4</strong> &mdash; Platform SHALL NOT use deceptive design to trick children into sharing data</div>
-        <div><strong>CS-CD.2.5</strong> &mdash; Disabling safety features SHALL require more effort than enabling them</div>
-        <div><strong>CS-CD.2.6</strong> &mdash; Autoplay SHALL be off by default for child accounts</div>
-        <div><strong>CS-CD.3.1</strong> &mdash; AI may classify content but SHALL NOT generate child-facing intervention text</div>
-        <div><strong>CS-CD.3.2</strong> &mdash; Intervention language SHALL be age-appropriate for child's verified age bracket</div>
-        <div><strong>CS-CD.3.3</strong> &mdash; Interventions SHALL be culturally reviewed for each supported language/region</div>
-        <div><strong>CS-CD.3.4</strong> &mdash; No dialogue loop &mdash; system SHALL NOT sustain conversation with children</div>
-        <div><strong>CS-CD.3.5</strong> &mdash; Intervention content SHALL be version-controlled and publicly auditable</div>
-        <div><strong>CS-CD.3.6</strong> &mdash; Safety interventions SHALL be evidence-based and their effectiveness measured</div>
-        <div><strong>CS-CD.4.1</strong> &mdash; Child-facing interventions SHALL be compatible with screen readers</div>
-        <div><strong>CS-CD.4.2</strong> &mdash; Intervention text SHALL meet WCAG 2.1 AA contrast and readability</div>
-        <div><strong>CS-CD.4.3</strong> &mdash; Crisis helpline actions SHALL be accessible to children using assistive input</div>
-        <div><strong>CS-CD.5.1</strong> &mdash; User reports SHALL be acknowledged within 24 hours</div>
-        <div><strong>CS-CD.5.2</strong> &mdash; Illegal content SHALL be actioned within 24 hours of reporting</div>
-        <div><strong>CS-CD.5.3</strong> &mdash; Content moderation policies SHALL be published and child-comprehensible</div>
-        <div><strong>CS-CD.5.4</strong> &mdash; Appeals process SHALL be available and accessible to children</div>
-        <div><strong>CS-CD.5.5</strong> &mdash; Age classification appeal mechanism SHALL be available to users</div>
-        <div><strong>CS-CD.5.6</strong> &mdash; Children SHALL be able to block and mute any user easily; blocks persist</div>
-        <div><strong>CS-CD.6.1</strong> &mdash; Recommendation algorithm SHALL NOT amplify harmful content to child accounts</div>
-        <div><strong>CS-CD.6.2</strong> &mdash; Children SHALL be able to opt out of personalised recommendations</div>
-        <div><strong>CS-CD.6.3</strong> &mdash; Non-personalised content feed SHOULD be available as default option</div>
-        <div><strong>CS-CD.6.4</strong> &mdash; Recommendation/discovery SHALL NOT connect unconnected adults and children</div>
-        <div><strong>CS-CD.7.1</strong> &mdash; Targeted advertising SHALL NOT be served to children under 18</div>
-        <div><strong>CS-CD.7.2</strong> &mdash; Ads served to children SHALL be clearly labelled as advertising</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-DM &middot; Data and Privacy for Minors (19)</div>
-      <div class="modal-controls">
-        <div><strong>CS-DM.1.1</strong> &mdash; Threat detection SHALL process data on-device by default</div>
-        <div><strong>CS-DM.1.2</strong> &mdash; Platform SHALL only collect data necessary for core functionality</div>
-        <div><strong>CS-DM.1.3</strong> &mdash; Data collection scope SHALL be documented and transparent</div>
-        <div><strong>CS-DM.1.4</strong> &mdash; Detection SHALL NOT weaken or bypass end-to-end encryption; no server-side scanning of E2EE content</div>
-        <div><strong>CS-DM.2.1</strong> &mdash; All embedded SDKs SHALL be documented with data practices</div>
-        <div><strong>CS-DM.2.2</strong> &mdash; Analytics/tracking SDKs SHALL NOT profile children</div>
-        <div><strong>CS-DM.2.3</strong> &mdash; Third-party DPAs SHALL cover children's data</div>
-        <div><strong>CS-DM.3.1</strong> &mdash; Consent SHALL be informed, granular, and age-appropriate</div>
-        <div><strong>CS-DM.3.2</strong> &mdash; Consent withdrawal SHALL be as easy as giving consent</div>
-        <div><strong>CS-DM.3.3</strong> &mdash; Pre-ticked consent boxes SHALL NOT be used</div>
-        <div><strong>CS-DM.4.1</strong> &mdash; DPIA SHALL be completed for child data processing</div>
-        <div><strong>CS-DM.4.1a</strong> &mdash; CRIA SHALL be conducted for any digital service likely to be accessed by children</div>
-        <div><strong>CS-DM.4.2</strong> &mdash; Children's data SHALL have defined retention periods and automatic deletion</div>
-        <div><strong>CS-DM.4.3</strong> &mdash; Children (or parents) SHALL be able to export their data</div>
-        <div><strong>CS-DM.4.4</strong> &mdash; Children (or parents) SHALL be able to delete their data and account</div>
-        <div><strong>CS-DM.5.1</strong> &mdash; Children's data SHALL be stored in compliance with data residency requirements</div>
-        <div><strong>CS-DM.5.2</strong> &mdash; Children's data SHALL be encrypted in transit and at rest</div>
-        <div><strong>CS-DM.6.1</strong> &mdash; Automated profiling of children SHALL NOT be used beyond core safety</div>
-        <div><strong>CS-DM.6.2</strong> &mdash; Precise geolocation SHALL NOT be collected from children unless essential and consented</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-PR &middot; Parental Rights and Controls (18)</div>
-      <div class="modal-controls">
-        <div><strong>CS-PR.1.1</strong> &mdash; Platform SHALL provide a parental control dashboard</div>
-        <div><strong>CS-PR.1.2</strong> &mdash; Dashboard SHALL show safety alerts, not message content</div>
-        <div><strong>CS-PR.1.3</strong> &mdash; Dashboard SHALL be accessible on parent's device</div>
-        <div><strong>CS-PR.1.4</strong> &mdash; Platform SHALL accommodate child accounts under more than one parent/guardian (up to four, mutual-consent changes, non-digital channel for parents without smartphone)</div>
-        <div><strong>CS-PR.2.1</strong> &mdash; Parents SHALL NEVER see message content &mdash; alerts contain category, severity, timestamp only</div>
-        <div><strong>CS-PR.2.2</strong> &mdash; Parents SHALL NOT be able to enable keylogging</div>
-        <div><strong>CS-PR.2.3</strong> &mdash; Alert metadata SHALL NOT allow reconstruction of message content</div>
-        <div><strong>CS-PR.3.1</strong> &mdash; Children aged 13+ SHALL be notified that monitoring is active &mdash; non-configurable</div>
-        <div><strong>CS-PR.3.2</strong> &mdash; Notification SHALL explain what is monitored and why in age-appropriate language</div>
-        <div><strong>CS-PR.4.1</strong> &mdash; Detection sensitivity SHALL decrease and child agency increase with age</div>
-        <div><strong>CS-PR.4.2</strong> &mdash; 16+ teens SHALL be able to modify their own privacy settings</div>
-        <div><strong>CS-PR.4.3</strong> &mdash; Parental override SHALL decrease with child's age</div>
-        <div><strong>CS-PR.5.1</strong> &mdash; Child self-reporting mechanism SHALL route to counsellor or helpline, bypassing parent</div>
-        <div><strong>CS-PR.5.2</strong> &mdash; Crisis helpline SHALL be accessible with one tap from any safety alert</div>
-        <div><strong>CS-PR.6.1</strong> &mdash; Monitoring SHALL automatically cease when child turns 18</div>
-        <div><strong>CS-PR.6.2</strong> &mdash; Parent access SHALL be revoked at 18 &mdash; not parent-initiated</div>
-        <div><strong>CS-PR.6.3</strong> &mdash; On-device data SHALL be deleted within 24 hours of age-out</div>
-        <div><strong>CS-PR.6.4</strong> &mdash; Young adult SHALL have data access rights before erasure</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-MR &middot; Monitoring, Detection and Response (33)</div>
-      <div class="modal-controls">
-        <div><strong>CS-MR.1.1</strong> &mdash; Platform SHALL implement real-time threat detection across all defined harm categories</div>
-        <div><strong>CS-MR.1.2</strong> &mdash; Detection SHALL cover: CSAM (known and synthetic), grooming, bullying, self-harm, violence, sextortion, dangerous purchases</div>
-        <div><strong>CS-MR.1.3</strong> &mdash; Detection accuracy metrics SHALL be published per language, updated quarterly</div>
-        <div><strong>CS-MR.1.4</strong> &mdash; Detection SHALL NOT degrade performance by more than 10%</div>
-        <div><strong>CS-MR.2.1</strong> &mdash; CSAM SHALL be reported to competent designated authority within 1 hour of confirmed detection</div>
-        <div><strong>CS-MR.2.2</strong> &mdash; CSAM evidence SHALL be preserved per legal requirements</div>
-        <div><strong>CS-MR.2.3</strong> &mdash; Reporting channel to the competent national authority (e.g. NCMEC) SHALL be configured and tested</div>
-        <div><strong>CS-MR.2.4</strong> &mdash; Metadata preservation for CSAM and illegal content involving children</div>
-        <div><strong>CS-MR.2.5</strong> &mdash; Cryptographic integrity measures for preserved evidence</div>
-        <div><strong>CS-MR.3.1</strong> &mdash; Detection SHALL be consistent across all devices</div>
-        <div><strong>CS-MR.3.2</strong> &mdash; Institutional consent applies per child, not per device</div>
-        <div><strong>CS-MR.3.3</strong> &mdash; Detection history synced via encrypted on-device sync</div>
-        <div><strong>CS-MR.4.1</strong> &mdash; Incident response plan SHALL exist for child safety events</div>
-        <div><strong>CS-MR.4.2</strong> &mdash; Critical child safety incidents SHALL be triaged within 1 hour</div>
-        <div><strong>CS-MR.4.3</strong> &mdash; Incident response SHALL include notification to affected child and parent, except where it would compromise law enforcement investigation</div>
-        <div><strong>CS-MR.5.1</strong> &mdash; Evidence of child safety incidents SHALL be preserved per applicable law</div>
-        <div><strong>CS-MR.5.2</strong> &mdash; Evidence chain of custody SHALL be documented</div>
-        <div><strong>CS-MR.6.1</strong> &mdash; Platform SHOULD participate in industry threat intelligence sharing</div>
-        <div><strong>CS-MR.6.2</strong> &mdash; Detection patterns SHALL be updated at least monthly</div>
-        <div><strong>CS-MR.7.1</strong> &mdash; Platform SHALL publish transparency reports on child safety at least annually</div>
-        <div><strong>CS-MR.7.2</strong> &mdash; Reports SHALL include: detection volumes, categories, response times, appeals, removals</div>
-        <div><strong>CS-MR.8.1</strong> &mdash; Platform SHALL conduct systemic risk assessment for minors at least annually</div>
-        <div><strong>CS-MR.8.2</strong> &mdash; Risk assessment SHALL cover algorithmic amplification</div>
-        <div><strong>CS-MR.8.3</strong> &mdash; Risk mitigation measures SHALL be documented and reviewed annually</div>
-        <div><strong>CS-MR.8.4</strong> &mdash; Child-safety impact assessment SHALL precede new features affecting children</div>
-        <div><strong>CS-MR.9.1</strong> &mdash; Platform SHALL have responsible disclosure policy for child safety vulnerabilities</div>
-        <div><strong>CS-MR.9.2</strong> &mdash; Disclosed vulnerabilities SHALL be triaged within 48 hours</div>
-        <div><strong>CS-MR.10.1</strong> &mdash; Detection pattern updates SHALL be reviewed before deployment</div>
-        <div><strong>CS-MR.10.2</strong> &mdash; Pattern updates SHALL NOT introduce bias or suppress legitimate expression</div>
-        <div><strong>CS-MR.10.3</strong> &mdash; Rollback capability SHALL exist for false positive spikes</div>
-        <div><strong>CS-MR.10.4</strong> &mdash; Harm classifiers SHALL be purpose-limited to detection, not used for surveillance</div>
-        <div><strong>CS-MR.10.5</strong> &mdash; Detection datasets and models SHALL be documented, benchmarked, and independently verifiable</div>
-        <div><strong>CS-MR.11.1</strong> &mdash; Detection SHOULD account for atypical communication patterns</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-GO &middot; Governance and Policy (17)</div>
-      <div class="modal-controls">
-        <div><strong>CS-GO.1.1</strong> &mdash; Platform SHALL designate a named Child Safety Officer (CSO)</div>
-        <div><strong>CS-GO.1.2</strong> &mdash; CSO SHALL report directly to executive leadership</div>
-        <div><strong>CS-GO.2.1</strong> &mdash; All staff with child data access SHALL complete annual child safety training</div>
-        <div><strong>CS-GO.2.2</strong> &mdash; Content moderators SHALL receive specialised trauma-informed training</div>
-        <div><strong>CS-GO.2.3</strong> &mdash; Moderator wellbeing programme SHALL be in place</div>
-        <div><strong>CS-GO.3.1</strong> &mdash; Third-party vendors processing child data SHALL be audited</div>
-        <div><strong>CS-GO.3.2</strong> &mdash; Vendor contracts SHALL include child data protection clauses</div>
-        <div><strong>CS-GO.4.1</strong> &mdash; Platform SHALL maintain documented regulatory compliance mapping</div>
-        <div><strong>CS-GO.4.2</strong> &mdash; Compliance mapping SHALL be updated within 90 days of new requirements</div>
-        <div><strong>CS-GO.5.1</strong> &mdash; Platform SHALL comply with child safety laws in every jurisdiction served</div>
-        <div><strong>CS-GO.5.2</strong> &mdash; Age of consent thresholds SHALL be configurable per jurisdiction</div>
-        <div><strong>CS-GO.6.1</strong> &mdash; Child safety governance SHOULD include external advisory input</div>
-        <div><strong>CS-GO.6.2</strong> &mdash; Child safety policies SHALL be reviewed at least annually</div>
-        <div><strong>CS-GO.7.1</strong> &mdash; Children's voices SHALL be included in safety design and review</div>
-        <div><strong>CS-GO.7.2</strong> &mdash; Feedback mechanisms SHALL be available and accessible to child users</div>
-        <div><strong>CS-GO.8.1</strong> &mdash; Organisation SHALL provide age-appropriate digital literacy resources to child users</div>
-        <div><strong>CS-GO.8.2</strong> &mdash; Safety features SHOULD build children's resilience and digital skills</div>
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">Methodology &middot; how conformity is assessed</div>
-      <div class="modal-text">Every control is assessed against defined evidence &mdash; not self-declaration &mdash; and scored <strong>pass</strong>, <strong>partial</strong>, or <strong>fail</strong>, using one or more of:</div>
-      <div class="modal-controls">
-        <div><strong>Automated checks</strong> &mdash; technical verification of observable behaviour.</div>
-        <div><strong>Agent / scenario testing</strong> &mdash; structured journeys exercising a control as a child or bad actor would.</div>
-        <div><strong>Documentation review</strong> &mdash; inspection of policies, records, and evidence.</div>
-        <div><strong>Expert panel</strong> &mdash; qualified assessor judgement where human evaluation is required.</div>
-        <div><strong>Attestation</strong> &mdash; signed operator declaration, only alongside other evidence.</div>
-      </div>
-      <div class="modal-text" style="margin-top:10px; opacity:.7; font-size:13px;">Gameable test inputs are held in a versioned internal appendix shared only with accredited assessors; the criteria &mdash; what &ldquo;pass&rdquo; means &mdash; are public.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">Scoring &amp; certification</div>
-      <div class="modal-text">Controls are weighted (most 1.0; a few addressing the most severe harms carry 1.5 or 2.0). Certification is granted by an accredited body against a scope tier:</div>
-      <div class="modal-controls">
-        <div><strong>Essential</strong> &mdash; the ~40 most critical controls; entry-level assurance for smaller services.</div>
-        <div><strong>Comprehensive</strong> &mdash; all 147 required controls plus at least 5 addressable; the expected level for mainstream services.</div>
-        <div><strong>Leadership</strong> &mdash; all 155 controls; full conformance.</div>
-      </div>
-      <div class="modal-text" style="margin-top:10px; opacity:.7; font-size:13px;">Not every service is assessed against all 155 controls &mdash; the applicable scope depends on the platform's type, user base, features, and the level of risk it presents to children.</div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="domainsModal" role="dialog" aria-labelledby="domainsTitle" aria-modal="true">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
-    <h2 class="modal-title" id="domainsTitle">6 domains.</h2>
-
-    <div class="modal-section">
-      <div class="modal-text">The standard organises 155 controls into six functional domains. Each domain addresses a distinct dimension of child digital safety.</div>
-      <div class="modal-disclaimer" style="margin-top:14px;">This is a working draft. Domain groupings and the control counts below are evolving quickly as peer and expert review comes in.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-AC &middot; Age controls</div>
-      <div class="modal-text">Age verification, age estimation, age-appropriate access, accuracy thresholds, facial age-estimation assurance. 31 controls.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-CD &middot; Content and design safety</div>
-      <div class="modal-text">Algorithmic safeguards, dark patterns, recommender systems, content moderation. 32 controls.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-DM &middot; Data and privacy for minors</div>
-      <div class="modal-text">Children's data minimisation, retention, encryption, profiling restrictions. 18 controls.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-PR &middot; Parental rights and controls</div>
-      <div class="modal-text">Parental dashboards, monitoring boundaries, age-graduated child autonomy, multi-guardian support. 18 controls.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-MR &middot; Monitoring, detection and response</div>
-      <div class="modal-text">Threat detection across seven categories, CSAM reporting, incident response. 30 controls.</div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-label">CS-GO &middot; Governance and policy</div>
-      <div class="modal-text">Child Safety Officer, staff training, vendor management, regulatory mapping. 17 controls.</div>
     </div>
   </div>
 </div>
