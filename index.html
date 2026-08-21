@@ -1343,6 +1343,21 @@ function openFramework(key) {
       });
     }, true);
   }
+  var advisory = document.getElementById('advisoryForm');
+  if (advisory) {
+    advisory.addEventListener('submit', function () {
+      insert('governance_applications', {
+        body: 'Advisory Board',
+        name: val(advisory, 'Name'),
+        email: val(advisory, 'Email'),
+        organisation: val(advisory, 'Organisation'),
+        expertise: val(advisory, 'Expertise'),
+        profile_url: val(advisory, 'Profile'),
+        message: val(advisory, 'Message'),
+        source: 'org_website'
+      });
+    }, true);
+  }
 })();
 </script>
 
