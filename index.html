@@ -458,6 +458,9 @@
   .checkbox-row { display: flex; flex-direction: column; gap: 12px; }
   .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: #fff; cursor: pointer; }
   .checkbox-option input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
+  .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; line-height: 1.55; opacity: 0.75; cursor: pointer; }
+  .consent-field input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: #8B5CF6; cursor: pointer; }
+  .consent-field a { color: #fff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
   .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
   .form-submit {
     width: 100%;
@@ -1019,6 +1022,12 @@
           <div style="font-size:12px; opacity:0.5; margin-top:8px;">Pick either, or both. We will follow up with whichever you choose.</div>
         </div>
         <div class="field"><label for="rv-msg">Anything we should know?</label><textarea id="rv-msg" name="Message" placeholder="Optional. Your background, or which domains you would want to review."></textarea></div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I agree that Custorian may hold and process this information under GDPR to run the standard review process and follow up with me about it. It is never sold or shared with third parties, and is deleted once the review process concludes. By taking part, I understand review input may be credited by name in the published standard unless I ask otherwise. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+          </label>
+        </div>
         <button type="submit" class="form-submit">Request the outline</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
