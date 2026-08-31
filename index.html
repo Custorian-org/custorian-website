@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian — A standard for children's digital safety. Owned by no one.</title>
-<meta name="description" content="Custorian is the European standard for child digital safety. 166 auditable controls. Allied with seven regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
+<meta name="description" content="Custorian is the European standard for child digital safety. 166 auditable controls. Allied with nine regulatory frameworks. Against eight named harms. Owned by a non-profit. Cannot be sold.">
 <meta property="og:title" content="Custorian — A standard for children's digital safety.">
-<meta property="og:description" content="166 auditable controls. Allied with seven frameworks. Against eight harms. Owned by no one.">
+<meta property="og:description" content="166 auditable controls. Allied with nine frameworks. Against eight harms. Owned by no one.">
 <meta property="og:image" content="https://custorian.org/og-image.png">
 <meta property="og:url" content="https://custorian.org">
 <meta property="og:type" content="website">
@@ -851,8 +851,8 @@
       <div class="num">10</div>
       <div class="lbl">Domains</div>
     </div>
-    <a class="stat-trigger" href="#frameworks" aria-label="7 frameworks, click to view the list">
-      <div class="num">7</div>
+    <a class="stat-trigger" href="#frameworks" aria-label="9 frameworks, click to view the list">
+      <div class="num">9</div>
       <div class="lbl">Frameworks Mapped</div>
     </a>
   </div>
@@ -860,15 +860,17 @@
 </section>
 
 <section class="frameworks" id="frameworks">
-  <h2>We ally with 7.</h2>
+  <h2>We ally with 9.</h2>
   <ul>
     <li role="button" tabindex="0" onclick="openFramework('dsa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('dsa');}">DSA</li>
-    <li role="button" tabindex="0" onclick="openFramework('aiact')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aiact');}">AI&nbsp;ACT</li>
     <li role="button" tabindex="0" onclick="openFramework('gdpr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('gdpr');}">GDPR</li>
-    <li role="button" tabindex="0" onclick="openFramework('aadc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aadc');}">AADC</li>
-    <li role="button" tabindex="0" onclick="openFramework('osa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('osa');}">OSA</li>
-    <li role="button" tabindex="0" onclick="openFramework('coppa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('coppa');}">COPPA</li>
-    <li role="button" tabindex="0" onclick="openFramework('dkl63')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('dkl63');}">DK&nbsp;L63</li>
+    <li role="button" tabindex="0" onclick="openFramework('aiact')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aiact');}">AI&nbsp;ACT</li>
+    <li role="button" tabindex="0" onclick="openFramework('avmsd')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('avmsd');}">AVMSD</li>
+    <li role="button" tabindex="0" onclick="openFramework('csar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('csar');}">CSA&nbsp;REG</li>
+    <li role="button" tabindex="0" onclick="openFramework('lanzarote')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('lanzarote');}">LANZAROTE</li>
+    <li role="button" tabindex="0" onclick="openFramework('budapest')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('budapest');}">BUDAPEST</li>
+    <li role="button" tabindex="0" onclick="openFramework('crc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('crc');}">UN&nbsp;CRC</li>
+    <li role="button" tabindex="0" onclick="openFramework('ukausus')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('ukausus');}">UK&nbsp;&middot;&nbsp;AU&nbsp;&middot;&nbsp;US</li>
   </ul>
 </section>
 
@@ -1168,17 +1170,10 @@ if (window.location.hash === '#review') openModal('reviewModal');
 var frameworks = {
   dsa: {
     label: 'EU · Regulation 2022/2065',
-    title: 'Digital Services Act',
-    summary: 'Sets obligations for online platforms on illegal content, transparency, and protection of minors. Article 28 requires platforms accessible to minors to ensure a high level of privacy, safety, and security. Articles 34–36 impose systemic risk assessment and mitigation duties on Very Large Online Platforms.',
+    title: 'Digital Services Act & Article 28 Guidelines',
+    summary: 'Sets obligations for online platforms on illegal content, transparency, and protection of minors. Article 28 requires platforms accessible to minors to ensure a high level of privacy, safety, and security. The Commission’s Article 28 Guidelines (adopted July 2025, C(2025) 6826) set out the specific measures it treats as compliant, including age assurance and recommender-system defaults. Articles 34–36 impose systemic risk assessment and mitigation duties on Very Large Online Platforms.',
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065',
     urlLabel: 'eur-lex.europa.eu — Regulation 2022/2065'
-  },
-  aiact: {
-    label: 'EU · Regulation 2024/1689',
-    title: 'AI Act',
-    summary: 'First comprehensive law on artificial intelligence. Classifies AI systems intended to interact with children as high-risk in certain categories. Imposes transparency, human oversight, accuracy, and non-discrimination requirements on covered systems.',
-    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689',
-    urlLabel: 'eur-lex.europa.eu — Regulation 2024/1689'
   },
   gdpr: {
     label: 'EU · Regulation 2016/679',
@@ -1187,33 +1182,54 @@ var frameworks = {
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679',
     urlLabel: 'eur-lex.europa.eu — Regulation 2016/679'
   },
-  aadc: {
-    label: 'UK · ICO Statutory Code, 2021',
-    title: 'Age Appropriate Design Code',
-    summary: 'The first regulatory code worldwide specifically for child users of digital services. Fifteen standards online services must follow to protect children’s data and wellbeing, including default high-privacy settings and prohibition of design that nudges children to lower their protections.',
-    url: 'https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/',
-    urlLabel: 'ico.org.uk — Age Appropriate Design Code'
+  aiact: {
+    label: 'EU · Regulation 2024/1689',
+    title: 'AI Act',
+    summary: 'First comprehensive law on artificial intelligence. Classifies AI systems intended to interact with children as high-risk in certain categories. Imposes transparency, human oversight, accuracy, and non-discrimination requirements on covered systems.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689',
+    urlLabel: 'eur-lex.europa.eu — Regulation 2024/1689'
   },
-  osa: {
-    label: 'UK · 2023',
-    title: 'Online Safety Act',
-    summary: 'Imposes duties on platforms hosting user-generated content to protect users from illegal content, with enhanced obligations for protecting children. Includes specific duties on age assurance and the removal of content harmful to minors.',
-    url: 'https://www.legislation.gov.uk/ukpga/2023/50',
-    urlLabel: 'legislation.gov.uk — Online Safety Act 2023'
+  avmsd: {
+    label: 'EU · Directive 2018/1808',
+    title: 'Audiovisual Media Services Directive',
+    summary: 'Sets EU-wide rules for audiovisual media and video-sharing platforms. Article 6a requires providers to shield minors from content that could impair their physical, mental, or moral development. Article 28b extends equivalent duties to video-sharing platforms, including age verification, parental controls, and content-flagging mechanisms.',
+    url: 'https://eur-lex.europa.eu/eli/dir/2018/1808/oj',
+    urlLabel: 'eur-lex.europa.eu · Directive 2018/1808'
   },
-  coppa: {
-    label: 'US · 15 U.S.C. §§ 6501–6506',
-    title: 'Children’s Online Privacy Protection Act',
-    summary: 'First children’s online privacy law worldwide (1998). Requires verifiable parental consent before operators of websites or online services collect personal information from children under 13.',
-    url: 'https://www.law.cornell.edu/uscode/text/15/chapter-91',
-    urlLabel: 'law.cornell.edu — COPPA (Chapter 91)'
+  csar: {
+    label: 'EU · Proposed, COM(2022) 209',
+    title: 'Child Sexual Abuse Regulation (proposed)',
+    summary: 'A proposed EU regulation laying down rules to prevent and combat child sexual abuse online, covering risk assessment, detection, and reporting obligations for providers. Not yet adopted law: the Council reached a common position in December 2025 and trilogue negotiations continued through mid-2026 without final agreement.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52022PC0209',
+    urlLabel: 'eur-lex.europa.eu · COM(2022) 209 final'
   },
-  dkl63: {
-    label: 'DK · Act L 63, 2025',
-    title: 'Social Media Age Restriction Act',
-    summary: 'Amendment to the Danish Social Media Act. Establishes 15 as the minimum age for independent social media account creation in Denmark. Aligned with the Danish digital consent age set in the Data Protection Act.',
-    url: 'https://www.ft.dk/samling/20241/lovforslag/l63/index.htm',
-    urlLabel: 'ft.dk — Bill L 63'
+  lanzarote: {
+    label: 'Council of Europe · CETS No. 201',
+    title: 'Lanzarote Convention',
+    summary: 'The first international treaty to criminalise the full range of child sexual abuse and exploitation offences, including trafficking for sexual purposes. Opened for signature in 2007 and in force since 2010, ratified by every Council of Europe member state.',
+    url: 'https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=201',
+    urlLabel: 'coe.int · CETS No. 201'
+  },
+  budapest: {
+    label: 'Council of Europe · ETS No. 185',
+    title: 'Budapest Convention',
+    summary: 'The first international treaty on crime committed via the internet and other computer networks. Article 9 requires states to criminalise the production, possession, procurement, and distribution of child sexual abuse material, including realistic non-photographic depictions.',
+    url: 'https://www.coe.int/en/web/cybercrime/the-budapest-convention',
+    urlLabel: 'coe.int · ETS No. 185'
+  },
+  crc: {
+    label: 'UN · General Comment No. 25, 2021',
+    title: 'Convention on the Rights of the Child',
+    summary: 'The Convention on the Rights of the Child (1989) is the most widely ratified human rights treaty in the world. General Comment No. 25, adopted by the UN Committee on the Rights of the Child in 2021 after a two-year consultation that included children themselves, sets out how states must protect and fulfil children’s rights specifically in the digital environment.',
+    url: 'https://www.ohchr.org/en/documents/general-comments-and-recommendations/general-comment-no-25-2021-childrens-rights-relation',
+    urlLabel: 'ohchr.org · General Comment No. 25'
+  },
+  ukausus: {
+    label: 'UK · Australia · US',
+    title: 'UK, Australian & US Regimes',
+    summary: 'The UK’s Age Appropriate Design Code (ICO, 2021) and Online Safety Act 2023 set design and content-safety duties for services used by children. Australia’s Online Safety Amendment (Social Media Minimum Age) Act 2024 bars under-16 accounts on major platforms, in force since December 2025. The US Children’s Online Privacy Protection Act (1998) requires verifiable parental consent before collecting data from children under 13.',
+    url: 'https://www.legislation.gov.au/C2024A00127/asmade',
+    urlLabel: 'legislation.gov.au · Online Safety Amendment Act 2024'
   }
 };
 
