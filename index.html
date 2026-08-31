@@ -455,6 +455,9 @@
   .field input::placeholder,
   .field textarea::placeholder { color: #555; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .checkbox-row { display: flex; flex-direction: column; gap: 12px; }
+  .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: #fff; cursor: pointer; }
+  .checkbox-option input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
   .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
   .form-submit {
     width: 100%;
@@ -1003,17 +1006,17 @@
           <div class="field"><label for="rv-email">Email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@example.org"></div>
         </div>
         <div class="field"><label for="rv-org">Organisation / affiliation</label><input type="text" id="rv-org" name="Organisation" placeholder="Where you work or what you represent"></div>
-        <div class="form-row">
-          <div class="field"><label for="rv-field">Field <span class="req">*</span></label>
-            <select id="rv-field" name="Field" required>
-              <option value="" disabled selected>Select&hellip;</option>
-              <option>Child rights</option><option>Online safety</option><option>Platform policy</option><option>Law &amp; regulation</option><option>Academic research</option><option>Other</option>
-            </select></div>
-          <div class="field"><label for="rv-mode">Preferred format <span class="req">*</span></label>
-            <select id="rv-mode" name="Contribution mode" required>
-              <option value="" disabled selected>Select&hellip;</option>
-              <option>Async written questionnaire</option><option>Live working-group session</option><option>Either</option>
-            </select></div>
+        <div class="field"><label for="rv-field">Field <span class="req">*</span></label>
+          <select id="rv-field" name="Field" required>
+            <option value="" disabled selected>Select&hellip;</option>
+            <option>Child rights</option><option>Online safety</option><option>Platform policy</option><option>Law &amp; regulation</option><option>Academic research</option><option>Other</option>
+          </select></div>
+        <div class="field"><label>Preferred format</label>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="checkbox" name="Async questionnaire" value="Yes">Async written questionnaire</label>
+            <label class="checkbox-option"><input type="checkbox" name="Live working-group session" value="Yes">Live working-group session</label>
+          </div>
+          <div style="font-size:12px; opacity:0.5; margin-top:8px;">Pick either, or both. We will follow up with whichever you choose.</div>
         </div>
         <div class="field"><label for="rv-msg">Anything we should know?</label><textarea id="rv-msg" name="Message" placeholder="Optional. Your background, or which domains you would want to review."></textarea></div>
         <button type="submit" class="form-submit">Request the outline</button>
@@ -1373,13 +1376,16 @@ function openFramework(key) {
   var review = document.getElementById('reviewForm');
   if (review) {
     review.addEventListener('submit', function () {
+      var modes = [];
+      if (review.querySelector('[name="Async questionnaire"]').checked) modes.push('Async questionnaire');
+      if (review.querySelector('[name="Live working-group session"]').checked) modes.push('Live working-group session');
       insert('governance_applications', {
         body: 'Standard Review',
         name: val(review, 'Name'),
         email: val(review, 'Email'),
         organisation: val(review, 'Organisation'),
         expertise: val(review, 'Field'),
-        message: (val(review, 'Contribution mode') || '') + (val(review, 'Message') ? '. ' + val(review, 'Message') : ''),
+        message: modes.join(' + ') + (val(review, 'Message') ? '. ' + val(review, 'Message') : ''),
         source: 'org_website'
       });
     }, true);
