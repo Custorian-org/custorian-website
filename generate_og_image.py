@@ -80,11 +80,12 @@ def draw_centered(y, text, font, fill):
 # Title at ~210, subtitle at ~300, detail at ~355, url at ~520
 draw_centered(200, "Custorian", font_title, WHITE)
 draw_centered(295, "The PCI DSS for Protecting Children", font_subtitle, LIGHT_PURPLE)
-draw_centered(350, "6 Domains  ·  146 Controls  ·  Owned by no one", font_detail, DIM_TEXT)
+draw_centered(350, "10 Domains  ·  166 Controls  ·  Owned by no one", font_detail, DIM_TEXT)
 draw_centered(530, "custorian.org", font_url, DIM_TEXT)
 
 # --- Save ---
-output_path = "/Users/tanyabecheva/Desktop/Custorian/04_CODE/custorian-website/og-image.png"
+import os
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "og-image.png")
 img.save(output_path, "PNG")
 print(f"OG image saved to {output_path}")
 print(f"Size: {WIDTH}x{HEIGHT}")
