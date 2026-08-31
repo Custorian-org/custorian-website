@@ -903,9 +903,10 @@
 <section class="pilot" id="get-involved">
   <div class="pilot-kicker">Get Involved</div>
   <h2>Help build the standard.</h2>
-  <p>Custorian is developed in the open. Lend your expertise to the Advisory Board, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
+  <p>Custorian is developed in the open. Lend your expertise to the Advisory Board, stress-test the standard as an outside reviewer, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
   <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:10px;">
     <button class="pilot-cta" type="button" onclick="openModal('advisoryModal')">Express interest in the Advisory Board</button>
+    <button class="pilot-cta" type="button" onclick="openModal('reviewModal')">Review the standard</button>
     <button class="pilot-cta" type="button" onclick="openModal('membershipModal')">Become a member</button>
   </div>
   <div class="pilot-note">The Advisory Board advises; the elected Board governs. Membership is the route to standing for the Board.</div>
@@ -980,6 +981,47 @@
       <div class="tick">&#10003;</div>
       <h3>Welcome aboard &mdash; almost.</h3>
       <p>Your membership enquiry has been received. We will follow up by email with membership terms and next steps, and formal admission is confirmed by the Board.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="reviewModal" role="dialog" aria-labelledby="reviewTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="reviewFormWrap">
+      <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
+      <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Contribute async through a written questionnaire, or live in a working-group session. Every piece of incorporated input is credited by name in the published standard.</p>
+      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian CDSW Standard: Review Sign-up">
+        <input type="hidden" name="from_name" value="Custorian Standard Review">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <div class="field"><label for="rv-name">Your name <span class="req">*</span></label><input type="text" id="rv-name" name="Name" required placeholder="Full name"></div>
+          <div class="field"><label for="rv-email">Email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@example.org"></div>
+        </div>
+        <div class="field"><label for="rv-org">Organisation / affiliation</label><input type="text" id="rv-org" name="Organisation" placeholder="Where you work or what you represent"></div>
+        <div class="form-row">
+          <div class="field"><label for="rv-field">Field <span class="req">*</span></label>
+            <select id="rv-field" name="Field" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Child rights</option><option>Online safety</option><option>Platform policy</option><option>Law &amp; regulation</option><option>Academic research</option><option>Other</option>
+            </select></div>
+          <div class="field"><label for="rv-mode">Preferred format <span class="req">*</span></label>
+            <select id="rv-mode" name="Contribution mode" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Async written questionnaire</option><option>Live working-group session</option><option>Either</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="rv-msg">Anything we should know?</label><textarea id="rv-msg" name="Message" placeholder="Optional. Your background, or which domains you would want to review."></textarea></div>
+        <button type="submit" class="form-submit">Request the outline</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="reviewFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>We have received your interest in reviewing the standard. We will follow up by email with the outline and next steps for your preferred format.</p>
     </div>
   </div>
 </div>
@@ -1121,6 +1163,7 @@ document.querySelectorAll('.modal').forEach(function(m) {
     if (e.target === this) closeModal();
   });
 });
+if (window.location.hash === '#review') openModal('reviewModal');
 
 var frameworks = {
   dsa: {
@@ -1231,7 +1274,7 @@ function openFramework(key) {
 <!-- Advisory EOI + Membership — AJAX submit to Web3Forms, inline success -->
 <script>
 (function () {
-  ['advisoryForm','membershipForm'].forEach(function (fid) {
+  ['advisoryForm','membershipForm','reviewForm'].forEach(function (fid) {
     var form = document.getElementById(fid);
     if (!form) return;
     var wrap = document.getElementById(fid + 'Wrap');
@@ -1307,6 +1350,20 @@ function openFramework(key) {
         expertise: val(advisory, 'Expertise'),
         profile_url: val(advisory, 'Profile'),
         message: val(advisory, 'Message'),
+        source: 'org_website'
+      });
+    }, true);
+  }
+  var review = document.getElementById('reviewForm');
+  if (review) {
+    review.addEventListener('submit', function () {
+      insert('governance_applications', {
+        body: 'Standard Review',
+        name: val(review, 'Name'),
+        email: val(review, 'Email'),
+        organisation: val(review, 'Organisation'),
+        expertise: val(review, 'Field'),
+        message: (val(review, 'Contribution mode') || '') + (val(review, 'Message') ? '. ' + val(review, 'Message') : ''),
         source: 'org_website'
       });
     }, true);
