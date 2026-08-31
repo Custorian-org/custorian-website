@@ -457,7 +457,7 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .checkbox-row { display: flex; flex-direction: column; gap: 12px; }
   .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: #fff; cursor: pointer; }
-  .checkbox-option input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
+  .checkbox-option input[type="checkbox"], .checkbox-option input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
   .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; line-height: 1.55; opacity: 0.75; cursor: pointer; }
   .consent-field input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: #8B5CF6; cursor: pointer; }
   .consent-field a { color: #fff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
@@ -912,9 +912,9 @@
 <section class="pilot" id="get-involved">
   <div class="pilot-kicker">Get Involved</div>
   <h2>Help build the standard.</h2>
-  <p>Custorian is developed in the open. Lend your expertise to the Advisory Board, stress-test the standard as an outside reviewer, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
+  <p>Custorian is developed in the open. Lend your expertise to the Governance Board or Advisory Board, stress-test the standard as an outside reviewer, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
   <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:10px;">
-    <button class="pilot-cta" type="button" onclick="openModal('advisoryModal')">Express interest in the Advisory Board</button>
+    <button class="pilot-cta" type="button" onclick="openModal('advisoryModal')">Express interest in governance</button>
     <button class="pilot-cta" type="button" onclick="openModal('reviewModal')">Review the standard</button>
     <button class="pilot-cta" type="button" onclick="openModal('membershipModal')">Become a member</button>
   </div>
@@ -925,12 +925,21 @@
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div id="advisoryFormWrap">
-      <h2 class="modal-title" id="advisoryTitle">Express interest in the Advisory Board.</h2>
-      <p class="form-intro">The Advisory Board is 7&ndash;9 experts across child rights, law &amp; regulation, technology &amp; security, academic research, and law enforcement, plus a youth representative (16&ndash;21). It advises on the standard and ethical oversight &mdash; it does not govern. Members are invited by the foreningen; tell us where you would contribute.</p>
+      <h2 class="modal-title" id="advisoryTitle">Get involved in governance.</h2>
+      <div class="field">
+        <label>Which body interests you? <span class="req">*</span></label>
+        <div class="checkbox-row">
+          <label class="checkbox-option"><input type="radio" name="gov-body-radio" value="governance" checked onchange="setGovBody('governance')">Governance Board</label>
+          <label class="checkbox-option"><input type="radio" name="gov-body-radio" value="advisory" onchange="setGovBody('advisory')">Advisory Board</label>
+        </div>
+      </div>
+      <p class="form-intro" id="govBoardIntro">The Governance Board is Custorian&rsquo;s primary governing body, holding ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Seats are elected by the general assembly for renewable two-year terms, unpaid, with four to six Board meetings a year, hybrid, anchored in Odense. Directors are expected to bring a strong professional network and help open doors to funding and partnerships. You cannot be employed by, or hold a financial interest in, a platform subject to the standard, or have any employment, contractual, or financial relationship with any Custorian arm, its commercial technology company, or a recognised Certification Body within the last 36 months.</p>
+      <p class="form-intro" id="advisoryBoardIntro" style="display:none;">The Advisory Board is a roster of ten to twelve named experts who provide ad hoc, per-task input on the standard, its ethical dimensions, and child-facing content, drawn from child rights, legal, technology &amp; security, academic, clinical, law enforcement, and youth backgrounds. There is no fixed meeting cadence: work happens as discrete review tasks, formalised through an individual MOU. It advises. It does not govern.</p>
       <form id="advisoryForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-        <input type="hidden" name="subject" value="Custorian Advisory Board — Expression of Interest">
-        <input type="hidden" name="from_name" value="Custorian Advisory EOI">
+        <input type="hidden" id="av-subject" name="subject" value="Custorian Governance Board: Expression of Interest">
+        <input type="hidden" id="av-body" name="Body" value="Governance Board">
+        <input type="hidden" name="from_name" value="Custorian Governance EOI">
         <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
         <div class="form-row">
           <div class="field"><label for="av-name">Your name <span class="req">*</span></label><input type="text" id="av-name" name="Name" required placeholder="Full name"></div>
@@ -938,10 +947,10 @@
         </div>
         <div class="field"><label for="av-org">Organisation / affiliation</label><input type="text" id="av-org" name="Organisation" placeholder="Where you work or what you represent"></div>
         <div class="form-row">
-          <div class="field"><label for="av-exp">Area of expertise <span class="req">*</span></label>
+          <div class="field"><label for="av-exp" id="av-exp-label">Which seat interests you? <span class="req">*</span></label>
             <select id="av-exp" name="Expertise" required>
               <option value="" disabled selected>Select&hellip;</option>
-              <option>Child rights</option><option>Law &amp; regulation</option><option>Technology &amp; security</option><option>Academic research</option><option>Law enforcement</option><option>Youth representative (16&ndash;21)</option><option>Other</option>
+              <option>Chair</option><option>Vice Chair</option><option>Treasurer</option><option>Secretary</option><option>Legal Adviser</option><option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>
             </select></div>
           <div class="field"><label for="av-url">LinkedIn / bio URL</label><input type="url" id="av-url" name="Profile" placeholder="https://"></div>
         </div>
@@ -959,7 +968,7 @@
     <div id="advisoryFormSuccess" class="form-success" style="display:none;">
       <div class="tick">&#10003;</div>
       <h3>Thank you.</h3>
-      <p>Your interest in the Advisory Board has been received. The foreningen reviews expressions of interest as it constitutes the board &mdash; we will be in touch if there is a fit.</p>
+      <p>Your interest has been received. The foreningen reviews expressions of interest as it constitutes the Board and the Advisory Board roster. We will be in touch if there is a fit.</p>
     </div>
   </div>
 </div>
@@ -1199,6 +1208,19 @@ document.querySelectorAll('.modal').forEach(function(m) {
 });
 if (window.location.hash === '#review') openModal('reviewModal');
 
+function setGovBody(kind) {
+  var isGov = kind === 'governance';
+  document.getElementById('govBoardIntro').style.display = isGov ? '' : 'none';
+  document.getElementById('advisoryBoardIntro').style.display = isGov ? 'none' : '';
+  document.getElementById('av-subject').value = isGov ? 'Custorian Governance Board: Expression of Interest' : 'Custorian Advisory Board: Expression of Interest';
+  document.getElementById('av-body').value = isGov ? 'Governance Board' : 'Advisory Board';
+  document.getElementById('av-exp-label').innerHTML = isGov ? 'Which seat interests you? <span class="req">*</span>' : 'Area of expertise <span class="req">*</span>';
+  var sel = document.getElementById('av-exp');
+  sel.innerHTML = isGov
+    ? '<option value="" disabled selected>Select&hellip;</option><option>Chair</option><option>Vice Chair</option><option>Treasurer</option><option>Secretary</option><option>Legal Adviser</option><option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>'
+    : '<option value="" disabled selected>Select&hellip;</option><option>Child rights</option><option>Legal</option><option>Technology &amp; security</option><option>Academic</option><option>Clinical</option><option>Law enforcement</option><option>Youth</option><option>Other</option>';
+}
+
 var frameworks = {
   dsa: {
     label: 'EU · Regulation 2022/2065',
@@ -1391,7 +1413,7 @@ function openFramework(key) {
   if (advisory) {
     advisory.addEventListener('submit', function () {
       insert('governance_applications', {
-        body: 'Advisory Board',
+        body: val(advisory, 'Body') || 'Governance Board',
         name: val(advisory, 'Name'),
         email: val(advisory, 'Email'),
         organisation: val(advisory, 'Organisation'),
