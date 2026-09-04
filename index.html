@@ -1135,7 +1135,7 @@
           <div class="field-note">The ten CDSW v0.2 control domains. Select all you are qualified to review. At least one is required.</div>
           <input type="hidden" id="rv-domains-value" name="Review Domains">
         </div>
-        <div class="field"><label>Platform scope expertise</label>
+        <div class="field"><label>Platform scope expertise <span class="req">*</span></label>
           <div class="checkbox-row" id="rv-platforms">
             <label class="checkbox-option"><input type="checkbox" value="Social / User-Generated Content">Social / User-Generated Content</label>
             <label class="checkbox-option"><input type="checkbox" value="Messaging">Messaging</label>
@@ -1149,7 +1149,7 @@
             <label class="checkbox-option"><input type="checkbox" value="Search &amp; discovery">Search &amp; discovery</label>
             <label class="checkbox-option"><input type="checkbox" value="Hybrid">Hybrid</label>
           </div>
-          <div class="field-note">Optional. The eleven CDSW v0.2 platform profiles relevant to your evaluation background.</div>
+          <div class="field-note">The eleven CDSW v0.2 platform profiles. Select all relevant to your evaluation background &mdash; at least one is required.</div>
           <input type="hidden" id="rv-platforms-value" name="Platform Scope">
         </div>
 
@@ -1157,7 +1157,6 @@
         <div class="field"><label>Review method preference <span class="req">*</span></label>
           <div class="checkbox-row">
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Structured Assessment Form" required>Structured Assessment Form &mdash; submit line-by-line feedback via web form</label>
-            <label class="checkbox-option"><input type="radio" name="Review Method" value="Repository / Markdown Review">Repository / Markdown Review &mdash; review and comment on GitHub/GitLab drafts</label>
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Working Group Roundtables">Working Group Roundtables &mdash; participate in virtual peer-review calls</label>
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Shared Draft Comments">Shared Draft Comments &mdash; inline comments directly on the working document</label>
             <label class="checkbox-option"><input type="radio" name="Review Method" value="No strong preference">No strong preference &mdash; open to whichever format fits best</label>
@@ -1189,12 +1188,12 @@
           <div class="word-count" id="rv-qual-count">0 / 150 words</div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="rv-cv">CV</label><input type="file" id="rv-cv" name="CV Attachment" accept=".pdf,.doc,.docx">
-            <div class="field-note">Optional. PDF or Word document, up to 5MB.</div>
+          <div class="field"><label for="rv-cv">CV <span class="req">*</span></label><input type="file" id="rv-cv" name="CV Attachment" accept=".pdf,.doc,.docx" required>
+            <div class="field-note">PDF or Word document, up to 5MB.</div>
           </div>
-          <div class="field"><label for="rv-portfolio">Portfolio</label><input type="url" id="rv-portfolio" name="Portfolio Link" placeholder="Link (optional)"></div>
+          <div class="field"><label for="rv-portfolio">Portfolio <span class="req">*</span></label><input type="url" id="rv-portfolio" name="Portfolio Link" required placeholder="Link"></div>
         </div>
-        <div class="field"><label for="rv-pub">Publication</label><input type="url" id="rv-pub" name="Publication Link" placeholder="Link (optional)"></div>
+        <div class="field"><label for="rv-pub">Publication <span class="req">*</span></label><input type="url" id="rv-pub" name="Publication Link" required placeholder="Link"></div>
         <div class="field"><label>Peer review acknowledgments <span class="req">*</span></label>
           <div class="field-note" style="margin:0 0 10px;">Would you like your name and affiliation listed in the official CDSW Standard Contributor Acknowledgments?</div>
           <div class="checkbox-row">
@@ -1627,8 +1626,9 @@ function openFramework(key) {
 </script>
 
 <!-- Standard Review sign-up — own handler: enforces "at least one domain"
-     before the shared Web3Forms AJAX submit (hidden Domains/Platform Scope
-     fields are kept in sync on every checkbox change, above). -->
+     and "at least one platform" before the shared Web3Forms AJAX submit
+     (hidden Domains/Platform Scope fields are kept in sync on every
+     checkbox change, above). -->
 <script>
 (function () {
   var form = document.getElementById('reviewForm');
@@ -1643,6 +1643,11 @@ function openFramework(key) {
     if (!reviewCheckedValues('rv-domains').length) {
       status.className = 'form-status err';
       status.textContent = 'Select at least one CDSW review domain.';
+      return;
+    }
+    if (!reviewCheckedValues('rv-platforms').length) {
+      status.className = 'form-status err';
+      status.textContent = 'Select at least one platform scope.';
       return;
     }
     status.className = 'form-status'; status.textContent = '';
