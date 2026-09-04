@@ -413,6 +413,16 @@
     opacity: 0.8;
     margin-bottom: 32px;
   }
+  .callout {
+    background: #0f0f0f;
+    border-left: 3px solid #8B5CF6;
+    padding: 16px 20px;
+    margin: -8px 0 24px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    opacity: 0.9;
+  }
+  .callout strong { display: block; color: #fff; opacity: 1; margin-bottom: 6px; font-weight: 700; }
   .form-section {
     font-size: 11px;
     font-weight: 700;
@@ -477,6 +487,20 @@
   .checkbox-option input[type="checkbox"], .checkbox-option input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
   .field .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; text-transform: none; letter-spacing: normal; line-height: 1.55; opacity: 0.75; cursor: pointer; }
   .consent-field input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: #8B5CF6; cursor: pointer; }
+  /* .field input's shared appearance:none/padding was meant for text/select inputs;
+     without this reset it also hits checkboxes/radios above, which then render as an
+     oversized blank box with no visible checked state (padding > explicit size, and
+     no native tick to draw once appearance is removed). Restore native rendering so
+     accent-color actually shows a check/dot. */
+  .checkbox-option input[type="checkbox"],
+  .checkbox-option input[type="radio"],
+  .consent-field input[type="checkbox"] {
+    appearance: auto;
+    -webkit-appearance: auto;
+    padding: 0;
+    background: none;
+    border: none;
+  }
   .consent-field a { color: #fff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
   .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
   .form-submit {
@@ -1019,7 +1043,7 @@
         </div>
         <div class="form-row">
           <div class="field"><label for="mb-type">Membership class <span class="req">*</span></label>
-            <select id="mb-type" name="Membership Class" required>
+            <select id="mb-type" name="Membership Class" required onchange="setMembershipClass(this.value)">
               <option value="" disabled selected>Select&hellip;</option>
               <option>Support Member — individual</option>
               <option>Support Member — civil-society / non-profit organisation</option>
@@ -1029,7 +1053,10 @@
           </div>
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
-        <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional — what draws you to Custorian, or how you would like to contribute."></textarea></div>
+        <div class="callout" id="mb-governing-detail" style="display:none;">
+          <strong>About Governing Membership.</strong> Governing Members hold the voting rights of Custorian's General Assembly &mdash; the association's highest authority &mdash; including the vote that confirms the Board each term. Per the Governance Charter (Article III), this class is restricted to persons meeting the criteria set out in the association's statutes; platforms, entities certified under the standard, and entities seeking certification are not eligible for either membership class. A statutes amendment formally establishing Governing Membership is still pending adoption at the next general assembly, so until it passes, the Board reviews each application on its own facts rather than against a fixed checklist &mdash; tell us below why you believe you qualify.
+        </div>
+        <div class="field"><label for="mb-msg" id="mb-msg-label">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional — what draws you to Custorian, or how you would like to contribute."></textarea></div>
         <div class="field">
           <label class="consent-field">
             <input type="checkbox" name="Consent" value="Yes" required>
@@ -1349,6 +1376,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 document.querySelectorAll('.modal').forEach(function(m) {
+  if (m.id === 'reviewModal') return; // registration form: only the × button closes it, not a backdrop click
   m.addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
@@ -1396,6 +1424,20 @@ function setReviewCoI(hasConflict) {
   if (!hasConflict) textarea.value = '';
 }
 
+function setMembershipClass(value) {
+  var isGoverning = value.indexOf('Governing Member') === 0;
+  var detail = document.getElementById('mb-governing-detail');
+  var msgLabel = document.getElementById('mb-msg-label');
+  var msg = document.getElementById('mb-msg');
+  detail.style.display = isGoverning ? '' : 'none';
+  msgLabel.innerHTML = isGoverning
+    ? 'Why do you believe you\'re eligible? <span class="req">*</span>'
+    : 'Why do you want to join?';
+  msg.required = isGoverning;
+  msg.placeholder = isGoverning
+    ? 'Your basis for Governing Membership eligibility, and what you would bring to the vote.'
+    : 'Optional — what draws you to Custorian, or how you would like to contribute.';
+}
 function setReviewOrgType(isOther) {
   var field = document.getElementById('rv-org-other-field');
   var input = document.getElementById('rv-org-other');
