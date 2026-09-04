@@ -413,6 +413,20 @@
     opacity: 0.8;
     margin-bottom: 32px;
   }
+  .form-section {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8B5CF6;
+    margin: 36px 0 18px;
+    padding-top: 24px;
+    border-top: 1px solid #1f1f1f;
+  }
+  .form-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  .field-note { font-size: 12px; opacity: 0.5; margin-top: 8px; }
+  .word-count { font-size: 11px; opacity: 0.45; margin-top: 6px; text-align: right; }
+  .word-count.over { color: #f87171; opacity: 1; }
   .field { margin-bottom: 22px; text-align: left; }
   .field label {
     display: block;
@@ -456,9 +470,12 @@
   .field textarea::placeholder { color: #555; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .checkbox-row { display: flex; flex-direction: column; gap: 12px; }
-  .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: #fff; cursor: pointer; }
+  /* Higher specificity than ".field label" (which would otherwise shrink
+     these to 10px uppercase and force display:block, stacking the box
+     above its text) — these labels live inside a .field div too. */
+  .field .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; text-transform: none; letter-spacing: normal; color: #fff; opacity: 1; cursor: pointer; }
   .checkbox-option input[type="checkbox"], .checkbox-option input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
-  .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; line-height: 1.55; opacity: 0.75; cursor: pointer; }
+  .field .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; text-transform: none; letter-spacing: normal; line-height: 1.55; opacity: 0.75; cursor: pointer; }
   .consent-field input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: #8B5CF6; cursor: pointer; }
   .consent-field a { color: #fff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
   .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
@@ -1020,51 +1037,144 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div id="reviewFormWrap">
       <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
-      <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Contribute async through a written questionnaire, or live in a working-group session. Every piece of incorporated input is credited by name in the published standard.</p>
+      <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Every piece of incorporated input is credited by name in the published standard, unless you ask to remain anonymous.</p>
       <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-        <input type="hidden" name="subject" value="Custorian CDSW Standard: Review Sign-up">
+        <input type="hidden" name="subject" value="Custorian CDSW Standard: Peer Review Sign-up">
         <input type="hidden" name="from_name" value="Custorian Standard Review">
         <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="form-section">1. Reviewer profile</div>
         <div class="form-row">
-          <div class="field"><label for="rv-name">Your name <span class="req">*</span></label><input type="text" id="rv-name" name="Name" required placeholder="Full name"></div>
-          <div class="field"><label for="rv-email">Email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@example.org"></div>
+          <div class="field"><label for="rv-first">First name <span class="req">*</span></label><input type="text" id="rv-first" name="First Name" required maxlength="50" placeholder="First name"></div>
+          <div class="field"><label for="rv-last">Last name <span class="req">*</span></label><input type="text" id="rv-last" name="Last Name" required maxlength="50" placeholder="Last name"></div>
         </div>
-        <div class="field"><label for="rv-org">Organisation / affiliation</label><input type="text" id="rv-org" name="Organisation" placeholder="Where you work or what you represent"></div>
-        <div class="field"><label for="rv-field">Field <span class="req">*</span></label>
-          <select id="rv-field" name="Field" required>
-            <option value="" disabled selected>Select&hellip;</option>
-            <option>Child rights</option><option>Online safety</option><option>Platform policy</option><option>Law &amp; regulation</option><option>Academic research</option><option>Other</option>
-          </select></div>
-        <div class="field"><label>Preferred format</label>
-          <div class="checkbox-row">
-            <label class="checkbox-option"><input type="checkbox" name="Async questionnaire" value="Yes">Async written questionnaire</label>
-            <label class="checkbox-option"><input type="checkbox" name="Live working-group session" value="Yes">Live working-group session</label>
+        <div class="field"><label for="rv-email">Professional email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@institution.org">
+          <div class="field-note">A corporate, institutional, or academic domain is required for identity verification.</div>
+        </div>
+        <div class="field"><label for="rv-org">Current affiliation / entity <span class="req">*</span></label><input type="text" id="rv-org" name="Organisation" required placeholder="Organisation, university, NGO, regulator, or &ldquo;Independent Expert&rdquo;"></div>
+        <div class="field"><label for="rv-title">Job title / functional role <span class="req">*</span></label><input type="text" id="rv-title" name="Job Title" required placeholder="Current position relevant to digital safety, policy, engineering, or research"></div>
+        <div class="form-row">
+          <div class="field"><label for="rv-country">Jurisdiction / primary country <span class="req">*</span></label>
+            <select id="rv-country" name="Jurisdiction" required>
+              <option value="" disabled selected>Select&hellip;</option>
+            </select>
           </div>
-          <div style="font-size:12px; opacity:0.5; margin-top:8px;">Pick either, or both. We will follow up with whichever you choose.</div>
+          <div class="field"><label for="rv-verify">Verification link <span class="req">*</span></label><input type="url" id="rv-verify" name="Verification Link" required placeholder="LinkedIn, faculty page, or bio page"></div>
         </div>
-        <div class="field"><label for="rv-msg">Anything we should know?</label><textarea id="rv-msg" name="Message" placeholder="Optional. Your background, or which domains you would want to review."></textarea></div>
+
+        <div class="form-section">2. CDSW domain mapping</div>
+        <div class="field"><label>Primary CDSW review domains <span class="req">*</span></label>
+          <div class="checkbox-row" id="rv-domains">
+            <label class="checkbox-option"><input type="checkbox" value="Age Assurance &amp; Verification Controls">Age Assurance &amp; Verification Controls</label>
+            <label class="checkbox-option"><input type="checkbox" value="Content Safety &amp; CSAE Detection Frameworks">Content Safety &amp; CSAE Detection Frameworks</label>
+            <label class="checkbox-option"><input type="checkbox" value="On-Device Safety Tech &amp; Local Edge Privacy">On-Device Safety Tech &amp; Local Edge Privacy</label>
+            <label class="checkbox-option"><input type="checkbox" value="Behavioral Analysis &amp; Grooming Dynamics">Behavioral Analysis &amp; Grooming Dynamics</label>
+            <label class="checkbox-option"><input type="checkbox" value="Clinician-Authored Digital Interventions">Clinician-Authored Digital Interventions</label>
+            <label class="checkbox-option"><input type="checkbox" value="Algorithmic Safety &amp; Recommender Systems">Algorithmic Safety &amp; Recommender Systems</label>
+            <label class="checkbox-option"><input type="checkbox" value="Regulatory Alignment (DSA, GDPR, AI Act, AVMSD)">Regulatory Alignment (DSA, GDPR, AI Act, AVMSD)</label>
+            <label class="checkbox-option"><input type="checkbox" value="Conformity Assessment &amp; ISO/IEC 17065 Testability">Conformity Assessment &amp; ISO/IEC 17065 Testability</label>
+            <label class="checkbox-option"><input type="checkbox" value="Dark Patterns &amp; Choice Architecture">Dark Patterns &amp; Choice Architecture</label>
+            <label class="checkbox-option"><input type="checkbox" value="Data Minimization &amp; Encryption Safeguards">Data Minimization &amp; Encryption Safeguards</label>
+          </div>
+          <div class="field-note">Select all domains you are qualified to review. At least one is required.</div>
+          <input type="hidden" id="rv-domains-value" name="Review Domains">
+        </div>
+        <div class="field"><label>Platform scope expertise</label>
+          <div class="checkbox-row" id="rv-platforms">
+            <label class="checkbox-option"><input type="checkbox" value="Social Media &amp; UGC">Social Media &amp; UGC</label>
+            <label class="checkbox-option"><input type="checkbox" value="Encrypted &amp; Open Direct Messaging / Chat">Encrypted &amp; Open Direct Messaging / Chat</label>
+            <label class="checkbox-option"><input type="checkbox" value="Online Gaming &amp; Virtual Communities">Online Gaming &amp; Virtual Communities</label>
+            <label class="checkbox-option"><input type="checkbox" value="EdTech &amp; Learning Environments">EdTech &amp; Learning Environments</label>
+            <label class="checkbox-option"><input type="checkbox" value="Content Streaming &amp; Media">Content Streaming &amp; Media</label>
+            <label class="checkbox-option"><input type="checkbox" value="Immersive / XR / Spatial Platforms">Immersive / XR / Spatial Platforms</label>
+          </div>
+          <div class="field-note">Optional. Platform categories relevant to your evaluation background.</div>
+          <input type="hidden" id="rv-platforms-value" name="Platform Scope">
+        </div>
+
+        <div class="form-section">3. Review capacity &amp; format</div>
+        <div class="field"><label>Review method preference <span class="req">*</span></label>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Structured Assessment Form" required>Structured Assessment Form &mdash; submit line-by-line feedback via web form</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Repository / Markdown Review">Repository / Markdown Review &mdash; review and comment on GitHub/GitLab drafts</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Working Group Roundtables">Working Group Roundtables &mdash; participate in virtual peer-review calls</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="rv-capacity">Estimated review capacity <span class="req">*</span></label>
+            <select id="rv-capacity" name="Review Capacity" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Ad-hoc / Section-specific (&lt;1 hour total)</option>
+              <option>1&ndash;3 hours total (Targeted Domain Review)</option>
+              <option>3&ndash;5 hours total (Comprehensive Section Review)</option>
+              <option>Deep-dive Reviewer (Full Framework Audit)</option>
+            </select>
+          </div>
+          <div class="field"><label for="rv-availability">Availability window <span class="req">*</span></label>
+            <select id="rv-availability" name="Availability" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Immediate (Final draft phase)</option>
+              <option>Next 14 Days</option>
+              <option>Next 30 Days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">4. Qualifications &amp; attribution</div>
+        <div class="field"><label for="rv-qual">Statement of qualification <span class="req">*</span></label>
+          <textarea id="rv-qual" name="Qualification Statement" required placeholder="Summarise your direct experience in child safety, standards policy, or safety engineering."></textarea>
+          <div class="word-count" id="rv-qual-count">0 / 150 words</div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="rv-cv">CV</label><input type="url" id="rv-cv" name="CV Link" placeholder="Link (optional)"></div>
+          <div class="field"><label for="rv-portfolio">Portfolio</label><input type="url" id="rv-portfolio" name="Portfolio Link" placeholder="Link (optional)"></div>
+        </div>
+        <div class="field"><label for="rv-pub">Publication</label><input type="url" id="rv-pub" name="Publication Link" placeholder="Link (optional)"></div>
+        <div class="field"><label>Peer review acknowledgments <span class="req">*</span></label>
+          <div class="field-note" style="margin:0 0 10px;">Would you like your name and affiliation listed in the official CDSW Standard Contributor Acknowledgments?</div>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Public Attribution" value="Yes (Public Attribution)" required>Yes (Public Attribution)</label>
+            <label class="checkbox-option"><input type="radio" name="Public Attribution" value="No (Anonymous Peer Reviewer)">No (Anonymous Peer Reviewer)</label>
+          </div>
+        </div>
+
+        <div class="form-section">5. Governance &amp; disclosures</div>
+        <div class="field"><label>Conflict of interest (CoI) <span class="req">*</span></label>
+          <div class="field-note" style="margin:0 0 10px;">Do you hold employment, financial, or consulting ties with commercial platforms that could impact objective review of these controls?</div>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Conflict of Interest" value="Yes" required onchange="setReviewCoI(true)">Yes</label>
+            <label class="checkbox-option"><input type="radio" name="Conflict of Interest" value="No" onchange="setReviewCoI(false)">No</label>
+          </div>
+        </div>
+        <div class="field" id="rv-coi-details-field" style="display:none;"><label for="rv-coi-details">CoI disclosure details</label><textarea id="rv-coi-details" name="CoI Details" placeholder="Brief details of the affiliation, for independent governance review."></textarea></div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="NDA Agreement" value="Yes" required>
+            <span>I agree to keep unreleased draft controls confidential prior to public launch, and acknowledge that Foreningen Custorian retains sole authority over final standard publishing.</span>
+          </label>
+        </div>
         <div class="field">
           <label class="consent-field">
             <input type="checkbox" name="Consent" value="Yes" required>
-            <span>I agree that Custorian may hold and process this information under GDPR to run the standard review process and follow up with me about it. It is never sold or shared with third parties, and is deleted once the review process concludes. By taking part, I understand review input may be credited by name in the published standard unless I ask otherwise. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+            <span>I consent to Foreningen Custorian storing and processing my information strictly for the management of the CDSW Open Standard Peer Review Process under EU GDPR. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
           </label>
         </div>
-        <button type="submit" class="form-submit">Request the outline</button>
+        <button type="submit" class="form-submit">Submit peer review application</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
     <div id="reviewFormSuccess" class="form-success" style="display:none;">
       <div class="tick">&#10003;</div>
       <h3>Thank you.</h3>
-      <p>We have received your interest in reviewing the standard. We will follow up by email with the outline and next steps for your preferred format.</p>
+      <p>Your peer review application has been received. We verify identity and domain fit before assigning access &mdash; we will follow up by email with next steps for your preferred format.</p>
     </div>
   </div>
 </div>
 
 <footer>
   <div>Foreningen Custorian &middot; Odense &middot; 2026</div>
-  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#get-involved">Get Involved</a> &nbsp;&middot;&nbsp; <a href="membership.html">Membership</a> &nbsp;&middot;&nbsp; <a href="donation-agreement.html">Donation Agreement</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#get-involved">Get Involved</a> &nbsp;&middot;&nbsp; <a href="membership.html">Membership</a> &nbsp;&middot;&nbsp; <a href="governance.html">Governance</a> &nbsp;&middot;&nbsp; <a href="donation-agreement.html">Donation Agreement</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
 </footer>
 
 
@@ -1221,6 +1331,67 @@ function setGovBody(kind) {
     : '<option value="" disabled selected>Select&hellip;</option><option>Child rights</option><option>Legal</option><option>Technology &amp; security</option><option>Academic</option><option>Clinical</option><option>Law enforcement</option><option>Youth</option><option>Other</option>';
 }
 
+// Standard review form — jurisdiction dropdown, EU/EEA grouped first
+(function () {
+  var sel = document.getElementById('rv-country');
+  if (!sel) return;
+  var EU_EEA = ['Austria','Belgium','Bulgaria','Croatia','Cyprus','Czechia','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Iceland','Ireland','Italy','Latvia','Liechtenstein','Lithuania','Luxembourg','Malta','Netherlands','Norway','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden'];
+  var OTHER = ['Afghanistan','Albania','Algeria','Andorra','Angola','Antigua and Barbuda','Argentina','Armenia','Australia','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Republic of the)','Congo (Democratic Republic of the)','Costa Rica','Côte d’Ivoire','Cuba','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Eswatini','Ethiopia','Fiji','Gabon','Gambia','Georgia','Ghana','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti','Honduras','India','Indonesia','Iran','Iraq','Israel','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Lebanon','Lesotho','Liberia','Libya','Madagascar','Malawi','Malaysia','Maldives','Mali','Marshall Islands','Mauritania','Mauritius','Mexico','Micronesia','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nauru','Nepal','New Zealand','Nicaragua','Niger','Nigeria','North Korea','North Macedonia','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Qatar','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Solomon Islands','Somalia','South Africa','South Korea','South Sudan','Sri Lanka','Sudan','Suriname','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor-Leste','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States','Uruguay','Uzbekistan','Vanuatu','Vatican City','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe'];
+  function group(label, list) {
+    var og = document.createElement('optgroup');
+    og.label = label;
+    list.forEach(function (c) {
+      var o = document.createElement('option');
+      o.textContent = c;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  }
+  group('EU / EEA', EU_EEA);
+  group('Other', OTHER);
+})();
+
+function setReviewCoI(hasConflict) {
+  var field = document.getElementById('rv-coi-details-field');
+  var textarea = document.getElementById('rv-coi-details');
+  field.style.display = hasConflict ? '' : 'none';
+  textarea.required = hasConflict;
+  if (!hasConflict) textarea.value = '';
+}
+
+// Qualification statement — 150-word soft limit, matches the intake spec
+(function () {
+  var ta = document.getElementById('rv-qual');
+  var count = document.getElementById('rv-qual-count');
+  if (!ta || !count) return;
+  ta.addEventListener('input', function () {
+    var words = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+    count.textContent = words + ' / 150 words';
+    count.classList.toggle('over', words > 150);
+  });
+})();
+
+function reviewCheckedValues(containerId) {
+  return Array.prototype.slice.call(document.querySelectorAll('#' + containerId + ' input:checked')).map(function (el) { return el.value; });
+}
+
+// Keep the hidden Domains/Platform Scope fields in sync on every checkbox
+// toggle (not just at submit) so the value is correct regardless of which
+// submit listener — the Web3Forms handler or the Supabase mirror — runs
+// first; the two are registered in separate <script> blocks and their
+// relative order shouldn't be load-bearing.
+(function () {
+  var domains = document.getElementById('rv-domains');
+  var platforms = document.getElementById('rv-platforms');
+  if (!domains || !platforms) return;
+  function sync() {
+    document.getElementById('rv-domains-value').value = reviewCheckedValues('rv-domains').join(', ');
+    document.getElementById('rv-platforms-value').value = reviewCheckedValues('rv-platforms').join(', ');
+  }
+  domains.addEventListener('change', sync);
+  platforms.addEventListener('change', sync);
+})();
+
 var frameworks = {
   dsa: {
     label: 'EU · Regulation 2022/2065',
@@ -1344,7 +1515,7 @@ function openFramework(key) {
 <!-- Advisory EOI + Membership — AJAX submit to Web3Forms, inline success -->
 <script>
 (function () {
-  ['advisoryForm','membershipForm','reviewForm'].forEach(function (fid) {
+  ['advisoryForm','membershipForm'].forEach(function (fid) {
     var form = document.getElementById(fid);
     if (!form) return;
     var wrap = document.getElementById(fid + 'Wrap');
@@ -1364,6 +1535,38 @@ function openFramework(key) {
         })
         .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
     });
+  });
+})();
+</script>
+
+<!-- Standard Review sign-up — own handler: enforces "at least one domain"
+     before the shared Web3Forms AJAX submit (hidden Domains/Platform Scope
+     fields are kept in sync on every checkbox change, above). -->
+<script>
+(function () {
+  var form = document.getElementById('reviewForm');
+  if (!form) return;
+  var wrap = document.getElementById('reviewFormWrap');
+  var success = document.getElementById('reviewFormSuccess');
+  var btn = form.querySelector('.form-submit');
+  var status = form.querySelector('.form-status');
+  var label = btn ? btn.textContent : 'Send';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!reviewCheckedValues('rv-domains').length) {
+      status.className = 'form-status err';
+      status.textContent = 'Select at least one CDSW review domain.';
+      return;
+    }
+    status.className = 'form-status'; status.textContent = '';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.success) { wrap.style.display = 'none'; success.style.display = 'block'; }
+        else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
+      })
+      .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
   });
 })();
 </script>
@@ -1390,8 +1593,13 @@ function openFramework(key) {
     } catch (e) {}
   }
   function val(form, name) {
-    var el = form.querySelector('[name="' + name + '"]');
-    return el && el.value ? el.value : null;
+    var els = form.querySelectorAll('[name="' + name + '"]');
+    if (!els.length) return null;
+    if (els.length > 1 || els[0].type === 'radio' || els[0].type === 'checkbox') {
+      var checked = form.querySelector('[name="' + name + '"]:checked');
+      return checked ? checked.value : null;
+    }
+    return els[0].value || null;
   }
   var pilot = document.getElementById('pilotForm');
   if (pilot) {
@@ -1427,16 +1635,32 @@ function openFramework(key) {
   var review = document.getElementById('reviewForm');
   if (review) {
     review.addEventListener('submit', function () {
-      var modes = [];
-      if (review.querySelector('[name="Async questionnaire"]').checked) modes.push('Async questionnaire');
-      if (review.querySelector('[name="Live working-group session"]').checked) modes.push('Live working-group session');
+      var domains = val(review, 'Review Domains') || '';
+      if (!domains) return; // blocked by the "select at least one domain" check — nothing was actually sent
+      var name = [val(review, 'First Name'), val(review, 'Last Name')].filter(Boolean).join(' ');
       insert('governance_applications', {
         body: 'Standard Review',
-        name: val(review, 'Name'),
+        name: name,
         email: val(review, 'Email'),
         organisation: val(review, 'Organisation'),
-        expertise: val(review, 'Field'),
-        message: modes.join(' + ') + (val(review, 'Message') ? '. ' + val(review, 'Message') : ''),
+        expertise: domains,
+        profile_url: val(review, 'Verification Link'),
+        message: val(review, 'Qualification Statement'),
+        details: {
+          job_title: val(review, 'Job Title'),
+          jurisdiction: val(review, 'Jurisdiction'),
+          review_domains: domains ? domains.split(', ') : [],
+          platform_scope: (val(review, 'Platform Scope') || '').split(', ').filter(Boolean),
+          review_method: val(review, 'Review Method'),
+          review_capacity: val(review, 'Review Capacity'),
+          availability: val(review, 'Availability'),
+          cv_link: val(review, 'CV Link'),
+          portfolio_link: val(review, 'Portfolio Link'),
+          publication_link: val(review, 'Publication Link'),
+          public_attribution: val(review, 'Public Attribution'),
+          conflict_of_interest: val(review, 'Conflict of Interest'),
+          coi_details: val(review, 'CoI Details')
+        },
         source: 'org_website'
       });
     }, true);
