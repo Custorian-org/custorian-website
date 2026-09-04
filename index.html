@@ -1007,7 +1007,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div id="membershipFormWrap">
       <h2 class="modal-title" id="membershipTitle">Become a member.</h2>
-      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). Members support an open, independent child-safety standard, may attend the general assembly, and can stand for election to the Board. Membership is admitted by the Board. Tell us a little about you and we will follow up with details, including membership terms.</p>
+      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455) with two membership classes. <strong>Support Members</strong> are individuals and civil-society organisations who back the mission; support membership carries no governing vote. <strong>Governing Members</strong> hold the voting rights of the general assembly and confirm the Board; admission to this class is restricted to those meeting the criteria set out in the association's statutes. This form covers both &mdash; tell us which you're applying for and we will follow up with details, including membership terms.</p>
       <form id="membershipForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian Membership — Enquiry">
@@ -1018,11 +1018,15 @@
           <div class="field"><label for="mb-email">Email <span class="req">*</span></label><input type="email" id="mb-email" name="Email" required placeholder="you@example.org"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="mb-type">Membership type <span class="req">*</span></label>
-            <select id="mb-type" name="Member type" required>
+          <div class="field"><label for="mb-type">Membership class <span class="req">*</span></label>
+            <select id="mb-type" name="Membership Class" required>
               <option value="" disabled selected>Select&hellip;</option>
-              <option>Individual</option><option>Organisation / civil society</option><option>Academic / researcher</option><option>Student / youth</option><option>Other</option>
-            </select></div>
+              <option>Support Member — individual</option>
+              <option>Support Member — civil-society / non-profit organisation</option>
+              <option>Governing Member (eligibility confirmed by the Board)</option>
+            </select>
+            <div class="field-note">Not sure which applies to you? Select Support Member &mdash; we'll confirm the right class with you directly.</div>
+          </div>
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
         <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional — what draws you to Custorian, or how you would like to contribute."></textarea></div>
