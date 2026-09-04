@@ -809,6 +809,18 @@
   .cta-band .pilot-cta.two-part:hover { transform: translateY(-2px); }
   .cta-band .pilot-cta.two-part:hover .chip { transform: translateX(3px); }
   .cta-band .pilot-cta.two-part:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
+
+  /* REVIEW MODAL — light background override (dark-on-black form was hard to read) */
+  #reviewModal .modal-card { background: #fff; border-color: #e5e5e5; color: #111; }
+  #reviewModal .modal-close { color: #111; }
+  #reviewModal .modal-title { color: #111; }
+  #reviewModal .form-section { border-top-color: #e5e5e5; }
+  #reviewModal .field input,
+  #reviewModal .field select,
+  #reviewModal .field textarea { background: #f7f7f7; border-color: #d9d9d9; color: #111; }
+  #reviewModal .field .checkbox-option { color: #111; }
+  #reviewModal .consent-field a { color: #8B5CF6; }
+  #reviewModal .form-success .next { border-top-color: #e5e5e5; }
 </style>
 </head>
 <body>
@@ -1038,7 +1050,7 @@
     <div id="reviewFormWrap">
       <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
       <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Every piece of incorporated input is credited by name in the published standard, unless you ask to remain anonymous.</p>
-      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian CDSW Standard: Peer Review Sign-up">
         <input type="hidden" name="from_name" value="Custorian Standard Review">
@@ -1127,7 +1139,9 @@
           <div class="word-count" id="rv-qual-count">0 / 150 words</div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="rv-cv">CV</label><input type="url" id="rv-cv" name="CV Link" placeholder="Link (optional)"></div>
+          <div class="field"><label for="rv-cv">CV</label><input type="file" id="rv-cv" name="CV Attachment" accept=".pdf,.doc,.docx">
+            <div class="field-note">Optional. PDF or Word document, up to 5MB.</div>
+          </div>
           <div class="field"><label for="rv-portfolio">Portfolio</label><input type="url" id="rv-portfolio" name="Portfolio Link" placeholder="Link (optional)"></div>
         </div>
         <div class="field"><label for="rv-pub">Publication</label><input type="url" id="rv-pub" name="Publication Link" placeholder="Link (optional)"></div>
