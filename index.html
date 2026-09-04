@@ -352,6 +352,7 @@
   @media (max-width: 720px) {
     .split { grid-template-columns: 1fr; }
     .nav { padding: 16px; font-size: 10px; letter-spacing: 0.25em; }
+    .nav-review-link { display: none; }
     .frameworks ul { gap: 20px 32px; }
   }
 
@@ -888,7 +889,10 @@
     <rect class="inner i3" x="71"  y="103" width="26" height="26"/>
     <rect class="inner i4" x="103" y="103" width="26" height="26"/>
   </svg>
-  <span>EST · 2026 · ODENSE</span>
+  <div style="display:flex; align-items:center; gap:28px;">
+    <a href="#" class="nav-review-link" onclick="openModal('reviewModal', event)" style="color:inherit; text-decoration:none; cursor:pointer;">Call for CDSW Expert Review</a>
+    <span>EST · 2026 · ODENSE</span>
+  </div>
 </div>
 
 <section class="hero">
