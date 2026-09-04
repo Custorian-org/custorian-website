@@ -1064,7 +1064,19 @@
         <div class="field"><label for="rv-email">Professional email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@institution.org">
           <div class="field-note">A corporate, institutional, or academic domain is required for identity verification.</div>
         </div>
-        <div class="field"><label for="rv-org">Current affiliation / entity <span class="req">*</span></label><input type="text" id="rv-org" name="Organisation" required placeholder="Organisation, university, NGO, regulator, or &ldquo;Independent Expert&rdquo;"></div>
+        <div class="field"><label for="rv-org-type">Current affiliation / entity <span class="req">*</span></label>
+          <select id="rv-org-type" name="Organisation Type" required onchange="setReviewOrgType(this.value === 'Other')">
+            <option value="" disabled selected>Select&hellip;</option>
+            <option>Organisation / civil society</option>
+            <option>University / academic institution</option>
+            <option>NGO / non-profit</option>
+            <option>Regulator / government body</option>
+            <option>Corporate / industry</option>
+            <option>Independent Expert</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field" id="rv-org-other-field" style="display:none;"><label for="rv-org-other">Please specify</label><input type="text" id="rv-org-other" name="Organisation Other" placeholder="Name your organisation, institution, or entity"></div>
         <div class="field"><label for="rv-title">Job title / functional role <span class="req">*</span></label><input type="text" id="rv-title" name="Job Title" required placeholder="Current position relevant to digital safety, policy, engineering, or research"></div>
         <div class="form-row">
           <div class="field"><label for="rv-country">Jurisdiction / primary country <span class="req">*</span></label>
@@ -1078,35 +1090,35 @@
         <div class="form-section">2. CDSW domain mapping</div>
         <div class="field"><label>Primary CDSW review domains <span class="req">*</span></label>
           <div class="checkbox-row" id="rv-domains">
-            <label class="checkbox-option"><input type="checkbox" value="D1 GOV — Governance &amp; Accountability">D1 GOV &mdash; Governance &amp; Accountability</label>
-            <label class="checkbox-option"><input type="checkbox" value="D2 AGE — Age Assurance &amp; Access">D2 AGE &mdash; Age Assurance &amp; Access</label>
-            <label class="checkbox-option"><input type="checkbox" value="D3 DAT — Data Protection &amp; Privacy">D3 DAT &mdash; Data Protection &amp; Privacy</label>
-            <label class="checkbox-option"><input type="checkbox" value="D4 CON — Content Safety">D4 CON &mdash; Content Safety</label>
-            <label class="checkbox-option"><input type="checkbox" value="D5 CSE — CSAE (Abuse &amp; Exploitation)">D5 CSE &mdash; CSAE (Abuse &amp; Exploitation)</label>
-            <label class="checkbox-option"><input type="checkbox" value="D6 AIS — AI &amp; Algorithmic Safety">D6 AIS &mdash; AI &amp; Algorithmic Safety</label>
-            <label class="checkbox-option"><input type="checkbox" value="D7 DES — Design, Advertising &amp; Commercial Practice">D7 DES &mdash; Design, Advertising &amp; Commercial Practice</label>
-            <label class="checkbox-option"><input type="checkbox" value="D8 RED — Reporting, Complaints &amp; Redress">D8 RED &mdash; Reporting, Complaints &amp; Redress</label>
-            <label class="checkbox-option"><input type="checkbox" value="D9 EMP — Empowerment, Autonomy &amp; Wellbeing">D9 EMP &mdash; Empowerment, Autonomy &amp; Wellbeing</label>
-            <label class="checkbox-option"><input type="checkbox" value="D10 DEV — Device &amp; IoT (optional module)">D10 DEV &mdash; Device &amp; IoT (optional module)</label>
+            <label class="checkbox-option"><input type="checkbox" value="Governance &amp; Accountability">Governance &amp; Accountability</label>
+            <label class="checkbox-option"><input type="checkbox" value="Age Assurance &amp; Access">Age Assurance &amp; Access</label>
+            <label class="checkbox-option"><input type="checkbox" value="Data Protection &amp; Privacy">Data Protection &amp; Privacy</label>
+            <label class="checkbox-option"><input type="checkbox" value="Content Safety">Content Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="CSAE (Abuse &amp; Exploitation)">CSAE (Abuse &amp; Exploitation)</label>
+            <label class="checkbox-option"><input type="checkbox" value="AI &amp; Algorithmic Safety">AI &amp; Algorithmic Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="Design, Advertising &amp; Commercial Practice">Design, Advertising &amp; Commercial Practice</label>
+            <label class="checkbox-option"><input type="checkbox" value="Reporting, Complaints &amp; Redress">Reporting, Complaints &amp; Redress</label>
+            <label class="checkbox-option"><input type="checkbox" value="Empowerment, Autonomy &amp; Wellbeing">Empowerment, Autonomy &amp; Wellbeing</label>
+            <label class="checkbox-option"><input type="checkbox" value="Device &amp; IoT">Device &amp; IoT</label>
           </div>
-          <div class="field-note">The ten CDSW v0.2 control domains (Annex A). Select all you are qualified to review. At least one is required.</div>
+          <div class="field-note">The ten CDSW v0.2 control domains. Select all you are qualified to review. At least one is required.</div>
           <input type="hidden" id="rv-domains-value" name="Review Domains">
         </div>
         <div class="field"><label>Platform scope expertise</label>
           <div class="checkbox-row" id="rv-platforms">
-            <label class="checkbox-option"><input type="checkbox" value="SOC — Social / User-Generated Content">SOC &mdash; Social / User-Generated Content</label>
-            <label class="checkbox-option"><input type="checkbox" value="MSG — Messaging">MSG &mdash; Messaging</label>
-            <label class="checkbox-option"><input type="checkbox" value="GAM — Gaming">GAM &mdash; Gaming</label>
-            <label class="checkbox-option"><input type="checkbox" value="LIV — Live streaming">LIV &mdash; Live streaming</label>
-            <label class="checkbox-option"><input type="checkbox" value="AIC — AI companion / Generative-AI">AIC &mdash; AI companion / Generative-AI</label>
-            <label class="checkbox-option"><input type="checkbox" value="APP — App store / distribution">APP &mdash; App store / distribution</label>
-            <label class="checkbox-option"><input type="checkbox" value="EDU — EdTech">EDU &mdash; EdTech</label>
-            <label class="checkbox-option"><input type="checkbox" value="MKT — Marketplace">MKT &mdash; Marketplace</label>
-            <label class="checkbox-option"><input type="checkbox" value="IMM — Immersive / Metaverse">IMM &mdash; Immersive / Metaverse</label>
-            <label class="checkbox-option"><input type="checkbox" value="SRCH — Search &amp; discovery">SRCH &mdash; Search &amp; discovery</label>
-            <label class="checkbox-option"><input type="checkbox" value="HYB — Hybrid">HYB &mdash; Hybrid</label>
+            <label class="checkbox-option"><input type="checkbox" value="Social / User-Generated Content">Social / User-Generated Content</label>
+            <label class="checkbox-option"><input type="checkbox" value="Messaging">Messaging</label>
+            <label class="checkbox-option"><input type="checkbox" value="Gaming">Gaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="Live streaming">Live streaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="AI companion / Generative-AI">AI companion / Generative-AI</label>
+            <label class="checkbox-option"><input type="checkbox" value="App store / distribution">App store / distribution</label>
+            <label class="checkbox-option"><input type="checkbox" value="EdTech">EdTech</label>
+            <label class="checkbox-option"><input type="checkbox" value="Marketplace">Marketplace</label>
+            <label class="checkbox-option"><input type="checkbox" value="Immersive / Metaverse">Immersive / Metaverse</label>
+            <label class="checkbox-option"><input type="checkbox" value="Search &amp; discovery">Search &amp; discovery</label>
+            <label class="checkbox-option"><input type="checkbox" value="Hybrid">Hybrid</label>
           </div>
-          <div class="field-note">Optional. The eleven CDSW v0.2 platform profiles (Annex B) relevant to your evaluation background.</div>
+          <div class="field-note">Optional. The eleven CDSW v0.2 platform profiles relevant to your evaluation background.</div>
           <input type="hidden" id="rv-platforms-value" name="Platform Scope">
         </div>
 
@@ -1169,12 +1181,6 @@
           </div>
         </div>
         <div class="field" id="rv-coi-details-field" style="display:none;"><label for="rv-coi-details">CoI disclosure details</label><textarea id="rv-coi-details" name="CoI Details" placeholder="Brief details of the affiliation, for independent governance review."></textarea></div>
-        <div class="field">
-          <label class="consent-field">
-            <input type="checkbox" name="NDA Agreement" value="Yes" required>
-            <span>I agree to keep unreleased draft controls confidential prior to public launch, and acknowledge that Foreningen Custorian retains sole authority over final standard publishing.</span>
-          </label>
-        </div>
         <div class="field">
           <label class="consent-field">
             <input type="checkbox" name="Consent" value="Yes" required>
@@ -1378,6 +1384,14 @@ function setReviewCoI(hasConflict) {
   field.style.display = hasConflict ? '' : 'none';
   textarea.required = hasConflict;
   if (!hasConflict) textarea.value = '';
+}
+
+function setReviewOrgType(isOther) {
+  var field = document.getElementById('rv-org-other-field');
+  var input = document.getElementById('rv-org-other');
+  field.style.display = isOther ? '' : 'none';
+  input.required = isOther;
+  if (!isOther) input.value = '';
 }
 
 // Qualification statement — 150-word soft limit, matches the intake spec
@@ -1663,15 +1677,18 @@ function openFramework(key) {
       var domains = val(review, 'Review Domains') || '';
       if (!domains) return; // blocked by the "select at least one domain" check — nothing was actually sent
       var name = [val(review, 'First Name'), val(review, 'Last Name')].filter(Boolean).join(' ');
+      var orgType = val(review, 'Organisation Type');
       insert('governance_applications', {
         body: 'Standard Review',
         name: name,
         email: val(review, 'Email'),
-        organisation: val(review, 'Organisation'),
+        organisation: orgType === 'Other' ? val(review, 'Organisation Other') : orgType,
         expertise: domains,
         profile_url: val(review, 'Verification Link'),
         message: val(review, 'Qualification Statement'),
         details: {
+          affiliation_type: orgType,
+          affiliation_other: val(review, 'Organisation Other'),
           job_title: val(review, 'Job Title'),
           jurisdiction: val(review, 'Jurisdiction'),
           review_domains: domains ? domains.split(', ') : [],
