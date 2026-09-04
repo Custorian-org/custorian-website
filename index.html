@@ -1099,7 +1099,7 @@
       <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
       <div class="callout"><strong>Deadline: 15 September 2026, 23:59 CET.</strong> Applications received after this time will not be considered for this review round.</div>
       <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Every piece of incorporated input is credited by name in the published standard, unless you ask to remain anonymous.</p>
-      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian CDSW Standard: Peer Review Sign-up">
         <input type="hidden" name="from_name" value="Custorian Standard Review">
@@ -1206,9 +1206,7 @@
           <div class="word-count" id="rv-qual-count">0 / 150 words</div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="rv-cv">CV</label><input type="file" id="rv-cv" name="CV Attachment" accept=".pdf,.doc,.docx">
-            <div class="field-note">Optional. PDF or Word document, up to 5MB. If upload doesn't work on your device, leave blank and email it to info@custorian.org instead.</div>
-          </div>
+          <div class="field"><label for="rv-cv">CV</label><input type="url" id="rv-cv" name="CV Link" placeholder="Link (optional)"></div>
           <div class="field"><label for="rv-portfolio">Portfolio</label><input type="url" id="rv-portfolio" name="Portfolio Link" placeholder="Link (optional)"></div>
         </div>
         <div class="field"><label for="rv-pub">Publication</label><input type="url" id="rv-pub" name="Publication Link" placeholder="Link (optional)"></div>
