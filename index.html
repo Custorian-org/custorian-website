@@ -1709,10 +1709,6 @@ function openFramework(key) {
     }
     return els[0].value || null;
   }
-  function fileName(form, name) {
-    var el = form.querySelector('[name="' + name + '"]');
-    return el && el.files && el.files[0] ? el.files[0].name : null;
-  }
   var pilot = document.getElementById('pilotForm');
   if (pilot) {
     pilot.addEventListener('submit', function () {
@@ -1769,7 +1765,7 @@ function openFramework(key) {
           review_method: val(review, 'Review Method'),
           review_capacity: val(review, 'Review Capacity'),
           availability: val(review, 'Availability'),
-          cv_filename: fileName(review, 'CV Attachment'),
+          cv_link: val(review, 'CV Link'),
           portfolio_link: val(review, 'Portfolio Link'),
           publication_link: val(review, 'Publication Link'),
           public_attribution: val(review, 'Public Attribution'),
