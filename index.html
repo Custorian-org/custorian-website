@@ -1078,30 +1078,35 @@
         <div class="form-section">2. CDSW domain mapping</div>
         <div class="field"><label>Primary CDSW review domains <span class="req">*</span></label>
           <div class="checkbox-row" id="rv-domains">
-            <label class="checkbox-option"><input type="checkbox" value="Age Assurance &amp; Verification Controls">Age Assurance &amp; Verification Controls</label>
-            <label class="checkbox-option"><input type="checkbox" value="Content Safety &amp; CSAE Detection Frameworks">Content Safety &amp; CSAE Detection Frameworks</label>
-            <label class="checkbox-option"><input type="checkbox" value="On-Device Safety Tech &amp; Local Edge Privacy">On-Device Safety Tech &amp; Local Edge Privacy</label>
-            <label class="checkbox-option"><input type="checkbox" value="Behavioral Analysis &amp; Grooming Dynamics">Behavioral Analysis &amp; Grooming Dynamics</label>
-            <label class="checkbox-option"><input type="checkbox" value="Clinician-Authored Digital Interventions">Clinician-Authored Digital Interventions</label>
-            <label class="checkbox-option"><input type="checkbox" value="Algorithmic Safety &amp; Recommender Systems">Algorithmic Safety &amp; Recommender Systems</label>
-            <label class="checkbox-option"><input type="checkbox" value="Regulatory Alignment (DSA, GDPR, AI Act, AVMSD)">Regulatory Alignment (DSA, GDPR, AI Act, AVMSD)</label>
-            <label class="checkbox-option"><input type="checkbox" value="Conformity Assessment &amp; ISO/IEC 17065 Testability">Conformity Assessment &amp; ISO/IEC 17065 Testability</label>
-            <label class="checkbox-option"><input type="checkbox" value="Dark Patterns &amp; Choice Architecture">Dark Patterns &amp; Choice Architecture</label>
-            <label class="checkbox-option"><input type="checkbox" value="Data Minimization &amp; Encryption Safeguards">Data Minimization &amp; Encryption Safeguards</label>
+            <label class="checkbox-option"><input type="checkbox" value="D1 GOV — Governance &amp; Accountability">D1 GOV &mdash; Governance &amp; Accountability</label>
+            <label class="checkbox-option"><input type="checkbox" value="D2 AGE — Age Assurance &amp; Access">D2 AGE &mdash; Age Assurance &amp; Access</label>
+            <label class="checkbox-option"><input type="checkbox" value="D3 DAT — Data Protection &amp; Privacy">D3 DAT &mdash; Data Protection &amp; Privacy</label>
+            <label class="checkbox-option"><input type="checkbox" value="D4 CON — Content Safety">D4 CON &mdash; Content Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="D5 CSE — CSAE (Abuse &amp; Exploitation)">D5 CSE &mdash; CSAE (Abuse &amp; Exploitation)</label>
+            <label class="checkbox-option"><input type="checkbox" value="D6 AIS — AI &amp; Algorithmic Safety">D6 AIS &mdash; AI &amp; Algorithmic Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="D7 DES — Design, Advertising &amp; Commercial Practice">D7 DES &mdash; Design, Advertising &amp; Commercial Practice</label>
+            <label class="checkbox-option"><input type="checkbox" value="D8 RED — Reporting, Complaints &amp; Redress">D8 RED &mdash; Reporting, Complaints &amp; Redress</label>
+            <label class="checkbox-option"><input type="checkbox" value="D9 EMP — Empowerment, Autonomy &amp; Wellbeing">D9 EMP &mdash; Empowerment, Autonomy &amp; Wellbeing</label>
+            <label class="checkbox-option"><input type="checkbox" value="D10 DEV — Device &amp; IoT (optional module)">D10 DEV &mdash; Device &amp; IoT (optional module)</label>
           </div>
-          <div class="field-note">Select all domains you are qualified to review. At least one is required.</div>
+          <div class="field-note">The ten CDSW v0.2 control domains (Annex A). Select all you are qualified to review. At least one is required.</div>
           <input type="hidden" id="rv-domains-value" name="Review Domains">
         </div>
         <div class="field"><label>Platform scope expertise</label>
           <div class="checkbox-row" id="rv-platforms">
-            <label class="checkbox-option"><input type="checkbox" value="Social Media &amp; UGC">Social Media &amp; UGC</label>
-            <label class="checkbox-option"><input type="checkbox" value="Encrypted &amp; Open Direct Messaging / Chat">Encrypted &amp; Open Direct Messaging / Chat</label>
-            <label class="checkbox-option"><input type="checkbox" value="Online Gaming &amp; Virtual Communities">Online Gaming &amp; Virtual Communities</label>
-            <label class="checkbox-option"><input type="checkbox" value="EdTech &amp; Learning Environments">EdTech &amp; Learning Environments</label>
-            <label class="checkbox-option"><input type="checkbox" value="Content Streaming &amp; Media">Content Streaming &amp; Media</label>
-            <label class="checkbox-option"><input type="checkbox" value="Immersive / XR / Spatial Platforms">Immersive / XR / Spatial Platforms</label>
+            <label class="checkbox-option"><input type="checkbox" value="SOC — Social / User-Generated Content">SOC &mdash; Social / User-Generated Content</label>
+            <label class="checkbox-option"><input type="checkbox" value="MSG — Messaging">MSG &mdash; Messaging</label>
+            <label class="checkbox-option"><input type="checkbox" value="GAM — Gaming">GAM &mdash; Gaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="LIV — Live streaming">LIV &mdash; Live streaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="AIC — AI companion / Generative-AI">AIC &mdash; AI companion / Generative-AI</label>
+            <label class="checkbox-option"><input type="checkbox" value="APP — App store / distribution">APP &mdash; App store / distribution</label>
+            <label class="checkbox-option"><input type="checkbox" value="EDU — EdTech">EDU &mdash; EdTech</label>
+            <label class="checkbox-option"><input type="checkbox" value="MKT — Marketplace">MKT &mdash; Marketplace</label>
+            <label class="checkbox-option"><input type="checkbox" value="IMM — Immersive / Metaverse">IMM &mdash; Immersive / Metaverse</label>
+            <label class="checkbox-option"><input type="checkbox" value="SRCH — Search &amp; discovery">SRCH &mdash; Search &amp; discovery</label>
+            <label class="checkbox-option"><input type="checkbox" value="HYB — Hybrid">HYB &mdash; Hybrid</label>
           </div>
-          <div class="field-note">Optional. Platform categories relevant to your evaluation background.</div>
+          <div class="field-note">Optional. The eleven CDSW v0.2 platform profiles (Annex B) relevant to your evaluation background.</div>
           <input type="hidden" id="rv-platforms-value" name="Platform Scope">
         </div>
 
@@ -1111,6 +1116,8 @@
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Structured Assessment Form" required>Structured Assessment Form &mdash; submit line-by-line feedback via web form</label>
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Repository / Markdown Review">Repository / Markdown Review &mdash; review and comment on GitHub/GitLab drafts</label>
             <label class="checkbox-option"><input type="radio" name="Review Method" value="Working Group Roundtables">Working Group Roundtables &mdash; participate in virtual peer-review calls</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Shared Draft Comments">Shared Draft Comments &mdash; inline comments directly on the working document</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="No strong preference">No strong preference &mdash; open to whichever format fits best</label>
           </div>
         </div>
         <div class="form-row">
