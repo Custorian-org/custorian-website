@@ -260,7 +260,7 @@ __TOC__
 __BODY__
 
   <footer>
-    Foreningen Custorian &middot; CVR 46399455 &middot; Odense, Denmark<br>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark<br>
     __VERSION__. This white paper is open for review and comment; the Custorian Standard (Draft EN v0.2) is the authoritative source, and where the two differ, the standard governs.<br>
     Read the standard: <a href="https://zenodo.org/records/19675375">zenodo.org/records/19675375</a> &middot; <a href="https://custorian.org">custorian.org</a>
   </footer>
