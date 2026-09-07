@@ -113,6 +113,21 @@
   ul.press li .head a { color: var(--ink); text-decoration: none; }
   ul.press li .head a:hover { color: var(--purple); }
 
+  /* MEMBERSHIP TIERS */
+  .tiers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin: 20px 0 10px; }
+  .tier { background: var(--paper); padding: 22px 22px 24px; }
+  .tier-name { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .tier-price { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .tier-price span { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; text-transform: none; }
+  .tier-who { font-size: 13px; color: var(--muted); margin-bottom: 18px; max-width: 34ch; }
+  .paybtn {
+    display: inline-block; background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 18px; border-radius: 2px;
+  }
+  .paybtn:hover { background: var(--purple); }
+  .note { font-size: 13px; color: var(--muted); margin-top: -4px; }
+
   footer {
     margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
     font-size: 11px; letter-spacing: 0.06em; color: var(--muted);
@@ -122,6 +137,7 @@
   @media (max-width: 640px) {
     .doc { padding: 40px 22px 64px; }
     .identity { grid-template-columns: 1fr; }
+    .tiers { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -219,12 +235,37 @@
     <strong>Why this page exists.</strong> Custorian asks platforms to prove their claims about children rather than assert them. We hold ourselves to the same test. Governance you cannot inspect is a marketing claim; governance you can inspect is a commitment.
   </div>
 
-  <h2>Membership &amp; support</h2>
-  <p>Foreningen Custorian has two membership classes. <strong>Support Members</strong> are individuals and civil-society or non-profit organisations who back an open, independent child-safety standard; support membership carries no governing vote and cannot be upgraded by paying more. <strong>Governing Members</strong> hold the voting rights of the general assembly and confirm the Board; admission to this class is restricted to those meeting the criteria set out in the association&rsquo;s statutes. Commercial platforms and companies are not eligible for either class: a platform that could be assessed under the standard cannot also sit inside the body that owns it.</p>
-  <p>Membership is admitted by the Board on request. To join, or to ask which class fits you, email <a href="mailto:info@custorian.org">info@custorian.org</a> or <a class="inline" href="index.html#get-involved">express interest here</a>.</p>
+  <h2 id="membership">Membership &amp; support</h2>
+  <p>Foreningen Custorian has two membership classes. <strong>Support Members</strong> are individuals and civil-society or non-profit organisations who back an open, independent child-safety standard; support membership carries no governing vote and cannot be upgraded by paying more. <strong>Governing Members</strong> hold the voting rights of the general assembly and confirm the Board; admission to this class is restricted to those meeting the criteria set out in the association&rsquo;s statutes, and is not yet open (see below). Commercial platforms and companies are not eligible for either class: a platform that could be assessed under the standard cannot also sit inside the body that owns it.</p>
 
-  <h2>Donations</h2>
-  <p>Custorian welcomes donations to fund its work independently of the platforms its standard assesses. Danish law (Indsamlingsloven) requires a public donation appeal to be registered with Indsamlingsnævnet before it can go live; that registration is in progress, so there is no donate button on this site yet; email <a href="mailto:info@custorian.org">info@custorian.org</a> for bank transfer details in the meantime. Donations are voluntary gifts, final and non-refundable, and are not currently tax-deductible in Denmark.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-name">Support Member &middot; Individual</div>
+      <div class="tier-price">&euro;10<span>&nbsp;/ year</span></div>
+      <div class="tier-who">Open to any individual.</div>
+      <a class="paybtn" href="https://buy.stripe.com/6oU6oB8VscEe4Jt4yx2Nq00" target="_blank" rel="noopener">Pay &amp; join &rarr;</a>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Support Member &middot; Organisation</div>
+      <div class="tier-price">&euro;110<span>&nbsp;/ year</span></div>
+      <div class="tier-who">Civil-society and non-profit organisations only.</div>
+      <a class="paybtn" href="https://buy.stripe.com/dRm8wJb3AbAagsbd532Nq01" target="_blank" rel="noopener">Pay &amp; join &rarr;</a>
+    </div>
+  </div>
+  <p class="note">Card payment via Stripe, billed annually. MobilePay is coming soon. Paying registers your Support Membership application; admission is confirmed by the Board under the association&rsquo;s statutes (&sect;3). Fees were set by the Board on 21 August 2026 (organisation fee revised 7 September 2026) and are pending formal ratification at the next general assembly.</p>
+  <p>Governing Member admission is not yet open: the class is described in the Governance Charter, but the statutes amendment setting its criteria is still pending ratification. Anyone seeking a governing role in the meantime should write to <a href="mailto:info@custorian.org">info@custorian.org</a>; the Board will consider it case by case.</p>
+
+  <div class="callout">
+    <strong>Cancelling a membership subscription.</strong> Dues are billed annually and can be cancelled at any time before the next renewal, with no cancellation fee, using the &ldquo;Manage subscription&rdquo; link in your Stripe payment receipt, or by writing to <a href="mailto:info@custorian.org">info@custorian.org</a> with the name and email used at payment (we confirm within two business days). Cancelling stops future renewals; it does not refund the period already paid for, and membership, including any voting rights attached to it, ends when that paid period expires.
+  </div>
+
+  <h2 id="donations">Donations</h2>
+  <p>Custorian is registered with Indsamlingsn&aelig;vnet (the Danish Fundraising Board) under &sect;3 of Indsamlingsloven to run a public donation appeal. This channel is for individual donations only: Custorian does not accept donations, grants or sponsorship here from any platform, company or organisation, in line with the Funding Policy below. Giving stays separate from influence, the same firewall that shapes membership.</p>
+  <p class="note">Card donation via Stripe and MobilePay are launching shortly. In the meantime, email <a href="mailto:info@custorian.org">info@custorian.org</a> for bank transfer details.</p>
+
+  <div class="callout">
+    <strong>Cancelling a recurring donation.</strong> If you set up a recurring donation, you can cancel at any time before the next payment, with no fee, using the &ldquo;Manage subscription&rdquo; link in your Stripe payment receipt, or by writing to <a href="mailto:info@custorian.org">info@custorian.org</a>; we confirm within two business days. Cancelling stops future payments only. All donations, one-time or an instalment already taken under a recurring donation, are voluntary gifts, final and non-refundable once received. Donations are not currently tax-deductible in Denmark.
+  </div>
 
   <h2>Policies</h2>
   <p>Custorian operates under a set of internal policies covering safeguarding, sensitive data handling, conflicts of interest, anti-fraud, data protection, communications neutrality, and funding eligibility. Full policy text is available on request. Write to <a href="mailto:info@custorian.org">info@custorian.org</a>.</p>
