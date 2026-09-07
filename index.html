@@ -1050,7 +1050,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div id="membershipFormWrap">
       <h2 class="modal-title" id="membershipTitle">Become a member.</h2>
-      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455) with two membership classes. <strong>Support Members</strong> are individuals and civil-society organisations who back the mission; support membership carries no governing vote. <strong>Governing Members</strong> hold the voting rights of the general assembly and confirm the Board; admission to this class is restricted to those meeting the criteria set out in the association's statutes. This form covers both. Tell us which you're applying for and we will follow up with details, including membership terms.</p>
+      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). <strong>Support Members</strong> are individuals and civil-society organisations who back the mission. Tell us which applies to you and we will follow up with details, including membership terms.</p>
       <form id="membershipForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian Membership: Enquiry">
@@ -1062,20 +1062,15 @@
         </div>
         <div class="form-row">
           <div class="field"><label for="mb-type">Membership class <span class="req">*</span></label>
-            <select id="mb-type" name="Membership Class" required onchange="setMembershipClass(this.value)">
+            <select id="mb-type" name="Membership Class" required>
               <option value="" disabled selected>Select&hellip;</option>
               <option>Support Member: individual</option>
               <option>Support Member: civil-society / non-profit organisation</option>
-              <option>Governing Member (eligibility confirmed by the Board)</option>
             </select>
-            <div class="field-note">Not sure which applies to you? Select Support Member. We'll confirm the right class with you directly.</div>
           </div>
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
-        <div class="callout" id="mb-governing-detail" style="display:none;">
-          <strong>About Governing Membership.</strong> Governing Members hold the voting rights of Custorian's General Assembly (the association's highest authority), including the vote that confirms the Board each term. Per the Governance Charter (Article III), this class is restricted to persons meeting the criteria set out in the association's statutes; platforms, entities certified under the standard, and entities seeking certification are not eligible for either membership class. A statutes amendment formally establishing Governing Membership is still pending adoption at the next general assembly, so until it passes, the Board reviews each application on its own facts rather than against a fixed checklist. Tell us below why you believe you qualify.
-        </div>
-        <div class="field"><label for="mb-msg" id="mb-msg-label">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional: what draws you to Custorian, or how you would like to contribute."></textarea></div>
+        <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional: what draws you to Custorian, or how you would like to contribute."></textarea></div>
         <div class="field">
           <label class="consent-field">
             <input type="checkbox" name="Consent" value="Yes" required>
@@ -1441,20 +1436,6 @@ function setReviewCoI(hasConflict) {
   if (!hasConflict) textarea.value = '';
 }
 
-function setMembershipClass(value) {
-  var isGoverning = value.indexOf('Governing Member') === 0;
-  var detail = document.getElementById('mb-governing-detail');
-  var msgLabel = document.getElementById('mb-msg-label');
-  var msg = document.getElementById('mb-msg');
-  detail.style.display = isGoverning ? '' : 'none';
-  msgLabel.innerHTML = isGoverning
-    ? 'Why do you believe you\'re eligible? <span class="req">*</span>'
-    : 'Why do you want to join?';
-  msg.required = isGoverning;
-  msg.placeholder = isGoverning
-    ? 'Your basis for Governing Membership eligibility, and what you would bring to the vote.'
-    : 'Optional: what draws you to Custorian, or how you would like to contribute.';
-}
 function setReviewOrgType(isOther) {
   var field = document.getElementById('rv-org-other-field');
   var input = document.getElementById('rv-org-other');
@@ -1634,7 +1615,21 @@ function openFramework(key) {
       fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
         .then(function (r) { return r.json(); })
         .then(function (j) {
-          if (j.success) { wrap.style.display = 'none'; success.style.display = 'block'; }
+          if (j.success) {
+            wrap.style.display = 'none'; success.style.display = 'block';
+            if (fid === 'membershipForm') {
+              var payLinks = {
+                'Support Member: individual': 'https://buy.stripe.com/6oU6oB8VscEe4Jt4yx2Nq00',
+                'Support Member: civil-society / non-profit organisation': 'https://buy.stripe.com/dRm8wJb3AbAagsbd532Nq01'
+              };
+              var chosen = form.querySelector('#mb-type').value;
+              var payUrl = payLinks[chosen];
+              if (payUrl) {
+                success.querySelector('p').textContent = 'Your membership enquiry has been received. Taking you to payment now…';
+                setTimeout(function () { window.location.href = payUrl; }, 1500);
+              }
+            }
+          }
           else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
         })
         .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
