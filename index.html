@@ -1070,6 +1070,16 @@
           </div>
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
+        <div class="field">
+          <label>Are you, or is the organisation you're joining on behalf of, a commercial platform, product, or company that is or could become subject to assessment under the Custorian standard? <span class="req">*</span></label>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="Yes" required onchange="setMembershipEligibility(true)">Yes</label>
+            <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="No" onchange="setMembershipEligibility(false)">No</label>
+          </div>
+          <div class="callout" id="mb-ineligible" style="display:none;">
+            <strong>Not eligible for membership.</strong> Commercial platforms and companies can't be members, so that certification stays independent of anyone the standard could assess. You can still get involved via a <a href="#" onclick="closeModal(); openModal('pilotModal', event); return false;">pilot application</a>, or by emailing <a href="mailto:info@custorian.org">info@custorian.org</a>.
+          </div>
+        </div>
         <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional: what draws you to Custorian, or how you would like to contribute."></textarea></div>
         <div class="field">
           <label class="consent-field">
@@ -1077,7 +1087,7 @@
             <span>I agree that Custorian may hold and process this information under GDPR to review this enquiry and, if I join, administer my membership. It is never sold or shared with third parties, and is retained only as long as I am a member, or as required under Danish bookkeeping law after resignation. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
           </label>
         </div>
-        <button type="submit" class="form-submit">Apply for membership</button>
+        <button type="submit" class="form-submit">Apply and pay</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -1387,6 +1397,19 @@ function closeModal() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
+document.addEventListener('DOMContentLoaded', function () {
+  var join = new URLSearchParams(window.location.search).get('join');
+  if (!join) return;
+  var typeMap = {
+    individual: 'Support Member: individual',
+    organisation: 'Support Member: civil-society / non-profit organisation'
+  };
+  var value = typeMap[join];
+  if (!value) return;
+  var select = document.getElementById('mb-type');
+  if (select) select.value = value;
+  openModal('membershipModal');
+});
 document.querySelectorAll('.modal').forEach(function(m) {
   if (m.id === 'reviewModal') return; // registration form: only the × button closes it, not a backdrop click
   m.addEventListener('click', function(e) {
@@ -1434,6 +1457,13 @@ function setReviewCoI(hasConflict) {
   field.style.display = hasConflict ? '' : 'none';
   textarea.required = hasConflict;
   if (!hasConflict) textarea.value = '';
+}
+
+function setMembershipEligibility(isIneligible) {
+  var callout = document.getElementById('mb-ineligible');
+  var btn = document.querySelector('#membershipForm .form-submit');
+  callout.style.display = isIneligible ? '' : 'none';
+  if (btn) btn.disabled = isIneligible;
 }
 
 function setReviewOrgType(isOther) {
@@ -1610,6 +1640,13 @@ function openFramework(key) {
     var label = btn ? btn.textContent : 'Send';
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (fid === 'membershipForm') {
+        var elig = form.querySelector('input[name="Certification Eligibility"]:checked');
+        if (!elig || elig.value === 'Yes') {
+          document.getElementById('mb-ineligible').style.display = '';
+          return;
+        }
+      }
       status.className = 'form-status'; status.textContent = '';
       btn.disabled = true; btn.textContent = 'Sending…';
       fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
