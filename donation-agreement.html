@@ -2,12 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://custorian.org/">
-<link rel="canonical" href="https://custorian.org/">
-<title>Custorian</title>
-<script>location.replace('https://custorian.org/');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian: Donation Agreement</title>
+<meta name="description" content="How Foreningen Custorian is permitted to collect donations under Danish law, what donations fund, how to give, and how the collection is accounted for.">
+<meta property="og:title" content="Custorian: Donation Agreement">
+<meta property="og:description" content="Our Indsamlingsnaevnet collection permit, what your donation funds, how to give, and how we account for it.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org/donation-agreement.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<style>
+  :root {
+    --purple: #8B5CF6;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e4e0da;
+    --paper: #ffffff;
+    --wash: #faf8f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .doc { max-width: 920px; margin: 0 auto; padding: 56px 48px 80px; }
+
+  .actionbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--ink); color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .actionbar a.home {
+    color: #fff; text-decoration: none; opacity: 0.75; font-size: 12px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .actionbar a.home:hover { opacity: 1; }
+
+  .cover { border-bottom: 2px solid var(--ink); padding-bottom: 40px; margin-bottom: 44px; }
+  .wordmark {
+    font-size: 13px; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 800;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 48px;
+  }
+  .wordmark .glyph {
+    display: inline-grid; grid-template-columns: repeat(2, 7px); grid-gap: 2px;
+  }
+  .wordmark .glyph i { width: 7px; height: 7px; background: var(--purple); display: block; }
+  .cover h1 {
+    font-size: clamp(34px, 6vw, 56px); font-weight: 900; letter-spacing: -0.03em;
+    line-height: 0.98; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .cover .lede { font-size: 18px; line-height: 1.5; max-width: 62ch; color: var(--ink); }
+  .cover .meta {
+    margin-top: 28px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .cover .meta span { margin-right: 18px; }
+
+  h2 {
+    font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 800;
+    color: var(--purple); margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  p { margin-bottom: 14px; max-width: 72ch; }
+  ul.plain { margin: 0 0 14px 20px; max-width: 72ch; }
+  ul.plain li { margin-bottom: 8px; }
+  a.inline { color: var(--purple); text-decoration: none; font-weight: 600; }
+  a.inline:hover { text-decoration: underline; }
+
+  .callout {
+    background: var(--wash); border-left: 3px solid var(--purple); padding: 18px 22px; margin: 18px 0; font-size: 14px;
+    max-width: 72ch;
+  }
+  .callout strong { font-weight: 800; }
+
+  .identity { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin: 18px 0 6px; }
+  .identity div { background: var(--paper); padding: 16px 18px; }
+  .identity .k { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .identity .v { font-size: 15px; font-weight: 700; color: var(--ink); }
+
+  footer {
+    margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
+    font-size: 11px; letter-spacing: 0.06em; color: var(--muted);
+  }
+  footer a { color: var(--purple); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .doc { padding: 40px 22px 64px; }
+    .identity { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-<p>This page has moved. <a href="https://custorian.org/">Continue to custorian.org</a>.</p>
+
+<div class="actionbar">
+  <span>Custorian &middot; Donation Agreement</span>
+  <a class="home" href="/index.html">&larr; custorian.org</a>
+</div>
+
+<div class="doc">
+
+  <div class="cover">
+    <div class="wordmark">
+      <span class="glyph"><i></i><i></i><i></i><i></i></span>
+      Custorian
+    </div>
+    <h1>The donation agreement.</h1>
+    <p class="lede">Foreningen Custorian is permitted by Indsamlingsn&aelig;vnet, the Danish Fundraising Board, to collect public donations. This page sets out what that permit covers, what your donation funds, how you can give, and how the collection is accounted for.</p>
+    <div class="meta">
+      <span>Foreningen Custorian</span>
+      <span>CVR 46399455</span>
+      <span>Copenhagen, Denmark</span>
+      <span>Version 1.0 &middot; effective 7 September 2026</span>
+    </div>
+  </div>
+
+  <h2>Our permit</h2>
+  <p>Custorian is permitted to collect from <strong>12 August 2026 to 11 August 2027</strong>, granted by Indsamlingsn&aelig;vnet under &sect;3 of Indsamlingsloven (the Danish Fundraising Act, Act No. 511 of 26 May 2014) and the Indsamlingsbekendtg&oslash;relse (Executive Order No. 160 of 26 February 2020). The permit covers the whole of Denmark and cannot be transferred to anyone else; if Custorian stops collecting before the period ends, it must ask Indsamlingsn&aelig;vnet to change the period rather than simply stopping.</p>
+  <p>The permit authorises collection through: this website&rsquo;s donation channel, an online collection platform, events, social media (Instagram, LinkedIn), and mail/flyers.</p>
+
+  <h2>What your donation funds</h2>
+  <p>The permit restricts what the money raised can be used for. Custorian may use collected funds only for <strong>project-specific expenses that advance children&rsquo;s safety online, and operating costs</strong>. Donors cannot earmark a gift to a specific sub-project within that purpose, and Custorian cannot use the funds for anything outside it without first asking Indsamlingsn&aelig;vnet&rsquo;s permission.</p>
+
+  <h2>How you can give</h2>
+  <div class="identity">
+    <div><div class="k">MobilePay</div><div class="v">60 47 99 35</div></div>
+    <div><div class="k">Bank transfer</div><div class="v">Reg. 0828 &middot; Konto 1176617</div></div>
+  </div>
+  <p class="note" style="font-size:13px;color:var(--muted);margin-top:6px;">Card donation via Stripe is launching shortly. Only the payment channels listed on Custorian&rsquo;s Indsamlingsn&aelig;vnet permit may be used to collect for this campaign. Funds received are kept in an account used solely for this collection, as required by &sect;6(1) of the Indsamlingsbekendtg&oslash;relse.</p>
+  <p>This donation channel is for <strong>individuals only</strong>; Custorian does not accept donations, grants or sponsorship here from any platform, company or organisation, consistent with the Funding Policy on the <a class="inline" href="governance.html">Governance page</a>.</p>
+
+  <div class="callout">
+    <strong>Cancelling a recurring donation.</strong> If you set up a recurring card donation, you can cancel at any time before the next payment, with no fee, through the Stripe Customer Portal: use the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails, or write to <a href="mailto:info@custorian.org">info@custorian.org</a>; we confirm within two business days. All donations, one-time or an instalment already taken under a recurring donation, are voluntary gifts, final and non-refundable once received, and are not currently tax-deductible in Denmark.
+  </div>
+
+  <h2>Accounts &amp; transparency</h2>
+  <p>Custorian keeps accounts of everything the collection raises and spends, and states in them exactly how any surplus was used. Accounts are submitted to Indsamlingsn&aelig;vnet by <strong>11 February 2028</strong>, and are published both here on custorian.org and on Indsamlingsn&aelig;vnet&rsquo;s own website. If the collection raises more than DKK 50,000, the accounts are reviewed by a state-authorised or registered auditor before submission. If any collected funds remain unspent at the time accounts are filed, Custorian files an annual statement of how the surplus is used until it is fully spent.</p>
+
+  <h2>Legal basis &amp; complaints</h2>
+  <p>This collection is governed by Lov nr. 511 af 26. maj 2014 om indsamling m.v. (the Fundraising Act) and Bekendtg&oslash;relse nr. 160 af 26. februar 2020 om indsamling m.v. (the Fundraising Executive Order). Indsamlingsn&aelig;vnet&rsquo;s decision to grant this permit cannot be appealed to an administrative authority (Indsamlingsloven &sect;9(4)); a complaint about the Board&rsquo;s case handling can be made to the Danish Parliamentary Ombudsman, or the matter can be brought before the courts. Questions about a donation to Custorian go to <a href="mailto:info@custorian.org">info@custorian.org</a>.</p>
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark<br>
+    Donation questions: <a href="mailto:info@custorian.org">info@custorian.org</a> &middot;
+    <a href="governance.html">Governance</a> &middot;
+    <a href="privacy-policy.html">Privacy policy</a> &middot;
+    <a href="terms.html">Terms of use</a> &middot;
+    <a href="https://custorian.org">custorian.org</a>
+  </footer>
+
+</div>
 </body>
 </html>
