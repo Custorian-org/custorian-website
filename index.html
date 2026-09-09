@@ -1050,7 +1050,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div id="membershipFormWrap">
       <h2 class="modal-title" id="membershipTitle">Become a member.</h2>
-      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). <strong>Support Members</strong> are individuals and civil-society organisations who back the mission. Tell us which applies to you and we will follow up with details, including membership terms.</p>
+      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). <strong>Support Membership</strong> is a single class, open across a few categories, each with its own annual fee. Tell us which applies to you and we will follow up with details, including membership terms.</p>
       <form id="membershipForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian Membership: Enquiry">
@@ -1062,23 +1062,31 @@
         </div>
         <div class="form-row">
           <div class="field"><label for="mb-type">Membership class <span class="req">*</span></label>
-            <select id="mb-type" name="Membership Class" required>
+            <select id="mb-type" name="Membership Class" required onchange="updateMembershipEligibilityUI()">
               <option value="" disabled selected>Select&hellip;</option>
-              <option>Support Member: individual</option>
-              <option>Support Member: civil-society / non-profit organisation</option>
+              <option>Support Member: youth representative / parent (&euro;10/yr)</option>
+              <option>Support Member: child safety / trust &amp; safety expert (&euro;50/yr)</option>
+              <option>Support Member: non-profit civil society / NGO (&euro;100/yr)</option>
+              <option>Support Member: for-profit organisation, not eligible for CDSW certification (&euro;500/yr)</option>
             </select>
           </div>
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
-        <div class="field">
+        <div class="field" id="mb-eligibility-field">
           <label>Are you, or is the organisation you're joining on behalf of, a commercial platform, product, or company that is or could become subject to assessment under the Custorian standard? <span class="req">*</span></label>
           <div class="checkbox-row">
             <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="Yes" required onchange="setMembershipEligibility(true)">Yes</label>
             <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="No" onchange="setMembershipEligibility(false)">No</label>
           </div>
           <div class="callout" id="mb-ineligible" style="display:none;">
-            <strong>Not eligible for membership.</strong> Commercial platforms and companies can't be members, so that certification stays independent of anyone the standard could assess. You can still get involved via a <a href="#" onclick="closeModal(); openModal('pilotModal', event); return false;">pilot application</a>, or by emailing <a href="mailto:info@custorian.org">info@custorian.org</a>.
+            <strong>Not eligible for this category.</strong> Commercial platforms and companies can't join as a youth representative/parent, trust &amp; safety expert, or non-profit organisation member, so that certification stays independent of anyone the standard could assess. Joining on behalf of a for-profit company? Choose <strong>for-profit organisation</strong> above instead. You can also get involved via a <a href="#" onclick="closeModal(); openModal('pilotModal', event); return false;">pilot application</a>, or by emailing <a href="mailto:info@custorian.org">info@custorian.org</a>.
           </div>
+        </div>
+        <div class="field" id="mb-forprofit-ack-field" style="display:none;">
+          <label class="consent-field">
+            <input type="checkbox" name="Certification Eligibility" value="Acknowledged: for-profit member, not eligible for certification" id="mb-forprofit-ack">
+            <span>I understand for-profit Support Membership carries no board seat, no vote on Board composition, and does not grant, or make our company eligible for, certification of our own platform or product under the Custorian standard.</span>
+          </label>
         </div>
         <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional: what draws you to Custorian, or how you would like to contribute."></textarea></div>
         <div class="field">
@@ -1401,13 +1409,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var join = new URLSearchParams(window.location.search).get('join');
   if (!join) return;
   var typeMap = {
-    individual: 'Support Member: individual',
-    organisation: 'Support Member: civil-society / non-profit organisation'
+    individual: 'Support Member: youth representative / parent (€10/yr)',
+    organisation: 'Support Member: non-profit civil society / NGO (€100/yr)'
   };
   var value = typeMap[join];
-  if (!value) return;
   var select = document.getElementById('mb-type');
-  if (select) select.value = value;
+  if (select && value) select.value = value;
+  updateMembershipEligibilityUI();
   openModal('membershipModal');
 });
 document.querySelectorAll('.modal').forEach(function(m) {
@@ -1464,6 +1472,25 @@ function setMembershipEligibility(isIneligible) {
   var btn = document.querySelector('#membershipForm .form-submit');
   callout.style.display = isIneligible ? '' : 'none';
   if (btn) btn.disabled = isIneligible;
+}
+
+function updateMembershipEligibilityUI() {
+  var type = document.getElementById('mb-type').value;
+  var isForProfit = type.indexOf('for-profit organisation') !== -1;
+  var eligField = document.getElementById('mb-eligibility-field');
+  var ackField = document.getElementById('mb-forprofit-ack-field');
+  var ack = document.getElementById('mb-forprofit-ack');
+  var btn = document.querySelector('#membershipForm .form-submit');
+  eligField.style.display = isForProfit ? 'none' : '';
+  ackField.style.display = isForProfit ? '' : 'none';
+  eligField.querySelectorAll('input[name="Certification Eligibility"]').forEach(function (el) {
+    el.required = !isForProfit;
+    el.checked = false;
+  });
+  ack.required = isForProfit;
+  ack.checked = false;
+  document.getElementById('mb-ineligible').style.display = 'none';
+  if (btn) btn.disabled = false;
 }
 
 function setReviewOrgType(isOther) {
@@ -1656,8 +1683,10 @@ function openFramework(key) {
             wrap.style.display = 'none'; success.style.display = 'block';
             if (fid === 'membershipForm') {
               var payLinks = {
-                'Support Member: individual': 'https://buy.stripe.com/6oU6oB8VscEe4Jt4yx2Nq00',
-                'Support Member: civil-society / non-profit organisation': 'https://buy.stripe.com/dRm8wJb3AbAagsbd532Nq01'
+                'Support Member: youth representative / parent (€10/yr)': 'https://buy.stripe.com/6oU6oB8VscEe4Jt4yx2Nq00',
+                'Support Member: non-profit civil society / NGO (€100/yr)': 'https://buy.stripe.com/dRm8wJb3AbAagsbd532Nq01'
+                // 'Support Member: child safety / trust & safety expert (€50/yr)': TODO add the €50 Stripe Payment Link once created
+                // 'Support Member: for-profit organisation, not eligible for CDSW certification (€500/yr)': TODO add the €500 Stripe Payment Link once created
               };
               var chosen = form.querySelector('#mb-type').value;
               var payUrl = payLinks[chosen];
