@@ -450,6 +450,18 @@
   }
   .form-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
   .field-note { font-size: 12px; opacity: 0.5; margin-top: 8px; }
+  .info-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 50%; flex: none;
+    border: 1px solid #8B5CF6; color: #8B5CF6; background: none;
+    font-size: 10px; font-weight: 700; line-height: 1; cursor: pointer;
+    margin-left: 6px; padding: 0; vertical-align: middle;
+    font-family: inherit; text-transform: none; letter-spacing: normal;
+  }
+  .info-btn:hover, .info-btn[aria-expanded="true"] { background: #8B5CF6; color: #000; }
+  .field-info { background: #0f0f0f; border-left: 3px solid #8B5CF6; padding: 14px 18px; margin: 8px 0 16px; font-size: 13px; line-height: 1.55; color: #d4d4d4; }
+  .field-info p { margin: 0 0 8px; }
+  .field-info p:last-child { margin-bottom: 0; }
   .word-count { font-size: 11px; opacity: 0.45; margin-top: 6px; text-align: right; }
   .word-count.over { color: #f87171; opacity: 1; }
   .field { margin-bottom: 22px; text-align: left; }
@@ -1073,7 +1085,12 @@
           <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
         </div>
         <div class="field" id="mb-eligibility-field">
-          <label>Are you, or is the organisation you're joining on behalf of, a commercial platform, product, or company that is or could become subject to assessment under the Custorian standard? <span class="req">*</span></label>
+          <label>Are you, or is the organisation you're joining on behalf of, a commercial platform, product, or company that is or could become subject to assessment under the Custorian standard? <span class="req">*</span><button type="button" class="info-btn" aria-label="What does this question mean?" aria-expanded="false" onclick="toggleFieldInfo('mb-cert-info', this)">?</button></label>
+          <div class="field-info" id="mb-cert-info" style="display:none;">
+            <p>This is about what your organisation <strong>builds or operates</strong>, not what industry it's in. It means: a digital platform, app, or service that children or teenagers use, or could reasonably come to use, for example social media, messaging, gaming, ed-tech, or streaming.</p>
+            <p>It does <strong>not</strong> mean "is a commercial company" in general. A pharmaceutical company, law firm, bank, or any other business with no child-facing digital platform answers <strong>No</strong> here, and for-profit organisations like that are welcome as Support Members.</p>
+            <p>Not sure which applies? Answer <strong>Yes</strong> and email <a href="mailto:info@custorian.org">info@custorian.org</a>, we'll help sort out the right category.</p>
+          </div>
           <div class="checkbox-row">
             <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="Yes" required onchange="setMembershipEligibility(true)">Yes</label>
             <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="No" onchange="setMembershipEligibility(false)">No</label>
@@ -1465,6 +1482,13 @@ function setReviewCoI(hasConflict) {
   field.style.display = hasConflict ? '' : 'none';
   textarea.required = hasConflict;
   if (!hasConflict) textarea.value = '';
+}
+
+function toggleFieldInfo(id, btn) {
+  var el = document.getElementById(id);
+  var show = el.style.display === 'none';
+  el.style.display = show ? 'block' : 'none';
+  if (btn) btn.setAttribute('aria-expanded', show ? 'true' : 'false');
 }
 
 function setMembershipEligibility(isIneligible) {
