@@ -45,6 +45,19 @@
   }
   .actionbar a.home:hover { opacity: 1; }
 
+  /* PAGE NAV */
+  .pagenav {
+    position: sticky; top: 40px; z-index: 40;
+    background: var(--wash); border-bottom: 1px solid var(--line);
+    max-width: 100%; padding: 12px 48px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; gap: 6px 20px;
+  }
+  .pagenav a {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; white-space: nowrap; font-weight: 600;
+  }
+  .pagenav a:hover { color: var(--purple); }
+
   /* COVER */
   .cover { border-bottom: 2px solid var(--ink); padding-bottom: 40px; margin-bottom: 44px; }
   .wordmark {
@@ -148,6 +161,18 @@
   <a class="home" href="/index.html">&larr; custorian.org</a>
 </div>
 
+<nav class="pagenav" aria-label="Page sections">
+  <a href="#legal-identity">Legal identity</a>
+  <a href="#governing-documents">Governing documents</a>
+  <a href="#governed">Governance</a>
+  <a href="#membership">Membership</a>
+  <a href="#donations">Donations</a>
+  <a href="#policies">Policies</a>
+  <a href="#decisions">Decisions</a>
+  <a href="#finances">Finances</a>
+  <a href="#press">Press</a>
+</nav>
+
 <div class="doc">
 
   <div class="cover">
@@ -164,7 +189,7 @@
     </div>
   </div>
 
-  <h2>Legal identity</h2>
+  <h2 id="legal-identity">Legal identity</h2>
   <p>Custorian is a Danish frivillig forening: a non-profit membership association. It has no shareholders and distributes no profit. The standard it maintains is licensed <strong>CC BY-ND 4.0</strong> and remains public even if the association dissolves.</p>
   <div class="identity">
     <div><div class="k">Legal name</div><div class="v">Foreningen Custorian</div></div>
@@ -175,7 +200,7 @@
     <div><div class="k">Standard licence</div><div class="v">CC BY-ND 4.0</div></div>
   </div>
 
-  <h2>Governing documents</h2>
+  <h2 id="governing-documents">Governing documents</h2>
   <p>The authoritative documents that constitute Custorian and set the rules it operates under.</p>
   <ul class="docs">
     <li>
@@ -198,12 +223,12 @@
     </li>
   </ul>
 
-  <h2>How Custorian is governed</h2>
+  <h2 id="governed">How Custorian is governed</h2>
   <h3>The board</h3>
-  <p>Foreningen Custorian is governed by a Board of Directors. Board seats are filled by resolution of the sitting board and presented to the general assembly for ratification, not by direct membership election. Under the articles (&sect;&nbsp;5), the board serves two-year terms and includes a Chair, Vice Chair, Treasurer, Secretary and one or more Non-Executive Directors. The founder holds a seat by right and chairs the board until 31 December 2031 (a time-boxed continuity arrangement, published openly here); thereafter the board elects its chair. Protected provisions (&sect;&nbsp;10) prevent any majority from changing the association&rsquo;s purpose, selling or exclusively licensing the standard, or admitting commercial members without the founder&rsquo;s written consent, and the standard&rsquo;s technical content sits outside the general assembly&rsquo;s vote (&sect;&nbsp;5.6). Commercial companies, including any platform that is or may become subject to assessment under the standard, are not eligible for membership (&sect;&nbsp;3.1) and hold no board seats. The board oversees five operating arms (below) but recuses from the day-to-day decisions of the advisory bodies and the Certification &amp; Impartiality Committee.</p>
+  <p>Foreningen Custorian is governed by a Board of Directors. Board seats are filled by resolution of the sitting board and presented to the general assembly for ratification, not by direct membership election. Under the articles (&sect;&nbsp;5), the board serves two-year terms and includes a Chair, Vice Chair, Treasurer, Secretary and one or more Non-Executive Directors. The founder holds a seat by right and chairs the board until 31 December 2031 (a time-boxed continuity arrangement, published openly here); thereafter the board elects its chair. Protected provisions (&sect;&nbsp;10) prevent any majority from changing the association&rsquo;s purpose, selling or exclusively licensing the standard, or admitting commercial members without the founder&rsquo;s written consent, and the standard&rsquo;s technical content sits outside the general assembly&rsquo;s vote (&sect;&nbsp;5.6). Commercial companies, including any platform that is or may become subject to assessment under the standard, are not eligible for membership (&sect;&nbsp;3.1) and hold no board seats. The board oversees the association&rsquo;s operating arms (below) and recuses from the day-to-day decisions of the advisory bodies and the Certification &amp; Impartiality Committee.</p>
 
   <h3>Advisory bodies</h3>
-  <p>Two separate, non-governing bodies feed independent perspective into the standard, neither holds a vote and neither can bind the board. An <strong>Advisory Board</strong> of 7&ndash;10 named individual experts, spanning child rights, legal and regulatory, technology, academic and clinical practice, law enforcement, and youth perspectives, gives ad hoc, non-binding input on the standard, its ethical dimensions, and child-facing content. A separate <strong>Standards Advisory Committee</strong> of up to seven industry practitioners and organisations reviews the technical evolution and real-world implementability of the standard. The two bodies are deliberately kept apart, no shared seats, no overlap in remit.</p>
+  <p>A single, non-governing <strong>Advisory Board</strong> of ten to twelve named individual experts, spanning child rights, legal and regulatory, technology, academic and clinical practice, law enforcement, and youth perspectives, feeds independent, ad hoc, non-binding input into the standard, its ethical dimensions, and child-facing content; it holds no vote and cannot bind the board. Members are drawn from that one roster into focused sub-committees as needed: <strong>Standards &amp; Technical</strong> (technical evolution and peer review of the standard), <strong>Certification &amp; Impartiality</strong> (protects the certification firewall and arbitrates appeals, with its own independence safeguards, including the founder&rsquo;s recusal from membership), and <strong>Policy &amp; Rights</strong> (regulatory, academic and societal grounding).</p>
 
   <ul class="docs">
     <li>
@@ -223,36 +248,36 @@
   </ul>
   <p style="font-size: 13.5px; color: var(--muted); margin-top: -4px;">Advisory Board seats are unpaid, non-voting, and formalised individually by MOU. Remaining seats (legal &amp; regulatory, additional technology &amp; security, law enforcement, and youth perspectives) are open; see <a class="inline" href="index.html#get-involved">get involved</a>.</p>
 
-  <h3>Five arms, kept apart on purpose</h3>
-  <p>Operations sit in five arms, each with its own scope and funding source, so that no single arm can quietly capture the others. An <strong>Association</strong> arm handles membership, fundraising and donor stewardship, with a strict firewall against platform funding. A <strong>Standards</strong> arm owns the standard and control framework, independent of any commercial funding. A <strong>Certification</strong> arm manages the certification scheme and professional credentialing, and never audits a platform directly. A <strong>Research</strong> arm runs studies and corpus validation, funded solely by grants. And a commercial <strong>Tech</strong> arm builds and sells technology under the standard, licensing research and IP from the association at arm&rsquo;s length; the standard and certification scheme stay independent of it regardless.</p>
+  <h3>Four arms, kept apart on purpose</h3>
+  <p>Operations sit in four arms, each with its own scope and funding source, so that no single arm can quietly capture the others. An <strong>Association</strong> arm handles membership, fundraising and donor stewardship, with a strict firewall against platform funding. A <strong>Standards</strong> arm owns the standard and control framework, independent of any commercial funding. A <strong>Certification</strong> arm manages the certification scheme and professional credentialing, and never audits a platform directly. And a <strong>Research</strong> arm runs studies and corpus validation, funded solely by grants.</p>
 
   <h3>The association does not certify platforms</h3>
   <p>Platform certification is issued exclusively by independent bodies accredited under ISO/IEC&nbsp;17065, operating under a published scheme; the association maintains the scheme and licenses the &ldquo;Custorian Certified&rdquo; trademark to qualifying bodies, and never audits or certifies a platform itself. A separate, in-house professional credentialing track (for auditors and child safety officers) runs under ISO/IEC&nbsp;17024 through the Certification arm. Credentialing people is not the same activity as certifying platforms, and neither is confused with the other.</p>
 
   <h3>The firewalls</h3>
-  <p>A standard is only independent if it cannot be captured. Ten firewalls keep it that way: only external, accredited bodies decide platform certification, and no one from the Tech arm sits on that oversight; the association and the Tech arm may both advise, but neither ever audits, and their records stay separated; the Research arm holds no monetary ties to any platform it studies, and research data is kept apart from commercial product data; the association takes no funding, in any form, from a platform or company that is or may become subject to assessment under its own standard, or from anyone that controls or substantially funds one, and prices any commercial work at arm&rsquo;s length; the founder recuses from any decision touching their own employer; the association itself has no shares to sell, and any IP licence to the Tech arm terminates on breach; the Data Protection Officer reports independently, outside the revenue-generating arms; no one from the Certification arm or the Tech arm sits on the Impartiality Committee; and professional credentialing is preferred for certification bodies, never a mandatory gate. Every board decision is published with its rationale. There is no pay-to-play.</p>
+  <p>A standard is only independent if it cannot be captured. Firewalls keep it that way: only external, accredited bodies decide platform certification; the Research arm holds no monetary ties to any platform it studies; the association takes no funding, in any form, from a platform or company that is or may become subject to assessment under its own standard, or from anyone that controls or substantially funds one; the founder recuses from any decision touching their own employer; the association itself has no shares to sell; the Data Protection Officer reports independently, outside the revenue-generating arms; no one from the Certification arm sits on the Impartiality Committee; and professional credentialing is preferred for certification bodies, never a mandatory gate. Every board decision is published with its rationale. There is no pay-to-play.</p>
   <div class="callout">
     <strong>Why this page exists.</strong> Custorian asks platforms to prove their claims about children rather than assert them. We hold ourselves to the same test. Governance you cannot inspect is a marketing claim; governance you can inspect is a commitment.
   </div>
 
   <h2 id="membership">Membership &amp; support</h2>
-  <p>Foreningen Custorian has a single membership class, <strong>Support Membership</strong>, open to individuals and civil-society or non-profit organisations. Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on budget and accounts. Commercial platforms and companies are not eligible for Support Membership: a platform that could be assessed under the standard cannot also sit inside the body that owns it.</p>
+  <p>Foreningen Custorian has a single membership class, <strong>Support Membership</strong>, open to individuals and civil-society or non-profit organisations. Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on budget and accounts. Commercial platforms and companies are not eligible for Support Membership: a platform that could be assessed under the standard cannot also sit inside the body that owns it. This is about what an applicant&rsquo;s organisation builds or operates, not its industry, a digital platform, app, or service that children or teenagers use, or could reasonably come to use, such as social media, messaging, gaming, ed-tech, or streaming. A business with no such platform is not affected by this rule.</p>
 
   <div class="tiers">
     <div class="tier">
       <div class="tier-name">Support Member &middot; Individual</div>
       <div class="tier-price">&euro;10<span>&nbsp;/ year</span></div>
       <div class="tier-who">Open to any individual.</div>
-      <a class="paybtn" href="index.html?join=individual#get-involved">Pay &amp; join &rarr;</a>
+      <a class="paybtn" href="index.html?join=individual#get-involved">Apply for membership &rarr;</a>
     </div>
     <div class="tier">
       <div class="tier-name">Support Member &middot; Organisation</div>
       <div class="tier-price">&euro;100<span>&nbsp;/ year</span></div>
       <div class="tier-who">Civil-society and non-profit organisations only.</div>
-      <a class="paybtn" href="index.html?join=organisation#get-involved">Pay &amp; join &rarr;</a>
+      <a class="paybtn" href="index.html?join=organisation#get-involved">Apply for membership &rarr;</a>
     </div>
   </div>
-  <p class="note">&ldquo;Pay &amp; join&rdquo; opens a short application form, including an eligibility check, before you&rsquo;re taken to payment. Card payment via Stripe, billed annually; MobilePay is coming soon. Submitting registers your Support Membership application; admission is confirmed by the Board under the association&rsquo;s statutes (&sect;3). Fees were set by the Board on 21 August 2026 (organisation fee revised 8 September 2026) and are pending formal ratification at the next general assembly.</p>
+  <p class="note">Applying registers your Support Membership request, it is not a payment. The Board reviews every application; if accepted, you&rsquo;ll receive an email with a Stripe payment link to complete your membership (card payment, billed annually; MobilePay coming soon). Fees were set by the Board on 21 August 2026 (organisation fee revised 8 September 2026) and are pending formal ratification at the next general assembly.</p>
   <div class="callout">
     <strong>Cancelling a membership subscription.</strong> Dues are billed annually and can be cancelled at any time before the next renewal, with no cancellation fee, through the <strong>Stripe Customer Portal</strong>: the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails lets you cancel yourself, at any time, no need to contact us. You can also cancel by writing to <a href="mailto:info@custorian.org">info@custorian.org</a> with the name and email used at payment (we confirm within two business days). Cancelling stops future renewals; it does not refund the period already paid for, and membership, including any voting rights attached to it, ends when that paid period expires.
   </div>
@@ -266,7 +291,7 @@
     <strong>Cancelling a recurring donation.</strong> If you set up a recurring donation, you can cancel at any time before the next payment, with no fee, through the <strong>Stripe Customer Portal</strong>: use the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails to cancel yourself, or write to <a href="mailto:info@custorian.org">info@custorian.org</a>; we confirm within two business days. Cancelling stops future payments only. All donations, one-time or an instalment already taken under a recurring donation, are voluntary gifts, final and non-refundable once received. Donations are not currently tax-deductible in Denmark.
   </div>
 
-  <h2>Policies</h2>
+  <h2 id="policies">Policies</h2>
   <p>Custorian operates under a set of internal policies covering safeguarding, sensitive data handling, conflicts of interest, anti-fraud, data protection, and funding eligibility.</p>
   <ul class="docs">
     <li>
@@ -296,13 +321,48 @@
     </li>
     <li>
       <div class="body">
+        <div class="t">Communications Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
         <div class="t">Funding Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">AI Usage Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">Data Handling Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">Custorian Data Sovereignty and Ethical AI Principles Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">Whistleblowing and Protected Disclosure Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">Document Retention and Records Policy</div>
+      </div>
+    </li>
+    <li>
+      <div class="body">
+        <div class="t">Standard Publication &amp; Versioning Policy</div>
       </div>
     </li>
   </ul>
   <p class="note">Full policy text is available on request: write to <a href="mailto:info@custorian.org">info@custorian.org</a>.</p>
 
-  <h2>Decisions &amp; minutes</h2>
+  <h2 id="decisions">Decisions &amp; minutes</h2>
   <p>The board publishes a summary of every material decision, with the reasoning behind it. We publish approved decisions and their rationale rather than verbatim minutes. This keeps individuals, third parties and unfinished deliberations out of the public record while keeping the association&rsquo;s choices fully accountable.</p>
   <ul class="docs">
     <li>
@@ -313,7 +373,7 @@
     </li>
   </ul>
 
-  <h2>Finances</h2>
+  <h2 id="finances">Finances</h2>
   <p>As a Danish non-profit, Custorian keeps and publishes annual accounts. Funding is capped so that no single source can exceed 30% of income. Accounts will be posted here for each financial year.</p>
   <ul class="docs">
     <li>
@@ -324,7 +384,7 @@
     </li>
   </ul>
 
-  <h2>Publications &amp; press</h2>
+  <h2 id="press">Publications &amp; press</h2>
   <p>Standards, guidance and public statements issued by Custorian.</p>
   <ul class="press">
     <li>
