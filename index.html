@@ -1119,7 +1119,7 @@
     <div id="membershipFormSuccess" class="form-success" style="display:none;">
       <div class="tick">&#10003;</div>
       <h3>Application received.</h3>
-      <p>Your Support Membership application has been received. The Board reviews every application; if accepted, you&rsquo;ll get an email with membership terms and a payment link to complete your membership. No payment is taken now.</p>
+      <p>Your Support Membership application has been received. Applications are reviewed and decided on quarterly by the Board; if accepted, you&rsquo;ll get an email with membership terms and a payment link to complete your membership. No payment is taken now.</p>
     </div>
   </div>
 </div>
@@ -1427,7 +1427,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!join) return;
   var typeMap = {
     individual: 'Support Member: youth representative / parent (€10/yr)',
-    organisation: 'Support Member: non-profit civil society / NGO (€100/yr)'
+    organisation: 'Support Member: non-profit civil society / NGO (€100/yr)',
+    expert: 'Support Member: child safety / trust & safety expert (€50/yr)',
+    forprofit: 'Support Member: for-profit organisation, not eligible for CDSW certification (€500/yr)'
   };
   var value = typeMap[join];
   var select = document.getElementById('mb-type');
