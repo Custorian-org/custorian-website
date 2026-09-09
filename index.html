@@ -1112,14 +1112,14 @@
             <span>I agree that Custorian may hold and process this information under GDPR to review this enquiry and, if I join, administer my membership. It is never sold or shared with third parties, and is retained only as long as I am a member, or as required under Danish bookkeeping law after resignation. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
           </label>
         </div>
-        <button type="submit" class="form-submit">Apply and pay</button>
+        <button type="submit" class="form-submit">Apply for membership</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
     <div id="membershipFormSuccess" class="form-success" style="display:none;">
       <div class="tick">&#10003;</div>
-      <h3>Welcome aboard (almost).</h3>
-      <p>Your membership enquiry has been received. We will follow up by email with membership terms and next steps, and formal admission is confirmed by the Board.</p>
+      <h3>Application received.</h3>
+      <p>Your Support Membership application has been received. The Board reviews every application; if accepted, you&rsquo;ll get an email with membership terms and a payment link to complete your membership. No payment is taken now.</p>
     </div>
   </div>
 </div>
@@ -1705,20 +1705,6 @@ function openFramework(key) {
         .then(function (j) {
           if (j.success) {
             wrap.style.display = 'none'; success.style.display = 'block';
-            if (fid === 'membershipForm') {
-              var payLinks = {
-                'Support Member: youth representative / parent (€10/yr)': 'https://buy.stripe.com/6oU6oB8VscEe4Jt4yx2Nq00',
-                'Support Member: non-profit civil society / NGO (€100/yr)': 'https://buy.stripe.com/dRm8wJb3AbAagsbd532Nq01'
-                // 'Support Member: child safety / trust & safety expert (€50/yr)': TODO add the €50 Stripe Payment Link once created
-                // 'Support Member: for-profit organisation, not eligible for CDSW certification (€500/yr)': TODO add the €500 Stripe Payment Link once created
-              };
-              var chosen = form.querySelector('#mb-type').value;
-              var payUrl = payLinks[chosen];
-              if (payUrl) {
-                success.querySelector('p').textContent = 'Your membership enquiry has been received. Taking you to payment now…';
-                setTimeout(function () { window.location.href = payUrl; }, 1500);
-              }
-            }
           }
           else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
         })
