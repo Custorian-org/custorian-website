@@ -871,6 +871,7 @@
   #reviewModal .field textarea { background: #f7f7f7; border-color: #d9d9d9; color: #111; }
   #reviewModal .field .checkbox-option { color: #111; }
   #reviewModal .consent-field a { color: #8B5CF6; }
+  #reviewGate .form-intro a { color: #8B5CF6; }
   #reviewModal .form-success .next { border-top-color: #e5e5e5; }
 </style>
 </head>
@@ -1127,14 +1128,29 @@
 <div class="modal" id="reviewModal" role="dialog" aria-labelledby="reviewTitle" aria-modal="true">
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="reviewGate" style="display:none;">
+      <h2 class="modal-title">Registration is now by invitation.</h2>
+      <div class="callout"><strong>Open registration closed 15 September 2026, 23:59 CET.</strong> The peer review round is still running. It is now open only to reviewers Custorian has invited directly.</div>
+      <p class="form-intro">If we invited you, your invitation email contains an access key. Enter it below to open the sign-up form. If you were not invited and would still like to take part, write to <a href="mailto:info@custorian.org">info@custorian.org</a> and tell us which of the ten CDSW domains you are qualified to review.</p>
+      <form id="reviewGateForm" autocomplete="off">
+        <div class="field">
+          <label for="rv-key">Access key <span class="req">*</span></label>
+          <input type="text" id="rv-key" required autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="CUSTORIAN-&hellip;">
+          <div class="field-note">Paste it exactly as it appears in your invitation. Not case sensitive.</div>
+        </div>
+        <button type="submit" class="form-submit">Unlock the form</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
     <div id="reviewFormWrap">
       <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
-      <div class="callout"><strong>Deadline: 15 September 2026, 23:59 CET.</strong> Applications received after this time will not be considered for this review round.</div>
+      <div class="callout" id="reviewDeadlineNote"><strong>Deadline: 15 September 2026, 23:59 CET.</strong> Applications received after this time will not be considered for this review round.</div>
       <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Every piece of incorporated input is credited by name in the published standard, unless you ask to remain anonymous.</p>
       <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
         <input type="hidden" name="subject" value="Custorian CDSW Standard: Peer Review Sign-up">
         <input type="hidden" name="from_name" value="Custorian Standard Review">
+        <input type="hidden" name="Access Key" id="rv-access-key" value="">
         <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
 
         <div class="form-section">1. Reviewer profile</div>
@@ -1408,10 +1424,94 @@
 </div>
 
 <script>
+// CDSW peer review access gate.
+// Open registration ran until 15 Sep 2026 23:59 CET. After that instant the
+// sign-up form is replaced by a key prompt: only reviewers who were sent an
+// access key in their invitation can open it. The key is never in page
+// source, only its SHA-256, and every keyed submission carries the key
+// through to the Web3Forms email and the Supabase mirror so a form opened by
+// any other means is visible on arrival. This is a front-door lock on a
+// static site, not a security boundary.
+var CDSW_REVIEW_CLOSES = Date.parse('2026-09-15T23:59:59+02:00');
+var CDSW_REVIEW_KEY_HASH = 'b2dd0b431492f270786e508707a15480713160f6c284e3cc2b109eb243d6f3e2';
+var CDSW_REVIEW_KEY_STORE = 'cdsw_review_key';
+var cdswReviewUnlocked = false;
+
+function cdswReviewClosed() {
+  return Date.now() > CDSW_REVIEW_CLOSES;
+}
+
+function cdswNormaliseKey(value) {
+  return String(value || '').replace(/\s+/g, '').toUpperCase();
+}
+
+function cdswStoredKey() {
+  try { return localStorage.getItem(CDSW_REVIEW_KEY_STORE) || ''; } catch (err) { return ''; }
+}
+
+// Resolves true only for the current round's key. Fails closed where
+// WebCrypto is unavailable (a non-secure context), which never happens on
+// custorian.org or on localhost.
+function cdswCheckKey(value) {
+  var key = cdswNormaliseKey(value);
+  if (!key) return Promise.resolve(false);
+  if (!(window.crypto && window.crypto.subtle && window.TextEncoder)) return Promise.resolve(false);
+  return window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(key))
+    .then(function (buf) {
+      var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+      return hex === CDSW_REVIEW_KEY_HASH;
+    })
+    .catch(function () { return false; });
+}
+
+function cdswRenderReviewModal() {
+  var gate = document.getElementById('reviewGate');
+  var wrap = document.getElementById('reviewFormWrap');
+  if (!gate || !wrap) return;
+  var success = document.getElementById('reviewFormSuccess');
+  var submitted = success && success.style.display !== 'none';
+  var locked = cdswReviewClosed() && !cdswReviewUnlocked;
+  gate.style.display = locked ? 'block' : 'none';
+  wrap.style.display = (locked || submitted) ? 'none' : 'block';
+  var note = document.getElementById('reviewDeadlineNote');
+  if (note && cdswReviewClosed()) {
+    note.innerHTML = '<strong>Invited reviewers. Deadline: 25 September 2026, 23:59 CET.</strong> ' +
+      'Open registration closed on 15 September. Applications received after 25 September will not be considered for this review round.';
+  }
+}
+
+function cdswUnlockReview(key) {
+  cdswReviewUnlocked = true;
+  try { localStorage.setItem(CDSW_REVIEW_KEY_STORE, key); } catch (err) {}
+  var field = document.getElementById('rv-access-key');
+  if (field) field.value = key;
+  cdswRenderReviewModal();
+}
+
+// A stored key from an earlier visit, or ?key=... on an invitation link,
+// which also opens the form straight away.
+function cdswInitReviewGate() {
+  cdswRenderReviewModal();
+  var fromUrl = new URLSearchParams(window.location.search).get('key') || '';
+  var candidate = fromUrl || cdswStoredKey();
+  if (!candidate) return;
+  cdswCheckKey(candidate).then(function (ok) {
+    if (ok) {
+      cdswUnlockReview(cdswNormaliseKey(candidate));
+      if (fromUrl) openModal('reviewModal');
+    } else {
+      try { localStorage.removeItem(CDSW_REVIEW_KEY_STORE); } catch (err) {}
+    }
+  });
+}
+
 function openModal(id, e) {
   if (e) e.preventDefault();
   var modal = document.getElementById(id);
   if (!modal) return;
+  if (id === 'reviewModal') cdswRenderReviewModal();
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1443,6 +1543,7 @@ document.querySelectorAll('.modal').forEach(function(m) {
     if (e.target === this) closeModal();
   });
 });
+cdswInitReviewGate();
 if (window.location.hash === '#review') openModal('reviewModal');
 
 function setGovBody(kind) {
@@ -1716,6 +1817,35 @@ function openFramework(key) {
 })();
 </script>
 
+<!-- CDSW review access gate — verifies the invitation key, then swaps the
+     key prompt for the sign-up form. -->
+<script>
+(function () {
+  var form = document.getElementById('reviewGateForm');
+  if (!form) return;
+  var input = document.getElementById('rv-key');
+  var btn = form.querySelector('.form-submit');
+  var status = form.querySelector('.form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Checking…';
+    cdswCheckKey(input.value).then(function (ok) {
+      btn.disabled = false;
+      btn.textContent = 'Unlock the form';
+      if (ok) {
+        cdswUnlockReview(cdswNormaliseKey(input.value));
+        return;
+      }
+      status.className = 'form-status err';
+      status.textContent = 'That key is not valid for this review round. Check your invitation email, or write to info@custorian.org.';
+    });
+  });
+})();
+</script>
+
 <!-- Standard Review sign-up — own handler: enforces "at least one domain"
      and "at least one platform" before the shared Web3Forms AJAX submit
      (hidden Domains/Platform Scope fields are kept in sync on every
@@ -1731,6 +1861,12 @@ function openFramework(key) {
   var label = btn ? btn.textContent : 'Send';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (cdswReviewClosed() && !cdswReviewUnlocked) {
+      status.className = 'form-status err';
+      status.textContent = 'This review round is now open only to invited reviewers.';
+      cdswRenderReviewModal();
+      return;
+    }
     if (!reviewCheckedValues('rv-domains').length) {
       status.className = 'form-status err';
       status.textContent = 'Select at least one CDSW review domain.';
@@ -1845,7 +1981,8 @@ function openFramework(key) {
           publication_link: val(review, 'Publication Link'),
           public_attribution: val(review, 'Public Attribution'),
           conflict_of_interest: val(review, 'Conflict of Interest'),
-          coi_details: val(review, 'CoI Details')
+          coi_details: val(review, 'CoI Details'),
+          access_key: val(review, 'Access Key')
         },
         source: 'org_website'
       });
