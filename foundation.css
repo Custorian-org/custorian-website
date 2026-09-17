@@ -1,0 +1,47 @@
+/* Custorian foundation pages: shared tokens and the rules that were byte-identical
+   across index, about, governance and membership. Extracted 17 Sep 2026, when the four
+   inline stylesheets had drifted to 18 selectors with the same name and different values.
+
+   Loaded BEFORE each page's own <style>, so anything a page needs to do differently it
+   can still do locally and win on source order. Change a brand colour here, not in four
+   places. */
+
+:root {
+  --paper:#F6F4EF; --card:#FFFDF9; --ink:#0E0E10; --body:#33323a;
+  --muted:#75727d; --line:#e2ddd3; --hair:#ebe6dc;
+  --violet:#5B41C2; --violet-l:#9B7CFF; --violet-d:#46329E;
+  --green:#4f7a4e; --amber:#a9701f;
+  --serif:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* [hidden] must beat component display rules such as .field.check{display:flex}. */
+[hidden] { display:none !important; }
+
+/* --- shared components --- */
+h2 { font-weight:650; letter-spacing:-.032em; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  .topbar .inner { max-width:1180px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-family:var(--sans); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand .dot { width:9px; height:9px; border-radius:50%; background:var(--violet); display:block; }
+  .navleft { display:flex; align-items:center; gap:11px; }
+  .navbtn { font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:none; border:1px solid var(--line); border-radius:100px; padding:5px 12px; cursor:pointer; text-decoration:none; line-height:1.5; white-space:nowrap; transition:color .18s ease, border-color .18s ease, background .18s ease; }
+  .navbtn:hover, .navbtn:focus-visible { color:#fff; background:var(--violet); border-color:var(--violet); outline:none; }
+  .navbtn[disabled] { opacity:.35; cursor:default; }
+  .navbtn[disabled]:hover { color:var(--muted); background:none; border-color:var(--line); }
+  .topbar a.back:hover { color:var(--violet); }
+  .eyebrow { font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); margin-bottom:28px; }
+  .sectnum { font-family:var(--mono); font-size:11px; color:var(--violet-l); letter-spacing:.1em; display:block; margin-bottom:14px; }
+  strong { font-weight:600; color:var(--ink); }
+  .note a { color:var(--violet); text-decoration:none; }
+  .btn:hover { background:var(--ink); }
+  footer nav { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px 20px; }
+  footer a { color:var(--muted); text-decoration:none; }
+  footer a:hover { color:var(--violet); }
+
+  /* Subheadings carry the brand colour; section titles stay ink. */
+  h3, h3.grp { color:var(--violet); }
+  .band h3 { color:var(--violet-l); }

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian: Membership &amp; Support</title>
+<meta name="description" content="Custorian Support Membership: the fee levels, what membership does and does not confer, what fees fund, and how to cancel.">
+<link rel="canonical" href="https://custorian.org/membership-foundation.html">
+<meta property="og:title" content="Custorian membership">
+<meta property="og:description" content="Members, not customers. One membership class, identical rights at every fee level, and no seat that can be bought.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org/membership-foundation.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Custorian">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="foundation.css">
+<style>
+
+  /* --- BRAND FONT MODE: Brand Kit v1.0 (Inter only). Preview toggle, remove before ship. --- */
+  body { font-size:16.5px; line-height:1.62; }
+  .cover h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+  .cover .lede { font-weight:400; letter-spacing:-.011em; }
+  h2 { font-weight:650; letter-spacing:-.032em; }
+  .intro { font-weight:400; letter-spacing:-.01em; }
+  .tier-price { font-weight:650; letter-spacing:-.04em; }
+  .person .r,
+  .entries .x,
+  .tier-who,
+  .tier-includes,
+  ul.plain li,
+  .callout { letter-spacing:-.006em; }
+  body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--hair);
+    background: var(--paper);
+    position: sticky; top:0; z-index:60;
+  }
+  .topbar a.back {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    text-decoration:none; letter-spacing:.02em;
+  }
+
+  /* ---------- shell ---------- */
+  .shell { max-width:1180px; margin:0 auto; padding:0 32px 84px; }
+
+  /* ---------- cover ---------- */
+  .cover { padding:96px 0 72px; border-bottom:1px solid var(--line); }
+  .cover h1 {
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(44px,6.4vw,80px); line-height:1.02;
+    letter-spacing:-.025em; color:var(--ink); margin-bottom:32px;
+  }
+  .cover .lede {
+    font-size:clamp(19px,2.1vw,23px); line-height:1.58;
+    max-width:62ch; color:var(--body); font-weight:300;
+  }
+  .cover .stamp {
+    margin-top:44px; display:flex; flex-wrap:wrap; gap:10px 28px;
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- layout with rail ---------- */
+  .layout { display:grid; grid-template-columns:200px 1fr; gap:64px; padding-top:40px; }
+  .rail { position:sticky; top:104px; align-self:start; }
+  .rail ol { list-style:none; counter-reset:sec; }
+  .rail li { counter-increment:sec; margin-bottom:2px; }
+  .rail a {
+    font-family:var(--sans); font-size:13px; color:var(--muted);
+    text-decoration:none; display:flex; gap:10px; padding:6px 0; line-height:1.4;
+  }
+  .rail a::before {
+    content:counter(sec,decimal-leading-zero);
+    font-family:var(--mono); font-size:10.5px; color:var(--violet-l);
+    padding-top:2px; flex:none;
+  }
+  .rail a:hover { color:var(--ink); }
+
+  .main { min-width:0; max-width:74ch; }
+
+  /* ---------- sections ---------- */
+  section { padding-bottom:48px; }
+  section + section { border-top:1px solid var(--hair); padding-top:40px; }
+  h2 {
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(29px,3.4vw,38px); line-height:1.16; letter-spacing:-.02em;
+    color:var(--ink); margin-bottom:10px;
+  }
+  h3 {
+    font-family:var(--sans); font-weight:600; font-size:16.5px;
+    letter-spacing:-.01em; color:var(--ink); margin:44px 0 12px;
+  }
+  p { margin-bottom:20px; }
+  p:last-child { margin-bottom:0; }
+  a.inline { color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(91,65,194,.3); }
+  a.inline:hover { border-bottom-color:var(--violet); }
+  .intro { font-size:19.5px; line-height:1.6; color:var(--body); font-weight:300; margin-bottom:28px; }
+
+  /* ---------- key facts ---------- */
+  .facts { margin:32px 0 8px; border-top:1px solid var(--line); }
+  .facts > div {
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:15px 0; border-bottom:1px solid var(--hair);
+  }
+  .facts .k {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    letter-spacing:.02em; padding-top:2px;
+  }
+  .facts .v { font-family:var(--mono); font-size:14px; color:var(--ink); line-height:1.5; }
+
+  /* ---------- people ---------- */
+  .people { margin:26px 0 12px; }
+  .person { padding:22px 0; border-top:1px solid var(--hair); }
+  .person:last-child { border-bottom:1px solid var(--hair); }
+  .person .n { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .person .r { font-size:16px; color:var(--body); line-height:1.6; }
+  .tag {
+    display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--violet);
+    border:1px solid rgba(91,65,194,.28); border-radius:100px; padding:2px 10px; margin-bottom:9px;
+  }
+
+  /* ---------- firewalls ---------- */
+  .firewalls { list-style:none; counter-reset:fw; margin:30px 0 0; }
+  .firewalls li {
+    counter-increment:fw; position:relative;
+    padding:20px 0 20px 52px; border-top:1px solid var(--hair);
+  }
+  .firewalls li:last-child { border-bottom:1px solid var(--hair); }
+  .firewalls li::before {
+    content:counter(fw,decimal-leading-zero);
+    position:absolute; left:0; top:22px;
+    font-family:var(--mono); font-size:11px; color:var(--violet-l);
+  }
+  .firewalls strong { display:block; font-family:var(--sans); font-size:15px; margin-bottom:4px; }
+
+  /* ---------- networks ---------- */
+  .netgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:28px 0 14px; }
+  .net { background:var(--card); padding:22px 22px 20px; display:flex; flex-direction:column; gap:11px; }
+  .net .mark { height:46px; display:flex; align-items:center; }
+  .net .mark img { max-height:46px; max-width:160px; object-fit:contain; }
+  .net .mark .ph {
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--muted);
+    border:1px dashed var(--line); border-radius:3px; padding:13px 15px; background:var(--paper);
+  }
+  .net .n { font-family:var(--sans); font-weight:600; font-size:15.5px; color:var(--ink); }
+  .net .s { font-size:15px; line-height:1.5; color:var(--body); }
+  .status {
+    align-self:flex-start; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; padding:3px 10px; border-radius:100px;
+  }
+  .status.pending { color:#8a5c14; border:1px solid rgba(169,112,31,.4); background:rgba(169,112,31,.07); }
+  .status.member  { color:#3f6b3e; border:1px solid rgba(79,122,78,.42); background:rgba(79,122,78,.07); }
+
+  /* ---------- note / callout ---------- */
+  .callout {
+    background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet);
+    padding:24px 28px; margin:32px 0; font-size:16.5px; line-height:1.6;
+  }
+  .note { font-size:15px; color:var(--muted); line-height:1.6; }
+
+  /* ---------- tiers ---------- */
+  .tiers { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); margin:32px 0 22px; border:1px solid var(--line); }
+  .tier { background:var(--card); padding:26px 24px; display:flex; flex-direction:column; }
+  .tier-name { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .tier-price { font-family:var(--serif); font-size:38px; font-weight:300; color:var(--ink); letter-spacing:-.03em; line-height:1; margin-bottom:14px; }
+  .tier-price span { font-family:var(--sans); font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0; }
+  .tier-who { font-size:15.5px; color:var(--ink); margin-bottom:10px; }
+  .tier-includes { font-size:15px; color:var(--body); line-height:1.55; flex:1; }
+  .tier a {
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--violet);
+    text-decoration:none; margin-top:18px; display:inline-block;
+  }
+  .tier a:hover { color:var(--ink); }
+
+  .btn {
+    display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+    background:var(--violet); color:#fff; text-decoration:none;
+    padding:12px 24px; border-radius:2px;
+  }
+
+  /* ---------- lists ---------- */
+  ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
+  ul.plain li {
+    font-size:16px; padding:9px 0 9px 18px; position:relative;
+    break-inside:avoid; color:var(--ink);
+  }
+  ul.plain li::before { content:''; position:absolute; left:0; top:18px; width:6px; height:1px; background:var(--violet-l); }
+
+  .entries { list-style:none; margin:26px 0 0; }
+  .entries li { padding:20px 0; border-top:1px solid var(--hair); }
+  .entries li:last-child { border-bottom:1px solid var(--hair); }
+  .entries .d { font-family:var(--mono); font-size:11.5px; color:var(--violet-l); letter-spacing:.04em; margin-bottom:6px; }
+  .entries .t { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .entries .t a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .entries .t a:hover { color:var(--violet); }
+  .entries .x { font-size:16px; color:var(--body); line-height:1.58; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top:1px solid var(--line); margin-top:40px; padding:44px 0 0;
+    font-family:var(--sans); font-size:13.5px; color:var(--muted);
+  }
+
+  .flag {
+    background:#fff8e6; border:1px solid #e8d9a8; border-radius:3px;
+    padding:14px 18px; margin:0 0 0; font-family:var(--sans); font-size:13px;
+    color:#6b5618; line-height:1.55;
+  }
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .layout { grid-template-columns:1fr; gap:0; padding-top:28px; }
+    .rail { display:none; }
+    .cover { padding:60px 0 48px; }
+    .tiers { grid-template-columns:1fr; }
+    .facts div { grid-template-columns:1fr; gap:4px; }
+    ul.plain { column-count:1; }
+  }
+  h3.grp { font-size:15px; color:var(--muted); letter-spacing:.02em; margin:32px 0 8px; }
+  h2.tight { margin-top:34px; }</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <button type="button" class="navbtn" id="backBtn" title="Back to the previous page" aria-label="Back to the previous page">&larr;</button>
+      <a class="navbtn" href="index-foundation.html" title="Home">Home</a>
+      <a class="brand" href="index-foundation.html"><span class="dot"></span> Custorian</a>
+    </span>
+    <span style="display:flex; align-items:center; gap:18px;">
+      <a class="back" href="about-foundation.html">About</a>
+      <a class="back" href="governance-foundation.html">Governance &rarr;</a>
+    </span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <div class="cover">
+    <div class="eyebrow">Membership &amp; support</div>
+    <h1>Members, not customers.</h1>
+    <p class="lede"><span style="color:var(--violet); font-weight:600;">Custorian</span> has a single class of membership. It carries a vote at the general assembly and nothing else. No fee level, at any price, confers a board seat, a vote on board composition, or certification eligibility for a member's own platform or product.</p>
+    <div class="stamp">
+      <span>Foreningen Custorian</span>
+      <span>CVR 46399455</span>
+      <span>Copenhagen, Denmark</span>
+    </div>
+  </div>
+
+  <div style="padding-top:56px;">
+    <main class="main" style="max-width:74ch;">
+            <p class="intro"><span style="color:var(--violet); font-weight:600;">Custorian</span> has a single membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
+      <p>Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on the annual accounts and on proposals; the budget is approved by the board and presented to the general assembly for information. Voting requires three months&rsquo; continuous membership. No fee level buys influence over the standard: membership never confers, and cannot be exchanged for, certification, and a for-profit member&rsquo;s own platform or product stays subject to the same independent, accredited assessment as everyone else&rsquo;s.</p>
+
+      <h2 class="tight">Fee by applicant type</h2>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tier-name">Individual</div>
+          <div class="tier-price">&euro;10<span>&nbsp;/ year</span></div>
+          <div class="tier-who">Youth representatives and parents, per Articles &sect;&nbsp;3.1(a) and (b).</div>
+          <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. No board seat, no path to certification.</div>
+          <a href="index.html?join=individual#get-involved">Apply for membership &rarr;</a>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Trust &amp; Safety Expert</div>
+          <div class="tier-price">&euro;50<span>&nbsp;/ year</span></div>
+          <div class="tier-who">Child safety and trust &amp; safety professionals.</div>
+          <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. It is not an Advisory Board seat; those are appointed separately, by MOU, not by fee.</div>
+          <a href="index.html?join=expert#get-involved">Apply for membership &rarr;</a>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Organisation</div>
+          <div class="tier-price">&euro;100<span>&nbsp;/ year</span></div>
+          <div class="tier-who">Civil-society and non-profit organisations only.</div>
+          <div class="tier-includes"><strong>Membership means:</strong> one vote at the general assembly, held by the organisation, on everything except Board composition. No board seat, no path to certification.</div>
+          <a href="index.html?join=organisation#get-involved">Apply for membership &rarr;</a>
+        </div>
+        <div class="tier">
+          <div class="tier-name">For-profit Organisation</div>
+          <div class="tier-price">&euro;500<span>&nbsp;/ year</span></div>
+          <div class="tier-who">For-profit organisations that are not themselves subject to assessment under the standard (Articles &sect;&nbsp;3.1(e)).</div>
+          <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. It does <strong>not</strong> include a board seat. A platform or service that is or may become subject to assessment, and any company controlling or controlled by one, cannot be a member at all.</div>
+          <a href="index.html?join=forprofit#get-involved">Apply for membership &rarr;</a>
+        </div>
+      </div>
+      <p class="note">Applying registers your Support Membership request, it is not a payment. Applications are reviewed and decided on quarterly by the Board; if accepted, you&rsquo;ll receive an email with a Stripe payment link to complete your membership (card payment, billed annually). Fees were set by the Board on 21 August 2026 (organisation fee revised 8 September 2026; trust &amp; safety expert and for-profit levels added 9 September 2026) and are pending formal ratification at the next general assembly.</p>
+
+      
+      <h2 id="what-you-get">What membership gives you</h2>
+      <p>Membership buys accountability, not access. Members see more, sooner, and vote on what the association does. It confers nothing over the content of the standard, which sits outside the general assembly&rsquo;s vote entirely (Articles &sect;&nbsp;5.8).</p>
+      <p>Fees fund the work of writing and maintaining the standard itself: drafting and revising the control set, verifying every legal citation behind it against primary sources, running the public consultation and the youth panel, and publishing the results openly. The association is non-profit and any surplus is applied solely to that purpose (Articles &sect;&nbsp;2.2). Because Custorian refuses funding from any platform it could assess (&sect;&nbsp;7.7), member fees and individual donations are among the few sources it can accept without compromising the firewall.</p>
+
+      <h3 class="grp">Rights under the Articles</h3>
+      <ul class="plain" style="column-count:1;">
+        <li>A vote at the general assembly on every matter reserved to it, except Board composition</li>
+        <li>The right to attend and to propose items for the agenda (&sect;&nbsp;3.4)</li>
+        <li>A vote on the annual accounts, which the Board recommends and the assembly approves (&sect;&nbsp;4.4(c), &sect;&nbsp;5.13)</li>
+        <li>The right to ratify or refuse each Board appointment put to the assembly (&sect;&nbsp;3.4)</li>
+      </ul>
+      <p class="note" style="margin-top:14px;">Voting requires three months&rsquo; continuous membership (&sect;&nbsp;4.8).</p>
+
+      <h3 class="grp">What members receive</h3>
+      <ol class="steps">
+        <li><strong>Quarterly member briefing.</strong> Board decisions and the reasoning behind them, sent to members before the public summary is posted.</li>
+        <li><strong>Standard change notices.</strong> What changed between control-set versions and why, in plain language, when a version ships.</li>
+        <li><strong>Named in the member roster.</strong> Listed by category on the public roster, with consent. Names are never published without it.</li>
+        <li><strong>An annual open call with the editor</strong> ahead of the general assembly, so that agenda items members propose are informed ones.</li>
+      </ol>
+
+      <div class="callout">
+        <strong>What membership does not give you.</strong> No influence over which controls exist, how they are scored or how they are prioritised. No early or privileged access to the standard itself, which is published openly under CC BY-ND 4.0 and free to everyone. No shorter, cheaper or softer route to certification, which is decided by independent accredited bodies and not by Custorian. Board candidates need not be members, so a fee is not a route to a seat.
+      </div>
+
+      <div class="callout">
+        <strong>Cancelling a membership subscription.</strong> Dues are billed annually and can be cancelled at any time before the next renewal, with no cancellation fee, through the <strong>Stripe Customer Portal</strong>: the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails lets you cancel yourself, at any time, no need to contact us. You can also cancel by writing to <a class="inline" href="mailto:info@custorian.org">info@custorian.org</a> with the name and email used at payment (we confirm within two business days). Cancelling stops future renewals; it does not refund the period already paid for, and membership, including any voting rights attached to it, ends when that paid period expires.
+      </div>
+
+      <footer>
+        Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+        <nav>
+          <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>
+          <a href="about-foundation.html">About</a>
+          <a href="index-foundation.html#pilot">Join the Pilot</a>
+          <a href="governance-foundation.html">Governance</a>
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="mailto:info@custorian.org">Contact</a>
+        </nav>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var b = document.getElementById('backBtn');
+    if (!b) return;
+    if (window.history.length <= 1) b.setAttribute('disabled', '');
+    b.addEventListener('click', function () {
+      if (window.history.length > 1) window.history.back();
+      else window.location.href = 'index-foundation.html';
+    });
+  })();
+</script>
+</body>
+</html>

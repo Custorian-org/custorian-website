@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian: Governance &amp; Transparency</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Custorian is a Danish non-profit that owns a standard it cannot sell. This is the public record: our articles, governing structure, declared interests, firewalls, decisions and accounts.">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<style>
+  :root {
+    --purple: #8B5CF6; --purple-d: #5B41C2;
+    --ink: #1a1a1a; --muted: #6b6b6b; --line: #e4e0da;
+    --paper: #ffffff; --wash: #faf8f5;
+    --green: #5b8c5a; --amber: #b5651d; --grey: #8a8a8a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; line-height: 1.55; font-size: 15px; }
+  .doc { max-width: 920px; margin: 0 auto; padding: 48px 48px 80px; }
+  .actionbar { position: sticky; top: 0; z-index: 50; background: var(--purple); color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+  .actionbar a.home { color: #fff; text-decoration: none; opacity: .75;
+    font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+  .actionbar a.home:hover { opacity: 1; }
+
+  .draft { background: #2b2b2b; color: #ffd79a; padding: 14px 20px; font-size: 12.5px;
+    letter-spacing: .02em; line-height: 1.5; margin-bottom: 36px; border-radius: 3px; }
+  .draft b { color: #fff; }
+
+  .cover { border-bottom: 2px solid var(--ink); padding-bottom: 36px; margin-bottom: 40px; }
+  .wordmark { font-size: 13px; letter-spacing: .5em; text-transform: uppercase; font-weight: 800;
+    color: var(--purple); margin-bottom: 44px; }
+  h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 900; letter-spacing: -.03em;
+    line-height: .98; text-transform: uppercase; margin-bottom: 18px; }
+  .lede { font-size: 18px; line-height: 1.5; max-width: 62ch; }
+  .meta { margin-top: 26px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .meta span { margin-right: 18px; }
+
+  h2 { font-size: 13px; letter-spacing: .35em; text-transform: uppercase; font-weight: 800;
+    color: var(--purple); margin: 52px 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    scroll-margin-top: 60px; }
+  h3 { font-size: 22px; font-weight: 900; letter-spacing: -.02em; margin: 34px 0 6px; }
+  h4 { font-size: 15px; font-weight: 800; margin: 24px 0 4px; }
+  p { margin-bottom: 14px; max-width: 70ch; }
+  a.inline { color: var(--purple); text-decoration: none; font-weight: 600; }
+
+  .toc { background: var(--wash); border: 1px solid var(--line); padding: 24px 26px; }
+  .toc .tl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .toc ol { list-style: none; counter-reset: t; columns: 2; column-gap: 36px; }
+  .toc li { counter-increment: t; margin-bottom: 9px; font-size: 14px; break-inside: avoid; }
+  .toc li::before { content: counter(t, decimal-leading-zero); color: var(--purple);
+    font-weight: 800; font-size: 11px; margin-right: 9px; }
+
+  .callout { background: var(--wash); border-left: 3px solid var(--purple);
+    padding: 18px 22px; margin: 18px 0; font-size: 14px; max-width: 72ch; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin: 18px 0 6px; }
+  .grid div { background: var(--paper); padding: 16px 18px; }
+  .grid .k { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .grid .v { font-size: 15px; font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; margin: 18px 0 6px; font-size: 14px; }
+  th { text-align: left; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+    font-weight: 700; padding: 0 14px 10px 0; border-bottom: 2px solid var(--ink); }
+  td { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.n { font-weight: 700; width: 26%; }
+  td.n small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; margin-top: 2px; }
+  td.s { width: 13%; white-space: nowrap; }
+  .tag { display: inline-block; font-size: 9.5px; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; padding: 4px 8px; border-radius: 3px; color: #fff; }
+  .tag.yes { background: var(--green); } .tag.part { background: var(--amber); }
+  .tag.na { background: var(--grey); } .tag.vio { background: var(--purple); }
+
+  ol.pr { list-style: none; counter-reset: p; margin: 20px 0 8px; }
+  ol.pr li { counter-increment: p; position: relative; padding: 0 0 20px 56px; margin-bottom: 20px;
+    border-bottom: 1px solid var(--line); max-width: 74ch; }
+  ol.pr li:last-child { border-bottom: none; }
+  ol.pr li::before { content: counter(p, decimal-leading-zero); position: absolute; left: 0; top: -2px;
+    font-size: 26px; font-weight: 900; color: var(--purple); letter-spacing: -.03em; }
+  ol.pr .t { font-size: 17px; font-weight: 900; margin-bottom: 4px; }
+  ol.pr .d { font-size: 14.5px; color: #3d3d3d; }
+
+  ol.fw { list-style: none; counter-reset: f; margin: 18px 0 8px; }
+  ol.fw li { counter-increment: f; position: relative; padding: 12px 0 12px 48px;
+    border-bottom: 1px solid var(--line); max-width: 76ch; font-size: 14.5px; }
+  ol.fw li::before { content: "F" counter(f); position: absolute; left: 0; top: 13px;
+    font-size: 12px; font-weight: 900; color: var(--purple); letter-spacing: .04em; }
+
+  ul.docs { list-style: none; margin: 12px 0 8px; }
+  ul.docs li { display: flex; align-items: baseline; gap: 14px; padding: 16px 2px;
+    border-bottom: 1px solid var(--line); max-width: 78ch; }
+  ul.docs li .b { flex: 1; }
+  ul.docs li .t { font-weight: 800; font-size: 16px; }
+  ul.docs li .d { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+
+  .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); margin: 20px 0 10px; }
+  .person { background: var(--paper); padding: 22px 20px 24px; }
+  .person .role { font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .person .nm { font-size: 16.5px; font-weight: 900; margin-bottom: 6px; }
+  .person .nm.v { color: var(--muted); font-weight: 700; }
+  .person .bio { font-size: 13px; color: #4d4d4d; }
+  .note { font-size: 13px; color: var(--muted); max-width: 72ch; }
+  em { font-style: italic; }
+
+  footer { margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
+    font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+  footer a { color: var(--purple); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .doc { padding: 36px 20px 64px; }
+    .grid, .people { grid-template-columns: 1fr; }
+    .toc ol { columns: 1; }
+    td.n, td.s { width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="actionbar">
+  <span>Custorian &middot; Governance &amp; Transparency</span>
+  <a class="home" href="/index.html">&larr; custorian.org</a>
+</div>
+<div class="doc">
+<div class="draft">
+  <b>INTERNAL DRAFT, NOT PUBLISHED.</b> Rendered 14 September 2026 for review. Reflects Statutes v1.5, Governance Charter v2.1 and Policies compilation v2.2. Those are not yet adopted: do not publish this page before adoption, or the membership, firewall and chair-term statements will be wrong against the governing v1.4 text. Contains no Charter-internal content.
+</div>
+
+<div class="cover">
+  <div class="wordmark">Custorian</div>
+  <h1>Owned in the open.</h1>
+  <p class="lede">Custorian owns a standard it is structurally unable to sell. A promise like that is only worth the paper it is audited on, so this is the paper. Our legal identity, our articles, the people who govern us, the interests they have declared, the firewalls that keep the standard independent, the decisions we take, and the accounts behind them.</p>
+  <div class="meta">
+    <span>Foreningen Custorian</span><span>CVR 46399455</span><span>Copenhagen, Denmark</span><span>Updated 14 September 2026</span>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="tl">On this page</div>
+  <ol>
+    <li>Our approach to good governance</li>
+    <li>Legal identity</li>
+    <li>Governing principles</li>
+    <li>The board</li>
+    <li>Officers and oversight functions</li>
+    <li>Advisory Board</li>
+    <li>Independence and conflicts</li>
+    <li>Register of interests</li>
+    <li>How the work is kept apart</li>
+    <li>Raising a concern</li>
+    <li>Governing documents</li>
+    <li>Policies</li>
+    <li>Decisions and minutes</li>
+    <li>Finances</li>
+    <li>Membership and support</li>
+    <li>Donations</li>
+  </ol>
+</div>
+
+<h2>1. Our approach to good governance</h2>
+<p>Custorian is a Danish <em>frivillig forening</em>, a voluntary non-profit membership association. It is not an <em>erhvervsdrivende fond</em>, so the Danish <strong>Anbefalinger for god Fondsledelse</strong> do not apply to us as a matter of law.</p>
+<p>We measure ourselves against them anyway, and publish the result, including where we fall short. We ask platforms to prove their claims about children rather than assert them, and a body that asks for proof has to show its own. Nothing below is marked as complied with because we intend to do it.</p>
+<table>
+  <thead><tr><th>Recommendation theme</th><th>Status</th><th>How we apply it</th></tr></thead>
+  <tbody>
+    <tr><td class="n">Openness and communication<small>Åbenhed og kommunikation</small></td><td class="s"><span class="tag yes">Comply</span></td>
+      <td>Articles, governing structure, board composition, register of interests, decisions log, policy list and annual accounts are published here.</td></tr>
+    <tr><td class="n">The board's duties and responsibility<small>Bestyrelsens opgaver og ansvar</small></td><td class="s"><span class="tag part">Partly</span></td>
+      <td>Duties are set out in the articles and in published terms of reference, including annual review of purpose, strategy and risk. Partly, because the inaugural board is not yet seated and the first full cycle has not run.</td></tr>
+    <tr><td class="n">Chair and vice chair<small>Formanden og næstformanden</small></td><td class="s"><span class="tag part">Partly</span></td>
+      <td>Both roles are defined, and the vice chair leads every matter concerning the founder. The founder chairs until an independent chair is elected, which the board is required to seek by 31 December 2028. We publish that as a departure from the preference for an independent chair from the outset.</td></tr>
+    <tr><td class="n">Board composition and organisation<small>Sammensætning og organisering</small></td><td class="s"><span class="tag part">Partly</span></td>
+      <td>Composition, terms, appointment mechanics and required competences are published below. Seats currently open are named as open rather than left unmentioned.</td></tr>
+    <tr><td class="n">Independence of board members<small>Uafhængighed</small></td><td class="s"><span class="tag yes">Comply</span></td>
+      <td>At least two directors must meet a published three-year independence test. Platforms assessable under the standard cannot hold membership or a seat. Interests are declared and published.</td></tr>
+    <tr><td class="n">Appointment period<small>Udpegningsperiode</small></td><td class="s"><span class="tag yes">Comply</span></td>
+      <td>Two-year terms, filled by resolution of the sitting board and put to the general assembly for ratification. Terms and expiry dates are published per seat.</td></tr>
+    <tr><td class="n">Annual evaluation<small>Evaluering</small></td><td class="s"><span class="tag part">Partly</span></td>
+      <td>Three annual reviews are required: individual contribution, board effectiveness, and whether the firewalls below are honoured in substance. The first falls due once the inaugural board completes a year, and a summary is published here.</td></tr>
+    <tr><td class="n">Remuneration<small>Ledelsens vederlag</small></td><td class="s"><span class="tag yes">Comply</span></td>
+      <td>Board and advisory service is unpaid. Documented expenses may be reimbursed and are disclosed in the accounts. Two narrow exceptions are published: a youth advisory member may receive an honorarium, and a director's professional services may be engaged at arm's-length market rates, disclosed, capped, and entered in the register of interests.</td></tr>
+  </tbody>
+</table>
+
+<h2>2. Legal identity</h2>
+<p>Custorian has no shareholders and distributes no profit. The standard it maintains is licensed <strong>CC BY-ND 4.0</strong> and remains public even if the association dissolves.</p>
+<div class="grid">
+  <div><div class="k">Legal name</div><div class="v">Foreningen Custorian</div></div>
+  <div><div class="k">Legal form</div><div class="v">Frivillig forening (non-profit)</div></div>
+  <div><div class="k">CVR number</div><div class="v">46399455</div></div>
+  <div><div class="k">Registered seat</div><div class="v">Copenhagen, Denmark</div></div>
+  <div><div class="k">Founded</div><div class="v">11 April 2026</div></div>
+  <div><div class="k">Standard licence</div><div class="v">CC BY-ND 4.0</div></div>
+</div>
+
+<h2>3. Governing principles</h2>
+<p>Five principles decide the hard cases. Each has a corresponding structural rule, so that following the principle is not a matter of goodwill.</p>
+<ol class="pr">
+  <li><div class="t">Independence before growth</div><div class="d">Where a funding route, partnership or member would give an assessable platform influence over the standard, we decline it, even when we need the money. Rule: protected provisions in the articles, a 30 per cent single-source funding cap, and an outright bar on funding from any platform that is or could become assessable.</div></li>
+  <li><div class="t">Evidence, not assertion</div><div class="d">Every control in the standard is written to be evidenced by a third party. We hold our own claims to the same bar, which is why this page states what is not yet in place as plainly as what is. Rule: decisions are published with their rationale, and claims of partnership or endorsement are published only when current and verifiable.</div></li>
+  <li><div class="t">Children are the subject, not the data source</div><div class="d">Safety work done to children rather than for them fails on its own terms. Rule: a standing youth seat on the Advisory Board, safeguarding sign-off before any activity involving children, and a research arm with no monetary tie to any platform it studies.</div></li>
+  <li><div class="t">We maintain the standard, we do not grade against it</div><div class="d">The body that writes a test should not mark the papers. Rule: platform certification is issued only by bodies accredited to ISO/IEC 17065, and the association never audits or certifies a platform.</div></li>
+  <li><div class="t">Open by default, closed only for a stated reason</div><div class="d">Documents, decisions and accounts are public unless publishing them would expose a child, a named individual, an unfinished deliberation or sensitive investigative material. Where we withhold, we say that we are withholding, and why.</div></li>
+</ol>
+
+<h2>4. The board</h2>
+<p>Foreningen Custorian is governed by a Board of Directors of three to seven members. Seats, holders and status are published below. Open seats are shown as open.</p>
+<div class="people">
+  <div class="person"><div class="role">Chair &middot; Founder &middot; Interim Executive Director</div><div class="nm">Tanya Becheva</div>
+    <div class="bio">Founder. Holds a seat by right. Chairs the board until an independent chair is elected. Recuses from every matter concerning her own appointment, remuneration, performance or conflicts, which the vice chair leads.</div></div>
+  <div class="person"><div class="role">Vice Chair &middot; Independent</div><div class="nm v">Seat open</div>
+    <div class="bio">Leads all matters concerning the founder. Holds board-level safeguarding oversight, which is never held by the same person as the operational safeguarding lead. Receives concerns raised about the chair.</div></div>
+  <div class="person"><div class="role">Treasurer &middot; Independent</div><div class="nm v">Seat open</div>
+    <div class="bio">Accounts, budget, grant compliance, the single-funder concentration limit and the reserve fund.</div></div>
+  <div class="person"><div class="role">Secretary &middot; Independent</div><div class="nm v">Seat open</div>
+    <div class="bio">Minutes, the register of interests, the resolutions log and the published decisions log.</div></div>
+  <div class="person"><div class="role">Legal Adviser &middot; Independent</div><div class="nm v">Seat open</div>
+    <div class="bio">Counsel-level oversight of contracts, licences and regulatory exposure.</div></div>
+  <div class="person"><div class="role">Child Digital Safety &amp; Wellbeing &middot; Independent</div><div class="nm v">Seat open</div>
+    <div class="bio">Subject-matter anchor, so board decisions are not driven by financial and legal considerations alone. Safeguarding and survivor-informed practice are required competencies.</div></div>
+</div>
+<p class="note">Interested in a seat? Write to info@custorian.org. An independent vice chair is our highest governance priority.</p>
+
+<h4>How seats are filled</h4>
+<p>Seats are filled by resolution of the sitting board and presented to the next general assembly for ratification. The general assembly may ratify or refuse an appointment but may not itself appoint; where an appointment is refused, the board appoints again. Appointment requires a two-thirds board majority. Commercial platforms and services that are or may become subject to assessment under the standard, and companies controlling or controlled by them, are not eligible for membership and hold no seat.</p>
+<h4>Independence</h4>
+<p>At least two directors must be independent. A director is independent if, within the preceding three years, they have not been employed by, received fees from, or held ownership or a management position in the association, an entity it controls, a certification body under the scheme, or a platform certified or seeking certification, and are not a close relative of, or in a close personal relationship with, anyone who has. Independence is confirmed in writing on appointment and annually. If the number of independent directors falls below two, the board must fill the vacancy within six months.</p>
+<h4>Term</h4>
+<p>Two years, renewable. Each seat above carries its term expiry date once filled.</p>
+<h4>The chair and executive arrangement, stated plainly</h4>
+<p>The founder holds a seat by right, chairs the board until an independent chair is elected, and serves as interim managing director. The board is required to seek an independent chair by 31 December 2028, and the interim executive appointment ends no later than 31 December 2029 unless extended by a majority including every independent director. Both are time-boxed continuity arrangements in a young association, and both are departures from what good practice would normally prefer, which is why they are published here rather than left in the articles for someone to find. The independent vice chair is the counterweight, and that seat is open.</p>
+<h4>Remuneration</h4>
+<p>Board service is unpaid. Documented, reasonable expenses may be reimbursed and are disclosed in the annual accounts.</p>
+<h4>Protected provisions</h4>
+<p>No majority, including a unanimous one, can change the association's purpose, sell or exclusively licence the standard, or admit as members platforms subject to assessment. The technical content of the standard sits outside the general assembly's vote entirely and is set through the technical governance process.</p>
+
+<h2>5. Officers and oversight functions</h2>
+<p>These are appointed by and accountable to the board. None of them is a board seat.</p>
+<table>
+  <thead><tr><th>Function</th><th>Status</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td class="n">Designated Safeguarding Lead</td><td class="s"><span class="tag part">Interim</span></td>
+      <td>Receives and acts on safeguarding concerns, and refers to the competent authorities. Held by the chair on an interim basis until the board appoints another person. Board-level accountability sits separately with the vice chair.</td></tr>
+    <tr><td class="n">Data Protection Lead</td><td class="s"><span class="tag na">Vacant</span></td>
+      <td>Reports directly to the board and sits outside the revenue-generating arms. The chair may never hold this role, because a role that determines the purposes and means of processing is incompatible with the function under GDPR Article 38(6). Until it is filled, any determination requiring independent judgement goes to external counsel or to an advisory member not otherwise involved, and is recorded. Filling it is a standing board agenda item.</td></tr>
+    <tr><td class="n">Research Ethics Oversight</td><td class="s"><span class="tag na">Vacant</span></td>
+      <td>One to three independent reviewers with clinical, safeguarding or research-ethics expertise. No study involving children proceeds without their sign-off, and no material change to our detection technology ships without it.</td></tr>
+    <tr><td class="n">Lay auditor<br><small>kritisk revisor</small></td><td class="s"><span class="tag na">Vacant</span></td>
+      <td>Elected annually by the general assembly, may not be a board member, reviews and signs off the accounts before they are presented.</td></tr>
+  </tbody>
+</table>
+<p class="note">Where a function above is vacant, the obligation attached to it takes effect on appointment. Nothing on this page is a claim that a vacant role is currently operational.</p>
+
+<h2>6. Advisory Board</h2>
+<p>A roster of ten to twelve named individual experts across child rights, legal and regulatory, technology, academic, clinical, law enforcement and youth perspectives. Members give ad hoc, non-binding input on the standard, its ethical dimensions and its child-facing content. They hold no vote and cannot bind the board; where the board declines material advice, it records that it did so. Members serve in a personal expert capacity: an affiliation is listed for identification only and is not a partnership, endorsement or review by their employer.</p>
+<div class="people">
+  <div class="person"><div class="role">Technology and standards</div><div class="nm">Beckett LeClair</div>
+    <div class="bio">Head of Technology, 5Rights Foundation. Advises on child-rights-by-design, alignment with BSI and IEEE standards work, and the ethical framing of the standard.</div></div>
+  <div class="person"><div class="role">Clinical</div><div class="nm">Dr Alison McClymont</div>
+    <div class="bio">Clinical psychologist specialising in trauma and child exploitation. Advises on child-facing content and on the behavioural-harm and grooming-dynamics frameworks.</div></div>
+  <div class="person"><div class="role">Open</div><div class="nm v">Five domains open</div>
+    <div class="bio">Child rights, legal and regulatory, academic, law enforcement, and youth perspectives. Geographic representation is a selection consideration for every appointment.</div></div>
+</div>
+<h4>Three sub-committees</h4>
+<p>The <strong>Standards and Technical Sub-Committee</strong> carries the quarterly update cycle for the standard and invites stakeholder institutions as consultees. The <strong>Certification and Impartiality Sub-Committee</strong> protects the certification firewall, recognises certification bodies, arbitrates the final scheme instance of the appeals ladder, and runs an annual impartiality review; it carries between three and five members, excludes anyone from the certification or commercial arms, excludes the founder from membership and from chairing, and elects its own chair. The <strong>Policy and Rights Sub-Committee</strong> grounds the work in regulatory, academic and societal developments.</p>
+<p class="note">Advisory seats are unpaid and non-voting, and are formalised individually by memorandum of understanding. A youth advisory member may receive an honorarium. Where a youth member is under eighteen, guardian consent is obtained, engagement is age-appropriate, the member never accesses case or offender-related material in any form, and the safeguarding lead signs off the engagement design in advance.</p>
+
+<h2>7. Independence and conflicts</h2>
+<p>Everyone who takes a decision for Custorian, whether director, advisory member, ethics reviewer, officer or volunteer, declares any personal, professional or financial interest that could reasonably be seen to affect that decision, and declares it before the decision is taken rather than after.</p>
+<h4>What must be declared</h4>
+<p>Employment, consultancy, board seats, shareholdings, grants and close personal relationships involving: any platform that is or could become assessable under the standard, any certification body under the scheme, any applicant for funding, any research partner, the commercial arm, and any intelligence provider, registrar or hosting provider that could appear in our published infrastructure work.</p>
+<h4>What happens then</h4>
+<p>The interest is entered in the register. The person withdraws from both the discussion and the vote. Where recusal would leave the board without a quorum of unconflicted members, <strong>the decision is deferred</strong>, not taken by a compromised board, and deferral does not count as approval. A quorum shortage never overrides a recusal.</p>
+<h4>Paid engagement of a director or advisor</h4>
+<p>Where the association engages a director's or advisor's professional services separately from their unpaid governance role, the engagement is disclosed, the individual is recused from approving their own engagement, the terms are benchmarked at arm's-length market rates, the total across all such engagements is capped as a share of annual expenditure with any exception recorded and mitigated, and the engagement is entered in the register.</p>
+
+<h2>8. Register of interests</h2>
+<p>The board maintains a publicly available register of declared interests. Where a declaration is sensitive, the existence of the interest and the recusal are published even if the details are withheld.</p>
+<table>
+  <thead><tr><th>Person and role</th><th>Declared</th><th>Interest and recusal applied</th></tr></thead>
+  <tbody>
+    <tr><td class="n">Tanya Becheva<small>Chair, founder, interim Executive Director</small></td><td class="s">14 Sep 2026</td>
+      <td>Employed full time outside the association, in the technology sector. Recuses from any decision or public content touching that employer. Holds no shareholding in any assessable platform beyond ordinary broad-market and employer equity, which is disclosed and not voted on. Holds the interim safeguarding lead role; every matter concerning her own appointment, remuneration, performance or conflicts is led by the vice chair, and she does not vote on it.</td></tr>
+  </tbody>
+</table>
+<p class="note">Every seated director, advisory member and ethics reviewer files a declaration on appointment and annually, and each appears here.</p>
+
+<h2>9. How the work is kept apart</h2>
+<h3>Five arms</h3>
+<p>Operations sit in five arms, each with its own scope and funding source, so no single arm can quietly capture the others. An <strong>Association</strong> arm handles membership, fundraising and donor stewardship, with a strict firewall against platform funding. A <strong>Standards</strong> arm owns the standard and control framework. A <strong>Certification</strong> arm manages the scheme and professional credentialing, and never audits a platform. A <strong>Research</strong> arm runs studies and corpus validation, funded solely by grants. A commercial <strong>Tech</strong> arm builds and sells technology under the standard, licensing intellectual property from the association at arm's length; no raw or lightly processed personal data crosses that licence, and the licence reverts automatically on insolvency, hostile takeover or material ethical breach.</p>
+<h3>The association does not certify platforms</h3>
+<p>Platform certification is issued exclusively by independent bodies accredited to ISO/IEC 17065 by a national accreditation body under Regulation (EC) 765/2008. The association maintains the scheme and licenses the mark to qualifying bodies, and never audits or certifies a platform itself. A separate in-house track credentials professionals, auditors and child safety officers, under an ISO/IEC 17024 approach. Credentialing people is not the same activity as certifying platforms, and neither is confused with the other. If the association ever establishes its own certification body, no director may sit on its board, no staff may be shared, its revenue may not be tied to certification volume or outcome, and a twenty-four month cooling-off period applies in both directions.</p>
+<h3>Eleven firewalls</h3>
+<p>A standard is only independent if it cannot be captured. These are the rules that make capture structurally difficult rather than merely discouraged.</p>
+<ol class="fw">
+  <li><strong>Certification independence.</strong> Only external accredited bodies decide certification, and no one from the commercial arm sits on the committee that protects that firewall.</li>
+  <li><strong>Advice is not audit.</strong> The association and the commercial arm may both advise, but neither ever audits, and their records stay separated.</li>
+  <li><strong>Research impartiality.</strong> No monetary tie between the research arm and any platform under study.</li>
+  <li><strong>Data firewall.</strong> Research data stays separate from commercial product telemetry, and no raw data crosses the licence to the commercial arm.</li>
+  <li><strong>Anti-capture.</strong> No corporate platform donors, and arm's-length pricing on anything commercial.</li>
+  <li><strong>Founder conflicts.</strong> The founder recuses from any decision involving a declared conflict.</li>
+  <li><strong>Mission lock.</strong> The association holds no outside shares, and the intellectual property licence terminates on breach and reverts automatically on insolvency, hostile takeover or material ethical breach.</li>
+  <li><strong>Data protection independence.</strong> The data protection lead reports directly to the board, sits outside the revenue-generating arms, and is never the chair or managing director.</li>
+  <li><strong>Committee overlap.</strong> No certification or commercial arm staff on the impartiality committee, the founder may not sit on or chair it, and no director directs its substantive decisions.</li>
+  <li><strong>No capture of certification bodies.</strong> Professional credentialing is preferred for certification bodies, never a mandatory gate.</li>
+  <li><strong>No platform equity in the commercial arm.</strong> No assessable platform, and no entity in which one holds a material interest, may hold equity in or control the commercial arm.</li>
+</ol>
+<div class="callout"><strong>Why this page exists.</strong> Custorian asks platforms to prove their claims about children rather than assert them. We hold ourselves to the same test. Governance you cannot inspect is a marketing claim; governance you can inspect is a commitment.</div>
+
+<h2>10. Raising a concern</h2>
+<p>Anyone, inside or outside Custorian, can raise a serious concern about how the association is run.</p>
+<h4>What belongs here</h4>
+<p>Fraud, theft or misuse of funds; bribery or corruption; a conflict of interest concealed rather than declared; a breach of the firewalls above, for example a platform obtaining influence over the standard or a certification decision; a safeguarding failure; a serious breach of data protection; or retaliation against someone who raised any of these.</p>
+<h4>What belongs elsewhere</h4>
+<p>Disagreeing with a decision, appealing a rejected membership or funding application, or disputing a certification outcome. A rejected application is not a governance failure. Certification disputes follow the published appeals ladder, which begins with the certification body that issued the decision.</p>
+<h4>How to raise one, and what protection applies</h4>
+<p>Write to info@custorian.org. Where the concern involves the chair, it is directed to the vice chair once that seat is filled, and meanwhile to an advisory board member not otherwise involved, so that a concern about a person is never decided by that person. You are protected against retaliation whether or not the concern turns out to be founded, provided you raised it in good faith. We acknowledge within five working days and make an initial assessment within fifteen.</p>
+<p class="note">A dedicated independent reporting channel, monitored outside the executive line, is being established alongside the appointment of the independent directors. Until it exists, the route above is the route, and we say so rather than describing a channel that is not yet running.</p>
+
+<h2>11. Governing documents</h2>
+<ul class="docs">
+  <li><div class="b"><div class="t">Articles of association (Vedtægter)</div><div class="d">The constituting document: purpose, membership, board, protected provisions, dissolution. Danish and English, Danish prevailing.</div></div><span class="tag vio">PDF</span></li>
+  <li><div class="b"><div class="t">Terms of reference</div><div class="d">What is expected of a director, an advisory member, each sub-committee, an ethics reviewer, and each officer function.</div></div><span class="tag vio">PDF</span></li>
+  <li><div class="b"><div class="t">The CDSW Standard, current draft</div><div class="d">169 controls across ten domains, applied through an applicability matrix covering eleven platform types, with three certification levels.</div></div><span class="tag yes">Live</span></li>
+  <li><div class="b"><div class="t">The Custorian Standard, founding white paper</div><div class="d">Archived on Zenodo as a frozen historical record. Superseded by the CDSW draft above and not updated in place.</div></div><span class="tag vio">Zenodo</span></li>
+</ul>
+<p class="note">Our internal governance charter sets out how each body operates day to day. It is not published, and this page states its substance: composition, appointment, firewalls, conflicts and the limits on every role.</p>
+
+<h2>12. Policies</h2>
+<p>Custorian operates under fourteen policies. Status is published as it stands, not as we would like it to stand.</p>
+<table>
+  <thead><tr><th>Policy</th><th>Status</th><th></th></tr></thead>
+  <tbody>
+    <tr><td class="n">1. Child Safeguarding</td><td class="s"><span class="tag yes">Adopted</span></td><td>Conduct toward every child and young person who comes into contact with our work, and how a concern is raised and acted on.</td></tr>
+    <tr><td class="n">2. Sensitive Information and CSAM-Adjacent Data Handling</td><td class="s"><span class="tag yes">Adopted</span></td><td>The hard line: we never knowingly seek out, hold, view or train on real child sexual abuse material or real predator-to-child communications.</td></tr>
+    <tr><td class="n">3. Conflict of Interest</td><td class="s"><span class="tag part">Pending</span></td><td>Declaration, recusal, the register, and the deferral rule where recusal leaves no quorum.</td></tr>
+    <tr><td class="n">4. Anti-Fraud and Anti-Corruption</td><td class="s"><span class="tag part">Pending</span></td><td>Financial controls, procurement, gifts and hospitality.</td></tr>
+    <tr><td class="n">5. Data Protection and GDPR Compliance</td><td class="s"><span class="tag part">Pending</span></td><td>Lawful basis, minimisation, retention, data subject rights, breach notification.</td></tr>
+    <tr><td class="n">6. Communications</td><td class="s"><span class="tag na">Internal</span></td><td>Editorial standards, approval routes, and who may speak for the association. Held internally and not published or circulated.</td></tr>
+    <tr><td class="n">7. Funding</td><td class="s"><span class="tag part">Pending</span></td><td>An outright bar on funding from any platform assessable under the standard, with no de-minimis exception.</td></tr>
+    <tr><td class="n">8. AI Usage</td><td class="s"><span class="tag part">Pending</span></td><td>How we use AI tools and how we build AI systems, including training-data red lines and prohibited uses.</td></tr>
+    <tr><td class="n">9. Data Handling</td><td class="s"><span class="tag part">Pending</span></td><td>Data tiers, systems, devices, sharing and disposal.</td></tr>
+    <tr><td class="n">10. Data Sovereignty and Ethical AI Principles</td><td class="s"><span class="tag part">Pending</span></td><td>Bias auditing, algorithmic accountability and data sovereignty for our classifiers.</td></tr>
+    <tr><td class="n">11. Whistleblowing and Protected Disclosure</td><td class="s"><span class="tag part">Pending</span></td><td>Reporting routes, recusal, protection from retaliation, confidentiality.</td></tr>
+    <tr><td class="n">12. Document Retention and Records</td><td class="s"><span class="tag part">Pending</span></td><td>How long each category of record is kept, and when it is destroyed.</td></tr>
+    <tr><td class="n">13. Standard Publication and Versioning</td><td class="s"><span class="tag part">Pending</span></td><td>How the standard is drafted, consulted on, versioned, published and deprecated.</td></tr>
+    <tr><td class="n">14. Gender Equality Plan</td><td class="s"><span class="tag part">Pending</span></td><td>Published separately, reviewed annually.</td></tr>
+  </tbody>
+</table>
+<p class="note">Adopted policies are published in full. Policies pending board signature are available on request while in draft, at info@custorian.org. Policies marked Internal govern how we work rather than what we owe the public, and are neither published nor circulated.</p>
+
+<h2>13. Decisions and minutes</h2>
+<p>The board publishes a summary of every material decision with the reasoning behind it. We publish approved decisions and their rationale rather than verbatim minutes, which keeps individuals, third parties and unfinished deliberations out of the public record while keeping the association's choices fully accountable. The first entries appear once the inaugural board is seated.</p>
+
+<h2>14. Finances</h2>
+<p>The financial year follows the calendar year, and the first ran from founding to 31 December 2026. Accounts are kept by the chair, reviewed and signed off by a lay auditor who is not a board member, recommended to the general assembly by a two-thirds board majority, and are not final until the general assembly approves them. A registered or state-authorised auditor is elected once the association receives material project funding or applies for public-benefit status.</p>
+<p>No single funder may exceed roughly 30 per cent of annual income, and the association maintains a reserve target of three to six months of operating expenses. Separately from the concentration limit, the association accepts no funding at all from any platform that is or could become assessable under the standard, or from any entity controlled or substantially funded by one. Funds found to have been received contrary to that bar are returned or redirected to a charitable purpose unconnected with the donor.</p>
+
+<h2>15. Membership and support</h2>
+<p>Foreningen Custorian has a single class of membership, <strong>Support Membership</strong>, open to youth representatives, parents, trust and safety experts, non-profit civil-society organisations, and for-profit organisations that are not assessable under the standard. Platforms and services that are or may become subject to assessment, and companies controlling or controlled by them, are not eligible: a platform that could be assessed under the standard cannot also sit inside the body that owns it.</p>
+<p>Support Members do not appoint directors. Board seats are filled by board resolution and put to the general assembly for ratification, and the general assembly may ratify or refuse an appointment but may not itself appoint. Support Members attend the general assembly, propose agenda items, and vote on every other matter reserved to it, including the accounts. Voting requires three months' unbroken membership and any fee due to be paid.</p>
+
+<h2>16. Donations</h2>
+<p>Custorian is permitted by Indsamlingsnævnet, the Danish Fundraising Board, to collect public donations from 12 August 2026 to 11 August 2027, for project expenses that advance children's safety online and for operating costs. This channel is for individual donations only. Custorian accepts no donation, grant or sponsorship from any platform, company or organisation assessable under the standard. Giving stays separate from influence, the same firewall that shapes membership.</p>
+<p class="note">Recurring donations can be cancelled at any time before the next payment, with no fee, through the Stripe customer portal link in your receipt and renewal emails, or by writing to info@custorian.org, confirmed within two business days. Donations are voluntary gifts, final once received, and are not currently tax-deductible in Denmark.</p>
+
+
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark<br>
+    Governance enquiries: <a href="mailto:info@custorian.org">info@custorian.org</a> &middot;
+    <a href="privacy-policy.html">Privacy policy</a> &middot;
+    <a href="terms.html">Terms of use</a> &middot;
+    <a href="https://custorian.org">custorian.org</a>
+  </footer>
+</div>
+<script src="track.js"></script>
+</body>
+</html>
