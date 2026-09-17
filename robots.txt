@@ -3,7 +3,15 @@
 # The site is open to crawlers. The redesign replaced the live pages on
 # 17 September 2026, so the *-foundation.html crawl block that stood here is
 # gone with them. Internal working directories stay out.
+#
+# The registrar accountability index is live but not being advertised while it is
+# in review: it names companies, and nobody named on it has been contacted. The page
+# also carries its own noindex tag, because this is a crawl directive and not an
+# index directive, and a URL linked from elsewhere can be indexed without being
+# fetched. Remove both when the index is opened properly.
 
 User-agent: *
 
 Disallow: /_archive/
+Disallow: /registrar-index.html
+Disallow: /registrar-index.json
