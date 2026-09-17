@@ -487,41 +487,45 @@
   .rschdots button[aria-current="true"] { background:var(--violet); width:20px; border-radius:4px; }
   @media (max-width:700px) { .rsch > div { flex-basis:78%; } }
 
-  /* Collaborators band. Violet rather than the ink band used elsewhere, so the white
-     tiles read as marks on a field rather than as another content card. Each tile is a
-     button: clicking it opens the panel underneath with what the relationship actually
-     is and what stage it is at. Nothing here is an endorsement, and the note says so. */
-  .band.violet { background:var(--violet); }
-  .band.violet .sectnum { color:rgba(255,255,255,.55); }
-  .band.violet .note { color:rgba(255,255,255,.72); }
-  .band.violet .note a { color:#fff; }
-  .collabwrap { margin:30px 0 0; }
-  /* Grid, not a carousel: it fills the width at three tiles or at six, and wraps instead
-     of scrolling, so there are no arrows or dots that cannot do anything. */
-  .collab { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:14px; }
+  /* Collaborators band. A compact black strip rather than a full violet section: the
+     marks are the content, so the band gives them room and nothing else. Each tile is a
+     square button; clicking it opens the panel underneath with what the relationship
+     actually is and what stage it has reached. Nothing here is an endorsement, and the
+     small print says so. */
+  .band.compact .inner { padding:44px 32px; }
+  .band.compact h2 { font-size:clamp(23px,2.6vw,29px); margin-bottom:8px; }
+  .band.compact .intro { font-size:15.5px; max-width:62ch; }
+  .collabwrap { margin:24px 0 0; }
+  /* Flex rather than a stretch grid: the tiles stay the same square at any count, so
+     three marks do not become three enormous panels. */
+  .collab { display:flex; flex-wrap:wrap; gap:12px; }
   .ctile {
-    height:112px; cursor:pointer;
-    background:#fff; border:1px solid #fff; border-radius:3px; padding:18px 20px;
+    width:144px; aspect-ratio:1 / 1; cursor:pointer;
+    background:#fff; border:1px solid #fff; border-radius:10px; padding:14px;
     display:flex; align-items:center; justify-content:center; text-align:center;
     font:inherit; transition:transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
     outline:2px solid transparent; outline-offset:3px;
   }
-  .ctile:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+  .ctile:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.35); }
   .ctile[aria-expanded="true"] { outline-color:#fff; }
   .ctile:focus-visible { outline-color:#fff; }
-  .ctile img { max-height:60px; max-width:170px; object-fit:contain; }
+  .ctile img { max-width:100%; max-height:70px; object-fit:contain; }
   .cinfo {
-    margin-top:18px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.28);
-    border-radius:3px; padding:24px 26px; color:#fff;
+    margin-top:16px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
+    border-radius:10px; padding:20px 22px; color:#fff; max-width:70ch;
   }
-  .cinfo .hd { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
-  .cinfo .nm { font-family:var(--sans); font-weight:600; font-size:17px; color:#fff; }
-  .cinfo .body { font-size:15.5px; line-height:1.6; color:rgba(255,255,255,.88); margin:0; }
+  .cinfo .hd { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; }
+  .cinfo .nm { font-family:var(--sans); font-weight:600; font-size:16px; color:#fff; }
+  .cinfo .body { font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.86); margin:0; }
   .cstatus {
     font-family:var(--sans); font-size:10px; font-weight:650; letter-spacing:.13em;
-    text-transform:uppercase; padding:4px 9px; border-radius:2px; white-space:nowrap;
-    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.34); color:#fff;
+    text-transform:uppercase; padding:4px 9px; border-radius:3px; white-space:nowrap;
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fff;
   }
+  /* The caveat is load-bearing, so it is white rather than a grey that reads as skippable. */
+  .band.compact .note { color:rgba(255,255,255,.74); font-size:12.5px; line-height:1.65; max-width:78ch; }
+  .band.compact .note a { color:#fff; }
+  @media (max-width:520px) { .ctile { width:calc(50% - 6px); } }
 
   /* Heading variants, replacing twelve inline style attributes across the pages. */
   h3.lead { font-family:var(--sans); font-weight:600; font-size:16.5px; margin:40px 0 4px; scroll-margin-top:90px; }
@@ -974,7 +978,7 @@
   </div>
 </div>
 
-<div class="band violet" id="collaborators">
+<div class="band compact" id="collaborators">
   <div class="inner">
     <span class="sectnum">11</span>
     <h2>Collaborators</h2>
