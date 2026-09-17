@@ -1,0 +1,63 @@
+/* Custorian side navigation panel: the fixed vertical tab rail on the right edge.
+   Extracted from index-foundation.html on 17 Sep 2026 so it can go on every page,
+   including the legacy-design ones (registry, standard, privacy, terms, donation,
+   conformity guide) that do not load foundation.css.
+
+   Self-contained on purpose: no reset, no custom-property dependency, nothing that
+   reaches outside .sidetabs. Values fall back to literals so a page without the
+   foundation tokens still renders the panel correctly. */
+
+.sidetabs {
+  /* Above every page header on the site: the foundation top bar sits at 60, the
+     legacy registry/standard/guide headers at 100. Dialogs go above this again
+     (200), so an open modal still covers the rail. */
+  position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:110;
+  display:flex; flex-direction:column; justify-content:center; gap:6px;
+  max-height:96vh; margin:0; padding:0; list-style:none;
+}
+
+.sidetabs .sidetab {
+  writing-mode:vertical-rl;
+  font-family:var(--sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size:11.5px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; text-decoration:none;
+  color:var(--violet, #5B41C2); background:rgba(255,253,249,.72);
+  border:1px solid rgba(91,65,194,.3); border-right:none;
+  border-radius:5px 0 0 5px; padding:20px 13px;
+  transform:translateX(9px); backdrop-filter:blur(6px);
+  margin:0; cursor:pointer; -webkit-appearance:none; appearance:none;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1), background .24s ease, color .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+.sidetabs .sidetab.solid {
+  background:var(--violet, #5B41C2); color:#fff; border-color:var(--violet, #5B41C2);
+}
+.sidetabs .sidetab.solid:hover,
+.sidetabs .sidetab.solid:focus-visible {
+  background:var(--violet-d, #46329E); border-color:var(--violet-d, #46329E); color:#fff;
+}
+
+/* The page you are already on: anchored open, and not a link to itself. */
+.sidetabs .sidetab[aria-current="page"] {
+  transform:translateX(0); background:var(--violet, #5B41C2); color:#fff;
+  border-color:var(--violet, #5B41C2); cursor:default;
+}
+
+.sidetabs .sidetab:hover,
+.sidetabs .sidetab:focus-visible {
+  transform:translateX(0); background:var(--violet, #5B41C2); color:#fff;
+  border-color:var(--violet, #5B41C2); box-shadow:-8px 0 24px rgba(91,65,194,.3); outline:none;
+}
+
+/* Six tabs stack taller than a short laptop viewport, so tighten them rather than
+   letting the rail run off the top and bottom of the screen. */
+@media (max-height:900px) {
+  .sidetabs { gap:5px; }
+  .sidetabs .sidetab { font-size:10.5px; letter-spacing:.12em; padding:15px 11px; }
+}
+
+/* Below the desktop breakpoint the rail would cover content: the top bar carries
+   the same destinations there. */
+@media (max-width:1180px) {
+  .sidetabs { display:none; }
+}

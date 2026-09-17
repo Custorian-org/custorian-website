@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian: The Standard for child digital safety and wellbeing. Owned by no one.</title>
+<meta name="description" content="Custorian is the European standard for child digital safety. 160+ controls. Allied with nine regulatory frameworks. Against nine named harms. Owned by a non-profit. Cannot be sold.">
+<meta property="og:title" content="Custorian: The Standard for child digital safety and wellbeing. Owned by no one.">
+<meta property="og:description" content="160+ controls. Allied with nine frameworks. Against nine harms. Owned by no one.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 6vw;
+    scroll-snap-align: start;
+    border-bottom: 1px solid #0a0a0a;
+    position: relative;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    z-index: 10;
+    mix-blend-mode: difference;
+    color: #fff;
+  }
+  .nav-review-link {
+    display: inline-block;
+    mix-blend-mode: normal;
+    background: #8B5CF6;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    padding: 10px 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .nav-review-link:hover { opacity: 0.88; transform: translateY(-2px); }
+  .logo-mark {
+    width: 42px;
+    height: 42px;
+    display: block;
+  }
+  .logo-mark .outer {
+    fill: #8C8E9B;
+    animation: pulse-sweep 4s ease-in-out infinite;
+    animation-delay: calc(var(--idx, 0) * 0.125s);
+  }
+  .logo-mark .inner { fill: #8B5CF6; }
+  @keyframes pulse-sweep {
+    0%, 100% { opacity: 0.32; }
+    6%       { opacity: 1; }
+    18%      { opacity: 0.32; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-mark .outer { animation: none; opacity: 0.7; }
+  }
+
+  /* HERO */
+  .hero h1 {
+    font-size: clamp(44px, 9.5vw, 170px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 16ch;
+  }
+  .hero .sub {
+    position: absolute;
+    bottom: 48px;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* SCOREBOARD */
+  .scoreboard { text-align: center; }
+  .scoreboard-kicker {
+    font-size: clamp(13px, 1.4vw, 22px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    max-width: 1100px;
+    margin: 0 auto 72px;
+    opacity: 0.78;
+    text-align: center;
+  }
+  .scoreboard-kicker strong {
+    font-weight: 900;
+  }
+  .scoreboard .big {
+    font-size: clamp(220px, 38vw, 600px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+  }
+  .scoreboard .label {
+    margin-top: 24px;
+    font-size: 13px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* SPLIT NUMBERS */
+  .split-section { padding: 0; }
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .split > * {
+    background: #000;
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .split .num {
+    font-size: clamp(120px, 18vw, 280px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+  }
+  .split .lbl {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .figures-note {
+    width: 100%;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    max-width: 60ch;
+    margin: 32px auto 0;
+    padding: 0 24px;
+    opacity: 0.42;
+  }
+
+  /* FRAMEWORKS */
+  .frameworks { text-align: center; }
+  .frameworks h2 {
+    font-size: clamp(44px, 8vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    opacity: 1;
+    line-height: 0.95;
+    margin-bottom: 72px;
+    color: #fff;
+  }
+  .frameworks ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .frameworks li {
+    font-size: clamp(28px, 5vw, 76px);
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    text-decoration: underline;
+    text-decoration-color: #8B5CF6;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.08em;
+    text-decoration-skip-ink: none;
+  }
+  .frameworks li:hover { opacity: 0.7; }
+  .frameworks li:focus-visible {
+    outline: 1px solid #8B5CF6;
+    outline-offset: 8px;
+  }
+
+  /* THREATS — THE SEVEN */
+  .threats { text-align: center; }
+  .threats h2 {
+    font-size: clamp(44px, 8vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 72px;
+    color: #fff;
+  }
+  .threats ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto;
+  }
+  .threats li {
+    font-size: clamp(18px, 3vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    color: #fff;
+    text-decoration: line-through;
+    text-decoration-color: #8B5CF6;
+    text-decoration-thickness: 1.5px;
+    text-decoration-skip-ink: none;
+  }
+  .threats-footnote {
+    font-size: clamp(13px, 1.5vw, 20px);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 64px auto 0;
+    opacity: 0.85;
+    color: #fff;
+  }
+
+  /* FOUNDER — FULL BLEED, MASKED, NAME ACROSS */
+  .founder {
+    padding: 0;
+    position: relative;
+    justify-content: flex-end;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .portrait {
+    position: absolute;
+    inset: 8vh 28% 18vh 28%;
+    z-index: 1;
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    display: block;
+    filter: grayscale(1) contrast(1.18) brightness(0.92);
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-mask-image: radial-gradient(ellipse 58% 95% at 50% 34%, #000 8%, rgba(0,0,0,0.4) 38%, transparent 72%);
+    mask-image: radial-gradient(ellipse 58% 95% at 50% 34%, #000 8%, rgba(0,0,0,0.4) 38%, transparent 72%);
+  }
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, #000 0%, rgba(0,0,0,0.7) 8%, transparent 26%, transparent 50%, rgba(0,0,0,0.55) 80%, #000 100%);
+  }
+  .founder-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 6vw 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .founder-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    color: #fff;
+    margin-bottom: -8px;
+  }
+  .founder-name {
+    font-size: clamp(48px, 11vw, 200px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: #fff;
+  }
+  .founder-credential {
+    font-size: clamp(14px, 1.5vw, 22px);
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.4;
+    opacity: 0.95;
+    color: #fff;
+    margin-top: 4px;
+  }
+  .founder-line {
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    max-width: 56ch;
+    line-height: 1.8;
+    color: #fff;
+  }
+
+  /* CREED */
+  .creed h2 {
+    font-size: clamp(40px, 7vw, 130px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 18ch;
+  }
+
+  /* FOOTER */
+  footer {
+    min-height: auto;
+    padding: 64px 32px 48px;
+    text-align: center;
+    scroll-snap-align: end;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  footer a { color: inherit; text-decoration: none; opacity: 0.85; }
+  footer a:hover { opacity: 1; }
+
+  @media (max-width: 720px) {
+    .split { grid-template-columns: 1fr; }
+    .nav { padding: 16px; font-size: 10px; letter-spacing: 0.25em; }
+    .nav-review-link { display: none; }
+    .nav-donate-link { display: inline-block; padding: 8px 14px; font-size: 9px; }
+    .frameworks ul { gap: 20px 32px; }
+  }
+
+  /* PILOT / FIRST MOVERS */
+  .pilot { text-align: center; }
+  .pilot-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 28px;
+  }
+  .pilot h2 {
+    font-size: clamp(40px, 7.5vw, 130px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    max-width: 14ch;
+    margin: 0 auto 36px;
+  }
+  .pilot p {
+    font-size: clamp(15px, 1.6vw, 21px);
+    font-weight: 500;
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 0 auto 48px;
+    opacity: 0.82;
+  }
+  .pilot-cta {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #8B5CF6;
+    border: none;
+    padding: 22px 44px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .pilot-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+  .pilot-cta:focus-visible { outline: 2px solid #8B5CF6; outline-offset: 6px; }
+  .pilot-note {
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* FORM (inside modal) */
+  .form-intro {
+    font-size: 14.5px;
+    line-height: 1.55;
+    opacity: 0.8;
+    margin-bottom: 32px;
+  }
+  .callout {
+    background: #0f0f0f;
+    border-left: 3px solid #8B5CF6;
+    padding: 16px 20px;
+    margin: -8px 0 24px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d4d4d4;
+  }
+  .callout strong { display: block; color: #fff; opacity: 1; margin-bottom: 6px; font-weight: 700; }
+  .form-section {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8B5CF6;
+    margin: 36px 0 18px;
+    padding-top: 24px;
+    border-top: 1px solid #1f1f1f;
+  }
+  .form-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  .field-note { font-size: 12px; opacity: 0.5; margin-top: 8px; }
+  .info-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 50%; flex: none;
+    border: 1px solid #8B5CF6; color: #8B5CF6; background: none;
+    font-size: 10px; font-weight: 700; line-height: 1; cursor: pointer;
+    margin-left: 6px; padding: 0; vertical-align: middle;
+    font-family: inherit; text-transform: none; letter-spacing: normal;
+  }
+  .info-btn:hover, .info-btn[aria-expanded="true"] { background: #8B5CF6; color: #000; }
+  .field-info { background: #0f0f0f; border-left: 3px solid #8B5CF6; padding: 14px 18px; margin: 8px 0 16px; font-size: 13px; line-height: 1.55; color: #d4d4d4; }
+  .field-info p { margin: 0 0 8px; }
+  .field-info p:last-child { margin-bottom: 0; }
+  .word-count { font-size: 11px; opacity: 0.45; margin-top: 6px; text-align: right; }
+  .word-count.over { color: #f87171; opacity: 1; }
+  .field { margin-bottom: 22px; text-align: left; }
+  .field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 9px;
+  }
+  .field label .req { color: #8B5CF6; }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #262626;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 14px 16px;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  .field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238B5CF6' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: #8B5CF6;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: #555; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .checkbox-row { display: flex; flex-direction: column; gap: 12px; }
+  /* Higher specificity than ".field label" (which would otherwise shrink
+     these to 10px uppercase and force display:block, stacking the box
+     above its text) — these labels live inside a .field div too. */
+  .field .checkbox-option { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; text-transform: none; letter-spacing: normal; color: #fff; opacity: 1; cursor: pointer; }
+  .checkbox-option input[type="checkbox"], .checkbox-option input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #8B5CF6; cursor: pointer; }
+  .field .consent-field { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; text-transform: none; letter-spacing: normal; line-height: 1.55; opacity: 0.75; cursor: pointer; }
+  .consent-field input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: #8B5CF6; cursor: pointer; }
+  /* .field input's shared appearance:none/padding was meant for text/select inputs;
+     without this reset it also hits checkboxes/radios above, which then render as an
+     oversized blank box with no visible checked state (padding > explicit size, and
+     no native tick to draw once appearance is removed). Restore native rendering so
+     accent-color actually shows a check/dot. */
+  .checkbox-option input[type="checkbox"],
+  .checkbox-option input[type="radio"],
+  .consent-field input[type="checkbox"] {
+    appearance: auto;
+    -webkit-appearance: auto;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .consent-field a { color: #fff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+  .form-submit {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #8B5CF6;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s ease;
+  }
+  .form-submit:hover { opacity: 0.88; }
+  .form-submit:disabled { opacity: 0.45; cursor: default; }
+  .form-status {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    min-height: 20px;
+  }
+  .form-status.ok { color: #8B5CF6; }
+  .form-status.err { color: #ff6b6b; }
+  .form-success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success .tick {
+    font-size: 52px;
+    color: #8B5CF6;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .form-success h3 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .form-success p { font-size: 15px; line-height: 1.6; opacity: 0.8; }
+  .form-success .next {
+    text-align: left;
+    max-width: 380px;
+    margin: 28px auto 0;
+    border-top: 1px solid #1f1f1f;
+    padding-top: 24px;
+  }
+  .form-success .next .next-label {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .form-success .next ol {
+    list-style: none;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .form-success .next li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 34px;
+    font-size: 14px;
+    line-height: 1.45;
+    opacity: 0.85;
+  }
+  .form-success .next li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #8B5CF6;
+    color: #8B5CF6;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-success .meanwhile {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .form-success .meanwhile a {
+    color: #8B5CF6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  /* MODALS */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .modal.open {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-card {
+    background: #000;
+    border: 1px solid #1f1f1f;
+    max-width: 680px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 56px 48px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+    line-height: 1;
+    padding: 8px 12px;
+    font-family: inherit;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: 44px;
+  }
+  .modal-section { margin-bottom: 28px; }
+  .modal-section:last-child { margin-bottom: 0; }
+  .modal-label {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .modal-text {
+    font-size: clamp(14px, 1.4vw, 17px);
+    font-weight: 500;
+    line-height: 1.55;
+    color: #fff;
+  }
+  .modal-text a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .modal-controls {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #fff;
+  }
+  .modal-controls > div {
+    margin-bottom: 5px;
+  }
+  .modal-controls strong {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .modal-disclaimer {
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    opacity: 0.5;
+    border-left: 2px solid #8B5CF6;
+    padding-left: 12px;
+  }
+
+  /* CLICKABLE STAT TRIGGERS */
+  .stat-trigger {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    text-align: inherit;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+  .stat-trigger:hover { opacity: 0.7; }
+  .stat-trigger:focus-visible {
+    outline: 1px solid #8B5CF6;
+    outline-offset: 8px;
+  }
+  .split .stat-trigger {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 48px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .modal-card { padding: 48px 28px; }
+    .modal-title { margin-bottom: 32px; }
+  }
+
+  /* ================= CLOSING CTA BAND =================
+     Self-contained card added to #pilot only — a violet card with an
+     ambient animated canvas (extends the nav logo's pulse-sweep into a
+     full pixel field). Typography here is intentionally its own moment,
+     scoped to .cta-band so the rest of the site's type is untouched. */
+  .cta-band {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(56px, 9vw, 108px) 6vw;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 22px;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    background: linear-gradient(135deg, #211840 0%, #150f28 55%, #0b0716 100%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 50px 120px -40px rgba(139,92,246,0.28);
+  }
+  .cta-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  .cta-band > *:not(.cta-canvas) { position: relative; z-index: 2; }
+  .cta-band .cta-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 28px;
+    color: #fff;
+  }
+  .cta-band h2 {
+    font-size: clamp(30px, 4.6vw, 54px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 15ch;
+    margin: 0 auto 20px;
+    color: #fff;
+    text-transform: none;
+  }
+  .cta-band p {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 500;
+    line-height: 1.6;
+    max-width: 54ch;
+    margin: 0 auto 40px;
+    opacity: 0.78;
+    color: #fff;
+  }
+  .cta-band .cta-note {
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    color: #fff;
+  }
+  .cta-band .pilot-cta.two-part {
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    background: #fff;
+    color: #150f28;
+    padding: 8px 8px 8px 28px;
+  }
+  .cta-band .pilot-cta.two-part .chip {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #150f28;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    margin-left: 16px;
+    transition: transform 0.2s ease;
+  }
+  .cta-band .pilot-cta.two-part:hover { transform: translateY(-2px); }
+  .cta-band .pilot-cta.two-part:hover .chip { transform: translateX(3px); }
+  .cta-band .pilot-cta.two-part:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
+
+  /* REVIEW MODAL — light background override (dark-on-black form was hard to read) */
+  #reviewModal .modal-card { background: #fff; border-color: #e5e5e5; color: #111; }
+  #reviewModal .modal-close { color: #111; }
+  #reviewModal .modal-title { color: #111; }
+  #reviewModal .form-section { border-top-color: #e5e5e5; }
+  #reviewModal .field input,
+  #reviewModal .field select,
+  #reviewModal .field textarea { background: #f7f7f7; border-color: #d9d9d9; color: #111; }
+  #reviewModal .field .checkbox-option { color: #111; }
+  #reviewModal .consent-field a { color: #8B5CF6; }
+  #reviewGate .form-intro a { color: #8B5CF6; }
+  #reviewModal .form-success .next { border-top-color: #e5e5e5; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Custorian">
+    <rect class="outer" style="--idx:0"  x="15"  y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:1"  x="47"  y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:2"  x="79"  y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:3"  x="111" y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:4"  x="143" y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:5"  x="175" y="15"  width="10" height="10"/>
+    <rect class="outer" style="--idx:19" x="15"  y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:20" x="47"  y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:21" x="79"  y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:22" x="111" y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:23" x="143" y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:6"  x="175" y="47"  width="10" height="10"/>
+    <rect class="outer" style="--idx:18" x="15"  y="79"  width="10" height="10"/>
+    <rect class="outer" style="--idx:31" x="47"  y="79"  width="10" height="10"/>
+    <rect class="outer" style="--idx:24" x="143" y="79"  width="10" height="10"/>
+    <rect class="outer" style="--idx:7"  x="175" y="79"  width="10" height="10"/>
+    <rect class="outer" style="--idx:17" x="15"  y="111" width="10" height="10"/>
+    <rect class="outer" style="--idx:30" x="47"  y="111" width="10" height="10"/>
+    <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/>
+    <rect class="outer" style="--idx:8"  x="175" y="111" width="10" height="10"/>
+    <rect class="outer" style="--idx:16" x="15"  y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:29" x="47"  y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:28" x="79"  y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:9"  x="175" y="143" width="10" height="10"/>
+    <rect class="outer" style="--idx:15" x="15"  y="175" width="10" height="10"/>
+    <rect class="outer" style="--idx:14" x="47"  y="175" width="10" height="10"/>
+    <rect class="outer" style="--idx:13" x="79"  y="175" width="10" height="10"/>
+    <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/>
+    <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/>
+    <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/>
+    <rect class="inner i1" x="71"  y="71"  width="26" height="26"/>
+    <rect class="inner i2" x="103" y="71"  width="26" height="26"/>
+    <rect class="inner i3" x="71"  y="103" width="26" height="26"/>
+    <rect class="inner i4" x="103" y="103" width="26" height="26"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:28px;">
+    <a href="https://buy.stripe.com/14A28l4Fc5bM2BlaWV2Nq02" class="nav-review-link nav-donate-link" target="_blank" rel="noopener">Donate</a>
+    <a href="#" class="nav-review-link" onclick="openModal('reviewModal', event)">Call for CDSW Expert Review</a>
+    <span>EST · 2026 · COPENHAGEN</span>
+  </div>
+</div>
+
+<section class="hero">
+  <h1>This standard cannot be bought.</h1>
+  <div class="sub">Scroll</div>
+</section>
+
+<section class="scoreboard">
+  <div class="scoreboard-kicker">
+    Custorian is to child safety what <strong>PCI DSS</strong> is to payment security.
+  </div>
+  <div class="big" aria-label="160+ auditable controls">160+</div>
+  <div class="label">Auditable Controls</div>
+</section>
+
+<section class="split-section">
+  <div class="split">
+    <div aria-label="10 domains">
+      <div class="num">10</div>
+      <div class="lbl">Domains</div>
+    </div>
+    <a class="stat-trigger" href="#frameworks" aria-label="9 frameworks, click to view the list">
+      <div class="num">9</div>
+      <div class="lbl">Frameworks Mapped</div>
+    </a>
+  </div>
+  <div class="figures-note">Control counts, domain groupings, and framework mappings are a working draft. Expect them to evolve quickly as peer and expert review comes in.</div>
+</section>
+
+<section class="frameworks" id="frameworks">
+  <h2>We ally with 9.</h2>
+  <ul>
+    <li role="button" tabindex="0" onclick="openFramework('dsa')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('dsa');}">DSA</li>
+    <li role="button" tabindex="0" onclick="openFramework('gdpr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('gdpr');}">GDPR</li>
+    <li role="button" tabindex="0" onclick="openFramework('aiact')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('aiact');}">AI&nbsp;ACT</li>
+    <li role="button" tabindex="0" onclick="openFramework('avmsd')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('avmsd');}">AVMSD</li>
+    <li role="button" tabindex="0" onclick="openFramework('csar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('csar');}">CSA&nbsp;REG</li>
+    <li role="button" tabindex="0" onclick="openFramework('lanzarote')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('lanzarote');}">LANZAROTE</li>
+    <li role="button" tabindex="0" onclick="openFramework('budapest')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('budapest');}">BUDAPEST</li>
+    <li role="button" tabindex="0" onclick="openFramework('crc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('crc');}">UN&nbsp;CRC</li>
+    <li role="button" tabindex="0" onclick="openFramework('ukausus')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFramework('ukausus');}">UK&nbsp;&middot;&nbsp;AU&nbsp;&middot;&nbsp;US</li>
+  </ul>
+</section>
+
+<section class="threats">
+  <h2>We fight 9.</h2>
+  <ul>
+    <li>Child sexual abuse material.</li>
+    <li>Grooming.</li>
+    <li>Bullying.</li>
+    <li>Self-harm promotion.</li>
+    <li>Violent content, including violence-as-a-service.</li>
+    <li>Non-consensual use of children's data, including to train AI models.</li>
+    <li>Sextortion.</li>
+    <li>Exploitative commercial practices.</li>
+    <li>Manipulative design patterns.</li>
+  </ul>
+</section>
+
+<section class="pilot" id="pilot">
+  <div class="cta-band">
+    <canvas class="cta-canvas" aria-hidden="true"></canvas>
+    <div class="cta-kicker">The Pilot &middot; Founding Cohort</div>
+    <h2>Be certified first.</h2>
+    <p>We are selecting a small founding cohort of platforms to be assessed against the Custorian standard before anyone else. First movers shape the certification scheme, gain a head start on the DSA, the EU AI Act and the bloc's incoming child-safety rules, and earn the right to say they were verified safe for children before it was required.</p>
+    <button class="pilot-cta two-part" type="button" onclick="openModal('pilotModal')">
+      <span>Apply to the pilot</span>
+      <span class="chip" aria-hidden="true">→</span>
+    </button>
+    <div class="cta-note">Founding-member discount &middot; greater discounts for non-profits &middot; Limited places</div>
+  </div>
+</section>
+
+<section class="pilot" id="get-involved">
+  <div class="pilot-kicker">Get Involved</div>
+  <h2>Help build the standard.</h2>
+  <p>Custorian is developed in the open. Lend your expertise to the Governance Board or Advisory Board, stress-test the standard as an outside reviewer, or join the foreningen as a member. The standard belongs to everyone who helps shape it.</p>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:10px;">
+    <button class="pilot-cta" type="button" onclick="openModal('advisoryModal')">Express interest in governance</button>
+    <button class="pilot-cta" type="button" onclick="openModal('reviewModal')">Review the standard</button>
+    <button class="pilot-cta" type="button" onclick="openModal('membershipModal')">Become a member</button>
+  </div>
+  <div class="pilot-note">The Advisory Board advises; the Board governs. Board seats are filled by the sitting Board and ratified by the general assembly, and candidates need not already be members (Articles §3.4 and §5.1).</div>
+</section>
+
+<div class="modal" id="advisoryModal" role="dialog" aria-labelledby="advisoryTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="advisoryFormWrap">
+      <h2 class="modal-title" id="advisoryTitle">Get involved in governance.</h2>
+      <div class="field">
+        <label>Which body interests you? <span class="req">*</span></label>
+        <div class="checkbox-row">
+          <label class="checkbox-option"><input type="radio" name="gov-body-radio" value="governance" checked onchange="setGovBody('governance')">Governance Board</label>
+          <label class="checkbox-option"><input type="radio" name="gov-body-radio" value="advisory" onchange="setGovBody('advisory')">Advisory Board</label>
+        </div>
+      </div>
+      <p class="form-intro" id="govBoardIntro">The Governance Board is Custorian&rsquo;s primary governing body, holding ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Seats are elected by the general assembly for renewable two-year terms, unpaid, with four to six Board meetings a year, held virtually. Directors are expected to bring a strong professional network and help open doors to funding and partnerships. You cannot be employed by, or hold a financial interest in, a platform subject to the standard, or have any employment, contractual, or financial relationship with any Custorian arm, its commercial technology company, or a recognised Certification Body within the last 36 months.</p>
+      <p class="form-intro" id="advisoryBoardIntro" style="display:none;">The Advisory Board is a roster of ten to twelve named experts who provide ad hoc, per-task input on the standard, its ethical dimensions, and child-facing content, drawn from child rights, legal, technology &amp; security, academic, clinical, law enforcement, and youth backgrounds. There is no fixed meeting cadence: work happens as discrete review tasks, formalised through an individual MOU. It advises. It does not govern.</p>
+      <form id="advisoryForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" id="av-subject" name="subject" value="Custorian Governance Board: Expression of Interest">
+        <input type="hidden" id="av-body" name="Body" value="Governance Board">
+        <input type="hidden" name="from_name" value="Custorian Governance EOI">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <div class="field"><label for="av-name">Your name <span class="req">*</span></label><input type="text" id="av-name" name="Name" required placeholder="Full name"></div>
+          <div class="field"><label for="av-email">Email <span class="req">*</span></label><input type="email" id="av-email" name="Email" required placeholder="you@example.org"></div>
+        </div>
+        <div class="field"><label for="av-org">Organisation / affiliation</label><input type="text" id="av-org" name="Organisation" placeholder="Where you work or what you represent"></div>
+        <div class="form-row">
+          <div class="field"><label for="av-exp" id="av-exp-label">Which seat interests you? <span class="req">*</span></label>
+            <select id="av-exp" name="Expertise" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Chair</option><option>Vice Chair</option><option>Treasurer</option><option>Secretary</option><option>Legal Adviser</option><option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>
+            </select></div>
+          <div class="field"><label for="av-url">LinkedIn / bio URL</label><input type="url" id="av-url" name="Profile" placeholder="https://"></div>
+        </div>
+        <div class="field"><label for="av-msg">Where would you contribute? <span class="req">*</span></label><textarea id="av-msg" name="Message" required placeholder="Your background and what you would bring to the standard."></textarea></div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I agree that Custorian may hold and process this information under GDPR to review this expression of interest and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+          </label>
+        </div>
+        <button type="submit" class="form-submit">Express interest</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="advisoryFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>Your interest has been received. The foreningen reviews expressions of interest as it constitutes the Board and the Advisory Board roster. We will be in touch if there is a fit.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="membershipModal" role="dialog" aria-labelledby="membershipTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="membershipFormWrap">
+      <h2 class="modal-title" id="membershipTitle">Become a member.</h2>
+      <p class="form-intro">Foreningen Custorian is a Danish non-profit association (CVR 46399455). <strong>Support Membership</strong> is a single class, open across a few categories, each with its own annual fee. Tell us which applies to you and we will follow up with details, including membership terms.</p>
+      <form id="membershipForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Membership: Enquiry">
+        <input type="hidden" name="from_name" value="Custorian Membership">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <div class="field"><label for="mb-name">Your name <span class="req">*</span></label><input type="text" id="mb-name" name="Name" required placeholder="Full name"></div>
+          <div class="field"><label for="mb-email">Email <span class="req">*</span></label><input type="email" id="mb-email" name="Email" required placeholder="you@example.org"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="mb-type">Membership class <span class="req">*</span></label>
+            <select id="mb-type" name="Membership Class" required onchange="updateMembershipEligibilityUI()">
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Support Member: youth representative / parent (&euro;10/yr)</option>
+              <option>Support Member: child safety / trust &amp; safety expert (&euro;50/yr)</option>
+              <option>Support Member: non-profit civil society / NGO (&euro;100/yr)</option>
+              <option>Support Member: for-profit organisation, not eligible for CDSW certification (&euro;500/yr)</option>
+            </select>
+          </div>
+          <div class="field"><label for="mb-org">Organisation (if applicable)</label><input type="text" id="mb-org" name="Organisation" placeholder="Organisation name"></div>
+        </div>
+        <div class="field" id="mb-eligibility-field">
+          <label>Are you, or is the organisation you're joining on behalf of, a commercial platform, product, or company that is or could become subject to assessment under the Custorian standard? <span class="req">*</span><button type="button" class="info-btn" aria-label="What does this question mean?" aria-expanded="false" onclick="toggleFieldInfo('mb-cert-info', this)">?</button></label>
+          <div class="field-info" id="mb-cert-info" style="display:none;">
+            <p>This is about what your organisation <strong>builds or operates</strong>, not what industry it's in. It means: a digital platform, app, or service that children or teenagers use, or could reasonably come to use, for example social media, messaging, gaming, ed-tech, or streaming.</p>
+            <p>It does <strong>not</strong> mean "is a commercial company" in general. A pharmaceutical company, law firm, bank, or any other business with no child-facing digital platform answers <strong>No</strong> here, and for-profit organisations like that are welcome as Support Members.</p>
+            <p>Not sure which applies? Answer <strong>Yes</strong> and email <a href="mailto:info@custorian.org">info@custorian.org</a>, we'll help sort out the right category.</p>
+          </div>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="Yes" required onchange="setMembershipEligibility(true)">Yes</label>
+            <label class="checkbox-option"><input type="radio" name="Certification Eligibility" value="No" onchange="setMembershipEligibility(false)">No</label>
+          </div>
+          <div class="callout" id="mb-ineligible" style="display:none;">
+            <strong>Not eligible for this category.</strong> Commercial platforms and companies can't join as a youth representative/parent, trust &amp; safety expert, or non-profit organisation member, so that certification stays independent of anyone the standard could assess. Joining on behalf of a for-profit company? Choose <strong>for-profit organisation</strong> above instead. You can also get involved via a <a href="#" onclick="closeModal(); openModal('pilotModal', event); return false;">pilot application</a>, or by emailing <a href="mailto:info@custorian.org">info@custorian.org</a>.
+          </div>
+        </div>
+        <div class="field" id="mb-forprofit-ack-field" style="display:none;">
+          <label class="consent-field">
+            <input type="checkbox" name="Certification Eligibility" value="Acknowledged: for-profit member, not eligible for certification" id="mb-forprofit-ack">
+            <span>I understand for-profit Support Membership carries no board seat, no vote on Board composition, and does not grant, or make our company eligible for, certification of our own platform or product under the Custorian standard.</span>
+          </label>
+        </div>
+        <div class="field"><label for="mb-msg">Why do you want to join?</label><textarea id="mb-msg" name="Message" placeholder="Optional: what draws you to Custorian, or how you would like to contribute."></textarea></div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I agree that Custorian may hold and process this information under GDPR to review this enquiry and, if I join, administer my membership. It is never sold or shared with third parties, and is retained only as long as I am a member, or as required under Danish bookkeeping law after resignation. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+          </label>
+        </div>
+        <button type="submit" class="form-submit">Apply for membership</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="membershipFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Application received.</h3>
+      <p>Your Support Membership application has been received. Applications are reviewed and decided on quarterly by the Board; if accepted, you&rsquo;ll get an email with membership terms and a payment link to complete your membership. No payment is taken now.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="reviewModal" role="dialog" aria-labelledby="reviewTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="reviewGate" style="display:none;">
+      <h2 class="modal-title">Registration is now by invitation.</h2>
+      <div class="callout"><strong>Open registration closed 15 September 2026, 23:59 CET.</strong> The peer review round is still running. It is now open only to reviewers Custorian has invited directly.</div>
+      <p class="form-intro">If we invited you, your invitation email contains an access key. Enter it below to open the sign-up form. If you were not invited and would still like to take part, write to <a href="mailto:info@custorian.org">info@custorian.org</a> and tell us which of the ten CDSW domains you are qualified to review.</p>
+      <form id="reviewGateForm" autocomplete="off">
+        <div class="field">
+          <label for="rv-key">Access key <span class="req">*</span></label>
+          <input type="text" id="rv-key" required autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="CUSTORIAN-&hellip;">
+          <div class="field-note">Paste it exactly as it appears in your invitation. Not case sensitive.</div>
+        </div>
+        <button type="submit" class="form-submit">Unlock the form</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="reviewFormWrap">
+      <h2 class="modal-title" id="reviewTitle">Stress-test the standard.</h2>
+      <div class="callout" id="reviewDeadlineNote"><strong>Deadline: 15 September 2026, 23:59 CET.</strong> Applications received after this time will not be considered for this review round.</div>
+      <p class="form-intro">Before we finalize the CDSW Standard, we are opening its outline, the domain structure and scope, not the finished control language, to experts, academics, and child-safety organisations for independent review. Every piece of incorporated input is credited by name in the published standard, unless you ask to remain anonymous.</p>
+      <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian CDSW Standard: Peer Review Sign-up">
+        <input type="hidden" name="from_name" value="Custorian Standard Review">
+        <input type="hidden" name="Access Key" id="rv-access-key" value="">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="form-section">1. Reviewer profile</div>
+        <div class="form-row">
+          <div class="field"><label for="rv-first">First name <span class="req">*</span></label><input type="text" id="rv-first" name="First Name" required maxlength="50" placeholder="First name"></div>
+          <div class="field"><label for="rv-last">Last name <span class="req">*</span></label><input type="text" id="rv-last" name="Last Name" required maxlength="50" placeholder="Last name"></div>
+        </div>
+        <div class="field"><label for="rv-email">Professional email <span class="req">*</span></label><input type="email" id="rv-email" name="Email" required placeholder="you@institution.org">
+          <div class="field-note">A corporate, institutional, or academic domain is required for identity verification.</div>
+        </div>
+        <div class="field"><label for="rv-org-type">Current affiliation / entity <span class="req">*</span></label>
+          <select id="rv-org-type" name="Organisation Type" required onchange="setReviewOrgType(this.value === 'Other')">
+            <option value="" disabled selected>Select&hellip;</option>
+            <option>Organisation / civil society</option>
+            <option>University / academic institution</option>
+            <option>NGO / non-profit</option>
+            <option>Regulator / government body</option>
+            <option>Corporate / industry</option>
+            <option>Independent Expert</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field" id="rv-org-other-field" style="display:none;"><label for="rv-org-other">Please specify</label><input type="text" id="rv-org-other" name="Organisation Other" placeholder="Name your organisation, institution, or entity"></div>
+        <div class="field"><label for="rv-title">Job title / functional role <span class="req">*</span></label><input type="text" id="rv-title" name="Job Title" required placeholder="Current position relevant to digital safety, policy, engineering, or research"></div>
+        <div class="form-row">
+          <div class="field"><label for="rv-country">Jurisdiction / primary country <span class="req">*</span></label>
+            <select id="rv-country" name="Jurisdiction" required>
+              <option value="" disabled selected>Select&hellip;</option>
+            </select>
+          </div>
+          <div class="field"><label for="rv-verify">Verification link</label><input type="url" id="rv-verify" name="Verification Link" placeholder="LinkedIn, personal website, or bio page (optional)"></div>
+        </div>
+
+        <div class="form-section">2. CDSW domain mapping</div>
+        <div class="field"><label>Primary CDSW review domains <span class="req">*</span></label>
+          <div class="checkbox-row" id="rv-domains">
+            <label class="checkbox-option"><input type="checkbox" value="Governance &amp; Accountability">Governance &amp; Accountability</label>
+            <label class="checkbox-option"><input type="checkbox" value="Age Assurance &amp; Access">Age Assurance &amp; Access</label>
+            <label class="checkbox-option"><input type="checkbox" value="Data Protection &amp; Privacy">Data Protection &amp; Privacy</label>
+            <label class="checkbox-option"><input type="checkbox" value="Content Safety">Content Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="CSAE (Abuse &amp; Exploitation)">CSAE (Abuse &amp; Exploitation)</label>
+            <label class="checkbox-option"><input type="checkbox" value="AI &amp; Algorithmic Safety">AI &amp; Algorithmic Safety</label>
+            <label class="checkbox-option"><input type="checkbox" value="Design, Advertising &amp; Commercial Practice">Design, Advertising &amp; Commercial Practice</label>
+            <label class="checkbox-option"><input type="checkbox" value="Reporting, Complaints &amp; Redress">Reporting, Complaints &amp; Redress</label>
+            <label class="checkbox-option"><input type="checkbox" value="Empowerment, Autonomy &amp; Wellbeing">Empowerment, Autonomy &amp; Wellbeing</label>
+            <label class="checkbox-option"><input type="checkbox" value="Device &amp; IoT">Device &amp; IoT</label>
+          </div>
+          <div class="field-note">The ten CDSW v0.2 control domains. Select all you are qualified to review. At least one is required.</div>
+          <input type="hidden" id="rv-domains-value" name="Review Domains">
+        </div>
+        <div class="field"><label>Platform scope expertise <span class="req">*</span></label>
+          <div class="checkbox-row" id="rv-platforms">
+            <label class="checkbox-option"><input type="checkbox" value="Social / User-Generated Content">Social / User-Generated Content</label>
+            <label class="checkbox-option"><input type="checkbox" value="Messaging">Messaging</label>
+            <label class="checkbox-option"><input type="checkbox" value="Gaming">Gaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="Live streaming">Live streaming</label>
+            <label class="checkbox-option"><input type="checkbox" value="AI companion / Generative-AI">AI companion / Generative-AI</label>
+            <label class="checkbox-option"><input type="checkbox" value="App store / distribution">App store / distribution</label>
+            <label class="checkbox-option"><input type="checkbox" value="EdTech">EdTech</label>
+            <label class="checkbox-option"><input type="checkbox" value="Marketplace">Marketplace</label>
+            <label class="checkbox-option"><input type="checkbox" value="Immersive / Metaverse">Immersive / Metaverse</label>
+            <label class="checkbox-option"><input type="checkbox" value="Search &amp; discovery">Search &amp; discovery</label>
+            <label class="checkbox-option"><input type="checkbox" value="Hybrid">Hybrid</label>
+          </div>
+          <div class="field-note">The eleven CDSW v0.2 platform profiles. Select all relevant to your evaluation background; at least one is required.</div>
+          <input type="hidden" id="rv-platforms-value" name="Platform Scope">
+        </div>
+
+        <div class="form-section">3. Review capacity &amp; format</div>
+        <div class="field"><label>Review method preference <span class="req">*</span></label>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Structured Assessment Form" required>Structured Assessment Form: submit line-by-line feedback via web form</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Working Group Roundtables">Working Group Roundtables: participate in virtual peer-review calls</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="Shared Draft Comments">Shared Draft Comments: inline comments directly on the working document</label>
+            <label class="checkbox-option"><input type="radio" name="Review Method" value="No strong preference">No strong preference: open to whichever format fits best</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="rv-capacity">Estimated review capacity <span class="req">*</span></label>
+            <select id="rv-capacity" name="Review Capacity" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Ad-hoc / Section-specific (&lt;1 hour total)</option>
+              <option>1&ndash;3 hours total (Targeted Domain Review)</option>
+              <option>3&ndash;5 hours total (Comprehensive Section Review)</option>
+              <option>Deep-dive Reviewer (Full Framework Audit)</option>
+            </select>
+          </div>
+          <div class="field"><label for="rv-availability">Availability window <span class="req">*</span></label>
+            <select id="rv-availability" name="Availability" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Immediate (Final draft phase)</option>
+              <option>Next 14 Days</option>
+              <option>Next 30 Days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">4. Qualifications &amp; attribution</div>
+        <div class="field"><label for="rv-qual">Statement of qualification <span class="req">*</span></label>
+          <textarea id="rv-qual" name="Qualification Statement" required placeholder="Summarise your direct experience in child safety, standards policy, or safety engineering."></textarea>
+          <div class="word-count" id="rv-qual-count">0 / 150 words</div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="rv-cv">CV</label><input type="url" id="rv-cv" name="CV Link" placeholder="Link (optional)"></div>
+          <div class="field"><label for="rv-portfolio">Portfolio</label><input type="url" id="rv-portfolio" name="Portfolio Link" placeholder="Link (optional)"></div>
+        </div>
+        <div class="field"><label for="rv-pub">Publication</label><input type="url" id="rv-pub" name="Publication Link" placeholder="Link (optional)"></div>
+        <div class="field"><label>Peer review acknowledgments <span class="req">*</span></label>
+          <div class="field-note" style="margin:0 0 10px;">Would you like your name and affiliation listed in the official CDSW Standard Contributor Acknowledgments?</div>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Public Attribution" value="Yes (Public Attribution)" required>Yes (Public Attribution)</label>
+            <label class="checkbox-option"><input type="radio" name="Public Attribution" value="No (Anonymous Peer Reviewer)">No (Anonymous Peer Reviewer)</label>
+          </div>
+        </div>
+
+        <div class="form-section">5. Governance &amp; disclosures</div>
+        <div class="field"><label>Conflict of interest (CoI) <span class="req">*</span></label>
+          <div class="field-note" style="margin:0 0 10px;">Do you hold employment, financial, or consulting ties with commercial platforms that could impact objective review of these controls?</div>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="radio" name="Conflict of Interest" value="Yes" required onchange="setReviewCoI(true)">Yes</label>
+            <label class="checkbox-option"><input type="radio" name="Conflict of Interest" value="No" onchange="setReviewCoI(false)">No</label>
+          </div>
+        </div>
+        <div class="field" id="rv-coi-details-field" style="display:none;"><label for="rv-coi-details">CoI disclosure details</label><textarea id="rv-coi-details" name="CoI Details" placeholder="Brief details of the affiliation, for independent governance review."></textarea></div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Terms of Use" value="Yes" required>
+            <span>I agree that any draft CDSW Standard materials shared with me are provided solely for the purpose of providing review feedback to Foreningen Custorian. I will not copy, publish, distribute, share, or otherwise disclose the materials outside this review process, and will not claim authorship, ownership, or co-authorship of any part of the standard. I will not use the materials for any commercial or competing purpose. I agree to delete or return the materials at Custorian's request or once the review period closes.</span>
+          </label>
+        </div>
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I consent to Foreningen Custorian storing and processing my information strictly for the management of the CDSW Open Standard Peer Review Process under EU GDPR. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+          </label>
+        </div>
+        <button type="submit" class="form-submit">Submit peer review application</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div id="reviewFormSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>Your peer review application has been received. We verify identity and domain fit before assigning access. We will follow up by email with next steps for your preferred format.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>Foreningen Custorian &middot; Copenhagen &middot; 2026</div>
+  <div><a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a> &nbsp;&middot;&nbsp; <a href="#" onclick="openModal('pilotModal', event)">Join the Pilot</a> &nbsp;&middot;&nbsp; <a href="#get-involved">Get Involved</a> &nbsp;&middot;&nbsp; <a href="governance.html">Governance</a> &nbsp;&middot;&nbsp; <a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="mailto:info@custorian.org">Contact</a></div>
+</footer>
+
+
+<div class="modal" id="frameworkModal" role="dialog" aria-labelledby="frameworkTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-label" id="frameworkLabel" style="margin-bottom: 12px;"></div>
+    <h2 class="modal-title" id="frameworkTitle"></h2>
+    <div class="modal-section">
+      <div class="modal-text" id="frameworkSummary"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">Official source</div>
+      <div class="modal-text"><a id="frameworkLink" href="" target="_blank" rel="noopener"></a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="pilotModal" role="dialog" aria-labelledby="pilotTitle" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+
+    <div id="pilotFormWrap">
+      <h2 class="modal-title" id="pilotTitle">Join the pilot.</h2>
+      <p class="form-intro">Tell us about your platform. We review every application personally and reply within five working days. Founding-cohort members receive a discount on assessment, with greater discounts for non-profits. We are choosing partners, not just customers.</p>
+
+      <form id="pilotForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+        <input type="hidden" name="subject" value="Custorian Pilot: New Platform Application">
+        <input type="hidden" name="from_name" value="Custorian Pilot Form">
+        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="pf-platform">Platform / company name <span class="req">*</span></label>
+          <input type="text" id="pf-platform" name="Platform" required placeholder="e.g. Acme Social">
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-name">Your name <span class="req">*</span></label>
+            <input type="text" id="pf-name" name="Contact name" required placeholder="Full name">
+          </div>
+          <div class="field">
+            <label for="pf-role">Your role</label>
+            <input type="text" id="pf-role" name="Role" placeholder="e.g. Head of Trust &amp; Safety">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-email">Work email <span class="req">*</span></label>
+            <input type="email" id="pf-email" name="Email" required placeholder="you@platform.com">
+          </div>
+          <div class="field">
+            <label for="pf-url">Platform URL</label>
+            <input type="url" id="pf-url" name="URL" placeholder="https://">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-type">Platform type <span class="req">*</span></label>
+            <select id="pf-type" name="Platform type" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Social network</option>
+              <option>Messaging / chat</option>
+              <option>Gaming</option>
+              <option>Video / streaming</option>
+              <option>EdTech / learning</option>
+              <option>Marketplace / commerce</option>
+              <option>Creator / community</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-users">Approx. users under 18</label>
+            <select id="pf-users" name="Under-18 users">
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Under 10k</option>
+              <option>10k &ndash; 100k</option>
+              <option>100k &ndash; 1M</option>
+              <option>1M &ndash; 10M</option>
+              <option>Over 10M</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pf-msg">Why do you want to be a first mover? <span class="req">*</span></label>
+          <textarea id="pf-msg" name="Message" required placeholder="What child-safety measures do you have today, and what are you hoping to get from certification?"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="consent-field">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I agree that Custorian may hold and process this information under GDPR to review this pilot application and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit" id="pilotSubmit">Submit application</button>
+        <div class="form-status" id="pilotStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div id="pilotSuccess" class="form-success" style="display:none;">
+      <div class="tick">&#10003;</div>
+      <h3>You're on the list.</h3>
+      <p>Your application is in. Every one is read personally by the Custorian team: not a queue, not a bot.</p>
+      <div class="next">
+        <div class="next-label">What happens next</div>
+        <ol>
+          <li>We review your platform against the standard's scope.</li>
+          <li>You'll hear from us at the email you gave us within <strong>five working days</strong>.</li>
+          <li>If it's a fit, we book a call to scope your founding-cohort assessment.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// CDSW peer review access gate.
+// Open registration ran until 15 Sep 2026 23:59 CET. After that instant the
+// sign-up form is replaced by a key prompt: only reviewers who were sent an
+// access key in their invitation can open it. The key is never in page
+// source, only its SHA-256, and every keyed submission carries the key
+// through to the Web3Forms email and the Supabase mirror so a form opened by
+// any other means is visible on arrival. This is a front-door lock on a
+// static site, not a security boundary.
+var CDSW_REVIEW_CLOSES = Date.parse('2026-09-15T23:59:59+02:00');
+var CDSW_REVIEW_KEY_HASH = 'b2dd0b431492f270786e508707a15480713160f6c284e3cc2b109eb243d6f3e2';
+var CDSW_REVIEW_KEY_STORE = 'cdsw_review_key';
+var cdswReviewUnlocked = false;
+
+function cdswReviewClosed() {
+  return Date.now() > CDSW_REVIEW_CLOSES;
+}
+
+function cdswNormaliseKey(value) {
+  return String(value || '').replace(/\s+/g, '').toUpperCase();
+}
+
+function cdswStoredKey() {
+  try { return localStorage.getItem(CDSW_REVIEW_KEY_STORE) || ''; } catch (err) { return ''; }
+}
+
+// Resolves true only for the current round's key. Fails closed where
+// WebCrypto is unavailable (a non-secure context), which never happens on
+// custorian.org or on localhost.
+function cdswCheckKey(value) {
+  var key = cdswNormaliseKey(value);
+  if (!key) return Promise.resolve(false);
+  if (!(window.crypto && window.crypto.subtle && window.TextEncoder)) return Promise.resolve(false);
+  return window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(key))
+    .then(function (buf) {
+      var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+      return hex === CDSW_REVIEW_KEY_HASH;
+    })
+    .catch(function () { return false; });
+}
+
+function cdswRenderReviewModal() {
+  var gate = document.getElementById('reviewGate');
+  var wrap = document.getElementById('reviewFormWrap');
+  if (!gate || !wrap) return;
+  var success = document.getElementById('reviewFormSuccess');
+  var submitted = success && success.style.display !== 'none';
+  var locked = cdswReviewClosed() && !cdswReviewUnlocked;
+  gate.style.display = locked ? 'block' : 'none';
+  wrap.style.display = (locked || submitted) ? 'none' : 'block';
+  var note = document.getElementById('reviewDeadlineNote');
+  if (note && cdswReviewClosed()) {
+    note.innerHTML = '<strong>Invited reviewers. Deadline: 25 September 2026, 23:59 CET.</strong> ' +
+      'Open registration closed on 15 September. Applications received after 25 September will not be considered for this review round.';
+  }
+}
+
+function cdswUnlockReview(key) {
+  cdswReviewUnlocked = true;
+  try { localStorage.setItem(CDSW_REVIEW_KEY_STORE, key); } catch (err) {}
+  var field = document.getElementById('rv-access-key');
+  if (field) field.value = key;
+  cdswRenderReviewModal();
+}
+
+// A stored key from an earlier visit, or ?key=... on an invitation link,
+// which also opens the form straight away.
+function cdswInitReviewGate() {
+  cdswRenderReviewModal();
+  var fromUrl = new URLSearchParams(window.location.search).get('key') || '';
+  var candidate = fromUrl || cdswStoredKey();
+  if (!candidate) return;
+  cdswCheckKey(candidate).then(function (ok) {
+    if (ok) {
+      cdswUnlockReview(cdswNormaliseKey(candidate));
+      if (fromUrl) openModal('reviewModal');
+    } else {
+      try { localStorage.removeItem(CDSW_REVIEW_KEY_STORE); } catch (err) {}
+    }
+  });
+}
+
+function openModal(id, e) {
+  if (e) e.preventDefault();
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  if (id === 'reviewModal') cdswRenderReviewModal();
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.querySelectorAll('.modal.open').forEach(function(m) { m.classList.remove('open'); });
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+document.addEventListener('DOMContentLoaded', function () {
+  var join = new URLSearchParams(window.location.search).get('join');
+  if (!join) return;
+  var typeMap = {
+    individual: 'Support Member: youth representative / parent (€10/yr)',
+    organisation: 'Support Member: non-profit civil society / NGO (€100/yr)',
+    expert: 'Support Member: child safety / trust & safety expert (€50/yr)',
+    forprofit: 'Support Member: for-profit organisation, not eligible for CDSW certification (€500/yr)'
+  };
+  var value = typeMap[join];
+  var select = document.getElementById('mb-type');
+  if (select && value) select.value = value;
+  updateMembershipEligibilityUI();
+  openModal('membershipModal');
+});
+document.querySelectorAll('.modal').forEach(function(m) {
+  if (m.id === 'reviewModal') return; // registration form: only the × button closes it, not a backdrop click
+  m.addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+});
+cdswInitReviewGate();
+if (window.location.hash === '#review') openModal('reviewModal');
+
+function setGovBody(kind) {
+  var isGov = kind === 'governance';
+  document.getElementById('govBoardIntro').style.display = isGov ? '' : 'none';
+  document.getElementById('advisoryBoardIntro').style.display = isGov ? 'none' : '';
+  document.getElementById('av-subject').value = isGov ? 'Custorian Governance Board: Expression of Interest' : 'Custorian Advisory Board: Expression of Interest';
+  document.getElementById('av-body').value = isGov ? 'Governance Board' : 'Advisory Board';
+  document.getElementById('av-exp-label').innerHTML = isGov ? 'Which seat interests you? <span class="req">*</span>' : 'Area of expertise <span class="req">*</span>';
+  var sel = document.getElementById('av-exp');
+  sel.innerHTML = isGov
+    ? '<option value="" disabled selected>Select&hellip;</option><option>Chair</option><option>Vice Chair</option><option>Treasurer</option><option>Secretary</option><option>Legal Adviser</option><option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>'
+    : '<option value="" disabled selected>Select&hellip;</option><option>Child rights</option><option>Legal</option><option>Technology &amp; security</option><option>Academic</option><option>Clinical</option><option>Law enforcement</option><option>Youth</option><option>Other</option>';
+}
+
+// Standard review form — jurisdiction dropdown, EU/EEA grouped first
+(function () {
+  var sel = document.getElementById('rv-country');
+  if (!sel) return;
+  var EU_EEA = ['Austria','Belgium','Bulgaria','Croatia','Cyprus','Czechia','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Iceland','Ireland','Italy','Latvia','Liechtenstein','Lithuania','Luxembourg','Malta','Netherlands','Norway','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden'];
+  var OTHER = ['Afghanistan','Albania','Algeria','Andorra','Angola','Antigua and Barbuda','Argentina','Armenia','Australia','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Republic of the)','Congo (Democratic Republic of the)','Costa Rica','Côte d’Ivoire','Cuba','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Eswatini','Ethiopia','Fiji','Gabon','Gambia','Georgia','Ghana','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti','Honduras','India','Indonesia','Iran','Iraq','Israel','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Lebanon','Lesotho','Liberia','Libya','Madagascar','Malawi','Malaysia','Maldives','Mali','Marshall Islands','Mauritania','Mauritius','Mexico','Micronesia','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nauru','Nepal','New Zealand','Nicaragua','Niger','Nigeria','North Korea','North Macedonia','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Qatar','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Solomon Islands','Somalia','South Africa','South Korea','South Sudan','Sri Lanka','Sudan','Suriname','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor-Leste','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States','Uruguay','Uzbekistan','Vanuatu','Vatican City','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe'];
+  function group(label, list) {
+    var og = document.createElement('optgroup');
+    og.label = label;
+    list.forEach(function (c) {
+      var o = document.createElement('option');
+      o.textContent = c;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  }
+  group('EU / EEA', EU_EEA);
+  group('Other', OTHER);
+})();
+
+function setReviewCoI(hasConflict) {
+  var field = document.getElementById('rv-coi-details-field');
+  var textarea = document.getElementById('rv-coi-details');
+  field.style.display = hasConflict ? '' : 'none';
+  textarea.required = hasConflict;
+  if (!hasConflict) textarea.value = '';
+}
+
+function toggleFieldInfo(id, btn) {
+  var el = document.getElementById(id);
+  var show = el.style.display === 'none';
+  el.style.display = show ? 'block' : 'none';
+  if (btn) btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+}
+
+function setMembershipEligibility(isIneligible) {
+  var callout = document.getElementById('mb-ineligible');
+  var btn = document.querySelector('#membershipForm .form-submit');
+  callout.style.display = isIneligible ? '' : 'none';
+  if (btn) btn.disabled = isIneligible;
+}
+
+function updateMembershipEligibilityUI() {
+  var type = document.getElementById('mb-type').value;
+  var isForProfit = type.indexOf('for-profit organisation') !== -1;
+  var eligField = document.getElementById('mb-eligibility-field');
+  var ackField = document.getElementById('mb-forprofit-ack-field');
+  var ack = document.getElementById('mb-forprofit-ack');
+  var btn = document.querySelector('#membershipForm .form-submit');
+  eligField.style.display = isForProfit ? 'none' : '';
+  ackField.style.display = isForProfit ? '' : 'none';
+  eligField.querySelectorAll('input[name="Certification Eligibility"]').forEach(function (el) {
+    el.required = !isForProfit;
+    el.checked = false;
+  });
+  ack.required = isForProfit;
+  ack.checked = false;
+  document.getElementById('mb-ineligible').style.display = 'none';
+  if (btn) btn.disabled = false;
+}
+
+function setReviewOrgType(isOther) {
+  var field = document.getElementById('rv-org-other-field');
+  var input = document.getElementById('rv-org-other');
+  field.style.display = isOther ? '' : 'none';
+  input.required = isOther;
+  if (!isOther) input.value = '';
+}
+
+// Qualification statement — 150-word soft limit, matches the intake spec
+(function () {
+  var ta = document.getElementById('rv-qual');
+  var count = document.getElementById('rv-qual-count');
+  if (!ta || !count) return;
+  ta.addEventListener('input', function () {
+    var words = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+    count.textContent = words + ' / 150 words';
+    count.classList.toggle('over', words > 150);
+  });
+})();
+
+function reviewCheckedValues(containerId) {
+  return Array.prototype.slice.call(document.querySelectorAll('#' + containerId + ' input:checked')).map(function (el) { return el.value; });
+}
+
+// Keep the hidden Domains/Platform Scope fields in sync on every checkbox
+// toggle (not just at submit) so the value is correct regardless of which
+// submit listener — the Web3Forms handler or the Supabase mirror — runs
+// first; the two are registered in separate <script> blocks and their
+// relative order shouldn't be load-bearing.
+(function () {
+  var domains = document.getElementById('rv-domains');
+  var platforms = document.getElementById('rv-platforms');
+  if (!domains || !platforms) return;
+  function sync() {
+    document.getElementById('rv-domains-value').value = reviewCheckedValues('rv-domains').join(', ');
+    document.getElementById('rv-platforms-value').value = reviewCheckedValues('rv-platforms').join(', ');
+  }
+  domains.addEventListener('change', sync);
+  platforms.addEventListener('change', sync);
+})();
+
+var frameworks = {
+  dsa: {
+    label: 'EU · Regulation 2022/2065',
+    title: 'Digital Services Act & Article 28 Guidelines',
+    summary: 'Sets obligations for online platforms on illegal content, transparency, and protection of minors. Article 28 requires platforms accessible to minors to ensure a high level of privacy, safety, and security. The Commission’s Article 28 Guidelines (adopted July 2025, C(2025) 6826) set out the specific measures it treats as compliant, including age assurance and recommender-system defaults. Articles 34–36 impose systemic risk assessment and mitigation duties on Very Large Online Platforms.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065',
+    urlLabel: 'eur-lex.europa.eu · Regulation 2022/2065'
+  },
+  gdpr: {
+    label: 'EU · Regulation 2016/679',
+    title: 'General Data Protection Regulation',
+    summary: 'Foundational European framework for personal data protection. Article 8 sets conditions for a child’s consent in information society services. Recital 38 establishes specific protection for children’s personal data, requiring particular care with their consent and rights.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679',
+    urlLabel: 'eur-lex.europa.eu · Regulation 2016/679'
+  },
+  aiact: {
+    label: 'EU · Regulation 2024/1689',
+    title: 'AI Act',
+    summary: 'First comprehensive law on artificial intelligence. Classifies AI systems intended to interact with children as high-risk in certain categories. Imposes transparency, human oversight, accuracy, and non-discrimination requirements on covered systems.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689',
+    urlLabel: 'eur-lex.europa.eu · Regulation 2024/1689'
+  },
+  avmsd: {
+    label: 'EU · Directive 2018/1808',
+    title: 'Audiovisual Media Services Directive',
+    summary: 'Sets EU-wide rules for audiovisual media and video-sharing platforms. Article 6a requires providers to shield minors from content that could impair their physical, mental, or moral development. Article 28b extends equivalent duties to video-sharing platforms, including age verification, parental controls, and content-flagging mechanisms.',
+    url: 'https://eur-lex.europa.eu/eli/dir/2018/1808/oj',
+    urlLabel: 'eur-lex.europa.eu · Directive 2018/1808'
+  },
+  csar: {
+    label: 'EU · Proposed, COM(2022) 209',
+    title: 'Child Sexual Abuse Regulation (proposed)',
+    summary: 'A proposed EU regulation laying down rules to prevent and combat child sexual abuse online, covering risk assessment, detection, and reporting obligations for providers. Not yet adopted law: the Council reached a common position in December 2025 and trilogue negotiations continued through mid-2026 without final agreement.',
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52022PC0209',
+    urlLabel: 'eur-lex.europa.eu · COM(2022) 209 final'
+  },
+  lanzarote: {
+    label: 'Council of Europe · CETS No. 201',
+    title: 'Lanzarote Convention',
+    summary: 'The first international treaty to criminalise the full range of child sexual abuse and exploitation offences, including trafficking for sexual purposes. Opened for signature in 2007 and in force since 2010, ratified by every Council of Europe member state.',
+    url: 'https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=201',
+    urlLabel: 'coe.int · CETS No. 201'
+  },
+  budapest: {
+    label: 'Council of Europe · ETS No. 185',
+    title: 'Budapest Convention',
+    summary: 'The first international treaty on crime committed via the internet and other computer networks. Article 9 requires states to criminalise the production, possession, procurement, and distribution of child sexual abuse material, including realistic non-photographic depictions.',
+    url: 'https://www.coe.int/en/web/cybercrime/the-budapest-convention',
+    urlLabel: 'coe.int · ETS No. 185'
+  },
+  crc: {
+    label: 'UN · General Comment No. 25, 2021',
+    title: 'Convention on the Rights of the Child',
+    summary: 'The Convention on the Rights of the Child (1989) is the most widely ratified human rights treaty in the world. General Comment No. 25, adopted by the UN Committee on the Rights of the Child in 2021 after a two-year consultation that included children themselves, sets out how states must protect and fulfil children’s rights specifically in the digital environment.',
+    url: 'https://www.ohchr.org/en/documents/general-comments-and-recommendations/general-comment-no-25-2021-childrens-rights-relation',
+    urlLabel: 'ohchr.org · General Comment No. 25'
+  },
+  ukausus: {
+    label: 'UK · Australia · US',
+    title: 'UK, Australian & US Regimes',
+    summary: 'The UK’s Age Appropriate Design Code (ICO, 2021) and Online Safety Act 2023 set design and content-safety duties for services used by children. Australia’s Online Safety Amendment (Social Media Minimum Age) Act 2024 bars under-16 accounts on major platforms, in force since December 2025. The US Children’s Online Privacy Protection Act (1998) requires verifiable parental consent before collecting data from children under 13.',
+    url: 'https://www.legislation.gov.au/C2024A00127/asmade',
+    urlLabel: 'legislation.gov.au · Online Safety Amendment Act 2024'
+  }
+};
+
+function openFramework(key) {
+  var f = frameworks[key];
+  if (!f) return;
+  document.getElementById('frameworkLabel').textContent = f.label;
+  document.getElementById('frameworkTitle').textContent = f.title;
+  document.getElementById('frameworkSummary').textContent = f.summary;
+  var link = document.getElementById('frameworkLink');
+  link.href = f.url;
+  link.textContent = f.urlLabel;
+  openModal('frameworkModal');
+}
+
+// Pilot application — AJAX submit to Web3Forms, inline success
+(function () {
+  var form = document.getElementById('pilotForm');
+  if (!form) return;
+  var btn = document.getElementById('pilotSubmit');
+  var status = document.getElementById('pilotStatus');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json.success) {
+          document.getElementById('pilotFormWrap').style.display = 'none';
+          document.getElementById('pilotSuccess').style.display = 'block';
+        } else {
+          status.className = 'form-status err';
+          status.textContent = json.message || 'Something went wrong. Email info@custorian.org and we will sort it.';
+          btn.disabled = false;
+          btn.textContent = 'Submit application';
+        }
+      })
+      .catch(function () {
+        status.className = 'form-status err';
+        status.textContent = 'Network error. Please email info@custorian.org directly.';
+        btn.disabled = false;
+        btn.textContent = 'Submit application';
+      });
+  });
+})();
+</script>
+
+<!-- Advisory EOI + Membership — AJAX submit to Web3Forms, inline success -->
+<script>
+(function () {
+  ['advisoryForm','membershipForm'].forEach(function (fid) {
+    var form = document.getElementById(fid);
+    if (!form) return;
+    var wrap = document.getElementById(fid + 'Wrap');
+    var success = document.getElementById(fid + 'Success');
+    var btn = form.querySelector('.form-submit');
+    var status = form.querySelector('.form-status');
+    var label = btn ? btn.textContent : 'Send';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (fid === 'membershipForm') {
+        var elig = form.querySelector('input[name="Certification Eligibility"]:checked');
+        if (!elig || elig.value === 'Yes') {
+          document.getElementById('mb-ineligible').style.display = '';
+          return;
+        }
+      }
+      status.className = 'form-status'; status.textContent = '';
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.success) {
+            wrap.style.display = 'none'; success.style.display = 'block';
+          }
+          else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
+        })
+        .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
+    });
+  });
+})();
+</script>
+
+<!-- CDSW review access gate — verifies the invitation key, then swaps the
+     key prompt for the sign-up form. -->
+<script>
+(function () {
+  var form = document.getElementById('reviewGateForm');
+  if (!form) return;
+  var input = document.getElementById('rv-key');
+  var btn = form.querySelector('.form-submit');
+  var status = form.querySelector('.form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Checking…';
+    cdswCheckKey(input.value).then(function (ok) {
+      btn.disabled = false;
+      btn.textContent = 'Unlock the form';
+      if (ok) {
+        cdswUnlockReview(cdswNormaliseKey(input.value));
+        return;
+      }
+      status.className = 'form-status err';
+      status.textContent = 'That key is not valid for this review round. Check your invitation email, or write to info@custorian.org.';
+    });
+  });
+})();
+</script>
+
+<!-- Standard Review sign-up — own handler: enforces "at least one domain"
+     and "at least one platform" before the shared Web3Forms AJAX submit
+     (hidden Domains/Platform Scope fields are kept in sync on every
+     checkbox change, above). -->
+<script>
+(function () {
+  var form = document.getElementById('reviewForm');
+  if (!form) return;
+  var wrap = document.getElementById('reviewFormWrap');
+  var success = document.getElementById('reviewFormSuccess');
+  var btn = form.querySelector('.form-submit');
+  var status = form.querySelector('.form-status');
+  var label = btn ? btn.textContent : 'Send';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (cdswReviewClosed() && !cdswReviewUnlocked) {
+      status.className = 'form-status err';
+      status.textContent = 'This review round is now open only to invited reviewers.';
+      cdswRenderReviewModal();
+      return;
+    }
+    if (!reviewCheckedValues('rv-domains').length) {
+      status.className = 'form-status err';
+      status.textContent = 'Select at least one CDSW review domain.';
+      return;
+    }
+    if (!reviewCheckedValues('rv-platforms').length) {
+      status.className = 'form-status err';
+      status.textContent = 'Select at least one platform scope.';
+      return;
+    }
+    status.className = 'form-status'; status.textContent = '';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.success) { wrap.style.display = 'none'; success.style.display = 'block'; }
+        else { status.className = 'form-status err'; status.textContent = j.message || 'Something went wrong. Email info@custorian.org.'; btn.disabled = false; btn.textContent = label; }
+      })
+      .catch(function () { status.className = 'form-status err'; status.textContent = 'Network error. Please email info@custorian.org.'; btn.disabled = false; btn.textContent = label; });
+  });
+})();
+</script>
+
+<!-- Mirror pilot + feedback submissions into Supabase (in addition to the
+     Web3Forms email). Anon key is public by design; RLS allows INSERT only. -->
+<script>
+(function () {
+  var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+  function insert(table, row) {
+    try {
+      fetch(SB_URL + '/rest/v1/' + table, {
+        method: 'POST',
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(row),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  function val(form, name) {
+    var els = form.querySelectorAll('[name="' + name + '"]');
+    if (!els.length) return null;
+    if (els.length > 1 || els[0].type === 'radio' || els[0].type === 'checkbox') {
+      var checked = form.querySelector('[name="' + name + '"]:checked');
+      return checked ? checked.value : null;
+    }
+    return els[0].value || null;
+  }
+  var pilot = document.getElementById('pilotForm');
+  if (pilot) {
+    pilot.addEventListener('submit', function () {
+      insert('pilot_applications', {
+        platform: val(pilot, 'Platform'),
+        contact_name: val(pilot, 'Contact name'),
+        role: val(pilot, 'Role'),
+        email: val(pilot, 'Email'),
+        url: val(pilot, 'URL'),
+        platform_type: val(pilot, 'Platform type'),
+        under18_users: val(pilot, 'Under-18 users'),
+        message: val(pilot, 'Message'),
+        source: 'org_website'
+      });
+    }, true);
+  }
+  var advisory = document.getElementById('advisoryForm');
+  if (advisory) {
+    advisory.addEventListener('submit', function () {
+      insert('governance_applications', {
+        body: val(advisory, 'Body') || 'Governance Board',
+        name: val(advisory, 'Name'),
+        email: val(advisory, 'Email'),
+        organisation: val(advisory, 'Organisation'),
+        expertise: val(advisory, 'Expertise'),
+        profile_url: val(advisory, 'Profile'),
+        message: val(advisory, 'Message'),
+        source: 'org_website'
+      });
+    }, true);
+  }
+  var review = document.getElementById('reviewForm');
+  if (review) {
+    review.addEventListener('submit', function () {
+      var domains = val(review, 'Review Domains') || '';
+      if (!domains) return; // blocked by the "select at least one domain" check — nothing was actually sent
+      var name = [val(review, 'First Name'), val(review, 'Last Name')].filter(Boolean).join(' ');
+      var orgType = val(review, 'Organisation Type');
+      insert('governance_applications', {
+        body: 'Standard Review',
+        name: name,
+        email: val(review, 'Email'),
+        organisation: orgType === 'Other' ? val(review, 'Organisation Other') : orgType,
+        expertise: domains,
+        profile_url: val(review, 'Verification Link'),
+        message: val(review, 'Qualification Statement'),
+        details: {
+          affiliation_type: orgType,
+          affiliation_other: val(review, 'Organisation Other'),
+          job_title: val(review, 'Job Title'),
+          jurisdiction: val(review, 'Jurisdiction'),
+          review_domains: domains ? domains.split(', ') : [],
+          platform_scope: (val(review, 'Platform Scope') || '').split(', ').filter(Boolean),
+          review_method: val(review, 'Review Method'),
+          review_capacity: val(review, 'Review Capacity'),
+          availability: val(review, 'Availability'),
+          cv_link: val(review, 'CV Link'),
+          portfolio_link: val(review, 'Portfolio Link'),
+          publication_link: val(review, 'Publication Link'),
+          public_attribution: val(review, 'Public Attribution'),
+          conflict_of_interest: val(review, 'Conflict of Interest'),
+          coi_details: val(review, 'CoI Details'),
+          access_key: val(review, 'Access Key')
+        },
+        source: 'org_website'
+      });
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookieless page-view analytics -->
+<!-- Ambient pixel-grid animation for the closing CTA band — extends the
+     nav logo's pulse-sweep motif into a full field, a violet wave that
+     drifts across a grid of squares. Pauses on prefers-reduced-motion. -->
+<script>
+(function () {
+  var canvases = document.querySelectorAll('.cta-canvas');
+  if (!canvases.length || !window.requestAnimationFrame) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  canvases.forEach(function (canvas) {
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var cell = 28;
+    var cols = 0, rows = 0, t0 = null;
+
+    function size() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = Math.max(1, rect.width * dpr);
+      canvas.height = Math.max(1, rect.height * dpr);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(rect.width / cell) + 1;
+      rows = Math.ceil(rect.height / cell) + 1;
+    }
+    size();
+    window.addEventListener('resize', size);
+
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var t = (ts - t0) / 1000;
+      var w = canvas.width / dpr, h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+      var waveX = (Math.sin(t * 0.22) * 0.5 + 0.5) * w;
+      for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+          var x = c * cell, y = r * cell;
+          var dist = Math.abs(x - waveX);
+          var pulse = Math.max(0, 1 - dist / 300);
+          var flicker = (Math.sin(t * 1.1 + r * 0.6 + c * 0.35) * 0.5 + 0.5) * 0.10;
+          var alpha = Math.min(0.5, pulse * 0.45 + flicker);
+          if (alpha < 0.02) continue;
+          ctx.fillStyle = pulse > 0.45 ? 'rgba(139,92,246,' + alpha + ')' : 'rgba(255,255,255,' + (alpha * 0.5) + ')';
+          ctx.fillRect(x, y, cell - 7, cell - 7);
+        }
+      }
+      if (!reduceMotion) requestAnimationFrame(frame);
+    }
+
+    if (reduceMotion) { frame(0); } else { requestAnimationFrame(frame); }
+  });
+})();
+</script>
+<script src="track.js"></script>
+</body>
+</html>

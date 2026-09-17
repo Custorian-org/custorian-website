@@ -1,21 +1,9 @@
 # custorian.org
 #
-# The live site is open to crawlers. The *-foundation.html pages are a redesign in
-# progress: they are reachable only by typing the URL, nothing on the live site links
-# to them, and they are not ready to be found. Remove the rules below when the
-# redesign replaces the live pages.
-#
-# Note this is a crawl directive, not an index directive. It keeps compliant crawlers
-# out, but a URL someone links to from elsewhere can still be indexed without being
-# fetched. If that becomes a concern, add <meta name="robots" content="noindex"> to
-# the four pages as well.
+# The site is open to crawlers. The redesign replaced the live pages on
+# 17 September 2026, so the *-foundation.html crawl block that stood here is
+# gone with them. Internal working directories stay out.
 
 User-agent: *
 
-Disallow: /index-foundation.html
-Disallow: /about-foundation.html
-Disallow: /governance-foundation.html
-Disallow: /membership-foundation.html
-Disallow: /foundation.css
-Disallow: /logos/
 Disallow: /_archive/
