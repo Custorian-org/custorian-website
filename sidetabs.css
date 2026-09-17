@@ -11,7 +11,11 @@
   /* Above every page header on the site: the foundation top bar sits at 60, the
      legacy registry/standard/guide headers at 100. Dialogs go above this again
      (200), so an open modal still covers the rail. */
-  position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:110;
+  position:fixed; right:0; top:50%; z-index:110;
+  /* Nudged down by half a header so the rail centres in the space BELOW the
+     sticky top bar rather than the whole viewport. It draws above the bar, so
+     without this its first tab sits on the bar's own background. */
+  transform:translateY(calc(-50% + 29px));
   display:flex; flex-direction:column; justify-content:center; gap:6px;
   max-height:96vh; margin:0; padding:0; list-style:none;
 }
@@ -21,32 +25,55 @@
   font-family:var(--sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   font-size:11.5px; font-weight:600;
   letter-spacing:.16em; text-transform:uppercase; text-decoration:none;
-  color:var(--violet, #5B41C2); background:rgba(255,253,249,.72);
-  border:1px solid rgba(91,65,194,.3); border-right:none;
+  /* Transparent at rest: the page shows straight through, and the tab is just
+     an outline. Every lit state below fills it violet. */
+  color:var(--violet, #5B41C2); background:transparent;
+  border:1px solid rgba(91,65,194,.45); border-right:none;
   border-radius:5px 0 0 5px; padding:20px 13px;
-  transform:translateX(9px); backdrop-filter:blur(6px);
+  transform:translateX(9px);
   margin:0; cursor:pointer; -webkit-appearance:none; appearance:none;
   transition:transform .24s cubic-bezier(.2,.8,.2,1), background .24s ease, color .24s ease, box-shadow .24s ease, border-color .24s ease;
 }
 
-.sidetabs .sidetab.solid {
-  background:var(--violet, #5B41C2); color:#fff; border-color:var(--violet, #5B41C2);
-}
-.sidetabs .sidetab.solid:hover,
-.sidetabs .sidetab.solid:focus-visible {
-  background:var(--violet-d, #46329E); border-color:var(--violet-d, #46329E); color:#fff;
-}
+/* .solid is carried by the Take action tab. It used to be permanently filled;
+   it now sits transparent like the rest and only lights up on interaction. */
+.sidetabs .sidetab.solid { background:transparent; color:var(--violet, #5B41C2); border-color:rgba(91,65,194,.45); }
 
-/* The page you are already on: anchored open, and not a link to itself. */
+/* Lit: hovered, keyboard-focused, being pressed, or the page you are on. */
+.sidetabs .sidetab:hover,
+.sidetabs .sidetab:focus-visible,
+.sidetabs .sidetab:active,
+.sidetabs .sidetab.solid:hover,
+.sidetabs .sidetab.solid:focus-visible,
+.sidetabs .sidetab.solid:active,
 .sidetabs .sidetab[aria-current="page"] {
   transform:translateX(0); background:var(--violet, #5B41C2); color:#fff;
-  border-color:var(--violet, #5B41C2); cursor:default;
+  border-color:var(--violet, #5B41C2); box-shadow:-8px 0 24px rgba(91,65,194,.3); outline:none;
 }
 
-.sidetabs .sidetab:hover,
-.sidetabs .sidetab:focus-visible {
-  transform:translateX(0); background:var(--violet, #5B41C2); color:#fff;
-  border-color:var(--violet, #5B41C2); box-shadow:-8px 0 24px rgba(91,65,194,.3); outline:none;
+/* Pressed goes a shade deeper than hover, so a click reads as a click. */
+.sidetabs .sidetab:active,
+.sidetabs .sidetab.solid:active {
+  background:var(--violet-d, #46329E); border-color:var(--violet-d, #46329E);
+}
+
+.sidetabs .sidetab[aria-current="page"] { cursor:default; }
+
+/* Over a full-bleed black band the violet outline vanishes, so the resting tab
+   switches to white. Set by sidetabs.js; the lit states below are unaffected,
+   because a violet fill with white text reads on either background. */
+.sidetabs .sidetab.on-dark,
+.sidetabs .sidetab.solid.on-dark {
+  color:#fff; border-color:rgba(255,255,255,.5);
+}
+
+/* A lit tab always wins over the dark-background variant, whichever order the
+   classes land in. */
+.sidetabs .sidetab.on-dark:hover,
+.sidetabs .sidetab.on-dark:focus-visible,
+.sidetabs .sidetab.on-dark:active,
+.sidetabs .sidetab.on-dark[aria-current="page"] {
+  color:#fff; border-color:var(--violet, #5B41C2);
 }
 
 /* Six tabs stack taller than a short laptop viewport, so tighten them rather than
@@ -54,6 +81,15 @@
 @media (max-height:900px) {
   .sidetabs { gap:5px; }
   .sidetabs .sidetab { font-size:10.5px; letter-spacing:.12em; padding:15px 11px; }
+}
+
+/* Shorter again on a laptop-height window. The rail draws above the sticky top
+   bar, so if it runs the full height its first tab sits on the bar's paper
+   background and the white label washes out. Tightening keeps the whole rail
+   inside the space below the bar. */
+@media (max-height:760px) {
+  .sidetabs { gap:4px; }
+  .sidetabs .sidetab { font-size:9.5px; letter-spacing:.1em; padding:12px 10px; }
 }
 
 /* Below the desktop breakpoint the rail would cover content: the top bar carries

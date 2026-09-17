@@ -881,18 +881,29 @@
   <div class="dialog">
     <button type="button" class="close" data-close aria-label="Close">&#10005;</button>
     <h2 id="advisoryTitle">Get involved in governance.</h2>
-    <p>The Governance Board holds ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Seats are filled by resolution of the sitting Board and presented to the general assembly for ratification (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1), for renewable two-year terms, unpaid. At least two directors must be independent.</p>
+
+    <div class="field">
+      <label id="gov-body-label">Which body interests you? *</label>
+      <div style="display:flex; gap:22px; margin-top:4px;">
+        <span class="field check" style="margin:0;"><input id="gov-body-gov" type="radio" name="gov-body-radio" value="governance" checked><label for="gov-body-gov" style="font-weight:600;">Governance Board</label></span>
+        <span class="field check" style="margin:0;"><input id="gov-body-adv" type="radio" name="gov-body-radio" value="advisory"><label for="gov-body-adv" style="font-weight:600;">Advisory Board</label></span>
+      </div>
+    </div>
+
+    <p id="govBoardIntro">The Governance Board is Custorian&rsquo;s primary governing body, holding ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Seats are filled by resolution of the sitting Board and presented to the general assembly for ratification (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1), for renewable two-year terms, unpaid, with four to six Board meetings a year, held virtually. At least two directors must be independent. Directors are expected to bring a strong professional network and help open doors to funding and partnerships. You cannot be employed by, or hold a financial interest in, a platform subject to the standard, or have any employment, contractual, or financial relationship with any Custorian arm, its commercial technology company, or a recognised Certification Body within the last 36 months.</p>
+    <p id="advisoryBoardIntro" hidden>The Advisory Board is a roster of ten to twelve named experts who provide ad hoc, per-task input on the standard, its ethical dimensions, and child-facing content, drawn from child rights, legal, technology &amp; security, academic, clinical, law enforcement, and youth backgrounds. There is no fixed meeting cadence: work happens as discrete review tasks, formalised through an individual MOU. It advises. It does not govern.</p>
+
     <form action="https://api.web3forms.com/submit" method="POST" data-form>
       <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-      <input type="hidden" name="subject" value="Custorian Governance Board: Expression of Interest">
-      <input type="hidden" name="Body" value="Governance Board">
+      <input type="hidden" id="av-subject" name="subject" value="Custorian Governance Board: Expression of Interest">
+      <input type="hidden" id="av-body" name="Body" value="Governance Board">
       <input type="hidden" name="from_name" value="Custorian Governance EOI">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
       <div class="field"><label for="a-name">Your name *</label><input id="a-name" type="text" name="Name" required placeholder="Full name"></div>
       <div class="field"><label for="a-email">Email *</label><input id="a-email" type="email" name="Email" required placeholder="you@example.org"></div>
       <div class="field"><label for="a-org">Organisation / affiliation</label><input id="a-org" type="text" name="Organisation" placeholder="Where you work or what you represent"></div>
-      <div class="field"><label for="a-seat">Which seat interests you? *</label>
+      <div class="field"><label for="a-seat" id="av-exp-label">Which seat interests you? *</label>
         <select id="a-seat" name="Expertise" required>
           <option value="">Select&hellip;</option>
           <option>Chair</option><option>Vice Chair</option><option>Treasurer</option>
@@ -902,15 +913,15 @@
       </div>
       <div class="field"><label for="a-url">LinkedIn / bio URL</label><input id="a-url" type="url" name="Profile" placeholder="https://"></div>
       <div class="field"><label for="a-msg">Where would you contribute? *</label><textarea id="a-msg" name="Message" required placeholder="Your background and what you would bring to the standard."></textarea></div>
-      <div class="field check"><input id="a-consent" type="checkbox" name="Consent" value="Yes" required><label for="a-consent">I agree that Custorian may hold and process this information under GDPR to review this expression of interest and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward.</label></div>
+      <div class="field check"><input id="a-consent" type="checkbox" name="Consent" value="Yes" required><label for="a-consent">I agree that Custorian may hold and process this information under GDPR to review this expression of interest and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</label></div>
 
-      <button type="submit" class="btn">Send expression of interest</button>
+      <button type="submit" class="btn">Express interest</button>
       <p class="formnote" data-err hidden></p>
     </form>
     <div class="done" hidden data-done>
       <div class="tick">&#10003;</div>
       <h3 class="dlg">Thank you.</h3>
-      <p class="formnote">Your expression of interest has been received. We will follow up by email.</p>
+      <p class="formnote">Your interest has been received. The foreningen reviews expressions of interest as it constitutes the Board and the Advisory Board roster. We will be in touch if there is a fit.</p>
     </div>
   </div>
 </div>
@@ -1116,6 +1127,60 @@
           });
       });
     });
+  })();
+
+
+  /* Governance dialog: Governance Board or Advisory Board.
+     Restored 17 Sep 2026 from the pre-redesign front page, which offered both
+     bodies; the redesign had hardcoded it to the Governance Board and dropped
+     the Advisory Board route entirely. Switching swaps the explanation, the
+     seat list, and the subject and Body fields the submission carries, so an
+     Advisory expression of interest still lands labelled as one. */
+  (function () {
+    var radios = document.querySelectorAll('input[name="gov-body-radio"]');
+    if (!radios.length) return;
+
+    var govIntro = document.getElementById('govBoardIntro');
+    var advIntro = document.getElementById('advisoryBoardIntro');
+    var subject  = document.getElementById('av-subject');
+    var body     = document.getElementById('av-body');
+    var label    = document.getElementById('av-exp-label');
+    var sel      = document.getElementById('a-seat');
+
+    var SEATS = ['Chair', 'Vice Chair', 'Treasurer', 'Secretary', 'Legal Adviser',
+                 'Child Digital Safety & Wellbeing', 'Not sure which seat'];
+    var AREAS = ['Child rights', 'Legal', 'Technology & security', 'Academic',
+                 'Clinical', 'Law enforcement', 'Youth', 'Other'];
+
+    function fill(list) {
+      sel.innerHTML = '';
+      var first = document.createElement('option');
+      first.value = ''; first.textContent = 'Select…';
+      sel.appendChild(first);
+      list.forEach(function (v) {
+        var o = document.createElement('option');
+        o.textContent = v;
+        sel.appendChild(o);
+      });
+    }
+
+    function apply(kind) {
+      var isGov = kind === 'governance';
+      govIntro.hidden = !isGov;
+      advIntro.hidden = isGov;
+      subject.value = isGov ? 'Custorian Governance Board: Expression of Interest'
+                            : 'Custorian Advisory Board: Expression of Interest';
+      body.value    = isGov ? 'Governance Board' : 'Advisory Board';
+      label.textContent = isGov ? 'Which seat interests you? *' : 'Area of expertise *';
+      fill(isGov ? SEATS : AREAS);
+    }
+
+    [].forEach.call(radios, function (r) {
+      r.addEventListener('change', function () { if (r.checked) apply(r.value); });
+    });
+
+    var checked = document.querySelector('input[name="gov-body-radio"]:checked');
+    apply(checked ? checked.value : 'governance');
   })();
 
   /* Back button: browser history, falling back to home when there is none. */
@@ -1403,5 +1468,6 @@
 
 <script src="track.js"></script>
 
+<script src="sidetabs.js"></script>
 </body>
 </html>
