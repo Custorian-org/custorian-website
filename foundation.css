@@ -27,6 +27,14 @@ h2 { font-weight:650; letter-spacing:-.032em; }
   .topbar .inner { max-width:1180px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .brand { font-family:var(--sans); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:10px; text-decoration:none; }
   .brand .dot { width:9px; height:9px; border-radius:50%; background:var(--violet); display:block; }
+  /* The animated mark from the pre-redesign front page, restored 17 Sep 2026 and sized
+     for the top bar. Each square fades up in turn, staggered by its --idx, so the sweep
+     runs across the grid rather than pulsing as one block. */
+  .logo-mark { width:22px; height:22px; display:block; flex:none; }
+  .logo-mark .outer { fill:#8C8E9B; animation:pulse-sweep 4s ease-in-out infinite; animation-delay:calc(var(--idx, 0) * .125s); }
+  .logo-mark .inner { fill:var(--violet); }
+  @keyframes pulse-sweep { 0%, 100% { opacity:.32; } 6% { opacity:1; } 18% { opacity:.32; } }
+  @media (prefers-reduced-motion: reduce) { .logo-mark .outer { animation:none; opacity:.7; } }
   .navleft { display:flex; align-items:center; gap:11px; }
   /* Top-bar right group: shared since 17 Sep 2026, when How it works joined it. */
   .topbar .right { display:flex; align-items:center; gap:18px; }
