@@ -58,3 +58,40 @@ h2 { font-weight:650; letter-spacing:-.032em; }
   .topbar .right { width:100%; justify-content:flex-start; gap:16px; }
   .topbar a.back { font-size:12px; }
 }
+
+/* --- LEFT SECTION NAV ------------------------------------------------------
+   The sticky table of contents governance.html has always carried, extracted
+   17 Sep 2026 so the front page and how-it-works.html can use it too.
+
+   It is a grid column rather than a fixed overlay on purpose: a fixed rail
+   would have to live in the page margin, which is only ~166px at 1512px wide
+   and disappears entirely on a laptop. As a column it reserves its own space
+   at every width, and collapses below 900px where there is none.
+
+   .main carries no max-width here: these pages hold charts, tables and plots
+   that need the full column, unlike the prose pages. */
+.layout { display:grid; grid-template-columns:200px 1fr; gap:64px; padding-top:40px; }
+.layout .rail { position:sticky; top:104px; align-self:start; }
+.layout .rail ol { list-style:none; counter-reset:sec; margin:0; padding:0; }
+.layout .rail li { counter-increment:sec; margin-bottom:2px; }
+.layout .rail a {
+  font-family:var(--sans); font-size:13px; color:var(--muted); text-decoration:none;
+  display:flex; gap:10px; padding:6px 0; line-height:1.4;
+  transition:color .16s ease;
+}
+.layout .rail a::before {
+  content:counter(sec,decimal-leading-zero);
+  font-family:var(--mono); font-size:10.5px; color:var(--violet-l);
+  padding-top:2px; flex:none;
+}
+.layout .rail a:hover { color:var(--ink); }
+/* Current section, set by sectionnav.js as you scroll. */
+.layout .rail a.on { color:var(--ink); font-weight:600; }
+.layout .rail a.on::before { color:var(--violet); }
+.layout .main { min-width:0; }
+.layout .main > section:first-of-type { border-top:none; padding-top:0; }
+
+@media (max-width:900px) {
+  .layout { grid-template-columns:1fr; gap:0; padding-top:28px; }
+  .layout .rail { display:none; }
+}
