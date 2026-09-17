@@ -1,0 +1,25 @@
+#!/bin/sh
+# Re-stamp local CSS and JS references before the commit is written, so a shared asset
+# can never be committed without the pages that reference it being updated in the same
+# commit. A commit that changes foundation.css but not the ?v= beside it leaves the
+# repository internally inconsistent and the live site serving a stale copy.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Skip for one commit:     git commit --no-verify
+#
+# Staging every page the stamper touched is safe: stamp_assets.py only ever rewrites the
+# ?v= query on a local .css or .js reference, so any diff it produces is the stamp and
+# nothing else. It cannot sweep unrelated edits into the commit.
+
+python3 stamp_assets.py > /dev/null 2>&1 || exit 0
+
+restamped=$(git diff --name-only -- '*.html')
+[ -z "$restamped" ] && exit 0
+
+echo "$restamped" | while IFS= read -r f; do
+  [ -n "$f" ] && git add "$f"
+done
+
+echo "stamp_assets: asset hashes changed, restamped and staged:"
+echo "$restamped" | sed 's/^/  /'
+exit 0

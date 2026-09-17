@@ -1,0 +1,20 @@
+name: Asset stamps
+
+# The pre-commit hook is opt-in per clone (git config core.hooksPath .githooks), so a
+# push from a machine that never ran that command can still land a stale hash. This is
+# the backstop: it does not rewrite anything, it just refuses to stay quiet about it.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Every CSS and JS reference carries the current content hash
+        run: python3 stamp_assets.py --check
