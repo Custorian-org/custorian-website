@@ -345,6 +345,35 @@
   };
   var COMP = { address:'Address', hotline:'Hotline', csam:'Commitment', categories:'Categories', dsa:'DSA' };
 
+  /* Why a registrar could not be scored, in words rather than the pipeline's own codes.
+     Each of these is a statement about what we could retrieve, never about the company:
+     a site that refuses automated clients is excluded by the liveness pass and never
+     reaches this table, so 'nothing was serving' means exactly that and nothing more. */
+  /* The fallback category an agreement rests on when it does not name CSAM. These are our
+     bucket names, not verbatim quotes, so two of them came out as broken English inside
+     quotation marks that imply we are quoting. */
+  var RESTS = {
+    illegal_content:       'illegal content',
+    applicable_law:        'applicable law',
+    harmful_abusive:       'harmful or abusive content',
+    obscene_pornographic:  'obscene or pornographic content'
+  };
+
+  var STATUS = {
+    site_unreachable:     'nothing was serving on this website',
+    no_readable_doc:      'no document could be read from this website',
+    js_rendered_site:     'the terms are rendered by scripts we did not run',
+    js_suspect:           'the terms may be rendered by scripts',
+    no_binding_doc_found: 'no binding agreement was found on this website',
+    manual_verified:      'checked by hand',
+    partial_manual:       'partly checked by hand',
+    auto_ok:              ''
+  };
+  function why(code, fallback) {
+    if (!code) return fallback || '';
+    return STATUS[code] != null ? STATUS[code] : String(code).replace(/_/g, ' ');
+  }
+
   var LAYERS = {
     all: {
       title:'Four layers, read together',
@@ -436,11 +465,11 @@
   function cellPolicy(s) {
     var on = (LAYER === '2' || LAYER === 'all') ? ' on' : '';
     if (s.c == null) {
-      return '<div class="cell' + on + '"><span class="none">no readable document</span><div class="sub">' + esc(s.st || '') + '</div></div>';
+      return '<div class="cell' + on + '"><span class="none">no readable document</span><div class="sub">' + esc(why(s.st)) + '</div></div>';
     }
     var m = CSAM[s.c];
     var h = '<div class="cell' + on + '"><span class="tag ' + m.cls + '">' + m.label + '</span>';
-    if (s.c === 0 && s.t) h += '<div class="sub">rests on &ldquo;' + esc(String(s.t).replace(/_/g, ' ')) + '&rdquo;</div>';
+    if (s.c === 0 && s.t) h += '<div class="sub">rests on ' + esc(RESTS[s.t] || String(s.t).replace(/_/g, ' ')) + '</div>';
     if (s.u) h += '<div class="sub"><a href="' + esc(s.u) + '" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:none;">the document &rarr;</a></div>';
     return h + '</div>';
   }
@@ -449,7 +478,11 @@
     var on = (LAYER === '3' || LAYER === 'all') ? ' on' : '';
     var h = '<div class="cell' + on + '">';
     if (s.s == null) {
-      h += '<span class="none">not scored</span><div class="sub">' + esc(s.r || 'no verified document') + '</div>';
+      /* s.r and s.st are the same code in all 561 unscored rows, so spelling the retrieval
+         reason out again here just prints the same sentence twice in adjacent cells. The
+         policy cell carries the cause; this one carries what follows from it. */
+      h += '<span class="none">not scored</span><div class="sub">' +
+           esc(s.r && s.r === s.st ? 'no document to score from' : why(s.r, 'no verified document')) + '</div>';
     } else {
       h += '<div class="grade"><span class="gl" style="background:' + GRADE_BG[s.d] + '">' + s.d + '</span>' +
            '<span class="gs">' + s.s + ' <em>/ 100</em></span></div>' +
