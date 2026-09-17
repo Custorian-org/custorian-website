@@ -83,7 +83,11 @@
   .count { margin-left:auto; font-family:var(--mono); font-size:12px; color:var(--muted); }
 
   /* ---------- the scorecard ---------- */
-  .card { background:var(--card); border:1px solid var(--line); border-radius:3px; overflow:hidden; }
+  /* overflow:clip, not hidden. hidden makes this card the scrollport that the sticky
+     header below resolves against, so its top:122px gets measured from the top of the
+     table instead of the viewport and the header lands on row 1. clip does the same
+     corner clipping without creating a scroll container. */
+  .card { background:var(--card); border:1px solid var(--line); border-radius:3px; overflow:hidden; overflow:clip; }
   .row { display:grid; grid-template-columns:minmax(230px,2.1fr) 1fr 1.25fr 1.35fr .75fr; gap:0; border-top:1px solid var(--hair); }
   .row:first-child { border-top:0; }
   .head { background:var(--ink); position:sticky; top:122px; z-index:40; }
