@@ -7,3 +7,4 @@
 User-agent: *
 
 Disallow: /_archive/
+Disallow: /intermediary-index/

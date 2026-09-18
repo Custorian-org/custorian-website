@@ -1,0 +1,322 @@
+[
+{
+"brand": "ALFA TELECOM",
+"figure": "93.6% recidivism rate, the highest of any ESP measured.",
+"recidivism": "93.6%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "CloudFlare",
+"figure": "48.6% recidivism. Table 3.2: 49,183 media targeted, third highest. Classified by C3P as a content delivery network, not a hosting service. A CDN front.",
+"recidivism": "48.6%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "ColoCrossing",
+"figure": "35.5% recidivism. Table 6.3: median removal 27 days and 90th percentile 127 days, the worst median of any hosting service in the report.",
+"recidivism": "35.5%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "DataWeb Global Group",
+"figure": "11.4% recidivism. Median removal 1 day, 90th percentile 2 days. Also appears in all three Dutch monitor reports at low volume.",
+"recidivism": "11.4%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "FranTech Solutions",
+"figure": "65.3% recidivism. Table 3.2: 9,729 media targeted. Median removal 13 days, 90th percentile 40 days.",
+"recidivism": "65.3%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "Imagevenue",
+"figure": "143,892 media targeted, the single largest in the report.",
+"recidivism": null,
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "Incrediserve",
+"figure": "34.0% recidivism. Table 3.2: 39,400 media targeted, fourth highest. Netherlands based. Median removal 3 days, 90th percentile 53 days.",
+"recidivism": "34.0%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "Liteserver Holding",
+"figure": "86.4% recidivism. Table 3.2: 6,766 media targeted. Netherlands based. Median removal 1 day, 90th percentile 43 days.",
+"recidivism": "86.4%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "NFOrce Entertainment",
+"figure": "23,211 media targeted. Median removal 8 days, 90th percentile 70 days. The Dutch monitor records the opposite trend for the same company, so read both.",
+"recidivism": null,
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "OVHcloud",
+"figure": "11.4% recidivism. Table 3.2: 6,281 media targeted. Median removal 3 days, 90th percentile 23 days. Large mainstream provider, included for completenes.",
+"recidivism": "11.4%",
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "Trichan",
+"figure": "34,157 media targeted. Table 6.3: 90th percentile removal 138 days, the worst in the report. C3P describes a now defunct network of apparently central.",
+"recidivism": null,
+"source": "Project Arachnid (C3P)",
+"year": "2018-2020",
+"url": "https://content.c3p.ca/pdfs/C3P_ProjectArachnidReport_en.pdf"
+},
+{
+"brand": "Abelohost",
+"figure": "1 URL with 0% removed in the notice sample. 2023 report: 2 URLs, 0% in 24h, 50% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "AEZA GROUP",
+"figure": "41 URLs across 16 domains, 21.95% removed in 24h, 41.46% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "Amarutu Technology",
+"figure": "number 1 CSAM hoster of 2022. 1,019 URLs sampled, 4.02% removed within 24h, 95.88% still online after 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "ColocationX",
+"figure": "2 URLs, 0% removed in 24h, 50% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "Contel OOO",
+"figure": "1 URL with 0% removed in the notice sample; 32 URLs in the uptime sample with 0% removed in 24h, all clearing only in the 24-48h window.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "Des Capital",
+"figure": "9 URLs across 7 domains, 11.11% removed in 24h, 77.78% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "FXOBO Private Enterprise",
+"figure": "1 URL with 0% removed in the notice sample.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "Host Sailor",
+"figure": "Appears in all three monitor reports and in Project Arachnid. 2023: 1 URL, 0% in 24h. 2022: 22 URLs, 13.64% in 24h, 50% beyond 48h. 2020: 34 URLs, 2.94% in 24h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "HostSlim",
+"figure": "number 4 by volume in 2022, 183 URLs, 95.63% removed in 24h and only 1.09% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "HZ Hosting",
+"figure": "9 URLs, 0% removed in 24h, 100% still online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "INTERNET IT COMPANY",
+"figure": "9 URLs in the notice sample with 0% removed, and 35 URLs in the uptime sample with 88.57% removed in 24h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "Intersect-Host",
+"figure": "36 URLs across 5 domains, 66.67% removed in 24h, 33.33% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2022",
+"url": "https://www.eerstekamer.nl/overig/20220629/csam_monitor_tu_delft/document"
+},
+{
+"brand": "IP Volume",
+"figure": "3 URLs, 0% removed in 24h, 100% in the 24-48h window.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "IROKO Networks",
+"figure": "43 URLs, 60.47% removed in 24h, 37.21% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "ISPIRIA Networks",
+"figure": "7 URLs with 0% removed in the notice sample; 24 URLs in the uptime sample with 16.6% removed in 24h and 66.66% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "IT-DELUX",
+"figure": "9 URLs across 3 domains, 11.11% removed in 24h, 33.33% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "IWS NETWORKS",
+"figure": "12 URLs, 16.67% removed in 24h, 83.33% online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "King Servers",
+"figure": "1 URL, 0% removed in 24h, 100% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2022",
+"url": "https://www.eerstekamer.nl/overig/20220629/csam_monitor_tu_delft/document"
+},
+{
+"brand": "KnownSRV",
+"figure": "number 2 CSAM hoster of 2022. 1,129 URLs, 58.02% removed in 24h, 37.11% online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "LLHOST INC. SRL",
+"figure": "2 URLs, 0% removed in 24h, 100% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "NFOrce",
+"figure": "Number 1 CSAM hoster in 2020 and 2021, dropped to number 5 in 2022 with 78.26% removed in 24h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "ON-LINE DATA",
+"figure": "2 URLs with 0% removed in the notice sample; 7 URLs in the uptime sample with 85.71% removed in 24h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2020",
+"url": "https://zoek.officielebekendmakingen.nl/blg-954132.pdf"
+},
+{
+"brand": "Serverel",
+"figure": "139 URLs across 21 domains, 7.19% removed in 24h, 91.37% online beyond 48h.",
+"recidivism": "93.5%",
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "SKB Enterprise",
+"figure": "17 URLs across 6 domains, 0% removed in 24h, 94.12% online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2022",
+"url": "https://www.eerstekamer.nl/overig/20220629/csam_monitor_tu_delft/document"
+},
+{
+"brand": "SpectraIP",
+"figure": "10 URLs, 0% removed in 24h, 100% still online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "Stark Industries",
+"figure": "61 URLs, 100% removed within 24h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "Telegram Messenger",
+"figure": "335 URLs, 5.67% removed in 24h, 94.03% online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2022",
+"url": "https://www.eerstekamer.nl/overig/20220629/csam_monitor_tu_delft/document"
+},
+{
+"brand": "The Infrastructure Group",
+"figure": "6 URLs across 5 domains, 16.67% removed in 24h, 66.67% beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+},
+{
+"brand": "VDSina",
+"figure": "48 URLs across 12 domains, 6.25% removed in 24h, 89.58% online beyond 48h.",
+"recidivism": null,
+"source": "CSAM Hosting Monitor (TU Delft / EOKM)",
+"year": "2023",
+"url": "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2023/07/07/tk-bijlage-csam-hosting-monitor-final-report-mar-2023/tk-bijlage-csam-hosting-monitor-final-report-mar-2023.pdf"
+}
+]
