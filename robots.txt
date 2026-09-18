@@ -17,7 +17,7 @@ Disallow: /index-foundation.html
 Disallow: /about-foundation.html
 Disallow: /governance-foundation.html
 Disallow: /membership-foundation.html
-Disallow: /intermediary-index-foundation.html
+Disallow: /intermediary-index.html
 Disallow: /registrar-index.json
 Disallow: /foundation.css
 Disallow: /logos/
