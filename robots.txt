@@ -7,7 +7,7 @@
 #
 # Note this is a crawl directive, not an index directive. It keeps compliant crawlers
 # out, but a URL someone links to from elsewhere can still be indexed without being
-# fetched. The registrar index page
+# fetched. The intermediary index page
 # already carries that meta tag, because it names companies; add it to the others if
 # that becomes a concern.
 
@@ -17,7 +17,7 @@ Disallow: /index-foundation.html
 Disallow: /about-foundation.html
 Disallow: /governance-foundation.html
 Disallow: /membership-foundation.html
-Disallow: /registrar-index-foundation.html
+Disallow: /intermediary-index-foundation.html
 Disallow: /registrar-index.json
 Disallow: /foundation.css
 Disallow: /logos/
