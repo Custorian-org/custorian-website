@@ -1,591 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Registrar Accountability Index — Custorian</title>
-<meta name="description" content="A public index of how the domain registrar industry treats child sexual abuse material, built in four layers from records that are already public.">
-<link rel="canonical" href="https://custorian.org/registrar-index-foundation.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="The Registrar Accountability Index">
-<meta property="og:description" content="Nobody scores domain registrars on how seriously they treat child sexual abuse material. This does, in four layers, from records that are already public.">
-<meta property="og:image" content="https://custorian.org/og-image.png">
-<meta property="og:url" content="https://custorian.org/registrar-index-foundation.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Custorian">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="/custorian-logo.png">
+<title>The Registrar Accountability Index · Custorian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="foundation.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body { background:var(--paper); color:var(--body); font-family:var(--sans); font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased; }
+:root{
+  --paper:#F6F4EF; --card:#FFFFFF; --ink:#0E0E10; --body:#3A3A40; --muted:#6E6E78;
+  --violet:#5B41C2; --violet-l:#9B7CFF; --violet-wash:#F1EDFF;
+  --rule:#E6E2DA; --rule-strong:#D5D0C6;
+  --good:#1F6B4A; --good-bg:rgba(31,107,74,.10);
+  --mid:#8A5A00;  --mid-bg:rgba(138,90,0,.10);
+  --bad:#A32B2B;  --bad-bg:rgba(163,43,43,.09);
+  --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1120px; --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E0E10; --card:#17171B; --ink:#F6F4EF; --body:#C9C6C0; --muted:#8E8E98;
+  --violet:#9B7CFF; --violet-l:#B9A3FF; --violet-wash:#1E1A2E;
+  --rule:#26262C; --rule-strong:#33333A;
+  --good:#5FD3A0; --good-bg:rgba(95,211,160,.12);
+  --mid:#E0A94E;  --mid-bg:rgba(224,169,78,.12);
+  --bad:#FF8A8A;  --bad-bg:rgba(255,138,138,.12);
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+h1,h2,h3{color:var(--ink);letter-spacing:-.02em;margin:0}
+a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:currentColor}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
 
-  /* grades reuse the foundation palette, plus one red the palette does not carry */
-  :root { --red:#B4332B; --grade-a:#4f7a4e; --grade-c:#a9701f; --grade-f:#B4332B; }
+/* top bar */
+.top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:16px;min-height:58px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:16px;color:var(--ink);letter-spacing:-.03em;margin-right:auto}
+.brand span{color:var(--violet)}
+.langs{display:flex;gap:4px;flex-wrap:wrap}
+.langs button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:5px 9px;border-radius:999px;border:1px solid var(--rule-strong);background:transparent;color:var(--muted);cursor:pointer;transition:.15s}
+.langs button:hover{color:var(--ink);border-color:var(--violet-l)}
+.langs button[aria-pressed="true"]{background:var(--violet);border-color:var(--violet);color:#fff}
 
-  .topbar { border-bottom:1px solid var(--hair); background:var(--paper); position:sticky; top:0; z-index:60; }
-  .topbar a.back { font-family:var(--sans); font-size:12.5px; color:var(--muted); text-decoration:none; }
-  .topbar a.back:hover { color:var(--violet); }
+/* hero */
+.hero{padding:56px 0 34px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+h1{font-size:clamp(30px,5.2vw,52px);font-weight:800;line-height:1.06;max-width:16ch}
+.lede{font-size:clamp(16px,2.1vw,19px);line-height:1.55;max-width:62ch;margin-top:18px;color:var(--body)}
+.review{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 13px;border-radius:999px;background:var(--violet-wash);color:var(--violet);font-size:13px;font-weight:600}
+.review::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--violet)}
 
-  /* ---------- hero ---------- */
-  .herowrap { background:#000; color:#fff; }
-  .hero { max-width:1180px; margin:0 auto; padding:88px 32px 78px; }
-  .hero .eyebrow { color:rgba(255,255,255,.45); letter-spacing:.42em; margin-bottom:26px; }
-  .hero h1 { font-family:var(--sans); font-weight:900; text-transform:uppercase; font-size:clamp(36px,6.2vw,86px); line-height:.94; letter-spacing:-.03em; color:#fff; max-width:15ch; margin-bottom:30px; }
-  .hero h1 em { font-style:normal; color:var(--violet-l); }
-  .hero .lede { font-size:clamp(17px,1.9vw,20.5px); line-height:1.6; max-width:62ch; font-weight:300; color:rgba(255,255,255,.78); }
-  .hero .lede b { font-weight:600; color:var(--violet-l); }
-  .herostats { display:flex; flex-wrap:wrap; gap:44px; margin-top:52px; padding-top:34px; border-top:1px solid rgba(255,255,255,.14); }
-  .herostats div { min-width:120px; }
-  .herostats .n { font-family:var(--sans); font-weight:800; font-size:34px; letter-spacing:-.035em; color:#fff; line-height:1; }
-  .herostats .l { font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:9px; }
+/* generic section */
+section{padding:34px 0}
+.sec-h{font-size:clamp(20px,3vw,27px);font-weight:700;margin-bottom:6px}
+.sec-x{color:var(--muted);max-width:66ch;margin-bottom:22px}
 
-  .shell { max-width:1180px; margin:0 auto; padding:0 32px 90px; }
-  section { padding-top:78px; }
-  h2 { font-family:var(--sans); font-size:clamp(25px,3.1vw,36px); line-height:1.12; color:var(--ink); margin-bottom:16px; }
-  .intro { font-size:18px; max-width:66ch; color:var(--body); margin-bottom:10px; }
-  .note { font-size:14px; color:var(--muted); max-width:70ch; }
-  .note a { color:var(--violet); text-decoration:none; }
+/* read first */
+.first{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px;display:grid;gap:14px}
+.first p{margin:0;max-width:78ch}
+.first p b{color:var(--ink)}
+.first p:last-child{padding-top:14px;border-top:1px solid var(--rule)}
 
-  /* ---------- layer tabs ---------- */
-  .layerbar { position:sticky; top:58px; z-index:50; background:var(--paper); border-bottom:1px solid var(--hair); margin-top:70px; }
-  .layerbar .inner { max-width:1180px; margin:0 auto; padding:0 32px; display:flex; gap:2px; overflow-x:auto; }
-  .ltab { flex:0 0 auto; appearance:none; background:none; border:0; border-bottom:2px solid transparent; padding:15px 17px 13px; cursor:pointer; font-family:var(--sans); text-align:left; color:var(--muted); transition:color .16s ease, border-color .16s ease; }
-  .ltab .k { display:block; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:3px; opacity:.75; }
-  .ltab .t { display:block; font-size:14.5px; font-weight:600; letter-spacing:-.01em; }
-  .ltab:hover { color:var(--ink); }
-  .ltab[aria-selected="true"] { color:var(--violet); border-bottom-color:var(--violet); }
-  .ltab[aria-selected="true"] .k { opacity:1; }
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:18px}
+.stat .n{font-size:clamp(26px,3.6vw,36px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.stat .l{font-weight:600;color:var(--ink);margin-top:8px;font-size:14px}
+.stat .x{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.45}
 
-  /* ---------- layer explainer ---------- */
-  .lpanel { background:var(--card); border:1px solid var(--line); border-radius:3px; padding:30px 32px; margin-top:34px; }
-  .lpanel .top { display:flex; flex-wrap:wrap; align-items:baseline; gap:14px; margin-bottom:6px; }
-  .lpanel h3 { font-family:var(--sans); font-size:21px; font-weight:650; letter-spacing:-.025em; color:var(--ink); }
-  .lpanel .status { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:3px 9px; border-radius:100px; color:#fff; }
-  .s-live { background:var(--grade-a); } .s-soon { background:var(--muted); } .s-int { background:var(--violet); }
-  .lpanel .looks { font-size:16px; max-width:72ch; margin-bottom:22px; }
-  .lgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:26px; border-top:1px solid var(--hair); padding-top:22px; }
-  .lgrid h4 { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--violet); margin-bottom:7px; font-weight:500; }
-  .lgrid p { font-size:14px; line-height:1.55; color:var(--body); }
-  .lgrid li { font-size:14px; line-height:1.5; margin-bottom:5px; list-style:none; padding-left:14px; position:relative; }
-  .lgrid li:before { content:"·"; position:absolute; left:2px; color:var(--violet-l); font-weight:700; }
-  .finding { margin-top:22px; border-top:1px solid var(--hair); padding-top:20px; font-size:16.5px; max-width:74ch; }
-  .finding b { color:var(--ink); font-weight:650; }
+/* layers */
+.ltabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.ltab{flex:1 1 200px;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:13px 15px;cursor:pointer;transition:.15s;font-family:inherit}
+.ltab:hover{border-color:var(--violet-l)}
+.ltab[aria-selected="true"]{border-color:var(--violet);box-shadow:0 0 0 1px var(--violet) inset}
+.ltab .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--violet)}
+.ltab .t{display:block;font-weight:700;color:var(--ink);margin-top:4px;font-size:15px;letter-spacing:-.01em}
+.ltab .q{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.4}
+.lpanel{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:26px}
+.lpanel .lq{font-size:clamp(17px,2.3vw,21px);font-weight:700;color:var(--ink);max-width:44ch;line-height:1.3}
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px}
+.lgrid h4{margin:0 0 5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
+.lgrid p{margin:0;font-size:14.5px;line-height:1.55}
+.ask{margin-top:22px;padding:20px;border-radius:12px;background:var(--violet-wash);border:1px solid color-mix(in srgb,var(--violet) 25%,transparent)}
+.ask h4{margin:0 0 6px;font-size:15px;color:var(--ink)}
+.ask p{margin:0;font-size:14.5px}
+.ask a{display:inline-block;margin-top:12px;font-weight:600;border-bottom:1px solid currentColor}
 
-  /* ---------- controls ---------- */
-  .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:34px 0 14px; }
-  .controls input[type=search], .controls select { font-family:var(--sans); font-size:14px; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:2px; padding:9px 12px; }
-  .controls input[type=search] { width:260px; }
-  .controls input:focus, .controls select:focus { outline:none; border-color:var(--violet); }
-  .chk { display:flex; align-items:center; gap:7px; font-size:14px; color:var(--body); cursor:pointer; }
-  .count { margin-left:auto; font-family:var(--mono); font-size:12px; color:var(--muted); }
+/* grades */
+.glist{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.g{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:13px 15px}
+.pill{font-family:var(--mono);font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;flex:none}
+.pA,.pB{color:var(--good);background:var(--good-bg)}
+.pC{color:var(--mid);background:var(--mid-bg)}
+.pD,.pF{color:var(--bad);background:var(--bad-bg)}
+.pN{color:var(--muted);background:color-mix(in srgb,var(--muted) 12%,transparent)}
+.g span.d{font-size:13.5px;line-height:1.45}
 
-  /* ---------- the scorecard ---------- */
-  .card { background:var(--card); border:1px solid var(--line); border-radius:3px; overflow:hidden; }
-  .row { display:grid; grid-template-columns:minmax(230px,2.1fr) 1fr 1.25fr 1.35fr .75fr; gap:0; border-top:1px solid var(--hair); }
-  .row:first-child { border-top:0; }
-  .head { background:var(--ink); position:sticky; top:122px; z-index:40; }
-  .head span { font-family:var(--mono); font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.62); padding:11px 16px; }
-  .head span b { color:#fff; font-weight:500; }
-  .cell { padding:15px 16px; min-width:0; }
-  .row:not(.head):hover { background:#fffefb; }
-  .row.dim .cell:not(.on) { opacity:.3; }
+/* table */
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.controls input,.controls select{font-family:inherit;font-size:14px;padding:9px 13px;border-radius:10px;border:1px solid var(--rule-strong);background:var(--card);color:var(--ink)}
+.controls input{flex:1 1 260px}
+.chk{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;flex:0 0 auto;font-size:13.5px;color:var(--body);background:var(--card);border:1px solid var(--rule-strong);padding:9px 13px;border-radius:10px;cursor:pointer;user-select:none}
+.chk:hover{border-color:var(--violet-l)}
+.chk input{accent-color:var(--violet);margin:0}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule-strong);font-weight:500;white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--rule);font-size:14px;vertical-align:top}
+tr.r{cursor:pointer}
+tr.r:hover td{background:color-mix(in srgb,var(--violet) 4%,transparent)}
+.host{font-weight:600;color:var(--ink)}
+.co{font-size:12.5px;color:var(--muted);margin-top:2px}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:2px 7px;border-radius:999px;background:var(--violet-wash);color:var(--violet);margin-left:6px;vertical-align:1px}
+.score{display:flex;align-items:center;gap:9px}
+.bar{width:64px;height:6px;border-radius:99px;background:color-mix(in srgb,var(--muted) 18%,transparent);overflow:hidden;flex:none}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--violet)}
+.det td{background:color-mix(in srgb,var(--violet) 3%,transparent);font-size:13.5px}
+.det dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0}
+.det dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.det dd{margin:0}
+.quote{border-left:2px solid var(--violet-l);padding-left:12px;color:var(--body);font-style:italic}
+.more{display:block;margin:16px auto 0;font-family:inherit;font-size:14px;font-weight:600;color:var(--violet);background:var(--card);border:1px solid var(--rule-strong);padding:11px 22px;border-radius:10px;cursor:pointer}
+.more:hover{border-color:var(--violet)}
 
-  .who .nm { font-family:var(--sans); font-size:15.5px; font-weight:600; letter-spacing:-.012em; color:var(--ink); word-break:break-word; }
-  .who .co { font-size:13px; color:var(--muted); line-height:1.42; margin-top:2px; }
-  .who a { color:inherit; text-decoration:none; border-bottom:1px solid transparent; }
-  .who a:hover { color:var(--violet); border-bottom-color:var(--violet-l); }
+/* method + footer */
+.method{display:grid;gap:12px}
+.method p{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:15px 18px;margin:0;font-size:14.5px}
+.method p b{color:var(--ink)}
+footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 56px;font-size:13px;color:var(--muted)}
+.dates{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;margin-bottom:10px}
+.dates b{color:var(--ink);font-weight:500}
 
-  .tag { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.06em; padding:2.5px 7px; border-radius:2px; border:1px solid var(--line); color:var(--muted); background:#fff; white-space:nowrap; }
-  .tag.on { color:var(--violet); border-color:#cfc4f0; background:#f4f1fd; }
-  .tag.warn { color:var(--grade-c); border-color:#e8d5b0; background:#fdf8ef; }
-  .tag.bad { color:var(--grade-f); border-color:#efc9c5; background:#fdf3f2; }
-  .tag.good { color:var(--grade-a); border-color:#c6d8c5; background:#f3f8f2; }
-  .tags { display:flex; flex-wrap:wrap; gap:4px; }
-  .sub { font-size:12.5px; color:var(--muted); margin-top:5px; line-height:1.4; }
-
-  .grade { display:flex; align-items:center; gap:9px; }
-  .gl { width:27px; height:27px; border-radius:2px; display:grid; place-items:center; font-family:var(--sans); font-weight:800; font-size:14px; color:#fff; flex:0 0 auto; }
-  .gs { font-family:var(--mono); font-size:14px; color:var(--ink); }
-  .gs em { font-style:normal; color:var(--muted); font-size:11px; }
-  .none { font-size:13px; color:#b9b5bf; font-style:italic; }
-
-  .bar { height:4px; background:#ece8e0; border-radius:2px; margin-top:7px; overflow:hidden; max-width:130px; }
-  .bar i { display:block; height:100%; }
-
-  .more { display:block; width:100%; text-align:center; padding:15px; font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--violet); background:var(--card); border:1px solid var(--line); border-top:0; border-radius:0 0 3px 3px; cursor:pointer; }
-  .more:hover { background:#f4f1fd; }
-
-  /* ---------- methodology ---------- */
-  .meth { display:grid; grid-template-columns:repeat(auto-fit,minmax(272px,1fr)); gap:26px; margin-top:30px; }
-  .mbox { background:var(--card); border:1px solid var(--line); border-radius:3px; padding:24px 26px; }
-  .mbox h4 { font-family:var(--sans); font-size:16px; font-weight:650; letter-spacing:-.02em; color:var(--ink); margin-bottom:9px; }
-  .mbox p, .mbox li { font-size:14px; line-height:1.56; color:var(--body); }
-  .mbox li { list-style:none; padding-left:15px; position:relative; margin-bottom:7px; }
-  .mbox li:before { content:""; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%; background:var(--violet-l); }
-  .weights { font-family:var(--mono); font-size:12.5px; line-height:1.9; color:var(--body); }
-  .weights b { color:var(--ink); }
-  .neverbox { border-left:3px solid var(--violet); padding-left:20px; max-width:74ch; margin-top:26px; }
-  .neverbox p { font-size:15.5px; margin-bottom:12px; }
-  .neverbox p:last-child { margin-bottom:0; }
-
-  footer { border-top:1px solid var(--hair); margin-top:24px; padding:34px 0 60px; font-family:var(--sans); font-size:13px; color:var(--muted); }
-  footer nav { display:flex; flex-wrap:wrap; gap:18px; margin-top:12px; }
-  footer nav a { color:var(--muted); text-decoration:none; }
-  footer nav a:hover { color:var(--violet); }
-
-  .loading { padding:70px 0; text-align:center; color:var(--muted); font-size:14px; }
-
-  /* Layer 4 has no per-registrar data. A thousand identical rows saying so would be
-     noise, so the table is replaced by the reason it is empty. */
-  .empty { padding:56px 40px 52px; }
-  .empty .mark { font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--violet); margin-bottom:16px; }
-  .empty h3 { font-family:var(--sans); font-size:clamp(22px,2.6vw,30px); font-weight:650; letter-spacing:-.028em; color:var(--ink); max-width:20ch; line-height:1.12; margin-bottom:16px; }
-  .empty p { font-size:16.5px; max-width:64ch; margin-bottom:14px; }
-  .empty .why { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px; margin-top:34px; padding-top:28px; border-top:1px solid var(--hair); }
-  .empty .why h4 { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--violet); margin-bottom:8px; font-weight:500; }
-  .empty .why p { font-size:14px; line-height:1.55; margin:0; }
-  .empty .ask { margin-top:30px; padding-top:24px; border-top:1px solid var(--hair); font-size:15.5px; max-width:64ch; }
-  .empty .ask a { color:var(--violet); text-decoration:none; font-weight:600; }
-
-  @media (max-width:900px) {
-    .row { grid-template-columns:1fr 1fr; }
-    .head { display:none; }
-    .cell { border-top:1px dashed var(--hair); }
-    .cell.who { grid-column:1 / -1; border-top:0; }
-    .row.dim .cell:not(.on) { display:none; }
-    .layerbar { top:0; }
-    .head { position:static; }
-  }
+@media(max-width:900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .lgrid,.glist{grid-template-columns:1fr}
+  .hero{padding:38px 0 26px}
+}
+@media(max-width:700px){
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr.r{border-bottom:1px solid var(--rule);padding:6px 0}
+  td{border:0;padding:5px 14px}
+  td::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .count{margin-left:0}
+}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="inner">
-    <span class="navleft">
-      <a class="navbtn" href="index-foundation.html" title="Home">Home</a>
-      <a class="brand" href="index-foundation.html"><span class="dot"></span> Custorian</a>
-    </span>
-    <span class="right">
-      <a class="back" href="index-foundation.html#research">&larr; Research</a>
-    </span>
+<div class="top"><div class="wrap">
+  <div class="brand">Custorian<span>.</span></div>
+  <nav class="langs" id="langs" aria-label="Language"></nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker" data-t="kicker"></div>
+  <h1 data-t="title"></h1>
+  <p class="lede" data-t="lede"></p>
+  <div class="review" data-t="note_review"></div>
+</div></header>
+
+<main>
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="first_h"></h2>
+  <div class="first">
+    <p data-t="first_1"></p>
+    <p data-t="first_2"></p>
+    <p data-t="first_3"></p>
   </div>
-</div>
+</div></section>
 
-<div class="herowrap">
-  <div class="hero">
-    <div class="eyebrow">Research &middot; Registrar accountability index</div>
-    <h1>Who <em>answers</em> for a domain?</h1>
-    <p class="lede">
-      Every website that has ever hosted child sexual abuse material had a domain name, and every
-      domain name was sold by a registrar. <b>No public index scores those registrars on how
-      seriously they treat it.</b> Abuse frameworks exist, but they are internal, aggregate-only or
-      retired, and none names and scores individual companies in the open. This closes that gap,
-      in four layers, using records that are already public.
-    </p>
-    <div class="herostats">
-      <div><div class="n" id="hs-acc">&mdash;</div><div class="l">Accreditations</div></div>
-      <div><div class="n" id="hs-sites">&mdash;</div><div class="l">Registrar websites</div></div>
-      <div><div class="n" id="hs-named">&mdash;</div><div class="l">Name CSAM in their own terms</div></div>
-      <div><div class="n" id="hs-median">&mdash;</div><div class="l">Median disclosure score</div></div>
-    </div>
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="stats_h"></h2>
+  <div class="stats">
+    <div class="stat"><div class="n" id="n1"></div><div class="l" data-t="s1"></div><div class="x" data-t="s1x"></div></div>
+    <div class="stat"><div class="n" id="n2"></div><div class="l" data-t="s2"></div><div class="x" data-t="s2x"></div></div>
+    <div class="stat"><div class="n" id="n3"></div><div class="l" data-t="s3"></div><div class="x" data-t="s3x"></div></div>
+    <div class="stat"><div class="n" id="n4"></div><div class="l" data-t="s4"></div><div class="x" data-t="s4x"></div></div>
   </div>
-</div>
+</div></section>
 
-<div class="layerbar">
-  <div class="inner" role="tablist" aria-label="Index layers">
-    <button class="ltab" role="tab" aria-selected="true"  data-layer="all"><span class="k">Together</span><span class="t">All four layers</span></button>
-    <button class="ltab" role="tab" aria-selected="false" data-layer="1"><span class="k">Layer 1</span><span class="t">Ownership</span></button>
-    <button class="ltab" role="tab" aria-selected="false" data-layer="2"><span class="k">Layer 2</span><span class="t">Policy</span></button>
-    <button class="ltab" role="tab" aria-selected="false" data-layer="3"><span class="k">Layer 3</span><span class="t">Posture</span></button>
-    <button class="ltab" role="tab" aria-selected="false" data-layer="4"><span class="k">Layer 4</span><span class="t">Response time</span></button>
-  </div>
-</div>
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="layers_h"></h2>
+  <p class="sec-x" data-t="layers_x"></p>
+  <div class="ltabs" role="tablist" id="ltabs"></div>
+  <div class="lpanel" id="lpanel" role="tabpanel"></div>
+</div></section>
 
-<div class="shell">
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="grades_h"></h2>
+  <p class="sec-x" data-t="grades_x"></p>
+  <div class="glist" id="glist"></div>
+</div></section>
 
-  <div class="lpanel" id="lpanel"></div>
-
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="table_h"></h2>
   <div class="controls">
-    <input type="search" id="q" placeholder="Search a registrar or website" aria-label="Search">
-    <select id="fgrade" aria-label="Filter by disclosure grade">
-      <option value="">Any disclosure grade</option>
-      <option value="A">Grade A</option><option value="B">Grade B</option><option value="C">Grade C</option>
-      <option value="D">Grade D</option><option value="F">Grade F</option>
-    </select>
-    <select id="fcsam" aria-label="Filter by policy">
-      <option value="">Any policy wording</option>
-      <option value="2">Names CSAM explicitly</option>
-      <option value="1">Child-general wording only</option>
-      <option value="0">Catch-all clause only</option>
-      <option value="n">No readable document</option>
-    </select>
-    <label class="chk"><input type="checkbox" id="fenf"> Has an ICANN notice</label>
-    <label class="chk"><input type="checkbox" id="fclu"> Shared-website cluster</label>
-    <span class="count" id="count"></span>
+    <input id="q" type="search" data-p="search" aria-label="Search">
+    <select id="fg"></select>
+    <label class="chk"><input type="checkbox" id="fc"> <span data-t="f_csam"></span></label>
+    <label class="chk"><input type="checkbox" id="fk"> <span data-t="f_clu"></span></label>
+    <div class="count" id="count"></div>
   </div>
+  <table><thead><tr>
+    <th data-t="col_site"></th><th data-t="col_acc"></th><th data-t="col_prom"></th><th data-t="col_score"></th>
+  </tr></thead><tbody id="tb"></tbody></table>
+  <button class="more" id="more" data-t="more"></button>
+</div></section>
 
-  <div class="card" id="table"><div class="loading">Loading the index&hellip;</div></div>
-  <button class="more" id="more" hidden></button>
-  <p class="note" style="margin-top:14px;" id="asof"></p>
+<section><div class="wrap">
+  <h2 class="sec-h" data-t="method_h"></h2>
+  <div class="method">
+    <p data-t="m1"></p><p data-t="m2"></p><p data-t="m3"></p><p data-t="m4"></p><p data-t="m5"></p>
+  </div>
+</div></section>
+</main>
 
-  <section id="methodology">
-    <h2>How the scoring works</h2>
-    <p class="intro">
-      Two rules shape everything below. An absent document is never a bad score, and a voluntary act
-      is never averaged with an imposed finding.
-    </p>
-
-    <div class="meth">
-      <div class="mbox">
-        <h4>Layer 2: policy specificity</h4>
-        <p>Read from the registrar&rsquo;s own registration agreement, terms of service or acceptable-use
-        policy, whichever is binding on the registrant. Three outcomes:</p>
-        <ul style="margin-top:10px;">
-          <li><span class="tag good">Names CSAM</span> the document names child sexual abuse material as its own prohibited category.</li>
-          <li><span class="tag warn">Child-general</span> it names child harm, but not this category specifically.</li>
-          <li><span class="tag bad">Catch-all</span> it rests on a general clause such as &ldquo;illegal content&rdquo;, which also covers phishing and spam.</li>
-        </ul>
-        <p style="margin-top:12px;">Every score links the document it was read from and quotes the sentence.</p>
-      </div>
-
-      <div class="mbox">
-        <h4>Layer 3a: what they publish</h4>
-        <p>Five components, scored out of 100. Each is something a registrar chose to make public.</p>
-        <div class="weights" style="margin-top:12px;">
-          <b>25</b> &nbsp;abuse address, deliverable<br>
-          <b>25</b> &nbsp;reporting route named<br>
-          <b>20</b> &nbsp;commitment to act or report<br>
-          <b>15</b> &nbsp;abuse categories named<br>
-          <b>15</b> &nbsp;DSA or trusted-flagger route
-        </div>
-        <p style="margin-top:12px;">A published address whose mail server does not answer takes partial credit.
-        Naming the category without saying what happens next takes half.</p>
-      </div>
-
-      <div class="mbox">
-        <h4>Layer 3b: the ICANN record</h4>
-        <p>ICANN publishes every contractual compliance notice it sends, by company name. Those are
-        shown beside the disclosure score and never inside it: one is a voluntary act, the other is
-        imposed, and averaging them would say they are the same kind of fact.</p>
-        <p style="margin-top:12px;">Older notices, from 2013 to 2017, identify a registrar only by
-        name. Where the attachment is our inference rather than ICANN&rsquo;s identification it is
-        marked <span class="tag warn">inferred</span>, and every notice links to the ICANN letter.</p>
-      </div>
-
-      <div class="mbox">
-        <h4>Unscored is not zero</h4>
-        <p>Where no binding document could be read, the registrar is not scored and the reason is
-        shown instead: the site was unreachable, the document was not machine-readable, or no
-        binding document could be identified.</p>
-        <p style="margin-top:12px;">A website with nothing serving on it at all is recorded as a dead
-        ICANN listing, which is a finding about the accreditation register rather than about the
-        company.</p>
-      </div>
-    </div>
-
-    <div class="neverbox">
-      <p><strong>This never claims that a named company has hosted abuse material.</strong> That is
-      not sourceable at registrar granularity and is not asserted anywhere on this page. Hotlines
-      notify registrars only in rare cases, Project Arachnid names no registrar in its own diagram of
-      the layer, and ICANN&rsquo;s DNS Abuse definition excludes child sexual abuse material outright.</p>
-      <p>A registrar whose agreement is silent may still act within minutes of a report. A registrar
-      that names it may be slow. Which of those is true is Layer 4, and nobody publishes it.</p>
-      <p><strong>Right of reply.</strong> Any registrar can contest its entry at
-      <a href="mailto:info@custorian.org" style="color:var(--violet);">info@custorian.org</a>, acknowledged
-      within five working days. Corrections are published with the correction visible.</p>
-    </div>
-
-    <p class="note" style="margin-top:26px;">
-      Sources: IANA&rsquo;s accredited registrar list and ICANN&rsquo;s RDAP records; each registrar&rsquo;s own
-      published agreement; ICANN&rsquo;s
-      <a href="https://www.icann.org/compliance/notices" target="_blank" rel="noopener">contractual compliance notices</a>.
-      Published under CC BY-ND 4.0.
-    </p>
-  </section>
-
-  <footer>
-    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
-    <nav>
-      <a href="index-foundation.html#research">Research</a>
-      <a href="index-foundation.html">Home</a>
-      <a href="governance-foundation.html">Governance</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="mailto:info@custorian.org">Contact</a>
-    </nav>
-  </footer>
-</div>
+<footer><div class="wrap">
+  <div class="dates">
+    <span><span data-t="foot_ret"></span>: <b id="dret"></b></span>
+    <span><span data-t="foot_gen"></span>: <b id="dgen"></b></span>
+  </div>
+  <div data-t="foot_lic"></div>
+</div></footer>
 
 <script>
-// The Registrar Accountability Index.
-//
-// Reads registrar-index.json, written by rw-kit scripts/tos/export_index_site.py.
-// Short keys, because the whole file ships to the browser:
-//   h host · n names · a accreditations · g shared-website group
-//   c 2 names CSAM / 1 child-general / 0 catch-all / null unverified · t catch-all wording
-//   u document url · q quoted sentence · v version date · st audit status
-//   s disclosure 0-100 · d grade · k components scored · r why unscored
-//   e ICANN record { n notices, w worst, y latest year, x weighted index, u letter }
-// Layer 4 is absent by design: no public source holds registrar response time.
-(function () {
-  var DATA = null, LAYER = 'all', LIMIT = 40;
-  var GRADE_BG = { A:'var(--grade-a)', B:'var(--grade-a)', C:'var(--grade-c)', D:'#d17a2e', F:'var(--grade-f)' };
-  var CSAM = {
-    2: { cls:'good', label:'Names CSAM' },
-    1: { cls:'warn', label:'Child-general only' },
-    0: { cls:'bad',  label:'Catch-all only' }
-  };
-  var COMP = { address:'Address', hotline:'Hotline', csam:'Commitment', categories:'Categories', dsa:'DSA' };
+const I18N = {"en": {"lang": "English", "kicker": "Foreningen Custorian · In review, not public", "title": "The Registrar Accountability Index", "lede": "Every website has a company that sold its address. This index records what those companies have promised to do about child sexual abuse material, and how far that promise goes.", "first_h": "Read this first", "first_1": "<b>What is a registrar?</b> When someone sets up a website, they buy its address from a registrar: a company accredited by ICANN to sell domain names. There are 3,322 such accreditations worldwide, and they are the layer almost nobody looks at.", "first_2": "<b>What this index says.</b> It records what a registrar has written down in its own public agreement, and what public enforcement records show. Nothing else.", "first_3": "<b>What this index never says.</b> It never claims a registrar hosts abuse material. That cannot be established at this level, so we do not assert it. A low grade means a company has not written something down. It is not an accusation.", "stats_h": "The picture in four numbers", "s1": "accreditations worldwide", "s1x": "Licences to sell domain names, held by companies of every size.", "s2": "distinct websites behind them", "s2x": "Many accreditations share one website, so the real number of operators is smaller.", "s3": "name child sexual abuse material", "s3x": "Of the 446 agreements we could read, this many name it specifically.", "s4": "median transparency score", "s4x": "Out of 100. Half of all scored registrars fall below this.", "layers_h": "How the index is built, layer by layer", "layers_x": "Four layers, each answering a different question. Select one to read what it looks for and what it found.", "l1_t": "Who is behind it", "l1_q": "Are these separate companies, or one operation wearing many hats?", "l1_w": "We group accreditations that share a website. Four websites alone carry 2,270 of the 3,322 accreditations.", "l1_s": "ICANN's own public list of accredited registrars.", "l1_r": "A cluster is not wrongdoing. Resellers and acquisitions look identical from outside. It tells you where a single decision reaches furthest.", "l2_t": "What they promise", "l2_q": "Does the company's own agreement name child sexual abuse material at all?", "l2_w": "We read each registrar's published terms and record whether the words appear, whether only a catch-all like 'illegal content' appears, or whether nothing does.", "l2_s": "The registrar's own published agreement, retrieved and quoted.", "l2_r": "Naming it is not proof of action. Not naming it means a company has not committed in writing to the thing it would be judged on.", "l3_t": "What they show in public", "l3_q": "Beyond the contract, what does the company actually publish, and what has ICANN found?", "l3_w": "Two separate scores, never merged. One for what a registrar volunteers: an abuse contact, a route to a hotline, a stated commitment, named categories, a reference to EU rules. One for ICANN's formal record of breaches.", "l3_s": "Registrar disclosure pages, and ICANN's public compliance notices.", "l3_r": "A voluntary act and an imposed finding are different kinds of fact and carry different rights of reply, so they are kept apart.", "l4_t": "How fast they act", "l4_q": "Once a valid report is filed, how long does removal actually take?", "l4_w": "Nothing. This layer is empty, and that absence is the most important thing on this page.", "l4_s": "No public source reports removal time at this level.", "l4_r": "Everything above measures what a company says. This layer would measure what it does. Without it, the index cannot yet tell a company that ignores reports from one that is slow but acts.", "l4_ask_h": "What would fill this layer", "l4_ask": "Three things, from anyone who files reports at scale. Which hosting companies recur. Which registrars recur, including re-registration after a takedown. Time from a valid report to removal, per company, in rough bands, with a sense of how many reports sit behind each. Aggregated is fine. Historical is fine. Coarse is fine.", "l4_cta": "If you hold any of this, write to us", "grades_h": "How to read a grade", "grades_x": "The grade is the transparency score in Layer 3, out of 100. It measures what a registrar publishes, nothing more.", "gA": "Publishes nearly everything we look for", "gB": "Publishes most of it", "gC": "Publishes some of it", "gD": "Publishes little", "gF": "Publishes almost none of it", "gN": "Not scored. We could not retrieve the agreement, so there is no finding either way. Never counted as zero.", "table_h": "Every registrar website in the index", "search": "Search a company or website", "f_all": "All grades", "f_csam": "Names abuse material", "f_enf": "Has an enforcement notice", "f_clu": "In a shared-website cluster", "showing": "showing", "of": "of", "col_site": "Website", "col_names": "Companies", "col_acc": "Accreditations", "col_prom": "What the agreement names", "col_score": "Transparency", "col_enf": "ICANN notices", "p_named": "Names abuse material", "p_child": "Names child protection, not abuse material", "p_catch": "Catch-all wording only", "p_none": "Nothing on point", "p_unv": "Could not be read", "more": "Show more", "method_h": "Method, and what it cannot tell you", "m1": "<b>When the data is from.</b> Agreements were retrieved on one date and re-read monthly. Enforcement notices are re-pulled weekly. Both dates are shown below, because reading the older half as though it were the newer one would be a mistake.", "m2": "<b>Unverified is not zero.</b> If we could not retrieve a document, the registrar is not scored. A missing score is a gap in our reach, not a finding about the company.", "m3": "<b>Counting.</b> Figures are given per website or per domain, never per accreditation. One operator holding hundreds of accreditations would otherwise distort every percentage.", "m4": "<b>Matching enforcement notices.</b> ICANN identifies a registrar by number on recent notices and by company name on older ones. A name match alone is never enough: each is confirmed against the full legal name and labelled as inferred, with a link to the original letter.", "m5": "<b>Right of reply.</b> If a record here is wrong or out of date, write to us and we will correct it, and record that we did.", "foot_ret": "Agreements retrieved", "foot_gen": "Enforcement updated", "foot_lic": "Published under CC BY-ND 4.0. Figures are reproducible from the sources named above.", "note_review": "This page is in review and is not public.", "lab_w": "What it looks for", "lab_s": "Where it comes from", "lab_r": "How to read it", "det_quote": "What the agreement says", "det_source": "Source document", "det_doc": "Document date", "det_comp": "What it publishes"}, "da": {"lang": "Dansk", "kicker": "Foreningen Custorian · Under gennemgang, ikke offentlig", "title": "Indekset over registratorers ansvarlighed", "lede": "Ethvert websted har et firma, der har solgt dets adresse. Dette indeks viser, hvad de firmaer har lovet at gøre ved materiale med seksuelt misbrug af børn, og hvor langt det løfte rækker.", "first_h": "Læs dette først", "first_1": "<b>Hvad er en registrator?</b> Når nogen opretter et websted, køber de adressen hos en registrator: et firma, der er godkendt af ICANN til at sælge domænenavne. Der findes 3.322 sådanne godkendelser globalt, og det er det led, næsten ingen ser på.", "first_2": "<b>Hvad indekset siger.</b> Det viser, hvad en registrator selv har skrevet i sine offentlige vilkår, og hvad offentlige tilsynssager viser. Intet andet.", "first_3": "<b>Hvad indekset aldrig siger.</b> Det påstår aldrig, at en registrator hoster misbrugsmateriale. Det kan ikke fastslås på dette niveau, så vi hævder det ikke. En lav karakter betyder, at et firma ikke har skrevet noget ned. Det er ikke en anklage.", "stats_h": "Billedet i fire tal", "s1": "godkendelser globalt", "s1x": "Licenser til at sælge domænenavne, ejet af firmaer i alle størrelser.", "s2": "selvstændige websteder bag dem", "s2x": "Mange godkendelser deler ét websted, så antallet af reelle aktører er mindre.", "s3": "nævner materiale med seksuelt misbrug af børn", "s3x": "Af de 446 vilkår, vi kunne læse, nævner så mange det udtrykkeligt.", "s4": "median for gennemsigtighed", "s4x": "Ud af 100. Halvdelen af de vurderede registratorer ligger under dette.", "layers_h": "Sådan er indekset bygget op, lag for lag", "layers_x": "Fire lag, der hver svarer på sit spørgsmål. Vælg et for at læse, hvad det ser efter, og hvad det fandt.", "l1_t": "Hvem står bag", "l1_q": "Er det selvstændige firmaer, eller én aktør med mange navne?", "l1_w": "Vi grupperer godkendelser, der deler websted. Fire websteder alene bærer 2.270 af de 3.322 godkendelser.", "l1_s": "ICANN's egen offentlige liste over godkendte registratorer.", "l1_r": "En klynge er ikke i sig selv kritisabel. Forhandlere og opkøb ser ens ud udefra. Det viser, hvor én beslutning rækker længst.", "l2_t": "Hvad de lover", "l2_q": "Nævner firmaets egne vilkår overhovedet materiale med seksuelt misbrug af børn?", "l2_w": "Vi læser hver registrators offentliggjorte vilkår og noterer, om ordene står der, om der kun står en generel formulering som ulovligt indhold, eller om der intet står.", "l2_s": "Registratorens egne offentliggjorte vilkår, hentet og citeret.", "l2_r": "At nævne det er ikke bevis for handling. Ikke at nævne det betyder, at firmaet ikke skriftligt har forpligtet sig på netop det, det ville blive bedømt på.", "l3_t": "Hvad de viser offentligt", "l3_q": "Ud over kontrakten: hvad offentliggør firmaet reelt, og hvad har ICANN fundet?", "l3_w": "To adskilte scorer, aldrig lagt sammen. Én for det, en registrator frivilligt oplyser: en kontaktadresse for misbrug, en vej til en hotline, en erklæret forpligtelse, navngivne kategorier, en henvisning til EU-regler. Én for ICANN's formelle sager om brud.", "l3_s": "Registratorernes egne oplysningssider og ICANN's offentlige tilsynsbreve.", "l3_r": "En frivillig handling og en pålagt afgørelse er forskellige slags fakta med forskellig ret til at svare, så de holdes adskilt.", "l4_t": "Hvor hurtigt de handler", "l4_q": "Når en gyldig anmeldelse er indgivet, hvor lang tid tager fjernelsen så reelt?", "l4_w": "Intet. Dette lag er tomt, og det fravær er det vigtigste på siden.", "l4_s": "Ingen offentlig kilde oplyser fjernelsestid på dette niveau.", "l4_r": "Alt ovenfor måler, hvad et firma siger. Dette lag ville måle, hvad det gør. Uden det kan indekset endnu ikke skelne et firma, der ignorerer anmeldelser, fra et, der er langsomt men handler.", "l4_ask_h": "Hvad der ville udfylde dette lag", "l4_ask": "Tre ting, fra enhver der anmelder i stort omfang. Hvilke hostingfirmaer går igen. Hvilke registratorer går igen, herunder ny registrering efter en nedtagning. Tid fra gyldig anmeldelse til fjernelse, pr. firma, i grove intervaller, med en fornemmelse af hvor mange anmeldelser der ligger bag. Samlet er fint. Historisk er fint. Groft er fint.", "l4_cta": "Har I noget af dette, så skriv til os", "grades_h": "Sådan læses en karakter", "grades_x": "Karakteren er gennemsigtighedsscoren i lag 3, ud af 100. Den måler, hvad en registrator offentliggør, ikke andet.", "gA": "Offentliggør næsten alt, vi ser efter", "gB": "Offentliggør det meste", "gC": "Offentliggør noget af det", "gD": "Offentliggør lidt", "gF": "Offentliggør næsten intet", "gN": "Ikke vurderet. Vi kunne ikke hente vilkårene, så der er ingen konklusion nogen vej. Tælles aldrig som nul.", "table_h": "Alle registratorwebsteder i indekset", "search": "Søg efter firma eller websted", "f_all": "Alle karakterer", "f_csam": "Nævner misbrugsmateriale", "f_enf": "Har en tilsynssag", "f_clu": "I en delt websteds-klynge", "showing": "viser", "of": "af", "col_site": "Websted", "col_names": "Firmaer", "col_acc": "Godkendelser", "col_prom": "Hvad vilkårene nævner", "col_score": "Gennemsigtighed", "col_enf": "ICANN-sager", "p_named": "Nævner misbrugsmateriale", "p_child": "Nævner børnebeskyttelse, ikke misbrugsmateriale", "p_catch": "Kun generel formulering", "p_none": "Intet relevant", "p_unv": "Kunne ikke læses", "more": "Vis flere", "method_h": "Metode, og hvad den ikke kan fortælle", "m1": "<b>Hvornår data er fra.</b> Vilkår blev hentet på én dato og genlæses månedligt. Tilsynssager hentes ugentligt. Begge datoer står nedenfor, fordi det ville være en fejl at læse den ældre halvdel som var den ny.", "m2": "<b>Uverificeret er ikke nul.</b> Kunne vi ikke hente et dokument, vurderes registratoren ikke. En manglende score er et hul i vores rækkevidde, ikke en konklusion om firmaet.", "m3": "<b>Optælling.</b> Tal opgøres pr. websted eller pr. domæne, aldrig pr. godkendelse. Én aktør med hundredvis af godkendelser ville ellers forvride enhver procent.", "m4": "<b>Kobling af tilsynssager.</b> ICANN angiver en registrator med nummer i nyere breve og med firmanavn i ældre. Et navnesammenfald alene er aldrig nok: hvert enkelt bekræftes mod det fulde juridiske navn og markeres som udledt, med link til det oprindelige brev.", "m5": "<b>Ret til at svare.</b> Er en oplysning her forkert eller forældet, så skriv til os. Vi retter den og noterer, at vi gjorde det.", "foot_ret": "Vilkår hentet", "foot_gen": "Tilsynssager opdateret", "foot_lic": "Udgivet under CC BY-ND 4.0. Tallene kan genskabes fra de nævnte kilder.", "note_review": "Denne side er under gennemgang og er ikke offentlig.", "lab_w": "Hvad det ser efter", "lab_s": "Hvor det kommer fra", "lab_r": "Sådan læses det", "det_quote": "Hvad vilkårene siger", "det_source": "Kildedokument", "det_doc": "Dokumentets dato", "det_comp": "Hvad de offentliggør"}, "nb": {"lang": "Norsk", "kicker": "Foreningen Custorian · Under vurdering, ikke offentlig", "title": "Indeksen over registrarers ansvarlighet", "lede": "Hvert nettsted har et selskap som solgte adressen. Denne indeksen viser hva de selskapene har lovet å gjøre med materiale som viser seksuelle overgrep mot barn, og hvor langt det løftet rekker.", "first_h": "Les dette først", "first_1": "<b>Hva er en registrar?</b> Når noen oppretter et nettsted, kjøper de adressen av en registrar: et selskap godkjent av ICANN til å selge domenenavn. Det finnes 3 322 slike godkjenninger globalt, og dette er leddet nesten ingen ser på.", "first_2": "<b>Hva indeksen sier.</b> Den viser hva en registrar selv har skrevet i sine offentlige vilkår, og hva offentlige tilsynssaker viser. Ingenting annet.", "first_3": "<b>Hva indeksen aldri sier.</b> Den påstår aldri at en registrar lagrer overgrepsmateriale. Det kan ikke fastslås på dette nivået, så vi hevder det ikke. En lav karakter betyr at et selskap ikke har skrevet noe ned. Det er ingen anklage.", "stats_h": "Bildet i fire tall", "s1": "godkjenninger globalt", "s1x": "Lisenser til å selge domenenavn, eid av selskaper i alle størrelser.", "s2": "selvstendige nettsteder bak dem", "s2x": "Mange godkjenninger deler ett nettsted, så antallet reelle aktører er lavere.", "s3": "nevner materiale om seksuelle overgrep mot barn", "s3x": "Av de 446 vilkårene vi kunne lese, nevner så mange det uttrykkelig.", "s4": "median for åpenhet", "s4x": "Av 100. Halvparten av de vurderte registrarene ligger under dette.", "layers_h": "Slik er indeksen bygget opp, lag for lag", "layers_x": "Fire lag som hver svarer på sitt spørsmål. Velg ett for å lese hva det ser etter, og hva det fant.", "l1_t": "Hvem står bak", "l1_q": "Er dette selvstendige selskaper, eller én aktør med mange navn?", "l1_w": "Vi grupperer godkjenninger som deler nettsted. Fire nettsteder alene bærer 2 270 av de 3 322 godkjenningene.", "l1_s": "ICANNs egen offentlige liste over godkjente registrarer.", "l1_r": "En klynge er ikke i seg selv kritikkverdig. Forhandlere og oppkjøp ser like ut utenfra. Det viser hvor én beslutning rekker lengst.", "l2_t": "Hva de lover", "l2_q": "Nevner selskapets egne vilkår i det hele tatt materiale om seksuelle overgrep mot barn?", "l2_w": "Vi leser hver registrars publiserte vilkår og noterer om ordene står der, om det bare står en generell formulering som ulovlig innhold, eller om det ikke står noe.", "l2_s": "Registrarens egne publiserte vilkår, hentet og sitert.", "l2_r": "Å nevne det er ikke bevis på handling. Å ikke nevne det betyr at selskapet ikke skriftlig har forpliktet seg på nettopp det det ville bli vurdert på.", "l3_t": "Hva de viser offentlig", "l3_q": "Utover kontrakten: hva publiserer selskapet faktisk, og hva har ICANN funnet?", "l3_w": "To adskilte poengsummer, aldri slått sammen. Én for det en registrar frivillig oppgir: en kontaktadresse for misbruk, en vei til en hjelpelinje, en uttalt forpliktelse, navngitte kategorier, en henvisning til EU-regler. Én for ICANNs formelle saker om brudd.", "l3_s": "Registrarenes egne informasjonssider og ICANNs offentlige tilsynsbrev.", "l3_r": "En frivillig handling og en pålagt avgjørelse er ulike slags fakta med ulik rett til å svare, så de holdes adskilt.", "l4_t": "Hvor raskt de handler", "l4_q": "Når en gyldig melding er sendt, hvor lang tid tar fjerningen egentlig?", "l4_w": "Ingenting. Dette laget er tomt, og det fraværet er det viktigste på siden.", "l4_s": "Ingen offentlig kilde oppgir fjerningstid på dette nivået.", "l4_r": "Alt over måler hva et selskap sier. Dette laget ville måle hva det gjør. Uten det kan ikke indeksen ennå skille et selskap som overser meldinger fra ett som er tregt, men handler.", "l4_ask_h": "Hva som ville fylle dette laget", "l4_ask": "Tre ting, fra alle som melder i stort omfang. Hvilke hostingselskaper går igjen. Hvilke registrarer går igjen, inkludert ny registrering etter en nedtaking. Tid fra gyldig melding til fjerning, per selskap, i grove intervaller, med en pekepinn på hvor mange meldinger som ligger bak. Aggregert går fint. Historisk går fint. Grovt går fint.", "l4_cta": "Har dere noe av dette, så skriv til oss", "grades_h": "Slik leser du en karakter", "grades_x": "Karakteren er åpenhetsscoren i lag 3, av 100. Den måler hva en registrar publiserer, ikke noe mer.", "gA": "Publiserer nesten alt vi ser etter", "gB": "Publiserer det meste", "gC": "Publiserer noe av det", "gD": "Publiserer lite", "gF": "Publiserer nesten ingenting", "gN": "Ikke vurdert. Vi fikk ikke hentet vilkårene, så det finnes ingen konklusjon noen vei. Telles aldri som null.", "table_h": "Alle registrarnettsteder i indeksen", "search": "Søk etter selskap eller nettsted", "f_all": "Alle karakterer", "f_csam": "Nevner overgrepsmateriale", "f_enf": "Har en tilsynssak", "f_clu": "I en delt nettsted-klynge", "showing": "viser", "of": "av", "col_site": "Nettsted", "col_names": "Selskaper", "col_acc": "Godkjenninger", "col_prom": "Hva vilkårene nevner", "col_score": "Åpenhet", "col_enf": "ICANN-saker", "p_named": "Nevner overgrepsmateriale", "p_child": "Nevner barnevern, ikke overgrepsmateriale", "p_catch": "Bare generell formulering", "p_none": "Ingenting relevant", "p_unv": "Kunne ikke leses", "more": "Vis flere", "method_h": "Metode, og hva den ikke kan fortelle", "m1": "<b>Når dataene er fra.</b> Vilkårene ble hentet på én dato og leses på nytt månedlig. Tilsynssaker hentes ukentlig. Begge datoene står nedenfor, fordi det ville være feil å lese den eldre halvdelen som om den var den nye.", "m2": "<b>Uverifisert er ikke null.</b> Fikk vi ikke hentet et dokument, vurderes ikke registraren. En manglende score er et hull i vår rekkevidde, ikke en konklusjon om selskapet.", "m3": "<b>Telling.</b> Tall oppgis per nettsted eller per domene, aldri per godkjenning. Én aktør med hundrevis av godkjenninger ville ellers forvrenge enhver prosent.", "m4": "<b>Kobling av tilsynssaker.</b> ICANN oppgir en registrar med nummer i nyere brev og med selskapsnavn i eldre. Et navnetreff alene er aldri nok: hvert enkelt bekreftes mot det fulle juridiske navnet og merkes som utledet, med lenke til det opprinnelige brevet.", "m5": "<b>Rett til å svare.</b> Er en opplysning her feil eller utdatert, så skriv til oss. Vi retter den, og noterer at vi gjorde det.", "foot_ret": "Vilkår hentet", "foot_gen": "Tilsynssaker oppdatert", "foot_lic": "Publisert under CC BY-ND 4.0. Tallene kan gjenskapes fra kildene nevnt over.", "note_review": "Denne siden er under vurdering og er ikke offentlig.", "lab_w": "Hva det ser etter", "lab_s": "Hvor det kommer fra", "lab_r": "Slik leses det", "det_quote": "Hva vilkårene sier", "det_source": "Kildedokument", "det_doc": "Dokumentets dato", "det_comp": "Hva de publiserer"}, "sv": {"lang": "Svenska", "kicker": "Foreningen Custorian · Under granskning, inte offentlig", "title": "Indexet över registrarers ansvarstagande", "lede": "Varje webbplats har ett företag som sålde dess adress. Det här indexet visar vad de företagen har lovat att göra åt material med sexuella övergrepp mot barn, och hur långt det löftet räcker.", "first_h": "Läs det här först", "first_1": "<b>Vad är en registrar?</b> När någon skapar en webbplats köper de adressen av en registrar: ett företag som ICANN har ackrediterat att sälja domännamn. Det finns 3 322 sådana ackrediteringar i världen, och det är det led som nästan ingen granskar.", "first_2": "<b>Vad indexet säger.</b> Det visar vad en registrar själv har skrivit i sina offentliga villkor, och vad offentliga tillsynsärenden visar. Inget annat.", "first_3": "<b>Vad indexet aldrig säger.</b> Det påstår aldrig att en registrar lagrar övergreppsmaterial. Det går inte att fastställa på den här nivån, så vi hävdar det inte. Ett lågt betyg betyder att ett företag inte har skrivit ned något. Det är ingen anklagelse.", "stats_h": "Bilden i fyra siffror", "s1": "ackrediteringar i världen", "s1x": "Licenser att sälja domännamn, som innehas av företag i alla storlekar.", "s2": "separata webbplatser bakom dem", "s2x": "Många ackrediteringar delar en webbplats, så antalet verkliga aktörer är mindre.", "s3": "nämner material med sexuella övergrepp mot barn", "s3x": "Av de 446 villkor vi kunde läsa nämner så många det uttryckligen.", "s4": "median för öppenhet", "s4x": "Av 100. Hälften av de bedömda registrarerna ligger under detta.", "layers_h": "Så är indexet uppbyggt, lager för lager", "layers_x": "Fyra lager som var och ett svarar på sin fråga. Välj ett för att läsa vad det söker efter och vad det fann.", "l1_t": "Vem står bakom", "l1_q": "Är det separata företag, eller en aktör med många namn?", "l1_w": "Vi grupperar ackrediteringar som delar webbplats. Fyra webbplatser bär ensamma 2 270 av de 3 322 ackrediteringarna.", "l1_s": "ICANN:s egen offentliga lista över ackrediterade registrarer.", "l1_r": "Ett kluster är inte i sig klandervärt. Återförsäljare och förvärv ser likadana ut utifrån. Det visar var ett enda beslut når längst.", "l2_t": "Vad de lovar", "l2_q": "Nämner företagets egna villkor över huvud taget material med sexuella övergrepp mot barn?", "l2_w": "Vi läser varje registrars publicerade villkor och noterar om orden står där, om det bara står en allmän formulering som olagligt innehåll, eller om inget står.", "l2_s": "Registrarens egna publicerade villkor, hämtade och citerade.", "l2_r": "Att nämna det är inget bevis för handling. Att inte nämna det betyder att företaget inte skriftligen har förbundit sig till just det som det skulle bedömas på.", "l3_t": "Vad de visar offentligt", "l3_q": "Utöver avtalet: vad publicerar företaget faktiskt, och vad har ICANN funnit?", "l3_w": "Två skilda poäng, som aldrig slås ihop. En för det en registrar frivilligt uppger: en kontaktadress för missbruk, en väg till en stödlinje, ett uttalat åtagande, namngivna kategorier, en hänvisning till EU-regler. En för ICANN:s formella ärenden om avtalsbrott.", "l3_s": "Registrarernas egna informationssidor och ICANN:s offentliga tillsynsbrev.", "l3_r": "En frivillig handling och ett ålagt beslut är olika slags fakta med olika rätt att bemöta, så de hålls isär.", "l4_t": "Hur snabbt de agerar", "l4_q": "När en giltig anmälan är gjord, hur lång tid tar borttagningen i praktiken?", "l4_w": "Ingenting. Det här lagret är tomt, och den frånvaron är det viktigaste på sidan.", "l4_s": "Ingen offentlig källa redovisar borttagningstid på den här nivån.", "l4_r": "Allt ovanför mäter vad ett företag säger. Det här lagret skulle mäta vad det gör. Utan det kan indexet ännu inte skilja ett företag som ignorerar anmälningar från ett som är långsamt men agerar.", "l4_ask_h": "Vad som skulle fylla det här lagret", "l4_ask": "Tre saker, från alla som anmäler i stor skala. Vilka hostingföretag återkommer. Vilka registrarer återkommer, inklusive ny registrering efter en nedtagning. Tid från giltig anmälan till borttagning, per företag, i grova intervall, med en känsla för hur många anmälningar som ligger bakom. Aggregerat går bra. Historiskt går bra. Grovt går bra.", "l4_cta": "Har ni något av detta, skriv till oss", "grades_h": "Så läser du ett betyg", "grades_x": "Betyget är öppenhetspoängen i lager 3, av 100. Det mäter vad en registrar publicerar, inget annat.", "gA": "Publicerar nästan allt vi söker efter", "gB": "Publicerar det mesta", "gC": "Publicerar en del av det", "gD": "Publicerar lite", "gF": "Publicerar nästan inget", "gN": "Inte bedömd. Vi kunde inte hämta villkoren, så det finns ingen slutsats åt något håll. Räknas aldrig som noll.", "table_h": "Alla registrarwebbplatser i indexet", "search": "Sök företag eller webbplats", "f_all": "Alla betyg", "f_csam": "Nämner övergreppsmaterial", "f_enf": "Har ett tillsynsärende", "f_clu": "I ett delat webbplatskluster", "showing": "visar", "of": "av", "col_site": "Webbplats", "col_names": "Företag", "col_acc": "Ackrediteringar", "col_prom": "Vad villkoren nämner", "col_score": "Öppenhet", "col_enf": "ICANN-ärenden", "p_named": "Nämner övergreppsmaterial", "p_child": "Nämner barnskydd, inte övergreppsmaterial", "p_catch": "Endast allmän formulering", "p_none": "Inget relevant", "p_unv": "Kunde inte läsas", "more": "Visa fler", "method_h": "Metod, och vad den inte kan säga", "m1": "<b>När uppgifterna är från.</b> Villkoren hämtades ett visst datum och läses om varje månad. Tillsynsärenden hämtas varje vecka. Båda datumen står nedan, eftersom det vore fel att läsa den äldre halvan som om den vore den nya.", "m2": "<b>Overifierad är inte noll.</b> Kunde vi inte hämta ett dokument bedöms registraren inte. En saknad poäng är en lucka i vår räckvidd, inte en slutsats om företaget.", "m3": "<b>Räkning.</b> Siffror anges per webbplats eller per domän, aldrig per ackreditering. En aktör med hundratals ackrediteringar skulle annars snedvrida varje procenttal.", "m4": "<b>Koppling av tillsynsärenden.</b> ICANN anger en registrar med nummer i nyare brev och med företagsnamn i äldre. En namnträff ensam räcker aldrig: varje enskild bekräftas mot det fullständiga juridiska namnet och märks som härledd, med länk till originalbrevet.", "m5": "<b>Rätt att bemöta.</b> Är en uppgift här fel eller inaktuell, skriv till oss. Vi rättar den och noterar att vi gjorde det.", "foot_ret": "Villkor hämtade", "foot_gen": "Tillsynsärenden uppdaterade", "foot_lic": "Publicerat under CC BY-ND 4.0. Siffrorna går att återskapa från källorna ovan.", "note_review": "Den här sidan är under granskning och är inte offentlig.", "lab_w": "Vad det söker efter", "lab_s": "Varifrån det kommer", "lab_r": "Så läses det", "det_quote": "Vad villkoren säger", "det_source": "Källdokument", "det_doc": "Dokumentets datum", "det_comp": "Vad de publicerar"}, "fi": {"lang": "Suomi", "kicker": "Foreningen Custorian · Arvioitavana, ei julkinen", "title": "Rekisterinpitäjien vastuullisuusindeksi", "lede": "Jokaisella verkkosivustolla on yritys, joka myi sen osoitteen. Tämä indeksi kertoo, mitä nämä yritykset ovat luvanneet tehdä lasten seksuaalista hyväksikäyttöä esittävälle aineistolle, ja kuinka pitkälle lupaus kantaa.", "first_h": "Lue tämä ensin", "first_1": "<b>Mikä on rekisterinpitäjä?</b> Kun joku perustaa verkkosivuston, hän ostaa sen osoitteen rekisterinpitäjältä: yritykseltä, jolle ICANN on myöntänyt oikeuden myydä verkkotunnuksia. Näitä valtuutuksia on maailmassa 3 322, ja tämä on se taso, jota lähes kukaan ei tarkastele.", "first_2": "<b>Mitä indeksi kertoo.</b> Se kertoo, mitä rekisterinpitäjä on itse kirjannut julkisiin ehtoihinsa ja mitä julkiset valvonta-asiakirjat osoittavat. Ei muuta.", "first_3": "<b>Mitä indeksi ei koskaan väitä.</b> Se ei koskaan väitä, että rekisterinpitäjä säilyttää hyväksikäyttöaineistoa. Sitä ei voi todeta tällä tasolla, joten emme sitä väitä. Heikko arvosana tarkoittaa, ettei yritys ole kirjannut jotakin ylös. Se ei ole syytös.", "stats_h": "Kokonaiskuva neljänä lukuna", "s1": "valtuutusta maailmassa", "s1x": "Lupia myydä verkkotunnuksia, kaikenkokoisten yritysten hallussa.", "s2": "erillistä verkkosivustoa niiden takana", "s2x": "Monella valtuutuksella on sama sivusto, joten todellisia toimijoita on vähemmän.", "s3": "mainitsee lasten hyväksikäyttöaineiston", "s3x": "Niistä 446 ehdosta, jotka pystyimme lukemaan, näin moni mainitsee sen nimenomaisesti.", "s4": "avoimuuden mediaani", "s4x": "Sadasta. Puolet arvioiduista rekisterinpitäjistä jää tämän alle.", "layers_h": "Näin indeksi rakentuu, kerros kerrokselta", "layers_x": "Neljä kerrosta, joista kukin vastaa omaan kysymykseensä. Valitse yksi lukeaksesi, mitä se etsii ja mitä se löysi.", "l1_t": "Kuka on taustalla", "l1_q": "Ovatko nämä erillisiä yrityksiä vai yksi toimija monella nimellä?", "l1_w": "Ryhmittelemme valtuutukset, joilla on sama verkkosivusto. Neljä sivustoa kantaa yksin 2 270 valtuutusta 3 322:sta.", "l1_s": "ICANNin oma julkinen luettelo valtuutetuista rekisterinpitäjistä.", "l1_r": "Ryväs ei sinänsä ole moitittava. Jälleenmyyjät ja yritysostot näyttävät ulospäin samalta. Se kertoo, missä yksi päätös yltää pisimmälle.", "l2_t": "Mitä he lupaavat", "l2_q": "Mainitsevatko yrityksen omat ehdot lainkaan lasten seksuaalista hyväksikäyttöä esittävää aineistoa?", "l2_w": "Luemme jokaisen rekisterinpitäjän julkaistut ehdot ja merkitsemme, esiintyvätkö sanat siellä, onko vain yleinen ilmaisu kuten laiton sisältö, vai eikö mitään.", "l2_s": "Rekisterinpitäjän omat julkaistut ehdot, haettuna ja lainattuna.", "l2_r": "Maininta ei ole todiste toiminnasta. Mainitsematta jättäminen tarkoittaa, ettei yritys ole kirjallisesti sitoutunut juuri siihen, mistä sitä arvioitaisiin.", "l3_t": "Mitä he näyttävät julkisesti", "l3_q": "Sopimuksen lisäksi: mitä yritys todella julkaisee, ja mitä ICANN on todennut?", "l3_w": "Kaksi erillistä pistemäärää, joita ei koskaan yhdistetä. Toinen siitä, minkä rekisterinpitäjä kertoo vapaaehtoisesti: väärinkäytösten yhteysosoite, reitti auttavaan puhelimeen, ilmaistu sitoumus, nimetyt luokat, viittaus EU-sääntelyyn. Toinen ICANNin virallisista rikkomusasioista.", "l3_s": "Rekisterinpitäjien omat tiedotussivut ja ICANNin julkiset valvontakirjeet.", "l3_r": "Vapaaehtoinen teko ja määrätty päätös ovat eri tyyppisiä tosiasioita, joihin liittyy eri vastineoikeus, joten ne pidetään erillään.", "l4_t": "Kuinka nopeasti he toimivat", "l4_q": "Kun pätevä ilmoitus on tehty, kauanko poistaminen todella kestää?", "l4_w": "Ei mitään. Tämä kerros on tyhjä, ja se puute on sivun tärkein asia.", "l4_s": "Mikään julkinen lähde ei kerro poistoaikaa tällä tasolla.", "l4_r": "Kaikki yllä mittaa sitä, mitä yritys sanoo. Tämä kerros mittaisi sitä, mitä se tekee. Ilman sitä indeksi ei vielä erota yritystä, joka jättää ilmoitukset huomiotta, siitä joka on hidas mutta toimii.", "l4_ask_h": "Mikä täyttäisi tämän kerroksen", "l4_ask": "Kolme asiaa keneltä tahansa, joka tekee ilmoituksia laajassa mitassa. Mitkä hosting-yritykset toistuvat. Mitkä rekisterinpitäjät toistuvat, mukaan lukien uudelleenrekisteröinti poiston jälkeen. Aika pätevästä ilmoituksesta poistoon, yrityksittäin, karkeina väleinä, ja käsitys siitä montako ilmoitusta kunkin takana on. Koostettu käy. Menneisyydestä käy. Karkea käy.", "l4_cta": "Jos teillä on jotain tästä, kirjoittakaa meille", "grades_h": "Näin arvosanaa luetaan", "grades_x": "Arvosana on kerroksen 3 avoimuuspistemäärä sadasta. Se mittaa sitä, mitä rekisterinpitäjä julkaisee, ei muuta.", "gA": "Julkaisee lähes kaiken, mitä etsimme", "gB": "Julkaisee suurimman osan", "gC": "Julkaisee osan", "gD": "Julkaisee vähän", "gF": "Julkaisee lähes ei mitään", "gN": "Ei arvioitu. Emme saaneet ehtoja haettua, joten johtopäätöstä ei ole kumpaankaan suuntaan. Ei koskaan lasketa nollaksi.", "table_h": "Kaikki indeksin rekisterinpitäjäsivustot", "search": "Hae yritystä tai sivustoa", "f_all": "Kaikki arvosanat", "f_csam": "Mainitsee hyväksikäyttöaineiston", "f_enf": "Valvonta-asia olemassa", "f_clu": "Jaetun sivuston ryppäässä", "showing": "näytetään", "of": "/", "col_site": "Sivusto", "col_names": "Yritykset", "col_acc": "Valtuutukset", "col_prom": "Mitä ehdot mainitsevat", "col_score": "Avoimuus", "col_enf": "ICANN-asiat", "p_named": "Mainitsee hyväksikäyttöaineiston", "p_child": "Mainitsee lastensuojelun, ei hyväksikäyttöaineistoa", "p_catch": "Vain yleinen ilmaisu", "p_none": "Ei mitään asiaan kuuluvaa", "p_unv": "Ei voitu lukea", "more": "Näytä lisää", "method_h": "Menetelmä, ja mitä se ei voi kertoa", "m1": "<b>Mistä ajankohdasta tiedot ovat.</b> Ehdot haettiin tiettynä päivänä ja luetaan uudelleen kuukausittain. Valvonta-asiat haetaan viikoittain. Molemmat päivämäärät ovat alla, koska vanhemman puoliskon lukeminen uutena olisi virhe.", "m2": "<b>Vahvistamaton ei ole nolla.</b> Jos emme saaneet asiakirjaa haettua, rekisterinpitäjää ei arvioida. Puuttuva pistemäärä on aukko meidän ulottuvuudessamme, ei päätelmä yrityksestä.", "m3": "<b>Laskutapa.</b> Luvut esitetään sivustoa tai verkkotunnusta kohden, ei koskaan valtuutusta kohden. Yksi toimija, jolla on satoja valtuutuksia, vääristäisi muuten jokaisen prosenttiluvun.", "m4": "<b>Valvonta-asioiden yhdistäminen.</b> ICANN yksilöi rekisterinpitäjän numerolla uudemmissa kirjeissä ja yrityksen nimellä vanhemmissa. Pelkkä nimiosuma ei koskaan riitä: jokainen vahvistetaan täydellistä juridista nimeä vasten ja merkitään päätellyksi, linkki alkuperäiseen kirjeeseen mukana.", "m5": "<b>Vastineoikeus.</b> Jos jokin tieto täällä on väärin tai vanhentunut, kirjoittakaa meille. Korjaamme sen ja merkitsemme, että niin tehtiin.", "foot_ret": "Ehdot haettu", "foot_gen": "Valvonta-asiat päivitetty", "foot_lic": "Julkaistu lisenssillä CC BY-ND 4.0. Luvut ovat toistettavissa yllä mainituista lähteistä.", "note_review": "Tämä sivu on arvioitavana eikä ole julkinen.", "lab_w": "Mitä se etsii", "lab_s": "Mistä se on peräisin", "lab_r": "Miten sitä luetaan", "det_quote": "Mitä ehdoissa sanotaan", "det_source": "Lähdeasiakirja", "det_doc": "Asiakirjan päiväys", "det_comp": "Mitä he julkaisevat"}, "is": {"lang": "Íslenska", "kicker": "Foreningen Custorian · Í yfirlestri, ekki opinbert", "title": "Ábyrgðarvísitala skráningaraðila", "lede": "Að baki hverju vefsvæði er fyrirtæki sem seldi vistfangið. Þessi vísitala sýnir hverju þau fyrirtæki hafa lofað varðandi efni sem sýnir kynferðislegt ofbeldi gegn börnum, og hversu langt það loforð nær.", "first_h": "Lestu þetta fyrst", "first_1": "<b>Hvað er skráningaraðili?</b> Þegar einhver setur upp vefsvæði kaupir hann vistfangið af skráningaraðila: fyrirtæki sem ICANN hefur veitt heimild til að selja lén. Slíkar heimildir eru 3.322 í heiminum, og þetta er lagið sem nánast enginn skoðar.", "first_2": "<b>Hvað vísitalan segir.</b> Hún sýnir hvað skráningaraðili hefur sjálfur skrifað í opinbera skilmála sína, og hvað opinber eftirlitsgögn sýna. Ekkert annað.", "first_3": "<b>Hvað vísitalan segir aldrei.</b> Hún heldur því aldrei fram að skráningaraðili hýsi ofbeldisefni. Það verður ekki staðreynt á þessu stigi, svo við fullyrðum það ekki. Lág einkunn þýðir að fyrirtæki hefur ekki skrifað eitthvað niður. Hún er ekki ásökun.", "stats_h": "Myndin í fjórum tölum", "s1": "heimildir í heiminum", "s1x": "Leyfi til að selja lén, í eigu fyrirtækja af öllum stærðum.", "s2": "aðgreind vefsvæði að baki þeim", "s2x": "Margar heimildir deila einu vefsvæði, svo raunverulegir aðilar eru færri.", "s3": "nefna efni um kynferðislegt ofbeldi gegn börnum", "s3x": "Af þeim 446 skilmálum sem við gátum lesið nefna svo margir það sérstaklega.", "s4": "miðgildi gagnsæis", "s4x": "Af 100. Helmingur metinna skráningaraðila er undir þessu.", "layers_h": "Svona er vísitalan byggð, lag fyrir lag", "layers_x": "Fjögur lög sem hvert svarar sinni spurningu. Veldu eitt til að lesa hvað það leitar að og hvað það fann.", "l1_t": "Hver stendur að baki", "l1_q": "Eru þetta aðskilin fyrirtæki, eða einn aðili með mörg nöfn?", "l1_w": "Við flokkum saman heimildir sem deila vefsvæði. Fjögur vefsvæði bera ein og sér 2.270 af 3.322 heimildum.", "l1_s": "Opinber listi ICANN yfir viðurkennda skráningaraðila.", "l1_r": "Þyrping er ekki í sjálfu sér ámælisverð. Endursöluaðilar og yfirtökur líta eins út að utan. Hún sýnir hvar ein ákvörðun nær lengst.", "l2_t": "Hverju þeir lofa", "l2_q": "Nefna skilmálar fyrirtækisins yfirhöfuð efni um kynferðislegt ofbeldi gegn börnum?", "l2_w": "Við lesum birta skilmála hvers skráningaraðila og skráum hvort orðin birtast, hvort aðeins stendur almennt orðalag eins og ólöglegt efni, eða hvort ekkert stendur.", "l2_s": "Birtir skilmálar skráningaraðilans sjálfs, sóttir og vitnað í.", "l2_r": "Að nefna það er ekki sönnun um aðgerð. Að nefna það ekki þýðir að fyrirtækið hefur ekki skuldbundið sig skriflega um einmitt það sem það yrði dæmt af.", "l3_t": "Hvað þeir sýna opinberlega", "l3_q": "Fyrir utan samninginn: hvað birtir fyrirtækið í raun, og hvað hefur ICANN fundið?", "l3_w": "Tvær aðskildar einkunnir, aldrei sameinaðar. Önnur fyrir það sem skráningaraðili gefur upp af fúsum vilja: tengiliður vegna misnotkunar, leið að hjálparsíma, yfirlýst skuldbinding, tilgreindir flokkar, tilvísun í reglur ESB. Hin fyrir formlega skrá ICANN um brot.", "l3_s": "Upplýsingasíður skráningaraðilanna og opinber eftirlitsbréf ICANN.", "l3_r": "Valkvæð aðgerð og álögð niðurstaða eru ólíkar staðreyndir með ólíkan andmælarétt, svo þeim er haldið aðskildum.", "l4_t": "Hversu hratt þeir bregðast við", "l4_q": "Þegar gild ábending hefur borist, hversu langan tíma tekur fjarlægingin í raun?", "l4_w": "Ekkert. Þetta lag er tómt, og sú fjarvera er það mikilvægasta á síðunni.", "l4_s": "Engin opinber heimild birtir viðbragðstíma á þessu stigi.", "l4_r": "Allt að ofan mælir hvað fyrirtæki segir. Þetta lag myndi mæla hvað það gerir. Án þess getur vísitalan enn ekki greint fyrirtæki sem hunsar ábendingar frá því sem er hægt en bregst við.", "l4_ask_h": "Hvað myndi fylla þetta lag", "l4_ask": "Þrennt, frá hverjum þeim sem sendir ábendingar í miklum mæli. Hvaða hýsingarfyrirtæki koma endurtekið fyrir. Hvaða skráningaraðilar koma endurtekið fyrir, þar með talin endurskráning eftir að efni er fjarlægt. Tími frá gildri ábendingu að fjarlægingu, eftir fyrirtækjum, í grófum bilum, með hugmynd um hversu margar ábendingar liggja að baki. Samantekið er í lagi. Eldra er í lagi. Gróft er í lagi.", "l4_cta": "Ef þið búið yfir einhverju af þessu, skrifið okkur", "grades_h": "Hvernig á að lesa einkunn", "grades_x": "Einkunnin er gagnsæiseinkunn í lagi 3, af 100. Hún mælir hvað skráningaraðili birtir, ekkert annað.", "gA": "Birtir nánast allt sem við leitum að", "gB": "Birtir mest af því", "gC": "Birtir sumt af því", "gD": "Birtir lítið", "gF": "Birtir nánast ekkert", "gN": "Ekki metið. Okkur tókst ekki að sækja skilmálana, svo engin niðurstaða liggur fyrir í hvoruga átt. Aldrei talið sem núll.", "table_h": "Öll vefsvæði skráningaraðila í vísitölunni", "search": "Leita að fyrirtæki eða vefsvæði", "f_all": "Allar einkunnir", "f_csam": "Nefnir ofbeldisefni", "f_enf": "Á eftirlitsmál", "f_clu": "Í þyrpingu með sameiginlegt vefsvæði", "showing": "sýnir", "of": "af", "col_site": "Vefsvæði", "col_names": "Fyrirtæki", "col_acc": "Heimildir", "col_prom": "Hvað skilmálarnir nefna", "col_score": "Gagnsæi", "col_enf": "ICANN-mál", "p_named": "Nefnir ofbeldisefni", "p_child": "Nefnir barnavernd, ekki ofbeldisefni", "p_catch": "Aðeins almennt orðalag", "p_none": "Ekkert sem á við", "p_unv": "Tókst ekki að lesa", "more": "Sýna fleiri", "method_h": "Aðferð, og hvað hún getur ekki sagt", "m1": "<b>Hvenær gögnin eru frá.</b> Skilmálar voru sóttir á einum degi og lesnir aftur mánaðarlega. Eftirlitsmál eru sótt vikulega. Báðar dagsetningar eru hér að neðan, því það væru mistök að lesa eldri helminginn eins og hann væri sá nýi.", "m2": "<b>Óstaðfest er ekki núll.</b> Ef okkur tókst ekki að sækja skjal er skráningaraðilinn ekki metinn. Einkunn sem vantar er gat í okkar færi, ekki niðurstaða um fyrirtækið.", "m3": "<b>Talning.</b> Tölur eru gefnar eftir vefsvæði eða léni, aldrei eftir heimild. Einn aðili með hundruð heimilda myndi annars skekkja hvert einasta hlutfall.", "m4": "<b>Tenging eftirlitsmála.</b> ICANN auðkennir skráningaraðila með númeri í nýrri bréfum og með nafni fyrirtækis í eldri. Nafnasamsvörun ein og sér nægir aldrei: hver og ein er staðfest gegn fullu lögheiti og merkt sem ályktuð, með tengli í upprunalega bréfið.", "m5": "<b>Andmælaréttur.</b> Sé eitthvað hér rangt eða úrelt, skrifið okkur. Við leiðréttum það og skráum að svo hafi verið gert.", "foot_ret": "Skilmálar sóttir", "foot_gen": "Eftirlitsmál uppfærð", "foot_lic": "Gefið út undir CC BY-ND 4.0. Tölurnar má endurgera úr heimildunum sem nefndar eru að ofan.", "note_review": "Þessi síða er í yfirlestri og er ekki opinber.", "lab_w": "Að hverju er leitað", "lab_s": "Hvaðan það kemur", "lab_r": "Hvernig á að lesa það", "det_quote": "Hvað skilmálarnir segja", "det_source": "Heimildaskjal", "det_doc": "Dagsetning skjals", "det_comp": "Hvað þeir birta"}};
+const LANGS = ['en','da','nb','sv','fi','is'];
+let L = 'en', DATA = null, shown = 60;
 
-  var LAYERS = {
-    all: {
-      title:'Four layers, read together',
-      status:['s-live','Three of four live'],
-      looks:'Each registrar carries one entry built from what it owns, what it wrote, what it publishes and how fast it acts. The fourth of those is missing everywhere in public, so it is shown as a marked gap rather than guessed at.',
-      cols:['Ownership','Policy wording','Public posture','Response'],
-      blocks:[
-        { h:'Read it this way', p:'Ownership is context, not a penalty. Policy wording is what the company itself wrote. Posture is what it chose to publish, beside what ICANN published about it. Response time is blank on purpose.' },
-        { h:'What it is built from', p:'IANA&rsquo;s accreditation list, every registrar&rsquo;s own binding agreement as published, and ICANN&rsquo;s compliance notices archive. Nothing here needed anyone&rsquo;s permission to collect.' },
-        { h:'What it is not', p:'Not a certification, not a legal determination, and not a claim about what any company has hosted. It records documents and public records, at a point in time.' }
-      ]
-    },
-    1: {
-      title:'Ownership and clustering',
-      status:['s-live','Live'],
-      looks:'Resolve every ICANN accreditation to the entity that actually operates it: the parent company, the shared website, the shared infrastructure and maintainer access, including shell structures.',
-      cols:['Cluster size','&mdash;','&mdash;','&mdash;'],
-      blocks:[
-        { h:'What it looks for', li:['Accreditations that answer on the same website','Parent and holding structures behind separate IANA numbers','Drop-catch and shell fleets registered in bulk'] },
-        { h:'Where it comes from', p:'IANA&rsquo;s own accredited-registrar list and ICANN RDAP. Fully public, no permission needed. The deeper network clustering that sits behind this, mapping autonomous systems and prefix succession, stays internal research and is not shown here.' },
-        { h:'How to read it', p:'Cluster size is displayed, never scored. A large consolidated registrar is not a shell, and the index must not imply that it is.' }
-      ],
-      finding:'<b>3,322 accreditations resolve to 1,007 websites, and four of those websites carry 2,270 of them.</b> One company&rsquo;s drop-catch fleet alone accounts for more than a third of every registrar accreditation ICANN has issued.'
-    },
-    2: {
-      title:'Policy transparency',
-      status:['s-live','Live'],
-      looks:'Read each registrar&rsquo;s own registration agreement, terms of service and acceptable-use policy, and record whether it names child sexual abuse material as its own prohibited category, or folds it into a generic bucket such as illegal content, phishing or abuse.',
-      cols:['&mdash;','Policy wording','&mdash;','&mdash;'],
-      blocks:[
-        { h:'What it looks for', li:['The category named outright, in any of 35 languages','Child harm named, but not this category','A single clause about illegal content carrying everything','No binding document that can be read at all'] },
-        { h:'Where it comes from', p:'The documents the companies publish themselves, retrieved and quoted. Every entry links the document and the sentence it was read from, so any score can be checked at source.' },
-        { h:'Why it matters', p:'A clause that names the category tells a reviewer, a court and the company&rsquo;s own staff that this is its own class of harm. A catch-all tells them it is one of many.' }
-      ],
-      finding:'<b>146 of 444 verified registrar websites name it. 139 more name phishing or malware but not this.</b> Just over half the gTLD namespace sits under an agreement that names it, which leaves roughly 104 million domains under one that never does.'
-    },
-    3: {
-      title:'Public posture',
-      status:['s-live','Live'],
-      looks:'Does the registrar publish anything at all: an abuse address, a named reporting route, a stated commitment, specific abuse categories, a trusted-flagger channel. This measures institutional openness independently of what the policy happens to say, and it sits beside ICANN&rsquo;s own compliance record for the same company.',
-      cols:['&mdash;','&mdash;','Disclosure &amp; ICANN record','&mdash;'],
-      blocks:[
-        { h:'What it looks for', li:['An abuse address that a message can actually reach','A reporting route named, not just an internal form','A commitment to act or report, not only a prohibition','Specific categories rather than one clause','A DSA or trusted-flagger channel'] },
-        { h:'Beside it, not inside it', p:'ICANN publishes every breach, suspension and termination notice it sends, by company name. Those appear next to the disclosure score, weighted by severity and how recent they are, and are never folded into it.' },
-        { h:'Refreshed weekly', p:'The compliance archive is re-read every Monday. The document audit underneath it is a full crawl of every accredited registrar and runs monthly, so the two carry different dates.' }
-      ],
-      finding:'<b>The median registrar scores 20 out of 100, and 120 websites publish none of the five.</b> Only 24 name any reporting route at all. Separately, 131 ICANN notices land on registrars that are no longer accredited: at this layer, enforcement ends in removal rather than correction.'
-    },
-    4: {
-      title:'Response time',
-      status:['s-soon','Coming soon'],
-      looks:'How long a registrar actually takes to act on a report of child sexual abuse material. It is the measure that matters most, and it is the one nobody publishes.',
-      cols:['&mdash;','&mdash;','&mdash;','Not yet measurable'],
-      blocks:[
-        { h:'Why it is blank', li:['Hotline reporting is aggregate, never per registrar','The Internet Watch Foundation publishes at top-level-domain level and names no registrar','ICANN&rsquo;s own DNS Abuse definition excludes this category, so its complaint data does not capture it'] },
-        { h:'What would fill it', p:'Either a formal data-sharing partnership with an organisation that holds real case timestamps, or a controlled proxy method built and legally reviewed before it is used on a named company.' },
-        { h:'Why it is shown at all', p:'An empty column that names what is missing is more honest than a column quietly left out, and it is the clearest statement of what the rest of the sector has not built.' }
-      ],
-      finding:'<b>This layer has no data, and showing it empty is the point.</b> A registrar is never scored down for a measurement that does not exist anywhere.'
-    }
-  };
+function t(k){ return (I18N[L] && I18N[L][k]) || I18N.en[k] || k; }
+function nf(n){ return new Intl.NumberFormat(L === 'nb' ? 'nb-NO' : L).format(n); }
 
-  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]; }); }
-  function num(n) { return n == null ? '&mdash;' : n.toLocaleString('en'); }
+function buildLangs(){
+  const el = document.getElementById('langs');
+  el.innerHTML = LANGS.map(c =>
+    `<button data-l="${c}" aria-pressed="${c===L}">${I18N[c].lang}</button>`).join('');
+  el.querySelectorAll('button').forEach(b =>
+    b.onclick = () => { setLang(b.dataset.l); });
+}
+function setLang(code){
+  L = code;
+  document.documentElement.lang = code === 'nb' ? 'no' : code;
+  document.documentElement.dataset.lang = code;
+  try { localStorage.setItem('rai_lang', code); } catch(e){}
+  render();
+}
+function applyStrings(){
+  document.querySelectorAll('[data-t]').forEach(n => n.innerHTML = t(n.dataset.t));
+  document.querySelectorAll('[data-p]').forEach(n => n.placeholder = t(n.dataset.p));
+  document.title = t('title') + ' · Custorian';
+}
 
-  function renderPanel() {
-    var L = LAYERS[LAYER], h = '';
-    h += '<div class="top"><h3>' + L.title + '</h3><span class="status ' + L.status[0] + '">' + L.status[1] + '</span></div>';
-    h += '<p class="looks">' + L.looks + '</p>';
-    h += '<div class="lgrid">';
-    L.blocks.forEach(function (b) {
-      h += '<div><h4>' + b.h + '</h4>';
-      h += b.li ? '<ul>' + b.li.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' : '<p>' + b.p + '</p>';
-      h += '</div>';
-    });
-    h += '</div>';
-    if (L.finding) h += '<p class="finding">' + L.finding + '</p>';
-    document.getElementById('lpanel').innerHTML = h;
-  }
+/* ---- layers ---- */
+const LAYERS = ['l1','l2','l3','l4'];
+let activeLayer = 'l2';
+function buildLayers(){
+  document.getElementById('ltabs').innerHTML = LAYERS.map((k,i) =>
+    `<button class="ltab" role="tab" data-k="${k}" aria-selected="${k===activeLayer}">
+       <span class="num">0${i+1}</span><span class="t">${t(k+'_t')}</span><span class="q">${t(k+'_q')}</span>
+     </button>`).join('');
+  document.querySelectorAll('.ltab').forEach(b =>
+    b.onclick = () => { activeLayer = b.dataset.k; buildLayers(); });
+  const k = activeLayer;
+  const ask = k === 'l4'
+    ? `<div class="ask"><h4>${t('l4_ask_h')}</h4><p>${t('l4_ask')}</p>
+       <a href="mailto:info@custorian.org?subject=Registrar%20Accountability%20Index">${t('l4_cta')} &rarr;</a></div>` : '';
+  document.getElementById('lpanel').innerHTML =
+    `<div class="lq">${t(k+'_q')}</div>
+     <div class="lgrid">
+       <div><h4>${t('lab_w')}</h4><p>${t(k+'_w')}</p></div>
+       <div><h4>${t('lab_s')}</h4><p>${t(k+'_s')}</p></div>
+       <div><h4>${t('lab_r')}</h4><p>${t(k+'_r')}</p></div>
+     </div>${ask}`;
+}
 
-  function cellOwn(s) {
-    var big = s.a >= 25;
-    return '<div class="cell own' + (LAYER === '1' || LAYER === 'all' ? ' on' : '') + '">' +
-      '<span class="tag' + (big ? ' warn' : s.a > 1 ? ' on' : '') + '">' + num(s.a) + (s.a === 1 ? ' accreditation' : ' accreditations') + '</span>' +
-      (s.a > 1 ? '<div class="sub">' + (big ? 'Shell-scale cluster on one website' : 'Shares this website with others') + '</div>' : '') +
-      '</div>';
-  }
+/* ---- grades ---- */
+function buildGrades(){
+  const rows = [['A','gA'],['B','gB'],['C','gC'],['D','gD'],['F','gF'],['—','gN']];
+  document.getElementById('glist').innerHTML = rows.map(([g,k]) =>
+    `<div class="g"><span class="pill p${g === '—' ? 'N' : g}">${g}</span><span class="d">${t(k)}</span></div>`).join('');
+}
 
-  function cellPolicy(s) {
-    var on = (LAYER === '2' || LAYER === 'all') ? ' on' : '';
-    if (s.c == null) {
-      return '<div class="cell' + on + '"><span class="none">no readable document</span><div class="sub">' + esc(s.st || '') + '</div></div>';
-    }
-    var m = CSAM[s.c];
-    var h = '<div class="cell' + on + '"><span class="tag ' + m.cls + '">' + m.label + '</span>';
-    if (s.c === 0 && s.t) h += '<div class="sub">rests on &ldquo;' + esc(String(s.t).replace(/_/g, ' ')) + '&rdquo;</div>';
-    if (s.u) h += '<div class="sub"><a href="' + esc(s.u) + '" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:none;">the document &rarr;</a></div>';
-    return h + '</div>';
-  }
-
-  function cellPosture(s) {
-    var on = (LAYER === '3' || LAYER === 'all') ? ' on' : '';
-    var h = '<div class="cell' + on + '">';
-    if (s.s == null) {
-      h += '<span class="none">not scored</span><div class="sub">' + esc(s.r || 'no verified document') + '</div>';
-    } else {
-      h += '<div class="grade"><span class="gl" style="background:' + GRADE_BG[s.d] + '">' + s.d + '</span>' +
-           '<span class="gs">' + s.s + ' <em>/ 100</em></span></div>' +
-           '<div class="bar"><i style="width:' + s.s + '%;background:' + GRADE_BG[s.d] + '"></i></div>';
-      if (s.k && s.k.length) {
-        h += '<div class="tags" style="margin-top:8px;">' + s.k.map(function (k) { return '<span class="tag on">' + COMP[k] + '</span>'; }).join('') + '</div>';
-      }
-    }
-    if (s.e) {
-      var sev = s.e.w === 'Termination' ? 'bad' : s.e.w === 'Breach' ? '' : 'warn';
-      h += '<div class="sub" style="margin-top:9px;"><span class="tag ' + sev + '">ICANN: ' + esc(s.e.w) + '</span> ' +
-           s.e.n + ' notice' + (s.e.n === 1 ? '' : 's') + ', latest ' + esc(s.e.y) +
-           (s.e.u ? ' <a href="' + esc(s.e.u) + '" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:none;">letter &rarr;</a>' : '') +
-           '</div>';
-    }
-    return h + '</div>';
-  }
-
-  function cellResponse() {
-    var on = (LAYER === '4' || LAYER === 'all') ? ' on' : '';
-    // Repeating "not yet measurable" down 40 rows is noise. In the combined view it is a
-    // dash; on its own tab, where the absence is the subject, it says so in full.
-    var body = LAYER === '4'
-      ? '<span class="none">no public source holds this</span>'
-      : '<span class="none" title="Layer 4: no public source holds registrar response time">&mdash;</span>';
-    return '<div class="cell' + on + '">' + body + '</div>';
-  }
-
-  function filtered() {
-    var q = document.getElementById('q').value.trim().toLowerCase();
-    var g = document.getElementById('fgrade').value;
-    var c = document.getElementById('fcsam').value;
-    var enf = document.getElementById('fenf').checked;
-    var clu = document.getElementById('fclu').checked;
-    return DATA.sites.filter(function (s) {
-      if (g && s.d !== g) return false;
-      if (c === 'n' ? s.c != null : c !== '' && String(s.c) !== c) return false;
-      if (enf && !s.e) return false;
-      if (clu && s.a < 2) return false;
-      if (!q) return true;
-      if (s.h.indexOf(q) !== -1) return true;
-      return s.n.some(function (n) { return n.toLowerCase().indexOf(q) !== -1; });
-    }).sort(function (a, b) {
-      if (LAYER === '1') return b.a - a.a;
-      if (LAYER === '2') return (b.c == null ? -1 : b.c) - (a.c == null ? -1 : a.c) || b.a - a.a;
-      if (LAYER === '3') {
-        var ax = a.e ? a.e.x : 0, bx = b.e ? b.e.x : 0;
-        if (bx !== ax) return bx - ax;
-        return (a.s == null ? 999 : a.s) - (b.s == null ? 999 : b.s);
-      }
-      // Together: the biggest clusters first, then the weakest wording.
-      return b.a - a.a || (a.c == null ? 9 : a.c) - (b.c == null ? 9 : b.c);
-    });
-  }
-
-  function render() {
-    var controls = document.querySelector('.controls');
-    if (LAYER === '4') {
-      controls.hidden = true;
-      document.getElementById('more').hidden = true;
-      document.getElementById('table').innerHTML =
-        '<div class="empty">' +
-        '<div class="mark">Layer 4 &middot; Response time</div>' +
-        '<h3>There is nothing to put in this column yet.</h3>' +
-        '<p>How long a registrar takes to act on a report of child sexual abuse material is the ' +
-        'measure that matters most, and no public source anywhere holds it. Rather than drop the ' +
-        'column, or fill it with a proxy and call it a measurement, the index shows it empty.</p>' +
-        '<p>No registrar is scored down for it. An absent metric is a gap in the record, not a ' +
-        'finding about a company.</p>' +
-        '<div class="why">' +
-        '<div><h4>Hotlines</h4><p>Report volumes are published in aggregate, by country and by ' +
-        'top-level domain. No hotline publishes timing at the level of the registrar that sold ' +
-        'the name.</p></div>' +
-        '<div><h4>ICANN</h4><p>The DNS Abuse definition covers phishing, malware, botnets, ' +
-        'pharming and spam. It excludes this category outright, so ICANN&rsquo;s own complaint data ' +
-        'never captures it.</p></div>' +
-        '<div><h4>The registrars</h4><p>Some publish transparency reports. None of them reports ' +
-        'time-to-action on this category, and nothing obliges them to.</p></div>' +
-        '</div>' +
-        '<p class="ask">Filling it needs either a data-sharing partnership with an organisation ' +
-        'that holds real case timestamps, or a controlled proxy method built and legally reviewed ' +
-        'before it is ever applied to a named company. If you hold that data, or think you could ' +
-        'help build it, write to <a href="mailto:info@custorian.org">info@custorian.org</a>.</p>' +
-        '</div>';
-      document.getElementById('count').textContent = '';
-      return;
-    }
-    controls.hidden = false;
-    var rows = filtered(), L = LAYERS[LAYER];
-    var dim = LAYER === 'all' ? '' : ' dim';
-    var h = '<div class="row head"><span><b>Registrar website</b></span><span>' + L.cols[0] + '</span><span>' + L.cols[1] + '</span><span>' + L.cols[2] + '</span><span>' + L.cols[3] + '</span></div>';
-    rows.slice(0, LIMIT).forEach(function (s) {
-      h += '<div class="row' + dim + '">' +
-        '<div class="cell who on"><div class="nm"><a href="https://' + esc(s.h) + '" target="_blank" rel="noopener">' + esc(s.h) + '</a></div>' +
-        '<div class="co">' + esc(s.n.slice(0, 2).join('; ')) + (s.n.length > 2 ? ' and others' : '') + '</div></div>' +
-        cellOwn(s) + cellPolicy(s) + cellPosture(s) + cellResponse() +
-        '</div>';
-    });
-    document.getElementById('table').innerHTML = h;
-    document.getElementById('count').textContent = rows.length.toLocaleString('en') + ' of ' + DATA.sites.length.toLocaleString('en') + ' websites';
-    var more = document.getElementById('more');
-    more.hidden = rows.length <= LIMIT;
-    more.textContent = 'Show more (' + (rows.length - LIMIT).toLocaleString('en') + ' remaining)';
-  }
-
-  function boot(d) {
-    DATA = d;
-    var S = d.summary;
-    document.getElementById('hs-acc').textContent = S.accreditations.toLocaleString('en');
-    document.getElementById('hs-sites').textContent = S.websites.toLocaleString('en');
-    document.getElementById('hs-named').textContent = S.l2.named + ' of ' + S.l2.verified;
-    document.getElementById('hs-median').textContent = S.l3.median;
-    document.getElementById('asof').innerHTML =
-      'Documents retrieved ' + esc(S.retrieved) + ' across ' + S.accreditations.toLocaleString('en') +
-      ' ICANN accreditations. ICANN compliance record refreshed ' + esc(S.generated) + ', and every Monday thereafter.';
-    renderPanel();
-    render();
-  }
-
-  document.querySelectorAll('.ltab').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.ltab').forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
-      LAYER = b.dataset.layer; LIMIT = 40;
-      renderPanel(); render();
-      document.getElementById('lpanel').scrollIntoView({ block:'start', behavior:'smooth' });
-    });
+/* ---- table ---- */
+function promise(s){
+  if (s.c === 2) return ['p_named','pA'];
+  if (s.c === 1) return ['p_child','pC'];
+  if (s.c === 0) return ['p_catch','pD'];
+  return ['p_unv','pN'];
+}
+function rows(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const g = document.getElementById('fg').value;
+  const fc = document.getElementById('fc').checked;
+  const fk = document.getElementById('fk').checked;
+  return DATA.sites.filter(s => {
+    if (q && !(s.h.toLowerCase().includes(q) || (s.n||[]).join(' ').toLowerCase().includes(q))) return false;
+    if (g && s.d !== g) return false;
+    if (fc && s.c !== 2) return false;
+    if (fk && (s.g||1) < 2) return false;
+    return true;
   });
-  ['q', 'fgrade', 'fcsam', 'fenf', 'fclu'].forEach(function (id) {
-    document.getElementById(id).addEventListener('input', function () { LIMIT = 40; render(); });
-  });
-  document.getElementById('more').addEventListener('click', function () { LIMIT += 80; render(); });
+}
+function buildTable(){
+  const all = rows(), list = all.slice(0, shown);
+  document.getElementById('count').textContent = `${t('showing')} ${nf(list.length)} ${t('of')} ${nf(all.length)}`;
+  document.getElementById('tb').innerHTML = list.map((s,i) => {
+    const [pk,pc] = promise(s);
+    const grade = s.d || '—';
+    const sc = s.d ? `<div class="score"><span class="pill p${grade}">${grade}</span>
+        <span class="bar"><i style="width:${s.s}%"></i></span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--muted)">${s.s}</span></div>`
+      : `<span class="pill pN">${t('p_unv')}</span>`;
+    return `<tr class="r" data-i="${i}">
+      <td data-l="${t('col_site')}"><span class="host">${s.h}</span>${(s.g||1)>1?`<span class="badge">×${nf(s.g)}</span>`:''}
+        <div class="co">${(s.n||[]).slice(0,2).join(' · ')}${(s.n||[]).length>2?' …':''}</div></td>
+      <td data-l="${t('col_acc')}" style="font-family:var(--mono);font-size:13px">${nf(s.a)}</td>
+      <td data-l="${t('col_prom')}"><span class="pill ${pc}">${t(pk)}</span></td>
+      <td data-l="${t('col_score')}">${sc}</td></tr>`;
+  }).join('');
+  document.getElementById('more').style.display = all.length > shown ? '' : 'none';
+  document.querySelectorAll('tr.r').forEach(tr => tr.onclick = () => toggle(tr, list[+tr.dataset.i]));
+}
+function toggle(tr, s){
+  const nx = tr.nextElementSibling;
+  if (nx && nx.classList.contains('det')) { nx.remove(); return; }
+  const d = document.createElement('tr');
+  d.className = 'det';
+  d.innerHTML = `<td colspan="4"><dl>
+    ${s.q ? `<dt>${t('det_quote')}</dt><dd class="quote">&hellip;${s.q}&hellip;</dd>` : ''}
+    ${s.u ? `<dt>${t('det_source')}</dt><dd><a href="${s.u}" target="_blank" rel="noopener">${s.u}</a></dd>` : ''}
+    ${s.v ? `<dt>${t('det_doc')}</dt><dd>${s.v}</dd>` : ''}
+    ${(s.k||[]).length ? `<dt>${t('det_comp')}</dt><dd>${s.k.join(' · ')}</dd>` : ''}
+    <dt>${t('col_names')}</dt><dd>${(s.n||[]).join(' · ') || '—'}</dd></dl></td>`;
+  tr.after(d);
+}
 
-  fetch('registrar-index.json')
-    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(boot)
-    .catch(function () {
-      document.getElementById('table').innerHTML =
-        '<div class="loading">The index data could not be loaded. Try again, or write to info@custorian.org.</div>';
-    });
-})();
+function render(){
+  applyStrings(); buildLangs(); buildLayers(); buildGrades();
+  const sel = document.getElementById('fg');
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">${t('f_all')}</option>` + ['A','B','C','D','F'].map(g=>`<option value="${g}">${g}</option>`).join('');
+  sel.value = cur;
+  if (DATA) buildTable();
+}
+
+fetch('registrar-index.json').then(r=>r.json()).then(d => {
+  DATA = d;
+  const S = d.summary;
+  document.getElementById('n1').textContent = nf(S.accreditations);
+  document.getElementById('n2').textContent = nf(S.websites);
+  document.getElementById('n3').textContent = nf(S.l2.named);
+  document.getElementById('n4').textContent = S.l3.median;
+  document.getElementById('dret').textContent = S.retrieved;
+  document.getElementById('dgen').textContent = S.generated;
+  buildTable();
+});
+
+['q','fg','fc','fk'].forEach(id =>
+  document.getElementById(id).addEventListener('input', () => { shown = 60; buildTable(); }));
+document.getElementById('more').onclick = () => { shown += 60; buildTable(); };
+
+try { const s = localStorage.getItem('rai_lang'); if (s && LANGS.includes(s)) L = s; } catch(e){}
+render();
 </script>
-</body>
-</html>
+</body></html>
