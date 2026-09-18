@@ -254,7 +254,7 @@ footer{padding:40px 0 80px;font-size:13px;color:var(--muted)}
     <form id="gateform" autocomplete="off">
       <label for="gkey" data-t="gate_l"></label>
       <input id="gkey" type="text" required autocomplete="off" autocapitalize="characters"
-             autocorrect="off" spellcheck="false" placeholder="CUSTORIAN-&hellip;">
+             autocorrect="off" spellcheck="false" placeholder="CUSTORIAN-IA-&hellip;">
       <button type="submit" data-t="gate_b"></button>
       <div class="gerr" id="gerr" role="status" aria-live="polite"></div>
     </form>
@@ -586,11 +586,12 @@ function render(){
 }
 
 /* ── access gate ───────────────────────────────────────────────────────
-   Same key and the same SHA-256 as the CDSW peer review sign-up, so one
-   invitation opens both. A front door on a static site, not a security
+   This page has its own key, separate from the CDSW peer review sign-up,
+   so access to one never implies access to the other and either can be
+   rotated alone. A front door on a static site, not a security
    boundary: the page and its data files are fetchable by anyone who knows
    the paths. It keeps the page unlisted and makes sharing deliberate. */
-const IA_KEY_HASH = 'b2dd0b431492f270786e508707a15480713160f6c284e3cc2b109eb243d6f3e2';
+const IA_KEY_HASH = '2c92905541fc61530e62962188a85195d34011ade6d348e3ee0eec4b6a3a6cf0';
 const IA_KEY_STORE = 'ia_index_key';
 const norm = v => String(v || '').replace(/\s+/g, '').toUpperCase();
 
