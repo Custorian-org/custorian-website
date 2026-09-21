@@ -727,12 +727,12 @@
 
 <nav class="sidetabs" aria-label="Sections">
   <button type="button" class="sidetab solid" data-modal="actionModal">Take action</button>
+  <a class="sidetab" href="index.html#about" aria-current="page">About</a>
   <a class="sidetab" href="how-it-works.html">How it works</a>
   <a class="sidetab" href="registry.html">Register</a>
-  <a class="sidetab" href="#about" aria-current="page">About</a>
   <a class="sidetab" href="membership.html">Membership</a>
-  <a class="sidetab" href="governance.html#advisory">Advisory</a>
   <a class="sidetab" href="governance.html">Governance</a>
+  <a class="sidetab" href="governance.html#advisory">Advisory</a>
 </nav>
 
 <div class="herowrap">
@@ -1128,6 +1128,12 @@
 
     document.querySelectorAll('[data-modal]').forEach(function (b) {
       b.addEventListener('click', function () { show(b.getAttribute('data-modal')); });
+    });
+
+    // Arriving from another page's Take action tab, which links to index.html#take-action.
+    if (location.hash === '#take-action') show('actionModal');
+    window.addEventListener('hashchange', function () {
+      if (location.hash === '#take-action') show('actionModal');
     });
     document.querySelectorAll('[data-close]').forEach(function (b) {
       b.addEventListener('click', hide);
