@@ -3,96 +3,490 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Custorian Registry</title>
-<link rel="stylesheet" href="sidetabs.css?v=cf5c5290">
-<meta name="description" content="Custorian Registry — currently being rebuilt.">
+<title>The Custorian register</title>
+<meta name="description" content="Every CDSW certificate is listed here: the holder, the service, the scope, the certification body and the valid-to date. A claim that is not on the register is not a certificate.">
+<link rel="canonical" href="https://custorian.org/registry.html">
+<meta property="og:title" content="The Custorian register">
+<meta property="og:description" content="Every CDSW certificate is listed here. A claim of certification that does not appear on the register is not a CDSW certificate.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org/registry.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Custorian">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="foundation.css?v=9be3b889">
+<link rel="stylesheet" href="sidetabs.css?v=cf5c5290">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#fafafa;--bg2:#ffffff;--text:#1a1a2e;
-  --dim:#6b7280;--mute:#9ca3af;--border:#e5e7eb;
-  --accent:#a78bfa;--accent2:#7c3aed;
-}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-body::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent),#10b981,var(--accent));z-index:9999}
-a{color:inherit;text-decoration:none}
-::selection{background:var(--accent);color:var(--bg)}
 
-header{position:sticky;top:0;z-index:100;padding:16px 48px;background:rgba(250,250,250,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.5px}
-.logo span{color:var(--accent)}
-.nav-r{display:flex;gap:28px;align-items:center}
-.nav-r a{font-size:.78rem;font-weight:500;color:var(--dim);transition:color .3s}
-.nav-r a:hover{color:var(--text)}
-@media(max-width:768px){header{padding:16px 24px}.nav-r{gap:16px}.nav-r a{font-size:.72rem}}
 
-.main{max-width:700px;margin:0 auto;padding:120px 24px 100px;text-align:center}
-.label{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--accent2);margin-bottom:16px}
-.hero-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-1px;line-height:1.2;margin-bottom:16px}
-.hero-sub{font-size:.92rem;color:var(--dim);line-height:1.8;margin-bottom:32px}
-.cta{display:inline-block;padding:12px 28px;background:var(--accent2);color:#fff;font-size:.82rem;font-weight:700}
+  /* --- BRAND FONT MODE: Brand Kit v1.0 (Inter only). Preview toggle, remove before ship. --- */
+  body { font-size:16.5px; line-height:1.62; }
+  .cover h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+  .cover .lede { font-weight:400; letter-spacing:-.011em; }
+  h2 { font-weight:650; letter-spacing:-.032em; }
+  .intro { font-weight:400; letter-spacing:-.01em; }
+  .tier-price { font-weight:650; letter-spacing:-.04em; }
+  .person .r,
+  .entries .x,
+  .tier-who,
+  .tier-includes,
+  ul.plain li,
+  .callout { letter-spacing:-.006em; }
+  body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
 
-footer{border-top:1px solid var(--border);margin-top:80px;padding:32px 48px}
-.foot-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.foot-brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem}
-.foot-brand span{color:var(--accent)}
-.foot-links{font-size:.72rem;color:var(--mute)}
-.foot-nav{max-width:1100px;margin:0 auto 20px;text-align:center;font-size:.78rem;line-height:2}
-.foot-nav a{color:var(--accent2);font-weight:500}
-.foot-nav a:hover{text-decoration:underline}
-@media(max-width:768px){footer{padding:24px}.foot-inner{flex-direction:column;gap:12px;text-align:center}}
+  /* ---------- top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--hair);
+    background: var(--paper);
+    position: sticky; top:0; z-index:60;
+  }
+  .topbar a.back {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    text-decoration:none; letter-spacing:.02em;
+  }
+
+  /* ---------- shell ---------- */
+  .shell { max-width:1180px; margin:0 auto; padding:0 32px 84px; }
+
+  /* ---------- cover ---------- */
+  .cover { padding:96px 0 72px; border-bottom:1px solid var(--line); }
+  .cover h1 {
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(44px,6.4vw,80px); line-height:1.02;
+    letter-spacing:-.025em; color:var(--ink); margin-bottom:32px;
+  }
+  .cover .lede {
+    font-size:clamp(19px,2.1vw,23px); line-height:1.58;
+    max-width:62ch; color:var(--body); font-weight:300;
+  }
+  .cover .stamp {
+    margin-top:44px; display:flex; flex-wrap:wrap; gap:10px 28px;
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- layout with rail ---------- */
+  .layout { display:grid; grid-template-columns:200px 1fr; gap:64px; padding-top:40px; }
+  .rail { position:sticky; top:104px; align-self:start; }
+  .rail ol { list-style:none; counter-reset:sec; }
+  .rail li { counter-increment:sec; margin-bottom:2px; }
+  .rail a {
+    font-family:var(--sans); font-size:13px; color:var(--muted);
+    text-decoration:none; display:flex; gap:10px; padding:6px 0; line-height:1.4;
+  }
+  .rail a::before {
+    content:counter(sec,decimal-leading-zero);
+    font-family:var(--mono); font-size:10.5px; color:var(--violet-l);
+    padding-top:2px; flex:none;
+  }
+  .rail a:hover { color:var(--ink); }
+
+  .main { min-width:0; max-width:74ch; }
+
+  /* ---------- sections ---------- */
+  section { padding-bottom:48px; }
+  section + section { border-top:1px solid var(--hair); padding-top:40px; }
+  h2 {
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(29px,3.4vw,38px); line-height:1.16; letter-spacing:-.02em;
+    color:var(--ink); margin-bottom:10px;
+  }
+  h3 {
+    font-family:var(--sans); font-weight:600; font-size:16.5px;
+    letter-spacing:-.01em; color:var(--ink); margin:44px 0 12px;
+  }
+  p { margin-bottom:20px; }
+  p:last-child { margin-bottom:0; }
+  a.inline { color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(91,65,194,.3); }
+  a.inline:hover { border-bottom-color:var(--violet); }
+  .intro { font-size:19.5px; line-height:1.6; color:var(--body); font-weight:300; margin-bottom:28px; }
+
+  /* ---------- key facts ---------- */
+  .facts { margin:32px 0 8px; border-top:1px solid var(--line); }
+  .facts > div {
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:15px 0; border-bottom:1px solid var(--hair);
+  }
+  .facts .k {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    letter-spacing:.02em; padding-top:2px;
+  }
+  .facts .v { font-family:var(--mono); font-size:14px; color:var(--ink); line-height:1.5; }
+
+  /* ---------- people ---------- */
+  .people { margin:26px 0 12px; }
+  .person { padding:22px 0; border-top:1px solid var(--hair); }
+  .person:last-child { border-bottom:1px solid var(--hair); }
+  .person .n { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .person .r { font-size:16px; color:var(--body); line-height:1.6; }
+  .tag {
+    display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--violet);
+    border:1px solid rgba(91,65,194,.28); border-radius:100px; padding:2px 10px; margin-bottom:9px;
+  }
+
+  /* ---------- firewalls ---------- */
+  .firewalls { list-style:none; counter-reset:fw; margin:30px 0 0; }
+  .firewalls li {
+    counter-increment:fw; position:relative;
+    padding:20px 0 20px 52px; border-top:1px solid var(--hair);
+  }
+  .firewalls li:last-child { border-bottom:1px solid var(--hair); }
+  .firewalls li::before {
+    content:counter(fw,decimal-leading-zero);
+    position:absolute; left:0; top:22px;
+    font-family:var(--mono); font-size:11px; color:var(--violet-l);
+  }
+  .firewalls strong { display:block; font-family:var(--sans); font-size:15px; margin-bottom:4px; }
+
+  /* ---------- networks ---------- */
+  .netgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:28px 0 14px; }
+  .net { background:var(--card); padding:22px 22px 20px; display:flex; flex-direction:column; gap:11px; }
+  .net .mark { height:46px; display:flex; align-items:center; }
+  .net .mark img { max-height:46px; max-width:160px; object-fit:contain; }
+  .net .mark .ph {
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--muted);
+    border:1px dashed var(--line); border-radius:3px; padding:13px 15px; background:var(--paper);
+  }
+  .net .n { font-family:var(--sans); font-weight:600; font-size:15.5px; color:var(--ink); }
+  .net .s { font-size:15px; line-height:1.5; color:var(--body); }
+  .status {
+    align-self:flex-start; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; padding:3px 10px; border-radius:100px;
+  }
+  .status.pending { color:#8a5c14; border:1px solid rgba(169,112,31,.4); background:rgba(169,112,31,.07); }
+  .status.member  { color:#3f6b3e; border:1px solid rgba(79,122,78,.42); background:rgba(79,122,78,.07); }
+
+  /* ---------- note / callout ---------- */
+  .callout {
+    background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet);
+    padding:24px 28px; margin:32px 0; font-size:16.5px; line-height:1.6;
+  }
+  .note { font-size:15px; color:var(--muted); line-height:1.6; }
+
+  /* ---------- tiers ---------- */
+  .tiers { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); margin:32px 0 22px; border:1px solid var(--line); }
+  .tier { background:var(--card); padding:26px 24px; display:flex; flex-direction:column; }
+  .tier-name { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .tier-price { font-family:var(--serif); font-size:38px; font-weight:300; color:var(--ink); letter-spacing:-.03em; line-height:1; margin-bottom:14px; }
+  .tier-price span { font-family:var(--sans); font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0; }
+  .tier-who { font-size:15.5px; color:var(--ink); margin-bottom:10px; }
+  .tier-includes { font-size:15px; color:var(--body); line-height:1.55; flex:1; }
+  .tier a {
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--violet);
+    text-decoration:none; margin-top:18px; display:inline-block;
+  }
+  .tier a:hover { color:var(--ink); }
+
+  .btn {
+    display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+    background:var(--violet); color:#fff; text-decoration:none;
+    padding:12px 24px; border-radius:2px;
+  }
+
+  /* ---------- lists ---------- */
+  ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
+  ul.plain li {
+    font-size:16px; padding:9px 0 9px 18px; position:relative;
+    break-inside:avoid; color:var(--ink);
+  }
+  ul.plain li::before { content:''; position:absolute; left:0; top:18px; width:6px; height:1px; background:var(--violet-l); }
+
+  .entries { list-style:none; margin:26px 0 0; }
+  .entries li { padding:20px 0; border-top:1px solid var(--hair); }
+  .entries li:last-child { border-bottom:1px solid var(--hair); }
+  .entries .d { font-family:var(--mono); font-size:11.5px; color:var(--violet-l); letter-spacing:.04em; margin-bottom:6px; }
+  .entries .t { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .entries .t a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .entries .t a:hover { color:var(--violet); }
+  .entries .x { font-size:16px; color:var(--body); line-height:1.58; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top:1px solid var(--line); margin-top:40px; padding:44px 0 0;
+    font-family:var(--sans); font-size:13.5px; color:var(--muted);
+  }
+
+  .flag {
+    background:#fff8e6; border:1px solid #e8d9a8; border-radius:3px;
+    padding:14px 18px; margin:0 0 0; font-family:var(--sans); font-size:13px;
+    color:#6b5618; line-height:1.55;
+  }
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .layout { grid-template-columns:1fr; gap:0; padding-top:28px; }
+    .rail { display:none; }
+    .cover { padding:60px 0 48px; }
+    .tiers { grid-template-columns:1fr; }
+    .facts div { grid-template-columns:1fr; gap:4px; }
+    ul.plain { column-count:1; }
+  }
+  h3.grp { font-size:15px; color:var(--muted); letter-spacing:.02em; margin:32px 0 8px; }
+  h2.tight { margin-top:34px; }
+
+
+  .hero h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+
+  .hero .lede, .intro { font-weight:400; letter-spacing:-.011em; }
+
+
+  /* HERO, full-bleed black, as on the live site */
+  .herowrap { background:#000; color:#fff; }
+
+  .hero { max-width:1180px; margin:0 auto; padding:110px 32px 104px; text-align:center;
+          display:flex; flex-direction:column; align-items:center; }
+
+  .hero .eyebrow { color:rgba(255,255,255,.45); letter-spacing:.42em; }
+
+  .hero h1 {
+    font-family:var(--sans); font-weight:900; text-transform:uppercase;
+    font-size:clamp(42px,8.6vw,132px); line-height:.92; letter-spacing:-.028em;
+    color:#fff; max-width:16ch; margin-bottom:34px;
+  }
+
+  .hero h1 em { font-style:normal; color:var(--violet-l); }
+
+  .hero .lede { font-size:clamp(17px,1.9vw,21px); line-height:1.6; max-width:58ch; font-weight:300; color:rgba(255,255,255,.78); }
+
+  .hero .lede b { font-weight:600; color:#fff; }
+
+  .hero .btnrow { justify-content:center; margin:40px 0 0; }
+
+  .hero .btn.white { background:#fff; color:#000; border:1px solid #fff; }
+
+  .hero .btn.white:hover { background:var(--violet); color:#fff; border-color:var(--violet); }
+
+  .hero .btn.ghost { color:#fff; border-color:rgba(255,255,255,.34); }
+
+  .hero .btn.ghost:hover { background:#fff; color:#000; border-color:#fff; }
+
+  .band .btn { background:#fff; color:#000; }
+
+  .band .btn:hover { background:var(--violet); color:#fff; }
+
+  .btn { display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600; background:var(--violet); color:#fff; text-decoration:none; padding:13px 26px; border-radius:2px; border:1px solid transparent; line-height:normal; cursor:pointer; -webkit-appearance:none; appearance:none; }
+
+  .btn.ghost { background:none; color:var(--violet); border:1px solid rgba(91,65,194,.35); }
+
+  .btn.ghost:hover { background:var(--violet); color:#fff; }
+
+  .btnrow { display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 16px; }
+
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .hero { padding:64px 20px 56px; }
+    .hero .btnrow { flex-direction:column; align-items:stretch; }
+    .hero .btn { text-align:center; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    ul.harms { column-count:1; }
+    table.dom td.c { width:46px; }
+  }
+
+  /* --- ABOUT, moved onto the front page 17 Sep 2026 -------------------------
+     Brought across from about-foundation.html when the About page was folded
+     into the home page under the hero. Only the rules the front page did not
+     already carry are here; sections, h2, p, .intro, .note, .stats, .callout,
+     ol.steps, .btn and .btnrow were already defined above. */
+
+  h3 { font-family:var(--sans); font-weight:600; font-size:16.5px; margin:38px 0 10px; }
+
+  /* --- Register page --- */
+  .entry { width:100%; border-collapse:collapse; margin:18px 0 6px; font-size:15px; }
+  .entry th { text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--muted); font-weight:500;
+    padding:0 14px 8px 0; border-bottom:1px solid var(--line); }
+  .entry td { padding:9px 14px 9px 0; border-bottom:1px solid var(--hair); vertical-align:top; color:var(--body); }
+  .entry td:first-child { color:var(--ink); font-weight:600; width:34%; }
+  @media (max-width:640px){
+    .entry, .entry tbody, .entry tr, .entry td { display:block; width:100%; }
+    .entry thead { display:none; }
+    .entry td:first-child { border-bottom:none; padding-bottom:0; }
+    .entry tr { padding:10px 0; border-bottom:1px solid var(--hair); }
+    .entry td { border-bottom:none; }
+  }
+  .empty { border:1px dashed var(--line); background:var(--card);
+    padding:30px 24px; text-align:center; margin:20px 0 10px; }
+  .empty .big { font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--violet); margin-bottom:9px; }
+  .empty p { margin:0; color:var(--body); font-size:15.5px; line-height:1.6; }
+  .checks, .nots { list-style:none; padding:0; margin:16px 0 8px; }
+  .checks li, .nots li { padding:11px 0 11px 30px; border-bottom:1px solid var(--hair);
+    position:relative; color:var(--body); }
+  .checks li strong, .nots li strong { color:var(--ink); }
+  .checks li:before { content:""; position:absolute; left:6px; top:19px;
+    width:8px; height:8px; background:var(--violet); border-radius:50%; }
+  .nots li:before { content:"\00D7"; position:absolute; left:5px; top:9px;
+    color:var(--muted); font-size:18px; line-height:1.6; }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <button type="button" class="navbtn" id="backBtn" title="Back to the previous page" aria-label="Back to the previous page">&larr;</button>
+      <a class="navbtn" href="index.html" title="Home">Home</a>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Custorian"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg> Custorian</a>
+    </span>
+  </div>
+</div>
+
 <nav class="sidetabs" aria-label="Sections">
   <a class="sidetab solid" href="index.html#get-involved">Take action</a>
   <a class="sidetab" href="how-it-works.html">How it works</a>
+  <a class="sidetab" href="registry.html" aria-current="page">Register</a>
   <a class="sidetab" href="index.html#about">About</a>
   <a class="sidetab" href="membership.html">Membership</a>
   <a class="sidetab" href="governance.html#advisory">Advisory</a>
   <a class="sidetab" href="governance.html">Governance</a>
 </nav>
 
-
-<header>
-  <a href="/" class="logo">custorian<span>.</span></a>
-  <div class="nav-r">
-    <a href="how-it-works.html">Standard</a>
-    <a href="how-it-works.html#align">Methodology</a>
-    <a href="mailto:info@custorian.org">Contact</a>
+<div class="herowrap">
+  <div class="hero">
+    <div class="eyebrow">Register</div>
+    <h1>If it is not <em>here</em>, it is not certified.</h1>
+    <p class="lede">The register is the only authority on whether a service holds a CDSW certificate, what that certificate covers and whether it is still valid. It is <b>public</b>, free to search, and maintained by Custorian rather than by the certified organisation.</p>
+    <div class="btnrow">
+      <a class="btn white" href="how-it-works.html#certification">How certification works</a>
+      <a class="btn ghost" href="mailto:info@custorian.org?subject=Register%20enquiry">Ask about an entry</a>
+    </div>
   </div>
-</header>
-
-<div class="main">
-  <div class="label">Registry</div>
-  <h1 class="hero-title">This page is being rebuilt</h1>
-  <p class="hero-sub">The public registry will list platforms that have completed independent third-party certification against the Custorian Standard. It's not live yet. For questions about Watchtower, certification, or a specific platform, get in touch.</p>
-  <a href="mailto:info@custorian.org" class="cta">Contact us</a>
 </div>
 
-<footer>
-  <div class="foot-nav">
-    <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>&nbsp;&middot;
-    <a href="how-it-works.html#pilot">Join the Pilot</a>&nbsp;&middot;
-    <a href="index.html#get-involved">Get Involved</a>&nbsp;&middot;
-    <a href="governance.html">Governance</a>&nbsp;&middot;
-    <a href="privacy-policy.html">Privacy</a>&nbsp;&middot;
-    <a href="terms.html">Terms</a>&nbsp;&middot;
-    <a href="mailto:info@custorian.org">Contact</a>
-  </div>
-  <div class="foot-inner">
-    <div class="foot-brand">custorian<span>.</span></div>
-    <div class="foot-links">&copy; 2026 Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark &middot; custorian.org</div>
-  </div>
-</footer>
+<div class="shell">
+  <div class="layout">
+    <aside class="rail">
+      <ol>
+        <li><a href="#what">What the register is</a></li>
+        <li><a href="#entry">What an entry shows</a></li>
+        <li><a href="#check">How to check a claim</a></li>
+        <li><a href="#limits">What a certificate does not mean</a></li>
+        <li><a href="#status">Current status</a></li>
+        <li><a href="#misuse">Reporting misuse</a></li>
+      </ol>
+    </aside>
+    <main class="main">
 
-<!-- Cookieless page-view analytics -->
+  <section id="what">
+    <span class="sectnum">01</span>
+    <h2>What the register is</h2>
+    <p class="intro">A single public list of every certificate issued under the CDSW scheme, current and withdrawn.</p>
+    <p>Custorian writes and maintains the standard. It does not audit and does not certify. Assessments are carried out by independent certification bodies accredited to ISO/IEC&nbsp;17065 and licensed by Custorian, and each certificate is issued by the body that carried out the assessment.</p>
+    <p>Custorian publishes the register so that a claim of certification can be checked by anyone: a parent, a procurement officer, a journalist, a regulator. The organisation that holds a certificate does not control its entry, and cannot remove it by leaving the scheme. Certificates that are suspended or withdrawn stay on the register, marked as such.</p>
+    <div class="callout">
+      <strong>The register is the authority, not the mark.</strong> A badge on a website is a graphic. The register entry is the record. Where the two disagree, the register is correct.
+    </div>
+  </section>
+
+  <section id="entry">
+    <span class="sectnum">02</span>
+    <h2>What an entry shows</h2>
+    <p class="intro">Every entry carries the same fields, so two certificates can be compared directly.</p>
+    <table class="entry">
+      <thead><tr><th>Field</th><th>What it tells you</th></tr></thead>
+      <tbody>
+        <tr><td>Certificate holder</td><td>The legal entity that holds the certificate, not a brand or a parent group.</td></tr>
+        <tr><td>Named service</td><td>The specific service assessed. A certificate covers what is named and nothing else.</td></tr>
+        <tr><td>Scope</td><td>The platform profile and the boundary of the assessment, including anything excluded.</td></tr>
+        <tr><td>Level</td><td>The level of conformity reached, as defined in the standard.</td></tr>
+        <tr><td>Certification body</td><td>The accredited body that carried out the audit and issued the certificate.</td></tr>
+        <tr><td>Standard edition</td><td>The edition of CDSW in force at the date of audit. Certificates are assessed against a stated edition.</td></tr>
+        <tr><td>Issued and valid to</td><td>The date of issue and the date the certificate expires.</td></tr>
+        <tr><td>Status</td><td>Current, suspended or withdrawn, with the date the status changed.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Scope is the field most often misread. A certificate held by a group does not extend to every service that group operates, and a certificate for one service does not extend to a successor product.</p>
+  </section>
+
+  <section id="check">
+    <span class="sectnum">03</span>
+    <h2>How to check a claim</h2>
+    <p class="intro">If someone tells you a service is CDSW certified, three checks settle it.</p>
+    <ul class="checks">
+      <li><strong>Find the entry.</strong> Search the register for the named service. If there is no entry, there is no certificate, whatever the website says.</li>
+      <li><strong>Read the scope.</strong> Confirm the service you are asking about is the one named, and check what the assessment excluded.</li>
+      <li><strong>Check the status and the date.</strong> A certificate that has expired, been suspended or been withdrawn is not a current certificate, and the entry will say so.</li>
+    </ul>
+    <p>Any claim that cannot survive those three checks should be treated as unverified. Custorian will confirm the position on any entry on request.</p>
+  </section>
+
+  <section id="limits">
+    <span class="sectnum">04</span>
+    <h2>What a certificate does not mean</h2>
+    <p class="intro">One misunderstanding is worth correcting before it spreads.</p>
+    <ul class="nots">
+      <li><strong>It is not a finding of legal compliance.</strong> A certificate does not establish compliance with the Digital Services Act, the GDPR, any online safety legislation or any other law. Only the competent regulator or a court can determine compliance.</li>
+      <li><strong>It is not regulatory approval.</strong> No regulator has endorsed, approved or recognised the scheme, a certificate or a certified organisation. Custorian holds no such endorsement and does not seek to imply one.</li>
+      <li><strong>It is not a guarantee of safety.</strong> No certificate can promise that no child will come to harm on a service. It records what an independent body found, at a stated scope, on a stated date.</li>
+      <li><strong>It does not cover what was never examined.</strong> Anything outside the stated scope was not assessed, and a certificate can be suspended or withdrawn at any time.</li>
+    </ul>
+    <div class="callout">
+      <strong>How to describe a certificate accurately.</strong> &ldquo;Certified to CDSW at [level] for [named service] by [certification body], valid to [date]. CDSW certification is not a determination of legal compliance.&rdquo;
+    </div>
+  </section>
+
+  <section id="status">
+    <span class="sectnum">05</span>
+    <h2>Current status</h2>
+    <div class="empty">
+      <div class="big">No certificates issued</div>
+      <p>The standard is in expert review ahead of public consultation, and no certification body has yet issued a CDSW certificate. Any claim of CDSW certification made today is incorrect.</p>
+    </div>
+    <p>The first certificates are expected to come out of the pilot, which is run jointly with a certification body holding ISO/IEC&nbsp;17065 accreditation from a national accreditation body. A pilot assessment is not certification, and a pilot statement says so on its face.</p>
+    <div class="btnrow">
+      <a class="btn white" href="how-it-works.html#pilot">Be certified first</a>
+      <a class="btn ghost" href="how-it-works.html">How certification works</a>
+    </div>
+  </section>
+
+  <section id="misuse">
+    <span class="sectnum">06</span>
+    <h2>Reporting misuse</h2>
+    <p class="intro">The mark belongs to Custorian and may only be used inside the terms of a live certificate.</p>
+    <p>Not permitted: any claim that certification demonstrates or supports compliance with a named law or code; any use of a regulator&rsquo;s name or logo alongside the mark; any claim of regulatory approval or recognition; and any use of the mark outside the certified scope.</p>
+    <p>Misuse of the mark, including a compliance claim, is a ground for suspension or withdrawal of the certificate by the certification body that issued it, and for withdrawal of mark usage rights by Custorian as scheme owner.</p>
+    <div class="callout">
+      <strong>Seen the mark used wrongly?</strong> Tell us at <a href="mailto:info@custorian.org?subject=Mark%20misuse%20report">info@custorian.org</a>. Include the service, where you saw it and a link or screenshot. Reports are reviewed whether or not the service appears on the register.
+    </div>
+  </section>
+
+    </main>
+  </div>
+</div>
+
+<div class="shell">
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+    <nav>
+      <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>
+      <a href="how-it-works.html#pilot">Join the Pilot</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#get-involved">Get Involved</a>
+      <a href="governance.html">Governance</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:info@custorian.org">Contact</a>
+    </nav>
+  </footer>
+</div>
+
 <script src="track.js?v=568d5b29"></script>
 <script src="sidetabs.js?v=d11ba512"></script>
+<script src="sectionnav.js?v=d5b93581"></script>
 </body>
 </html>
