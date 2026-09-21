@@ -41,7 +41,14 @@
   /* HERO, full-bleed black, as on the live site */
   .herowrap { background:#000; color:#fff; }
   .hero { max-width:1180px; margin:0 auto; padding:110px 32px 104px; text-align:center;
-          display:flex; flex-direction:column; align-items:center; }
+          display:flex; flex-direction:column; align-items:center; position:relative; }
+  /* Animated mark, top left of the hero. Same pulse-sweep as the top bar, larger and in violet. */
+  .hero-mark { position:absolute; top:38px; left:32px; line-height:0; }
+  .hero-mark .logo-mark { width:66px; height:66px; }
+  .hero-mark .logo-mark .outer { fill:var(--violet-l); }
+  .hero-mark .logo-mark .inner { fill:#fff; }
+  @media (max-width:900px) { .hero-mark { top:26px; left:24px; } .hero-mark .logo-mark { width:46px; height:46px; } }
+  @media (max-width:560px) { .hero-mark { display:none; } }
   .hero .eyebrow { color:rgba(255,255,255,.45); letter-spacing:.42em; }
   .hero h1 {
     font-family:var(--sans); font-weight:900; text-transform:uppercase;
@@ -730,6 +737,7 @@
 
 <div class="herowrap">
   <div class="hero">
+    <div class="hero-mark"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg></div>
     <div class="eyebrow">Est. 2026 &middot; Copenhagen</div>
     <h1>This <em>standard</em> cannot be bought.</h1>
     <p class="lede">Custorian is to child safety what <b>PCI DSS</b> is to payment security: a published, auditable standard that a platform either meets or does not, assessed by independent accredited bodies rather than by us.</p>
