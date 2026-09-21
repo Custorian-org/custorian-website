@@ -325,6 +325,13 @@
   .nots { list-style:none; padding:0; margin:14px 0 4px; }
   .nots li { padding:9px 0 9px 26px; position:relative; color:var(--body); border-bottom:1px solid var(--hair); }
   .nots li::before { content:"\00D7"; position:absolute; left:4px; top:7px; color:var(--muted); font-size:17px; }
+  .ev { border:1px solid var(--line); background:var(--card); padding:20px 22px; margin:16px 0; }
+  .ev .n { font-family:var(--sans); font-weight:700; font-size:30px; letter-spacing:-.03em;
+    color:var(--violet); line-height:1; margin-bottom:8px; }
+  .ev h3 { font-family:var(--sans); font-weight:650; font-size:16.5px; color:var(--ink);
+    margin:0 0 8px; letter-spacing:-.01em; }
+  .ev p { margin:0 0 6px; }
+  .ev .src { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0 0; }
   .srcs { font-size:13.5px; color:var(--muted); line-height:1.75; }
   .srcs a { color:var(--violet); }
 </style>
@@ -354,6 +361,7 @@
       <ol>
         <li><a href="#measured">What is measured today</a></li>
         <li><a href="#missing">What is missing</a></li>
+        <li><a href="#evidence">Why this would work</a></li>
         <li><a href="#building">What we are building</a></li>
         <li><a href="#ask">What would help</a></li>
         <li><a href="#never">What we will never ask for</a></li>
@@ -414,8 +422,46 @@
     </div>
   </section>
 
-  <section id="building">
+  <section id="evidence">
     <span class="sectnum">03</span>
+    <h2>Why closing it would work</h2>
+    <p class="intro">Four findings from published data. Together they make the case that measuring this layer would change behaviour, and that it is a tractable thing to do.</p>
+
+    <div class="ev">
+      <div class="n">87% &rarr; 40%</div>
+      <h3>Measurement changes behaviour, and its absence changes it back</h3>
+      <p>When the Dutch monitor was running and providers knew they were being measured and named, <strong>87 per cent</strong> of this material was removed within 24 hours of a notice. In the following measurement, after engagement lapsed, that fell to <strong>40 per cent</strong>, with <strong>56 per cent</strong> still online after 48 hours. Nothing about the technology changed. The attention did.</p>
+      <p class="src">TU Delft with EOKM, CSAM Hosting Monitor, measurements of December 2021 to January 2022 and November to December 2022.</p>
+    </div>
+
+    <div class="ev">
+      <div class="n">9 providers, 78%</div>
+      <h3>Harm concentrates in a very small number of actors</h3>
+      <p>Across 595 providers worldwide, <strong>nine</strong> of them, holding just <strong>5.5 per cent</strong> of the material, account for <strong>78 per cent</strong> of all the days that material stayed reachable. Two providers alone account for 57 per cent. The largest providers by volume are among the fastest to remove; the damage sits with a handful of mid-sized ones that do not act.</p>
+      <p class="src">Computed by Custorian from the published dataset of Project Arachnid&rsquo;s 2025 ESP report. C3P publishes the distribution; this concentration cut is ours.</p>
+    </div>
+
+    <div class="ev">
+      <div class="n">1,252</div>
+      <h3>The registrar layer is just as concentrated, which makes it tractable</h3>
+      <p>There are 3,322 ICANN accreditations, but one company can hold many. They resolve to roughly <strong>a thousand operators</strong>, and a single operator holds <strong>1,252 accreditations</strong> on its own. Changing what this layer commits to does not mean moving three thousand companies. It means moving a few.</p>
+      <p class="src">Custorian analysis of the IANA registrar registry and ICANN monthly registry reports.</p>
+    </div>
+
+    <div class="ev">
+      <div class="n">93%</div>
+      <h3>A deadline with an enforcer behind it produces compliance</h3>
+      <p>The Dutch authority issued roughly <strong>180</strong> removal orders for terrorist content in 2025 under a <strong>one-hour</strong> statutory deadline. Every order was complied with, and <strong>93 per cent</strong> of material came down inside the hour. The same authority operates a <strong>12-hour</strong> statutory deadline for child sexual abuse material. Where the hour was missed, it referred the provider to the authority in the country where it is established.</p>
+      <p class="src">ATKM, Jaarverslag 2025.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Put together:</strong> being measured and named improves removal, most of the harm sits with a handful of companies, the registrar layer is concentrated enough that a handful is all you would need to reach, and a published deadline with consequences attached works. Every one of those findings comes from the hosting layer or from statute. None of it has ever been applied to registrars, because nobody has the data.
+    </div>
+  </section>
+
+  <section id="building">
+    <span class="sectnum">04</span>
     <h2>What we are building</h2>
     <p>A public accountability record at the registrar layer: what each registrar has committed to in writing about child sexual abuse material, set against measured performance wherever a credible third party has published it.</p>
     <p>We have read the binding documents behind <strong>2,752</strong> of the world&rsquo;s <strong>3,322</strong> ICANN accreditations, across 78 countries. Of those:</p>
@@ -428,7 +474,7 @@
   </section>
 
   <section id="ask">
-    <span class="sectnum">04</span>
+    <span class="sectnum">05</span>
     <h2>What would help</h2>
     <p class="intro">In order. A pointer to a person or a dataset is worth as much to us as data.</p>
     <ol class="asks">
@@ -440,7 +486,7 @@
   </section>
 
   <section id="never">
-    <span class="sectnum">05</span>
+    <span class="sectnum">06</span>
     <h2>What we will never ask for</h2>
     <ul class="nots">
       <li>No case material.</li>
@@ -453,7 +499,7 @@
   </section>
 
   <section id="sources">
-    <span class="sectnum">06</span>
+    <span class="sectnum">07</span>
     <h2>Sources</h2>
     <p class="srcs">
       Canadian Centre for Child Protection, <em>Project Arachnid: 2025 CSAM Availability on Electronic Service Providers</em>, preliminary, 15 September 2026 &middot;
