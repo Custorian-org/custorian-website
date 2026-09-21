@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The gap at the registrar layer | Custorian</title>
+<meta name="description" content="What is measured about child sexual abuse material online, by whom, and the one layer nobody measures anywhere.">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../foundation.css?v=9be3b889">
+<style>
+
+
+  /* --- BRAND FONT MODE: Brand Kit v1.0 (Inter only). Preview toggle, remove before ship. --- */
+  body { font-size:16.5px; line-height:1.62; }
+  .cover h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+  .cover .lede { font-weight:400; letter-spacing:-.011em; }
+  h2 { font-weight:650; letter-spacing:-.032em; }
+  .intro { font-weight:400; letter-spacing:-.01em; }
+  .tier-price { font-weight:650; letter-spacing:-.04em; }
+  .person .r,
+  .entries .x,
+  .tier-who,
+  .tier-includes,
+  ul.plain li,
+  .callout { letter-spacing:-.006em; }
+  body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--hair);
+    background: var(--paper);
+    position: sticky; top:0; z-index:60;
+  }
+  .topbar a.back {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    text-decoration:none; letter-spacing:.02em;
+  }
+
+  /* ---------- shell ---------- */
+  .shell { max-width:1180px; margin:0 auto; padding:0 32px 84px; }
+
+  /* ---------- cover ---------- */
+  .cover { padding:96px 0 72px; border-bottom:1px solid var(--line); }
+  .cover h1 {
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(44px,6.4vw,80px); line-height:1.02;
+    letter-spacing:-.025em; color:var(--ink); margin-bottom:32px;
+  }
+  .cover .lede {
+    font-size:clamp(19px,2.1vw,23px); line-height:1.58;
+    max-width:62ch; color:var(--body); font-weight:300;
+  }
+  .cover .stamp {
+    margin-top:44px; display:flex; flex-wrap:wrap; gap:10px 28px;
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- layout with rail ---------- */
+  .layout { display:grid; grid-template-columns:200px 1fr; gap:64px; padding-top:40px; }
+  .rail { position:sticky; top:104px; align-self:start; }
+  .rail ol { list-style:none; counter-reset:sec; }
+  .rail li { counter-increment:sec; margin-bottom:2px; }
+  .rail a {
+    font-family:var(--sans); font-size:13px; color:var(--muted);
+    text-decoration:none; display:flex; gap:10px; padding:6px 0; line-height:1.4;
+  }
+  .rail a::before {
+    content:counter(sec,decimal-leading-zero);
+    font-family:var(--mono); font-size:10.5px; color:var(--violet-l);
+    padding-top:2px; flex:none;
+  }
+  .rail a:hover { color:var(--ink); }
+
+  .main { min-width:0; max-width:74ch; }
+
+  /* ---------- sections ---------- */
+  section { padding-bottom:48px; }
+  section + section { border-top:1px solid var(--hair); padding-top:40px; }
+  h2 {
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(29px,3.4vw,38px); line-height:1.16; letter-spacing:-.02em;
+    color:var(--ink); margin-bottom:10px;
+  }
+  h3 {
+    font-family:var(--sans); font-weight:600; font-size:16.5px;
+    letter-spacing:-.01em; color:var(--ink); margin:44px 0 12px;
+  }
+  p { margin-bottom:20px; }
+  p:last-child { margin-bottom:0; }
+  a.inline { color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(91,65,194,.3); }
+  a.inline:hover { border-bottom-color:var(--violet); }
+  .intro { font-size:19.5px; line-height:1.6; color:var(--body); font-weight:300; margin-bottom:28px; }
+
+  /* ---------- key facts ---------- */
+  .facts { margin:32px 0 8px; border-top:1px solid var(--line); }
+  .facts > div {
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:15px 0; border-bottom:1px solid var(--hair);
+  }
+  .facts .k {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    letter-spacing:.02em; padding-top:2px;
+  }
+  .facts .v { font-family:var(--mono); font-size:14px; color:var(--ink); line-height:1.5; }
+
+  /* ---------- people ---------- */
+  .people { margin:26px 0 12px; }
+  .person { padding:22px 0; border-top:1px solid var(--hair); }
+  .person:last-child { border-bottom:1px solid var(--hair); }
+  .person .n { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .person .r { font-size:16px; color:var(--body); line-height:1.6; }
+  .tag {
+    display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--violet);
+    border:1px solid rgba(91,65,194,.28); border-radius:100px; padding:2px 10px; margin-bottom:9px;
+  }
+
+  /* ---------- firewalls ---------- */
+  .firewalls { list-style:none; counter-reset:fw; margin:30px 0 0; }
+  .firewalls li {
+    counter-increment:fw; position:relative;
+    padding:20px 0 20px 52px; border-top:1px solid var(--hair);
+  }
+  .firewalls li:last-child { border-bottom:1px solid var(--hair); }
+  .firewalls li::before {
+    content:counter(fw,decimal-leading-zero);
+    position:absolute; left:0; top:22px;
+    font-family:var(--mono); font-size:11px; color:var(--violet-l);
+  }
+  .firewalls strong { display:block; font-family:var(--sans); font-size:15px; margin-bottom:4px; }
+
+  /* ---------- networks ---------- */
+  .netgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:28px 0 14px; }
+  .net { background:var(--card); padding:22px 22px 20px; display:flex; flex-direction:column; gap:11px; }
+  .net .mark { height:46px; display:flex; align-items:center; }
+  .net .mark img { max-height:46px; max-width:160px; object-fit:contain; }
+  .net .mark .ph {
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--muted);
+    border:1px dashed var(--line); border-radius:3px; padding:13px 15px; background:var(--paper);
+  }
+  .net .n { font-family:var(--sans); font-weight:600; font-size:15.5px; color:var(--ink); }
+  .net .s { font-size:15px; line-height:1.5; color:var(--body); }
+  .status {
+    align-self:flex-start; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; padding:3px 10px; border-radius:100px;
+  }
+  .status.pending { color:#8a5c14; border:1px solid rgba(169,112,31,.4); background:rgba(169,112,31,.07); }
+  .status.member  { color:#3f6b3e; border:1px solid rgba(79,122,78,.42); background:rgba(79,122,78,.07); }
+
+  /* ---------- note / callout ---------- */
+  .callout {
+    background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet);
+    padding:24px 28px; margin:32px 0; font-size:16.5px; line-height:1.6;
+  }
+  .note { font-size:15px; color:var(--muted); line-height:1.6; }
+
+  /* ---------- tiers ---------- */
+  .tiers { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); margin:32px 0 22px; border:1px solid var(--line); }
+  .tier { background:var(--card); padding:26px 24px; display:flex; flex-direction:column; }
+  .tier-name { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .tier-price { font-family:var(--serif); font-size:38px; font-weight:300; color:var(--ink); letter-spacing:-.03em; line-height:1; margin-bottom:14px; }
+  .tier-price span { font-family:var(--sans); font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0; }
+  .tier-who { font-size:15.5px; color:var(--ink); margin-bottom:10px; }
+  .tier-includes { font-size:15px; color:var(--body); line-height:1.55; flex:1; }
+  .tier a {
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--violet);
+    text-decoration:none; margin-top:18px; display:inline-block;
+  }
+  .tier a:hover { color:var(--ink); }
+
+  .btn {
+    display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+    background:var(--violet); color:#fff; text-decoration:none;
+    padding:12px 24px; border-radius:2px;
+  }
+
+  /* ---------- lists ---------- */
+  ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
+  ul.plain li {
+    font-size:16px; padding:9px 0 9px 18px; position:relative;
+    break-inside:avoid; color:var(--ink);
+  }
+  ul.plain li::before { content:''; position:absolute; left:0; top:18px; width:6px; height:1px; background:var(--violet-l); }
+
+  .entries { list-style:none; margin:26px 0 0; }
+  .entries li { padding:20px 0; border-top:1px solid var(--hair); }
+  .entries li:last-child { border-bottom:1px solid var(--hair); }
+  .entries .d { font-family:var(--mono); font-size:11.5px; color:var(--violet-l); letter-spacing:.04em; margin-bottom:6px; }
+  .entries .t { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .entries .t a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .entries .t a:hover { color:var(--violet); }
+  .entries .x { font-size:16px; color:var(--body); line-height:1.58; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top:1px solid var(--line); margin-top:40px; padding:44px 0 0;
+    font-family:var(--sans); font-size:13.5px; color:var(--muted);
+  }
+
+  .flag {
+    background:#fff8e6; border:1px solid #e8d9a8; border-radius:3px;
+    padding:14px 18px; margin:0 0 0; font-family:var(--sans); font-size:13px;
+    color:#6b5618; line-height:1.55;
+  }
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .layout { grid-template-columns:1fr; gap:0; padding-top:28px; }
+    .rail { display:none; }
+    .cover { padding:60px 0 48px; }
+    .tiers { grid-template-columns:1fr; }
+    .facts div { grid-template-columns:1fr; gap:4px; }
+    ul.plain { column-count:1; }
+  }
+  h3.grp { font-size:15px; color:var(--muted); letter-spacing:.02em; margin:32px 0 8px; }
+  h2.tight { margin-top:34px; }
+
+
+  .hero h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+
+  .hero .lede, .intro { font-weight:400; letter-spacing:-.011em; }
+
+
+  /* HERO, full-bleed black, as on the live site */
+  .herowrap { background:#000; color:#fff; }
+
+  .hero { max-width:1180px; margin:0 auto; padding:110px 32px 104px; text-align:center;
+          display:flex; flex-direction:column; align-items:center; }
+
+  .hero .eyebrow { color:rgba(255,255,255,.45); letter-spacing:.42em; }
+
+  .hero h1 {
+    font-family:var(--sans); font-weight:900; text-transform:uppercase;
+    font-size:clamp(42px,8.6vw,132px); line-height:.92; letter-spacing:-.028em;
+    color:#fff; max-width:16ch; margin-bottom:34px;
+  }
+
+  .hero h1 em { font-style:normal; color:var(--violet-l); }
+
+  .hero .lede { font-size:clamp(17px,1.9vw,21px); line-height:1.6; max-width:58ch; font-weight:300; color:rgba(255,255,255,.78); }
+
+  .hero .lede b { font-weight:600; color:#fff; }
+
+  .hero .btnrow { justify-content:center; margin:40px 0 0; }
+
+  .hero .btn.white { background:#fff; color:#000; border:1px solid #fff; }
+
+  .hero .btn.white:hover { background:var(--violet); color:#fff; border-color:var(--violet); }
+
+  .hero .btn.ghost { color:#fff; border-color:rgba(255,255,255,.34); }
+
+  .hero .btn.ghost:hover { background:#fff; color:#000; border-color:#fff; }
+
+  .band .btn { background:#fff; color:#000; }
+
+  .band .btn:hover { background:var(--violet); color:#fff; }
+
+  .btn { display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600; background:var(--violet); color:#fff; text-decoration:none; padding:13px 26px; border-radius:2px; border:1px solid transparent; line-height:normal; cursor:pointer; -webkit-appearance:none; appearance:none; }
+
+  .btn.ghost { background:none; color:var(--violet); border:1px solid rgba(91,65,194,.35); }
+
+  .btn.ghost:hover { background:var(--violet); color:#fff; }
+
+  .btnrow { display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 16px; }
+
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .hero { padding:64px 20px 56px; }
+    .hero .btnrow { flex-direction:column; align-items:stretch; }
+    .hero .btn { text-align:center; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    ul.harms { column-count:1; }
+    table.dom td.c { width:46px; }
+  }
+
+  /* --- ABOUT, moved onto the front page 17 Sep 2026 -------------------------
+     Brought across from about-foundation.html when the About page was folded
+     into the home page under the hero. Only the rules the front page did not
+     already carry are here; sections, h2, p, .intro, .note, .stats, .callout,
+     ol.steps, .btn and .btnrow were already defined above. */
+
+  h3 { font-family:var(--sans); font-weight:600; font-size:16.5px; margin:38px 0 10px; }
+
+  /* --- The gap page --- */
+  .layers { width:100%; border-collapse:collapse; margin:20px 0 8px; font-size:15px; }
+  .layers th { text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--muted); font-weight:500;
+    padding:0 14px 9px 0; border-bottom:1px solid var(--line); }
+  .layers td { padding:12px 14px 12px 0; border-bottom:1px solid var(--hair); vertical-align:top; color:var(--body); }
+  .layers td:first-child { color:var(--ink); font-weight:600; width:26%; }
+  .layers tr.gap td { background:#fdf2f2; color:var(--ink); }
+  .layers tr.gap td:first-child { color:#9b1c1c; }
+  .yes { color:#2f6f4e; font-weight:600; }
+  .no  { color:#9b1c1c; font-weight:600; }
+  @media (max-width:720px){
+    .layers, .layers tbody, .layers tr, .layers td { display:block; width:100%; }
+    .layers thead { display:none; }
+    .layers td:first-child { border-bottom:none; padding-bottom:2px; }
+    .layers tr { padding:12px 0; border-bottom:1px solid var(--hair); }
+    .layers td { border-bottom:none; padding:2px 0; }
+  }
+  .asks { list-style:none; padding:0; margin:18px 0 8px; counter-reset:ask; }
+  .asks li { counter-increment:ask; position:relative; padding:14px 0 14px 46px;
+    border-bottom:1px solid var(--hair); color:var(--body); }
+  .asks li::before { content:counter(ask); position:absolute; left:0; top:13px;
+    width:26px; height:26px; border-radius:50%; background:var(--violet); color:#fff;
+    font-family:var(--mono); font-size:12px; display:flex; align-items:center; justify-content:center; }
+  .asks li strong { color:var(--ink); }
+  .nots { list-style:none; padding:0; margin:14px 0 4px; }
+  .nots li { padding:9px 0 9px 26px; position:relative; color:var(--body); border-bottom:1px solid var(--hair); }
+  .nots li::before { content:"\00D7"; position:absolute; left:4px; top:7px; color:var(--muted); font-size:17px; }
+  .srcs { font-size:13.5px; color:var(--muted); line-height:1.75; }
+  .srcs a { color:var(--violet); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <a class="navbtn" href="/" title="Home">Home</a>
+      <a class="brand" href="/">Custorian</a>
+    </span>
+  </div>
+</div>
+
+<div class="herowrap">
+  <div class="hero">
+    <div class="eyebrow">Shared privately &middot; not indexed</div>
+    <h1>Everyone measures the <em>host</em>.</h1>
+    <p class="lede">Nobody, in any country, publishes how long a <b>domain registrar</b> takes to act after a notice about child sexual abuse material. The content moves between hosts. The domain is what users follow. That is the gap.</p>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="layout">
+    <aside class="rail">
+      <ol>
+        <li><a href="#measured">What is measured today</a></li>
+        <li><a href="#missing">What is missing</a></li>
+        <li><a href="#building">What we are building</a></li>
+        <li><a href="#ask">What would help</a></li>
+        <li><a href="#never">What we will never ask for</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </aside>
+    <main class="main">
+
+  <section id="measured">
+    <span class="sectnum">01</span>
+    <h2>What is measured today</h2>
+    <p class="intro">The hosting layer is covered, and covered well. Read the last row first.</p>
+    <table class="layers">
+      <thead><tr><th>Layer</th><th>Who measures it</th><th>Names?</th><th>Times?</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Hosting, global</td>
+          <td>Project Arachnid (C3P), 2025 report: 595 providers, average days to removal and total days accessible per provider. Provider names are redacted in the preliminary version.</td>
+          <td class="no">No</td><td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Hosting, global</td>
+          <td>Project Arachnid, 2021 report: named providers by country with removal-notice volumes. Covers 2018 to 2020 data.</td>
+          <td class="yes">Yes</td><td>Percentiles only</td>
+        </tr>
+        <tr>
+          <td>Hosting, Netherlands</td>
+          <td>TU Delft with EOKM, now Offlimits: named Dutch providers, volumes, and the share removed within 24 hours. Series ran to March 2023.</td>
+          <td class="yes">Yes</td><td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Hosting, Netherlands</td>
+          <td>ATKM, the Dutch statutory authority: removal orders under a 12-hour legal deadline for this material, with aggregate compliance published. It took the TU Delft monitor over in 2024 and is moving it into its own environment during 2026.</td>
+          <td class="no">No</td><td>Aggregate</td>
+        </tr>
+        <tr>
+          <td>Domain registrars</td>
+          <td>IWF Domain Alerts notify registries (since 2018) and registrars (since February 2024), and track re-registration across top-level domains. The notifications happen. The outcomes are not published as data.</td>
+          <td class="no">Not published</td><td class="no">Not published</td>
+        </tr>
+        <tr class="gap">
+          <td>Domain registrars</td>
+          <td><strong>Response time after a notice, published per registrar, over time. Nobody, anywhere.</strong> ICANN&rsquo;s Domain Abuse Activity Reporting covers phishing, malware, botnets and spam, and excludes this material. The GNSO&rsquo;s DNS abuse policy process excludes it explicitly.</td>
+          <td class="no">&mdash;</td><td class="no">No</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="missing">
+    <span class="sectnum">02</span>
+    <h2>What is missing, precisely</h2>
+    <p>Two things, and only two.</p>
+    <p><strong>One. Registrar response time.</strong> After a valid notice, how long until the domain is suspended or the material is unreachable, per registrar, over time. Rough bands are enough. Nothing like it exists in any jurisdiction.</p>
+    <p><strong>Two. Re-registration.</strong> Whether the same operators register again after a takedown, and with which registrars. The Dutch authority records in its own 2025 annual report that removed material was in a number of cases re-posted, and says it will watch how that develops. Nobody publishes the registrar side of that pattern.</p>
+    <div class="callout">
+      <strong>Why the domain and not the host.</strong> Content migrates between hosting providers cheaply and often. The domain name is the persistent part: it is what a user types, what a link points at, and the cheapest route back online after a takedown.
+    </div>
+  </section>
+
+  <section id="building">
+    <span class="sectnum">03</span>
+    <h2>What we are building</h2>
+    <p>A public accountability record at the registrar layer: what each registrar has committed to in writing about child sexual abuse material, set against measured performance wherever a credible third party has published it.</p>
+    <p>We have read the binding documents behind <strong>2,752</strong> of the world&rsquo;s <strong>3,322</strong> ICANN accreditations, across 78 countries. Of those:</p>
+    <div class="stats">
+      <div class="stat"><span class="n">202</span><span class="l">name child sexual abuse material as its own prohibited category</span></div>
+      <div class="stat"><span class="n">2,529</span><span class="l">have catch-all wording only, with no child-specific term at all</span></div>
+      <div class="stat"><span class="n">1,401</span><span class="l">name DNS abuse, but not this</span></div>
+    </div>
+    <p>It is not a detection operation and it is not a list of accusations. It records what a company has published about itself, and every external figure is attributed to whoever published it. We never assert that a registrar hosts abuse material, because that cannot be established at this layer.</p>
+  </section>
+
+  <section id="ask">
+    <span class="sectnum">04</span>
+    <h2>What would help</h2>
+    <p class="intro">In order. A pointer to a person or a dataset is worth as much to us as data.</p>
+    <ol class="asks">
+      <li><strong>Registrar response times.</strong> After a valid notice, how long until the domain is suspended or the material is gone, per registrar. Rough bands are fine. Even a small sample is more than exists today.</li>
+      <li><strong>Re-registration patterns.</strong> Whether the same operators register again after a takedown, and with which registrars.</li>
+      <li><strong>Which registrars recur</strong> most often in your reporting workload, in aggregate. Not a characterisation of any company, just which names keep coming back.</li>
+      <li><strong>Or simply: does anyone track this informally?</strong> If registrar response or re-registration is watched anywhere, even if never published, we would like to know. If the answer is that nobody does, that is itself a finding we would like confirmed.</li>
+    </ol>
+  </section>
+
+  <section id="never">
+    <span class="sectnum">05</span>
+    <h2>What we will never ask for</h2>
+    <ul class="nots">
+      <li>No case material.</li>
+      <li>No URLs.</li>
+      <li>No imagery of any kind.</li>
+      <li>Nothing identifying a child or an offender.</li>
+      <li>No characterisation of any company by you.</li>
+    </ul>
+    <p class="note">Aggregate is fine. Historical is fine. Banded is fine. Nothing needs to be live.</p>
+  </section>
+
+  <section id="sources">
+    <span class="sectnum">06</span>
+    <h2>Sources</h2>
+    <p class="srcs">
+      Canadian Centre for Child Protection, <em>Project Arachnid: 2025 CSAM Availability on Electronic Service Providers</em>, preliminary, 15 September 2026 &middot;
+      Canadian Centre for Child Protection, <em>Project Arachnid: Online Availability of Child Sexual Abuse Material</em>, June 2021 &middot;
+      Lone, Ga&ntilde;&aacute;n and van Eeten (TU Delft) with EOKM, <em>CSAM Hosting Monitor</em>, reports of September 2020, March 2022 and March 2023 &middot;
+      Autoriteit online Terroristisch en Kinderpornografisch Materiaal, <em>Jaarverslag 2025</em> &middot;
+      Internet Watch Foundation, Domain Alerts &middot;
+      ICANN Domain Abuse Activity Reporting and ICANN monthly registry reports &middot;
+      GNSO DNS Abuse policy development process.
+    </p>
+    <p class="note">Every figure on this page is drawn from a published source or from registrars&rsquo; own public documents. Nothing is estimated.</p>
+  </section>
+
+    </main>
+  </div>
+</div>
+
+<div class="shell">
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+    <nav>
+      <a href="/">custorian.org</a>
+      <a href="mailto:tanya@custorian.org">tanya@custorian.org</a>
+    </nav>
+  </footer>
+</div>
+
+</body>
+</html>
