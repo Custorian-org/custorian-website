@@ -606,7 +606,7 @@
     <h1>What the standard <em>asks</em>, and who gets to check.</h1>
     <p class="lede">Every figure on this page is counted from the control set itself. The requirements are <b>published</b>, the assessment is carried out by an <b>independent accredited body</b>, and the result goes in a <b>public register</b>.</p>
     <div class="btnrow">
-      <a class="btn white" href="#pilot">Apply to the pilot</a>
+      <button type="button" class="btn white" data-modal="pilotModal">Apply to the pilot</button>
       <a class="btn ghost" href="#review">Enter invitation key</a>
       <button type="button" class="btn ghost" data-modal="actionModal">Take action</button>
     </div>
@@ -712,7 +712,7 @@
     </div>
     <div class="btnrow">
       <a class="btn" href="#numbers">The standard in full &rarr;</a>
-      <a class="btn ghost" href="#pilot">Apply to the pilot</a>
+      <button type="button" class="btn ghost" data-modal="pilotModal">Apply to the pilot</button>
     </div>
   </section>
     </main>
@@ -847,7 +847,7 @@
       <strong>Run jointly with a certification body.</strong> The pilot is a joint assessment with a certification body that holds ISO/IEC&nbsp;17065 accreditation from a national accreditation body, so the method is tested by the people who will have to operate it. A pilot assessment is not certification: the scheme is not yet accredited, and a pilot statement says so on its face.
     </div>
     <div class="btnrow">
-      <a class="btn" href="#pilot">Apply to the pilot &rarr;</a>
+      <button type="button" class="btn" data-modal="pilotModal">Apply to the pilot &rarr;</button>
     </div>
     <p class="note">Founding-member discount, greater discounts for non-profits. Limited places.</p>
   </section>
@@ -1010,6 +1010,81 @@
 </div>
 
 <!-- Governance expression of interest -->
+<!-- Pilot application -->
+<div class="modal" id="pilotModal" role="dialog" aria-modal="true" aria-labelledby="pilotTitle">
+  <div class="backdrop" data-close></div>
+  <div class="dialog">
+    <button type="button" class="close" data-close aria-label="Close">&#10005;</button>
+    <h2 id="pilotTitle">Apply to the pilot.</h2>
+
+    <p>A small founding cohort of platforms will be assessed against the standard before anyone else, jointly with a certification body holding ISO/IEC&nbsp;17065 accreditation from a national accreditation body. A pilot assessment is <strong>not certification</strong>: the scheme is not yet accredited, and a pilot statement says so on its face.</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST" data-form>
+      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+      <input type="hidden" name="subject" value="Custorian Pilot: Application">
+      <input type="hidden" name="from_name" value="Custorian Pilot Application">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <div class="field"><label for="p-name">Your name *</label><input id="p-name" type="text" name="Name" required placeholder="Full name"></div>
+      <div class="field"><label for="p-email">Work email *</label><input id="p-email" type="email" name="Email" required placeholder="you@company.com"></div>
+      <div class="field"><label for="p-org">Organisation *</label><input id="p-org" type="text" name="Organisation" required placeholder="The legal entity that would hold the certificate"></div>
+      <div class="field"><label for="p-service">Service to be assessed *</label><input id="p-service" type="text" name="Service" required placeholder="The named service, not the parent brand"></div>
+      <div class="field"><label for="p-role">Your role *</label><input id="p-role" type="text" name="Role" required placeholder="Your role in that organisation"></div>
+
+      <div class="field"><label for="p-profile">Which profile best fits the service? *</label>
+        <select id="p-profile" name="Platform profile" required>
+          <option value="">Select&hellip;</option>
+          <option>Messaging</option>
+          <option>Social / user-generated content</option>
+          <option>Gaming</option>
+          <option>Live streaming</option>
+          <option>Marketplace</option>
+          <option>EdTech</option>
+          <option>Hybrid</option>
+          <option>AI companion / generative AI</option>
+          <option>Search &amp; discovery</option>
+          <option>App store / distribution</option>
+          <option>Immersive / metaverse</option>
+          <option>Not sure</option>
+        </select>
+      </div>
+
+      <div class="field"><label for="p-users">Roughly how many users does the service have?</label>
+        <select id="p-users" name="Scale">
+          <option value="">Select&hellip;</option>
+          <option>Under 10,000</option>
+          <option>10,000 to 100,000</option>
+          <option>100,000 to 1 million</option>
+          <option>1 million to 45 million</option>
+          <option>Over 45 million (VLOP threshold)</option>
+        </select>
+      </div>
+
+      <div class="field"><label for="p-level">Which level are you aiming for?</label>
+        <select id="p-level" name="Target level">
+          <option value="">Select&hellip;</option>
+          <option>Level 1, Baseline</option>
+          <option>Level 2, Standard</option>
+          <option>Level 3, Advanced</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="field"><label for="p-msg">Why this service, and what is already in place? *</label><textarea id="p-msg" name="Message" required placeholder="What you already do on child safety, what you know is weak, and what you want out of a pilot assessment."></textarea></div>
+
+      <div class="field check"><input id="p-consent" type="checkbox" name="Consent" value="Yes" required><label for="p-consent">I agree that Custorian may hold and process this information under GDPR to assess this application and follow up about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</label></div>
+
+      <button type="submit" class="btn">Apply to the pilot</button>
+      <p class="formnote" data-err hidden></p>
+    </form>
+    <div class="done" hidden data-done>
+      <div class="tick">&#10003;</div>
+      <h3 class="dlg">Thank you.</h3>
+      <p class="formnote">Your application has been received. Places in the founding cohort are limited and each application is reviewed alongside the certification body running the joint assessment. We will be in touch either way.</p>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id="advisoryModal" role="dialog" aria-modal="true" aria-labelledby="advisoryTitle">
   <div class="backdrop" data-close></div>
   <div class="dialog">
