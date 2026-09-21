@@ -325,13 +325,22 @@
   .nots { list-style:none; padding:0; margin:14px 0 4px; }
   .nots li { padding:9px 0 9px 26px; position:relative; color:var(--body); border-bottom:1px solid var(--hair); }
   .nots li::before { content:"\00D7"; position:absolute; left:4px; top:7px; color:var(--muted); font-size:17px; }
-  .ev { border:1px solid var(--line); background:var(--card); padding:20px 22px; margin:16px 0; }
-  .ev .n { font-family:var(--sans); font-weight:700; font-size:30px; letter-spacing:-.03em;
+  details.ev { border:1px solid var(--line); background:var(--card); margin:16px 0; }
+  details.ev > summary { list-style:none; cursor:pointer; padding:20px 22px; position:relative;
+    transition:background .15s ease; }
+  details.ev > summary::-webkit-details-marker { display:none; }
+  details.ev > summary:hover { background:var(--paper); }
+  details.ev .n { font-family:var(--sans); font-weight:700; font-size:30px; letter-spacing:-.03em;
     color:var(--violet); line-height:1; margin-bottom:8px; }
-  .ev h3 { font-family:var(--sans); font-weight:650; font-size:16.5px; color:var(--ink);
-    margin:0 0 8px; letter-spacing:-.01em; }
-  .ev p { margin:0 0 6px; }
-  .ev .src { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0 0; }
+  details.ev h3 { font-family:var(--sans); font-weight:650; font-size:16.5px; color:var(--ink);
+    margin:0; letter-spacing:-.01em; padding-right:28px; }
+  details.ev > summary .chev { position:absolute; right:20px; top:26px; color:var(--violet);
+    font-size:13px; transition:transform .18s ease; display:inline-block; }
+  details.ev[open] > summary .chev { transform:rotate(90deg); }
+  details.ev[open] > summary { padding-bottom:12px; }
+  .evbody { padding:0 22px 20px; }
+  .evbody p { margin:0 0 8px; }
+  .evbody .src { font-size:12.5px; color:var(--muted); font-style:italic; margin:10px 0 0; }
   .cross { width:100%; border-collapse:collapse; margin:18px 0 6px; font-size:14px; }
   .cross th { text-align:left; font-family:var(--mono); font-size:10.5px; letter-spacing:.08em;
     text-transform:uppercase; color:var(--muted); font-weight:500;
@@ -475,33 +484,53 @@
     <h2>Why closing it would work</h2>
     <p class="intro">Four findings from published data. Together they make the case that measuring this layer would change behaviour, and that it is a tractable thing to do.</p>
 
-    <div class="ev">
-      <div class="n">87% &rarr; 40%</div>
-      <h3>Measurement changes behaviour, and its absence changes it back</h3>
-      <p>When the Dutch monitor was running and providers knew they were being measured and named, <strong>87 per cent</strong> of this material was removed within 24 hours of a notice. In the following measurement, after engagement lapsed, that fell to <strong>40 per cent</strong>, with <strong>56 per cent</strong> still online after 48 hours. Nothing about the technology changed. The attention did.</p>
+        <details class="ev">
+      <summary>
+        <div class="n">87% &rarr; 40%</div>
+        <h3>Measurement changes behaviour, and its absence changes it back</h3>
+        <span class="chev">&#9654;</span>
+      </summary>
+      <div class="evbody">
+        <p>When the Dutch monitor was running and providers knew they were being measured and named, <strong>87 per cent</strong> of this material was removed within 24 hours of a notice. In the following measurement, after engagement lapsed, that fell to <strong>40 per cent</strong>, with <strong>56 per cent</strong> still online after 48 hours. Nothing about the technology changed. The attention did.</p>
       <p class="src">TU Delft with EOKM, CSAM Hosting Monitor, measurements of December 2021 to January 2022 and November to December 2022.</p>
-    </div>
+      </div>
+    </details>
 
-    <div class="ev">
-      <div class="n">9 providers, 78%</div>
-      <h3>Harm concentrates in a very small number of actors</h3>
-      <p>Across 595 providers worldwide, <strong>nine</strong> of them, holding just <strong>5.5 per cent</strong> of the material, account for <strong>78 per cent</strong> of all the days that material stayed reachable. Two providers alone account for 57 per cent. The largest providers by volume are among the fastest to remove; the damage sits with a handful of mid-sized ones that do not act.</p>
+        <details class="ev">
+      <summary>
+        <div class="n">9 providers, 78%</div>
+        <h3>Harm concentrates in a very small number of actors</h3>
+        <span class="chev">&#9654;</span>
+      </summary>
+      <div class="evbody">
+        <p>Across 595 providers worldwide, <strong>nine</strong> of them, holding just <strong>5.5 per cent</strong> of the material, account for <strong>78 per cent</strong> of all the days that material stayed reachable. Two providers alone account for 57 per cent. The largest providers by volume are among the fastest to remove; the damage sits with a handful of mid-sized ones that do not act.</p>
       <p class="src">Computed by Custorian from the published dataset of Project Arachnid&rsquo;s 2025 ESP report. C3P publishes the distribution; this concentration cut is ours.</p>
-    </div>
+      </div>
+    </details>
 
-    <div class="ev">
-      <div class="n">1,252</div>
-      <h3>The registrar layer is just as concentrated, which makes it tractable</h3>
-      <p>There are 3,322 ICANN accreditations, but one company can hold many. They resolve to roughly <strong>a thousand operators</strong>, and a single operator holds <strong>1,252 accreditations</strong> on its own. Changing what this layer commits to does not mean moving three thousand companies. It means moving a few.</p>
+        <details class="ev">
+      <summary>
+        <div class="n">1,252</div>
+        <h3>The registrar layer is just as concentrated, which makes it tractable</h3>
+        <span class="chev">&#9654;</span>
+      </summary>
+      <div class="evbody">
+        <p>There are 3,322 ICANN accreditations, but one company can hold many. They resolve to roughly <strong>a thousand operators</strong>, and a single operator holds <strong>1,252 accreditations</strong> on its own. Changing what this layer commits to does not mean moving three thousand companies. It means moving a few.</p>
       <p class="src">Custorian analysis of the IANA registrar registry and ICANN monthly registry reports.</p>
-    </div>
+      </div>
+    </details>
 
-    <div class="ev">
-      <div class="n">93%</div>
-      <h3>A deadline with an enforcer behind it produces compliance</h3>
-      <p>The Dutch authority issued roughly <strong>180</strong> removal orders for terrorist content in 2025 under a <strong>one-hour</strong> statutory deadline. Every order was complied with, and <strong>93 per cent</strong> of material came down inside the hour. The same authority operates a <strong>12-hour</strong> statutory deadline for child sexual abuse material. Where the hour was missed, it referred the provider to the authority in the country where it is established.</p>
+        <details class="ev">
+      <summary>
+        <div class="n">93%</div>
+        <h3>A deadline with an enforcer behind it produces compliance</h3>
+        <span class="chev">&#9654;</span>
+      </summary>
+      <div class="evbody">
+        <p>The Dutch authority issued roughly <strong>180</strong> removal orders for terrorist content in 2025 under a <strong>one-hour</strong> statutory deadline. Every order was complied with, and <strong>93 per cent</strong> of material came down inside the hour. The same authority operates a <strong>12-hour</strong> statutory deadline for child sexual abuse material. Where the hour was missed, it referred the provider to the authority in the country where it is established.</p>
       <p class="src">ATKM, Jaarverslag 2025.</p>
-    </div>
+      </div>
+    </details>
 
     <div class="callout">
       <strong>Put together:</strong> being measured and named improves removal, most of the harm sits with a handful of companies, the registrar layer is concentrated enough that a handful is all you would need to reach, and a published deadline with consequences attached works. Every one of those findings comes from the hosting layer or from statute. None of it has ever been applied to registrars, because nobody has the data.
