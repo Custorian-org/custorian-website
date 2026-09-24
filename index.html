@@ -971,9 +971,11 @@
 
       <div class="field"><label for="a-name">Your name *</label><input id="a-name" type="text" name="Name" required placeholder="Full name"></div>
       <div class="field"><label for="a-email">Email *</label><input id="a-email" type="email" name="Email" required placeholder="you@example.org"></div>
-      <div class="field"><label for="a-org">Organisation / affiliation</label><input id="a-org" type="text" name="Organisation" placeholder="Where you work or what you represent"></div>
+      <div class="field"><label for="a-org">Organisation / affiliation *</label><input id="a-org" type="text" name="Organisation" required placeholder="Where you work or what you represent"></div>
       <div class="field"><label for="a-country">Country you are based in *</label><input id="a-country" type="text" name="Country" required placeholder="Geographic spread is a selection consideration"></div>
-      <div class="field"><label for="a-url">LinkedIn / bio URL</label><input id="a-url" type="url" name="Profile" placeholder="https://"></div>
+      <div class="field"><label for="a-url">LinkedIn or bio URL *</label><input id="a-url" type="url" name="Profile" placeholder="https://linkedin.com/in/..."></div>
+      <div class="field"><label for="a-cv">CV or r&eacute;sum&eacute; link *</label><input id="a-cv" type="url" name="CV Link" placeholder="https://  a Drive, Dropbox or personal-site link">
+        <p class="formnote" style="margin:4px 0 0;">Give us at least one of these two. Both is fine, either alone is fine. We do not take file uploads: they fail on mobile connections, so a link is the reliable route.</p></div>
 
       <!-- Governance Board only -->
       <div id="govOnly">
@@ -1018,13 +1020,13 @@
           <label>Independence under Articles &sect;&nbsp;5.5 *</label>
           <p class="formnote" style="margin:2px 0 6px;">In the preceding three years, have you been employed by, received fees from, or held an ownership or management role in: Custorian or an entity it controls, a certification body operating under the scheme, or a platform certified or seeking certification? This also covers a close family member or close personal relationship of yours.</p>
           <div style="display:flex; gap:22px;">
-            <span class="field check" style="margin:0;"><input id="ind-no" type="radio" name="Independent" value="No, none of these apply"><label for="ind-no">No, none of these apply</label></span>
+            <span class="field check" style="margin:0;"><input id="ind-no" data-req type="radio" name="Independent" value="No, none of these apply"><label for="ind-no">No, none of these apply</label></span>
             <span class="field check" style="margin:0;"><input id="ind-yes" type="radio" name="Independent" value="Yes, one or more applies"><label for="ind-yes">Yes, one or more applies</label></span>
           </div>
         </div>
-        <div class="field" id="indDetailField" hidden><label for="a-inddetail">Please describe it</label><textarea id="a-inddetail" name="Independence detail" placeholder="A relationship here does not automatically exclude you. Two of six seats must be independent; the rest need not be. We need it declared."></textarea></div>
+        <div class="field" id="indDetailField" hidden><label for="a-inddetail">Please describe it *</label><textarea id="a-inddetail" name="Independence detail" placeholder="A relationship here does not automatically exclude you. Two of six seats must be independent; the rest need not be. We need it declared."></textarea></div>
 
-        <div class="field check"><input id="a-time" type="checkbox" name="Time commitment" value="Yes"><label for="a-time">I can attend four to six virtual Board meetings a year, with materials read in advance, and file the declarations the Conflict of Interest Policy requires. *</label></div>
+        <div class="field check"><input id="a-time" data-req type="checkbox" name="Time commitment" value="Yes"><label for="a-time">I can attend four to six virtual Board meetings a year, with materials read in advance, and file the declarations the Conflict of Interest Policy requires. *</label></div>
       </div>
 
       <!-- Advisory Board only -->
@@ -1038,7 +1040,7 @@
           </select>
         </div>
         <div class="field">
-          <label>Any sub-committee you would want to sit on?</label>
+          <label>Any sub-committee you would want to sit on? *</label>
           <div class="checkbox-row" id="a-subcom">
             <span class="field check"><input id="sc1" type="checkbox" value="Standards and Technical"><label for="sc1">Standards and Technical</label></span>
             <span class="field check"><input id="sc2" type="checkbox" value="Certification and Impartiality"><label for="sc2">Certification and Impartiality</label></span>
@@ -1047,13 +1049,13 @@
           </div>
           <input type="hidden" id="a-subcom-val" name="Sub-committees">
         </div>
-        <div class="field"><label for="a-cred">Relevant qualifications, credentials or publications</label><input id="a-cred" type="text" name="Credentials" placeholder="Registration, professional body, notable work"></div>
-        <div class="field check"><input id="a-cap" type="checkbox" name="Capacity" value="Yes"><label for="a-cap">I can give roughly twenty hours a year on an ad hoc basis, each request scoped and time-boxed. *</label></div>
+        <div class="field"><label for="a-cred">Relevant qualifications, credentials or publications *</label><input id="a-cred" data-req type="text" name="Credentials" placeholder="Registration, professional body, notable work"></div>
+        <div class="field check"><input id="a-cap" data-req type="checkbox" name="Capacity" value="Yes"><label for="a-cap">I can give roughly twenty hours a year on an ad hoc basis, each request scoped and time-boxed. *</label></div>
       </div>
 
       <div class="field"><label for="a-msg">Where would you contribute? *</label><textarea id="a-msg" name="Message" required placeholder="Your background, and what you would bring that the body does not already have."></textarea></div>
-      <div class="field"><label for="a-ref">How did you hear about this?</label><input id="a-ref" type="text" name="Referral" placeholder="A person, an event, a search, an article"></div>
-      <div class="field"><label for="a-coi">Anything else we should know, including any conflict to declare</label><textarea id="a-coi" name="Conflicts" placeholder="Optional. Declared interests are recorded in the Conflicts Register, not held against you."></textarea></div>
+      <div class="field"><label for="a-ref">How did you hear about this? *</label><input id="a-ref" type="text" name="Referral" required placeholder="A person, an event, a search, an article"></div>
+      <div class="field"><label for="a-coi">Anything else we should know, including any conflict to declare *</label><textarea id="a-coi" name="Conflicts" required placeholder="Write None if there is nothing. Declared interests are recorded in the Conflicts Register, not held against you."></textarea></div>
 
       <div class="field check"><input id="a-consent" type="checkbox" name="Consent" value="Yes" required><label for="a-consent">I agree that Custorian may hold and process this information under GDPR to review this expression of interest and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</label></div>
 
@@ -1303,6 +1305,8 @@
 
     // Required-ness follows the visible branch: a hidden required field blocks
     // submit with a validation message the user cannot see.
+    // The two link fields are a pair: HTML required would demand both, so the
+    // pair is enforced in the submit handler and neither carries the attribute.
     function setRequired(scope, on) {
       if (!scope) return;
       scope.querySelectorAll('[data-req]').forEach(function (el) {
@@ -1318,6 +1322,10 @@
       advOnly.hidden  = isGov;
       setRequired(govOnly, isGov);
       setRequired(advOnly, !isGov);
+      var det = document.getElementById('a-inddetail');
+      if (det && !isGov) det.removeAttribute('required');
+      if (isGov && typeof indToggle === 'function') indToggle();
+      if (typeof window.__govRefresh === 'function') window.__govRefresh();
       subject.value = isGov ? 'Custorian Governance Board: Expression of Interest'
                             : 'Custorian Advisory Board: Expression of Interest';
       body.value    = isGov ? 'Governance Board' : 'Advisory Board';
@@ -1331,7 +1339,12 @@
     var indYes = document.getElementById('ind-yes');
     var indNo  = document.getElementById('ind-no');
     var indDet = document.getElementById('indDetailField');
-    function indToggle() { if (indDet) indDet.hidden = !(indYes && indYes.checked); }
+    function indToggle() {
+      var on = !!(indYes && indYes.checked);
+      if (indDet) indDet.hidden = !on;
+      var box = document.getElementById('a-inddetail');
+      if (box) { if (on) box.setAttribute('required',''); else box.removeAttribute('required'); }
+    }
     if (indYes) indYes.addEventListener('change', indToggle);
     if (indNo)  indNo.addEventListener('change', indToggle);
 
@@ -1352,22 +1365,30 @@
     syncGroup('a-subcom', 'a-subcom-val');
 
     if (form) {
-      form.addEventListener('submit', function (e) {
+      // Validity lives on the controls, not on a submit listener: the shared
+      // [data-form] handler POSTs the moment submit fires, so anything checked
+      // there would run too late to stop it.
+      function groupCheck(firstId, hiddenId, msg, live) {
+        var first = document.getElementById(firstId);
+        if (!first) return;
+        first.setCustomValidity(live && !document.getElementById(hiddenId).value ? msg : '');
+      }
+      function pairCheck() {
+        var u = document.getElementById('a-url'), c = document.getElementById('a-cv');
+        if (!u || !c) return;
+        u.setCustomValidity(u.value.trim() || c.value.trim() ? ''
+          : 'Add a LinkedIn or bio URL, or a CV link. Either one on its own is enough.');
+      }
+      function refresh() {
         var isGov = body.value === 'Governance Board';
-        var err = form.querySelector('[data-err]');
-        function fail(msg) {
-          e.preventDefault();
-          if (err) { err.textContent = msg; err.hidden = false; }
-        }
-        if (isGov) {
-          if (!document.getElementById('a-skills-val').value) return fail('Select at least one thing you bring.');
-          if (!document.querySelector('input[name="Independent"]:checked')) return fail('Please answer the independence question.');
-          if (!document.getElementById('a-time').checked) return fail('Please confirm the meeting and declaration commitment.');
-        } else {
-          if (!document.getElementById('a-cap').checked) return fail('Please confirm the time commitment.');
-        }
-        if (err) err.hidden = true;
-      });
+        groupCheck('sk1', 'a-skills-val', 'Select at least one thing you bring.', isGov);
+        groupCheck('sc1', 'a-subcom-val', 'Choose a sub-committee, or "None, roster only".', !isGov);
+        pairCheck();
+      }
+      form.addEventListener('input', refresh);
+      form.addEventListener('change', refresh);
+      window.__govRefresh = refresh;
+      refresh();
     }
 
     var checked = document.querySelector('input[name="gov-body-radio"]:checked');
@@ -1430,6 +1451,7 @@
         details: {
           country: val('Country'),
           referral: val('Referral'),
+          cv_link: val('CV Link'),
           conflicts: val('Conflicts'),
           consent: val('Consent'),
           board_experience: isGov ? val('Board experience') : null,
