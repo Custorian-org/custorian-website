@@ -975,7 +975,8 @@
       <div class="field"><label for="a-country">Country you are based in *</label><input id="a-country" type="text" name="Country" required placeholder="Geographic spread is a selection consideration"></div>
       <div class="field"><label for="a-url">LinkedIn or bio URL *</label><input id="a-url" type="url" name="Profile" placeholder="https://linkedin.com/in/..."></div>
       <div class="field"><label for="a-cv">CV or r&eacute;sum&eacute; link *</label><input id="a-cv" type="url" name="CV Link" placeholder="https://  a Drive, Dropbox or personal-site link">
-        <p class="formnote" style="margin:4px 0 0;">Give us at least one of these two. Both is fine, either alone is fine. We do not take file uploads: they fail on mobile connections, so a link is the reliable route.</p></div>
+        <span class="field check" style="margin:6px 0 0;"><input id="a-cv-same" type="checkbox" name="CV provided above" value="Yes"><label for="a-cv-same">Provided above. The link I gave is all I have.</label></span>
+        <p class="formnote" style="margin:4px 0 0;">One of these two is enough, not both. If your LinkedIn or bio page is the whole story, tick the box and carry on. We do not take file uploads: they fail on mobile connections, so a link is the reliable route.</p></div>
 
       <!-- Governance Board only -->
       <div id="govOnly">
@@ -1374,11 +1375,24 @@
         if (!first) return;
         first.setCustomValidity(live && !document.getElementById(hiddenId).value ? msg : '');
       }
+      // One link is enough. Ticking "provided above" says the first field is the
+      // whole answer, so the CV field is disabled, which takes it out of both
+      // validation and the submitted payload.
       function pairCheck() {
         var u = document.getElementById('a-url'), c = document.getElementById('a-cv');
+        var same = document.getElementById('a-cv-same');
         if (!u || !c) return;
-        u.setCustomValidity(u.value.trim() || c.value.trim() ? ''
-          : 'Add a LinkedIn or bio URL, or a CV link. Either one on its own is enough.');
+        if (same && same.checked) {
+          if (c.value) c.dataset.stash = c.value;   // so an accidental tick is not a retype
+          c.value = ''; c.disabled = true;
+          u.setCustomValidity(u.value.trim() ? ''
+            : 'Add your LinkedIn or bio URL above, or untick the box and give a CV link.');
+        } else {
+          c.disabled = false;
+          if (!c.value && c.dataset.stash) { c.value = c.dataset.stash; delete c.dataset.stash; }
+          u.setCustomValidity(u.value.trim() || c.value.trim() ? ''
+            : 'Add a LinkedIn or bio URL, or a CV link. Either one on its own is enough.');
+        }
       }
       function refresh() {
         var isGov = body.value === 'Governance Board';
@@ -1453,6 +1467,7 @@
           country: val('Country'),
           referral: val('Referral'),
           cv_link: val('CV Link'),
+          cv_provided_above: val('CV provided above'),
           conflicts: val('Conflicts'),
           consent: val('Consent'),
           board_experience: isGov ? val('Board experience') : null,
