@@ -958,29 +958,103 @@
       </div>
     </div>
 
-    <p id="govBoardIntro">The Governance Board is Custorian&rsquo;s primary governing body, holding ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Seats are filled by resolution of the sitting Board and presented to the general assembly for ratification (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1), for renewable two-year terms, unpaid, with four to six Board meetings a year, held virtually. At least two directors must be independent. Directors are expected to bring a strong professional network and help open doors to funding and partnerships. You cannot be employed by, or hold a financial interest in, a platform subject to the standard, or have any employment, contractual, or financial relationship with any Custorian arm, its commercial technology company, or a recognised Certification Body within the last 36 months.</p>
-    <p id="advisoryBoardIntro" hidden>The Advisory Board is a roster of ten to twelve named experts who provide ad hoc, per-task input on the standard, its ethical dimensions, and child-facing content, drawn from child rights, legal, technology &amp; security, academic, clinical, law enforcement, and youth backgrounds. There is no fixed meeting cadence: work happens as discrete review tasks, formalised through an individual MOU. It advises. It does not govern.</p>
+    <p id="govBoardIntro">The Governance Board is Custorian&rsquo;s primary governing body, holding ultimate fiduciary and safeguarding accountability across the association, without directing day-to-day operations. Six seats, all voting. Seats are filled by resolution of the sitting Board and presented to the general assembly for ratification (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1), for two-year terms, renewable. Service is unpaid, with four to six virtual Board meetings a year and materials read in advance. At least two directors must be independent under Articles &sect;&nbsp;5.5. Directors are expected to bring a strong professional network and to open doors to funding and partnerships.</p>
+    <p id="advisoryBoardIntro" hidden>The Advisory Board is a roster of named individual experts who give ad hoc, per-task input on the standard, its ethical dimensions and child-facing content, across child rights, legal, technology, academic, clinical, law enforcement, youth and survivor voice. Roughly twenty hours a year, each request scoped and time-boxed. No fixed meeting cadence and no quorum: work arrives as discrete review tasks, formalised through an individual MOU, for a two-year term renewable once. It advises. It does not govern, and its recommendations are non-binding. You would only ever be shown synthetic, de-identified or simulated material, never real abuse content.</p>
 
     <form action="https://api.web3forms.com/submit" method="POST" data-form>
       <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
       <input type="hidden" id="av-subject" name="subject" value="Custorian Governance Board: Expression of Interest">
       <input type="hidden" id="av-body" name="Body" value="Governance Board">
       <input type="hidden" name="from_name" value="Custorian Governance EOI">
+      <input type="hidden" name="ccemail" value="tanya@custorian.org">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
       <div class="field"><label for="a-name">Your name *</label><input id="a-name" type="text" name="Name" required placeholder="Full name"></div>
       <div class="field"><label for="a-email">Email *</label><input id="a-email" type="email" name="Email" required placeholder="you@example.org"></div>
       <div class="field"><label for="a-org">Organisation / affiliation</label><input id="a-org" type="text" name="Organisation" placeholder="Where you work or what you represent"></div>
-      <div class="field"><label for="a-seat" id="av-exp-label">Which seat interests you? *</label>
-        <select id="a-seat" name="Expertise" required>
-          <option value="">Select&hellip;</option>
-          <option>Chair</option><option>Vice Chair</option><option>Treasurer</option>
-          <option>Secretary</option><option>Legal Adviser</option>
-          <option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>
-        </select>
-      </div>
+      <div class="field"><label for="a-country">Country you are based in *</label><input id="a-country" type="text" name="Country" required placeholder="Geographic spread is a selection consideration"></div>
       <div class="field"><label for="a-url">LinkedIn / bio URL</label><input id="a-url" type="url" name="Profile" placeholder="https://"></div>
-      <div class="field"><label for="a-msg">Where would you contribute? *</label><textarea id="a-msg" name="Message" required placeholder="Your background and what you would bring to the standard."></textarea></div>
+
+      <!-- Governance Board only -->
+      <div id="govOnly">
+        <div class="field"><label for="a-seat" id="av-exp-label">Which seat interests you? *</label>
+          <select id="a-seat" data-req name="Expertise">
+            <option value="">Select&hellip;</option>
+            <option>Chair</option><option>Vice Chair</option><option>Treasurer</option>
+            <option>Secretary</option><option>Legal Adviser</option>
+            <option>Child Digital Safety &amp; Wellbeing</option><option>Not sure which seat</option>
+          </select>
+        </div>
+
+        <div class="field"><label for="a-boardexp">Board experience *</label>
+          <select id="a-boardexp" data-req name="Board experience">
+            <option value="">Select&hellip;</option>
+            <option>No previous board service</option>
+            <option>Non-profit or association board</option>
+            <option>Company board</option>
+            <option>Both non-profit and company boards</option>
+            <option>Regulator, public body or supervisory board</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Which of these do you bring? *</label>
+          <div class="checkbox-row" id="a-skills">
+            <span class="field check"><input id="sk1" type="checkbox" value="Governance and risk"><label for="sk1">Governance and risk</label></span>
+            <span class="field check"><input id="sk2" type="checkbox" value="Finance, audit and grant compliance"><label for="sk2">Finance, audit and grant compliance</label></span>
+            <span class="field check"><input id="sk3" type="checkbox" value="Law and regulation"><label for="sk3">Law and regulation</label></span>
+            <span class="field check"><input id="sk4" type="checkbox" value="Child safety and child rights"><label for="sk4">Child safety and child rights</label></span>
+            <span class="field check"><input id="sk5" type="checkbox" value="Technology and security"><label for="sk5">Technology and security</label></span>
+            <span class="field check"><input id="sk6" type="checkbox" value="Standards, accreditation and certification"><label for="sk6">Standards, accreditation and certification</label></span>
+            <span class="field check"><input id="sk7" type="checkbox" value="Fundraising and partnerships"><label for="sk7">Fundraising and partnerships</label></span>
+            <span class="field check"><input id="sk8" type="checkbox" value="Public policy and advocacy"><label for="sk8">Public policy and advocacy</label></span>
+          </div>
+          <input type="hidden" id="a-skills-val" name="Skills">
+        </div>
+
+        <div class="field"><label for="a-doors">Which doors could you open? *</label><textarea id="a-doors" data-req name="Network" placeholder="The recruitment profile explicitly looks for people who can unblock funding, a partnership or a regulatory conversation with a single call. Be concrete."></textarea></div>
+
+        <div class="field">
+          <label>Independence under Articles &sect;&nbsp;5.5 *</label>
+          <p class="formnote" style="margin:2px 0 6px;">In the preceding three years, have you been employed by, received fees from, or held an ownership or management role in: Custorian or an entity it controls, a certification body operating under the scheme, or a platform certified or seeking certification? This also covers a close family member or close personal relationship of yours.</p>
+          <div style="display:flex; gap:22px;">
+            <span class="field check" style="margin:0;"><input id="ind-no" type="radio" name="Independent" value="No, none of these apply"><label for="ind-no">No, none of these apply</label></span>
+            <span class="field check" style="margin:0;"><input id="ind-yes" type="radio" name="Independent" value="Yes, one or more applies"><label for="ind-yes">Yes, one or more applies</label></span>
+          </div>
+        </div>
+        <div class="field" id="indDetailField" hidden><label for="a-inddetail">Please describe it</label><textarea id="a-inddetail" name="Independence detail" placeholder="A relationship here does not automatically exclude you. Two of six seats must be independent; the rest need not be. We need it declared."></textarea></div>
+
+        <div class="field check"><input id="a-time" type="checkbox" name="Time commitment" value="Yes"><label for="a-time">I can attend four to six virtual Board meetings a year, with materials read in advance, and file the declarations the Conflict of Interest Policy requires. *</label></div>
+      </div>
+
+      <!-- Advisory Board only -->
+      <div id="advOnly" hidden>
+        <div class="field"><label for="a-domain">Which domain would you sit in? *</label>
+          <select id="a-domain" data-req name="Domain">
+            <option value="">Select&hellip;</option>
+            <option>Child rights</option><option>Legal</option><option>Technology and security</option>
+            <option>Academic and research</option><option>Clinical</option><option>Law enforcement</option>
+            <option>Youth</option><option>Survivor voice</option><option>Not sure which domain</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Any sub-committee you would want to sit on?</label>
+          <div class="checkbox-row" id="a-subcom">
+            <span class="field check"><input id="sc1" type="checkbox" value="Standards and Technical"><label for="sc1">Standards and Technical</label></span>
+            <span class="field check"><input id="sc2" type="checkbox" value="Certification and Impartiality"><label for="sc2">Certification and Impartiality</label></span>
+            <span class="field check"><input id="sc3" type="checkbox" value="Policy and Rights"><label for="sc3">Policy and Rights</label></span>
+            <span class="field check"><input id="sc4" type="checkbox" value="None, roster only"><label for="sc4">None, roster only</label></span>
+          </div>
+          <input type="hidden" id="a-subcom-val" name="Sub-committees">
+        </div>
+        <div class="field"><label for="a-cred">Relevant qualifications, credentials or publications</label><input id="a-cred" type="text" name="Credentials" placeholder="Registration, professional body, notable work"></div>
+        <div class="field check"><input id="a-cap" type="checkbox" name="Capacity" value="Yes"><label for="a-cap">I can give roughly twenty hours a year on an ad hoc basis, each request scoped and time-boxed. *</label></div>
+      </div>
+
+      <div class="field"><label for="a-msg">Where would you contribute? *</label><textarea id="a-msg" name="Message" required placeholder="Your background, and what you would bring that the body does not already have."></textarea></div>
+      <div class="field"><label for="a-ref">How did you hear about this?</label><input id="a-ref" type="text" name="Referral" placeholder="A person, an event, a search, an article"></div>
+      <div class="field"><label for="a-coi">Anything else we should know, including any conflict to declare</label><textarea id="a-coi" name="Conflicts" placeholder="Optional. Declared interests are recorded in the Conflicts Register, not held against you."></textarea></div>
+
       <div class="field check"><input id="a-consent" type="checkbox" name="Consent" value="Yes" required><label for="a-consent">I agree that Custorian may hold and process this information under GDPR to review this expression of interest and follow up with me about it. It is never sold or shared with third parties, and is deleted if not taken forward. Full terms and our data protection policy are available on request from <a href="mailto:info@custorian.org">info@custorian.org</a>.</label></div>
 
       <button type="submit" class="btn">Express interest</button>
@@ -1221,25 +1295,18 @@
 
     var govIntro = document.getElementById('govBoardIntro');
     var advIntro = document.getElementById('advisoryBoardIntro');
+    var govOnly  = document.getElementById('govOnly');
+    var advOnly  = document.getElementById('advOnly');
     var subject  = document.getElementById('av-subject');
     var body     = document.getElementById('av-body');
-    var label    = document.getElementById('av-exp-label');
-    var sel      = document.getElementById('a-seat');
+    var form     = document.querySelector('#advisoryModal form');
 
-    var SEATS = ['Chair', 'Vice Chair', 'Treasurer', 'Secretary', 'Legal Adviser',
-                 'Child Digital Safety & Wellbeing', 'Not sure which seat'];
-    var AREAS = ['Child rights', 'Legal', 'Technology & security', 'Academic',
-                 'Clinical', 'Law enforcement', 'Youth', 'Other'];
-
-    function fill(list) {
-      sel.innerHTML = '';
-      var first = document.createElement('option');
-      first.value = ''; first.textContent = 'Select…';
-      sel.appendChild(first);
-      list.forEach(function (v) {
-        var o = document.createElement('option');
-        o.textContent = v;
-        sel.appendChild(o);
+    // Required-ness follows the visible branch: a hidden required field blocks
+    // submit with a validation message the user cannot see.
+    function setRequired(scope, on) {
+      if (!scope) return;
+      scope.querySelectorAll('[data-req]').forEach(function (el) {
+        if (on) el.setAttribute('required', ''); else el.removeAttribute('required');
       });
     }
 
@@ -1247,19 +1314,150 @@
       var isGov = kind === 'governance';
       govIntro.hidden = !isGov;
       advIntro.hidden = isGov;
+      govOnly.hidden  = !isGov;
+      advOnly.hidden  = isGov;
+      setRequired(govOnly, isGov);
+      setRequired(advOnly, !isGov);
       subject.value = isGov ? 'Custorian Governance Board: Expression of Interest'
                             : 'Custorian Advisory Board: Expression of Interest';
       body.value    = isGov ? 'Governance Board' : 'Advisory Board';
-      label.textContent = isGov ? 'Which seat interests you? *' : 'Area of expertise *';
-      fill(isGov ? SEATS : AREAS);
     }
 
     [].forEach.call(radios, function (r) {
       r.addEventListener('change', function () { if (r.checked) apply(r.value); });
     });
 
+    // Declaring a relationship opens the box that asks what it is.
+    var indYes = document.getElementById('ind-yes');
+    var indNo  = document.getElementById('ind-no');
+    var indDet = document.getElementById('indDetailField');
+    function indToggle() { if (indDet) indDet.hidden = !(indYes && indYes.checked); }
+    if (indYes) indYes.addEventListener('change', indToggle);
+    if (indNo)  indNo.addEventListener('change', indToggle);
+
+    // Checkbox groups travel as one comma-joined hidden field, synced on every
+    // change rather than at submit, so a mirror listener cannot read them early.
+    function syncGroup(groupId, hiddenId) {
+      var group = document.getElementById(groupId);
+      var out   = document.getElementById(hiddenId);
+      if (!group || !out) return;
+      function sync() {
+        out.value = [].slice.call(group.querySelectorAll('input:checked'))
+                      .map(function (i) { return i.value; }).join(', ');
+      }
+      group.addEventListener('change', sync);
+      sync();
+    }
+    syncGroup('a-skills', 'a-skills-val');
+    syncGroup('a-subcom', 'a-subcom-val');
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        var isGov = body.value === 'Governance Board';
+        var err = form.querySelector('[data-err]');
+        function fail(msg) {
+          e.preventDefault();
+          if (err) { err.textContent = msg; err.hidden = false; }
+        }
+        if (isGov) {
+          if (!document.getElementById('a-skills-val').value) return fail('Select at least one thing you bring.');
+          if (!document.querySelector('input[name="Independent"]:checked')) return fail('Please answer the independence question.');
+          if (!document.getElementById('a-time').checked) return fail('Please confirm the meeting and declaration commitment.');
+        } else {
+          if (!document.getElementById('a-cap').checked) return fail('Please confirm the time commitment.');
+        }
+        if (err) err.hidden = true;
+      });
+    }
+
     var checked = document.querySelector('input[name="gov-body-radio"]:checked');
     apply(checked ? checked.value : 'governance');
+  })();
+
+  /* Governance form deep links. #governance opens it on the Board, #advisory on
+     the Advisory Board, so an invitation email can link straight to the form
+     rather than telling someone to hunt for a button. */
+  (function () {
+    function openGov(kind) {
+      var r = document.getElementById(kind === 'advisory' ? 'gov-body-adv' : 'gov-body-gov');
+      if (r) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); }
+      if (typeof window.__openModal === 'function') window.__openModal('advisoryModal');
+    }
+    function fromHash() {
+      var h = location.hash;
+      if (h === '#governance' || h === '#board') openGov('governance');
+      else if (h === '#advisory-interest' || h === '#join-advisory') openGov('advisory');
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href$="#governance"], a[href$="#advisory-interest"]') : null;
+      if (!a) return;
+      e.preventDefault();
+      openGov(a.getAttribute('href').indexOf('advisory') > -1 ? 'advisory' : 'governance');
+    });
+  })();
+
+  /* Supabase mirror for the governance form. The Web3Forms email is the primary
+     record; this keeps a queryable copy. Anon key is public by design, RLS
+     allows INSERT only. The review form's mirror moved to how-it-works.html with
+     the review dialog, which left this form writing nowhere. */
+  (function () {
+    var form = document.querySelector('#advisoryModal form');
+    if (!form) return;
+    var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+    function val(name) {
+      var els = form.querySelectorAll('[name="' + name + '"]');
+      if (!els.length) return null;
+      if (els[0].type === 'radio' || els[0].type === 'checkbox') {
+        var c = form.querySelector('[name="' + name + '"]:checked');
+        return c ? c.value : null;
+      }
+      return els[0].value || null;
+    }
+    form.addEventListener('submit', function () {
+      var isGov = (val('Body') || '') === 'Governance Board';
+      var row = {
+        body: val('Body') || 'Governance Board',
+        name: val('Name'),
+        email: val('Email'),
+        organisation: val('Organisation'),
+        expertise: isGov ? val('Expertise') : val('Domain'),
+        profile_url: val('Profile'),
+        message: val('Message'),
+        source: 'org_website',
+        details: {
+          country: val('Country'),
+          referral: val('Referral'),
+          conflicts: val('Conflicts'),
+          consent: val('Consent'),
+          board_experience: isGov ? val('Board experience') : null,
+          skills: isGov ? (val('Skills') || '').split(', ').filter(Boolean) : null,
+          network: isGov ? val('Network') : null,
+          independent: isGov ? val('Independent') : null,
+          independence_detail: isGov ? val('Independence detail') : null,
+          time_commitment: isGov ? val('Time commitment') : null,
+          sub_committees: !isGov ? (val('Sub-committees') || '').split(', ').filter(Boolean) : null,
+          credentials: !isGov ? val('Credentials') : null,
+          capacity: !isGov ? val('Capacity') : null,
+          submitted_at: new Date().toISOString()
+        }
+      };
+      try {
+        fetch(SB_URL + '/rest/v1/governance_applications', {
+          method: 'POST',
+          headers: {
+            'apikey': SB_KEY,
+            'Authorization': 'Bearer ' + SB_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(row),
+          keepalive: true
+        }).catch(function () {});
+      } catch (e) {}
+    }, true);
   })();
 
   /* Back button: browser history, falling back to home when there is none. */
