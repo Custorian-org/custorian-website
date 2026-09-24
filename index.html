@@ -1325,10 +1325,11 @@
       var det = document.getElementById('a-inddetail');
       if (det && !isGov) det.removeAttribute('required');
       if (isGov && typeof indToggle === 'function') indToggle();
-      if (typeof window.__govRefresh === 'function') window.__govRefresh();
       subject.value = isGov ? 'Custorian Governance Board: Expression of Interest'
                             : 'Custorian Advisory Board: Expression of Interest';
       body.value    = isGov ? 'Governance Board' : 'Advisory Board';
+      // after body.value, which is what refresh() reads to tell the branches apart
+      if (typeof window.__govRefresh === 'function') window.__govRefresh();
     }
 
     [].forEach.call(radios, function (r) {
