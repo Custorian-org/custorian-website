@@ -1319,9 +1319,14 @@
     function apply(kind) {
       var isGov = kind === 'governance';
       govIntro.hidden = !isGov;
-      // Only the Board brief exists as a PDF so far; the link hides on Advisory.
-      var overview = document.getElementById('govRoleOverview');
-      if (overview) overview.hidden = !isGov;
+      // The role overview PDF follows the branch.
+      var overview = document.querySelector('#govRoleOverview a');
+      if (overview) {
+        overview.href = isGov ? 'custorian-governance-board-role-overview.pdf'
+                              : 'custorian-advisory-board-role-overview.pdf';
+        overview.download = isGov ? 'Custorian-Governance-Board-Role-Overview.pdf'
+                                  : 'Custorian-Advisory-Board-Role-Overview.pdf';
+      }
       advIntro.hidden = isGov;
       govOnly.hidden  = !isGov;
       advOnly.hidden  = isGov;
