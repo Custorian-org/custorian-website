@@ -949,6 +949,7 @@
   <div class="dialog">
     <button type="button" class="close" data-close aria-label="Close">&#10005;</button>
     <h2 id="advisoryTitle">Get involved in governance.</h2>
+    <p id="govRoleOverview" style="margin:-6px 0 14px;"><a href="custorian-governance-board-role-overview.pdf" download="Custorian-Governance-Board-Role-Overview.pdf">Download the role overview (PDF)</a></p>
 
     <div class="field">
       <label id="gov-body-label">Which body interests you? *</label>
@@ -1318,6 +1319,9 @@
     function apply(kind) {
       var isGov = kind === 'governance';
       govIntro.hidden = !isGov;
+      // Only the Board brief exists as a PDF so far; the link hides on Advisory.
+      var overview = document.getElementById('govRoleOverview');
+      if (overview) overview.hidden = !isGov;
       advIntro.hidden = isGov;
       govOnly.hidden  = !isGov;
       advOnly.hidden  = isGov;
