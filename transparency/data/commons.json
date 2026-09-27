@@ -1,0 +1,26 @@
+{
+  "updated": null,
+  "_note": "Every amount is null until a booked figure is entered. null renders as 'To be confirmed', never as zero. See README.md.",
+  "currency": "EUR",
+  "period": "Financial year 2026",
+  "income_by_source": [
+    { "source": "Membership fees", "amount": null },
+    { "source": "Individual donations (public collection permit)", "amount": null },
+    { "source": "Grants and foundations", "amount": null },
+    { "source": "Other income", "amount": null }
+  ],
+  "spend_by_category": [
+    { "category": "Drafting and revising the control set", "amount": null },
+    { "category": "Verifying legal citations against primary sources", "amount": null },
+    { "category": "Public consultation and youth panel", "amount": null },
+    { "category": "Publishing results openly", "amount": null },
+    { "category": "Operating costs", "amount": null }
+  ],
+  "received": [],
+  "members": [
+    { "category": "Individual", "fee": 10, "count": null },
+    { "category": "Trust & Safety Expert", "fee": 50, "count": null },
+    { "category": "Organisation", "fee": 100, "count": null },
+    { "category": "For-profit Organisation", "fee": 500, "count": null }
+  ]
+}

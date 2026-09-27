@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Member dashboard | Custorian</title>
+<meta name="description" content="Sign in to see your Foreningen Custorian membership, dues, general assembly votes and member documents.">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../foundation.css?v=9be3b889">
+<link rel="stylesheet" href="../sidetabs.css?v=cf5c5290">
+<link rel="stylesheet" href="transparency.css">
+</head>
+<body>
+<!-- Unpublished: the transparency section lives on the transparency-hub branch, is noindex,
+     is disallowed in robots.txt and is not linked from any page outside transparency/.
+     It goes live when the branch is merged to main. -->
+<div class="hub-strip"><b>Preview.</b> This section is not yet public. Content and figures are being finalised.</div>
+
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <button type="button" class="navbtn" id="backBtn" title="Back to the previous page" aria-label="Back to the previous page">&larr;</button>
+      <a class="navbtn" href="../index.html" title="Home">Home</a>
+      <a class="brand" href="../index.html"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Custorian"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg> Custorian</a>
+    </span>
+  </div>
+</div>
+
+<nav class="sidetabs" aria-label="Sections">
+  <a class="sidetab solid" href="../index.html#take-action">Take action</a>
+  <a class="sidetab" href="../index.html#about">About</a>
+  <a class="sidetab" href="../how-it-works.html">How it works</a>
+  <a class="sidetab" href="../registry.html">Register</a>
+  <a class="sidetab" href="../membership.html">Membership</a>
+  <a class="sidetab" href="../governance.html">Governance</a>
+  <a class="sidetab" href="index.html" aria-current="page">In the open</a>
+</nav>
+
+<div class="herowrap">
+  <div class="hero">
+    <div class="eyebrow">Members</div>
+    <h1>Your <em>membership</em>, in one place.</h1>
+    <p class="lede">Your category and status, dues, general assembly votes and the documents members receive. Sign in with the email address your membership is registered to.</p>
+    
+  </div>
+</div>
+
+<div class="hubnav-wrap"><nav class="hubnav" aria-label="Transparency">
+    <a href="index.html">Overview</a>
+    <a href="register.html">Certification Registry</a>
+    <a href="commons.html">Funding Commons</a>
+    <a href="esp-index.html">ESP Accountability Index</a>
+    <a href="members.html" aria-current="page">Members</a>
+</nav></div>
+
+<div class="shell">
+  <div class="layout">
+    <aside class="rail">
+      <ol>
+        <li><a href="#account">Your membership</a></li>
+        <li><a href="#votes">Votes and assemblies</a></li>
+        <li><a href="#docs">Member documents</a></li>
+      </ol>
+    </aside>
+    <main class="main">
+
+  <div class="empty" id="notConfigured" hidden>
+    <div class="big">Member sign-in is not switched on yet</div>
+    <p>The member dashboard opens with the rest of this section. Questions about your membership in the meantime: <a class="inline" href="mailto:info@custorian.org?subject=Membership">info@custorian.org</a>.</p>
+  </div>
+
+  <section id="signin" hidden>
+    <h2>Sign in</h2>
+    <p class="intro">We email you a one-time sign-in link. No password.</p>
+    <form class="authcard" id="signinForm" novalidate>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit" id="sendBtn">Email me a sign-in link</button>
+      <p class="msg" id="signinMsg" hidden></p>
+      <p class="note" style="margin-top:16px">Only registered members can sign in. Not a member yet? <a class="inline" href="../membership.html">See membership</a>.</p>
+    </form>
+  </section>
+
+  <div id="dash" hidden>
+    <section id="account">
+      <span class="sectnum">01</span>
+      <h2>Your membership</h2>
+      <p class="intro" id="hello"></p>
+      <div class="kv" id="kv"></div>
+      <div class="empty" id="noRecord" hidden>
+        <div class="big">No membership record</div>
+        <p>You are signed in, but no membership is linked to this email address. If you think that is wrong, write to <a class="inline" href="mailto:info@custorian.org?subject=Member%20dashboard">info@custorian.org</a>.</p>
+      </div>
+      <div class="btnrow"><button class="btn ghost" type="button" id="signOut">Sign out</button></div>
+    </section>
+
+    <section id="votes">
+      <span class="sectnum">02</span>
+      <h2>Votes and assemblies</h2>
+      <div class="tablewrap"><table class="data">
+        <thead><tr><th>Item</th><th>Meeting</th><th>Date</th><th>Status</th><th>Result</th></tr></thead>
+        <tbody id="voteRows"></tbody>
+      </table></div>
+    </section>
+
+    <section id="docs">
+      <span class="sectnum">03</span>
+      <h2>Member documents</h2>
+      <ul class="doclist" id="docList"></ul>
+    </section>
+  </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="shell">
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+    <nav>
+      <a href="index.html">In the open</a>
+      <a href="../registry.html">About the register</a>
+      <a href="../governance.html">Governance</a>
+      <a href="../privacy-policy.html">Privacy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="mailto:info@custorian.org">Contact</a>
+    </nav>
+  </footer>
+</div>
+
+<script src="../sidetabs.js?v=d11ba512"></script>
+<script src="../sectionnav.js?v=d5b93581"></script>
+<script src="common.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="members.js"></script>
+</body>
+</html>
