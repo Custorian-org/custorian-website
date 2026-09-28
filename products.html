@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custorian products: Index, Map, Matchmaker</title>
+<meta name="description" content="Three public products on one platform: an Intermediary Accountability Index, an Ecosystem Map and a Funding Matchmaker, sharing one entity registry, one evidence store and one set of governance rules.">
+<!-- Draft, 28 Sep 2026. Unlinked and noindex until Tanya signs it off for launch.
+     To go live: remove the robots meta below and the Disallow line in robots.txt,
+     then link it from the top bar or the side rail. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://custorian.org/products.html">
+<meta property="og:title" content="Custorian products: Index, Map, Matchmaker">
+<meta property="og:description" content="An Intermediary Accountability Index, an Ecosystem Map and a Funding Matchmaker, built as one platform with three front doors.">
+<meta property="og:image" content="https://custorian.org/og-image.png">
+<meta property="og:url" content="https://custorian.org/products.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Custorian">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="foundation.css?v=9be3b889">
+<link rel="stylesheet" href="sidetabs.css?v=bff27e6c">
+<style>
+  body {
+    background:var(--paper); color:var(--body);
+    font-family:var(--sans); font-size:16.5px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .topbar { border-bottom:1px solid var(--hair); background:var(--paper); position:sticky; top:0; z-index:60; }
+  .shell { max-width:1180px; margin:0 auto; padding:0 32px 84px; }
+
+  /* HERO */
+  .herowrap { background:#000; color:#fff; }
+  .hero { max-width:1180px; margin:0 auto; padding:104px 32px 96px; text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .hero .eyebrow { color:rgba(255,255,255,.45); letter-spacing:.42em; }
+  .hero h1 { font-family:var(--sans); font-weight:800; text-transform:uppercase; font-size:clamp(38px,7.2vw,108px); line-height:.94; letter-spacing:-.03em; color:#fff; max-width:15ch; margin-bottom:30px; }
+  .hero h1 em { font-style:normal; color:var(--violet-l); }
+  .hero .lede { font-size:clamp(17px,1.8vw,20px); line-height:1.6; max-width:60ch; font-weight:400; color:rgba(255,255,255,.78); }
+  .hero .lede b { font-weight:600; color:#fff; }
+  .hero .meta { font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:30px; }
+  .hero .draft { display:inline-block; margin-top:14px; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--violet-l); border:1px solid rgba(155,124,255,.45); border-radius:100px; padding:4px 12px; }
+
+  /* SECTIONS */
+  section { padding:52px 0; border-top:1px solid var(--hair); scroll-margin-top:80px; }
+  h2 { font-family:var(--sans); font-weight:650; font-size:clamp(28px,3.2vw,36px); line-height:1.16; letter-spacing:-.032em; color:var(--ink); margin-bottom:14px; }
+  h3 { font-family:var(--sans); font-weight:600; font-size:17px; letter-spacing:-.01em; margin:38px 0 10px; }
+  h4 { font-family:var(--sans); font-weight:600; font-size:14.5px; color:var(--ink); margin:26px 0 6px; }
+  p { margin-bottom:18px; max-width:72ch; }
+  .intro { font-size:19px; line-height:1.6; font-weight:400; margin-bottom:26px; max-width:64ch; color:var(--ink); letter-spacing:-.011em; }
+  .note { font-size:14.5px; color:var(--muted); line-height:1.6; max-width:76ch; }
+  ul.plain, ol.plain { margin:0 0 20px 20px; max-width:72ch; }
+  ul.plain li, ol.plain li { margin-bottom:10px; }
+  a { color:var(--violet); }
+
+  .callout { background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet); padding:22px 26px; margin:28px 0; font-size:16px; line-height:1.6; max-width:76ch; }
+  .callout p:last-child { margin-bottom:0; }
+
+  /* TABLES: stack into labelled cards on a phone (labels filled in by the script at the end) */
+  .tbl { width:100%; border-collapse:collapse; margin:22px 0 26px; font-size:15px; }
+  .tbl th { font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); text-align:left; padding:0 14px 10px 0; border-bottom:1px solid var(--line); vertical-align:bottom; }
+  .tbl td { padding:13px 14px 13px 0; border-bottom:1px solid var(--hair); vertical-align:top; line-height:1.5; }
+  .tbl td:first-child { font-weight:600; color:var(--ink); }
+  .tbl tr.gate td { background:rgba(91,65,194,.05); }
+  .tbl tr.gate td:first-child { color:var(--violet); }
+
+  /* THREE PRODUCT CARDS */
+  .trio { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:26px 0 10px; }
+  .trio a { background:var(--card); padding:26px 22px; text-decoration:none; color:var(--body); display:block; transition:background .18s ease; }
+  .trio a:hover, .trio a:focus-visible { background:rgba(91,65,194,.05); outline:none; }
+  .trio .k { font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--violet-l); display:block; margin-bottom:10px; }
+  .trio .t { font-weight:650; font-size:19px; letter-spacing:-.02em; color:var(--ink); display:block; margin-bottom:8px; }
+  .trio .d { font-size:14.5px; line-height:1.55; color:var(--muted); display:block; }
+
+  /* RULE LIST */
+  ol.rules { list-style:none; counter-reset:r; margin:22px 0 0; max-width:76ch; }
+  ol.rules li { counter-increment:r; position:relative; padding:18px 0 18px 52px; border-top:1px solid var(--hair); }
+  ol.rules li:last-child { border-bottom:1px solid var(--hair); }
+  ol.rules li::before { content:counter(r,decimal-leading-zero); position:absolute; left:0; top:20px; font-family:var(--mono); font-size:11px; color:var(--violet-l); }
+  ol.rules strong { display:block; font-size:15px; margin-bottom:3px; }
+
+  /* SPECIMENS: the shared components drawn once, so the words have a picture */
+  .specimens { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:24px 0 8px; }
+  .spec { background:var(--card); border:1px solid var(--line); border-radius:3px; padding:20px 20px 18px; }
+  .spec .cap { font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; display:block; }
+  .spec .sub { font-size:13px; color:var(--muted); line-height:1.5; margin:12px 0 0; }
+
+  .bands { display:grid; gap:9px; }
+  .band-row { display:grid; grid-template-columns:128px 1fr 34px; align-items:center; gap:10px; font-size:13px; }
+  .band-row .nm { color:var(--ink); }
+  .band-row .trk { height:10px; background:var(--hair); border-radius:2px; overflow:hidden; }
+  .band-row .bar { display:block; height:100%; width:calc(var(--v) / 25 * 100%); background:#8C8E9B; }
+  .band-row .val { font-family:var(--mono); font-size:12.5px; text-align:right; color:var(--ink); }
+  .band-row.gap .trk { background:none; border:1px dashed var(--muted); }
+  .band-row.gap .val { color:var(--muted); font-size:11px; }
+
+  .badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; border-radius:100px; padding:3px 10px; border:1px solid var(--line); color:var(--muted); background:var(--paper); white-space:nowrap; }
+  .badge::before { content:""; width:7px; height:7px; border-radius:50%; border:1.5px solid currentColor; }
+  .badge.rev { color:var(--violet); border-color:rgba(91,65,194,.35); }
+  .badge.rev::before { background:rgba(91,65,194,.35); }
+  .badge.ver { color:#fff; background:var(--violet); border-color:var(--violet); }
+  .badge.ver::before { background:#fff; border-color:#fff; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; }
+
+  .chipcard { border:1px solid var(--line); border-radius:3px; padding:12px 14px; background:var(--paper); font-size:13px; line-height:1.5; }
+  .chipcard .src { font-weight:600; color:var(--ink); display:block; margin-bottom:2px; }
+  .chipcard .row { display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center; color:var(--muted); margin-top:8px; font-family:var(--mono); font-size:11px; }
+
+  .gapbox { border:1.5px dashed var(--muted); border-radius:3px; padding:14px 16px; font-size:13.5px; color:var(--muted); line-height:1.5; }
+  .gapbox b { color:var(--ink); font-weight:600; display:block; margin-bottom:2px; }
+
+  .timeline { list-style:none; border-left:1px solid var(--line); margin-left:6px; }
+  .timeline li { position:relative; padding:0 0 14px 18px; font-size:13px; line-height:1.5; }
+  .timeline li::before { content:""; position:absolute; left:-4.5px; top:6px; width:8px; height:8px; border-radius:50%; background:var(--paper); border:1.5px solid var(--violet); }
+  .timeline .d { font-family:var(--mono); font-size:11px; color:var(--muted); display:block; }
+
+  .match .h { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:10px; }
+  .match .nm { font-weight:650; color:var(--ink); font-size:15px; }
+  .match .rk { font-family:var(--mono); font-size:10.5px; color:var(--muted); }
+  .match .grp { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:10px 0 5px; display:block; }
+  .match ul { list-style:none; font-size:13px; line-height:1.45; }
+  .match li { padding:3px 0 3px 18px; position:relative; }
+  .match li::before { position:absolute; left:0; font-family:var(--mono); font-size:12px; }
+  .match .yes li::before { content:"+"; color:var(--violet); }
+  .match .no li::before { content:"\2212"; color:var(--muted); }
+  .match .unk li::before { content:"?"; color:var(--muted); }
+
+  .legend { display:grid; gap:10px; font-size:13px; }
+  .legend .ln { display:grid; grid-template-columns:64px 1fr; align-items:center; gap:12px; }
+  .legend svg { width:64px; height:10px; display:block; }
+
+  /* INFRASTRUCTURE LANES (illustrative, placeholder chips) */
+  .lanes { margin:24px 0 10px; border:1px solid var(--line); background:var(--card); border-radius:3px; }
+  .lane { display:grid; grid-template-columns:170px 1fr 120px; align-items:center; gap:14px; padding:14px 18px; border-top:1px solid var(--hair); }
+  .lane:first-child { border-top:none; }
+  .lane .ln { font-weight:600; font-size:13.5px; color:var(--ink); }
+  .lane .ln small { display:block; font-family:var(--mono); font-size:10px; font-weight:400; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-top:2px; }
+  .lane .cs { display:flex; flex-wrap:wrap; gap:6px; }
+  .lane .c { font-size:12px; border:1px solid var(--line); background:var(--paper); border-radius:100px; padding:3px 10px; color:var(--body); }
+  .lane .c.w2 { padding:5px 16px; font-weight:600; }
+  .lane .c.w3 { padding:7px 22px; font-weight:600; border-color:rgba(91,65,194,.4); color:var(--violet); }
+  .lane .cov { font-family:var(--mono); font-size:11px; color:var(--muted); text-align:right; }
+  .lanes .foot { padding:10px 18px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:.06em; }
+
+  /* PHASE STRIP */
+  .phases { display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin:26px 0 6px; font-size:12px; }
+  .phases .mh { font-family:var(--mono); font-size:10px; color:var(--muted); text-align:center; padding-bottom:6px; }
+  .phases .p { background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet-l); padding:6px 8px; line-height:1.3; color:var(--ink); border-radius:2px; }
+  .phases .p.g { background:var(--violet); border-color:var(--violet); color:#fff; font-weight:600; text-align:center; }
+  .phases .p.s { border-left-style:dashed; color:var(--muted); }
+
+  /* DECISIONS */
+  .decisions { list-style:none; counter-reset:dq; margin:22px 0 0; }
+  .decisions li { counter-increment:dq; border-top:1px solid var(--hair); padding:22px 0 22px 52px; position:relative; max-width:80ch; }
+  .decisions li:last-child { border-bottom:1px solid var(--hair); }
+  .decisions li::before { content:counter(dq,decimal-leading-zero); position:absolute; left:0; top:24px; font-family:var(--mono); font-size:11px; color:var(--violet-l); }
+  .decisions .q { font-weight:650; color:var(--ink); font-size:16.5px; display:block; margin-bottom:8px; letter-spacing:-.01em; }
+  .decisions .rec { display:block; margin-bottom:6px; }
+  .decisions .rec::before { content:"Recommendation"; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--violet); display:block; margin-bottom:3px; }
+  .decisions .alt { font-size:14.5px; color:var(--muted); display:block; }
+
+  footer { border-top:1px solid var(--line); margin-top:36px; padding:44px 0 0; font-family:var(--sans); font-size:13.5px; color:var(--muted); }
+
+  :focus-visible { outline:2px solid var(--violet); outline-offset:2px; }
+
+  @media (max-width:900px) {
+    .shell { padding:0 16px 60px; }
+    .topbar .inner { padding:12px 16px; }
+    .hero { padding:64px 16px 56px; }
+    .trio { grid-template-columns:1fr; }
+    .specimens { grid-template-columns:1fr; }
+    .lane { grid-template-columns:1fr; gap:8px; }
+    .lane .cov { text-align:left; }
+    .phases { grid-template-columns:1fr; }
+    .phases .mh { display:none; }
+    .phases .p { grid-column:1 / -1 !important; grid-row:auto !important; }
+  }
+  @media (max-width:700px) {
+    .tbl thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .tbl, .tbl tbody, .tbl tr, .tbl td { display:block; width:100%; }
+    .tbl tr { border:1px solid var(--line); background:var(--card); border-radius:3px; padding:12px 14px; margin-bottom:10px; }
+    .tbl td { border:none; padding:4px 0; }
+    .tbl td[data-label]::before { content:attr(data-label); display:block; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:400; margin-top:6px; }
+    .tbl td:first-child::before { display:none; }
+    .tbl td:first-child { font-size:16px; }
+    .band-row { grid-template-columns:104px 1fr 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <button type="button" class="navbtn" id="backBtn" title="Back to the previous page" aria-label="Back to the previous page">&larr;</button>
+      <a class="navbtn" href="index.html" title="Home">Home</a>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Custorian"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg> Custorian</a>
+    </span>
+  </div>
+</div>
+
+<nav class="sidetabs" aria-label="Sections">
+  <a class="sidetab" href="index.html#about">About</a>
+  <a class="sidetab" href="how-it-works.html">How it works</a>
+  <a class="sidetab" href="products.html" aria-current="page">Products</a>
+  <a class="sidetab" href="registry.html">Register</a>
+  <a class="sidetab" href="membership.html">Membership</a>
+  <a class="sidetab" href="governance.html">Governance</a>
+  <a class="sidetab" href="governance.html#advisory">Advisory</a>
+</nav>
+
+<div class="herowrap">
+  <div class="hero">
+    <div class="eyebrow">Product scoping</div>
+    <h1>One registry, <em>three</em> front doors.</h1>
+    <p class="lede">An <b>Intermediary Accountability Index</b> that scores every layer of the infrastructure chain, an <b>Ecosystem Map</b> with an organisational view and an infrastructure view, and a <b>Funding Matchmaker</b> built on the Funding Commons concept note. One entity registry, one design system, one rule set. They launch in that order.</p>
+    <div class="meta">28 September 2026 &middot; Tanya Becheva</div>
+    <span class="draft">Draft for board review</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="layout">
+    <aside class="rail">
+      <ol>
+        <li><a href="#shared">What the three share</a></li>
+        <li><a href="#index">Accountability Index</a></li>
+        <li><a href="#index-ux">Index UX and UI</a></li>
+        <li><a href="#map">Ecosystem Map</a></li>
+        <li><a href="#map-ux">Map UX and UI</a></li>
+        <li><a href="#matchmaker">Funding Matchmaker</a></li>
+        <li><a href="#matchmaker-ux">Matchmaker UX and UI</a></li>
+        <li><a href="#architecture">Shared architecture</a></li>
+        <li><a href="#sequence">Build sequence</a></li>
+        <li><a href="#decisions">Open decisions</a></li>
+      </ol>
+    </aside>
+    <main class="main">
+
+  <!-- 01 -->
+  <section id="shared">
+    <span class="sectnum">01</span>
+    <h2>What the three products share</h2>
+    <p class="intro">Build one platform with three front doors, not three sites. The Index, the Map and the Matchmaker all describe the same organisations; keeping three copies of NCMEC, the IWF or a Bulgarian host in sync would sink a team of one.</p>
+
+    <div class="trio">
+      <a href="#index"><span class="k">First &middot; Index</span><span class="t">Intermediary Accountability Index</span><span class="d">Scores every company between an abuser and a child on the open web, on how it handles CSAM, from public evidence first.</span></a>
+      <a href="#map"><span class="k">Second &middot; Map</span><span class="t">Ecosystem Map</span><span class="d">Who is in the child safety ecosystem and how they are tied, and what the material travels through.</span></a>
+      <a href="#matchmaker"><span class="k">Third &middot; Matchmaker</span><span class="t">Funding Matchmaker</span><span class="d">Funders and small child safety organisations describe themselves once and are matched with reasons they can see.</span></a>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Shared element</th><th>What it is</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Entity registry</td><td>One record per organisation: legal identity, type (registrar, host, CDN, platform, hotline, funder, NGO, regulator), country, ownership parent, links</td><td>The Index scores it, the Map draws it, the Matchmaker matches it</td></tr>
+        <tr><td>Evidence store</td><td>Every fact carries a source URL, a date seen, and a method (public document, own measurement, partner data, declared by the entity)</td><td>The book&rsquo;s rule: every claim traceable to a document you can open</td></tr>
+        <tr><td>Labels</td><td>Declared, Reviewed, Verified on any claim or score, from the Funding Commons note</td><td>One vocabulary for trust across all three products</td></tr>
+        <tr><td>Right of reply</td><td>Any scored or mapped entity can claim its record, dispute a fact and have the dispute shown publicly with a 30-day clock</td><td>Turns a hostile index into a defensible one</td></tr>
+        <tr><td>Open data</td><td>Bulk CSV and JSON under CC BY 4.0, versioned monthly</td><td>The registry cannot become a moat, and journalists can rebuild the numbers</td></tr>
+        <tr><td>Design system</td><td>Custorian brand kit (07 BRAND): purple logomark, gold seal only for certification, one type scale, WCAG 2.2 AA</td><td>Every screen reads as one organisation</td></tr>
+        <tr><td>Governance</td><td>No platform, registrar or host money; Custorian excluded from matching; scores never sold; rules versioned with 60 days&rsquo; notice</td><td>The credibility argument of the book, applied to products</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Three UX rules that apply everywhere</h3>
+    <ol class="rules">
+      <li><strong>The reason is always visible.</strong> A score, a match or a tie shows the fields behind it on the same screen, never behind a model.</li>
+      <li><strong>Absence is shown, not hidden.</strong> A metric that does not yet exist appears as a labelled gap (the Layer 4 hook from the Registrar Index scope).</li>
+      <li><strong>Nothing is a ranking until it is verified.</strong> Unverified data is displayed as profiles and comparable fields; ranks appear only where the evidence label is Reviewed or better.</li>
+    </ol>
+  </section>
+
+  <!-- 02 -->
+  <section id="index">
+    <span class="sectnum">02</span>
+    <h2>Intermediary Accountability Index</h2>
+    <p class="intro">The Index scores every company that sits between an abuser and a child on the open web, on how it handles child sexual abuse material, from public evidence first and partner data later.</p>
+    <p>It generalises the Registrar Accountability Index one-pager (17 Sep 2026) from one layer to six, keeping its four-band scoring logic and its rule that version one needs nobody&rsquo;s permission.</p>
+
+    <h3>Layers in scope</h3>
+    <p>Each layer is a separate league table with its own metrics, because a registrar and a payment processor cannot be compared on one number. A parent company with entities in several layers gets one entity page that rolls the layers up.</p>
+    <table class="tbl">
+      <thead><tr><th>Layer</th><th>Who</th><th>Measurable from public data now</th><th>Needs a partner</th></tr></thead>
+      <tbody>
+        <tr><td>Registrars</td><td>3,322 ICANN-accredited; 444 readable agreements audited Aug 2026</td><td>Names CSAM in terms (33% do), names a hotline (24 do), publishes abuse contact, transparency report, ownership cluster</td><td>Time from notice to suspension (IWF, C3P Arachnid)</td></tr>
+        <tr><td>Hosting providers</td><td>ASN holders; C3P 2025 ESP dataset (2,752 accreditations resolved)</td><td>Named in Arachnid data, jurisdiction of legal entity vs server location, terms, abuse contact, repeat appearance across years</td><td>Removal time per notice, recidivism (C3P, IWF, SafeNet BG, ATKM)</td></tr>
+        <tr><td>CDNs and reverse proxies</td><td>Cloudflare, Akamai, Fastly, BunnyCDN and smaller</td><td>Whether the CDN discloses origin to hotlines, abuse policy specificity, transparency report</td><td>Share of hotline URLs fronted by each CDN</td></tr>
+        <tr><td>DNS resolvers and registries</td><td>Quad9, Cloudflare 1.1.1.1, Google DNS; TLD registries</td><td>Publishes blocking policy, participates in IWF or national blocklists, reports block counts</td><td>Aggregate block counts by country (Quad9, Danish filter)</td></tr>
+        <tr><td>Payment and monetisation</td><td>Vipps, Stripe, PayPal, crypto on-ramps, ad networks</td><td>Terms name CSAM, FinCEN typology response published, reporting route to hotlines</td><td>Sextortion payment interdiction data (FinCEN, banks)</td></tr>
+        <tr><td>Platforms (design layer)</td><td>Apps and services children use</td><td>Watchtower results: how far a simulated child gets before harm; NCMEC report quality and removal time as testified</td><td>CDSW certification result, once the scheme runs</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Scoring model</h3>
+    <p>Four bands per layer, each 0 to 25, summed to a 0 to 100 layer score. Bands 1 to 3 are computable today; band 4 shows as a labelled gap until a data partner signs.</p>
+    <ol class="rules">
+      <li><strong>Policy transparency.</strong> Does the published contract name child sexual abuse material specifically, name a reporting route, and commit to a response time.</li>
+      <li><strong>Public posture.</strong> Abuse contact published and reachable, transparency report exists, participates in a recognised scheme (IWF membership, INHOPE, DSA trusted-flagger route, ICANN DNS abuse commitments).</li>
+      <li><strong>Structure and jurisdiction.</strong> Legal entity identifiable, jurisdiction compellable, ownership cluster disclosed; penalised for shell structures found by the ASN clustering work.</li>
+      <li><strong>Response (coming soon).</strong> Median time from notice to action, share of notices actioned, recidivism.</li>
+    </ol>
+    <div class="callout">
+      <p>Every band publishes its rubric, the evidence for each point and the date checked. A change in a company&rsquo;s score generates a public changelog entry with the document that caused it. <strong>Companies improve their score only by changing a public document or a measured behaviour, never by contacting Custorian.</strong></p>
+    </div>
+
+    <h3>Data sources at launch</h3>
+    <p>Registrar audit dataset (Registrar Watch), ASN clustering and Censys research access, C3P Arachnid 2025 ESP dataset and the 2021 named cohort, IWF annual hosting data, ATKM and EOKM hosting monitors, ICANN accreditation list, company registers (CVR, Companies House, OpenCorporates), Watchtower scans, FinCEN notice.</p>
+    <p>Partner data (C3P, IWF, SafeNet Bulgaria, Quad9, Danish SIC) would fill band 4 under written agreements, aggregate only, nothing that identifies a report.</p>
+
+    <h3>What it is not</h3>
+    <p>Not a blocklist, not a takedown service, not a certification. The Index is the public scorecard; CDSW certification is the platform layer&rsquo;s verified tier. Custorian takes no money from any entity that appears in it.</p>
+  </section>
+
+  <!-- 03 -->
+  <section id="index-ux">
+    <span class="sectnum">03</span>
+    <h2>Index UX and UI</h2>
+    <p class="intro">The Index is a reading product before it is a ranking product.</p>
+    <p>The person arriving is a journalist, a regulator&rsquo;s analyst, a hosting company&rsquo;s trust and safety lead, or a funder checking a claim. Each of them wants to get from a layer to a named company to the evidence in under a minute, and to leave knowing exactly why a score is what it is.</p>
+    <p>The league table is the front door, the entity page is where the argument is made, and every other screen is one click from the entity page: the cluster view shows who else sits under the same owner, the dispute flow is the entity&rsquo;s right of reply, and the download screen gives the same evidence to anyone who wants to reuse it.</p>
+
+    <h3>Screens</h3>
+    <table class="tbl">
+      <thead><tr><th>Screen</th><th>What it shows</th><th>Primary action</th></tr></thead>
+      <tbody>
+        <tr><td>Layer league table</td><td>One table per intermediary layer (registrars first). Columns: name, jurisdiction, total score, four band bars, last verified date, coverage note. Default sort is alphabetical, not by score, until scores are Verified.</td><td>Open an entity; switch layer; filter by jurisdiction or ownership cluster</td></tr>
+        <tr><td>Entity page</td><td>Header with name, layer, owner, jurisdiction, accreditation. Four score bands with the evidence behind each. Changelog of every score change with date and reason. Where a band has no data, a visible gap with the words &ldquo;not yet measured&rdquo; rather than a zero.</td><td>Read evidence; download the entity&rsquo;s evidence pack; open the claim flow</td></tr>
+        <tr><td>Ownership cluster view</td><td>The entity&rsquo;s corporate family: parent, siblings, resellers, with the Arachnid concentration figures where they exist.</td><td>Jump between siblings; open the cluster as a group in the league table</td></tr>
+        <tr><td>Methodology and data</td><td>Scoring rules, band definitions, data sources with fetch dates, known limits, and the licence. Written once, versioned, and linked from every score.</td><td>Read; download the full dataset</td></tr>
+        <tr><td>Dispute or claim flow</td><td>A form for the entity to claim its page, correct a fact, or supply a policy document. Each submission becomes an evidence item labelled Declared until a reviewer checks it.</td><td>Submit; track status</td></tr>
+        <tr><td>Download, API, badge</td><td>Bulk CSV and JSON of the whole index under CC BY 4.0; a read-only API; an embeddable badge that shows an entity&rsquo;s current score and links back to its page.</td><td>Copy a link or a code snippet</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Core components</h3>
+    <p class="note">Drawn below with placeholder values so the rules have a picture. No real entity is shown.</p>
+    <div class="specimens">
+      <div class="spec">
+        <span class="cap">Score band bar</span>
+        <div class="bands" role="img" aria-label="Example score bands: policy transparency 18 of 25, public posture 11 of 25, structure and jurisdiction 21 of 25, response not yet measured">
+          <div class="band-row"><span class="nm">1 Policy</span><span class="trk"><span class="bar" style="--v:18"></span></span><span class="val">18</span></div>
+          <div class="band-row"><span class="nm">2 Posture</span><span class="trk"><span class="bar" style="--v:11"></span></span><span class="val">11</span></div>
+          <div class="band-row"><span class="nm">3 Structure</span><span class="trk"><span class="bar" style="--v:21"></span></span><span class="val">21</span></div>
+          <div class="band-row gap"><span class="nm">4 Response</span><span class="trk"></span><span class="val">n/m</span></div>
+        </div>
+        <p class="sub">Four bars, each 0 to 25, number printed beside the bar. Never a single colour-coded total on its own. One neutral tone until the score is Verified.</p>
+      </div>
+      <div class="spec">
+        <span class="cap">Evidence chip</span>
+        <div class="chipcard">
+          <span class="src">Registration Agreement, &sect;7.2 Abuse</span>
+          <span style="color:var(--muted)">example-registrar.com/legal/agreement</span>
+          <div class="row"><span>captured 14 Aug 2026</span><span>archived copy &rarr;</span><span class="badge rev">Reviewed</span></div>
+        </div>
+        <p class="sub">Source, capture date, a link to the archived copy, and the label. Chips stack under each band and are reachable by keyboard.</p>
+      </div>
+      <div class="spec">
+        <span class="cap">Label badge</span>
+        <div class="badges"><span class="badge">Declared</span><span class="badge rev">Reviewed</span><span class="badge ver">Verified</span></div>
+        <p class="sub"><strong>Declared</strong>: the entity said it. <strong>Reviewed</strong>: Custorian checked it. <strong>Verified</strong>: checked against an independent source. The same three words in all three products, distinguishable without colour.</p>
+      </div>
+      <div class="spec">
+        <span class="cap">Gap marker</span>
+        <div class="gapbox"><b>Not yet measured</b>Response time depends on partner data (notice-to-action timings from a hotline). This band will be scored when a data agreement is signed.</div>
+        <p class="sub">A dashed outline where a band has no data, with the reason. Never a zero.</p>
+      </div>
+      <div class="spec" style="grid-column:1 / -1">
+        <span class="cap">Changelog timeline</span>
+        <ul class="timeline">
+          <li><span class="d">02 Nov 2026 &middot; reviewer AB</span>Band 1 +6: abuse policy now names CSAM and the national hotline (new agreement v4.1, archived).</li>
+          <li><span class="d">19 Oct 2026 &middot; reviewer CD</span>Band 3 &minus;4: ownership parent re-identified from company register filing.</li>
+          <li><span class="d">01 Oct 2026 &middot; methodology v1.0</span>Entity first scored.</li>
+        </ul>
+        <p class="sub">A vertical list of dated changes with the reason and the reviewer&rsquo;s initials. It is the audit trail that makes the score defensible.</p>
+      </div>
+    </div>
+
+    <h3>Flows</h3>
+    <ol class="rules">
+      <li><strong>Look up an entity.</strong> Search or browse the layer table, open the entity, read the bands top to bottom, open the chips that matter, download the pack.</li>
+      <li><strong>Check a cluster.</strong> From any entity, open the cluster view, see the siblings, return to whichever sibling matters.</li>
+      <li><strong>Claim and correct.</strong> An entity representative opens the claim flow, verifies a work email at the entity&rsquo;s domain, submits a correction with a document. The submission appears on the entity page as Declared within a day, and moves to Reviewed only after a named reviewer signs it off.</li>
+      <li><strong>Reuse.</strong> A journalist copies the badge or the API call; a researcher downloads the CSV. Both carry the methodology version so an old quote can be traced.</li>
+    </ol>
+
+    <h3>Visual rules</h3>
+    <ul class="plain">
+      <li>Brand purple for structure and links; gold only for the Custorian certification seal, never for scores.</li>
+      <li>No red, amber or green anywhere a score is shown unless the score is Verified. Before that, bands are drawn in a single neutral tone with the number.</li>
+      <li>Mobile first, with a 16 px gutter; the league table collapses to cards on a phone, with the four bands stacked.</li>
+      <li>WCAG 2.2 AA: every band and label readable without colour, every chip reachable by keyboard, every table sortable by screen reader.</li>
+      <li>Plain language at a reading age of around 14; every technical term links to the methodology page.</li>
+    </ul>
+  </section>
+
+  <!-- 04 -->
+  <section id="map">
+    <span class="sectnum">04</span>
+    <h2>Ecosystem Map: two views, one registry</h2>
+    <p class="intro">Who is in the child safety ecosystem and how are they tied to each other; and what does the abuse material actually travel through on its way from an uploader to a screen.</p>
+    <p>Those are two different pictures of two different populations, so the product has two views, but one entity registry, one evidence store and one set of labels underneath.</p>
+
+    <h3>View 1: Organisations and ties</h3>
+    <p>This is the dossier drawn. Nodes are organisations: hotlines, NGOs, industry bodies, vendors, funders, regulators, law enforcement units, academic centres. Edges are ties, each with a type and an evidence chip.</p>
+    <table class="tbl">
+      <thead><tr><th>Tie type</th><th>Example</th><th>Evidence needed</th></tr></thead>
+      <tbody>
+        <tr><td>Funds</td><td>A foundation grant to a hotline</td><td>Annual report, grant database, 990 or equivalent</td></tr>
+        <tr><td>Governs</td><td>A board seat, a trustee, a shared director</td><td>Register filing, published board list</td></tr>
+        <tr><td>Supplies</td><td>A vendor licensing a hash list or classifier to an NGO</td><td>Contract announcement, product documentation</td></tr>
+        <tr><td>Member of</td><td>An organisation inside an alliance or association</td><td>Public member list</td></tr>
+        <tr><td>Shares staff</td><td>A person who moved between two nodes within the period</td><td>LinkedIn, press release, staff page</td></tr>
+        <tr><td>Reports to</td><td>A hotline submitting to a clearinghouse</td><td>Published process, MoU</td></tr>
+      </tbody>
+    </table>
+    <p>Each node carries: name, type, country, founding year, headline funding sources, and the same Declared, Reviewed, Verified label on every fact. Each edge carries: type, direction, first seen, last confirmed, and its evidence.</p>
+
+    <h3>View 2: Infrastructure chain</h3>
+    <p>This is the Index&rsquo;s population drawn as a supply chain. The layers are the same six as the Index. Nodes are companies placed in their layer. Edges are dependencies: this hosting company resolves through this registrar, this platform pays through this processor. The Arachnid concentration figures (2021 cohort, 2025 concentration) attach as weights, so the drawing can show that most reported material sits under a handful of names.</p>
+    <p>A node that appears in both views (a hosting company that is also a member of an industry body) is one record with two placements, so a click in either view lands on the same entity page as the Index.</p>
+
+    <h3>What the Map is for</h3>
+    <ul class="plain">
+      <li>A journalist can trace a funding line from a technology company through a foundation to a hotline in three clicks, with the evidence for each step.</li>
+      <li>A regulator can see how much of the reported material sits with entities in one jurisdiction.</li>
+      <li>A small NGO can see who else works in its corner and who funds them, which is the bridge to the Matchmaker.</li>
+      <li>Custorian can show, rather than assert, the concentration and the conflicts that the book describes.</li>
+    </ul>
+
+    <h3>Data behind it</h3>
+    <table class="tbl">
+      <thead><tr><th>Source</th><th>Feeds</th><th>Refresh</th></tr></thead>
+      <tbody>
+        <tr><td>Entity registry (shared with the Index and Matchmaker)</td><td>Both views</td><td>Continuous</td></tr>
+        <tr><td>Dossier: Child Safety Non-Profit Ecosystem</td><td>View 1 nodes and ties</td><td>Reviewed on entry, then yearly</td></tr>
+        <tr><td>Stakeholder lists (05.1, archived raw exports in 08.5)</td><td>View 1 candidate nodes</td><td>One-off import, then manual</td></tr>
+        <tr><td>Arachnid analyses (03.1)</td><td>View 2 weights</td><td>When a new analysis is published</td></tr>
+        <tr><td>Registrar and hosting mapping sheets (03.1)</td><td>View 2 nodes and edges</td><td>With each Index refresh</td></tr>
+        <tr><td>Public registers, annual reports, member lists</td><td>Evidence chips</td><td>On review</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What it is not</h3>
+    <p>It is not a social graph of people. Individuals appear only as the reason for a &ldquo;shares staff&rdquo; tie between two organisations, named only where already public, and never with a page of their own. It is not a live network scan; View 2 is built from published analyses and Custorian&rsquo;s own mapping sheets, and says so.</p>
+  </section>
+
+  <!-- 05 -->
+  <section id="map-ux">
+    <span class="sectnum">05</span>
+    <h2>Map UX and UI</h2>
+    <p class="intro">A network drawing is the easiest product to make impressive and the hardest to make useful. Nothing is shown that cannot be clicked through to evidence, and the default view is small enough to read.</p>
+
+    <h3>Screens</h3>
+    <table class="tbl">
+      <thead><tr><th>Screen</th><th>What it shows</th><th>Primary action</th></tr></thead>
+      <tbody>
+        <tr><td>Landing</td><td>A choice between the two views, with one sentence and a thumbnail each, and a search box that works across both.</td><td>Pick a view or search an entity</td></tr>
+        <tr><td>Organisations view</td><td>A force-directed graph, opened on a curated starting set (around 40 nodes: the hotlines, the clearinghouse, the main alliances, the top funders and vendors). Everything else loads on demand from a node&rsquo;s &ldquo;show connections&rdquo; action. Filters for tie type, node type, country and year.</td><td>Click a node to open its side panel; expand its ties; filter</td></tr>
+        <tr><td>Infrastructure view</td><td>Six horizontal lanes, one per layer, companies as chips in their lane, dependencies as lines between lanes. Chip size follows the Arachnid weight where one exists.</td><td>Click a chip for its side panel; toggle weights; filter by jurisdiction</td></tr>
+        <tr><td>Entity side panel</td><td>The same entity record as the Index: header, label, facts, ties or dependencies listed with evidence chips, link to the full entity page. Opens beside the graph without leaving it.</td><td>Read; open full page; add to a comparison</td></tr>
+        <tr><td>Path view</td><td>Pick two entities and see the shortest evidenced path between them, drawn as a straight chain with the evidence chip on each step. This is the journalist&rsquo;s screen.</td><td>Choose endpoints; copy the path as text with sources</td></tr>
+        <tr><td>Snapshot and share</td><td>Freeze the current view (filters, expanded nodes, date) into a link and a PNG with a caption and the methodology version.</td><td>Copy link; download image</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Infrastructure view, sketched</h3>
+    <p class="note">Placeholder chips; size stands in for the Arachnid weight. The real lanes are built from the mapping sheets.</p>
+    <div class="lanes" role="img" aria-label="Sketch of the infrastructure view: six lanes, one per layer, each holding placeholder company chips, with an Index coverage note at the right of each lane">
+      <div class="lane"><span class="ln">Registrars<small>Layer 1</small></span><span class="cs"><span class="c w3">Registrar A</span><span class="c w2">Registrar B</span><span class="c">C</span><span class="c">D</span><span class="c">E</span></span><span class="cov">bands 1 to 3</span></div>
+      <div class="lane"><span class="ln">Hosting<small>Layer 2</small></span><span class="cs"><span class="c w3">Host A</span><span class="c w3">Host B</span><span class="c w2">Host C</span><span class="c">D</span></span><span class="cov">bands 1 to 3</span></div>
+      <div class="lane"><span class="ln">CDNs and proxies<small>Layer 3</small></span><span class="cs"><span class="c w2">CDN A</span><span class="c">CDN B</span><span class="c">CDN C</span></span><span class="cov">planned</span></div>
+      <div class="lane"><span class="ln">DNS and registries<small>Layer 4</small></span><span class="cs"><span class="c">Resolver A</span><span class="c">Registry B</span></span><span class="cov">planned</span></div>
+      <div class="lane"><span class="ln">Payment<small>Layer 5</small></span><span class="cs"><span class="c">Processor A</span><span class="c">On-ramp B</span></span><span class="cov">planned</span></div>
+      <div class="lane"><span class="ln">Platforms<small>Layer 6</small></span><span class="cs"><span class="c w2">Platform A</span><span class="c">Platform B</span><span class="c">C</span></span><span class="cov">Watchtower</span></div>
+      <div class="foot">Illustrative only &middot; dependency lines omitted in this sketch</div>
+    </div>
+
+    <h3>Core components</h3>
+    <div class="specimens">
+      <div class="spec">
+        <span class="cap">Tie line key</span>
+        <div class="legend">
+          <div class="ln"><svg viewBox="0 0 64 10" aria-hidden="true"><line x1="0" y1="5" x2="64" y2="5" stroke="#5B41C2" stroke-width="2"/></svg><span><strong>Solid</strong>: funds, governs</span></div>
+          <div class="ln"><svg viewBox="0 0 64 10" aria-hidden="true"><line x1="0" y1="5" x2="64" y2="5" stroke="#5B41C2" stroke-width="2" stroke-dasharray="7 5"/></svg><span><strong>Dashed</strong>: member of, shares staff</span></div>
+          <div class="ln"><svg viewBox="0 0 64 10" aria-hidden="true"><line x1="0" y1="5" x2="64" y2="5" stroke="#5B41C2" stroke-width="2" stroke-dasharray="1.5 4" stroke-linecap="round"/></svg><span><strong>Dotted</strong>: supplies, reports to</span></div>
+        </div>
+        <p class="sub">The key is always on screen. Direction shown by an arrowhead only where the tie has one.</p>
+      </div>
+      <div class="spec">
+        <span class="cap">Node chip and lane</span>
+        <p style="font-size:14px;margin-bottom:10px">Name, type icon, country as text (not a flag image), label badge. One shape per node type, one neutral fill; the accent colour is reserved for the selected node and its direct ties.</p>
+        <p class="sub">A lane is a labelled horizontal band with the layer name at the left and the layer&rsquo;s Index score coverage at the right.</p>
+      </div>
+      <div class="spec" style="grid-column:1 / -1">
+        <span class="cap">Path strip</span>
+        <p style="font-size:14px;margin-bottom:0">A horizontal chain of node chips joined by tie lines, each with its evidence chip below. Used by the path view and by the snapshot export, and the plain-text equivalent of any graph state.</p>
+      </div>
+    </div>
+
+    <h3>Flows</h3>
+    <ol class="rules">
+      <li><strong>Follow the money.</strong> Search a funder, open its side panel, expand &ldquo;funds&rdquo; ties, click a recipient, expand again. Each step adds nodes without redrawing the whole graph.</li>
+      <li><strong>Who touches this material.</strong> Open the infrastructure view with weights on, filter to one jurisdiction, read the lanes top to bottom.</li>
+      <li><strong>Prove a connection.</strong> Open the path view, pick two entities, read the chain, copy it with sources into a document.</li>
+      <li><strong>Correct the map.</strong> Any node&rsquo;s side panel has the same claim and dispute flow as the Index; a disputed tie shows a marker until reviewed.</li>
+    </ol>
+
+    <h3>Visual rules</h3>
+    <ul class="plain">
+      <li>The opening view must be readable on a laptop without zooming: a curated set, not the whole registry.</li>
+      <li>Colour carries type only, never judgement. No node is drawn as good or bad.</li>
+      <li>On a phone, the graph is replaced by a list: an entity, its ties grouped by type, and the path view as a vertical strip. The graph is a desktop feature and the product says so rather than shipping a cramped version.</li>
+      <li>Every graph state has a plain-text equivalent (the side panel and the path strip), so the product is usable with a screen reader and quotable in print.</li>
+      <li>Same purple and gold rules as the Index, same type scale, same 16 px gutter.</li>
+    </ul>
+  </section>
+
+  <!-- 06 -->
+  <section id="matchmaker">
+    <span class="sectnum">06</span>
+    <h2>Funding Matchmaker: three entry points</h2>
+    <p class="intro">The Funding Commons concept note made into a product: a two-sided registry where funders and small child safety organisations describe themselves once, in the same schema, and are matched with reasons they can see.</p>
+    <p>It has three ways in, because the three kinds of user arrive with different questions.</p>
+
+    <h3>Entry point 1: the funder</h3>
+    <p>A foundation, a corporate giving team or a public grant programme. The question is &ldquo;who is doing credible work in this corner that we cannot find through our usual channels.&rdquo; The funder publishes a profile (themes, geographies, ticket size range, what it will not fund, decision calendar) and sees a ranked list of entities with the reason for each match written out.</p>
+
+    <h3>Entry point 2: the entity</h3>
+    <p>A small NGO, hotline, research group or a new consortium. The question is &ldquo;who would fund this and when do they decide.&rdquo; The entity fills the profile schema from the concept note (mission, activities, outcomes with the Declared, Reviewed, Verified label, budget band, data holdings, governance) and sees funders whose calendars and criteria fit, with the same visible reasons, plus a calendar of upcoming decision windows.</p>
+
+    <h3>Entry point 3: the consortium builder</h3>
+    <p>Anyone, including Custorian, trying to assemble a group for a larger bid (an EU call, a multi-country programme). The question is &ldquo;who has the missing piece.&rdquo; The builder describes the bid (call, deadline, required capabilities, countries) and the Matchmaker proposes entities that cover each gap, drawn from the same registry, with a workspace to invite them and track who has said yes.</p>
+
+    <h3>What every entry point shares</h3>
+    <table class="tbl">
+      <thead><tr><th>Element</th><th>From the concept note</th><th>In the product</th></tr></thead>
+      <tbody>
+        <tr><td>Profile schema</td><td>One schema for both sides</td><td>A single form with sections that show or hide by role; every field has a label and a source</td></tr>
+        <tr><td>Outcome template</td><td>Outcomes labelled Declared, Reviewed, Verified</td><td>The same label badge as the Index and Map; a reviewer queue behind Reviewed</td></tr>
+        <tr><td>Sector calendar</td><td>Decision windows across funders</td><td>A shared calendar view, filterable by theme and geography, exportable as ICS</td></tr>
+        <tr><td>Matching with reasons</td><td>Every match explains itself</td><td>A reason list on every match card, never a bare score</td></tr>
+        <tr><td>Consortium finding</td><td>Gap-based team assembly</td><td>The consortium workspace</td></tr>
+        <tr><td>Data holdings block</td><td>What data an entity holds and can share</td><td>A profile section that the Map and Index can read from</td></tr>
+        <tr><td>Governance rules</td><td>Seven rules in the note</td><td>A published page and a checkbox on registration; enforced in the product where they can be (for example, no funder sees an entity&rsquo;s profile before the entity has published it)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What it is not</h3>
+    <p>It is not a grant portal: no applications are submitted through it and no money moves. It is not a rating of organisations: the labels say how well a claim is evidenced, not how good the organisation is. It is not open to the public in the way the Index and Map are: profiles are visible to registered users of the other side, and the entity chooses what is public.</p>
+  </section>
+
+  <!-- 07 -->
+  <section id="matchmaker-ux">
+    <span class="sectnum">07</span>
+    <h2>Matchmaker UX and UI</h2>
+    <p class="intro">The only product with logged-in users on both sides, so onboarding, trust and privacy decide whether anyone comes back.</p>
+    <p>The design goal: a small NGO with one part-time person can publish a credible profile in under an hour, and a funder can find three organisations it did not know in under ten minutes.</p>
+
+    <h3>Screens</h3>
+    <table class="tbl">
+      <thead><tr><th>Screen</th><th>What it shows</th><th>Primary action</th></tr></thead>
+      <tbody>
+        <tr><td>Register and choose a role</td><td>Funder, entity or consortium builder (a user can hold more than one). Work email at the organisation&rsquo;s domain; the organisation is matched to the shared entity registry so nothing is typed twice.</td><td>Verify email; confirm the organisation</td></tr>
+        <tr><td>Profile editor</td><td>The schema as a stepped form with progress, autosave and a preview of what the other side will see. Outcome entries each get a label and an evidence upload.</td><td>Publish; keep as draft</td></tr>
+        <tr><td>Dashboard</td><td>For a funder: new matches, calendar deadlines it set, saved entities. For an entity: new funder matches, upcoming windows that fit, profile completeness and label status. For a builder: open bids and their gaps.</td><td>Open a match; open the calendar</td></tr>
+        <tr><td>Match list and match card</td><td>Cards ranked by fit, each with the reason list (matched on, not matched on, unknown), the label of the other side&rsquo;s evidence, and one action. Filters mirror the schema.</td><td>Save; hide with a reason; open profile</td></tr>
+        <tr><td>Sector calendar</td><td>Month and list views of decision windows, filtered by theme and geography, each window linked to its funder profile.</td><td>Add to own calendar (ICS); set a reminder</td></tr>
+        <tr><td>Consortium workspace</td><td>A bid header, a capability grid (rows: required capabilities; columns: invited entities) with gaps highlighted, an invitation log, and a shared notes pane.</td><td>Invite; mark a gap filled; export the roster</td></tr>
+        <tr><td>Review queue (staff only)</td><td>Outcome claims waiting to move from Declared to Reviewed, with the evidence and a two-click decision.</td><td>Approve, return with a note, or reject</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Core components</h3>
+    <div class="specimens">
+      <div class="spec match">
+        <span class="cap">Match card (as a funder sees it)</span>
+        <div class="h"><span class="nm">Example Hotline Network</span><span class="rk">fit 3 of 4</span></div>
+        <div class="badges" style="margin-bottom:4px"><span class="badge">Hotline</span><span class="badge">Nordics</span><span class="badge">Declared</span></div>
+        <span class="grp">Matched on</span>
+        <ul class="yes"><li>Theme: hotline capacity</li><li>Geography: Nordics</li><li>Ticket size: EUR 20,000 to 60,000</li></ul>
+        <span class="grp">Not matched on</span>
+        <ul class="no"><li>Outcome evidence (Declared only)</li></ul>
+        <span class="grp">Not known</span>
+        <ul class="unk"><li>Co-funding in place</li></ul>
+        <p class="sub">The reason is the card; the rank is secondary and drawn small.</p>
+      </div>
+      <div class="spec">
+        <span class="cap">The rest of the kit</span>
+        <ul class="plain" style="font-size:14px;margin-left:16px">
+          <li><strong>Reason chip.</strong> One matched criterion with the schema field it came from, clickable to the source line in the profile.</li>
+          <li><strong>Label badge.</strong> Declared, Reviewed, Verified, identical to the other products.</li>
+          <li><strong>Calendar window.</strong> A dated block with funder name, themes, ticket band and a link, in the funder&rsquo;s own colour only within the calendar.</li>
+          <li><strong>Capability grid cell.</strong> Empty, invited, confirmed or declined, with the entity name; the empty cells are the product.</li>
+          <li><strong>Completeness meter.</strong> A short bar on the entity dashboard with the three fields that would most improve matching listed under it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Flows</h3>
+    <ol class="rules">
+      <li><strong>Entity onboarding.</strong> Register, confirm the organisation from the registry, complete the profile in steps (basics, activities, outcomes, budget band, data holdings, governance), preview, publish. Matches appear the same day.</li>
+      <li><strong>Funder discovery.</strong> Register, set criteria and calendar, read the match list, save five, open their profiles, export the shortlist with reasons.</li>
+      <li><strong>Consortium assembly.</strong> Create a bid, list the required capabilities, accept the proposed entities or search for others, invite, watch the grid fill, export the roster and the notes.</li>
+      <li><strong>Evidence review.</strong> An entity uploads an outcome document; it appears as Declared; a reviewer checks it against the outcome template; it becomes Reviewed and the entity is notified.</li>
+    </ol>
+
+    <h3>Visual and trust rules</h3>
+    <ul class="plain">
+      <li>Nothing about an entity is shown to a funder before the entity publishes it, and the preview shows exactly what will be visible.</li>
+      <li>Matching never uses a hidden weight. If a criterion counts, it is listed on the card; if it is not listed, it did not count.</li>
+      <li>No funder is ranked or scored; funders are matched, not judged.</li>
+      <li>The calendar and the match list both work as plain lists on a phone; the consortium grid is desktop first with a list fallback.</li>
+      <li>Same brand rules as the other two products, with gold only on the certification seal and never on a match.</li>
+      <li>WCAG 2.2 AA throughout; the stepped form saves after every field so a dropped connection loses nothing.</li>
+    </ul>
+  </section>
+
+  <!-- 08 -->
+  <section id="architecture">
+    <span class="sectnum">08</span>
+    <h2>Shared architecture</h2>
+    <p class="intro">One system with three front doors. The Index creates the entity registry and the evidence store, the Map reuses both and adds ties, the Matchmaker reuses all of it and adds profiles and accounts.</p>
+    <p>The products only ever read and write through the shared services. The entity registry is the one record per organisation; the evidence store holds every archived source with its capture date and its label; the review queue is where a named reviewer moves a fact from Declared to Reviewed and the changelog records it. Underneath, the data layer has three kinds of input: public sources that Custorian imports and archives, partner data that is not yet available, and what users type into the Matchmaker or the claim flows.</p>
+
+    <h3>Data model in brief</h3>
+    <table class="tbl">
+      <thead><tr><th>Object</th><th>Key fields</th><th>Used by</th></tr></thead>
+      <tbody>
+        <tr><td>Entity</td><td>id, name, type, layer (if an intermediary), country, owner entity, aliases, public flag</td><td>All three</td></tr>
+        <tr><td>Evidence item</td><td>id, entity, field or score band it supports, source URL, archived copy, captured on, label, reviewer, reviewed on</td><td>All three</td></tr>
+        <tr><td>Score</td><td>entity, methodology version, four bands, total, computed on</td><td>Index</td></tr>
+        <tr><td>Tie</td><td>from entity, to entity, type, direction, first seen, last confirmed, evidence</td><td>Map</td></tr>
+        <tr><td>Dependency</td><td>from entity, to entity, layer pair, weight, source analysis</td><td>Map</td></tr>
+        <tr><td>Profile</td><td>entity, role (funder or entity), schema fields, outcomes with labels, published on</td><td>Matchmaker</td></tr>
+        <tr><td>Bid</td><td>owner, call, deadline, required capabilities, invitations</td><td>Matchmaker</td></tr>
+        <tr><td>Change</td><td>object, field, old, new, reason, reviewer, on</td><td>All three</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Services and technology</h3>
+    <ul class="plain">
+      <li><strong>Web app.</strong> One codebase, three route groups, a shared component library (band bar, evidence chip, label badge, changelog, node chip, match card). Server-rendered pages for everything public so the Index and Map are indexable and fast; client rendering only for the graph and the consortium grid.</li>
+      <li><strong>Database.</strong> One relational database (Postgres) with row-level access rules: public rows for the Index and Map, role-scoped rows for Matchmaker profiles. Supabase fits, and Custorian already has an account.</li>
+      <li><strong>Archive.</strong> Every evidence URL is captured to object storage at the time of review, with a hash, so a score can be defended after the source page changes.</li>
+      <li><strong>Review tooling.</strong> The review queue is an internal page in the same app, not a separate system; reviewer identity comes from the same accounts.</li>
+      <li><strong>Open data.</strong> Nightly export of the Index and the public parts of the Map as CSV and JSON under CC BY 4.0, a read-only JSON API with the methodology version in every response, and the embeddable badge served from the same endpoint.</li>
+      <li><strong>Accounts.</strong> Email verified at the organisation&rsquo;s domain; no social login; two roles per user at most.</li>
+      <li><strong>Hosting.</strong> Vercel for the app and Supabase for data and storage, both already in use, with a documented export path so the whole system can move if the board decides to.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Governance built in.</strong> The seven governance rules from the Funding Commons note become code where they can: an entity&rsquo;s profile is invisible until published; every fact carries a label; every change has a reviewer; the methodology is versioned and public; the data is open under one licence; disputes are visible on the page while open; and nothing in any product is a ranking until it is Verified.</p>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section id="sequence">
+    <span class="sectnum">09</span>
+    <h2>Build sequence</h2>
+    <p class="intro">The order follows the dependency. Each gate is a decision, not a date: the next phase starts only when the gate&rsquo;s criteria are met, and the board sees the evidence at the gate.</p>
+    <p>The Index creates the registry and evidence store that everything else needs, and it is the product with material already in hand (the registrar one-pager scope, the Arachnid analyses, the mapping sheets). The Map comes second because it reuses the registry and the dossier is already written. The Matchmaker comes last because it is the only product with accounts on both sides and it needs the registry to be populated before a funder sees anything worth matching.</p>
+
+    <div class="phases" aria-hidden="true">
+      <span class="mh">Oct</span><span class="mh">Nov</span><span class="mh">Dec</span><span class="mh">Jan</span><span class="mh">Feb</span><span class="mh">Mar</span><span class="mh">Apr</span><span class="mh">May</span><span class="mh">Jun</span><span class="mh">Jul</span><span class="mh">Aug</span><span class="mh">Sep</span>
+      <span class="p" style="grid-column:1 / 3">Foundation</span>
+      <span class="p" style="grid-column:2 / 5">Index: registrars</span>
+      <span class="p g" style="grid-column:5 / 6">Gate 1</span>
+      <span class="p" style="grid-column:5 / 8">Index: five more layers</span>
+      <span class="p" style="grid-column:5 / 8">Map: organisations</span>
+      <span class="p g" style="grid-column:8 / 9">Gate 2</span>
+      <span class="p s" style="grid-column:8 / 10">Map: infrastructure</span>
+      <span class="p" style="grid-column:8 / 12">Matchmaker: profiles</span>
+      <span class="p s" style="grid-column:11 / 13">Matchmaker: consortium</span>
+      <span class="p g" style="grid-column:12 / 13">Gate 3</span>
+    </div>
+    <p class="note">Oct 2026 to Sep 2027. Dashed phases can slip without harm.</p>
+
+    <h3>Phases, gates and effort</h3>
+    <table class="tbl">
+      <thead><tr><th>Phase</th><th>Months</th><th>What is built</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td>Foundation</td><td>Oct to Nov 2026</td><td>Entity registry, evidence store, label and review model, design system and component library, open data export, hosting and accounts</td><td>1 developer full time, 1 designer half time, Tanya on data model and methodology</td></tr>
+        <tr><td>Index: registrars</td><td>Nov 2026 to Jan 2027</td><td>Registrar layer scored across the four bands from the one-pager scope, entity pages, league table, methodology page, claim flow, badge and API</td><td>1 developer, 1 researcher for evidence gathering, reviewer time from the board or advisors</td></tr>
+        <tr class="gate"><td>Gate 1: Index live</td><td>Feb 2027</td><td>Every registrar in the first cohort has a page with evidence on at least three bands; methodology v1 published; claim flow tested with two friendly registrars; open data export running</td><td>Board sign-off</td></tr>
+        <tr><td>Index: five more layers</td><td>Feb to Apr 2027</td><td>Hosting, CDNs, DNS, payment and monetisation, platforms added one layer at a time, each with its own coverage note</td><td>1 developer part time, 1 researcher full time</td></tr>
+        <tr><td>Map: organisations</td><td>Feb to Apr 2027</td><td>Dossier imported as nodes and ties with evidence; organisations view, side panel, path view, snapshot</td><td>1 developer, designer for the graph, researcher for tie evidence</td></tr>
+        <tr class="gate"><td>Gate 2: Map live</td><td>May 2027</td><td>Curated starting set of around 40 nodes fully evidenced; every tie has a chip; phone list view works; two journalists have used the path view and found it quotable</td><td>Board sign-off</td></tr>
+        <tr><td>Map: infrastructure</td><td>May to Jun 2027</td><td>Infrastructure view with lanes, dependencies from the mapping sheets, Arachnid weights</td><td>1 developer part time, researcher</td></tr>
+        <tr><td>Matchmaker: profiles</td><td>May to Aug 2027</td><td>Accounts, profile schema, publish flow, matching with reasons, sector calendar, dashboards, review queue for outcomes</td><td>1 developer full time, designer half time, Tanya for funder recruitment</td></tr>
+        <tr><td>Matchmaker: consortium</td><td>Aug to Sep 2027</td><td>Bid workspace, capability grid, invitations, roster export</td><td>1 developer</td></tr>
+        <tr class="gate"><td>Gate 3: Matchmaker open</td><td>Sep 2027</td><td>At least 10 funder profiles and 30 entity profiles published; the seven governance rules enforced in the product; one consortium assembled through it</td><td>Board sign-off</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Effort and money</h3>
+    <p>Across the twelve months this is roughly one developer full time throughout, one designer at half time for the first two months of each product, one researcher full time from November, and reviewer time that can come from advisors at first and must be paid for by the Matchmaker phase.</p>
+    <p>The Funding Commons note&rsquo;s EUR 187,000 covered the Matchmaker alone; the full sequence is closer to twice that if the developer and researcher are paid at Danish rates. The foundation and Index phases are the part to raise for first, because they are the part with material in hand and the clearest public output.</p>
+
+    <h3>What can slip without harm</h3>
+    <p>The infrastructure view of the Map and the consortium workspace of the Matchmaker can be pushed out without breaking anything else. The response time band of the Index depends on partner data and stays marked &ldquo;coming soon&rdquo; until a partner signs, whatever the calendar says.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="decisions">
+    <span class="sectnum">10</span>
+    <h2>Open decisions for the founder and board</h2>
+    <p class="intro">The choices this document does not make. Each has a recommendation, and each changes something above if decided the other way.</p>
+    <ol class="decisions">
+      <li><span class="q">Is the Index a ranking or a register?</span><span class="rec">A register with scores until every band on a layer is Verified, then a ranking for that layer only.</span><span class="alt">Deciding on a ranking from day one changes the league table&rsquo;s default sort and raises the legal exposure of every score.</span></li>
+      <li><span class="q">Who reviews?</span><span class="rec">A named reviewer panel of three (a board member, Dr Alison McClymont or another clinical advisor for anything touching child welfare claims, and one external, for example from the academic contacts in the network), with initials on every changelog entry.</span><span class="alt">Deciding that Custorian staff review alone is cheaper and weaker.</span></li>
+      <li><span class="q">Do entities get notice before a page goes live?</span><span class="rec">Yes, 14 days, with the claim flow open during the notice period.</span><span class="alt">Deciding no is faster and invites the first dispute to be about process rather than facts.</span></li>
+      <li><span class="q">Which layer after registrars?</span><span class="rec">Hosting, because the Arachnid concentration figures already exist and make the second layer cheap.</span><span class="alt">Deciding on platforms first is more visible and much harder to evidence.</span></li>
+      <li><span class="q">Individuals on the Map.</span><span class="rec">Never as nodes, only as the reason for a shares staff tie, and only where already public.</span><span class="alt">Deciding to show people changes the product into something Custorian has criticised others for.</span></li>
+      <li><span class="q">Matchmaker fees.</span><span class="rec">Free for entities always; a membership fee for funders from Gate 3, priced so ten funders cover the reviewer panel.</span><span class="alt">Deciding on free for everyone leaves review unpaid and the labels unreliable.</span></li>
+      <li><span class="q">Build in house or with a studio?</span><span class="rec">One developer in house from the foundation phase, because the three products share one codebase and the knowledge needs to stay. A studio for the design system and the graph view only.</span></li>
+      <li><span class="q">Certification seal.</span><span class="rec">Keep the gold seal out of all three products until the Index has a Verified layer; then a certified entity is one whose Index score is Verified and above a published threshold.</span><span class="alt">Deciding to issue seals earlier would tie the brand&rsquo;s only gold to an unverified number.</span></li>
+      <li><span class="q">Co-authorship and the book.</span><span class="rec">The book, the dossier and the Map tell the same story. Launch the Map&rsquo;s organisations view alongside the book&rsquo;s publication, with the book&rsquo;s sources as the Map&rsquo;s first evidence set, so each sells the other.</span></li>
+      <li><span class="q">What to fund first.</span><span class="rec">Raise for the foundation and the registrar Index as one package (roughly the first five months), because it is the smallest thing with a public result, and use the live Index to raise for the rest.</span></li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Next document:</strong> a build brief for the foundation phase: the data model in full, the design system, and the developer job description.</p>
+      <p>Verify and Watchtower, the commercial arm&rsquo;s platform-assurance products, are scoped separately in <em>Downstream Product Scoping: Verify and Watchtower</em>. They share the entity registry and the evidence chip with the products here, and a certified platform is one record in both.</p>
+    </div>
+  </section>
+
+    </main>
+  </div>
+
+  <footer>
+    Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+    <nav>
+      <a href="index.html#about">About</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="governance.html">Governance</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:info@custorian.org">Contact</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+  // Back button, as on the other foundation pages.
+  document.getElementById('backBtn').addEventListener('click', function () {
+    if (history.length > 1) history.back(); else location.href = 'index.html';
+  });
+  // Phone layout: tables stack into cards, each cell labelled from its column header.
+  [].forEach.call(document.querySelectorAll('.tbl'), function (t) {
+    var heads = [].map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent; });
+    [].forEach.call(t.querySelectorAll('tbody tr'), function (tr) {
+      [].forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute('data-label', heads[i]); });
+    });
+  });
+</script>
+<script src="sidetabs.js?v=a60fa8c6"></script>
+<script src="sectionnav.js?v=d5b93581"></script>
+</body>
+</html>

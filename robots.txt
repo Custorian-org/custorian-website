@@ -8,3 +8,5 @@ User-agent: *
 
 Disallow: /_archive/
 Disallow: /intermediary-index/
+# Product scoping draft, 28 Sep 2026. Remove this line when it launches.
+Disallow: /products.html
