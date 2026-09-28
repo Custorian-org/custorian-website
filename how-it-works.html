@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="foundation.css?v=9be3b889">
-<link rel="stylesheet" href="sidetabs.css?v=cf5c5290">
+<link rel="stylesheet" href="sidetabs.css?v=bff27e6c">
 <style>
 
   /* BRAND FONT MODE (Brand Kit v1.0, Inter only). Preview toggle, remove before ship. */
@@ -711,7 +711,9 @@
       <strong>Why the separation matters.</strong> If the body that writes a standard also sells the certificate, every commercial pressure runs one way. Separating the two is the difference between a standard and a logo.
     </div>
     <div class="btnrow">
-      <a class="btn" href="#numbers">The standard in full &rarr;</a>
+      <!-- Until the standard is published this opens a notice; on publication, swap
+           for <a class="btn" href="https://doi.org/..."> pointing at the DOI. -->
+      <button type="button" class="btn" data-modal="standardModal">The standard in full &rarr;</button>
       <button type="button" class="btn ghost" data-modal="pilotModal">Apply to the pilot</button>
     </div>
   </section>
@@ -1188,6 +1190,21 @@
       <div class="tick">&#10003;</div>
       <h3 class="dlg">Application received.</h3>
       <p class="formnote">Applications are reviewed quarterly by the Board. We will be in touch by email.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="standardModal" role="dialog" aria-modal="true" aria-labelledby="standardTitle">
+  <div class="backdrop" data-close></div>
+  <div class="dialog">
+    <button type="button" class="close" data-close aria-label="Close">&#10005;</button>
+    <span class="cat">In peer review</span>
+    <h2 id="standardTitle">The standard is in peer review</h2>
+    <p>The full Child Digital Safety and Wellbeing Standard is being reviewed by independent experts before publication.</p>
+    <p>When it is published, this button will take you straight to it through its DOI, a permanent link that will not change.</p>
+    <div class="btnrow">
+      <a class="btn" href="#numbers" data-close>See what the standard contains &rarr;</a>
+      <button type="button" class="btn ghost" data-close>Close</button>
     </div>
   </div>
 </div>
@@ -2210,7 +2227,7 @@
 
 <script src="track.js?v=568d5b29"></script>
 
-<script src="sidetabs.js?v=d11ba512"></script>
+<script src="sidetabs.js?v=a60fa8c6"></script>
 <script src="sectionnav.js?v=d5b93581"></script>
 </body>
 </html>
