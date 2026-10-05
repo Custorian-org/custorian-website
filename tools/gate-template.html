@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CDSW Review Portal</title>
+<link rel="icon" href="/custorian-logomark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0e0e10;--ink-2:#46464d;--paper:#f6f4ef;--card:#fff;--line:#d9d6cf;--violet:#5b41c2;--violet-2:#9b7cff;--red:#a33a2f}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);display:grid;place-items:center;padding:16px}
+.card{width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:32px 28px;box-shadow:0 8px 24px rgba(14,14,16,.06)}
+.brand{font-weight:800;font-size:22px;letter-spacing:-.03em;margin:0}
+.brand span{color:var(--violet)}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:6px 0 24px}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:3px;background:#fff}
+input:focus{outline:2px solid var(--violet-2);outline-offset:1px;border-color:var(--violet)}
+button{margin-top:14px;width:100%;font:inherit;font-weight:600;padding:11px;border:0;border-radius:3px;background:var(--violet);color:#fff;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+.err{color:var(--red);font-size:13px;min-height:1.4em;margin:10px 0 0}
+.foot{font-size:12px;color:var(--ink-2);margin:18px 0 0}
+.foot a{color:var(--violet)}
+</style>
+</head>
+<body>
+<form class="card" id="gate" autocomplete="off">
+  <p class="brand">Custorian<span>.</span></p>
+  <p class="kicker">CDSW Review Portal</p>
+  <label for="pw">Password</label>
+  <input id="pw" type="password" required autofocus>
+  <button id="go" type="submit">Open portal</button>
+  <p class="err" id="err" role="alert"></p>
+  <p class="foot">Access is by invitation. Need it? <a href="mailto:info@custorian.org">info@custorian.org</a></p>
+</form>
+<script>
+(() => {
+const P = __PAYLOAD__;
+const KEY = 'cdsw-portal-pw';
+const u8 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+async function unlock(pw) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: u8(P.salt), iterations: P.iter, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  const html = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: u8(P.iv) }, key, u8(P.ct)));
+  try { sessionStorage.setItem(KEY, pw); } catch (e) {}
+  document.open(); document.write(html); document.close();
+}
+document.getElementById('gate').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('go'), err = document.getElementById('err');
+  btn.disabled = true; err.textContent = '';
+  try { await unlock(document.getElementById('pw').value); }
+  catch (x) { err.textContent = 'Wrong password.'; btn.disabled = false; }
+});
+try { const s = sessionStorage.getItem(KEY); if (s) unlock(s).catch(() => sessionStorage.removeItem(KEY)); } catch (e) {}
+})();
+</script>
+</body>
+</html>
