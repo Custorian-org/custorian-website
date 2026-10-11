@@ -192,6 +192,19 @@
     padding:12px 24px; border-radius:2px;
   }
 
+  /* ---------- parents' alliance interest form ---------- */
+  .alliance-form .field { margin-bottom:15px; }
+  .alliance-form .field label { display:block; font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .alliance-form .field input, .alliance-form .field textarea { width:100%; box-sizing:border-box; font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:11px 13px; }
+  .alliance-form .field textarea { min-height:90px; resize:vertical; }
+  .alliance-form .field input:focus, .alliance-form .field textarea:focus { outline:none; border-color:var(--violet); box-shadow:0 0 0 3px rgba(91,65,194,.14); }
+  .alliance-form .field.check { display:flex; gap:11px; align-items:flex-start; }
+  .alliance-form .field.check input { width:auto; margin-top:4px; flex:none; }
+  .alliance-form .field.check label { font-weight:400; font-size:13.5px; line-height:1.5; }
+  .alliance-form .hp { position:absolute; left:-9999px; opacity:0; }
+  .alliance-form .done { text-align:center; padding:20px 0 6px; }
+  .alliance-form .done .tick { font-size:30px; color:var(--violet); margin-bottom:10px; }
+
   /* ---------- lists ---------- */
   ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
   ul.plain li {
@@ -317,7 +330,29 @@
           <div class="tier-price">&euro;5<span>&nbsp;/ year</span></div>
           <div class="tier-who">Parents and guardians resident in an EU member state. A hardship waiver is available on request.</div>
           <div class="tier-includes"><strong>Membership means:</strong> a fortnightly plain-language briefing on child safety decisions in Brussels and at home, with one thing you can do about each; a vote in alliance polls and on the yearly parents&rsquo; agenda; the right to elect and stand for the parent council; and access to recorded expert webinars. It carries <strong>no vote at the general assembly</strong>. Parents who want that vote can apply as an Individual Support Member instead (&euro;10 / year), which includes every alliance benefit.</div>
-          <a href="mailto:info@custorian.org?subject=Parents%27%20alliance%20waitlist">Join the waitlist &rarr;</a>
+          <div class="alliance-form">
+            <p class="formnote" style="margin:18px 0 14px;">Alliance membership opens once the Board passes the resolution that admits Alliance Members. Register your interest now and we will email you when it opens. Nothing is charged until then.</p>
+            <form action="https://api.web3forms.com/submit" method="POST" data-alliance-form>
+              <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+              <input type="hidden" name="subject" value="Custorian Parents' Alliance: Expression of interest">
+              <input type="hidden" name="from_name" value="Custorian Parents' Alliance">
+              <input type="hidden" name="Membership Class" value="Parents' Alliance Member (interest, &euro;5/yr)">
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+              <div class="field"><label for="pa-name">Your name *</label><input id="pa-name" type="text" name="Name" required placeholder="Full name" autocomplete="name"></div>
+              <div class="field"><label for="pa-email">Email *</label><input id="pa-email" type="email" name="Email" required placeholder="you@example.org" autocomplete="email"></div>
+              <div class="field"><label for="pa-country">Country of residence *</label><input id="pa-country" type="text" name="Country" required placeholder="e.g. Denmark" autocomplete="country-name"></div>
+              <div class="field check"><input id="pa-parent" type="checkbox" name="Parent or guardian" value="Yes" required><label for="pa-parent">I am a parent or guardian living in an EU member state.</label></div>
+              <div class="field"><label for="pa-msg">What would you most like the alliance to work on?</label><textarea id="pa-msg" name="Message" placeholder="Optional"></textarea></div>
+              <div class="field check"><input id="pa-consent" type="checkbox" name="Consent" value="Yes" required><label for="pa-consent">I agree that Custorian may hold my name, email and country under GDPR to contact me when the parents&rsquo; alliance opens. It is never sold or shared with third parties, and I can ask for it to be deleted at any time by writing to info@custorian.org.</label></div>
+              <button type="submit" class="btn" style="border:0; cursor:pointer;">Register interest</button>
+              <p class="formnote" data-err hidden></p>
+            </form>
+            <div class="done" hidden data-done>
+              <div class="tick">&#10003;</div>
+              <p><strong>Thank you. Your interest is registered.</strong></p>
+              <p class="formnote">We will email you when the Board opens alliance membership.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -376,6 +411,43 @@
     b.addEventListener('click', function () {
       if (window.history.length > 1) window.history.back();
       else window.location.href = 'index.html';
+    });
+  })();
+</script>
+<script>
+  /* Parents' alliance expression of interest. Sends to the same Web3Forms inbox
+     as membership enquiries and mirrors to the Membership tab on
+     custorian.io/registry/governance-applications. */
+  (function () {
+    var form = document.querySelector('[data-alliance-form]');
+    if (!form) return;
+    var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+    var err = form.querySelector('[data-err]');
+    var done = form.parentNode.querySelector('[data-done]');
+    function val(n) { var el = form.querySelector('[name="' + n + '"]'); if (!el) return null; if (el.type === 'checkbox') return el.checked ? el.value : null; return el.value || null; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      try {
+        fetch(SB_URL + '/rest/v1/governance_applications', {
+          method: 'POST',
+          headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            body: 'Membership', name: val('Name'), email: val('Email'),
+            expertise: val('Membership Class'), message: val('Message'), source: 'org_website',
+            details: { membership_class: val('Membership Class'), country: val('Country'), parent_or_guardian: val('Parent or guardian'), consent: val('Consent'), submitted_at: new Date().toISOString() }
+          }),
+          keepalive: true
+        }).catch(function () {});
+      } catch (x) {}
+      var submit = form.querySelector('button[type=submit]');
+      submit.disabled = true; submit.textContent = 'Sending\u2026';
+      if (err) err.hidden = true;
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.success) { form.hidden = true; if (done) done.hidden = false; } else { throw new Error((d && d.message) || 'Submission failed'); } })
+        .catch(function (ex) { submit.disabled = false; submit.textContent = 'Try again'; if (err) { err.hidden = false; err.textContent = 'Could not send: ' + ex.message + '. You can also email info@custorian.org.'; } });
     });
   })();
 </script>
