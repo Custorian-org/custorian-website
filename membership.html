@@ -193,7 +193,11 @@
   }
 
   /* ---------- parents' alliance card and interest dialog ---------- */
-  .tier.tier-alliance { grid-column:1 / -1; background:var(--violet, #5B41C2); color:#fff; }
+  .fees-wrap { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:32px 0 22px; align-items:stretch; }
+  .fees-wrap .tiers { grid-template-columns:1fr; margin:0; }
+  .tier.tier-alliance { background:var(--violet, #5B41C2); color:#fff; }
+  .rail-title { font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--ink); margin-bottom:10px; }
+  #overview, #fees, #parents-alliance, #what-you-get, #rights, #receive, #limits, #cancel { scroll-margin-top:110px; }
   .tier-alliance .tier-name { color:#d9ccff; }
   .tier-alliance .tier-price, .tier-alliance .tier-who { color:#fff; }
   .tier-alliance .tier-price span { color:#d9ccff; }
@@ -261,7 +265,13 @@
     ul.plain { column-count:1; }
   }
   h3.grp { font-size:15px; color:var(--muted); letter-spacing:.02em; margin:32px 0 8px; }
-  h2.tight { margin-top:34px; }</style>
+  h2.tight { margin-top:34px; }  @media (max-width:900px) {
+    .fees-wrap { grid-template-columns:1fr; }
+    .rail { display:block; position:static; margin-bottom:6px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .rail ol { display:flex; flex-wrap:wrap; gap:2px 16px; }
+    .rail a { padding:4px 0; }
+  }
+</style>
 </head>
 <body>
 
@@ -299,12 +309,26 @@
     </div>
   </div>
 
-  <div style="padding-top:56px;">
-    <main class="main" style="max-width:74ch;">
-            <p class="intro"><span style="color:var(--violet); font-weight:600;">Custorian</span> has one voting membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
+  <div class="layout" style="padding-top:56px;">
+    <aside class="rail" aria-label="On this page">
+      <div class="rail-title">On this page</div>
+      <ol>
+        <li><a href="#overview">Membership</a></li>
+        <li><a href="#fees">Fees by applicant type</a></li>
+        <li><a href="#parents-alliance">Parents&rsquo; Alliance</a></li>
+        <li><a href="#what-you-get">What membership gives you</a></li>
+        <li><a href="#rights">Rights under the Articles</a></li>
+        <li><a href="#receive">What members receive</a></li>
+        <li><a href="#limits">What membership does not give you</a></li>
+        <li><a href="#cancel">Cancelling</a></li>
+      </ol>
+    </aside>
+    <main class="main" style="max-width:84ch;">
+            <p class="intro" id="overview"><span style="color:var(--violet); font-weight:600;">Custorian</span> has one voting membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
       <p>Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on the annual accounts and on proposals; the budget is approved by the board and presented to the general assembly for information. Voting requires three months&rsquo; continuous membership. No fee level buys influence over the standard: membership never confers, and cannot be exchanged for, certification, and a for-profit member&rsquo;s own platform or product stays subject to the same independent, accredited assessment as everyone else&rsquo;s.</p>
 
-      <h2 class="tight">Fee by applicant type</h2>
+      <h2 class="tight" id="fees">Fee by applicant type</h2>
+      <div class="fees-wrap">
       <div class="tiers">
         <div class="tier">
           <div class="tier-name">Individual</div>
@@ -334,6 +358,7 @@
           <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. It does <strong>not</strong> include a board seat. A platform or service that is or may become subject to assessment, and any company controlling or controlled by one, cannot be a member at all.</div>
           <a href="index.html?join=forprofit#get-involved">Apply for membership &rarr;</a>
         </div>
+      </div>
         <div class="tier tier-alliance" id="parents-alliance">
           <div class="tier-name">Parents&rsquo; Alliance &middot; opening soon</div>
           <div class="tier-price">&euro;5<span>&nbsp;/ year</span></div>
@@ -353,7 +378,7 @@
       <p>Membership buys accountability, not access. Members see more, sooner, and vote on what the association does. It confers nothing over the content of the standard, which sits outside the general assembly&rsquo;s vote entirely (Articles &sect;&nbsp;5.8).</p>
       <p>Fees fund the work of writing and maintaining the standard itself: drafting and revising the control set, verifying every legal citation behind it against primary sources, running the public consultation and the youth panel, and publishing the results openly. The association is non-profit and any surplus is applied solely to that purpose (Articles &sect;&nbsp;2.2). Because Custorian refuses funding from any platform it could assess (&sect;&nbsp;7.7), member fees and individual donations are among the few sources it can accept without compromising the firewall.</p>
 
-      <h3 class="grp">Rights under the Articles</h3>
+      <h3 class="grp" id="rights">Rights under the Articles</h3>
       <ul class="plain" style="column-count:1;">
         <li>A vote at the general assembly on every matter reserved to it, except Board composition</li>
         <li>The right to attend and to propose items for the agenda (&sect;&nbsp;3.4)</li>
@@ -362,7 +387,7 @@
       </ul>
       <p class="note" style="margin-top:14px;">Voting requires three months&rsquo; continuous membership (&sect;&nbsp;4.8).</p>
 
-      <h3 class="grp">What members receive</h3>
+      <h3 class="grp" id="receive">What members receive</h3>
       <ol class="steps">
         <li><strong>Quarterly member briefing.</strong> Board decisions and the reasoning behind them, sent to members before the public summary is posted.</li>
         <li><strong>Standard change notices.</strong> What changed between control-set versions and why, in plain language, when a version ships.</li>
@@ -370,11 +395,11 @@
         <li><strong>An annual open call with the editor</strong> ahead of the general assembly, so that agenda items members propose are informed ones.</li>
       </ol>
 
-      <div class="callout">
+      <div class="callout" id="limits">
         <strong>What membership does not give you.</strong> No influence over which controls exist, how they are scored or how they are prioritised. No early or privileged access to the standard itself, which is published openly under CC BY-ND 4.0 and free to everyone. No shorter, cheaper or softer route to certification, which is decided by independent accredited bodies and not by Custorian. Board candidates need not be members, so a fee is not a route to a seat.
       </div>
 
-      <div class="callout">
+      <div class="callout" id="cancel">
         <strong>Cancelling a membership subscription.</strong> Dues are billed annually and can be cancelled at any time before the next renewal, with no cancellation fee, through the <strong>Stripe Customer Portal</strong>: the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails lets you cancel yourself, at any time, no need to contact us. You can also cancel by writing to <a class="inline" href="mailto:info@custorian.org">info@custorian.org</a> with the name and email used at payment (we confirm within two business days). Cancelling stops future renewals; it does not refund the period already paid for, and membership, including any voting rights attached to it, ends when that paid period expires.
       </div>
 
