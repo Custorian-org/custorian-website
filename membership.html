@@ -192,6 +192,38 @@
     padding:12px 24px; border-radius:2px;
   }
 
+  /* ---------- parents' alliance card and interest dialog ---------- */
+  .fees-wrap { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:32px 0 22px; align-items:stretch; }
+  .fees-wrap .tiers { grid-template-columns:1fr; margin:0; }
+  .tier.tier-alliance { background:var(--violet, #5B41C2); color:#fff; }
+  .rail-title { font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--ink); margin-bottom:10px; }
+  #overview, #fees, #parents-alliance, #what-you-get, #rights, #receive, #limits, #cancel { scroll-margin-top:110px; }
+  .tier-alliance .tier-name { color:#d9ccff; }
+  .tier-alliance .tier-price, .tier-alliance .tier-who { color:#fff; }
+  .tier-alliance .tier-price span { color:#d9ccff; }
+  .tier-alliance .tier-includes { color:#efe9ff; }
+  .tier-alliance .tier-includes p { margin:0 0 12px; }
+  .tier-alliance .tier-includes strong { color:#fff; }
+  .alliance-open { align-self:flex-start; margin-top:8px; font-family:var(--sans); font-size:14px; font-weight:600; color:var(--violet, #5B41C2); background:#fff; border:0; border-radius:2px; padding:12px 22px; cursor:pointer; }
+  .alliance-open:hover { background:#efe9ff; }
+  .alliance-dialog { width:min(560px, calc(100vw - 32px)); max-height:calc(100vh - 48px); overflow:auto; border:0; border-radius:6px; padding:28px 26px 22px; background:var(--card, #FFFDF9); color:var(--ink); box-shadow:0 24px 60px rgba(14,14,16,.28); }
+  .alliance-dialog::backdrop { background:rgba(14,14,16,.55); }
+  .alliance-dialog h3 { font-family:var(--sans); font-size:20px; margin:0 0 8px; color:var(--ink); }
+  .alliance-dialog .close { position:absolute; top:12px; right:14px; background:none; border:0; font-size:24px; line-height:1; color:var(--muted); cursor:pointer; }
+  .alliance-form .field { margin-bottom:15px; }
+  .alliance-form .field label { display:block; font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .alliance-form .field input, .alliance-form .field textarea { width:100%; box-sizing:border-box; font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:11px 13px; }
+  .alliance-form .field textarea { min-height:90px; resize:vertical; }
+  .alliance-form .field input:focus, .alliance-form .field textarea:focus { outline:none; border-color:var(--violet); box-shadow:0 0 0 3px rgba(91,65,194,.14); }
+  .alliance-form .field.check { display:flex; gap:11px; align-items:flex-start; }
+  .alliance-form .field.check input { width:auto; margin-top:4px; flex:none; }
+  .alliance-form .field.check label { font-weight:400; font-size:13.5px; line-height:1.5; }
+  .alliance-form .hp { position:absolute; left:-9999px; opacity:0; }
+  .alliance-form .formnote { font-size:13px; color:var(--muted); line-height:1.55; margin:0 0 16px; }
+  .alliance-form .btn { border:0; cursor:pointer; }
+  .alliance-form .done { text-align:center; padding:20px 0 6px; }
+  .alliance-form .done .tick { font-size:30px; color:var(--violet); margin-bottom:10px; }
+
   /* ---------- lists ---------- */
   ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
   ul.plain li {
@@ -233,7 +265,13 @@
     ul.plain { column-count:1; }
   }
   h3.grp { font-size:15px; color:var(--muted); letter-spacing:.02em; margin:32px 0 8px; }
-  h2.tight { margin-top:34px; }</style>
+  h2.tight { margin-top:34px; }  @media (max-width:900px) {
+    .fees-wrap { grid-template-columns:1fr; }
+    .rail { display:block; position:static; margin-bottom:6px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .rail ol { display:flex; flex-wrap:wrap; gap:2px 16px; }
+    .rail a { padding:4px 0; }
+  }
+</style>
 </head>
 <body>
 
@@ -263,7 +301,7 @@
   <div class="cover">
     <div class="eyebrow">Membership &amp; support</div>
     <h1>Members, not customers.</h1>
-    <p class="lede"><span style="color:var(--violet); font-weight:600;">Custorian</span> has a single class of membership. It carries a vote at the general assembly and nothing else. No fee level, at any price, confers a board seat, a vote on board composition, or certification eligibility for a member's own platform or product.</p>
+    <p class="lede"><span style="color:var(--violet); font-weight:600;">Custorian</span> has one voting class of membership, Support Membership. It carries a vote at the general assembly and nothing else. No fee level, at any price, confers a board seat, a vote on board composition, or certification eligibility for a member's own platform or product.</p>
     <div class="stamp">
       <span>Foreningen Custorian</span>
       <span>CVR 46399455</span>
@@ -271,40 +309,67 @@
     </div>
   </div>
 
-  <div style="padding-top:56px;">
-    <main class="main" style="max-width:74ch;">
-            <p class="intro"><span style="color:var(--violet); font-weight:600;">Custorian</span> has a single membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
+  <div class="layout" style="padding-top:56px;">
+    <aside class="rail" aria-label="On this page">
+      <div class="rail-title">On this page</div>
+      <ol>
+        <li><a href="#overview">Membership</a></li>
+        <li><a href="#fees">Fees by applicant type</a></li>
+        <li><a href="#parents-alliance">Parents&rsquo; Alliance</a></li>
+        <li><a href="#what-you-get">What membership gives you</a></li>
+        <li><a href="#rights">Rights under the Articles</a></li>
+        <li><a href="#receive">What members receive</a></li>
+        <li><a href="#limits">What membership does not give you</a></li>
+        <li><a href="#cancel">Cancelling</a></li>
+      </ol>
+    </aside>
+    <main class="main" style="max-width:84ch;">
+            <p class="intro" id="overview"><span style="color:var(--violet); font-weight:600;">Custorian</span> has one voting membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
       <p>Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on the annual accounts and on proposals; the budget is approved by the board and presented to the general assembly for information. Voting requires three months&rsquo; continuous membership. No fee level buys influence over the standard: membership never confers, and cannot be exchanged for, certification, and a for-profit member&rsquo;s own platform or product stays subject to the same independent, accredited assessment as everyone else&rsquo;s.</p>
 
-      <h2 class="tight">Fee by applicant type</h2>
+      <h2 class="tight" id="fees">Fee by applicant type</h2>
+      <p>All fees are shown excluding VAT. VAT is added at checkout: Danish VAT at 25%, or the VAT rate of your EU country.</p>
+      <div class="fees-wrap">
       <div class="tiers">
         <div class="tier">
           <div class="tier-name">Individual</div>
-          <div class="tier-price">&euro;10<span>&nbsp;/ year</span></div>
-          <div class="tier-who">Youth representatives and parents, per Articles &sect;&nbsp;3.1(a) and (b).</div>
+          <div class="tier-price">&euro;10<span>&nbsp;/ year excl. VAT</span></div>
+          <div class="tier-who">Individuals who support the association&rsquo;s purpose, including parents and youth representatives, per Articles &sect;&nbsp;3.1(a).</div>
           <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. No board seat, no path to certification.</div>
           <a href="index.html?join=individual#get-involved">Apply for membership &rarr;</a>
         </div>
         <div class="tier">
           <div class="tier-name">Trust &amp; Safety Expert</div>
-          <div class="tier-price">&euro;50<span>&nbsp;/ year</span></div>
+          <div class="tier-price">&euro;50<span>&nbsp;/ year excl. VAT</span></div>
           <div class="tier-who">Child safety and trust &amp; safety professionals.</div>
           <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. It is not an Advisory Board seat; those are appointed separately, by MOU, not by fee.</div>
           <a href="index.html?join=expert#get-involved">Apply for membership &rarr;</a>
         </div>
         <div class="tier">
           <div class="tier-name">Organisation</div>
-          <div class="tier-price">&euro;100<span>&nbsp;/ year</span></div>
+          <div class="tier-price">&euro;100<span>&nbsp;/ year excl. VAT</span></div>
           <div class="tier-who">Civil-society and non-profit organisations only.</div>
           <div class="tier-includes"><strong>Membership means:</strong> one vote at the general assembly, held by the organisation, on everything except Board composition. No board seat, no path to certification.</div>
           <a href="index.html?join=organisation#get-involved">Apply for membership &rarr;</a>
         </div>
         <div class="tier">
           <div class="tier-name">For-profit Organisation</div>
-          <div class="tier-price">&euro;500<span>&nbsp;/ year</span></div>
-          <div class="tier-who">For-profit organisations that are not themselves subject to assessment under the standard (Articles &sect;&nbsp;3.1(e)).</div>
+          <div class="tier-price">&euro;500<span>&nbsp;/ year excl. VAT</span></div>
+          <div class="tier-who">For-profit organisations that are not themselves subject to assessment under the standard (Articles &sect;&nbsp;3.1(d)).</div>
           <div class="tier-includes"><strong>Membership means:</strong> a vote at the general assembly on everything except Board composition. It does <strong>not</strong> include a board seat. A platform or service that is or may become subject to assessment, and any company controlling or controlled by one, cannot be a member at all.</div>
           <a href="index.html?join=forprofit#get-involved">Apply for membership &rarr;</a>
+        </div>
+      </div>
+        <div class="tier tier-alliance" id="parents-alliance">
+          <div class="tier-name">Parents&rsquo; Alliance &middot; coming soon</div>
+          <div class="tier-price">&euro;5<span>&nbsp;/ year excl. VAT</span></div>
+          <div class="tier-who">Parents and guardians in any EU member state. A passive, non-voting membership of Custorian (Articles &sect;&nbsp;3.5, proposed for adoption on 19 October 2026), with a hardship waiver on request.</div>
+          <div class="tier-includes">
+            <p><strong>Why it exists.</strong> Parents are told that children&rsquo;s safety online is being handled, but rarely get to see whether it works. The alliance will keep parents informed, in plain language, about what is being decided in Brussels and in their own country, and give them a say in it: one clear action with every briefing, member polls that show how many parents back a position, and a yearly parents&rsquo; agenda that the alliance takes to decision makers.</p>
+            <p><strong>How it is organised.</strong> Chapters start locally, at a school, a club or a neighbourhood, each led by a parent with a starter kit. As chapters grow, each country gets a national chapter and a country coordinator who speaks to national politicians and media. We will recruit where parents already gather: PTA and parent-council meetings, school parent evenings, schools and education boards, family festivals and parenting fairs.</p>
+            <p><strong>Membership means:</strong> a fortnightly briefing, a vote in alliance polls and on the yearly agenda, the right to elect and stand for the parent council, and recorded expert webinars. It carries <strong>no vote at the general assembly</strong> and no role in the standard or certification. Alliance membership and Individual Support Membership (&euro;10&nbsp;/ year excl. VAT, with a vote at the general assembly) are separate memberships. A parent who wants both joins both.</p>
+          </div>
+          <button type="button" class="alliance-open" data-alliance-open>Register your interest &rarr;</button>
         </div>
       </div>
       <p class="note">Applying registers your Support Membership request, it is not a payment. Applications are reviewed and decided on quarterly by the Board; if accepted, you&rsquo;ll receive an email with a Stripe payment link to complete your membership (card payment, billed annually). Fees were set by the Board on 21 August 2026 (organisation fee revised 8 September 2026; trust &amp; safety expert and for-profit levels added 9 September 2026) and are pending formal ratification at the next general assembly.</p>
@@ -314,7 +379,7 @@
       <p>Membership buys accountability, not access. Members see more, sooner, and vote on what the association does. It confers nothing over the content of the standard, which sits outside the general assembly&rsquo;s vote entirely (Articles &sect;&nbsp;5.8).</p>
       <p>Fees fund the work of writing and maintaining the standard itself: drafting and revising the control set, verifying every legal citation behind it against primary sources, running the public consultation and the youth panel, and publishing the results openly. The association is non-profit and any surplus is applied solely to that purpose (Articles &sect;&nbsp;2.2). Because Custorian refuses funding from any platform it could assess (&sect;&nbsp;7.7), member fees and individual donations are among the few sources it can accept without compromising the firewall.</p>
 
-      <h3 class="grp">Rights under the Articles</h3>
+      <h3 class="grp" id="rights">Rights under the Articles</h3>
       <ul class="plain" style="column-count:1;">
         <li>A vote at the general assembly on every matter reserved to it, except Board composition</li>
         <li>The right to attend and to propose items for the agenda (&sect;&nbsp;3.4)</li>
@@ -323,7 +388,7 @@
       </ul>
       <p class="note" style="margin-top:14px;">Voting requires three months&rsquo; continuous membership (&sect;&nbsp;4.8).</p>
 
-      <h3 class="grp">What members receive</h3>
+      <h3 class="grp" id="receive">What members receive</h3>
       <ol class="steps">
         <li><strong>Quarterly member briefing.</strong> Board decisions and the reasoning behind them, sent to members before the public summary is posted.</li>
         <li><strong>Standard change notices.</strong> What changed between control-set versions and why, in plain language, when a version ships.</li>
@@ -331,11 +396,11 @@
         <li><strong>An annual open call with the editor</strong> ahead of the general assembly, so that agenda items members propose are informed ones.</li>
       </ol>
 
-      <div class="callout">
+      <div class="callout" id="limits">
         <strong>What membership does not give you.</strong> No influence over which controls exist, how they are scored or how they are prioritised. No early or privileged access to the standard itself, which is published openly under CC BY-ND 4.0 and free to everyone. No shorter, cheaper or softer route to certification, which is decided by independent accredited bodies and not by Custorian. Board candidates need not be members, so a fee is not a route to a seat.
       </div>
 
-      <div class="callout">
+      <div class="callout" id="cancel">
         <strong>Cancelling a membership subscription.</strong> Dues are billed annually and can be cancelled at any time before the next renewal, with no cancellation fee, through the <strong>Stripe Customer Portal</strong>: the &ldquo;Manage subscription&rdquo; link in your payment receipt and renewal emails lets you cancel yourself, at any time, no need to contact us. You can also cancel by writing to <a class="inline" href="mailto:info@custorian.org">info@custorian.org</a> with the name and email used at payment (we confirm within two business days). Cancelling stops future renewals; it does not refund the period already paid for, and membership, including any voting rights attached to it, ends when that paid period expires.
       </div>
 
@@ -364,6 +429,79 @@
     b.addEventListener('click', function () {
       if (window.history.length > 1) window.history.back();
       else window.location.href = 'index.html';
+    });
+  })();
+</script>
+<dialog class="alliance-dialog" id="allianceDialog" aria-labelledby="allianceDialogTitle">
+  <button type="button" class="close" data-alliance-close aria-label="Close">&times;</button>
+  <div class="alliance-form">
+    <h3 id="allianceDialogTitle">Register your interest in the Parents&rsquo; Alliance</h3>
+    <p class="formnote">Alliance membership opens once the Board passes the resolution that admits Alliance Members. Register now and we will email you when it opens. Nothing is charged until then.</p>
+    <form action="https://api.web3forms.com/submit" method="POST" data-alliance-form>
+      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
+      <input type="hidden" name="subject" value="Custorian Parents' Alliance: Expression of interest">
+      <input type="hidden" name="from_name" value="Custorian Parents' Alliance">
+      <input type="hidden" name="Membership Class" value="Parents' Alliance Member (interest, &euro;5/yr)">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <div class="field"><label for="pa-name">Your name *</label><input id="pa-name" type="text" name="Name" required placeholder="Full name" autocomplete="name"></div>
+      <div class="field"><label for="pa-email">Email *</label><input id="pa-email" type="email" name="Email" required placeholder="you@example.org" autocomplete="email"></div>
+      <div class="field"><label for="pa-country">Country of residence *</label><input id="pa-country" type="text" name="Country" required placeholder="e.g. Denmark" autocomplete="country-name"></div>
+      <div class="field"><label for="pa-where">Your school, club or community (optional)</label><input id="pa-where" type="text" name="Local group" placeholder="Helps us see where chapters could start"></div>
+      <div class="field check"><input id="pa-lead" type="checkbox" name="Interested in leading a chapter" value="Yes"><label for="pa-lead">I would consider starting or helping to lead a local chapter.</label></div>
+      <div class="field check"><input id="pa-parent" type="checkbox" name="Parent or guardian" value="Yes" required><label for="pa-parent">I am a parent or guardian living in an EU member state. *</label></div>
+      <div class="field"><label for="pa-msg">What would you most like the alliance to work on?</label><textarea id="pa-msg" name="Message" placeholder="Optional"></textarea></div>
+      <div class="field check"><input id="pa-consent" type="checkbox" name="Consent" value="Yes" required><label for="pa-consent">I agree that Custorian may hold this information under GDPR to contact me about the parents&rsquo; alliance. It is never sold or shared with third parties, and I can ask for it to be deleted at any time by writing to info@custorian.org. *</label></div>
+      <button type="submit" class="btn">Register interest</button>
+      <p class="formnote" data-err hidden></p>
+    </form>
+    <div class="done" hidden data-done>
+      <div class="tick">&#10003;</div>
+      <p><strong>Thank you. Your interest is registered.</strong></p>
+      <p class="formnote">We will email you when the Board opens alliance membership.</p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  /* Parents' alliance: interest dialog. Sends to the membership Web3Forms inbox
+     and mirrors to the Membership tab on
+     custorian.io/registry/governance-applications. */
+  (function () {
+    var dlg = document.getElementById('allianceDialog');
+    var form = document.querySelector('[data-alliance-form]');
+    if (!dlg || !form) return;
+    document.querySelectorAll('[data-alliance-open]').forEach(function (b) {
+      b.addEventListener('click', function () { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); });
+    });
+    dlg.querySelector('[data-alliance-close]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+    var err = form.querySelector('[data-err]');
+    var done = form.parentNode.querySelector('[data-done]');
+    function val(n) { var el = form.querySelector('[name="' + n + '"]'); if (!el) return null; if (el.type === 'checkbox') return el.checked ? el.value : null; return el.value || null; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      try {
+        fetch(SB_URL + '/rest/v1/governance_applications', {
+          method: 'POST',
+          headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            body: 'Membership', name: val('Name'), email: val('Email'),
+            expertise: val('Membership Class'), message: val('Message'), source: 'org_website',
+            details: { membership_class: val('Membership Class'), country: val('Country'), local_group: val('Local group'), chapter_lead_interest: val('Interested in leading a chapter'), parent_or_guardian: val('Parent or guardian'), consent: val('Consent'), submitted_at: new Date().toISOString() }
+          }),
+          keepalive: true
+        }).catch(function () {});
+      } catch (x) {}
+      var submit = form.querySelector('button[type=submit]');
+      submit.disabled = true; submit.textContent = 'Sending\u2026';
+      if (err) err.hidden = true;
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.success) { form.hidden = true; if (done) done.hidden = false; } else { throw new Error((d && d.message) || 'Submission failed'); } })
+        .catch(function (ex) { submit.disabled = false; submit.textContent = 'Try again'; if (err) { err.hidden = false; err.textContent = 'Could not send: ' + ex.message + '. You can also email info@custorian.org.'; } });
     });
   })();
 </script>
