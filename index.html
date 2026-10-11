@@ -1505,6 +1505,49 @@
         }).catch(function () {});
       } catch (e) {}
     }, true);
+
+    // Membership enquiries feed the Membership tab on
+    // custorian.io/registry/governance-applications (email-only until 11 Oct 2026).
+    var mform = document.querySelector('#membershipModal form');
+    if (mform) {
+      mform.addEventListener('submit', function () {
+        if (!mform.checkValidity()) return;
+        function mval(name) {
+          var c = mform.querySelector('[name="' + name + '"]:checked');
+          if (c) return c.value;
+          var el = mform.querySelector('[name="' + name + '"]');
+          return el && el.type !== 'radio' && el.type !== 'checkbox' ? (el.value || null) : null;
+        }
+        try {
+          fetch(SB_URL + '/rest/v1/governance_applications', {
+            method: 'POST',
+            headers: {
+              'apikey': SB_KEY,
+              'Authorization': 'Bearer ' + SB_KEY,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+              body: 'Membership',
+              name: mval('Name'),
+              email: mval('Email'),
+              organisation: mval('Organisation'),
+              expertise: mval('Membership Class'),
+              message: mval('Message'),
+              source: 'org_website',
+              details: {
+                membership_class: mval('Membership Class'),
+                certification_eligibility: mval('Certification Eligibility'),
+                acknowledgement: mval('Acknowledgement'),
+                consent: mval('Consent'),
+                submitted_at: new Date().toISOString()
+              }
+            }),
+            keepalive: true
+          }).catch(function () {});
+        } catch (e) {}
+      }, true);
+    }
   })();
 
   /* Back button: browser history, falling back to home when there is none. */

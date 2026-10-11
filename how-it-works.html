@@ -2088,6 +2088,31 @@
       }, true);
     }
 
+    // Membership enquiries feed the Membership tab on
+    // custorian.io/registry/governance-applications (email-only until 11 Oct 2026).
+    var membership = document.querySelector('#membershipModal form');
+    if (membership) {
+      membership.addEventListener('submit', function () {
+        if (!membership.checkValidity()) return;
+        insert('governance_applications', {
+          body: 'Membership',
+          name: val(membership, 'Name'),
+          email: val(membership, 'Email'),
+          organisation: val(membership, 'Organisation'),
+          expertise: val(membership, 'Membership Class'),
+          message: val(membership, 'Message'),
+          source: 'org_website',
+          details: {
+            membership_class: val(membership, 'Membership Class'),
+            certification_eligibility: val(membership, 'Certification Eligibility'),
+            acknowledgement: val(membership, 'Acknowledgement'),
+            consent: val(membership, 'Consent'),
+            submitted_at: new Date().toISOString()
+          }
+        });
+      }, true);
+    }
+
     var review = document.getElementById('reviewForm');
     if (review) {
       review.addEventListener('submit', function () {
