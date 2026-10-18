@@ -1850,6 +1850,7 @@
      applicant type. The option text is matched on a prefix so the fee in the
      label can change without breaking the link. */
 
+  var params = new URLSearchParams(location.search);
   var join = params.get('join');
   if (join) {
     var prefixes = {
