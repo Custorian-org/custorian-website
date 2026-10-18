@@ -876,7 +876,7 @@
     <div class="btnrow">
       <button type="button" class="btn ghost" data-modal="advisoryModal">Express interest in governance</button>
       <a class="btn ghost" href="how-it-works.html#review">Enter invitation key</a>
-      <button type="button" class="btn ghost" data-modal="membershipModal">Become a member</button>
+      <a class="btn ghost" href="https://members.custorian.org/join?support=1#support">Become a member</a>
     </div>
     <p class="note">The Advisory Board advises; the Board governs. Board seats are filled by the sitting Board and ratified by the general assembly, and candidates need not already be members (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1).</p>
     <div class="callout">
@@ -917,10 +917,10 @@
     <h2 id="actionTitle">Take action</h2>
     <p style="font-size:16px; line-height:1.6; color:var(--body);">Five ways to put weight behind the standard. Pick the one that fits.</p>
     <div class="routes">
-      <button type="button" class="route" data-modal="membershipModal">
+      <a class="route" href="https://members.custorian.org/join?support=1#support">
         <div class="rk">Become a member &rarr;</div>
         <div class="rd">Join <span style="color:var(--violet); font-weight:600;">Custorian</span>. Members vote at the general assembly, receive the quarterly record and fund the standard&rsquo;s independence. Founding-member discount, greater discounts for non-profits.</div>
-      </button>
+      </a>
       <a class="route" href="https://buy.stripe.com/14AdR3a1hgNY4qb3hseQM01" target="_blank" rel="noopener">
         <div class="rk">Donate &rarr;</div>
         <div class="rd">Fund the work directly. No platform money is accepted for the standard, so the standard is paid for by people who have nothing to certify.</div>
@@ -1859,15 +1859,12 @@
       organisation: 'Non-profit',
       forprofit:    'For-profit'
     };
-    var want = prefixes[join];
-    var select = document.getElementById('m-class');
-    if (want && select) {
-      Array.prototype.slice.call(select.options).forEach(function (o) {
-        if (o.text.indexOf(want) === 0) select.value = o.value || o.text;
-      });
-      select.dispatchEvent(new Event('change', { bubbles: true }));
+    /* Applications moved to the members area on 18 Oct 2026, so the Board
+       approves them where the payment link is sent. Old links forward there. */
+    if (prefixes[join]) {
+      location.replace('https://members.custorian.org/join?support=1&class=' + join + '#support');
+      return;
     }
-    if (typeof window.__openModal === 'function') window.__openModal('membershipModal');
   }
 })();
 </script>
