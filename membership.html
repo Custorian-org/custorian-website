@@ -324,7 +324,7 @@
       </ol>
     </aside>
     <main class="main" style="max-width:84ch;">
-            <p class="intro" id="overview"><span style="color:var(--violet); font-weight:600;">Custorian</span> has one voting membership class, <strong>Support Membership</strong>. There is one set of rights; only the fee differs, and it is set by who is applying.</p>
+            <p class="intro" id="overview"><span style="color:var(--violet); font-weight:600;">Custorian</span> has two classes of membership: <strong>Support Membership</strong>, the voting class, and the <a href="#parents-alliance" style="color:var(--violet);">Parents&rsquo; Alliance</a>, a passive class for parents (Articles &sect;&nbsp;3.5). Within Support Membership there is one set of rights; only the fee differs, and it is set by who is applying. <a href="https://members.custorian.org/membership" style="color:var(--violet);">Compare what each membership gives you</a>.</p>
       <p>Support Members hold no vote on the composition of the Board: Board seats are filled by resolution of the sitting Board and presented to the general assembly for ratification. Support Members retain full voting rights on all other matters reserved to the general assembly, including the right to attend, propose agenda items, and vote on the annual accounts and on proposals; the budget is approved by the board and presented to the general assembly for information. Voting requires three months&rsquo; continuous membership. No fee level buys influence over the standard: membership never confers, and cannot be exchanged for, certification, and a for-profit member&rsquo;s own platform or product stays subject to the same independent, accredited assessment as everyone else&rsquo;s.</p>
 
       <h2 class="tight" id="fees">Fee by applicant type</h2>
@@ -361,15 +361,15 @@
         </div>
       </div>
         <div class="tier tier-alliance" id="parents-alliance">
-          <div class="tier-name">Parents&rsquo; Alliance &middot; coming soon</div>
+          <div class="tier-name">Parents&rsquo; Alliance</div>
           <div class="tier-price">&euro;5<span>&nbsp;/ year excl. VAT</span></div>
-          <div class="tier-who">Parents and guardians in any EU member state. A passive, non-voting membership of Custorian (Articles &sect;&nbsp;3.5, proposed for adoption on 19 October 2026), with a hardship waiver on request.</div>
+          <div class="tier-who">Parents and others who have parental responsibility for, or day-to-day care of, a child, wherever they live. A passive, non-voting membership of Custorian (Articles &sect;&nbsp;3.5, adopted 19 October 2026), with a hardship waiver on request.</div>
           <div class="tier-includes">
-            <p><strong>Why it exists.</strong> Parents are told that children&rsquo;s safety online is being handled, but rarely get to see whether it works. The alliance will keep parents informed, in plain language, about what is being decided in Brussels and in their own country, and give them a say in it: one clear action with every briefing, member polls that show how many parents back a position, and a yearly parents&rsquo; agenda that the alliance takes to decision makers.</p>
+            <p><strong>Why it exists.</strong> Parents are told that children&rsquo;s safety online is being handled, but rarely get to see whether it works. The alliance keeps parents informed, in plain language, about what is being decided in Brussels and in their own country, and give them a say in it: one clear action with every briefing, member polls that show how many parents back a position, and a yearly parents&rsquo; agenda that the alliance takes to decision makers.</p>
             <p><strong>How it is organised.</strong> Chapters start locally, at a school, a club or a neighbourhood, each led by a parent with a starter kit. As chapters grow, each country gets a national chapter and a country coordinator who speaks to national politicians and media. We will recruit where parents already gather: PTA and parent-council meetings, school parent evenings, schools and education boards, family festivals and parenting fairs.</p>
             <p><strong>Membership means:</strong> a weekly news digest, 10% off live events (excl. VAT), a vote in alliance polls and on the yearly agenda, the right to elect and stand for the parent council, and recorded expert webinars. It carries <strong>no vote at the general assembly</strong> and no role in the standard or certification. Alliance membership and Individual Support Membership (&euro;10&nbsp;/ year excl. VAT, with a vote at the general assembly) are separate memberships. A parent who wants both joins both.</p>
           </div>
-          <button type="button" class="alliance-open" data-alliance-open>Register your interest &rarr;</button>
+          <a class="alliance-open" href="https://members.custorian.org/join" style="text-decoration:none;">Join the Parents&rsquo; Alliance &rarr;</a>
         </div>
       </div>
       <p class="note">Applying registers your Support Membership request, it is not a payment. Applications are reviewed and decided on quarterly by the Board; if accepted, you&rsquo;ll receive an email with a Stripe payment link to complete your membership (card payment, billed annually). Fees were set by the Board on 21 August 2026 (organisation fee revised 8 September 2026; trust &amp; safety expert and for-profit levels added 9 September 2026) and are pending formal ratification at the next general assembly.</p>
@@ -429,79 +429,6 @@
     b.addEventListener('click', function () {
       if (window.history.length > 1) window.history.back();
       else window.location.href = 'index.html';
-    });
-  })();
-</script>
-<dialog class="alliance-dialog" id="allianceDialog" aria-labelledby="allianceDialogTitle">
-  <button type="button" class="close" data-alliance-close aria-label="Close">&times;</button>
-  <div class="alliance-form">
-    <h3 id="allianceDialogTitle">Register your interest in the Parents&rsquo; Alliance</h3>
-    <p class="formnote">Alliance membership opens once the Board passes the resolution that admits Alliance Members. Register now and we will email you when it opens. Nothing is charged until then.</p>
-    <form action="https://api.web3forms.com/submit" method="POST" data-alliance-form>
-      <input type="hidden" name="access_key" value="cfeb795c-19e4-42ee-9ab3-66290e1c5e34">
-      <input type="hidden" name="subject" value="Custorian Parents' Alliance: Expression of interest">
-      <input type="hidden" name="from_name" value="Custorian Parents' Alliance">
-      <input type="hidden" name="Membership Class" value="Parents' Alliance Member (interest, &euro;5/yr)">
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-      <div class="field"><label for="pa-name">Your name *</label><input id="pa-name" type="text" name="Name" required placeholder="Full name" autocomplete="name"></div>
-      <div class="field"><label for="pa-email">Email *</label><input id="pa-email" type="email" name="Email" required placeholder="you@example.org" autocomplete="email"></div>
-      <div class="field"><label for="pa-country">Country of residence *</label><input id="pa-country" type="text" name="Country" required placeholder="e.g. Denmark" autocomplete="country-name"></div>
-      <div class="field"><label for="pa-where">Your school, club or community (optional)</label><input id="pa-where" type="text" name="Local group" placeholder="Helps us see where chapters could start"></div>
-      <div class="field check"><input id="pa-lead" type="checkbox" name="Interested in leading a chapter" value="Yes"><label for="pa-lead">I would consider starting or helping to lead a local chapter.</label></div>
-      <div class="field check"><input id="pa-parent" type="checkbox" name="Parent or guardian" value="Yes" required><label for="pa-parent">I am a parent or guardian living in an EU member state. *</label></div>
-      <div class="field"><label for="pa-msg">What would you most like the alliance to work on?</label><textarea id="pa-msg" name="Message" placeholder="Optional"></textarea></div>
-      <div class="field check"><input id="pa-consent" type="checkbox" name="Consent" value="Yes" required><label for="pa-consent">I agree that Custorian may hold this information under GDPR to contact me about the parents&rsquo; alliance. It is never sold or shared with third parties, and I can ask for it to be deleted at any time by writing to info@custorian.org. *</label></div>
-      <button type="submit" class="btn">Register interest</button>
-      <p class="formnote" data-err hidden></p>
-    </form>
-    <div class="done" hidden data-done>
-      <div class="tick">&#10003;</div>
-      <p><strong>Thank you. Your interest is registered.</strong></p>
-      <p class="formnote">We will email you when the Board opens alliance membership.</p>
-    </div>
-  </div>
-</dialog>
-
-<script>
-  /* Parents' alliance: interest dialog. Sends to the membership Web3Forms inbox
-     and mirrors to the Membership tab on
-     custorian.io/registry/governance-applications. */
-  (function () {
-    var dlg = document.getElementById('allianceDialog');
-    var form = document.querySelector('[data-alliance-form]');
-    if (!dlg || !form) return;
-    document.querySelectorAll('[data-alliance-open]').forEach(function (b) {
-      b.addEventListener('click', function () { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); });
-    });
-    dlg.querySelector('[data-alliance-close]').addEventListener('click', function () { dlg.close(); });
-    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-    var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
-    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
-    var err = form.querySelector('[data-err]');
-    var done = form.parentNode.querySelector('[data-done]');
-    function val(n) { var el = form.querySelector('[name="' + n + '"]'); if (!el) return null; if (el.type === 'checkbox') return el.checked ? el.value : null; return el.value || null; }
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      try {
-        fetch(SB_URL + '/rest/v1/governance_applications', {
-          method: 'POST',
-          headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-          body: JSON.stringify({
-            body: 'Membership', name: val('Name'), email: val('Email'),
-            expertise: val('Membership Class'), message: val('Message'), source: 'org_website',
-            details: { membership_class: val('Membership Class'), country: val('Country'), local_group: val('Local group'), chapter_lead_interest: val('Interested in leading a chapter'), parent_or_guardian: val('Parent or guardian'), consent: val('Consent'), submitted_at: new Date().toISOString() }
-          }),
-          keepalive: true
-        }).catch(function () {});
-      } catch (x) {}
-      var submit = form.querySelector('button[type=submit]');
-      submit.disabled = true; submit.textContent = 'Sending\u2026';
-      if (err) err.hidden = true;
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(function (r) { return r.json(); })
-        .then(function (d) { if (d && d.success) { form.hidden = true; if (done) done.hidden = false; } else { throw new Error((d && d.message) || 'Submission failed'); } })
-        .catch(function (ex) { submit.disabled = false; submit.textContent = 'Try again'; if (err) { err.hidden = false; err.textContent = 'Could not send: ' + ex.message + '. You can also email info@custorian.org.'; } });
     });
   })();
 </script>
