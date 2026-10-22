@@ -55,7 +55,7 @@ document.getElementById('gate').addEventListener('submit', async (e) => {
   e.preventDefault();
   const btn = document.getElementById('go'), err = document.getElementById('err');
   btn.disabled = true; err.textContent = '';
-  try { await unlock(document.getElementById('pw').value); }
+  try { await unlock(document.getElementById('pw').value.trim()); }
   catch (x) { err.textContent = x && x.message === 'automation' ? 'Automated browsers cannot open this portal.' : 'Wrong password.'; btn.disabled = false; }
 });
 try { const s = sessionStorage.getItem(KEY); if (s) unlock(s).catch(() => sessionStorage.removeItem(KEY)); } catch (e) {}
