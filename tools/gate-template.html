@@ -58,7 +58,10 @@ document.getElementById('gate').addEventListener('submit', async (e) => {
   try { await unlock(document.getElementById('pw').value.trim()); }
   catch (x) { err.textContent = x && x.message === 'automation' ? 'Automated browsers cannot open this portal.' : 'Wrong password.'; btn.disabled = false; }
 });
-try { const s = sessionStorage.getItem(KEY); if (s) unlock(s).catch(() => sessionStorage.removeItem(KEY)); } catch (e) {}
+// A shared link can carry the password in the fragment (#k=...), which never reaches the server.
+const hk = new URLSearchParams(location.hash.slice(1)).get('k');
+if (hk) { history.replaceState(null, '', location.pathname + location.search); unlock(hk.trim()).catch(() => { document.getElementById('err').textContent = 'This link has expired or is incomplete. Enter the password instead.'; }); }
+else { try { const s = sessionStorage.getItem(KEY); if (s) unlock(s).catch(() => sessionStorage.removeItem(KEY)); } catch (e) {} }
 })();
 </script>
 </body>
