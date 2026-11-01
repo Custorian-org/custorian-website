@@ -40,9 +40,10 @@
 
   /* HERO, full-bleed black, as on the live site */
   .herowrap { background:#000; color:#fff; }
-  .hero-alliance { display:inline-flex; align-items:center; gap:8px; margin:0 auto 26px; padding:8px 16px; border-radius:100px; background:var(--violet, #5B41C2); color:#fff; border:1px solid var(--violet-l, #9B7CFF); font-family:var(--sans); font-size:13.5px; font-weight:600; letter-spacing:.01em; text-decoration:none; transition:background .15s, border-color .15s; }
+  .hero-alliance { position:absolute; top:44px; right:32px; display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:0; background:var(--violet, #5B41C2); color:#fff; border:1px solid var(--violet-l, #9B7CFF); font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:.01em; text-decoration:none; transition:background .15s, border-color .15s; }
   .hero-alliance:hover, .hero-alliance:focus-visible { background:#000; color:#fff; border-color:var(--violet-l, #9B7CFF); }
-  @media (max-width:560px) { .hero-alliance { font-size:12.5px; padding:7px 13px; margin-bottom:20px; } }
+  .hero-main { display:flex; flex-direction:column; align-items:center; }
+  @media (max-width:900px) { .hero-alliance { position:static; margin:0 auto 24px; font-size:12.5px; padding:8px 13px; } }
   .hero { max-width:1180px; margin:0 auto; padding:110px 32px 104px; text-align:center;
           display:flex; flex-direction:column; align-items:center; position:relative; }
   /* Animated mark, top left of the hero. Same pulse-sweep as the top bar, larger and in violet. */
@@ -741,7 +742,8 @@
 <div class="herowrap">
   <div class="hero">
     <div class="hero-mark"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg></div>
-    <a class="hero-alliance" href="membership.html#parents-alliance">Parents&rsquo; Alliance: founding members join free for life &rarr;</a>
+    <a class="hero-alliance" href="membership.html#parents-alliance">Parents&rsquo; Alliance &rarr;</a>
+    <div class="hero-main">
     <div class="eyebrow">Est. 2026 &middot; Copenhagen</div>
     <h1>This <em>standard</em> cannot be bought.</h1>
     <p class="lede">Custorian is to child safety what <b>PCI DSS</b> is to payment security: a published, auditable standard that a platform either meets or does not, assessed by independent accredited bodies rather than by us.</p>
@@ -750,6 +752,7 @@
       <a class="btn ghost" href="how-it-works.html">How it works</a>
       <a class="btn white" href="how-it-works.html#pilot">Apply to the pilot</a>
       
+    </div>
     </div>
   </div>
 </div>
@@ -899,6 +902,8 @@
 <div class="shell">
 
   <footer>
+    <div class="memberships" style="margin-top:0; display:flex; align-items:center; flex-wrap:wrap; gap:20px; font-size:12.5px; color:var(--muted, #6b6b6b);"><div style="flex-basis:100%; margin-bottom:-8px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;">Proud member of</div><a href="https://www.w3.org/" target="_blank" rel="noopener"><img src="https://www.w3.org/assets/logos/w3c-2025/sub-brands/svg/member.svg" alt="W3C Member" height="64" style="display:block; height:64px; width:auto;"></a><a href="https://www.eifonline.org/" target="_blank" rel="noopener"><img src="logos/european-internet-forum.png" alt="European Internet Forum" width="176" height="44" style="display:block; height:44px; width:auto;"></a><div style="flex-basis:100%; margin-top:-8px; font-size:12.5px;">Contributing to standards development at <a href="https://www.ds.dk/" target="_blank" rel="noopener">Dansk Standard</a> (national committees S-906 and S-441, the Danish mirror of CEN/CENELEC JTC 13). Our founder is a voting member of the <a href="https://sagroups.ieee.org/7999-series/" target="_blank" rel="noopener">IEEE P7999</a> working group and served on the working group for IEEE 3462, the Recommended Practice for Using Safety by Design in Generative Models to Prioritize Child Safety, approved by IEEE SA.</div></div>
+    <div class="footer-rule" style="border-top:1px solid var(--line, #ddd); margin:28px 0 24px;"></div>
     Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
     <nav>
       <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>

@@ -127,6 +127,11 @@
   .person:last-child { border-bottom:1px solid var(--hair); }
   .person .n { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
   .person .r { font-size:16px; color:var(--body); line-height:1.6; }
+  .person.has-ph { display:grid; grid-template-columns:76px 1fr; gap:0 20px; align-items:start; }
+  .person .ph { grid-row:1 / span 3; width:76px; height:76px; border-radius:50%; overflow:hidden; background:var(--violet, #5B41C2); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--sans); font-weight:600; font-size:22px; letter-spacing:.02em; }
+  .person .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+  .person.has-ph .tag { justify-self:start; }
+  @media (max-width:560px) { .person.has-ph { grid-template-columns:56px 1fr; gap:0 14px; } .person .ph { width:56px; height:56px; font-size:17px; } }
   .tag {
     display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:600;
     letter-spacing:.1em; text-transform:uppercase; color:var(--violet);
@@ -295,7 +300,8 @@
         <h3 id="people">Who holds these roles</h3>
         <p>A standard that asks platforms to prove their claims should not be run by people the public cannot name. Every role below is held under the articles cited beside it, and every recusal listed is a rule in those articles rather than a personal undertaking.</p>
         <div class="people">
-          <div class="person">
+          <div class="person has-ph">
+            <div class="ph"><img src="tanya-founder.jpg" alt="Tanya Becheva" loading="lazy"></div>
             <span class="tag">Founder &middot; Chair &middot; Interim managing director</span>
             <div class="n">Tanya Becheva</div>
             <div class="r">Founded the association and holds a board seat by right (&sect;&nbsp;5.2). Chairs the board only until an independent chair is elected, which the articles require the board to seek by 31 December 2028 (&sect;&nbsp;5.4), and serves as interim managing director subject to annual reconfirmation, ending no later than 31 December 2029 (&sect;&nbsp;5.3). Recused from every decision on her own role, pay or conflicts, which an independent vice-chair leads and on which she does not vote, and from every decision on the commercial arm&rsquo;s licence, valuation, ownership or sale.</div>
@@ -307,12 +313,14 @@
         <p>A single, non-governing <strong>Advisory Board</strong> of ten to twelve named individual experts, spanning child rights, legal and regulatory, technology, academic and clinical practice, law enforcement, and youth perspectives, feeds independent, ad hoc, non-binding input into the standard, its ethical dimensions, and child-facing content; it holds no vote and cannot bind the board. Members are drawn from that one roster into focused sub-committees as needed: <strong>Standards &amp; Technical</strong> (technical evolution and peer review of the standard), <strong>Certification &amp; Impartiality</strong> (protects the certification firewall and arbitrates appeals, with its own independence safeguards, including the founder&rsquo;s recusal from membership), and <strong>Policy &amp; Rights</strong> (regulatory, academic and societal grounding).</p>
 
         <div class="people">
-          <div class="person">
+          <div class="person has-ph">
+            <div class="ph"><img src="headshots/beckett-leclair.jpg" alt="Beckett LeClair" loading="lazy"></div>
             <span class="tag">Advisory Board</span>
             <div class="n">Beckett LeClair</div>
             <div class="r">Head of Technology at 5Rights Foundation. Advises on child-rights-by-design, alignment with BSI and IEEE technical standards work, and the ethical framing of the standard.</div>
           </div>
-          <div class="person">
+          <div class="person has-ph">
+            <div class="ph"><img src="headshots/alison-mcclymont.jpg" alt="Dr Alison McClymont" loading="lazy"></div>
             <span class="tag">Advisory Board</span>
             <div class="n">Dr Alison McClymont</div>
             <div class="r">Clinical psychologist specialising in trauma and child exploitation. Advises on the standard&rsquo;s child-facing content and its behavioural-harm and grooming-dynamics frameworks.</div>
@@ -458,6 +466,8 @@
       </section>
 
       <footer>
+    <div class="memberships" style="margin-top:0; display:flex; align-items:center; flex-wrap:wrap; gap:20px; font-size:12.5px; color:var(--muted, #6b6b6b);"><div style="flex-basis:100%; margin-bottom:-8px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;">Proud member of</div><a href="https://www.w3.org/" target="_blank" rel="noopener"><img src="https://www.w3.org/assets/logos/w3c-2025/sub-brands/svg/member.svg" alt="W3C Member" height="64" style="display:block; height:64px; width:auto;"></a><a href="https://www.eifonline.org/" target="_blank" rel="noopener"><img src="logos/european-internet-forum.png" alt="European Internet Forum" width="176" height="44" style="display:block; height:44px; width:auto;"></a><div style="flex-basis:100%; margin-top:-8px; font-size:12.5px;">Contributing to standards development at <a href="https://www.ds.dk/" target="_blank" rel="noopener">Dansk Standard</a> (national committees S-906 and S-441, the Danish mirror of CEN/CENELEC JTC 13). Our founder is a voting member of the <a href="https://sagroups.ieee.org/7999-series/" target="_blank" rel="noopener">IEEE P7999</a> working group and served on the working group for IEEE 3462, the Recommended Practice for Using Safety by Design in Generative Models to Prioritize Child Safety, approved by IEEE SA.</div></div>
+    <div class="footer-rule" style="border-top:1px solid var(--line, #ddd); margin:28px 0 24px;"></div>
         Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
         <nav>
           <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>
