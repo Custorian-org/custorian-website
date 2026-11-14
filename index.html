@@ -1442,7 +1442,18 @@
     function fromHash() {
       var h = location.hash;
       if (h === '#governance' || h === '#board') openGov('governance');
-      else if (h === '#advisory-interest' || h === '#join-advisory') openGov('advisory');
+      else if (h === '#advisory-interest' || h === '#join-advisory') {
+        openGov('advisory');
+        // ?seat=Ethics (from the open-seat links on governance and careers)
+        // preselects the domain, if it matches an option.
+        var seat = new URLSearchParams(location.search).get('seat');
+        var sel = document.getElementById('a-domain');
+        if (seat && sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].text === seat) { sel.selectedIndex = i; sel.dispatchEvent(new Event('change', { bubbles: true })); break; }
+          }
+        }
+      }
     }
     fromHash();
     window.addEventListener('hashchange', fromHash);

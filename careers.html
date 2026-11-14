@@ -266,6 +266,15 @@
     .cform .row { grid-template-columns:1fr; }
     .rfacts > div { grid-template-columns:1fr; gap:2px; }
   }
+
+  /* ---------- open advisory seats ---------- */
+  .seats { margin:22px 0 18px; border-top:1px solid var(--line); }
+  .seat { padding:18px 0; border-bottom:1px solid var(--hair); display:grid; grid-template-columns:200px 1fr; gap:4px 24px; scroll-margin-top:90px; }
+  .seat b { font-family:var(--sans); font-size:15.5px; font-weight:600; color:var(--ink); grid-row:span 2; }
+  .seat span { font-size:15.5px; line-height:1.55; color:var(--body); }
+  .seat-apply { font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--violet); text-decoration:none; }
+  .seat-apply:hover { color:var(--ink); }
+  @media (max-width:900px) { .seat { grid-template-columns:1fr; } .seat b { grid-row:auto; } }
 </style>
 </head>
 
@@ -307,7 +316,7 @@
     <aside class="rail">
       <ol>
         <li><a href="#roles">Open roles</a></li>
-        <li><a href="#advisory-ethics">Advisory Board</a></li>
+        <li><a href="#advisory">Advisory Board</a></li>
         <li><a href="#how">How we work</a></li>
         <li><a href="#apply">Apply</a></li>
       </ol>
@@ -359,24 +368,38 @@
         </div>
       </section>
 
-      <section id="advisory-ethics">
+      <section id="advisory">
         <span class="sectnum">02</span>
-        <h2>Advisory Board seat: Ethics</h2>
-        <p>Our <a class="inline" href="governance.html#advisory">Advisory Board</a> gives independent, non-binding advice to the Board and the standard&rsquo;s committees. We are looking for an expert in ethics to address the ethical questions our work raises, for example:</p>
-        <ul class="ticks">
-          <li>how children and young people take part in our research and consultations, and how their consent and assent are handled;</li>
-          <li>the balance between safety measures and children&rsquo;s privacy, autonomy and participation;</li>
-          <li>the ethics of data use, automated detection and AI in the tools we build and the services we assess;</li>
-          <li>conflicts between the interests of different groups: children, parents, platforms, researchers and law enforcement.</li>
-        </ul>
-        <p>You might come from applied ethics, bioethics or research ethics, children&rsquo;s rights, or technology ethics, ideally with experience on an ethics committee or review board.</p>
-        <div class="rfacts wide">
-          <div><span>Engagement</span>Unpaid and non-voting, formalised by a memorandum of understanding</div>
-          <div><span>Time</span>A few meetings a year, plus written advice when a question comes up</div>
-          <div><span>Independence</span>No paid or advisory role with a service the standard covers while in post</div>
+        <h2>Advisory Board: open seats</h2>
+        <p>Our <a class="inline" href="governance.html#advisory">Advisory Board</a> gives independent, non-binding advice to the Board and the standard&rsquo;s committees. Seats are unpaid and non-voting, formalised by a memorandum of understanding, and take a few meetings a year plus written advice when a question comes up. These five are open now; read more in our <a class="inline" href="governance.html#advisory-open">governance section</a>.</p>
+        <div class="seats">
+          <div class="seat" id="seat-legal">
+            <b>Legal and regulatory</b>
+            <span>Knowledge of the Digital Services Act, the GDPR, the Audiovisual Media Services Directive, national online safety law or children&rsquo;s rights law. You would advise on the legal references in the standard and on how it lines up with regulation.</span>
+            <a class="seat-apply" href="index.html?seat=Legal#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-technology">
+            <b>Technology and security</b>
+            <span>Experience in security engineering, trust and safety, privacy-enhancing technology or age assurance. You would help peer review the standard&rsquo;s technical controls and the tools we build.</span>
+            <a class="seat-apply" href="index.html?seat=Technology%20and%20security#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-law-enforcement">
+            <b>Law enforcement</b>
+            <span>Current or former experience of child exploitation investigations, victim identification or reporting of illegal content. You would advise on how reports and evidence flow between hotlines, providers and police.</span>
+            <a class="seat-apply" href="index.html?seat=Law%20enforcement#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-youth">
+            <b>Youth perspectives</b>
+            <span>Experience of bringing children&rsquo;s and young people&rsquo;s views into decisions, for example through a youth council or youth participation work. You would help make sure the standard reflects what young people actually experience online.</span>
+            <a class="seat-apply" href="index.html?seat=Youth#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="advisory-ethics">
+            <b>Ethics</b>
+            <span>Background in applied, research or technology ethics, or children&rsquo;s rights, ideally with ethics committee experience. You would advise on consent and assent in our research, the balance between safety and children&rsquo;s privacy and autonomy, and the ethics of data use and AI in our work.</span>
+            <a class="seat-apply" href="index.html?seat=Ethics#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
         </div>
-        <div class="ractions"><a class="btn" href="index.html#advisory-interest">Express interest in the Ethics seat</a></div>
-        <p class="note" style="margin-top:16px;">This opens our Advisory Board form. Choose &ldquo;Ethics&rdquo; as your domain.</p>
+        <p class="note">Applying opens our Advisory Board form with the seat selected. While in post you cannot hold a paid or advisory role with an online service the standard covers.</p>
       </section>
 
       <section id="how">

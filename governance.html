@@ -220,7 +220,16 @@
     .tiers { grid-template-columns:1fr; }
     .facts div { grid-template-columns:1fr; gap:4px; }
     ul.plain { column-count:1; }
-  }</style>
+  }
+  /* ---------- open advisory seats ---------- */
+  .seats { margin:22px 0 18px; border-top:1px solid var(--line); }
+  .seat { padding:18px 0; border-bottom:1px solid var(--hair); display:grid; grid-template-columns:200px 1fr; gap:4px 24px; scroll-margin-top:90px; }
+  .seat b { font-family:var(--sans); font-size:15.5px; font-weight:600; color:var(--ink); grid-row:span 2; }
+  .seat span { font-size:15.5px; line-height:1.55; color:var(--body); }
+  .seat-apply { font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--violet); text-decoration:none; }
+  .seat-apply:hover { color:var(--ink); }
+  @media (max-width:900px) { .seat { grid-template-columns:1fr; } .seat b { grid-row:auto; } }
+</style>
 </head>
 <body>
 
@@ -326,7 +335,36 @@
             <div class="r">Clinical psychologist specialising in trauma and child exploitation. Advises on the standard&rsquo;s child-facing content and its behavioural-harm and grooming-dynamics frameworks.</div>
           </div>
         </div>
-        <p class="note">Advisory Board seats are unpaid, non-voting, and formalised individually by MOU. Five kinds of seat are open now: legal and regulatory, additional technology and security, law enforcement, youth perspectives, and <a class="inline" href="careers.html#advisory-ethics">ethics</a>. We are approaching people directly and also take suggestions, including self-nominations. Write to <a href="mailto:info@custorian.org">info@custorian.org</a> or use the <a href="index.html#get-involved">expression of interest form</a>.</p>
+        <h3 id="advisory-open">Open Advisory Board seats</h3>
+        <p>We are recruiting for five kinds of seat. Seats are unpaid and non-voting, formalised individually by a memorandum of understanding, and held by individuals rather than organisations. While in post you cannot hold a paid or advisory role with an online service the standard covers.</p>
+        <div class="seats">
+          <div class="seat" id="seat-legal">
+            <b>Legal and regulatory</b>
+            <span>Knowledge of the Digital Services Act, the GDPR, the Audiovisual Media Services Directive, national online safety law or children&rsquo;s rights law. You would advise on the legal references in the standard and on how it lines up with regulation.</span>
+            <a class="seat-apply" href="index.html?seat=Legal#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-technology">
+            <b>Technology and security</b>
+            <span>Experience in security engineering, trust and safety, privacy-enhancing technology or age assurance. You would help peer review the standard&rsquo;s technical controls and the tools we build.</span>
+            <a class="seat-apply" href="index.html?seat=Technology%20and%20security#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-law-enforcement">
+            <b>Law enforcement</b>
+            <span>Current or former experience of child exploitation investigations, victim identification or reporting of illegal content. You would advise on how reports and evidence flow between hotlines, providers and police.</span>
+            <a class="seat-apply" href="index.html?seat=Law%20enforcement#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-youth">
+            <b>Youth perspectives</b>
+            <span>Experience of bringing children&rsquo;s and young people&rsquo;s views into decisions, for example through a youth council or youth participation work. You would help make sure the standard reflects what young people actually experience online.</span>
+            <a class="seat-apply" href="index.html?seat=Youth#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+          <div class="seat" id="seat-ethics">
+            <b>Ethics</b>
+            <span>Background in applied, research or technology ethics, or children&rsquo;s rights, ideally with ethics committee experience. You would advise on consent and assent in our research, the balance between safety and children&rsquo;s privacy and autonomy, and the ethics of data use and AI in our work.</span>
+            <a class="seat-apply" href="index.html?seat=Ethics#advisory-interest">Apply for this seat &rarr;</a>
+          </div>
+        </div>
+        <p class="note">Applying opens our expression of interest form with the seat selected. We are also approaching people directly and welcome suggestions, including self-nominations: write to <a href="mailto:info@custorian.org">info@custorian.org</a>. Other open roles are on our <a class="inline" href="careers.html">careers page</a>.</p>
 
         <h3 id="volunteers">Volunteers</h3>
         <p>Custorian is built mostly by people giving time rather than by staff. Volunteers work on the control set, legal citation checking, translation, research, design and outreach, with a named role brief and a scope agreed in advance rather than open-ended asks. Volunteers hold no governance role and no say over certification outcomes, and anyone working with material covered by the safeguarding or sensitive-information policies is briefed on those before they start.</p>
