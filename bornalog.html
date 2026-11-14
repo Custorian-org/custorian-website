@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bornalog Fest 2027: Funen's analog kids' festival</title>
+<meta name="description" content="Bornalog Fest: a festival day with no screens for children up to 17 and their families. Saturday 6 February 2027, Odense Harbour. All profits go to protecting children online.">
+<link rel="canonical" href="https://custorian.org/bornalog">
+<meta property="og:title" content="Bornalog Fest 2027: Funen's analog kids' festival">
+<meta property="og:description" content="Adults have Tinderbox. Now kids get Bornalog. Saturday 6 February 2027, Odense Harbour.">
+<meta property="og:image" content="https://custorian.org/bornalog-media/og.jpg">
+<meta property="og:url" content="https://custorian.org/bornalog">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Custorian">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/custorian-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fredoka:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="foundation.css?v=9be3b889">
+<link rel="stylesheet" href="sidetabs.css?v=a9bb9d3b">
+<style>
+
+  /* --- BRAND FONT MODE: Brand Kit v1.0 (Inter only). Preview toggle, remove before ship. --- */
+  body { font-size:16.5px; line-height:1.62; }
+  .cover h1 { font-weight:700; letter-spacing:-.045em; line-height:1.0; }
+  .cover .lede { font-weight:400; letter-spacing:-.011em; }
+  h2 { font-weight:650; letter-spacing:-.032em; }
+  .intro { font-weight:400; letter-spacing:-.01em; }
+  .tier-price { font-weight:650; letter-spacing:-.04em; }
+  .person .r,
+  .entries .x,
+  .tier-who,
+  .tier-includes,
+  ul.plain li,
+  .callout { letter-spacing:-.006em; }
+  body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--hair);
+    background: var(--paper);
+    position: sticky; top:0; z-index:60;
+  }
+  .topbar a.back {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    text-decoration:none; letter-spacing:.02em;
+  }
+
+  /* ---------- shell ---------- */
+  .shell { max-width:1180px; margin:0 auto; padding:0 32px 84px; }
+
+  /* ---------- cover ---------- */
+  .cover { padding:96px 0 72px; border-bottom:1px solid var(--line); }
+  .cover h1 {
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(44px,6.4vw,80px); line-height:1.02;
+    letter-spacing:-.025em; color:var(--ink); margin-bottom:32px;
+  }
+  .cover .lede {
+    font-size:clamp(19px,2.1vw,23px); line-height:1.58;
+    max-width:62ch; color:var(--body); font-weight:300;
+  }
+  .cover .stamp {
+    margin-top:44px; display:flex; flex-wrap:wrap; gap:10px 28px;
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- layout with rail ---------- */
+  .layout { display:grid; grid-template-columns:200px 1fr; gap:64px; padding-top:40px; }
+  .rail { position:sticky; top:104px; align-self:start; }
+  .rail ol { list-style:none; counter-reset:sec; }
+  .rail li { counter-increment:sec; margin-bottom:2px; }
+  .rail a {
+    font-family:var(--sans); font-size:13px; color:var(--muted);
+    text-decoration:none; display:flex; gap:10px; padding:6px 0; line-height:1.4;
+  }
+  .rail a::before {
+    content:counter(sec,decimal-leading-zero);
+    font-family:var(--mono); font-size:10.5px; color:var(--violet-l);
+    padding-top:2px; flex:none;
+  }
+  .rail a:hover { color:var(--ink); }
+
+  .main { min-width:0; max-width:74ch; }
+
+  /* ---------- sections ---------- */
+  section { padding-bottom:48px; }
+  section + section { border-top:1px solid var(--hair); padding-top:40px; }
+  h2 {
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(29px,3.4vw,38px); line-height:1.16; letter-spacing:-.02em;
+    color:var(--ink); margin-bottom:10px;
+  }
+  h3 {
+    font-family:var(--sans); font-weight:600; font-size:16.5px;
+    letter-spacing:-.01em; color:var(--ink); margin:44px 0 12px;
+  }
+  p { margin-bottom:20px; }
+  p:last-child { margin-bottom:0; }
+  a.inline { color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(91,65,194,.3); }
+  a.inline:hover { border-bottom-color:var(--violet); }
+  .intro { font-size:19.5px; line-height:1.6; color:var(--body); font-weight:300; margin-bottom:28px; }
+
+  /* ---------- key facts ---------- */
+  .facts { margin:32px 0 8px; border-top:1px solid var(--line); }
+  .facts > div {
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:15px 0; border-bottom:1px solid var(--hair);
+  }
+  .facts .k {
+    font-family:var(--sans); font-size:12.5px; color:var(--muted);
+    letter-spacing:.02em; padding-top:2px;
+  }
+  .facts .v { font-family:var(--mono); font-size:14px; color:var(--ink); line-height:1.5; }
+
+  /* ---------- people ---------- */
+  .people { margin:26px 0 12px; }
+  .person { padding:22px 0; border-top:1px solid var(--hair); }
+  .person:last-child { border-bottom:1px solid var(--hair); }
+  .person .n { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .person .r { font-size:16px; color:var(--body); line-height:1.6; }
+  .person.has-ph { display:grid; grid-template-columns:76px 1fr; gap:0 20px; align-items:start; }
+  .person .ph { grid-row:1 / span 3; width:76px; height:76px; border-radius:50%; overflow:hidden; background:var(--violet, #5B41C2); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--sans); font-weight:600; font-size:22px; letter-spacing:.02em; }
+  .person .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+  .person.has-ph .tag { justify-self:start; }
+  @media (max-width:560px) { .person.has-ph { grid-template-columns:56px 1fr; gap:0 14px; } .person .ph { width:56px; height:56px; font-size:17px; } }
+  .tag {
+    display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--violet);
+    border:1px solid rgba(91,65,194,.28); border-radius:100px; padding:2px 10px; margin-bottom:9px;
+  }
+
+  /* ---------- firewalls ---------- */
+  .firewalls { list-style:none; counter-reset:fw; margin:30px 0 0; }
+  .firewalls li {
+    counter-increment:fw; position:relative;
+    padding:20px 0 20px 52px; border-top:1px solid var(--hair);
+  }
+  .firewalls li:last-child { border-bottom:1px solid var(--hair); }
+  .firewalls li::before {
+    content:counter(fw,decimal-leading-zero);
+    position:absolute; left:0; top:22px;
+    font-family:var(--mono); font-size:11px; color:var(--violet-l);
+  }
+  .firewalls strong { display:block; font-family:var(--sans); font-size:15px; margin-bottom:4px; }
+
+  /* ---------- networks ---------- */
+
+  /* ---------- note / callout ---------- */
+  .callout {
+    background:var(--card); border:1px solid var(--line); border-left:2px solid var(--violet);
+    padding:24px 28px; margin:32px 0; font-size:16.5px; line-height:1.6;
+  }
+  .note { font-size:15px; color:var(--muted); line-height:1.6; }
+
+  /* ---------- tiers ---------- */
+  .tiers { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); margin:32px 0 22px; border:1px solid var(--line); }
+  .tier { background:var(--card); padding:26px 24px; display:flex; flex-direction:column; }
+  .tier-name { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .tier-price { font-family:var(--serif); font-size:38px; font-weight:300; color:var(--ink); letter-spacing:-.03em; line-height:1; margin-bottom:14px; }
+  .tier-price span { font-family:var(--sans); font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0; }
+  .tier-who { font-size:15.5px; color:var(--ink); margin-bottom:10px; }
+  .tier-includes { font-size:15px; color:var(--body); line-height:1.55; flex:1; }
+  .tier a {
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--violet);
+    text-decoration:none; margin-top:18px; display:inline-block;
+  }
+  .tier a:hover { color:var(--ink); }
+
+  .btn {
+    display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+    background:var(--violet); color:#fff; text-decoration:none;
+    padding:12px 24px; border-radius:2px;
+  }
+
+  /* ---------- lists ---------- */
+  ul.plain { list-style:none; margin:24px 0 0; column-count:2; column-gap:40px; }
+  ul.plain li {
+    font-size:16px; padding:9px 0 9px 18px; position:relative;
+    break-inside:avoid; color:var(--ink);
+  }
+  ul.plain li::before { content:''; position:absolute; left:0; top:18px; width:6px; height:1px; background:var(--violet-l); }
+
+  .entries { list-style:none; margin:26px 0 0; }
+  .entries li { padding:20px 0; border-top:1px solid var(--hair); }
+  .entries li:last-child { border-bottom:1px solid var(--hair); }
+  .entries .d { font-family:var(--mono); font-size:11.5px; color:var(--violet-l); letter-spacing:.04em; margin-bottom:6px; }
+  .entries .t { font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:5px; }
+  .entries .t a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .entries .t a:hover { color:var(--violet); }
+  .entries .x { font-size:16px; color:var(--body); line-height:1.58; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top:1px solid var(--line); margin-top:40px; padding:44px 0 0;
+    font-family:var(--sans); font-size:13.5px; color:var(--muted);
+  }
+
+  .flag {
+    background:#fff8e6; border:1px solid #e8d9a8; border-radius:3px;
+    padding:14px 18px; margin:0 0 0; font-family:var(--sans); font-size:13px;
+    color:#6b5618; line-height:1.55;
+  }
+
+  @media (max-width:900px) {
+    body { font-size:17px; }
+    .shell { padding:0 20px 60px; }
+    .topbar .inner { padding:12px 20px; }
+    .layout { grid-template-columns:1fr; gap:0; padding-top:28px; }
+    .rail { display:none; }
+    .cover { padding:60px 0 48px; }
+    .tiers { grid-template-columns:1fr; }
+    .facts div { grid-template-columns:1fr; gap:4px; }
+    ul.plain { column-count:1; }
+  }
+  /* ---------- Bornalog ---------- */
+  .fest-hero { --night:#140A2E; --night2:#2A1366; --fv:#9B7CFF; --pink:#FF5FD2; --cyan:#4FE3FF; --lime:#C4FF4D; --yellow:#FFD84A; --orange:#FF9A3C; --ftext:#F2EEFF; --fmuted:#BFB4E6;
+    background:radial-gradient(circle at 85% 6%,rgba(255,95,210,.35),transparent 30%),radial-gradient(circle at 5% 45%,rgba(79,227,255,.2),transparent 30%),radial-gradient(circle at 90% 80%,rgba(155,124,255,.35),transparent 35%),linear-gradient(180deg,var(--night2),var(--night) 70%);
+    color:var(--ftext); font-family:var(--sans); }
+  .fh-inner { max-width:1180px; margin:0 auto; padding:34px 32px 48px; }
+  .fh-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--cyan); padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.22); }
+  .fh-img { margin-top:22px; height:clamp(200px,30vw,340px); border-radius:22px; background:url(bornalog-media/kids.webp) center 30%/auto 200% no-repeat, radial-gradient(ellipse at 50% 75%, #9B7CFF 0%, #5B41C2 75%); }
+  .wm { font-family:'Fredoka',var(--sans); font-weight:700; font-size:clamp(56px,10vw,128px); line-height:.95; letter-spacing:-.01em; margin:22px 0 10px; color:#fff; }
+  .wm .c0{color:var(--pink)} .wm .c1{color:var(--orange)} .wm .c2{color:var(--yellow)} .wm .c3{color:var(--lime)} .wm .c4{color:var(--cyan)} .wm .c5{color:var(--fv)}
+  .wm .yr { font-family:var(--mono); font-size:.28em; letter-spacing:.2em; vertical-align:middle; color:#fff; }
+  .fh-lede { font-size:clamp(22px,2.6vw,30px); font-weight:800; line-height:1.2; color:#fff; max-width:30ch; }
+  .fh-lede b { color:var(--lime); font-weight:800; }
+  .fh-da { margin-top:10px; font-size:17px; color:var(--fmuted); max-width:60ch; }
+  .fh-when { margin-top:28px; display:flex; flex-wrap:wrap; gap:18px 40px; align-items:center; border-radius:16px; padding:20px 26px; background:linear-gradient(90deg,var(--pink),var(--fv) 55%,var(--cyan)); color:#140A2E; }
+  .fh-when .k { display:block; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .fh-when b { display:block; font-size:22px; font-weight:900; line-height:1.2; }
+  .fh-when span:not(.k) { display:block; font-size:14px; font-weight:600; }
+  .fh-when .cta { margin-left:auto; }
+  .fbtn { display:inline-block; font-family:var(--sans); font-size:15px; font-weight:800; background:#140A2E; color:#fff; text-decoration:none; padding:14px 24px; border-radius:100px; border:0; cursor:pointer; }
+  .fbtn:hover { background:#2A1366; }
+  .fbtn.ghost { background:transparent; color:var(--violet); border:2px solid var(--violet); padding:12px 22px; }
+  .fbtn.ghost:hover { background:var(--violet); color:#fff; }
+  .zones { display:grid; grid-template-columns:1fr 1fr; gap:22px 32px; margin:26px 0 8px; }
+  .zone { position:relative; padding-left:34px; font-size:15.5px; line-height:1.5; }
+  .zone i { position:absolute; left:0; top:3px; width:20px; height:20px; border-radius:50%; }
+  .zone b { display:block; font-family:var(--sans); font-size:16.5px; color:var(--ink); }
+  .zone em { display:block; font-style:normal; font-size:13.5px; color:var(--muted); }
+  .d0{background:#FF5FD2} .d1{background:#FFD84A} .d2{background:#9BD12F} .d3{background:#4FE3FF} .d4{background:#FF9A3C} .d5{background:#9B7CFF}
+  .change { margin-top:22px; font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); }
+  .tickets { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:24px 0; }
+  .tk { background:var(--card); border:1px solid var(--line); border-top:4px solid var(--violet); padding:22px; display:flex; flex-direction:column; font-family:var(--sans); }
+  .tk .n { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .tk .p { font-size:34px; font-weight:700; color:var(--ink); letter-spacing:-.03em; margin:8px 0; }
+  .tk .p small { font-size:14px; font-weight:500; color:var(--muted); letter-spacing:0; }
+  .tk .x { font-size:14.5px; color:var(--body); flex:1; margin-bottom:16px; line-height:1.5; }
+  .tk .fbtn { text-align:center; }
+  .soon { background:var(--card); border:1px solid var(--line); border-left:3px solid #FF5FD2; padding:24px 26px; margin:24px 0; font-family:var(--sans); }
+  .soon > b { font-size:19px; color:var(--ink); }
+  .soon > span { color:var(--muted); }
+  .soon p { margin:10px 0 16px; font-size:15.5px; }
+  .nform { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .nform input[type=email] { flex:1 1 240px; font:inherit; font-size:15px; padding:12px 14px; border:1px solid var(--line); border-radius:100px; background:#fff; }
+  .nform .ncons { flex-basis:100%; font-size:13px; color:var(--muted); display:flex; gap:8px; align-items:flex-start; }
+  .nform .ncons input { margin-top:3px; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .ndone { font-weight:600; color:var(--green); }
+  .free { border:1px dashed var(--line); padding:18px 22px; font-size:15.5px; line-height:1.55; }
+  .free .da { display:block; margin-top:6px; color:var(--muted); font-size:14px; }
+  .poster { display:flex; gap:28px; align-items:flex-start; margin-top:22px; }
+  .poster img { width:260px; height:auto; display:block; border-radius:6px; box-shadow:0 8px 30px rgba(20,10,46,.25); }
+  .plinks { display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+  @media (max-width:900px) {
+    .fh-inner { padding:24px 20px 36px; }
+    .fh-when .cta { margin-left:0; }
+    .zones { grid-template-columns:1fr; }
+    .poster { flex-direction:column; }
+    .poster img { width:100%; max-width:340px; }
+  }
+</style>
+</head>
+
+<nav class="sidetabs" aria-label="Sections">
+  <a class="sidetab solid" href="index.html#take-action">Take action</a>
+  <a class="sidetab" href="index.html#about">About</a>
+  <a class="sidetab" href="how-it-works.html">How it works</a>
+  <a class="sidetab" href="registry.html">Register</a>
+  <a class="sidetab" href="membership.html">Membership</a>
+  <a class="sidetab" href="governance.html">Governance</a>
+  <a class="sidetab" href="governance.html#advisory">Advisory</a>
+</nav>
+
+
+<div class="topbar">
+  <div class="inner">
+    <span class="navleft">
+      <button type="button" class="navbtn" id="backBtn" title="Back to the previous page" aria-label="Back to the previous page">&larr;</button>
+      <a class="navbtn" href="index.html" title="Home">Home</a>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Custorian"> <rect class="outer" style="--idx:0" x="15" y="15" width="10" height="10"/> <rect class="outer" style="--idx:1" x="47" y="15" width="10" height="10"/> <rect class="outer" style="--idx:2" x="79" y="15" width="10" height="10"/> <rect class="outer" style="--idx:3" x="111" y="15" width="10" height="10"/> <rect class="outer" style="--idx:4" x="143" y="15" width="10" height="10"/> <rect class="outer" style="--idx:5" x="175" y="15" width="10" height="10"/> <rect class="outer" style="--idx:19" x="15" y="47" width="10" height="10"/> <rect class="outer" style="--idx:20" x="47" y="47" width="10" height="10"/> <rect class="outer" style="--idx:21" x="79" y="47" width="10" height="10"/> <rect class="outer" style="--idx:22" x="111" y="47" width="10" height="10"/> <rect class="outer" style="--idx:23" x="143" y="47" width="10" height="10"/> <rect class="outer" style="--idx:6" x="175" y="47" width="10" height="10"/> <rect class="outer" style="--idx:18" x="15" y="79" width="10" height="10"/> <rect class="outer" style="--idx:31" x="47" y="79" width="10" height="10"/> <rect class="outer" style="--idx:24" x="143" y="79" width="10" height="10"/> <rect class="outer" style="--idx:7" x="175" y="79" width="10" height="10"/> <rect class="outer" style="--idx:17" x="15" y="111" width="10" height="10"/> <rect class="outer" style="--idx:30" x="47" y="111" width="10" height="10"/> <rect class="outer" style="--idx:25" x="143" y="111" width="10" height="10"/> <rect class="outer" style="--idx:8" x="175" y="111" width="10" height="10"/> <rect class="outer" style="--idx:16" x="15" y="143" width="10" height="10"/> <rect class="outer" style="--idx:29" x="47" y="143" width="10" height="10"/> <rect class="outer" style="--idx:28" x="79" y="143" width="10" height="10"/> <rect class="outer" style="--idx:27" x="111" y="143" width="10" height="10"/> <rect class="outer" style="--idx:26" x="143" y="143" width="10" height="10"/> <rect class="outer" style="--idx:9" x="175" y="143" width="10" height="10"/> <rect class="outer" style="--idx:15" x="15" y="175" width="10" height="10"/> <rect class="outer" style="--idx:14" x="47" y="175" width="10" height="10"/> <rect class="outer" style="--idx:13" x="79" y="175" width="10" height="10"/> <rect class="outer" style="--idx:12" x="111" y="175" width="10" height="10"/> <rect class="outer" style="--idx:11" x="143" y="175" width="10" height="10"/> <rect class="outer" style="--idx:10" x="175" y="175" width="10" height="10"/> <rect class="inner i1" x="71" y="71" width="26" height="26"/> <rect class="inner i2" x="103" y="71" width="26" height="26"/> <rect class="inner i3" x="71" y="103" width="26" height="26"/> <rect class="inner i4" x="103" y="103" width="26" height="26"/> </svg> Custorian</a>
+    </span>
+  </div>
+</div>
+
+<div class="fest-hero">
+  <div class="fh-inner">
+    <div class="fh-top"><span>One day only &middot; Odense &middot; Denmark</span><span lang="da">Fyns analoge b&oslash;rnefestival</span></div>
+    <div class="fh-img" role="img" aria-label="Children with painted faces cheering"></div>
+    <h1 class="wm" aria-label="bornalog fest"><span class="c0">b</span><span class="c1">o</span><span class="c2">r</span><span class="c3">n</span><span class="c4">a</span><span class="c5">l</span><span class="c0">o</span><span class="c1">g</span> <span class="fest">fest</span> <span class="yr">2027</span></h1>
+    <p class="fh-lede">Adults have Tinderbox. <b>Now kids get Bornalog.</b> A festival day with no screens, for children up to 17 and their families.</p>
+    <p class="fh-da" lang="da">Voksne har Tinderbox. Nu f&aring;r b&oslash;rnene Bornalog. En festivaldag uden sk&aelig;rme for b&oslash;rn op til 17 &aring;r og deres familier.</p>
+    <div class="fh-when">
+      <div><span class="k">When / Hvorn&aring;r</span><b>Saturday 6 February 2027</b><span lang="da">L&oslash;rdag 6. februar 2027, 12:00 to 18:00</span></div>
+      <div><span class="k">Where / Hvor</span><b>Odense Harbour</b><span lang="da">Odense Havn</span></div>
+      <div class="cta"><a class="fbtn" href="#tickets">Get tickets &middot; K&oslash;b billetter</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="layout">
+
+    <aside class="rail">
+      <ol>
+        <li><a href="#about-fest">What it is</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#practical">Practical</a></li>
+        <li><a href="#share">Share the poster</a></li>
+      </ol>
+    </aside>
+
+    <main class="main">
+
+      <section id="about-fest">
+        <span class="sectnum">01</span>
+        <h2>What it is</h2>
+        <p class="intro">Bornalog comes from <em lang="da">b&oslash;rn</em>, children, and <em>analog</em>: a day back in a world before screens. Music, dancing, races, crafts and a stamp passport, with no phone needed for any of it.</p>
+        <p>Bornalog Fest is organised by Foreningen Custorian, a Danish non-profit working to protect children online. All profits go to that work. In the parents&rsquo; corner, families can get practical help with online safety and join our free parents&rsquo; alliance.</p>
+      </section>
+
+      <section id="programme">
+        <span class="sectnum">02</span>
+        <h2>Programme</h2>
+        <div class="zones">
+          <div class="zone"><i class="d0"></i><b>Main stage</b><em lang="da">Hovedscene</em><span>Live music, dance, school performances and a headline act.</span></div>
+          <div class="zone"><i class="d1"></i><b>Glowstick and silent disco</b><em lang="da">Glowstick- og silent disco</em><span>Dance in the dark, or in your own headphones.</span></div>
+          <div class="zone"><i class="d2"></i><b>Contests and races</b><em lang="da">Konkurrencer og l&oslash;b</em><span>Prizes, dance-offs and parent and child rounds.</span></div>
+          <div class="zone"><i class="d3"></i><b>Creative zone</b><em lang="da">Kreativ zone</em><span>Face painting (classic, UV and glitter), crafts and drawing.</span></div>
+          <div class="zone"><i class="d4"></i><b>Little People corner</b><em lang="da">Sm&aring; Folks hj&oslash;rne</em><span>A calm corner for ages 0 to 5, with story time.</span></div>
+          <div class="zone"><i class="d5"></i><b>Stamp passport</b><em lang="da">Stempelpas</em><span>Collect stamps around the festival. Slush ice and popcorn are included in every ticket.</span></div>
+          <div class="zone"><i class="d3"></i><b>Parents&rsquo; corner</b><em lang="da">For&aelig;ldrehj&oslash;rne</em><span>Online safety help, a pledge wall and a free parents&rsquo; alliance.</span></div>
+          <div class="zone"><i class="d0"></i><b>Flash mob finale</b><em lang="da">Flashmob-finale</em><span>Everyone learns it, everyone dances it.</span></div>
+        </div>
+        <p class="change">Programme subject to change &middot; <span lang="da">Programmet kan &aelig;ndres</span></p>
+      </section>
+
+      <section id="tickets">
+        <span class="sectnum">03</span>
+        <h2>Tickets</h2>
+        <div id="ticketList" class="tickets"></div>
+        <div id="ticketSoon" class="soon" hidden>
+          <b>Tickets go on sale soon.</b> <span lang="da">Billetsalget &aring;bner snart.</span>
+          <p>Tickets will cost from DKK 350, with slush ice and popcorn included. Leave your email and we will tell you the moment sales open.</p>
+          <form id="notifyForm" class="nform">
+            <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+            <label for="n-email" class="sr">Email</label>
+            <input id="n-email" type="email" name="email" required placeholder="Your email / Din e-mail" autocomplete="email">
+            <button class="fbtn" type="submit">Tell me / Giv mig besked</button>
+            <label class="ncons"><input type="checkbox" name="consent" required><span>I agree that Custorian may email me about Bornalog tickets. <span lang="da">Jeg accepterer at f&aring; en e-mail om billetter.</span></span></label>
+          </form>
+          <p class="ndone" hidden>Thank you. We will email you when tickets go on sale. <span lang="da">Tak, vi giver dig besked.</span></p>
+        </div>
+        <div class="free">
+          <b>Free places for families who can&rsquo;t pay.</b> We are setting aside 100 free places for children from low-income families, through schools and municipal services. Ask your child&rsquo;s school, or write to <a class="inline" href="mailto:info@custorian.org?subject=Bornalog%20free%20places">info@custorian.org</a>.
+          <span class="da" lang="da">100 gratis pladser til familier, der ikke har r&aring;d: sp&oslash;rg din skole.</span>
+        </div>
+      </section>
+
+      <section id="practical">
+        <span class="sectnum">04</span>
+        <h2>Practical</h2>
+        <div class="facts">
+          <div><div class="k">Date</div><div class="v">Saturday 6 February 2027, 12:00 to 18:00</div></div>
+          <div><div class="k">Place</div><div class="v">Odense Harbour, Odense, Denmark</div></div>
+          <div><div class="k">Who</div><div class="v">Children up to 17 and their families</div></div>
+          <div><div class="k">Phones</div><div class="v">Not needed for anything at the festival</div></div>
+          <div><div class="k">Organiser</div><div class="v">Foreningen Custorian, CVR 46399455</div></div>
+          <div><div class="k">Questions</div><div class="v"><a class="inline" href="mailto:info@custorian.org?subject=Bornalog">info@custorian.org</a></div></div>
+        </div>
+        <p class="note" style="margin-top:18px;">Programme subject to change. The exact venue address will be on your ticket.</p>
+      </section>
+
+      <section id="share">
+        <span class="sectnum">05</span>
+        <h2>Share the poster</h2>
+        <p>Help us spread the word: share the poster with your school, club or family group, or print it.</p>
+        <div class="poster">
+          <a href="bornalog-media/bornalog-fest-2027-poster.jpg" target="_blank" rel="noopener"><img src="bornalog-media/poster-thumb.jpg" alt="Bornalog Fest 2027 poster: Saturday 6 February 2027, Odense Harbour. Get your tickets at custorian.org/bornalog" loading="lazy" width="600" height="848"></a>
+          <div class="plinks">
+            <a class="fbtn" href="bornalog-media/bornalog-fest-2027-poster.jpg" download>Download image (JPG)</a>
+            <a class="fbtn ghost" href="bornalog-media/bornalog-fest-2027-poster-a3.pdf" download>Download A3 for print (PDF)</a>
+            <button type="button" class="fbtn ghost" id="shareBtn" hidden>Share&hellip;</button>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+    <div class="memberships" style="margin-top:0; display:flex; align-items:center; flex-wrap:wrap; gap:20px; font-size:12.5px; color:var(--muted, #6b6b6b);"><div style="flex-basis:100%; margin-bottom:-8px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;">Proud member of</div><a href="https://www.w3.org/" target="_blank" rel="noopener"><img src="https://www.w3.org/assets/logos/w3c-2025/sub-brands/svg/member.svg" alt="W3C Member" height="64" style="display:block; height:64px; width:auto;"></a><a href="https://www.eifonline.org/" target="_blank" rel="noopener"><img src="logos/european-internet-forum.png" alt="European Internet Forum" width="176" height="44" style="display:block; height:44px; width:auto;"></a><a href="https://www.weprotect.org/" target="_blank" rel="noopener" style="display:block; font-size:15px; font-weight:600; line-height:1.15; letter-spacing:.01em; color:inherit; text-decoration:none;">WeProtect<br>Global Alliance</a><div style="flex-basis:100%; margin-top:-8px; font-size:12.5px;">Contributing to standards development at <a href="https://www.ds.dk/" target="_blank" rel="noopener">Dansk Standard</a> (national committees S-906 and S-441, the Danish mirror of CEN/CENELEC JTC 13). Our founder is a voting member of the <a href="https://sagroups.ieee.org/7999-series/" target="_blank" rel="noopener">IEEE P7999</a> working group and served on the working group for IEEE 3462, the Recommended Practice for Using Safety by Design in Generative Models to Prioritize Child Safety, approved by IEEE SA.</div></div>
+    <div class="footer-rule" style="border-top:1px solid var(--line, #ddd); margin:28px 0 24px;"></div>
+        Foreningen Custorian &middot; CVR 46399455 &middot; Copenhagen, Denmark
+        <nav>
+          <a href="https://zenodo.org/records/19675375" target="_blank" rel="noopener">White Paper</a>
+          <a href="how-it-works.html#pilot">Join the Pilot</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#get-involved">Get Involved</a>
+          <a href="governance.html">Governance</a>
+          <a href="careers.html">Careers</a>
+          <a href="bornalog.html">Bornalog Fest</a>
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="mailto:info@custorian.org">Contact</a>
+        </nav>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+
+  /* Back button: browser history, falling back to home when there is none. */
+  (function () {
+    var b = document.getElementById('backBtn');
+    if (!b) return;
+    if (window.history.length <= 1) b.setAttribute('disabled', '');
+    b.addEventListener('click', function () {
+      if (window.history.length > 1) window.history.back();
+      else window.location.href = 'index.html';
+    });
+  })();
+</script>
+<script>
+  /* Bornalog tickets. Add one entry per ticket type once payment links are
+     live (Stripe Payment Link or the ticketing platform's URL). While the
+     list is empty the page shows "on sale soon" with an email sign-up that
+     writes to governance_applications (body 'Bornalog tickets'). */
+  var BORNALOG_TICKETS = [
+    // { name: 'Bornalog Pass', price: 350, note: 'Festival entry, stamp passport, slush ice and popcorn.', url: 'https://buy.stripe.com/...' },
+  ];
+  (function () {
+    var list = document.getElementById('ticketList');
+    var soon = document.getElementById('ticketSoon');
+    var live = BORNALOG_TICKETS.filter(function (t) { return t.url; });
+    if (!live.length) { soon.hidden = false; list.hidden = true; }
+    else {
+      live.forEach(function (t) {
+        var d = document.createElement('div'); d.className = 'tk';
+        d.innerHTML = '<span class="n"></span><span class="p"></span><span class="x"></span><a class="fbtn" target="_blank" rel="noopener">Buy tickets &middot; Køb billetter</a>';
+        d.querySelector('.n').textContent = t.name;
+        d.querySelector('.p').innerHTML = 'DKK ' + t.price + ' <small>incl. VAT</small>';
+        d.querySelector('.x').textContent = t.note || '';
+        d.querySelector('a').href = t.url;
+        list.appendChild(d);
+      });
+    }
+    var f = document.getElementById('notifyForm');
+    if (f) f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (f.website.value) return;
+      var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+      var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+      var b = f.querySelector('button'); b.disabled = true;
+      fetch(SB_URL + '/rest/v1/governance_applications', {
+        method: 'POST',
+        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ body: 'Bornalog tickets', name: 'Bornalog ticket alert', email: f.email.value.trim(), source: 'org_website', details: { consent: 'Yes', page: 'bornalog', submitted_at: new Date().toISOString() } })
+      }).then(function (r) {
+        if (!r.ok) throw new Error();
+        f.hidden = true; soon.querySelector('.ndone').hidden = false;
+      }).catch(function () { b.disabled = false; b.textContent = 'Try again'; });
+    });
+    var sb = document.getElementById('shareBtn');
+    if (sb && navigator.share) {
+      sb.hidden = false;
+      sb.addEventListener('click', function () {
+        navigator.share({ title: 'Bornalog Fest 2027', text: 'Bornalog Fest: a festival day with no screens. Saturday 6 February 2027, Odense Harbour.', url: 'https://custorian.org/bornalog' }).catch(function () {});
+      });
+    }
+  })();
+</script>
+<script src="track.js?v=568d5b29"></script>
+<script src="sidetabs.js?v=c24a0729"></script>
+<script src="sectionnav.js?v=d5b93581"></script>
+</body>
+</html>
