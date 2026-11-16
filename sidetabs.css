@@ -29,7 +29,11 @@
      an outline. Every lit state below fills it violet. */
   color:var(--violet, #5B41C2); background:transparent;
   border:1px solid rgba(91,65,194,.45); border-right:none;
-  border-radius:5px 0 0 5px; padding:20px 13px;
+  border-radius:5px 0 0 5px;
+  /* Right padding carries the extra 9px the resting tab is pushed off-screen, and
+     top padding carries the trailing letter-spacing, so the label sits centred in
+     the visible part of the tab. */
+  padding:calc(20px + .16em) 22px 20px 13px;
   transform:translateX(9px);
   margin:0; cursor:pointer; -webkit-appearance:none; appearance:none;
   transition:transform .24s cubic-bezier(.2,.8,.2,1), background .24s ease, color .24s ease, box-shadow .24s ease, border-color .24s ease;
@@ -80,7 +84,7 @@
    letting the rail run off the top and bottom of the screen. */
 @media (max-height:900px) {
   .sidetabs { gap:5px; }
-  .sidetabs .sidetab { font-size:10.5px; letter-spacing:.12em; padding:15px 11px; }
+  .sidetabs .sidetab { font-size:10.5px; letter-spacing:.12em; padding:calc(15px + .12em) 20px 15px 11px; }
 }
 
 /* Shorter again on a laptop-height window. The rail draws above the sticky top
@@ -89,7 +93,7 @@
    inside the space below the bar. */
 @media (max-height:760px) {
   .sidetabs { gap:4px; }
-  .sidetabs .sidetab { font-size:9.5px; letter-spacing:.1em; padding:12px 10px; }
+  .sidetabs .sidetab { font-size:9.5px; letter-spacing:.1em; padding:calc(12px + .1em) 19px 12px 10px; }
 }
 
 /* Below the desktop breakpoint the rail would cover content: the top bar carries
