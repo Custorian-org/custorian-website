@@ -884,7 +884,10 @@
       <button type="button" class="btn ghost" data-modal="advisoryModal">Express interest in governance</button>
       <a class="btn ghost" href="how-it-works.html#review">Enter invitation key</a>
       <a class="btn ghost" href="https://members.custorian.org/join?support=1#support">Become a member</a>
+      <a class="btn ghost" href="careers.html">Careers</a>
+      <a class="btn ghost" href="careers.html#partner">Partner with us</a>
     </div>
+    <p>We are also recruiting for three roles, each starting as a volunteer role and becoming paid once funded: <a href="careers.html#lead-security-engineer" style="color:var(--violet);">Lead Security Engineer</a>, <a href="careers.html#head-of-communications" style="color:var(--violet);">Head of Communications and Advocacy</a> and <a href="careers.html#data-protection-officer" style="color:var(--violet);">Data Protection Officer</a>, alongside open seats on the <a href="careers.html#board" style="color:var(--violet);">Board</a> and <a href="careers.html#advisory" style="color:var(--violet);">Advisory Board</a>. See our <a href="careers.html" style="color:var(--violet);">careers page</a>.</p>
     <p class="note">The Advisory Board advises; the Board governs. Board seats are filled by the sitting Board and ratified by the general assembly, and candidates need not already be members (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1).</p>
     <div class="callout">
       <strong>Owned in the open.</strong> Custorian owns a standard it is structurally unable to sell. The articles, the firewalls, the decisions and the accounts are all published. <a href="governance.html" style="color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(91,65,194,.3);">Read the governance record</a>.
@@ -926,7 +929,7 @@
   <div class="dialog">
     <button type="button" class="close" data-close aria-label="Close">&#10005;</button>
     <h2 id="actionTitle">Take action</h2>
-    <p style="font-size:16px; line-height:1.6; color:var(--body);">Five ways to put weight behind the standard. Pick the one that fits.</p>
+    <p style="font-size:16px; line-height:1.6; color:var(--body);">Six ways to put weight behind the standard. Pick the one that fits.</p>
     <div class="routes">
       <a class="route" href="https://members.custorian.org/join?support=1#support">
         <div class="rk">Become a member &rarr;</div>
@@ -940,8 +943,12 @@
         <div class="rk">Join the Board or Advisory Board &rarr;</div>
         <div class="rd">Lend governance or subject-matter expertise. The Advisory Board advises; the Board governs. Candidates need not already be members (Articles &sect;&nbsp;3.4 and &sect;&nbsp;5.1).</div>
       </button>
-      <a class="route" href="mailto:info@custorian.org?subject=Partnership%20or%20collaboration">
-        <div class="rk">Work with us or partner &rarr;</div>
+      <a class="route" href="careers.html">
+        <div class="rk">Work with us &rarr;</div>
+        <div class="rd">Three open roles, each starting as a volunteer role and becoming paid once funded: Lead Security Engineer, Head of Communications and Advocacy, and Data Protection Officer.</div>
+      </a>
+      <a class="route" href="careers.html#partner">
+        <div class="rk">Partner with us &rarr;</div>
         <div class="rd">Research, data, funding, a joint programme, or bringing the standard into your own work. We are looking to work with child-protection organisations, hotlines, regulators, researchers, educators and funders. Tell us who you are and what you have in mind.</div>
       </a>
       <a class="route" href="how-it-works.html#review">
@@ -1441,7 +1448,17 @@
     }
     function fromHash() {
       var h = location.hash;
-      if (h === '#governance' || h === '#board') openGov('governance');
+      if (h === '#governance' || h === '#board') {
+        openGov('governance');
+        // ?seat=Treasurer (from the Board seat links on careers) preselects the seat.
+        var bseat = new URLSearchParams(location.search).get('seat');
+        var bsel = document.getElementById('a-seat');
+        if (bseat && bsel) {
+          for (var j = 0; j < bsel.options.length; j++) {
+            if (bsel.options[j].text === bseat) { bsel.selectedIndex = j; bsel.dispatchEvent(new Event('change', { bubbles: true })); break; }
+          }
+        }
+      }
       else if (h === '#advisory-interest' || h === '#join-advisory') {
         openGov('advisory');
         // ?seat=Ethics (from the open-seat links on governance and careers)

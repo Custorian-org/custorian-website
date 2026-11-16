@@ -247,6 +247,12 @@
   }
   .cform input[type=file] { font:inherit; font-size:14px; width:100%; padding:10px; border:1px dashed var(--line); background:#fff; border-radius:2px; }
   .cform input:focus, .cform select:focus { outline:2px solid var(--violet-l); outline-offset:1px; border-color:var(--violet); }
+  .cform textarea { width:100%; font:inherit; font-size:15px; padding:11px 12px; border:1px solid var(--line); background:#fff; border-radius:2px; resize:vertical; }
+  .cform textarea:focus { outline:2px solid var(--violet-l); outline-offset:1px; border-color:var(--violet); }
+  .cform .kinds { border:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; }
+  .cform .kinds legend { font-size:13.5px; font-weight:600; color:var(--ink); margin-bottom:8px; }
+  .cform .kinds label { display:flex; gap:8px; align-items:center; font-weight:400; font-size:14.5px; margin:0; }
+  @media (max-width:640px) { .cform .kinds { grid-template-columns:1fr; } }
   .cform .hint { font-size:12.5px; color:var(--muted); margin:6px 0 0; }
   .cform .check { display:flex; gap:10px; align-items:flex-start; }
   .cform .check input { margin-top:4px; flex:none; }
@@ -272,8 +278,7 @@
   .seat { padding:18px 0; border-bottom:1px solid var(--hair); display:grid; grid-template-columns:200px 1fr; gap:4px 24px; scroll-margin-top:90px; }
   .seat b { font-family:var(--sans); font-size:15.5px; font-weight:600; color:var(--ink); grid-row:span 2; }
   .seat span { font-size:15.5px; line-height:1.55; color:var(--body); }
-  .seat-apply { font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--violet); text-decoration:none; }
-  .seat-apply:hover { color:var(--ink); }
+  .seat-apply { justify-self:start; margin-top:10px; }
   @media (max-width:900px) { .seat { grid-template-columns:1fr; } .seat b { grid-row:auto; } }
 </style>
 </head>
@@ -303,7 +308,7 @@
   <div class="cover">
     <div class="eyebrow">Join us</div>
     <h1>Careers at Custorian.</h1>
-    <p class="lede">We are a small team building a European standard for children&rsquo;s safety online, the research behind it, and the infrastructure that helps take child sexual abuse material down faster. These are the roles we are looking to fill now.</p>
+    <p class="lede">We are a small team building a European standard for children&rsquo;s safety online, the research behind it, and the infrastructure that helps take child sexual abuse material down faster. These are the roles and seats we are looking to fill now. Organisations that want to work with us can <a class="inline" href="#partner">get in touch as a partner</a>.</p>
     <div class="stamp">
       <span>Foreningen Custorian</span>
       <span>Remote, Europe</span>
@@ -316,9 +321,11 @@
     <aside class="rail">
       <ol>
         <li><a href="#roles">Open roles</a></li>
+        <li><a href="#board">Board of Directors</a></li>
         <li><a href="#advisory">Advisory Board</a></li>
         <li><a href="#how">How we work</a></li>
         <li><a href="#apply">Apply</a></li>
+        <li><a href="#partner">Partner with us</a></li>
       </ol>
     </aside>
 
@@ -332,21 +339,22 @@
         <div class="roles">
           <article class="role" id="lead-security-engineer">
             <span class="tag">Volunteer to paid &middot; Engineering</span>
-            <h3>Lead Security Engineer, Notice Exchange and Commons</h3>
-            <p>Take our two infrastructure tools from working prototypes to secure, production-ready systems: threat modelling, encryption, access control and audit logging, integrations with hotlines, hosting providers and registrars, and technical onboarding of pilot partners. The systems never handle abuse material itself, only hashes and metadata.</p>
+            <h3>Lead Security Engineer</h3>
+            <p>Take our two infrastructure tools, the Notice Exchange and the Commons, from working prototypes to secure, production-ready systems: threat modelling, encryption, access control and audit logging, integrations with hotlines, hosting providers and registrars, and technical onboarding of pilot partners. The systems never handle abuse material itself, only hashes and metadata.</p>
             <div class="rfacts">
+              <div><span>Engagement</span>Volunteer to start; paid once funded, with equity in Downstream Labs</div>
               <div><span>Location</span>Netherlands-based, remote, occasional travel to The Hague</div>
-              <div><span>Engagement</span>Volunteer to start; paid with equity in Downstream Labs once funded</div>
               <div><span>Vetting</span>Background checks, including a Dutch certificate of conduct (VOG)</div>
             </div>
             <div class="ractions"><a class="btn" href="#apply" data-role="Lead Security Engineer">Apply for this role</a><a class="pdf" href="careers/custorian-role-lead-security-engineer.pdf" target="_blank" rel="noopener">Full role profile (PDF)</a></div>
           </article>
 
           <article class="role" id="head-of-communications">
-            <span class="tag">Volunteer &middot; Communications</span>
+            <span class="tag">Volunteer to paid &middot; Communications</span>
             <h3>Head of Communications and Advocacy</h3>
             <p>Lead how we talk about the standard, the certification scheme and our research: the public consultation, position papers and policy briefs, media relations, our channels and plain-language guidance for parents and professionals. Above all, hold the line between what we can say and what we can show.</p>
             <div class="rfacts">
+              <div><span>Engagement</span>Volunteer to start; paid once funded</div>
               <div><span>Time</span>Part-time, 8 to 10 hours a week</div>
               <div><span>Location</span>Remote, within EU time zones</div>
               <div><span>Vetting</span>B&oslash;rneattest or an equivalent criminal record check</div>
@@ -359,6 +367,7 @@
             <h3>Data Protection Officer</h3>
             <p>Be our first Data Protection Officer, with the tasks and independence set out in Articles 37 to 39 of the GDPR: advise the Board and team, review impact assessments, keep our records of processing current, handle data subject requests and act as our contact with Datatilsynet. You report directly to the Board.</p>
             <div class="rfacts">
+              <div><span>Engagement</span>Volunteer to start; paid once funded</div>
               <div><span>Time</span>Part-time, around 4 to 6 hours a week to start</div>
               <div><span>Location</span>Remote, within EU time zones; Denmark-based preferred</div>
               <div><span>Vetting</span>B&oslash;rneattest and criminal record certificate, or equivalents</div>
@@ -368,42 +377,81 @@
         </div>
       </section>
 
-      <section id="advisory">
+      <section id="board">
         <span class="sectnum">02</span>
+        <h2>Board of Directors: open seats</h2>
+        <p>The <a class="inline" href="governance.html#board">Board</a> governs Custorian. Board seats are unpaid, run for two-year terms and take four to six virtual meetings a year, with papers read in advance. New directors are appointed by the sitting Board and ratified by the general assembly, and you do not need to be a member to apply (&sect;&nbsp;3.4 and &sect;&nbsp;5.1). The articles require at least two independent directors: in the previous three years, no job, fees, ownership or management role with Custorian, a certification body under the scheme, or a platform certified or seeking certification under it (&sect;&nbsp;5.5).</p>
+        <div class="seats">
+          <div class="seat" id="board-chair">
+            <b>Independent Chair</b>
+            <span>Lead the Board and hold continuity as Custorian moves from building the standard to running it, and act as the association&rsquo;s legal signatory. The founder chairs the Board only until an independent chair is elected, which the articles require us to seek by 31 December 2028 (&sect;&nbsp;5.4).</span>
+            <a class="btn seat-apply" href="index.html?seat=Chair#governance">Apply for this seat</a>
+          </div>
+          <div class="seat" id="board-vice-chair">
+            <b>Vice Chair (independent)</b>
+            <span>Deputise for the Chair, and lead every decision about the founder&rsquo;s role, pay or conflicts of interest, on which the founder does not vote. You also hold board-level oversight of safeguarding.</span>
+            <a class="btn seat-apply" href="index.html?seat=Vice%20Chair#governance">Apply for this seat</a>
+          </div>
+          <div class="seat" id="board-treasurer">
+            <b>Treasurer (independent)</b>
+            <span>Oversee our finances, budget, grant compliance and financial controls, co-sign larger payments, watch our reserves and how much we rely on any one funder, and present the budget and annual accounts.</span>
+            <a class="btn seat-apply" href="index.html?seat=Treasurer#governance">Apply for this seat</a>
+          </div>
+          <div class="seat" id="board-secretary">
+            <b>Secretary (independent)</b>
+            <span>Keep the Board&rsquo;s record: minutes, the register, the resolutions log and the Advisory Board roster. You record declared conflicts of interest and keep our published decisions log current.</span>
+            <a class="btn seat-apply" href="index.html?seat=Secretary#governance">Apply for this seat</a>
+          </div>
+          <div class="seat" id="board-legal">
+            <b>Legal Adviser</b>
+            <span>Counsel-level oversight of our contracts, licences and regulatory exposure, including the licensing terms of the standard. The seat currently attends Board meetings without a vote.</span>
+            <a class="btn seat-apply" href="index.html?seat=Legal%20Adviser#governance">Apply for this seat</a>
+          </div>
+          <div class="seat" id="board-child-safety">
+            <b>Child Digital Safety and Wellbeing (independent)</b>
+            <span>The Board&rsquo;s subject-matter anchor, so that decisions are not driven by financial and legal considerations alone. We are looking for someone with a track record of building and scaling child-safety organisations, in the non-profit or for-profit sector. Safeguarding and survivor-informed practice are required.</span>
+            <a class="btn seat-apply" href="index.html?seat=Child%20Digital%20Safety%20%26%20Wellbeing#governance">Apply for this seat</a>
+          </div>
+        </div>
+        <p class="note">Applying opens our governance expression of interest form with the seat selected. Every director files the declarations our Conflict of Interest Policy requires, and independent directors confirm their independence in writing each year.</p>
+      </section>
+
+      <section id="advisory">
+        <span class="sectnum">03</span>
         <h2>Advisory Board: open seats</h2>
         <p>Our <a class="inline" href="governance.html#advisory">Advisory Board</a> gives independent, non-binding advice to the Board and the standard&rsquo;s committees. Seats are unpaid and non-voting, formalised by a memorandum of understanding, and take a few meetings a year plus written advice when a question comes up. These five are open now; read more in our <a class="inline" href="governance.html#advisory-open">governance section</a>.</p>
         <div class="seats">
           <div class="seat" id="seat-legal">
             <b>Legal and regulatory</b>
             <span>Knowledge of the Digital Services Act, the GDPR, the Audiovisual Media Services Directive, national online safety law or children&rsquo;s rights law. You would advise on the legal references in the standard and on how it lines up with regulation.</span>
-            <a class="seat-apply" href="index.html?seat=Legal#advisory-interest">Apply for this seat &rarr;</a>
+            <a class="btn seat-apply" href="index.html?seat=Legal#advisory-interest">Apply for this seat</a>
           </div>
           <div class="seat" id="seat-technology">
             <b>Technology and security</b>
             <span>Experience in security engineering, trust and safety, privacy-enhancing technology or age assurance. You would help peer review the standard&rsquo;s technical controls and the tools we build.</span>
-            <a class="seat-apply" href="index.html?seat=Technology%20and%20security#advisory-interest">Apply for this seat &rarr;</a>
+            <a class="btn seat-apply" href="index.html?seat=Technology%20and%20security#advisory-interest">Apply for this seat</a>
           </div>
           <div class="seat" id="seat-law-enforcement">
             <b>Law enforcement</b>
             <span>Current or former experience of child exploitation investigations, victim identification or reporting of illegal content. You would advise on how reports and evidence flow between hotlines, providers and police.</span>
-            <a class="seat-apply" href="index.html?seat=Law%20enforcement#advisory-interest">Apply for this seat &rarr;</a>
+            <a class="btn seat-apply" href="index.html?seat=Law%20enforcement#advisory-interest">Apply for this seat</a>
           </div>
           <div class="seat" id="seat-youth">
             <b>Youth perspectives</b>
             <span>Experience of bringing children&rsquo;s and young people&rsquo;s views into decisions, for example through a youth council or youth participation work. You would help make sure the standard reflects what young people actually experience online.</span>
-            <a class="seat-apply" href="index.html?seat=Youth#advisory-interest">Apply for this seat &rarr;</a>
+            <a class="btn seat-apply" href="index.html?seat=Youth#advisory-interest">Apply for this seat</a>
           </div>
           <div class="seat" id="advisory-ethics">
             <b>Ethics</b>
             <span>Background in applied, research or technology ethics, or children&rsquo;s rights, ideally with ethics committee experience. You would advise on consent and assent in our research, the balance between safety and children&rsquo;s privacy and autonomy, and the ethics of data use and AI in our work.</span>
-            <a class="seat-apply" href="index.html?seat=Ethics#advisory-interest">Apply for this seat &rarr;</a>
+            <a class="btn seat-apply" href="index.html?seat=Ethics#advisory-interest">Apply for this seat</a>
           </div>
         </div>
         <p class="note">Applying opens our Advisory Board form with the seat selected. While in post you cannot hold a paid or advisory role with an online service the standard covers.</p>
       </section>
 
       <section id="how">
-        <span class="sectnum">03</span>
+        <span class="sectnum">04</span>
         <h2>How we work</h2>
         <ul class="ticks">
           <li><strong>Remote first.</strong> We work across Europe, with a weekly check-in and written decisions.</li>
@@ -415,7 +463,7 @@
       </section>
 
       <section id="apply">
-        <span class="sectnum">04</span>
+        <span class="sectnum">05</span>
         <h2>Apply</h2>
         <p>Tell us which role you are applying for, attach your CV and a cover letter, and add your LinkedIn profile. Each role profile lists the questions to answer in your cover letter.</p>
 
@@ -465,6 +513,56 @@
         <div class="cdone" data-done hidden>
           <strong>Thank you, your application has been received.</strong>
           <p>We review applications as they arrive and will reply by email. If you need any adjustment to take part in the process, write to <a class="inline" href="mailto:info@custorian.org">info@custorian.org</a>.</p>
+        </div>
+      </section>
+
+      <section id="partner">
+        <span class="sectnum">06</span>
+        <h2>Partner with us</h2>
+        <p>We work with organisations as well as people. If your organisation wants to fund our work, run research with us, share data, build a joint programme or bring the standard into its own work, tell us who you are and what you have in mind. We are looking to work with child-protection organisations, hotlines, regulators and public bodies, universities and researchers, educators and funders.</p>
+        <p class="note">To protect the standard&rsquo;s independence, we do not accept funding from services that are, or may become, subject to assessment under it, or from companies that control or are controlled by them. Data is shared only under a written agreement, and we never receive child sexual abuse material.</p>
+
+        <form id="partnerForm" class="cform" novalidate>
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label></div>
+          <div class="row">
+            <div class="field"><label for="p-org">Organisation *</label><input id="p-org" name="organisation" required autocomplete="organization"></div>
+            <div class="field"><label for="p-type">Type of organisation *</label>
+              <select id="p-type" name="org_type" required>
+                <option value="">Select&hellip;</option>
+                <option>Child-protection organisation or charity</option>
+                <option>Hotline or helpline</option>
+                <option>Regulator or public body</option>
+                <option>University or research institute</option>
+                <option>Funder or foundation</option>
+                <option>Company</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="p-name">Your name *</label><input id="p-name" name="name" required autocomplete="name"></div>
+            <div class="field"><label for="p-role">Your role</label><input id="p-role" name="contact_role" autocomplete="organization-title"></div>
+            <div class="field"><label for="p-email">Email *</label><input id="p-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="field"><label for="p-country">Country *</label><input id="p-country" name="country" required autocomplete="country-name"></div>
+            <div class="field full"><label for="p-web">Website</label><input id="p-web" name="website" type="url" placeholder="https://"></div>
+          </div>
+          <fieldset class="field kinds" id="p-kinds">
+            <legend>How would you like to work with us? *</legend>
+            <label><input type="checkbox" value="Funding"> Funding</label>
+            <label><input type="checkbox" value="Research"> Research</label>
+            <label><input type="checkbox" value="Data"> Data</label>
+            <label><input type="checkbox" value="Joint programme or project"> Joint programme or project</label>
+            <label><input type="checkbox" value="Bringing the standard into our work"> Bringing the standard into our work</label>
+            <label><input type="checkbox" value="Technology or infrastructure"> Technology or infrastructure</label>
+            <label><input type="checkbox" value="Other"> Other</label>
+          </fieldset>
+          <div class="field"><label for="p-msg">What do you have in mind? *</label><textarea id="p-msg" name="message" required rows="6" placeholder="A few lines is enough: what you would like to do together, and any timing or funding call you are working to."></textarea></div>
+          <div class="field"><label for="p-conflict">Does your organisation run, control or belong to a group with an online service that children use, or sell child safety products or services? *</label><input id="p-conflict" name="conflicts" required placeholder="Write &ldquo;No&rdquo; if not"></div>
+          <div class="field check"><input id="p-consent" type="checkbox" value="Yes" required><label for="p-consent">I agree that Custorian may store these details to reply to this inquiry. See our <a class="inline" href="privacy-policy.html">privacy policy</a>. *</label></div>
+          <p class="cerr" data-err hidden></p>
+          <button type="submit" class="btn">Send inquiry</button>
+        </form>
+        <div class="cdone" data-done hidden>
+          <strong>Thank you, we have your inquiry.</strong>
+          <p>We will reply by email. If it is urgent, write to <a class="inline" href="mailto:info@custorian.org">info@custorian.org</a>.</p>
         </div>
       </section>
 
@@ -653,6 +751,63 @@
         show(up
           ? 'We could not upload your documents. Please check your connection and try again, or open "Trouble uploading? Use links instead" and paste links. You can also email info@custorian.org.'
           : 'We could not send your application. Please try again, or email it to info@custorian.org.');
+      });
+    });
+  })();
+</script>
+<script>
+  /* Partner inquiry: governance_applications (body 'Partnership') plus a
+     Web3Forms email. No files. Success if either lands. */
+  (function () {
+    var form = document.getElementById('partnerForm');
+    if (!form) return;
+    var SB_URL = 'https://trvbspdqonajtsiivxwl.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRydmJzcGRxb25hanRzaWl2eHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MTQ4MzcsImV4cCI6MjA5ODI5MDgzN30.MME7OKOU6CZz-ZIz8By0Xiehr25oZ809qmVAQU3HvF8';
+    var W3F_KEY = 'cfeb795c-19e4-42ee-9ab3-66290e1c5e34';
+    var err = form.querySelector('[data-err]');
+    var done = form.parentNode.querySelector('[data-done]');
+    var btn = form.querySelector('button[type=submit]');
+    var boxes = form.querySelectorAll('#p-kinds input');
+    function v(n) { var el = form.elements[n]; return el ? String(el.value || '').trim() : ''; }
+    function kinds() { return Array.prototype.filter.call(boxes, function (b) { return b.checked; }).map(function (b) { return b.value; }); }
+    function syncKinds() { boxes[0].setCustomValidity(kinds().length ? '' : 'Please choose at least one way to work with us.'); }
+    boxes.forEach(function (b) { b.addEventListener('change', syncKinds); });
+    syncKinds();
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      if (v('website_hp')) return;
+      syncKinds();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var k = kinds().join(', ');
+      var details = { organisation: v('organisation'), org_type: v('org_type'), contact_role: v('contact_role') || null,
+        country: v('country'), website: v('website') || null, interests: kinds(), message: v('message'),
+        conflicts: v('conflicts'), consent: 'Yes', submitted_at: new Date().toISOString() };
+      var row = fetch(SB_URL + '/rest/v1/governance_applications', {
+        method: 'POST',
+        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ body: 'Partnership', name: v('name'), email: v('email'), expertise: k, profile_url: v('website') || null, source: 'org_website', details: details })
+      }).then(function (r) { return r.ok; }).catch(function () { return false; });
+      var fd = new FormData();
+      var put = function (a, b) { fd.append(a, b == null ? '' : b); };
+      put('access_key', W3F_KEY);
+      put('subject', 'Custorian partner inquiry: ' + v('organisation') + ' (' + k + ')');
+      put('from_name', 'Custorian partner form');
+      put('ccemail', 'tanya@custorian.org');
+      put('replyto', v('email'));
+      put('Organisation', v('organisation')); put('Type', v('org_type')); put('Name', v('name'));
+      put('Role', v('contact_role')); put('Email', v('email')); put('Country', v('country')); put('Website', v('website'));
+      put('Interests', k); put('Message', v('message')); put('Conflicts', v('conflicts')); put('Consent', 'Yes');
+      var mail = fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+        .then(function (r) { return r.json(); }).then(function (d) { return !!(d && d.success); }).catch(function () { return false; });
+      Promise.all([row, mail]).then(function (res) {
+        if (!res[0] && !res[1]) throw new Error('send');
+        form.hidden = true; done.hidden = false;
+        done.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = 'Try again';
+        err.textContent = 'We could not send your inquiry. Please try again, or email info@custorian.org.'; err.hidden = false;
       });
     });
   })();
