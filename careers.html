@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custorian: Careers</title>
-<meta name="description" content="Open roles at Custorian: Lead Security Engineer, Head of Communications and Advocacy, Data Protection Officer, and an Advisory Board seat in ethics.">
+<meta name="description" content="Open roles at Custorian: Founding Engineer, Secure Infrastructure, Head of Communications and Advocacy, Data Protection Officer, and an Advisory Board seat in ethics.">
 <link rel="canonical" href="https://custorian.org/careers.html">
 <meta property="og:title" content="Careers at Custorian">
 <meta property="og:description" content="Help build a European standard for children's safety online. Open roles and how to apply.">
@@ -337,16 +337,16 @@
         <p class="intro">Every role starts as a volunteer role and is intended to become paid once dedicated funding is secured. We cannot promise a date or salary, but the person in the role is considered first.</p>
 
         <div class="roles">
-          <article class="role" id="lead-security-engineer">
+          <article class="role" id="founding-engineer"><span id="lead-security-engineer"></span>
             <span class="tag">Volunteer to paid &middot; Engineering</span>
-            <h3>Lead Security Engineer</h3>
+            <h3>Founding Engineer, Secure Infrastructure</h3>
             <p>Take two early-stage infrastructure tools from our research and development arm, the Notice Exchange and the Commons, from working prototypes to secure, production-ready systems: threat modelling, encryption, access control and audit logging, integrations with partner organisations, and technical onboarding of pilot partners. The systems never handle abuse material itself, only hashes and metadata.</p>
             <div class="rfacts">
               <div><span>Engagement</span>Volunteer to start; paid once funded</div>
               <div><span>Location</span>Netherlands-based, remote, occasional travel</div>
               <div><span>Vetting</span>Background checks, including a Dutch certificate of conduct (VOG)</div>
             </div>
-            <div class="ractions"><a class="btn" href="#apply" data-role="Lead Security Engineer">Apply for this role</a><a class="pdf" href="careers/custorian-role-lead-security-engineer.pdf" target="_blank" rel="noopener">Full role profile (PDF)</a></div>
+            <div class="ractions"><a class="btn" href="#apply" data-role="Founding Engineer, Secure Infrastructure">Apply for this role</a><a class="pdf" href="careers/custorian-role-founding-engineer-secure-infrastructure.pdf" target="_blank" rel="noopener">Full role profile (PDF)</a></div>
           </article>
 
           <article class="role" id="head-of-communications">
@@ -473,7 +473,7 @@
             <div class="field full"><label for="c-role">Role *</label>
               <select id="c-role" name="role" required>
                 <option value="">Select a role&hellip;</option>
-                <option>Lead Security Engineer</option>
+                <option>Founding Engineer, Secure Infrastructure</option>
                 <option>Head of Communications and Advocacy</option>
                 <option>Data Protection Officer</option>
               </select>
@@ -631,7 +631,7 @@
     });
     var q = new URLSearchParams(location.search).get('role');
     if (q) {
-      var map = { 'security': 'Lead Security Engineer', 'communications': 'Head of Communications and Advocacy', 'dpo': 'Data Protection Officer' };
+      var map = { 'security': 'Founding Engineer, Secure Infrastructure', 'communications': 'Head of Communications and Advocacy', 'dpo': 'Data Protection Officer' };
       pick(map[q] || q);
     }
 
